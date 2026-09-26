@@ -3,7 +3,9 @@
   "private": true,
   "type": "module",
   "packageManager": "pnpm@11.25.0",
-  "engines": { "node": ">=22" },
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
     "build": "pnpm -r build",
     "test": "pnpm -r test",
@@ -11,5 +13,19 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
-  "license": "MIT OR Apache-2.0"
+  "license": "MIT OR Apache-2.0",
+  "devDependencies": {
+    "@fontsource/ibm-plex-mono": "5.3.0",
+    "@fontsource/ibm-plex-sans": "5.3.0",
+    "@fontsource/ibm-plex-sans-arabic": "5.3.0",
+    "@storybook/react-vite": "10.6.0",
+    "@types/culori": "^4.0.1",
+    "@vitejs/plugin-react": "6.1.1",
+    "culori": "^4.0.2",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "storybook": "10.6.0",
+    "typescript": "6.0.3",
+    "vite": "8.3.1"
+  }
 }

@@ -1,0 +1,59 @@
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { useState } from "react";
+import { Button, ChoiceGroup, TimeSlider } from "./Controls";
+import { Panel, StatBar } from "./Panel";
+import { TradeTable } from "./TradeTable";
+
+const meta: Meta = { title: "Controls/Playback" };
+export default meta;
+
+const fmt = (s: number) => {
+  const h = Math.floor(s / 3600), m = Math.floor((s % 3600) / 60), sec = Math.floor(s % 60);
+  return [h, m, sec].map((x) => String(x).padStart(2, "0")).join(":");
+};
+
+export const Transport: StoryObj = {
+  render: () => {
+    const [playing, setPlaying] = useState(false);
+    const [speed, setSpeed] = useState(10);
+    const [t, setT] = useState(9.5 * 3600);
+    return (
+      <Panel title="Playback">
+        <div style={{ display: "flex", gap: "var(--stoa-space-3)", alignItems: "center", flexWrap: "wrap" }}>
+          <Button variant="primary" onPress={() => setPlaying((p) => !p)}>{playing ? "Pause" : "Play"}</Button>
+          <ChoiceGroup label="Speed" value={speed} onChange={setSpeed} choices={[1, 10, 60, 600].map((s) => ({ id: s, label: `${s}x` }))} />
+          <TimeSlider label="Time" min={4 * 3600} max={20 * 3600} step={1} value={t} onChange={setT} format={fmt} />
+        </div>
+      </Panel>
+    );
+  },
+};
+
+export const Trades: StoryObj = {
+  render: () => (
+    <Panel title="Trades">
+      <TradeTable
+        caption="Recent trades"
+        trades={[
+          { id: "1", time: "10:03:08.082", side: "sell", price: 222.66, size: 22 },
+          { id: "2", time: "10:03:06.582", side: "sell", price: 222.66, size: 100 },
+          { id: "3", time: "10:03:04.275", side: "buy", price: 222.64, size: 1200 },
+          { id: "4", time: "10:02:59.006", side: "buy", price: 222.61, size: 1 },
+        ]}
+      />
+    </Panel>
+  ),
+};
+
+export const Counters: StoryObj = {
+  render: () => (
+    <StatBar
+      label="Performance counters"
+      items={[
+        { label: "frames/s", value: "60" },
+        { label: "frame p95", value: "16.9 ms" },
+        { label: "book p95", value: "0.50 ms" },
+      ]}
+    />
+  ),
+};
