@@ -1,0 +1,47 @@
+{
+  "name": "@valkyra-labs/stoa-react",
+  "version": "0.0.0",
+  "description": "React components of Stoa, a design system for dense data: accessible controls on React Aria and canvas views for books, heatmaps and trades",
+  "type": "module",
+  "license": "MIT OR Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Valkyra-Labs/stoa-system",
+    "directory": "packages/react"
+  },
+  "files": [
+    "dist"
+  ],
+  "sideEffects": [
+    "*.css"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./styles.css": "./dist/styles.css"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json && cp src/styles.css dist/styles.css",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run"
+  },
+  "peerDependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "dependencies": {
+    "react-aria-components": "1.21.1"
+  },
+  "devDependencies": {
+    "@testing-library/react": "^16.3.3",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "jsdom": "^30.1.1",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "typescript": "6.0.3",
+    "vitest": "5.0.2"
+  }
+}
