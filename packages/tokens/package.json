@@ -1,0 +1,33 @@
+{
+  "name": "@valkyra-labs/stoa-tokens",
+  "version": "0.0.0",
+  "description": "Design tokens of Stoa, a design system for dense data: colour, type, space, density, motion, as CSS variables and TypeScript",
+  "type": "module",
+  "license": "MIT OR Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Valkyra-Labs/stoa-system",
+    "directory": "packages/tokens"
+  },
+  "files": [
+    "dist",
+    "tokens"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/tokens.d.ts",
+      "default": "./dist/tokens.js"
+    },
+    "./tokens.css": "./dist/tokens.css",
+    "./tokens.json": "./dist/tokens.json"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "test": "node --test scripts/*.test.mjs",
+    "typecheck": "true"
+  },
+  "devDependencies": {
+    "culori": "^4.0.2",
+    "style-dictionary": "5.5.5"
+  }
+}
