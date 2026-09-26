@@ -54,6 +54,8 @@ export function Ladder({ depth = 12, data, label, formatPrice = (p) => p.toFixed
   const tokens = useRef<CanvasTokens | null>(null);
   const [summary, setSummary] = useState("The book is empty.");
   const lastSummary = useRef(0);
+  const latest = useRef<Book>({ bids: [], asks: [] });
+  const trailing = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const render = (flat: ArrayLike<number> | null) => {
     const c = canvas.current;
@@ -61,12 +63,22 @@ export function Ladder({ depth = 12, data, label, formatPrice = (p) => p.toFixed
     tokens.current ??= readCanvasTokens(c);
     const book = parseBook(flat);
     draw(c, tokens.current, book, depth, formatPrice);
-    const now = performance.now();
-    if (now - lastSummary.current > 1000) {
-      lastSummary.current = now;
-      setSummary(describeBook(book, formatPrice));
-    }
+    // The text alternative follows at most once a second, and always ends
+    // on the latest book: a leading-edge-only throttle left "The book is
+    // empty." in place when playback paused right after the first draw.
+    latest.current = book;
+    const publish = () => {
+      trailing.current = null;
+      lastSummary.current = performance.now();
+      setSummary(describeBook(latest.current, formatPrice));
+    };
+    const wait = 1000 - (performance.now() - lastSummary.current);
+    if (wait <= 0) publish();
+    else trailing.current ??= setTimeout(publish, wait);
   };
+  useEffect(() => () => {
+    if (trailing.current) clearTimeout(trailing.current);
+  }, []);
 
   useImperativeHandle(ref, () => ({ draw: render }));
   useEffect(() => {
