@@ -15,6 +15,13 @@ export type VerificationProps = {
   density: DensityMode;
   /** The current token files as text, exactly as they would be written. */
   files: Record<string, string>;
+  /** Whether a parameter set is deriving the values on screen. The build
+   * reads token files, and a derived tree is not one: exporting it to DTCG
+   * files is out of scope for brief 05. So the build still runs the
+   * sources with the override layer, and the comparison between the
+   * previews and the built CSS is withheld rather than reported as a
+   * disagreement it cannot speak to. */
+  derived: boolean;
 };
 
 type Agreement = Record<Theme, Disagreement[]>;
@@ -28,7 +35,7 @@ const THEMES: Theme[] = ["light", "dark"];
 /** Disagreements listed before the rest are counted only. */
 const SHOWN = 8;
 
-export function Verification({ tokens, density, files }: VerificationProps) {
+export function Verification({ tokens, density, files, derived }: VerificationProps) {
   const [busy, setBusy] = useState(false);
   const [verdict, setVerdict] = useState<Verdict | null>(null);
   const [failure, setFailure] = useState<Failure | null>(null);
@@ -48,13 +55,13 @@ export function Verification({ tokens, density, files }: VerificationProps) {
   // outlive the result it came from.
   const agreement = useMemo<Agreement | null>(
     () =>
-      result?.css
+      result?.css && !derived
         ? {
             light: compareVariables(tokens.light.variables, variablesFromCss(result.css, "light", density)),
             dark: compareVariables(tokens.dark.variables, variablesFromCss(result.css, "dark", density)),
           }
         : null,
-    [result, tokens, density],
+    [result, tokens, density, derived],
   );
 
   const run = async () => {
@@ -108,7 +115,9 @@ export function Verification({ tokens, density, files }: VerificationProps) {
           </dd>
           <dt>Preview against built CSS</dt>
           <dd data-testid="agreement-status">
-            {agreement === null ? (
+            {derived ? (
+              <StatusBadge tone="neutral">not compared: the previews are a derived tree, the build is the token sources</StatusBadge>
+            ) : agreement === null ? (
               <StatusBadge tone="neutral">no CSS to compare</StatusBadge>
             ) : (
               <StatusBadge tone={disagreements.length === 0 ? "positive" : "negative"}>
