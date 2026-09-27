@@ -94,9 +94,14 @@ code {
 
 .pg-token__field {
   display: grid;
-  grid-template-columns: 20px minmax(0, 1fr);
   align-items: center;
   gap: var(--stoa-space-2);
+}
+
+/* Only a colour has a swatch beside its field; a plain length keeps the
+   whole width. */
+.pg-token__field--swatch {
+  grid-template-columns: 20px minmax(0, 1fr);
 }
 
 .pg-token__slider {

@@ -94,7 +94,7 @@ function TokenControl({
           />
         </div>
       ) : (
-        <div className="pg-token__field">
+        <div className={control.kind === "color" ? "pg-token__field pg-token__field--swatch" : "pg-token__field"}>
           {control.kind === "color" && (
             <span
               className="pg-swatch"
