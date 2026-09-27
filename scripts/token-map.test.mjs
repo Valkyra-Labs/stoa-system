@@ -1,13 +1,14 @@
 import { describe, it } from "node:test";
 import assert from "node:assert/strict";
-import { buildTokenMap } from "./token-map/lib.mjs";
+import { buildTokenMap, renderMarkdown } from "./token-map/lib.mjs";
 
 // A small fixture tree covering: a CSS var read, an inline style var read,
 // a canvas read (through readCanvasTokens's getPropertyValue alias, one hop
 // of call-graph propagation to its caller), a semantic alias to a primitive,
 // a token that nothing reads, a dark-only alias, a var() fallback (with a
 // nested var()), a combinator selector, a named colour and keyword easing,
-// a declaration with no trailing semicolon, and per-density values.
+// a named colour in a comma-separated multi-value property, a declaration
+// with no trailing semicolon, and per-density values.
 const tokensCssText = `
 :root {
   --stoa-color-neutral-500: #888888;
@@ -53,6 +54,8 @@ const cssFiles = [
   padding: var(--stoa-space-2);
   outline-color: var(--stoa-color-focus, var(--stoa-color-accent, blue));
   transition: color 200ms cubic-bezier(0.2, 0, 0, 1);
+  animation-timing-function: ease-in-out;
+  box-shadow: 0 0 0 1px red, 0 0 2px blue;
   background: green
 }
 .fx-badge--warning > span:first-child { color: var(--stoa-color-warning) }
@@ -177,6 +180,43 @@ describe("token-map", () => {
     assert.ok(m.undefinedCustomProperties.some((u) => u.name === "--rac-focus-ring"));
   });
 
+  // An undefined custom property with a fallback still reports the
+  // fallback literal, instead of dropping it.
+  it("reports the fallback literal of an undefined custom property with a fallback", () => {
+    const m = buildTokenMap({
+      tokensCssText,
+      cssFiles: [{ path: "packages/react/src/styles.css", content: `.fx-panel { color: var(--stoa-x, rgb(255 255 255)); }` }],
+      sourceFiles: [],
+      storyFiles: [],
+      knownComponents,
+      semanticLightJson,
+      semanticDarkJson,
+    });
+    const undefinedRef = m.undefinedCustomProperties.find((u) => u.name === "--stoa-x");
+    assert.ok(undefinedRef, "expected --stoa-x to be reported even though it has a fallback");
+    assert.equal(undefinedRef.fallback, "rgb(255 255 255)");
+    assert.ok(
+      renderMarkdown(m).includes("`--stoa-x` | packages/react/src/styles.css | 1 | `rgb(255 255 255)` |"),
+      "expected the markdown's undefined-custom-property table to include the fallback",
+    );
+  });
+
+  // A custom property defined locally in component CSS (`.x { --local-gap:
+  // 4px; gap: var(--local-gap); }`) is not part of the token system, but
+  // it is defined, so it must not be reported as undefined.
+  it("treats a custom property defined in component CSS as defined, not undefined", () => {
+    const m = buildTokenMap({
+      tokensCssText,
+      cssFiles: [{ path: "packages/react/src/styles.css", content: `.fx-local { --local-gap: 4px; gap: var(--local-gap); }` }],
+      sourceFiles: [],
+      storyFiles: [],
+      knownComponents,
+      semanticLightJson,
+      semanticDarkJson,
+    });
+    assert.ok(!m.undefinedCustomProperties.some((u) => u.name === "--local-gap"));
+  });
+
   // Finding 1: dark-theme aliases are resolved from the DTCG sources, not
   // by looking for `var()` in the built CSS (the dark build inlines a
   // literal instead).
@@ -190,6 +230,42 @@ describe("token-map", () => {
       const text = tokenNamed(map(), "--stoa-color-text");
       assert.equal(text.theme.dark.aliasOf, "--stoa-color-neutral-900");
       assert.equal(text.theme.dark.resolvedValue, "#111111");
+    });
+
+    // A primitive's `unused` flag is combined across both themes, which
+    // hides that it is reached under only one of them. `reachedByTheme`
+    // reports each theme separately, and names the semantic token whose
+    // alias, in that theme, targets the primitive.
+    it("reports that neutral-900 is reached only in the dark theme, through --stoa-color-text", () => {
+      const neutral900 = tokenNamed(map(), "--stoa-color-neutral-900");
+      assert.deepEqual(neutral900.reachedByTheme.light, { direct: false, via: [] });
+      assert.deepEqual(neutral900.reachedByTheme.dark, { direct: false, via: ["--stoa-color-text"] });
+      assert.equal(neutral900.unused, false);
+    });
+
+    it("reports that neutral-500 is reached only in the light theme, through --stoa-color-text", () => {
+      const neutral500 = tokenNamed(map(), "--stoa-color-neutral-500");
+      assert.deepEqual(neutral500.reachedByTheme.light, { direct: false, via: ["--stoa-color-text"] });
+      assert.deepEqual(neutral500.reachedByTheme.dark, { direct: false, via: [] });
+    });
+
+    it("marks a directly read token as reached in both themes", () => {
+      const text = tokenNamed(map(), "--stoa-color-text");
+      assert.equal(text.reachedByTheme.light.direct, true);
+      assert.equal(text.reachedByTheme.dark.direct, true);
+    });
+
+    it("renders per-theme reachability in the markdown, by alias target rather than dark value", () => {
+      const md = renderMarkdown(map());
+      assert.match(md, /## Primitive reachability by theme/);
+      assert.ok(
+        md.includes("| `--stoa-color-neutral-900` | _not reached_ | via `--stoa-color-text` |"),
+        "expected neutral-900's markdown row to name the semantic token reaching it in the dark theme, not a resolved colour value",
+      );
+      assert.ok(
+        md.includes("| `--stoa-color-neutral-500` | via `--stoa-color-text` | _not reached_ |"),
+        "expected neutral-500's markdown row to show it reached only in the light theme",
+      );
     });
   });
 
@@ -244,6 +320,22 @@ describe("token-map", () => {
       const named = m.hardcodedLiterals.find((l) => l.value === "green");
       assert.ok(named, "expected the named colour `green` to be flagged");
       assert.equal(named.category, "color");
+      const easing = m.hardcodedLiterals.find((l) => l.value === "ease-in-out");
+      assert.ok(easing, "expected the keyword easing `ease-in-out` to be flagged");
+      assert.equal(easing.category, "easing");
+    });
+
+    // A named colour followed by a comma (a layer separator in a
+    // multi-value property like `box-shadow`) is still flagged, not just
+    // the last layer's colour.
+    it("flags a named colour followed by a comma in a multi-value property", () => {
+      const m = map();
+      const red = m.hardcodedLiterals.find((l) => l.value === "red" && l.property === "box-shadow");
+      assert.ok(red, "expected the named colour `red` (followed by a comma) to be flagged");
+      assert.equal(red.category, "color");
+      const blue = m.hardcodedLiterals.find((l) => l.value === "blue" && l.property === "box-shadow");
+      assert.ok(blue, "expected the named colour `blue` to be flagged too");
+      assert.equal(blue.category, "color");
     });
 
     it("parses the last declaration of a block with no trailing semicolon", () => {
