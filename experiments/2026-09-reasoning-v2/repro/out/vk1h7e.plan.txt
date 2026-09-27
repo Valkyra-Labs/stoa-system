@@ -1,0 +1,8 @@
+The screen serves as a morning dashboard for a portfolio manager, providing an overview of significant changes in the portfolio since the previous day. It highlights key metrics and offers insights into why certain assets have moved, enabling quick assessment and decision-making.
+
+The layout consists of three main sections:
+1. **Summary Metrics**: Displays key performance indicators (KPIs) such as total portfolio value, net gain/loss, and major contributors to change.
+2. **Top Movers**: Lists the assets with the most significant price movements, including charts showing their performance over the last 24 hours.
+3. **Reasons for Movement**: Provides an analysis of factors influencing the top movers, such as market trends, news events, and economic indicators.
+
+This structure allows the portfolio manager to quickly grasp the portfolio's health and the reasons behind recent movements.

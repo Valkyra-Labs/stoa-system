@@ -1,0 +1,18 @@
+### Answers to Steps 1 to 5
+
+**1. The person and the session:** The teacher opens this screen to prepare for a meeting with a parent about a specific student. The session is focused on gathering information about the student's performance, behavior, and any relevant context for the upcoming conversation.
+
+**2. The shape of the work:** This session involves understanding one object (the student) in depth before acting on it (preparing for the meeting). The teacher needs to review the student's profile, recent activities, and performance metrics.
+
+**3. The information:** The screen must display the student's profile information, recent performance metrics, behavior reports, and any relevant communications or notes. The context includes the student's overall performance trends, recent activities, and any specific incidents or communications that might be relevant.
+
+**4. The decision and its evidence:** The decision involves gathering all necessary information to prepare for the meeting. The evidence includes detailed performance metrics, behavior reports, and any communications or notes related to the student.
+
+**5. The structure:** The screen should have the following regions:
+- **Header:** Title with the student's name and basic information.
+- **Profile Section:** Overview of the student's profile.
+- **Performance Section:** Detailed performance metrics and trends.
+- **Behavior Section:** Recent behavior reports and incidents.
+- **Communications Section:** Any relevant communications or notes.
+
+This structure ensures that all necessary information is readily available for the teacher to prepare effectively for the meeting.

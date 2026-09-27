@@ -1,0 +1,50 @@
+import { Page, Header, Sidebar, Section, Card, Chart, Metric, Trend, DataTable } from "@stoa/react";
+
+export default function SchoolPerformanceDashboard() {
+  return (
+    <Page title="School Performance Summary">
+      <Header title="School Performance Summary" subtitle="Term Overview" />
+      <div style={{ display: "flex" }}>
+        <Sidebar>
+          <Section title="Quick Links">
+            <Card title="Enrollment">
+              <Metric label="Total Students" value={1200} delta={-5} unit="students" />
+              <Metric label="New Students" value={150} delta={20} unit="students" />
+            </Card>
+            <Card title="Financial Health">
+              <Metric label="Budget Surplus" value={50000} delta={-2000} unit="$" />
+              <Metric label="Donations" value={10000} delta={3000} unit="$" />
+            </Card>
+          </Section>
+        </Sidebar>
+        <main style={{ flex: 1, padding: "20px" }}>
+          <Section title="Key Metrics and Trends">
+            <Card title="Student Performance">
+              <Metric label="Average GPA" value={3.2} delta={0.1} unit="points" />
+              <Metric label="Passing Rate" value={85} delta={-2} unit="%" />
+            </Card>
+            <Card title="Trends">
+              <Trend series={[{ date: "2022-09-01", value: 3.1 }, { date: "2022-10-01", value: 3.15 }, { date: "2022-11-01", value: 3.2 }, { date: "2022-12-01", value: 3.25 }]} />
+            </Card>
+          </Section>
+          <Section title="Detailed Analysis">
+            <Chart type="bar" series={[{ date: "2022-09-01", value: 3.1 }, { date: "2022-10-01", value: 3.15 }, { date: "2022-11-01", value: 3.2 }, { date: "2022-12-01", value: 3.25 }]} x="date" y="value" />
+            <DataTable
+              columns={[
+                { label: "Date", key: "date" },
+                { label: "GPA", key: "gpa" },
+                { label: "Passing Rate", key: "passingRate" },
+              ]}
+              rows={[
+                { date: "2022-09-01", gpa: 3.1, passingRate: 87 },
+                { date: "2022-10-01", gpa: 3.15, passingRate: 86 },
+                { date: "2022-11-01", gpa: 3.2, passingRate: 85 },
+                { date: "2022-12-01", gpa: 3.25, passingRate: 84 },
+              ]}
+            />
+          </Section>
+        </main>
+      </div>
+    </Page>
+  );
+}
