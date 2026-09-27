@@ -58,6 +58,9 @@ export type TimeSliderProps = {
   step: number;
   value: number;
   onChange: (value: number) => void;
+  /** The value stopped moving: the drag was released or the key let go.
+   * A caller that records history uses this to end one step. */
+  onChangeEnd?: (value: number) => void;
   /** Text for the current value, shown and announced. */
   format: (value: number) => string;
 };
@@ -67,7 +70,7 @@ export type TimeSliderProps = {
  * React Aria formats slider values only with Intl.NumberFormat; a time of
  * day needs its own text, so the thumb's input gets `aria-valuetext`
  * after each render. */
-export function TimeSlider({ label, min, max, step, value, onChange, format }: TimeSliderProps) {
+export function TimeSlider({ label, min, max, step, value, onChange, onChangeEnd, format }: TimeSliderProps) {
   const input = useRef<HTMLInputElement>(null);
   useLayoutEffect(() => {
     input.current?.setAttribute("aria-valuetext", format(value));
@@ -80,6 +83,7 @@ export function TimeSlider({ label, min, max, step, value, onChange, format }: T
       step={step}
       value={value}
       onChange={(v) => onChange(v as number)}
+      onChangeEnd={onChangeEnd && ((v) => onChangeEnd(v as number))}
     >
       <Label className="stoa-visually-hidden">{label}</Label>
       <SliderOutput className="stoa-slider__output">{({ state }) => format(state.getThumbValue(0))}</SliderOutput>

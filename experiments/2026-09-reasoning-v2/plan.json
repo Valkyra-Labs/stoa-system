@@ -1,0 +1,2906 @@
+{
+ "tasks": {
+  "P1": "A payments operations analyst has a list of failed payouts to work through. Build the screen they use to resolve them.",
+  "P2": "A portfolio manager opens their book in the morning. Build the screen they use to see what moved since yesterday and understand why.",
+  "P3": "A teacher meets a parent tomorrow about one student. Build the screen the teacher uses to prepare.",
+  "P4": "A financial adviser must recommend one of two funds to a client. Build the screen they use to choose.",
+  "P5": "A head of school presents the term to the board next week and will not change anything on the screen. Build the screen they use to show how the school is doing.",
+  "P6": "A finance director glances at the company's weekly numbers every Monday before meetings. Build the screen they use."
+ },
+ "options": {
+  "temperature": 0.7,
+  "top_p": 0.8,
+  "max_tokens": 4096
+ },
+ "ctx": 8192,
+ "gguf": {
+  "qwen3.5:4b": "/Users/tim/models/gguf/Qwen_Qwen3.5-4B-Q4_K_M.gguf"
+ },
+ "modelOrder": [
+  "qwen3:8b",
+  "qwen2.5:14b",
+  "qwen3.5:4b"
+ ],
+ "runs": [
+  {
+   "id": "v96rz7",
+   "model": "qwen3:8b",
+   "condition": "components",
+   "task": "P5",
+   "seed": 5,
+   "think": false
+  },
+  {
+   "id": "v8b160",
+   "model": "qwen3:8b",
+   "condition": "rules",
+   "task": "P2",
+   "seed": 2,
+   "think": false
+  },
+  {
+   "id": "vv239a",
+   "model": "qwen3:8b",
+   "condition": "rules",
+   "task": "P6",
+   "seed": 5,
+   "think": false
+  },
+  {
+   "id": "vh9535",
+   "model": "qwen3:8b",
+   "condition": "components",
+   "task": "P4",
+   "seed": 5,
+   "think": false
+  },
+  {
+   "id": "vak4d8",
+   "model": "qwen3:8b",
+   "condition": "generic",
+   "task": "P4",
+   "seed": 1,
+   "think": false
+  },
+  {
+   "id": "va1sv9",
+   "model": "qwen3:8b",
+   "condition": "reasoning",
+   "task": "P1",
+   "seed": 3,
+   "think": false
+  },
+  {
+   "id": "v8enme",
+   "model": "qwen3:8b",
+   "condition": "reasoning",
+   "task": "P2",
+   "seed": 4,
+   "think": false
+  },
+  {
+   "id": "vq6090",
+   "model": "qwen3:8b",
+   "condition": "rules",
+   "task": "P5",
+   "seed": 5,
+   "think": false
+  },
+  {
+   "id": "vvgqwd",
+   "model": "qwen3:8b",
+   "condition": "reasoning",
+   "task": "P5",
+   "seed": 5,
+   "think": false
+  },
+  {
+   "id": "vcvr4v",
+   "model": "qwen3:8b",
+   "condition": "rules",
+   "task": "P4",
+   "seed": 3,
+   "think": false
+  },
+  {
+   "id": "v2pmyi",
+   "model": "qwen3:8b",
+   "condition": "reasoning",
+   "task": "P4",
+   "seed": 5,
+   "think": false
+  },
+  {
+   "id": "v2lat1",
+   "model": "qwen3:8b",
+   "condition": "rules",
+   "task": "P5",
+   "seed": 3,
+   "think": false
+  },
+  {
+   "id": "vp83ma",
+   "model": "qwen3:8b",
+   "condition": "generic",
+   "task": "P4",
+   "seed": 4,
+   "think": false
+  },
+  {
+   "id": "v13db5",
+   "model": "qwen3:8b",
+   "condition": "components",
+   "task": "P1",
+   "seed": 5,
+   "think": false
+  },
+  {
+   "id": "vyiqck",
+   "model": "qwen3:8b",
+   "condition": "generic",
+   "task": "P1",
+   "seed": 3,
+   "think": false
+  },
+  {
+   "id": "vmvhmx",
+   "model": "qwen3:8b",
+   "condition": "components",
+   "task": "P3",
+   "seed": 5,
+   "think": false
+  },
+  {
+   "id": "v1hutx",
+   "model": "qwen3:8b",
+   "condition": "reasoning",
+   "task": "P2",
+   "seed": 3,
+   "think": false
+  },
+  {
+   "id": "vr6ef0",
+   "model": "qwen3:8b",
+   "condition": "components",
+   "task": "P5",
+   "seed": 2,
+   "think": false
+  },
+  {
+   "id": "vq6dmw",
+   "model": "qwen3:8b",
+   "condition": "rules",
+   "task": "P5",
+   "seed": 1,
+   "think": false
+  },
+  {
+   "id": "v2q2hj",
+   "model": "qwen3:8b",
+   "condition": "rules",
+   "task": "P4",
+   "seed": 2,
+   "think": false
+  },
+  {
+   "id": "vmnj0q",
+   "model": "qwen3:8b",
+   "condition": "generic",
+   "task": "P1",
+   "seed": 5,
+   "think": false
+  },
+  {
+   "id": "vhcyni",
+   "model": "qwen3:8b",
+   "condition": "rules",
+   "task": "P4",
+   "seed": 1,
+   "think": false
+  },
+  {
+   "id": "vwakcj",
+   "model": "qwen3:8b",
+   "condition": "components",
+   "task": "P6",
+   "seed": 3,
+   "think": false
+  },
+  {
+   "id": "vssvwu",
+   "model": "qwen3:8b",
+   "condition": "components",
+   "task": "P2",
+   "seed": 1,
+   "think": false
+  },
+  {
+   "id": "vyxvi9",
+   "model": "qwen3:8b",
+   "condition": "reasoning",
+   "task": "P3",
+   "seed": 3,
+   "think": false
+  },
+  {
+   "id": "v1n3es",
+   "model": "qwen3:8b",
+   "condition": "components",
+   "task": "P4",
+   "seed": 4,
+   "think": false
+  },
+  {
+   "id": "v8xk8v",
+   "model": "qwen3:8b",
+   "condition": "reasoning",
+   "task": "P4",
+   "seed": 1,
+   "think": false
+  },
+  {
+   "id": "vs4971",
+   "model": "qwen3:8b",
+   "condition": "rules",
+   "task": "P2",
+   "seed": 1,
+   "think": false
+  },
+  {
+   "id": "vnx3u3",
+   "model": "qwen3:8b",
+   "condition": "components",
+   "task": "P2",
+   "seed": 4,
+   "think": false
+  },
+  {
+   "id": "vga71u",
+   "model": "qwen3:8b",
+   "condition": "reasoning",
+   "task": "P1",
+   "seed": 4,
+   "think": false
+  },
+  {
+   "id": "vqdf3z",
+   "model": "qwen3:8b",
+   "condition": "reasoning",
+   "task": "P6",
+   "seed": 2,
+   "think": false
+  },
+  {
+   "id": "vfk1l8",
+   "model": "qwen3:8b",
+   "condition": "components",
+   "task": "P3",
+   "seed": 4,
+   "think": false
+  },
+  {
+   "id": "vz7dhk",
+   "model": "qwen3:8b",
+   "condition": "components",
+   "task": "P2",
+   "seed": 3,
+   "think": false
+  },
+  {
+   "id": "vwqrzu",
+   "model": "qwen3:8b",
+   "condition": "generic",
+   "task": "P2",
+   "seed": 2,
+   "think": false
+  },
+  {
+   "id": "vx965x",
+   "model": "qwen3:8b",
+   "condition": "generic",
+   "task": "P3",
+   "seed": 1,
+   "think": false
+  },
+  {
+   "id": "vm96j3",
+   "model": "qwen3:8b",
+   "condition": "generic",
+   "task": "P6",
+   "seed": 2,
+   "think": false
+  },
+  {
+   "id": "vvx7lf",
+   "model": "qwen3:8b",
+   "condition": "generic",
+   "task": "P6",
+   "seed": 1,
+   "think": false
+  },
+  {
+   "id": "v52x2k",
+   "model": "qwen3:8b",
+   "condition": "generic",
+   "task": "P2",
+   "seed": 3,
+   "think": false
+  },
+  {
+   "id": "vk7uny",
+   "model": "qwen3:8b",
+   "condition": "reasoning",
+   "task": "P6",
+   "seed": 4,
+   "think": false
+  },
+  {
+   "id": "v1cdw4",
+   "model": "qwen3:8b",
+   "condition": "reasoning",
+   "task": "P2",
+   "seed": 5,
+   "think": false
+  },
+  {
+   "id": "vplzcc",
+   "model": "qwen3:8b",
+   "condition": "rules",
+   "task": "P6",
+   "seed": 2,
+   "think": false
+  },
+  {
+   "id": "vctv8b",
+   "model": "qwen3:8b",
+   "condition": "reasoning",
+   "task": "P5",
+   "seed": 4,
+   "think": false
+  },
+  {
+   "id": "v2300f",
+   "model": "qwen3:8b",
+   "condition": "generic",
+   "task": "P5",
+   "seed": 5,
+   "think": false
+  },
+  {
+   "id": "viw652",
+   "model": "qwen3:8b",
+   "condition": "generic",
+   "task": "P1",
+   "seed": 2,
+   "think": false
+  },
+  {
+   "id": "vjeh4d",
+   "model": "qwen3:8b",
+   "condition": "rules",
+   "task": "P2",
+   "seed": 4,
+   "think": false
+  },
+  {
+   "id": "vm5fvf",
+   "model": "qwen3:8b",
+   "condition": "components",
+   "task": "P1",
+   "seed": 2,
+   "think": false
+  },
+  {
+   "id": "vjt9bl",
+   "model": "qwen3:8b",
+   "condition": "rules",
+   "task": "P1",
+   "seed": 4,
+   "think": false
+  },
+  {
+   "id": "v08kf4",
+   "model": "qwen3:8b",
+   "condition": "components",
+   "task": "P3",
+   "seed": 1,
+   "think": false
+  },
+  {
+   "id": "vktx98",
+   "model": "qwen3:8b",
+   "condition": "generic",
+   "task": "P2",
+   "seed": 4,
+   "think": false
+  },
+  {
+   "id": "v5g6fr",
+   "model": "qwen3:8b",
+   "condition": "rules",
+   "task": "P3",
+   "seed": 3,
+   "think": false
+  },
+  {
+   "id": "vps2mf",
+   "model": "qwen3:8b",
+   "condition": "components",
+   "task": "P1",
+   "seed": 3,
+   "think": false
+  },
+  {
+   "id": "vt6yxu",
+   "model": "qwen3:8b",
+   "condition": "components",
+   "task": "P4",
+   "seed": 1,
+   "think": false
+  },
+  {
+   "id": "vdfr0p",
+   "model": "qwen3:8b",
+   "condition": "components",
+   "task": "P6",
+   "seed": 2,
+   "think": false
+  },
+  {
+   "id": "vizsap",
+   "model": "qwen3:8b",
+   "condition": "components",
+   "task": "P3",
+   "seed": 3,
+   "think": false
+  },
+  {
+   "id": "vmocvo",
+   "model": "qwen3:8b",
+   "condition": "components",
+   "task": "P6",
+   "seed": 4,
+   "think": false
+  },
+  {
+   "id": "vm7bh6",
+   "model": "qwen3:8b",
+   "condition": "reasoning",
+   "task": "P6",
+   "seed": 1,
+   "think": false
+  },
+  {
+   "id": "vwnwd8",
+   "model": "qwen3:8b",
+   "condition": "rules",
+   "task": "P5",
+   "seed": 4,
+   "think": false
+  },
+  {
+   "id": "vyeezt",
+   "model": "qwen3:8b",
+   "condition": "rules",
+   "task": "P2",
+   "seed": 3,
+   "think": false
+  },
+  {
+   "id": "vp0roo",
+   "model": "qwen3:8b",
+   "condition": "rules",
+   "task": "P4",
+   "seed": 5,
+   "think": false
+  },
+  {
+   "id": "v9w2zp",
+   "model": "qwen3:8b",
+   "condition": "rules",
+   "task": "P6",
+   "seed": 4,
+   "think": false
+  },
+  {
+   "id": "vike5t",
+   "model": "qwen3:8b",
+   "condition": "components",
+   "task": "P2",
+   "seed": 5,
+   "think": false
+  },
+  {
+   "id": "vx9q8c",
+   "model": "qwen3:8b",
+   "condition": "components",
+   "task": "P4",
+   "seed": 3,
+   "think": false
+  },
+  {
+   "id": "vdmh8y",
+   "model": "qwen3:8b",
+   "condition": "components",
+   "task": "P5",
+   "seed": 4,
+   "think": false
+  },
+  {
+   "id": "v9hf3v",
+   "model": "qwen3:8b",
+   "condition": "components",
+   "task": "P5",
+   "seed": 1,
+   "think": false
+  },
+  {
+   "id": "vcu9iw",
+   "model": "qwen3:8b",
+   "condition": "rules",
+   "task": "P5",
+   "seed": 2,
+   "think": false
+  },
+  {
+   "id": "voe4ms",
+   "model": "qwen3:8b",
+   "condition": "components",
+   "task": "P6",
+   "seed": 5,
+   "think": false
+  },
+  {
+   "id": "vahroz",
+   "model": "qwen3:8b",
+   "condition": "components",
+   "task": "P2",
+   "seed": 2,
+   "think": false
+  },
+  {
+   "id": "v7tzg6",
+   "model": "qwen3:8b",
+   "condition": "reasoning",
+   "task": "P3",
+   "seed": 1,
+   "think": false
+  },
+  {
+   "id": "vmb1l2",
+   "model": "qwen3:8b",
+   "condition": "components",
+   "task": "P6",
+   "seed": 1,
+   "think": false
+  },
+  {
+   "id": "vr4hhk",
+   "model": "qwen3:8b",
+   "condition": "reasoning",
+   "task": "P3",
+   "seed": 2,
+   "think": false
+  },
+  {
+   "id": "vr91p0",
+   "model": "qwen3:8b",
+   "condition": "rules",
+   "task": "P2",
+   "seed": 5,
+   "think": false
+  },
+  {
+   "id": "vctm85",
+   "model": "qwen3:8b",
+   "condition": "rules",
+   "task": "P1",
+   "seed": 5,
+   "think": false
+  },
+  {
+   "id": "vsixna",
+   "model": "qwen3:8b",
+   "condition": "generic",
+   "task": "P5",
+   "seed": 2,
+   "think": false
+  },
+  {
+   "id": "vuk4a9",
+   "model": "qwen3:8b",
+   "condition": "rules",
+   "task": "P1",
+   "seed": 1,
+   "think": false
+  },
+  {
+   "id": "v9u7pk",
+   "model": "qwen3:8b",
+   "condition": "reasoning",
+   "task": "P1",
+   "seed": 1,
+   "think": false
+  },
+  {
+   "id": "v0l5ob",
+   "model": "qwen3:8b",
+   "condition": "reasoning",
+   "task": "P1",
+   "seed": 2,
+   "think": false
+  },
+  {
+   "id": "vnkl5u",
+   "model": "qwen3:8b",
+   "condition": "generic",
+   "task": "P5",
+   "seed": 1,
+   "think": false
+  },
+  {
+   "id": "v0gzgm",
+   "model": "qwen3:8b",
+   "condition": "generic",
+   "task": "P1",
+   "seed": 4,
+   "think": false
+  },
+  {
+   "id": "v0j5cm",
+   "model": "qwen3:8b",
+   "condition": "reasoning",
+   "task": "P2",
+   "seed": 2,
+   "think": false
+  },
+  {
+   "id": "vqtzi7",
+   "model": "qwen3:8b",
+   "condition": "generic",
+   "task": "P5",
+   "seed": 4,
+   "think": false
+  },
+  {
+   "id": "vp85b2",
+   "model": "qwen3:8b",
+   "condition": "reasoning",
+   "task": "P5",
+   "seed": 2,
+   "think": false
+  },
+  {
+   "id": "v8ee37",
+   "model": "qwen3:8b",
+   "condition": "rules",
+   "task": "P4",
+   "seed": 4,
+   "think": false
+  },
+  {
+   "id": "va40q5",
+   "model": "qwen3:8b",
+   "condition": "rules",
+   "task": "P6",
+   "seed": 1,
+   "think": false
+  },
+  {
+   "id": "vikryk",
+   "model": "qwen3:8b",
+   "condition": "reasoning",
+   "task": "P4",
+   "seed": 3,
+   "think": false
+  },
+  {
+   "id": "vnq1ol",
+   "model": "qwen3:8b",
+   "condition": "generic",
+   "task": "P4",
+   "seed": 2,
+   "think": false
+  },
+  {
+   "id": "v32au8",
+   "model": "qwen3:8b",
+   "condition": "generic",
+   "task": "P6",
+   "seed": 4,
+   "think": false
+  },
+  {
+   "id": "vei0ih",
+   "model": "qwen3:8b",
+   "condition": "rules",
+   "task": "P3",
+   "seed": 4,
+   "think": false
+  },
+  {
+   "id": "v5tfi4",
+   "model": "qwen3:8b",
+   "condition": "reasoning",
+   "task": "P2",
+   "seed": 1,
+   "think": false
+  },
+  {
+   "id": "v7kaoh",
+   "model": "qwen3:8b",
+   "condition": "rules",
+   "task": "P6",
+   "seed": 3,
+   "think": false
+  },
+  {
+   "id": "vzi9we",
+   "model": "qwen3:8b",
+   "condition": "reasoning",
+   "task": "P3",
+   "seed": 5,
+   "think": false
+  },
+  {
+   "id": "vrinyv",
+   "model": "qwen3:8b",
+   "condition": "reasoning",
+   "task": "P1",
+   "seed": 5,
+   "think": false
+  },
+  {
+   "id": "v96w2h",
+   "model": "qwen3:8b",
+   "condition": "reasoning",
+   "task": "P3",
+   "seed": 4,
+   "think": false
+  },
+  {
+   "id": "vpu15g",
+   "model": "qwen3:8b",
+   "condition": "components",
+   "task": "P5",
+   "seed": 3,
+   "think": false
+  },
+  {
+   "id": "v71p0t",
+   "model": "qwen3:8b",
+   "condition": "generic",
+   "task": "P6",
+   "seed": 5,
+   "think": false
+  },
+  {
+   "id": "v37s03",
+   "model": "qwen3:8b",
+   "condition": "generic",
+   "task": "P3",
+   "seed": 3,
+   "think": false
+  },
+  {
+   "id": "vaygui",
+   "model": "qwen3:8b",
+   "condition": "components",
+   "task": "P1",
+   "seed": 1,
+   "think": false
+  },
+  {
+   "id": "vnvt9i",
+   "model": "qwen3:8b",
+   "condition": "generic",
+   "task": "P2",
+   "seed": 1,
+   "think": false
+  },
+  {
+   "id": "vnj52o",
+   "model": "qwen3:8b",
+   "condition": "generic",
+   "task": "P2",
+   "seed": 5,
+   "think": false
+  },
+  {
+   "id": "vc6ngs",
+   "model": "qwen3:8b",
+   "condition": "generic",
+   "task": "P3",
+   "seed": 5,
+   "think": false
+  },
+  {
+   "id": "vlkkvj",
+   "model": "qwen3:8b",
+   "condition": "generic",
+   "task": "P6",
+   "seed": 3,
+   "think": false
+  },
+  {
+   "id": "vho4wn",
+   "model": "qwen3:8b",
+   "condition": "generic",
+   "task": "P3",
+   "seed": 2,
+   "think": false
+  },
+  {
+   "id": "v6k7qh",
+   "model": "qwen3:8b",
+   "condition": "rules",
+   "task": "P3",
+   "seed": 2,
+   "think": false
+  },
+  {
+   "id": "vo3m4o",
+   "model": "qwen3:8b",
+   "condition": "generic",
+   "task": "P5",
+   "seed": 3,
+   "think": false
+  },
+  {
+   "id": "v9p9t5",
+   "model": "qwen3:8b",
+   "condition": "generic",
+   "task": "P3",
+   "seed": 4,
+   "think": false
+  },
+  {
+   "id": "v49gbp",
+   "model": "qwen3:8b",
+   "condition": "rules",
+   "task": "P3",
+   "seed": 5,
+   "think": false
+  },
+  {
+   "id": "vnc8d8",
+   "model": "qwen3:8b",
+   "condition": "generic",
+   "task": "P1",
+   "seed": 1,
+   "think": false
+  },
+  {
+   "id": "vlbmsg",
+   "model": "qwen3:8b",
+   "condition": "reasoning",
+   "task": "P4",
+   "seed": 4,
+   "think": false
+  },
+  {
+   "id": "vcycf9",
+   "model": "qwen3:8b",
+   "condition": "rules",
+   "task": "P3",
+   "seed": 1,
+   "think": false
+  },
+  {
+   "id": "vybw7c",
+   "model": "qwen3:8b",
+   "condition": "components",
+   "task": "P1",
+   "seed": 4,
+   "think": false
+  },
+  {
+   "id": "vfryy7",
+   "model": "qwen3:8b",
+   "condition": "reasoning",
+   "task": "P6",
+   "seed": 3,
+   "think": false
+  },
+  {
+   "id": "vafq2t",
+   "model": "qwen3:8b",
+   "condition": "reasoning",
+   "task": "P4",
+   "seed": 2,
+   "think": false
+  },
+  {
+   "id": "v3njpv",
+   "model": "qwen3:8b",
+   "condition": "reasoning",
+   "task": "P6",
+   "seed": 5,
+   "think": false
+  },
+  {
+   "id": "vfp8cn",
+   "model": "qwen3:8b",
+   "condition": "rules",
+   "task": "P1",
+   "seed": 2,
+   "think": false
+  },
+  {
+   "id": "vqwyky",
+   "model": "qwen3:8b",
+   "condition": "reasoning",
+   "task": "P5",
+   "seed": 1,
+   "think": false
+  },
+  {
+   "id": "vzrj07",
+   "model": "qwen3:8b",
+   "condition": "generic",
+   "task": "P4",
+   "seed": 3,
+   "think": false
+  },
+  {
+   "id": "vrqstk",
+   "model": "qwen3:8b",
+   "condition": "generic",
+   "task": "P4",
+   "seed": 5,
+   "think": false
+  },
+  {
+   "id": "vfjm6t",
+   "model": "qwen3:8b",
+   "condition": "reasoning",
+   "task": "P5",
+   "seed": 3,
+   "think": false
+  },
+  {
+   "id": "v1xqkc",
+   "model": "qwen3:8b",
+   "condition": "rules",
+   "task": "P1",
+   "seed": 3,
+   "think": false
+  },
+  {
+   "id": "vcg4lh",
+   "model": "qwen3:8b",
+   "condition": "components",
+   "task": "P3",
+   "seed": 2,
+   "think": false
+  },
+  {
+   "id": "vb8weu",
+   "model": "qwen3:8b",
+   "condition": "components",
+   "task": "P4",
+   "seed": 2,
+   "think": false
+  },
+  {
+   "id": "vhknsk",
+   "model": "qwen2.5:14b",
+   "condition": "rules",
+   "task": "P3",
+   "seed": 4,
+   "think": false
+  },
+  {
+   "id": "ve1ybd",
+   "model": "qwen2.5:14b",
+   "condition": "rules",
+   "task": "P1",
+   "seed": 5,
+   "think": false
+  },
+  {
+   "id": "vfly4e",
+   "model": "qwen2.5:14b",
+   "condition": "reasoning",
+   "task": "P1",
+   "seed": 3,
+   "think": false
+  },
+  {
+   "id": "v299k6",
+   "model": "qwen2.5:14b",
+   "condition": "components",
+   "task": "P3",
+   "seed": 1,
+   "think": false
+  },
+  {
+   "id": "v06946",
+   "model": "qwen2.5:14b",
+   "condition": "rules",
+   "task": "P4",
+   "seed": 3,
+   "think": false
+  },
+  {
+   "id": "vivm1w",
+   "model": "qwen2.5:14b",
+   "condition": "components",
+   "task": "P3",
+   "seed": 4,
+   "think": false
+  },
+  {
+   "id": "vcvzkt",
+   "model": "qwen2.5:14b",
+   "condition": "components",
+   "task": "P4",
+   "seed": 1,
+   "think": false
+  },
+  {
+   "id": "vv4o6b",
+   "model": "qwen2.5:14b",
+   "condition": "reasoning",
+   "task": "P5",
+   "seed": 1,
+   "think": false
+  },
+  {
+   "id": "vfzagb",
+   "model": "qwen2.5:14b",
+   "condition": "components",
+   "task": "P1",
+   "seed": 5,
+   "think": false
+  },
+  {
+   "id": "vz6hvh",
+   "model": "qwen2.5:14b",
+   "condition": "components",
+   "task": "P6",
+   "seed": 3,
+   "think": false
+  },
+  {
+   "id": "vv9531",
+   "model": "qwen2.5:14b",
+   "condition": "generic",
+   "task": "P3",
+   "seed": 3,
+   "think": false
+  },
+  {
+   "id": "vbrqql",
+   "model": "qwen2.5:14b",
+   "condition": "components",
+   "task": "P6",
+   "seed": 1,
+   "think": false
+  },
+  {
+   "id": "v3q35l",
+   "model": "qwen2.5:14b",
+   "condition": "generic",
+   "task": "P4",
+   "seed": 2,
+   "think": false
+  },
+  {
+   "id": "veou7g",
+   "model": "qwen2.5:14b",
+   "condition": "components",
+   "task": "P2",
+   "seed": 5,
+   "think": false
+  },
+  {
+   "id": "v3aqi5",
+   "model": "qwen2.5:14b",
+   "condition": "reasoning",
+   "task": "P3",
+   "seed": 5,
+   "think": false
+  },
+  {
+   "id": "vcun2i",
+   "model": "qwen2.5:14b",
+   "condition": "reasoning",
+   "task": "P3",
+   "seed": 2,
+   "think": false
+  },
+  {
+   "id": "v1785z",
+   "model": "qwen2.5:14b",
+   "condition": "generic",
+   "task": "P1",
+   "seed": 5,
+   "think": false
+  },
+  {
+   "id": "vzqskl",
+   "model": "qwen2.5:14b",
+   "condition": "rules",
+   "task": "P1",
+   "seed": 4,
+   "think": false
+  },
+  {
+   "id": "vzh5j9",
+   "model": "qwen2.5:14b",
+   "condition": "reasoning",
+   "task": "P4",
+   "seed": 1,
+   "think": false
+  },
+  {
+   "id": "vy67xu",
+   "model": "qwen2.5:14b",
+   "condition": "generic",
+   "task": "P2",
+   "seed": 5,
+   "think": false
+  },
+  {
+   "id": "v0aqah",
+   "model": "qwen2.5:14b",
+   "condition": "components",
+   "task": "P5",
+   "seed": 1,
+   "think": false
+  },
+  {
+   "id": "vvuzl1",
+   "model": "qwen2.5:14b",
+   "condition": "generic",
+   "task": "P4",
+   "seed": 1,
+   "think": false
+  },
+  {
+   "id": "v554m7",
+   "model": "qwen2.5:14b",
+   "condition": "components",
+   "task": "P5",
+   "seed": 2,
+   "think": false
+  },
+  {
+   "id": "v74b3w",
+   "model": "qwen2.5:14b",
+   "condition": "reasoning",
+   "task": "P4",
+   "seed": 5,
+   "think": false
+  },
+  {
+   "id": "veeszg",
+   "model": "qwen2.5:14b",
+   "condition": "reasoning",
+   "task": "P2",
+   "seed": 4,
+   "think": false
+  },
+  {
+   "id": "vn9s9b",
+   "model": "qwen2.5:14b",
+   "condition": "reasoning",
+   "task": "P3",
+   "seed": 4,
+   "think": false
+  },
+  {
+   "id": "vyxd6b",
+   "model": "qwen2.5:14b",
+   "condition": "reasoning",
+   "task": "P5",
+   "seed": 5,
+   "think": false
+  },
+  {
+   "id": "vnnk4c",
+   "model": "qwen2.5:14b",
+   "condition": "rules",
+   "task": "P6",
+   "seed": 4,
+   "think": false
+  },
+  {
+   "id": "v7sr16",
+   "model": "qwen2.5:14b",
+   "condition": "generic",
+   "task": "P6",
+   "seed": 4,
+   "think": false
+  },
+  {
+   "id": "v5uk88",
+   "model": "qwen2.5:14b",
+   "condition": "rules",
+   "task": "P6",
+   "seed": 1,
+   "think": false
+  },
+  {
+   "id": "vu9594",
+   "model": "qwen2.5:14b",
+   "condition": "reasoning",
+   "task": "P2",
+   "seed": 5,
+   "think": false
+  },
+  {
+   "id": "vpo4m0",
+   "model": "qwen2.5:14b",
+   "condition": "rules",
+   "task": "P2",
+   "seed": 4,
+   "think": false
+  },
+  {
+   "id": "vgcz3b",
+   "model": "qwen2.5:14b",
+   "condition": "rules",
+   "task": "P4",
+   "seed": 1,
+   "think": false
+  },
+  {
+   "id": "vf7rgo",
+   "model": "qwen2.5:14b",
+   "condition": "reasoning",
+   "task": "P6",
+   "seed": 4,
+   "think": false
+  },
+  {
+   "id": "vzk5wu",
+   "model": "qwen2.5:14b",
+   "condition": "rules",
+   "task": "P3",
+   "seed": 1,
+   "think": false
+  },
+  {
+   "id": "vzqevl",
+   "model": "qwen2.5:14b",
+   "condition": "components",
+   "task": "P6",
+   "seed": 2,
+   "think": false
+  },
+  {
+   "id": "vss21m",
+   "model": "qwen2.5:14b",
+   "condition": "generic",
+   "task": "P1",
+   "seed": 1,
+   "think": false
+  },
+  {
+   "id": "vedpcq",
+   "model": "qwen2.5:14b",
+   "condition": "components",
+   "task": "P4",
+   "seed": 2,
+   "think": false
+  },
+  {
+   "id": "vc1rzn",
+   "model": "qwen2.5:14b",
+   "condition": "rules",
+   "task": "P4",
+   "seed": 4,
+   "think": false
+  },
+  {
+   "id": "v6k9e5",
+   "model": "qwen2.5:14b",
+   "condition": "components",
+   "task": "P3",
+   "seed": 2,
+   "think": false
+  },
+  {
+   "id": "vcng8z",
+   "model": "qwen2.5:14b",
+   "condition": "components",
+   "task": "P6",
+   "seed": 5,
+   "think": false
+  },
+  {
+   "id": "vtvo5q",
+   "model": "qwen2.5:14b",
+   "condition": "components",
+   "task": "P2",
+   "seed": 1,
+   "think": false
+  },
+  {
+   "id": "vultv6",
+   "model": "qwen2.5:14b",
+   "condition": "generic",
+   "task": "P5",
+   "seed": 2,
+   "think": false
+  },
+  {
+   "id": "vrtcqp",
+   "model": "qwen2.5:14b",
+   "condition": "generic",
+   "task": "P3",
+   "seed": 2,
+   "think": false
+  },
+  {
+   "id": "v6ubvv",
+   "model": "qwen2.5:14b",
+   "condition": "reasoning",
+   "task": "P1",
+   "seed": 2,
+   "think": false
+  },
+  {
+   "id": "vx0kqt",
+   "model": "qwen2.5:14b",
+   "condition": "generic",
+   "task": "P6",
+   "seed": 1,
+   "think": false
+  },
+  {
+   "id": "v23wjc",
+   "model": "qwen2.5:14b",
+   "condition": "rules",
+   "task": "P1",
+   "seed": 1,
+   "think": false
+  },
+  {
+   "id": "vn9i31",
+   "model": "qwen2.5:14b",
+   "condition": "generic",
+   "task": "P1",
+   "seed": 2,
+   "think": false
+  },
+  {
+   "id": "vgygix",
+   "model": "qwen2.5:14b",
+   "condition": "generic",
+   "task": "P6",
+   "seed": 2,
+   "think": false
+  },
+  {
+   "id": "v8b1tb",
+   "model": "qwen2.5:14b",
+   "condition": "reasoning",
+   "task": "P4",
+   "seed": 4,
+   "think": false
+  },
+  {
+   "id": "vcotpl",
+   "model": "qwen2.5:14b",
+   "condition": "generic",
+   "task": "P3",
+   "seed": 5,
+   "think": false
+  },
+  {
+   "id": "vh1qip",
+   "model": "qwen2.5:14b",
+   "condition": "components",
+   "task": "P5",
+   "seed": 5,
+   "think": false
+  },
+  {
+   "id": "vyj08x",
+   "model": "qwen2.5:14b",
+   "condition": "generic",
+   "task": "P5",
+   "seed": 1,
+   "think": false
+  },
+  {
+   "id": "vk1h7e",
+   "model": "qwen2.5:14b",
+   "condition": "components",
+   "task": "P2",
+   "seed": 3,
+   "think": false
+  },
+  {
+   "id": "vj8ivh",
+   "model": "qwen2.5:14b",
+   "condition": "rules",
+   "task": "P2",
+   "seed": 5,
+   "think": false
+  },
+  {
+   "id": "v8y7u7",
+   "model": "qwen2.5:14b",
+   "condition": "components",
+   "task": "P4",
+   "seed": 3,
+   "think": false
+  },
+  {
+   "id": "vw1mr3",
+   "model": "qwen2.5:14b",
+   "condition": "components",
+   "task": "P3",
+   "seed": 5,
+   "think": false
+  },
+  {
+   "id": "v061xn",
+   "model": "qwen2.5:14b",
+   "condition": "rules",
+   "task": "P6",
+   "seed": 5,
+   "think": false
+  },
+  {
+   "id": "vj4z34",
+   "model": "qwen2.5:14b",
+   "condition": "generic",
+   "task": "P6",
+   "seed": 5,
+   "think": false
+  },
+  {
+   "id": "v19ggu",
+   "model": "qwen2.5:14b",
+   "condition": "rules",
+   "task": "P5",
+   "seed": 5,
+   "think": false
+  },
+  {
+   "id": "vbv3fj",
+   "model": "qwen2.5:14b",
+   "condition": "rules",
+   "task": "P3",
+   "seed": 3,
+   "think": false
+  },
+  {
+   "id": "v444p4",
+   "model": "qwen2.5:14b",
+   "condition": "components",
+   "task": "P2",
+   "seed": 2,
+   "think": false
+  },
+  {
+   "id": "v5ma7j",
+   "model": "qwen2.5:14b",
+   "condition": "reasoning",
+   "task": "P6",
+   "seed": 5,
+   "think": false
+  },
+  {
+   "id": "ve63i4",
+   "model": "qwen2.5:14b",
+   "condition": "rules",
+   "task": "P5",
+   "seed": 4,
+   "think": false
+  },
+  {
+   "id": "v8eq9t",
+   "model": "qwen2.5:14b",
+   "condition": "rules",
+   "task": "P1",
+   "seed": 3,
+   "think": false
+  },
+  {
+   "id": "vybe1j",
+   "model": "qwen2.5:14b",
+   "condition": "components",
+   "task": "P1",
+   "seed": 4,
+   "think": false
+  },
+  {
+   "id": "v6tvlt",
+   "model": "qwen2.5:14b",
+   "condition": "rules",
+   "task": "P2",
+   "seed": 2,
+   "think": false
+  },
+  {
+   "id": "v7ics1",
+   "model": "qwen2.5:14b",
+   "condition": "reasoning",
+   "task": "P4",
+   "seed": 3,
+   "think": false
+  },
+  {
+   "id": "vs4u9z",
+   "model": "qwen2.5:14b",
+   "condition": "rules",
+   "task": "P4",
+   "seed": 5,
+   "think": false
+  },
+  {
+   "id": "v5zcvz",
+   "model": "qwen2.5:14b",
+   "condition": "rules",
+   "task": "P3",
+   "seed": 2,
+   "think": false
+  },
+  {
+   "id": "vfuhny",
+   "model": "qwen2.5:14b",
+   "condition": "reasoning",
+   "task": "P2",
+   "seed": 1,
+   "think": false
+  },
+  {
+   "id": "vqsk64",
+   "model": "qwen2.5:14b",
+   "condition": "generic",
+   "task": "P5",
+   "seed": 4,
+   "think": false
+  },
+  {
+   "id": "vqcj8a",
+   "model": "qwen2.5:14b",
+   "condition": "rules",
+   "task": "P6",
+   "seed": 2,
+   "think": false
+  },
+  {
+   "id": "v0xirl",
+   "model": "qwen2.5:14b",
+   "condition": "generic",
+   "task": "P4",
+   "seed": 4,
+   "think": false
+  },
+  {
+   "id": "vekt3d",
+   "model": "qwen2.5:14b",
+   "condition": "generic",
+   "task": "P6",
+   "seed": 3,
+   "think": false
+  },
+  {
+   "id": "v0pnih",
+   "model": "qwen2.5:14b",
+   "condition": "generic",
+   "task": "P5",
+   "seed": 5,
+   "think": false
+  },
+  {
+   "id": "v9kah3",
+   "model": "qwen2.5:14b",
+   "condition": "generic",
+   "task": "P2",
+   "seed": 1,
+   "think": false
+  },
+  {
+   "id": "vaa7a4",
+   "model": "qwen2.5:14b",
+   "condition": "generic",
+   "task": "P4",
+   "seed": 3,
+   "think": false
+  },
+  {
+   "id": "vloml9",
+   "model": "qwen2.5:14b",
+   "condition": "components",
+   "task": "P4",
+   "seed": 5,
+   "think": false
+  },
+  {
+   "id": "vrtgv9",
+   "model": "qwen2.5:14b",
+   "condition": "reasoning",
+   "task": "P5",
+   "seed": 2,
+   "think": false
+  },
+  {
+   "id": "vqwd6v",
+   "model": "qwen2.5:14b",
+   "condition": "rules",
+   "task": "P2",
+   "seed": 1,
+   "think": false
+  },
+  {
+   "id": "vi9i23",
+   "model": "qwen2.5:14b",
+   "condition": "rules",
+   "task": "P5",
+   "seed": 3,
+   "think": false
+  },
+  {
+   "id": "v1xm5y",
+   "model": "qwen2.5:14b",
+   "condition": "reasoning",
+   "task": "P3",
+   "seed": 1,
+   "think": false
+  },
+  {
+   "id": "vvhcpp",
+   "model": "qwen2.5:14b",
+   "condition": "reasoning",
+   "task": "P6",
+   "seed": 2,
+   "think": false
+  },
+  {
+   "id": "vh4h9x",
+   "model": "qwen2.5:14b",
+   "condition": "components",
+   "task": "P5",
+   "seed": 3,
+   "think": false
+  },
+  {
+   "id": "vrnl0v",
+   "model": "qwen2.5:14b",
+   "condition": "rules",
+   "task": "P5",
+   "seed": 2,
+   "think": false
+  },
+  {
+   "id": "vnx4d4",
+   "model": "qwen2.5:14b",
+   "condition": "rules",
+   "task": "P2",
+   "seed": 3,
+   "think": false
+  },
+  {
+   "id": "vms47l",
+   "model": "qwen2.5:14b",
+   "condition": "reasoning",
+   "task": "P2",
+   "seed": 3,
+   "think": false
+  },
+  {
+   "id": "vexc71",
+   "model": "qwen2.5:14b",
+   "condition": "components",
+   "task": "P4",
+   "seed": 4,
+   "think": false
+  },
+  {
+   "id": "vr3gan",
+   "model": "qwen2.5:14b",
+   "condition": "components",
+   "task": "P5",
+   "seed": 4,
+   "think": false
+  },
+  {
+   "id": "vss1yf",
+   "model": "qwen2.5:14b",
+   "condition": "reasoning",
+   "task": "P4",
+   "seed": 2,
+   "think": false
+  },
+  {
+   "id": "vm02ps",
+   "model": "qwen2.5:14b",
+   "condition": "rules",
+   "task": "P6",
+   "seed": 3,
+   "think": false
+  },
+  {
+   "id": "v0c2c1",
+   "model": "qwen2.5:14b",
+   "condition": "generic",
+   "task": "P4",
+   "seed": 5,
+   "think": false
+  },
+  {
+   "id": "vgqueu",
+   "model": "qwen2.5:14b",
+   "condition": "components",
+   "task": "P1",
+   "seed": 2,
+   "think": false
+  },
+  {
+   "id": "vbd9cm",
+   "model": "qwen2.5:14b",
+   "condition": "generic",
+   "task": "P3",
+   "seed": 1,
+   "think": false
+  },
+  {
+   "id": "vhmv1l",
+   "model": "qwen2.5:14b",
+   "condition": "components",
+   "task": "P3",
+   "seed": 3,
+   "think": false
+  },
+  {
+   "id": "vwy9is",
+   "model": "qwen2.5:14b",
+   "condition": "reasoning",
+   "task": "P5",
+   "seed": 4,
+   "think": false
+  },
+  {
+   "id": "vgvfz4",
+   "model": "qwen2.5:14b",
+   "condition": "generic",
+   "task": "P1",
+   "seed": 4,
+   "think": false
+  },
+  {
+   "id": "v5rg9m",
+   "model": "qwen2.5:14b",
+   "condition": "reasoning",
+   "task": "P3",
+   "seed": 3,
+   "think": false
+  },
+  {
+   "id": "v6ifhx",
+   "model": "qwen2.5:14b",
+   "condition": "reasoning",
+   "task": "P6",
+   "seed": 3,
+   "think": false
+  },
+  {
+   "id": "vi99z2",
+   "model": "qwen2.5:14b",
+   "condition": "reasoning",
+   "task": "P1",
+   "seed": 4,
+   "think": false
+  },
+  {
+   "id": "v6x0u0",
+   "model": "qwen2.5:14b",
+   "condition": "generic",
+   "task": "P5",
+   "seed": 3,
+   "think": false
+  },
+  {
+   "id": "v7pbg7",
+   "model": "qwen2.5:14b",
+   "condition": "rules",
+   "task": "P5",
+   "seed": 1,
+   "think": false
+  },
+  {
+   "id": "vb1iay",
+   "model": "qwen2.5:14b",
+   "condition": "generic",
+   "task": "P2",
+   "seed": 4,
+   "think": false
+  },
+  {
+   "id": "v9j96g",
+   "model": "qwen2.5:14b",
+   "condition": "reasoning",
+   "task": "P6",
+   "seed": 1,
+   "think": false
+  },
+  {
+   "id": "vw1qeq",
+   "model": "qwen2.5:14b",
+   "condition": "rules",
+   "task": "P1",
+   "seed": 2,
+   "think": false
+  },
+  {
+   "id": "vncm2c",
+   "model": "qwen2.5:14b",
+   "condition": "components",
+   "task": "P1",
+   "seed": 3,
+   "think": false
+  },
+  {
+   "id": "vjwnly",
+   "model": "qwen2.5:14b",
+   "condition": "reasoning",
+   "task": "P5",
+   "seed": 3,
+   "think": false
+  },
+  {
+   "id": "vrq43r",
+   "model": "qwen2.5:14b",
+   "condition": "generic",
+   "task": "P3",
+   "seed": 4,
+   "think": false
+  },
+  {
+   "id": "vhe7o5",
+   "model": "qwen2.5:14b",
+   "condition": "rules",
+   "task": "P4",
+   "seed": 2,
+   "think": false
+  },
+  {
+   "id": "vob1i9",
+   "model": "qwen2.5:14b",
+   "condition": "rules",
+   "task": "P3",
+   "seed": 5,
+   "think": false
+  },
+  {
+   "id": "vwqsbv",
+   "model": "qwen2.5:14b",
+   "condition": "components",
+   "task": "P1",
+   "seed": 1,
+   "think": false
+  },
+  {
+   "id": "vvoa1z",
+   "model": "qwen2.5:14b",
+   "condition": "components",
+   "task": "P6",
+   "seed": 4,
+   "think": false
+  },
+  {
+   "id": "vu6lqp",
+   "model": "qwen2.5:14b",
+   "condition": "generic",
+   "task": "P2",
+   "seed": 3,
+   "think": false
+  },
+  {
+   "id": "vtqis0",
+   "model": "qwen2.5:14b",
+   "condition": "reasoning",
+   "task": "P1",
+   "seed": 1,
+   "think": false
+  },
+  {
+   "id": "v6pgbc",
+   "model": "qwen2.5:14b",
+   "condition": "generic",
+   "task": "P1",
+   "seed": 3,
+   "think": false
+  },
+  {
+   "id": "v5uryj",
+   "model": "qwen2.5:14b",
+   "condition": "components",
+   "task": "P2",
+   "seed": 4,
+   "think": false
+  },
+  {
+   "id": "vbn5dd",
+   "model": "qwen2.5:14b",
+   "condition": "generic",
+   "task": "P2",
+   "seed": 2,
+   "think": false
+  },
+  {
+   "id": "vhcf08",
+   "model": "qwen2.5:14b",
+   "condition": "reasoning",
+   "task": "P2",
+   "seed": 2,
+   "think": false
+  },
+  {
+   "id": "v3u2tq",
+   "model": "qwen2.5:14b",
+   "condition": "reasoning",
+   "task": "P1",
+   "seed": 5,
+   "think": false
+  },
+  {
+   "id": "vmh4yc",
+   "model": "qwen3.5:4b",
+   "condition": "rules",
+   "task": "P1",
+   "seed": 2,
+   "think": false
+  },
+  {
+   "id": "v3x962",
+   "model": "qwen3.5:4b",
+   "condition": "generic",
+   "task": "P2",
+   "seed": 5,
+   "think": false
+  },
+  {
+   "id": "vytvta",
+   "model": "qwen3.5:4b",
+   "condition": "components",
+   "task": "P2",
+   "seed": 4,
+   "think": false
+  },
+  {
+   "id": "v19xg4",
+   "model": "qwen3.5:4b",
+   "condition": "components",
+   "task": "P4",
+   "seed": 3,
+   "think": false
+  },
+  {
+   "id": "v8un60",
+   "model": "qwen3.5:4b",
+   "condition": "reasoning",
+   "task": "P4",
+   "seed": 5,
+   "think": false
+  },
+  {
+   "id": "vgc6i5",
+   "model": "qwen3.5:4b",
+   "condition": "components",
+   "task": "P3",
+   "seed": 2,
+   "think": false
+  },
+  {
+   "id": "v6li7y",
+   "model": "qwen3.5:4b",
+   "condition": "generic",
+   "task": "P4",
+   "seed": 3,
+   "think": false
+  },
+  {
+   "id": "vgcysy",
+   "model": "qwen3.5:4b",
+   "condition": "rules",
+   "task": "P5",
+   "seed": 2,
+   "think": false
+  },
+  {
+   "id": "vqxfk1",
+   "model": "qwen3.5:4b",
+   "condition": "components",
+   "task": "P3",
+   "seed": 1,
+   "think": false
+  },
+  {
+   "id": "vcz82r",
+   "model": "qwen3.5:4b",
+   "condition": "generic",
+   "task": "P5",
+   "seed": 5,
+   "think": false
+  },
+  {
+   "id": "vu8hro",
+   "model": "qwen3.5:4b",
+   "condition": "rules",
+   "task": "P3",
+   "seed": 5,
+   "think": false
+  },
+  {
+   "id": "vxdwcn",
+   "model": "qwen3.5:4b",
+   "condition": "reasoning",
+   "task": "P3",
+   "seed": 2,
+   "think": false
+  },
+  {
+   "id": "voifra",
+   "model": "qwen3.5:4b",
+   "condition": "components",
+   "task": "P2",
+   "seed": 1,
+   "think": false
+  },
+  {
+   "id": "vxocjx",
+   "model": "qwen3.5:4b",
+   "condition": "generic",
+   "task": "P6",
+   "seed": 4,
+   "think": false
+  },
+  {
+   "id": "v6y92e",
+   "model": "qwen3.5:4b",
+   "condition": "components",
+   "task": "P1",
+   "seed": 5,
+   "think": false
+  },
+  {
+   "id": "vjmov8",
+   "model": "qwen3.5:4b",
+   "condition": "rules",
+   "task": "P3",
+   "seed": 2,
+   "think": false
+  },
+  {
+   "id": "var2dd",
+   "model": "qwen3.5:4b",
+   "condition": "rules",
+   "task": "P3",
+   "seed": 3,
+   "think": false
+  },
+  {
+   "id": "vw4944",
+   "model": "qwen3.5:4b",
+   "condition": "generic",
+   "task": "P1",
+   "seed": 4,
+   "think": false
+  },
+  {
+   "id": "vw3phq",
+   "model": "qwen3.5:4b",
+   "condition": "rules",
+   "task": "P4",
+   "seed": 3,
+   "think": false
+  },
+  {
+   "id": "v2mjym",
+   "model": "qwen3.5:4b",
+   "condition": "components",
+   "task": "P5",
+   "seed": 1,
+   "think": false
+  },
+  {
+   "id": "vbmwqd",
+   "model": "qwen3.5:4b",
+   "condition": "generic",
+   "task": "P1",
+   "seed": 3,
+   "think": false
+  },
+  {
+   "id": "vkwlup",
+   "model": "qwen3.5:4b",
+   "condition": "components",
+   "task": "P5",
+   "seed": 4,
+   "think": false
+  },
+  {
+   "id": "v2g1fa",
+   "model": "qwen3.5:4b",
+   "condition": "reasoning",
+   "task": "P6",
+   "seed": 1,
+   "think": false
+  },
+  {
+   "id": "v84bdx",
+   "model": "qwen3.5:4b",
+   "condition": "generic",
+   "task": "P4",
+   "seed": 5,
+   "think": false
+  },
+  {
+   "id": "vqahmt",
+   "model": "qwen3.5:4b",
+   "condition": "components",
+   "task": "P6",
+   "seed": 1,
+   "think": false
+  },
+  {
+   "id": "vbykcy",
+   "model": "qwen3.5:4b",
+   "condition": "reasoning",
+   "task": "P2",
+   "seed": 1,
+   "think": false
+  },
+  {
+   "id": "vw5bih",
+   "model": "qwen3.5:4b",
+   "condition": "generic",
+   "task": "P1",
+   "seed": 5,
+   "think": false
+  },
+  {
+   "id": "v1gji0",
+   "model": "qwen3.5:4b",
+   "condition": "components",
+   "task": "P4",
+   "seed": 2,
+   "think": false
+  },
+  {
+   "id": "vhbkoq",
+   "model": "qwen3.5:4b",
+   "condition": "components",
+   "task": "P3",
+   "seed": 5,
+   "think": false
+  },
+  {
+   "id": "v5ny5i",
+   "model": "qwen3.5:4b",
+   "condition": "reasoning",
+   "task": "P2",
+   "seed": 5,
+   "think": false
+  },
+  {
+   "id": "viqueo",
+   "model": "qwen3.5:4b",
+   "condition": "components",
+   "task": "P1",
+   "seed": 4,
+   "think": false
+  },
+  {
+   "id": "vlzcbx",
+   "model": "qwen3.5:4b",
+   "condition": "rules",
+   "task": "P2",
+   "seed": 5,
+   "think": false
+  },
+  {
+   "id": "va34d6",
+   "model": "qwen3.5:4b",
+   "condition": "components",
+   "task": "P6",
+   "seed": 3,
+   "think": false
+  },
+  {
+   "id": "vzh1ao",
+   "model": "qwen3.5:4b",
+   "condition": "generic",
+   "task": "P5",
+   "seed": 2,
+   "think": false
+  },
+  {
+   "id": "ven5c5",
+   "model": "qwen3.5:4b",
+   "condition": "generic",
+   "task": "P6",
+   "seed": 1,
+   "think": false
+  },
+  {
+   "id": "v0enwm",
+   "model": "qwen3.5:4b",
+   "condition": "reasoning",
+   "task": "P5",
+   "seed": 3,
+   "think": false
+  },
+  {
+   "id": "vctjka",
+   "model": "qwen3.5:4b",
+   "condition": "rules",
+   "task": "P4",
+   "seed": 2,
+   "think": false
+  },
+  {
+   "id": "vgw50x",
+   "model": "qwen3.5:4b",
+   "condition": "components",
+   "task": "P4",
+   "seed": 4,
+   "think": false
+  },
+  {
+   "id": "v2byob",
+   "model": "qwen3.5:4b",
+   "condition": "rules",
+   "task": "P6",
+   "seed": 5,
+   "think": false
+  },
+  {
+   "id": "vs2jrl",
+   "model": "qwen3.5:4b",
+   "condition": "generic",
+   "task": "P4",
+   "seed": 4,
+   "think": false
+  },
+  {
+   "id": "vvrxf4",
+   "model": "qwen3.5:4b",
+   "condition": "reasoning",
+   "task": "P5",
+   "seed": 2,
+   "think": false
+  },
+  {
+   "id": "v0aafn",
+   "model": "qwen3.5:4b",
+   "condition": "components",
+   "task": "P6",
+   "seed": 2,
+   "think": false
+  },
+  {
+   "id": "vx5i58",
+   "model": "qwen3.5:4b",
+   "condition": "generic",
+   "task": "P4",
+   "seed": 1,
+   "think": false
+  },
+  {
+   "id": "vet77z",
+   "model": "qwen3.5:4b",
+   "condition": "reasoning",
+   "task": "P2",
+   "seed": 3,
+   "think": false
+  },
+  {
+   "id": "vlkyqp",
+   "model": "qwen3.5:4b",
+   "condition": "generic",
+   "task": "P1",
+   "seed": 1,
+   "think": false
+  },
+  {
+   "id": "vteoc3",
+   "model": "qwen3.5:4b",
+   "condition": "generic",
+   "task": "P3",
+   "seed": 5,
+   "think": false
+  },
+  {
+   "id": "v4sbkh",
+   "model": "qwen3.5:4b",
+   "condition": "rules",
+   "task": "P3",
+   "seed": 4,
+   "think": false
+  },
+  {
+   "id": "vlh9rr",
+   "model": "qwen3.5:4b",
+   "condition": "rules",
+   "task": "P5",
+   "seed": 5,
+   "think": false
+  },
+  {
+   "id": "vsns66",
+   "model": "qwen3.5:4b",
+   "condition": "reasoning",
+   "task": "P4",
+   "seed": 2,
+   "think": false
+  },
+  {
+   "id": "vc9s2y",
+   "model": "qwen3.5:4b",
+   "condition": "rules",
+   "task": "P2",
+   "seed": 3,
+   "think": false
+  },
+  {
+   "id": "v6nuez",
+   "model": "qwen3.5:4b",
+   "condition": "components",
+   "task": "P1",
+   "seed": 2,
+   "think": false
+  },
+  {
+   "id": "va1j1p",
+   "model": "qwen3.5:4b",
+   "condition": "components",
+   "task": "P2",
+   "seed": 3,
+   "think": false
+  },
+  {
+   "id": "v42c6w",
+   "model": "qwen3.5:4b",
+   "condition": "reasoning",
+   "task": "P1",
+   "seed": 1,
+   "think": false
+  },
+  {
+   "id": "vqp3h4",
+   "model": "qwen3.5:4b",
+   "condition": "reasoning",
+   "task": "P5",
+   "seed": 1,
+   "think": false
+  },
+  {
+   "id": "v0t4c5",
+   "model": "qwen3.5:4b",
+   "condition": "reasoning",
+   "task": "P1",
+   "seed": 2,
+   "think": false
+  },
+  {
+   "id": "vhu9bn",
+   "model": "qwen3.5:4b",
+   "condition": "generic",
+   "task": "P2",
+   "seed": 2,
+   "think": false
+  },
+  {
+   "id": "vgpawj",
+   "model": "qwen3.5:4b",
+   "condition": "reasoning",
+   "task": "P5",
+   "seed": 4,
+   "think": false
+  },
+  {
+   "id": "vua2hd",
+   "model": "qwen3.5:4b",
+   "condition": "components",
+   "task": "P4",
+   "seed": 5,
+   "think": false
+  },
+  {
+   "id": "vtepnj",
+   "model": "qwen3.5:4b",
+   "condition": "reasoning",
+   "task": "P1",
+   "seed": 5,
+   "think": false
+  },
+  {
+   "id": "vb574u",
+   "model": "qwen3.5:4b",
+   "condition": "rules",
+   "task": "P3",
+   "seed": 1,
+   "think": false
+  },
+  {
+   "id": "vnzw1z",
+   "model": "qwen3.5:4b",
+   "condition": "rules",
+   "task": "P4",
+   "seed": 5,
+   "think": false
+  },
+  {
+   "id": "vpvsof",
+   "model": "qwen3.5:4b",
+   "condition": "rules",
+   "task": "P2",
+   "seed": 2,
+   "think": false
+  },
+  {
+   "id": "vxsyqv",
+   "model": "qwen3.5:4b",
+   "condition": "rules",
+   "task": "P5",
+   "seed": 1,
+   "think": false
+  },
+  {
+   "id": "vvpwxy",
+   "model": "qwen3.5:4b",
+   "condition": "components",
+   "task": "P2",
+   "seed": 2,
+   "think": false
+  },
+  {
+   "id": "vhpgzt",
+   "model": "qwen3.5:4b",
+   "condition": "reasoning",
+   "task": "P6",
+   "seed": 2,
+   "think": false
+  },
+  {
+   "id": "v5mvvr",
+   "model": "qwen3.5:4b",
+   "condition": "reasoning",
+   "task": "P4",
+   "seed": 4,
+   "think": false
+  },
+  {
+   "id": "v06low",
+   "model": "qwen3.5:4b",
+   "condition": "components",
+   "task": "P5",
+   "seed": 3,
+   "think": false
+  },
+  {
+   "id": "vf4j8n",
+   "model": "qwen3.5:4b",
+   "condition": "generic",
+   "task": "P5",
+   "seed": 4,
+   "think": false
+  },
+  {
+   "id": "vl99e7",
+   "model": "qwen3.5:4b",
+   "condition": "components",
+   "task": "P5",
+   "seed": 5,
+   "think": false
+  },
+  {
+   "id": "vw5sks",
+   "model": "qwen3.5:4b",
+   "condition": "rules",
+   "task": "P6",
+   "seed": 2,
+   "think": false
+  },
+  {
+   "id": "v71v7h",
+   "model": "qwen3.5:4b",
+   "condition": "generic",
+   "task": "P5",
+   "seed": 3,
+   "think": false
+  },
+  {
+   "id": "vvizao",
+   "model": "qwen3.5:4b",
+   "condition": "generic",
+   "task": "P2",
+   "seed": 1,
+   "think": false
+  },
+  {
+   "id": "vx3hyn",
+   "model": "qwen3.5:4b",
+   "condition": "generic",
+   "task": "P1",
+   "seed": 2,
+   "think": false
+  },
+  {
+   "id": "v8ab6n",
+   "model": "qwen3.5:4b",
+   "condition": "rules",
+   "task": "P1",
+   "seed": 1,
+   "think": false
+  },
+  {
+   "id": "vgeehn",
+   "model": "qwen3.5:4b",
+   "condition": "rules",
+   "task": "P6",
+   "seed": 1,
+   "think": false
+  },
+  {
+   "id": "v3k7um",
+   "model": "qwen3.5:4b",
+   "condition": "components",
+   "task": "P2",
+   "seed": 5,
+   "think": false
+  },
+  {
+   "id": "vlr7va",
+   "model": "qwen3.5:4b",
+   "condition": "generic",
+   "task": "P2",
+   "seed": 3,
+   "think": false
+  },
+  {
+   "id": "vftzg5",
+   "model": "qwen3.5:4b",
+   "condition": "reasoning",
+   "task": "P6",
+   "seed": 4,
+   "think": false
+  },
+  {
+   "id": "v03y6d",
+   "model": "qwen3.5:4b",
+   "condition": "reasoning",
+   "task": "P2",
+   "seed": 4,
+   "think": false
+  },
+  {
+   "id": "vy3le9",
+   "model": "qwen3.5:4b",
+   "condition": "generic",
+   "task": "P6",
+   "seed": 5,
+   "think": false
+  },
+  {
+   "id": "vaa5h9",
+   "model": "qwen3.5:4b",
+   "condition": "reasoning",
+   "task": "P1",
+   "seed": 3,
+   "think": false
+  },
+  {
+   "id": "vn0n6n",
+   "model": "qwen3.5:4b",
+   "condition": "components",
+   "task": "P3",
+   "seed": 3,
+   "think": false
+  },
+  {
+   "id": "v6lsbs",
+   "model": "qwen3.5:4b",
+   "condition": "rules",
+   "task": "P4",
+   "seed": 4,
+   "think": false
+  },
+  {
+   "id": "vh3ot0",
+   "model": "qwen3.5:4b",
+   "condition": "rules",
+   "task": "P5",
+   "seed": 3,
+   "think": false
+  },
+  {
+   "id": "vy86ep",
+   "model": "qwen3.5:4b",
+   "condition": "reasoning",
+   "task": "P3",
+   "seed": 3,
+   "think": false
+  },
+  {
+   "id": "v8l1q5",
+   "model": "qwen3.5:4b",
+   "condition": "rules",
+   "task": "P6",
+   "seed": 4,
+   "think": false
+  },
+  {
+   "id": "v22pq2",
+   "model": "qwen3.5:4b",
+   "condition": "generic",
+   "task": "P6",
+   "seed": 3,
+   "think": false
+  },
+  {
+   "id": "v9kav6",
+   "model": "qwen3.5:4b",
+   "condition": "components",
+   "task": "P3",
+   "seed": 4,
+   "think": false
+  },
+  {
+   "id": "vqdjbg",
+   "model": "qwen3.5:4b",
+   "condition": "rules",
+   "task": "P2",
+   "seed": 1,
+   "think": false
+  },
+  {
+   "id": "vgbxje",
+   "model": "qwen3.5:4b",
+   "condition": "components",
+   "task": "P6",
+   "seed": 5,
+   "think": false
+  },
+  {
+   "id": "vrgeid",
+   "model": "qwen3.5:4b",
+   "condition": "generic",
+   "task": "P3",
+   "seed": 2,
+   "think": false
+  },
+  {
+   "id": "vo5ex8",
+   "model": "qwen3.5:4b",
+   "condition": "rules",
+   "task": "P1",
+   "seed": 5,
+   "think": false
+  },
+  {
+   "id": "vcwsg7",
+   "model": "qwen3.5:4b",
+   "condition": "rules",
+   "task": "P4",
+   "seed": 1,
+   "think": false
+  },
+  {
+   "id": "v47dbn",
+   "model": "qwen3.5:4b",
+   "condition": "components",
+   "task": "P4",
+   "seed": 1,
+   "think": false
+  },
+  {
+   "id": "vrip3d",
+   "model": "qwen3.5:4b",
+   "condition": "rules",
+   "task": "P2",
+   "seed": 4,
+   "think": false
+  },
+  {
+   "id": "v3ex12",
+   "model": "qwen3.5:4b",
+   "condition": "generic",
+   "task": "P3",
+   "seed": 4,
+   "think": false
+  },
+  {
+   "id": "vr7s40",
+   "model": "qwen3.5:4b",
+   "condition": "reasoning",
+   "task": "P4",
+   "seed": 3,
+   "think": false
+  },
+  {
+   "id": "vfu7x3",
+   "model": "qwen3.5:4b",
+   "condition": "rules",
+   "task": "P1",
+   "seed": 3,
+   "think": false
+  },
+  {
+   "id": "vje8pu",
+   "model": "qwen3.5:4b",
+   "condition": "generic",
+   "task": "P3",
+   "seed": 3,
+   "think": false
+  },
+  {
+   "id": "vo5db6",
+   "model": "qwen3.5:4b",
+   "condition": "rules",
+   "task": "P6",
+   "seed": 3,
+   "think": false
+  },
+  {
+   "id": "v2jrnc",
+   "model": "qwen3.5:4b",
+   "condition": "reasoning",
+   "task": "P3",
+   "seed": 5,
+   "think": false
+  },
+  {
+   "id": "vpvtsx",
+   "model": "qwen3.5:4b",
+   "condition": "generic",
+   "task": "P6",
+   "seed": 2,
+   "think": false
+  },
+  {
+   "id": "vs0zpg",
+   "model": "qwen3.5:4b",
+   "condition": "components",
+   "task": "P6",
+   "seed": 4,
+   "think": false
+  },
+  {
+   "id": "vx3nwh",
+   "model": "qwen3.5:4b",
+   "condition": "reasoning",
+   "task": "P6",
+   "seed": 5,
+   "think": false
+  },
+  {
+   "id": "vuk185",
+   "model": "qwen3.5:4b",
+   "condition": "generic",
+   "task": "P4",
+   "seed": 2,
+   "think": false
+  },
+  {
+   "id": "v6bq1v",
+   "model": "qwen3.5:4b",
+   "condition": "rules",
+   "task": "P1",
+   "seed": 4,
+   "think": false
+  },
+  {
+   "id": "vbws8m",
+   "model": "qwen3.5:4b",
+   "condition": "reasoning",
+   "task": "P6",
+   "seed": 3,
+   "think": false
+  },
+  {
+   "id": "v9jvbg",
+   "model": "qwen3.5:4b",
+   "condition": "components",
+   "task": "P1",
+   "seed": 1,
+   "think": false
+  },
+  {
+   "id": "vr3trz",
+   "model": "qwen3.5:4b",
+   "condition": "rules",
+   "task": "P5",
+   "seed": 4,
+   "think": false
+  },
+  {
+   "id": "v84tif",
+   "model": "qwen3.5:4b",
+   "condition": "reasoning",
+   "task": "P3",
+   "seed": 4,
+   "think": false
+  },
+  {
+   "id": "vwpjnp",
+   "model": "qwen3.5:4b",
+   "condition": "generic",
+   "task": "P2",
+   "seed": 4,
+   "think": false
+  },
+  {
+   "id": "v1kks3",
+   "model": "qwen3.5:4b",
+   "condition": "reasoning",
+   "task": "P4",
+   "seed": 1,
+   "think": false
+  },
+  {
+   "id": "vx4gsi",
+   "model": "qwen3.5:4b",
+   "condition": "reasoning",
+   "task": "P3",
+   "seed": 1,
+   "think": false
+  },
+  {
+   "id": "vmw918",
+   "model": "qwen3.5:4b",
+   "condition": "components",
+   "task": "P1",
+   "seed": 3,
+   "think": false
+  },
+  {
+   "id": "vqjtsr",
+   "model": "qwen3.5:4b",
+   "condition": "generic",
+   "task": "P5",
+   "seed": 1,
+   "think": false
+  },
+  {
+   "id": "vfp6vc",
+   "model": "qwen3.5:4b",
+   "condition": "components",
+   "task": "P5",
+   "seed": 2,
+   "think": false
+  },
+  {
+   "id": "vr6f2k",
+   "model": "qwen3.5:4b",
+   "condition": "reasoning",
+   "task": "P1",
+   "seed": 4,
+   "think": false
+  },
+  {
+   "id": "vnixf6",
+   "model": "qwen3.5:4b",
+   "condition": "reasoning",
+   "task": "P5",
+   "seed": 5,
+   "think": false
+  },
+  {
+   "id": "vjmknm",
+   "model": "qwen3.5:4b",
+   "condition": "reasoning",
+   "task": "P2",
+   "seed": 2,
+   "think": false
+  },
+  {
+   "id": "vm5aff",
+   "model": "qwen3.5:4b",
+   "condition": "generic",
+   "task": "P3",
+   "seed": 1,
+   "think": false
+  }
+ ]
+}
