@@ -54,7 +54,7 @@ four frames against a dev server that is already running.
 
 ## Endpoints
 
-Both are development only and live in `server/tokenServer.ts`.
+All three are development only and live in `server/tokenServer.ts`.
 
 - `POST /api/build` takes the four token files as text, writes them to a
   temporary directory with the real `packages/tokens` scripts, runs that
