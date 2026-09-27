@@ -10,7 +10,7 @@ const git = (...a) => execFileSync("git", a, { encoding: "utf8", maxBuffer: 1 <<
 process.chdir(git("rev-parse", "--show-toplevel").trim());
 const BINARY = /\.(png|jpe?g|gif|webp|ico|woff2?|ttf|otf|gz|tycz|wasm|pdf)$/i;
 // Raw model output is experiment data and is kept verbatim, emoji included.
-const RAW = /^experiments\/[^/]+\/(generations\/|calibration\/(.*\/)?out\/|[^/]*-run\.log$)/;
+const RAW = /^experiments\/[^/]+\/(generations\/|calibration\/(.*\/)?out\/|repro\/out\/|[^/]*-run\.log$)/;
 const EMOJI = /\p{Emoji_Presentation}|\p{Extended_Pictographic}️/u;
 const TRAILER = /^(co-authored-by:.*(claude|anthropic)|.*generated (with|by) \[?claude code|.*claude\.ai\/code\/session)/im;
 
