@@ -9,8 +9,10 @@ import {
   CORNER_STEPS,
   DENSITY_MODES,
   DENSITY_TABLE,
+  HIGH_CONTRAST,
   PRESETS,
   SURFACE_STRATEGIES,
+  highContrastParameters,
   isCustomDensity,
   normalizeParameters,
   type DensityMode,
@@ -183,7 +185,7 @@ export function ParametersPanel({ preset, parameters, derived, onPreset, onChang
         <h3 className="pg-group__title">Chromatic roles</h3>
         <p className="pg-note">
           Hue and chroma are set here; lightness is solved against the surface the role sits on, starting from the
-          value the preset gives for its polarity.
+          value the preset gives for each theme its polarity authors.
         </p>
         {CHROMATIC_ROLES.map(({ role, label }) => (
           <div key={role} className="pg-params__role">
@@ -233,8 +235,12 @@ export function ParametersPanel({ preset, parameters, derived, onPreset, onChang
             { id: "high", label: "High contrast" },
           ]}
           value={p.highContrast ? "high" : "standard"}
-          onChange={(id) => set({ highContrast: id === "high" })}
+          onChange={(id) => onChange(id === "high" ? highContrastParameters(p) : { ...p, highContrast: false })}
         />
+        <p className="pg-note">
+          High contrast stretches the ladder to at least {HIGH_CONTRAST.multiplier} whatever the multiplier says, and
+          raises every contrast target a level. Standard gives the multiplier back.
+        </p>
         <ChoiceGroup
           label="Polarity"
           choices={[
@@ -246,8 +252,10 @@ export function ParametersPanel({ preset, parameters, derived, onPreset, onChang
           onChange={(polarity: Polarity) => set({ polarity })}
         />
         <p className="pg-note">
-          Both themes are always derived, because every token name has to exist in both. Polarity says which one the
-          parameters are designed for: it picks the lightness a preset starts each chromatic role from.
+          Both themes are always derived, because every token name has to exist in both. Polarity says which of them
+          the parameters author. An authored theme starts each chromatic role from its own lightness; with Both, dark
+          is tuned separately from light. A theme the polarity leaves out is generated from the authored one: each
+          role starts at the authored lightness mirrored across the two surfaces, then the rules run on it.
         </p>
       </section>
 

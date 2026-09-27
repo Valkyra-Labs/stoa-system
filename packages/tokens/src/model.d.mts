@@ -10,7 +10,9 @@ export type DensityMode = "compact" | "regular" | "comfortable";
 export type CvdModel = "protanopia" | "deuteranopia";
 
 /** Hue and chroma of a chromatic role, and the lightness its solve starts
- * from in each polarity. A null lightness starts at the role's own seed. */
+ * from in each theme. A null lightness starts at the role's own seed; a
+ * theme the polarity does not author ignores it and is generated from the
+ * authored theme instead. */
 export type RoleParameter = {
   hue: number;
   chroma: number;
@@ -145,9 +147,31 @@ export const DENSITY_TABLE: Record<DensityMode, Omit<DensityParameter, "mode">>;
 export const CARRIED_TOKENS: TokenMap;
 export const PRESETS: Record<PresetId, Preset>;
 
+/** Gamma-encoded sRGB as color.mjs parses it. */
+export type Srgb = { r: number; g: number; b: number; alpha: number };
+
+export type LightnessSolve = {
+  /** The lightness found, in ten-thousandths. */
+  units: number;
+  /** True when the seed had to move. */
+  clamped: boolean;
+  /** False when even the end of the scale does not make the target. */
+  reached: boolean;
+};
+
 export function formatOklch(parts: { lightness: number; chroma: number; hue: number; alpha?: number }): string;
 export function normalizeParameters(given?: PartialParameters): Parameters;
 export function highContrastParameters(parameters?: PartialParameters): Parameters;
+export function ladderMultiplier(parameters?: PartialParameters): number;
+export function fitChroma(lightness: number, chroma: number, hue: number, alpha?: number): number;
+export function solveLightness(args: {
+  seed: number;
+  chroma: number;
+  hue: number;
+  direction: "up" | "down";
+  backgrounds: { srgb: Srgb | null }[];
+  target: number;
+}): LightnessSolve;
 export function isCustomDensity(parameters?: PartialParameters): boolean;
 export function deriveTokens(parameters?: PartialParameters): DerivedTokens;
 export function modelRules(derived: DerivedTokens): ModelRules;
