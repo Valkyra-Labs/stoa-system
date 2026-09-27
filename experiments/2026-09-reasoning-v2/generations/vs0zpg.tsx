@@ -1,0 +1,69 @@
+import { Page, Header, Section, Card, Metric, Delta, Chart, DataTable, AuditLog, Status, Button } from "@stoa/react";
+
+export default function FinanceWeeklyOverview() {
+  // Placeholder data
+  const weeklyMetrics = [
+    { label: "Revenue", value: 2450000, delta: 12.5, unit: "$" },
+    { label: "Expenses", value: 1820000, delta: -3.2, unit: "$" },
+    { label: "EBITDA", value: 630000, delta: 8.1, unit: "$" },
+  ];
+
+  const departmentalData = [
+    { dept: "Engineering", spend: 450000, budget: 500000, status: "On Track" },
+    { dept: "Sales", spend: 320000, budget: 300000, status: "Over Budget" },
+    { dept: "Marketing", spend: 180000, budget: 200000, status: "On Track" },
+    { dept: "HR", spend: 95000, budget: 100000, status: "On Track" },
+  ];
+
+  const recentAudit = [
+    { action: "Expense Adjustment", user: "A. Smith", time: "10:30 AM", status: "Approved" },
+    { action: "Vendor Payment", user: "S. Jones", time: "09:15 AM", status: "Approved" },
+    { action: "Budget Reconciliation", user: "F. Director", time: "08:00 AM", status: "Pending Review" },
+  ];
+
+  return (
+    <Page title="Weekly Financial Overview">
+      <Header title="Financial Performance" subtitle="Week of Oct 23 - Oct 29" actions={<Button label="Export Report" />} />
+      
+      <Section title="Executive Summary">
+        <Card title="Key Metrics">
+          <div style={{ display: "flex", flexWrap: "wrap", gap: "20px" }}>
+            {weeklyMetrics.map((metric) => (
+              <Metric key={metric.label} label={metric.label} value={metric.value} delta={metric.delta} unit={metric.unit} />
+            ))}
+          </div>
+        </Card>
+      </Section>
+
+      <Section title="Cash Flow Trends & Departmental Spend">
+        <div style={{ display: "flex", gap: "20px", flexWrap: "wrap" }}>
+          <Card title="Cash Flow Trend (Last 12 Weeks)">
+            <Chart type="line" series={[{ name: "Revenue", data: [1200000, 1350000, 1280000, 1500000, 1450000, 1600000, 1550000, 1700000, 1650000, 1800000, 1750000, 1900000] }, { name: "Expenses", data: [1100000, 1150000, 1200000, 1250000, 1300000, 1350000, 1400000, 1450000, 1500000, 1550000, 1600000, 1650000] }]} />
+          </Card>
+          <Card title="Departmental Spend">
+            <DataTable 
+              columns={[
+                { key: "dept", label: "Department" },
+                { key: "spend", label: "Actual Spend" },
+                { key: "budget", label: "Budget" },
+                { key: "status", label: "Status" },
+              ]}
+              rows={departmentalData.map((d, i) => ({
+                ...d,
+                spend: `$${d.spend.toLocaleString()}`,
+                budget: `$${d.budget.toLocaleString()}`,
+                status: <Status tone={d.status === "Over Budget" ? "error" : "success"} label={d.status} />
+              }))}
+            />
+          </Card>
+        </div>
+      </Section>
+
+      <Section title="Recent Audit Trail">
+        <Card title="Financial Adjustments & Payments">
+          <AuditLog entries={recentAudit} />
+        </Card>
+      </Section>
+    </Page>
+  );
+}

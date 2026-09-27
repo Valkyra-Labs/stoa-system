@@ -1,0 +1,82 @@
+import { Page, Header, Section, Card, Button, Metric, Delta, Status, EmptyData, DataTable, FilterBar, Tabs, Tab, Timeline, AuditLog, Sidebar, Drawer, Section, Tabs, Tab, Card, Metric, Delta, Status, EmptyData, DataTable, FilterBar, Tabs, Tab, Timeline, AuditLog, Sidebar, Drawer, Section, Card, Metric, Delta, Status, EmptyData, DataTable, FilterBar, Tabs, Tab, Timeline, AuditLog, Sidebar, Drawer, Section, Card, Metric, Delta, Status, EmptyData, DataTable, FilterBar, Tabs, Tab, Timeline, AuditLog, Sidebar, Drawer } from "@stoa/react";
+
+export default function PrepareForParentMeeting() {
+  return (
+    <Page title="Prepare for Parent Meeting">
+      <Header title="Prepare for Parent Meeting" subtitle="Student: Emily Johnson" actions={<Button label="Save" />} />
+      <Sidebar>
+        <Section title="Student Profile">
+          <Card title="Student Info">
+            <p><strong>Name:</strong> Emily Johnson</p>
+            <p><strong>Grade:</strong> 8th</p>
+            <p><strong>Teacher:</strong> Mr. Thompson</p>
+            <p><strong>Class:</strong> Science 8A</p>
+          </Card>
+        </Section>
+        <Section title="Recent Updates">
+          <Timeline events={[
+            { date: "2023-10-05", description: "Emily missed 3 days of school due to illness." },
+            { date: "2023-10-12", description: "Emily received a B+ on the science quiz." },
+            { date: "2023-10-18", description: "Emily was observed working closely with a peer during group work." }
+          ]} />
+        </Section>
+      </Sidebar>
+      <main>
+        <Section title="Academic Performance">
+          <Card title="Grades">
+            <DataTable
+              columns={[
+                { key: "subject", text: "Subject" },
+                { key: "last_grade", text: "Last Grade" },
+                { key: "trend", text: "Trend" }
+              ]}
+              rows={[
+                { subject: "Math", last_grade: "C", trend: <Trend series={[75, 78, 82]} /> },
+                { subject: "Science", last_grade: "B+", trend: <Trend series={[88, 85, 89]} /> },
+                { subject: "History", last_grade: "A-", trend: <Trend series={[92, 94, 90]} /> }
+              ]}
+            />
+          </Card>
+        </Section>
+        <Section title="Behavior and Attendance">
+          <Card title="Behavior Log">
+            <DataTable
+              columns={[
+                { key: "date", text: "Date" },
+                { key: "incident", text: "Incident" },
+                { key: "resolution", text: "Resolution" }
+              ]}
+              rows={[
+                { date: "2023-10-05", incident: "Missed 3 days of school", resolution: "Submitted doctor's note" },
+                { date: "2023-10-10", incident: "Talked out of turn", resolution: "Given a warning" },
+                { date: "2023-10-15", incident: "Completed extra credit work", resolution: "Recognized in class" }
+              ]}
+            />
+          </Card>
+        </Section>
+        <Section title="Preparation Notes">
+          <Card>
+            <p><strong>Key Points to Discuss:</strong></p>
+            <ul>
+              <li>Emily's recent academic progress in Science</li>
+              <li>Her attendance issues and how they impact learning</li>
+              <li>Her positive behavior during group work</li>
+            </ul>
+            <p><strong>Questions to Ask the Parent:</strong></p>
+            <ul>
+              <li>Have there been any changes at home affecting Emily's school performance?</li>
+              <li>How can we support her attendance and participation?</li>
+            </ul>
+          </Card>
+        </Section>
+        <Section title="Meeting Plan">
+          <Card>
+            <p><strong>Meeting Time:</strong> Tomorrow at 3:00 PM</p>
+            <p><strong>Location:</strong> Room 202, School Hall</p>
+            <p><strong>Agenda:</strong> Review academic progress, discuss attendance, and set goals for improvement.</p>
+          </Card>
+        </Section>
+      </main>
+    </Page>
+  );
+}

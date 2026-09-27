@@ -1,0 +1,55 @@
+import { Page, Header, Section, Card, Metric, Trend, Chart, DataTable } from "@stoa/react";
+
+export default function WeeklyFinancialOverview() {
+  return (
+    <Page title="Weekly Financial Overview">
+      <Header title="Weekly Financial Overview" subtitle="Last 7 days" />
+      <Section title="Key Metrics">
+        <Card title="Revenue">
+          <Metric label="Total Revenue" value={1500000} delta={50000} unit="USD" />
+          <Trend series={[1450000, 1470000, 1500000]} />
+        </Card>
+        <Card title="Expenses">
+          <Metric label="Total Expenses" value={950000} delta={-10000} unit="USD" />
+          <Trend series={[960000, 965000, 950000]} />
+        </Card>
+      </Section>
+      <Section title="Performance Charts">
+        <Card title="Revenue by Day">
+          <Chart type="line" series={[145000, 147000, 150000, 152000, 151000, 150000, 149000]} x="day" y="revenue" />
+        </Card>
+        <Card title="Expenses by Day">
+          <Chart type="line" series={[60000, 62000, 65000, 63000, 61000, 60000, 62000]} x="day" y="expenses" />
+        </Card>
+      </Section>
+      <Section title="Detailed Data">
+        <Card title="Revenue Breakdown">
+          <DataTable
+            columns={[
+              { key: "category", label: "Category" },
+              { key: "amount", label: "Amount (USD)" },
+            ]}
+            rows={[
+              { category: "Sales", amount: 1500000 },
+              { category: "Services", amount: 500000 },
+            ]}
+          />
+        </Card>
+        <Card title="Expense Breakdown">
+          <DataTable
+            columns={[
+              { key: "category", label: "Category" },
+              { key: "amount", label: "Amount (USD)" },
+            ]}
+            rows={[
+              { category: "Salaries", amount: 600000 },
+              { category: "Rent", amount: 150000 },
+              { category: "Utilities", amount: 50000 },
+              { category: "Marketing", amount: 100000 },
+            ]}
+          />
+        </Card>
+      </Section>
+    </Page>
+  );
+}

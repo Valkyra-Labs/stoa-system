@@ -1,0 +1,3 @@
+**Main Goal:** Help the financial adviser clearly compare two funds based on key metrics and make an informed recommendation.
+
+**Layout Support:** The screen is structured to prioritize clarity and comparison. A header with the client's name and the task sets the context. A **Comparison** component side-by-side displays the two funds, highlighting relevant metrics like returns, risk, fees, and performance trends. A **Chart** shows historical performance, while **Metrics** and **Trend** components break down key data. A **Sidebar** offers additional details like fund composition and management. A **Button** at the bottom prompts the adviser to select a recommendation, ensuring the most important action is prominent and easy to access.

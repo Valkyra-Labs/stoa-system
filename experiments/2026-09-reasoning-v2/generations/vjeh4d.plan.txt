@@ -1,0 +1,8 @@
+The rules that shape this screen most are:  
+- **Exceptions and action items first**: The portfolio manager needs to see what has changed most significantly since yesterday, so the largest deltas are shown first.  
+- **Sort by change size**: The most impactful movements are prioritized for quick decision-making.  
+- **Show units and time frames with values**: The manager needs to understand the context of each change (e.g., percentage vs. absolute value).  
+- **Evidence and actions nearby**: Each change must be explained with reasons, sources, or linked to relevant data to support decisions.  
+- **Stale data freshness**: If data is delayed, it must be clearly marked so the manager knows to act with caution.  
+
+These rules ensure the screen is focused on actionable insights, prioritizing what matters most for the portfolio manager’s morning review.

@@ -1,0 +1,38 @@
+```tsx
+import { Page, Header, Section, Metric, Chart, DataTable, Status } from "@stoa/react";
+
+export default function SchoolPerformanceOverview() {
+  return (
+    <Page title="School Performance Overview">
+      <Header title="School Performance Overview" subtitle="Term Summary" />
+      <Section title="Key Metrics">
+        <Metric label="Attendance Rate" value={95} delta={-2} unit="%" />
+        <Metric label="Academic Performance" value={87} delta={3} unit="%" />
+        <Metric label="Financial Health" value={100000} delta={-5000} unit="USD" />
+      </Section>
+      <Section title="Academic Performance Trends">
+        <Chart type="line" series={[{ id: "math", data: [[1, 80], [2, 85], [3, 90]] }]} x="term" y="score" />
+      </Section>
+      <Section title="Financial Metrics">
+        <DataTable
+          columns={[
+            { label: "Month", key: "month" },
+            { label: "Revenue", key: "revenue", unit: "USD" },
+            { label: "Expenses", key: "expenses", unit: "USD" },
+            { label: "Net Income", key: "netIncome", unit: "USD" },
+          ]}
+          rows={[
+            { month: "September", revenue: 50000, expenses: 40000, netIncome: 10000 },
+            { month: "October", revenue: 60000, expenses: 45000, netIncome: 15000 },
+            { month: "November", revenue: 55000, expenses: 42000, netIncome: 13000 },
+          ]}
+        />
+      </Section>
+      <Section title="Significant Events">
+        <Status tone="info" label="Upcoming Staff Meeting" />
+        <Status tone="warning" label="Budget Review Due Next Week" />
+      </Section>
+    </Page>
+  );
+}
+```

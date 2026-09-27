@@ -1,0 +1,8 @@
+The rules that shape this screen most are:  
+- **Put exceptions and items needing action before averages**: Failed payouts are exceptions and should be prioritized.  
+- **Sort lists by change size**: Failed payouts should be ordered by severity or impact to guide the analyst.  
+- **Show numbers with their basis**: Each failed payout should include the reason or cause, providing context for resolution.  
+- **Keep context while drilling in**: The list should remain visible while viewing details of a single payout.  
+- **State consequences of actions**: Buttons to resolve or escalate should clearly show the outcome of each action.  
+
+These rules ensure the analyst can quickly identify, prioritize, and resolve failed payouts efficiently.

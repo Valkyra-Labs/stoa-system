@@ -1,0 +1,49 @@
+```tsx
+import { Page, Header, Section, Card, Chart, DataTable } from "@stoa/react";
+
+export default function WeeklyFinanceDashboard() {
+  return (
+    <Page title="Weekly Finance Dashboard">
+      <Header title="Weekly Finance Dashboard" subtitle="Summary of key metrics and trends" />
+      <main>
+        <Section title="Key Metrics">
+          <Card title="Revenue">
+            <Metric label="This Week" value={123456} unit="USD" />
+            <Metric label="Last Week" value={110000} unit="USD" />
+            <Delta value={13456} basis={110000} />
+          </Card>
+          <Card title="Expenses">
+            <Metric label="This Week" value={80000} unit="USD" />
+            <Metric label="Last Week" value={75000} unit="USD" />
+            <Delta value={5000} basis={75000} />
+          </Card>
+          <Card title="Profit">
+            <Metric label="This Week" value={43456} unit="USD" />
+            <Metric label="Last Week" value={35000} unit="USD" />
+            <Delta value={8456} basis={35000} />
+          </Card>
+        </Section>
+        <Section title="Revenue Trends">
+          <Chart type="line" series={[{ id: "revenue", data: [{ x: "2023-11-06", y: 110000 }, { x: "2023-11-13", y: 123456 }] }]}>
+            <h3>Weekly Revenue</h3>
+          </Chart>
+        </Section>
+        <Section title="Detailed Financial Data">
+          <DataTable
+            columns={[
+              { id: "date", label: "Date" },
+              { id: "revenue", label: "Revenue" },
+              { id: "expenses", label: "Expenses" },
+              { id: "profit", label: "Profit" },
+            ]}
+            rows={[
+              { date: "2023-11-06", revenue: 110000, expenses: 75000, profit: 35000 },
+              { date: "2023-11-13", revenue: 123456, expenses: 80000, profit: 43456 },
+            ]}
+          />
+        </Section>
+      </main>
+    </Page>
+  );
+}
+```

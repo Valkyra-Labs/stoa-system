@@ -1,0 +1,53 @@
+import { Page, Header, Sidebar, Section, Card, Explorer, Button, FilterBar, SavedViews, BulkActions } from "@stoa/react";
+
+export default function FailedPayoutsScreen() {
+  return (
+    <Page title="Failed Payouts">
+      <Header title="Failed Payouts" subtitle="List of failed payouts to resolve" actions={<Button label="Refresh" />} />
+      <Section title="Payouts to Review">
+        <Explorer
+          toolbar={
+            <FilterBar filters={[
+              { id: "status", label: "Status", options: ["Failed", "Pending", "Resolved"] },
+              { id: "currency", label: "Currency", options: ["USD", "EUR", "GBP"] }
+            ]} />
+          }
+          table={
+            <DataTable
+              columns={[
+                { key: "id", label: "Payout ID" },
+                { key: "status", label: "Status" },
+                { key: "amount", label: "Amount" },
+                { key: "currency", label: "Currency" },
+                { key: "date", label: "Date" },
+                { key: "reason", label: "Reason" }
+              ]}
+              rows={[
+                { id: "12345", status: "Failed", amount: 150.0, currency: "USD", date: "2023-10-01", reason: "Insufficient Funds" },
+                { id: "67890", status: "Pending", amount: 200.0, currency: "EUR", date: "2023-10-02", reason: "Verification Pending" },
+                { id: "11111", status: "Failed", amount: 300.0, currency: "GBP", date: "2023-10-03", reason: "Bank Error" }
+              ]}
+              selectable={true}
+              stickyFirstColumn={true}
+              onRowSelect={(row) => console.log(`Selected row: ${row.id}`)}
+            />
+          }
+          detail={
+            <Card title="Payout Details">
+              <p>Payout ID: 12345</p>
+              <p>Status: Failed</p>
+              <p>Amount: $150.00</p>
+              <p>Currency: USD</p>
+              <p>Date: 2023-10-01</p>
+              <p>Reason: Insufficient Funds</p>
+              <BulkActions actions={[
+                { label: "Resolve", onPress: () => console.log("Resolving payout") },
+                { label: "Mark as Pending", onPress: () => console.log("Marking as pending") }
+              ]} />
+            </Card>
+          }
+        />
+      </Section>
+    </Page>
+  );
+}

@@ -1,0 +1,9 @@
+1. **Person & Session**: The teacher opens this screen proactively before the meeting to ensure they are fully prepared. It is a focused, single-session task driven by the specific upcoming conversation.
+
+2. **Shape of the Work**: This is "understanding one object fully before acting on it." The teacher needs to synthesize a complex picture of a single student's performance and well-being to formulate a coherent narrative for the parent.
+
+3. **The Information**: The screen must display the student's name and a unified view of their academic metrics, behavioral trends, and recent teacher notes. Values are judged against targets (e.g., grade goals) and compared to their own historical performance. Freshness and context of recent incidents are critical.
+
+4. **The Decision & Evidence**: The teacher decides on the meeting's tone, key talking points, and whether to flag specific concerns or celebrate progress. They need immediate evidence: raw scores, trend lines, and specific anecdotes from the week. A wrong decision here risks misrepresenting the student; however, the decision is easily corrected during the actual meeting.
+
+5. **The Structure**: The layout must prioritize the student's identity, followed by a high-level summary of their status, then drill down into specific metrics and a chronological history of events. A dedicated section for "Key Talking Points" (actions) must be visible, allowing the teacher to see the summary and the detailed evidence side-by-side.

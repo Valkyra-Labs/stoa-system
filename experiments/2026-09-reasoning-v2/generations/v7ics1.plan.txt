@@ -1,0 +1,11 @@
+**Task Context:** A financial adviser must recommend one of two funds to a client based on a detailed comparison of their performance and characteristics.
+
+**Step 1:** The financial adviser opens this screen to compare two specific funds based on client needs and market conditions. The session is driven by the need to make an informed decision.
+
+**Step 2:** The shape of the work involves setting two objects (funds) against each other to make a comparative analysis.
+
+**Step 3:** The information required includes the performance metrics (returns, volatility), key features (expense ratio, management team), and relevant time frames (past year, quarter).
+
+**Step 4:** The decision involves choosing the better fund for the client based on a comprehensive comparison. Evidence includes historical performance data, current market conditions, and fund-specific details.
+
+**Step 5:** The structure should first present a high-level comparison of the two funds, followed by detailed metrics and features. A side-by-side layout is most suitable, allowing the adviser to quickly compare the funds and make an informed decision.

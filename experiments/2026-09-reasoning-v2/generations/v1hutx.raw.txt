@@ -1,0 +1,57 @@
+```tsx
+import { Page, Header, Section, Card, Metric, Delta, DataTable, Button, FilterBar, Tabs, Tab, Status, EmptyData } from "@stoa/react";
+
+const portfolioData = [
+  { id: "1", name: "Tech Fund", value: 1500000, change: 2500, delta: 0.17, reason: "Market rally in tech sector" },
+  { id: "2", name: "Energy Sector", value: 800000, change: -1200, delta: -0.15, reason: "Oil prices dipped" },
+  { id: "3", name: "Bond Portfolio", value: 1200000, change: 500, delta: 0.04, reason: "Interest rates rose slightly" },
+  { id: "4", name: "Real Estate", value: 950000, change: -3000, delta: -0.32, reason: "Market volatility" },
+  { id: "5", name: "Equity Mix", value: 1100000, change: 1800, delta: 0.16, reason: "Positive earnings reports" },
+];
+
+const positions = [
+  { id: "1", name: "Tech Fund", value: 1500000, change: 2500, delta: 0.17, reason: "Market rally in tech sector" },
+  { id: "2", name: "Energy Sector", value: 800000, change: -1200, delta: -0.15, reason: "Oil prices dipped" },
+  { id: "3", name: "Bond Portfolio", value: 1200000, change: 500, delta: 0.04, reason: "Interest rates rose slightly" },
+  { id: "4", name: "Real Estate", value: 950000, change: -3000, delta: -0.32, reason: "Market volatility" },
+  { id: "5", name: "Equity Mix", value: 1100000, change: 1800, delta: 0.16, reason: "Positive earnings reports" },
+];
+
+const columns = [
+  { key: "name", label: "Position" },
+  { key: "value", label: "Current Value", format: (v) => `$${v.toLocaleString()}` },
+  { key: "change", label: "Change", format: (v) => `$${v.toLocaleString()}` },
+  { key: "delta", label: "Delta", format: (v) => `${v.toFixed(2)}%` },
+  { key: "reason", label: "Reason" },
+];
+
+const PortfolioOverview = () => (
+  <Page title="Portfolio Overview">
+    <Header title="Portfolio Changes" subtitle="Since Yesterday" actions={<Button label="Refresh" />} />
+    <Section title="Key Metrics">
+      <Card>
+        <Metric label="Total Value" value={5550000} unit="USD" />
+        <Metric label="Total Change" value={2200} delta={0.15} unit="USD" />
+        <Metric label="Average Delta" value={0.15} unit="%" />
+      </Card>
+    </Section>
+    <Section title="Positions with Change">
+      <DataTable
+        columns={columns}
+        rows={positions}
+        selectable
+        stickyFirstColumn
+        onRowSelect={(selected) => console.log("Selected:", selected)}
+      />
+    </Section>
+    <Section title="Detailed View">
+      <Card>
+        <h3>Position Details</h3>
+        <p>Click on a position to see detailed information and analysis.</p>
+      </Card>
+    </Section>
+  </Page>
+);
+
+export default PortfolioOverview;
+```

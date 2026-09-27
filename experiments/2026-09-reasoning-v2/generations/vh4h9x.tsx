@@ -1,0 +1,56 @@
+import { Page, Header, Sidebar, Section, Card, Metric, Chart, DataTable, Status } from "@stoa/react";
+
+export default function SchoolPerformanceDashboard() {
+  return (
+    <Page title="School Performance Dashboard">
+      <Header title="School Name" subtitle="Term Overview" />
+      <main>
+        <section>
+          <Header title="Key Metrics" />
+          <div style={{ display: "flex", gap: "20px" }}>
+            <div style={{ flex: "1 1 45%" }}>
+              <Card title="Enrollment">
+                <Metric label="Total Students" value={1200} unit="students" />
+                <Metric label="New Students" value={150} delta={-20} unit="students" />
+              </Card>
+              <Card title="Attendance">
+                <Metric label="Average Daily Attendance" value={95} unit="%" />
+                <Metric label="Total Absences" value={1200} delta={50} unit="days" />
+              </Card>
+            </div>
+            <div style={{ flex: "1 1 45%" }}>
+              <Card title="Academic Performance">
+                <Metric label="Average GPA" value={3.2} delta={0.1} unit="GPA" />
+                <Metric label="Passing Rate" value={85} unit="%" />
+              </Card>
+              <Card title="Graduation Rate">
+                <Metric label="Graduation Rate" value={90} unit="%" />
+              </Card>
+            </div>
+          </div>
+        </section>
+        <section>
+          <Header title="Trends and Comparisons" />
+          <div style={{ display: "flex", gap: "20px" }}>
+            <div style={{ flex: "1 1 45%" }}>
+              <Card title="Enrollment Trends">
+                <Chart type="line" series={[{ data: [{ x: "2022-09-01", y: 1180 }, { x: "2022-12-01", y: 1200 }, { x: "2023-03-01", y: 1220 }] }]} x="date" y="enrollment" />
+              </Card>
+              <Card title="Attendance Trends">
+                <Chart type="line" series={[{ data: [{ x: "2022-09-01", y: 94 }, { x: "2022-12-01", y: 95 }, { x: "2023-03-01", y: 96 }] }]} x="date" y="attendance" />
+              </Card>
+            </div>
+            <div style={{ flex: "1 1 45%" }}>
+              <Card title="Academic Performance Trends">
+                <Chart type="line" series={[{ data: [{ x: "2022-09-01", y: 3.1 }, { x: "2022-12-01", y: 3.2 }, { x: "2023-03-01", y: 3.3 }] }]} x="date" y="gpa" />
+              </Card>
+              <Card title="Graduation Rate Trends">
+                <Chart type="line" series={[{ data: [{ x: "2022-09-01", y: 89 }, { x: "2022-12-01", y: 90 }, { x: "2023-03-01", y: 91 }] }]} x="date" y="graduation_rate" />
+              </Card>
+            </div>
+          </div>
+        </section>
+      </main>
+    </Page>
+  );
+}

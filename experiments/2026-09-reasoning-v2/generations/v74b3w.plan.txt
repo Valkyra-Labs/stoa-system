@@ -1,0 +1,13 @@
+**Task Context:** A financial adviser recommends one of two funds to a client based on a detailed comparison of the funds' performance, risks, and features.
+
+**Step 1:** The financial adviser opens this screen after a client consultation or a periodic review, prompted by the client's needs or changes in market conditions.
+
+**Step 2:** The work involves setting two funds against each other to make a decision on which one to recommend. The decision is based on a detailed comparison of metrics and evidence from both funds.
+
+**Step 3:** The screen must display key performance metrics, risk levels, and other relevant data for both funds side by side. The comparison should be based on recent performance and risk metrics.
+
+**Step 4:** The adviser decides which fund to recommend based on a comprehensive comparison of performance, risk, and other relevant factors. The decision is informed by detailed metrics and evidence.
+
+**Step 5:** The structure includes a header with the client's name and the two funds being compared, a side-by-side comparison of key metrics, and a summary of the recommendation. The layout should facilitate a clear comparison of the funds.
+
+**Component Choice:** The screen can be built using the `Compare` pattern, which sets two entities against each other on shared metrics.

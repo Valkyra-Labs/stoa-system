@@ -1,0 +1,127 @@
+```tsx
+import {
+  Page,
+  Header,
+  Section,
+  Card,
+  Tabs,
+  Metric,
+  Delta,
+  DataTable,
+  Status,
+  Button,
+  Drawer,
+  EmptyData,
+  PartialData,
+  StaleData,
+  ErrorData,
+  AuditLog,
+} from "@stoa/react";
+
+const PortfolioScreen = () => {
+  const [selectedId, setSelectedId] = useState<number | null>(null);
+
+  // Simulated data
+  const positions = [
+    { id: 1, symbol: "AAPL", sector: "Tech", overnightPnl: 125000, volatility: 0.45, reason: "Sector rotation", lastTrade: "2023-10-27T09:30:00Z" },
+    { id: 2, symbol: "GOOGL", sector: "Tech", overnightPnl: 45000, volatility: 0.12, reason: "Normal drift", lastTrade: "2023-10-26T14:00:00Z" },
+    { id: 3, symbol: "MSFT", sector: "Tech", overnightPnl: -82000, volatility: 0.38, reason: "Fed statement", lastTrade: "2023-10-27T10:15:00Z" },
+    { id: 4, symbol: "TSLA", sector: "Auto", overnightPnl: 34000, volatility: 0.82, reason: "Earnings surprise", lastTrade: "2023-10-27T11:00:00Z" },
+    { id: 5, symbol: "AMZN", sector: "Consumer", overnightPnl: 12000, volatility: 0.08, reason: "Normal drift", lastTrade: "2023-10-25T16:45:00Z" },
+  ];
+
+  const topMovers = positions.slice(0, 3);
+  const auditLogs = [
+    { id: 101, user: "System", action: "Market close sync", time: "2023-10-27T08:00:00Z" },
+    { id: 102, user: "Jane D.", action: "Rebalance initiated", time: "2023-10-27T09:45:00Z" },
+  ];
+
+  return (
+    <Page title="Morning Portfolio Review">
+      <Header
+        title="Portfolio Monitor"
+        subtitle="Overnight deviations since 2023-10-26 23:59:59 UTC"
+        actions={
+          <>
+            <Button label="Refresh Data" variant="secondary" />
+            <Button label="Export Report" />
+          </>
+        }
+      />
+
+      <Section title="Key Metrics">
+        <div style={{ display: "flex", gap: "16px", flexWrap: "wrap" }}>
+          <Metric label="Total Portfolio Value" value="1.24B" />
+          <Metric label="Net Overnight P&L" value="+4.2%" delta={0.42} />
+          <Metric label="Avg Volatility" value="0.15" unit="%" />
+          <Metric label="Positions Reviewed" value={positions.length} />
+        </div>
+      </Section>
+
+      <Section title="Top Deviations">
+        <Card title="Significant Movers" style={{ marginBottom: 0 }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))", gap: "16px" }}>
+            {topMovers.map((pos) => (
+              <Card key={pos.id} title={pos.symbol} style={{ padding: "16px" }}>
+                <div style={{ marginBottom: "8px" }}>
+                  <Metric label="Overnight P&L" value={pos.overnightPnl.toLocaleString()} />
+                  <Delta value={pos.overnightPnl} basis="Yesterday's Close" />
+                </div>
+                <Status tone={pos.overnightPnl > 0 ? "positive" : "negative"} label={pos.sector} />
+                <p style={{ marginTop: "12px", fontSize: "0.9rem", color: "#666" }}>
+                  <strong>Reason:</strong> {pos.reason}
+                </p>
+                <p style={{ marginTop: "4px", fontSize: "0.85rem", color: "#888" }}>
+                  Last Trade: {pos.lastTrade}
+                </p>
+              </Card>
+            ))}
+          </div>
+        </Card>
+      </Section>
+
+      <Section title="Full Position Table">
+        <Card title="All Holdings" style={{ marginBottom: 0 }}>
+          <DataTable
+            columns={[
+              { key: "symbol", label: "Symbol", sortable: true },
+              { key: "sector", label: "Sector", sortable: true },
+              { key: "overnightPnl", label: "Overnight P&L", sortable: true, align: "right" },
+              { key: "volatility", label: "Volatility", sortable: true, align: "right" },
+              { key: "reason", label: "Driver", width: 200 },
+            ]}
+            rows={positions}
+            onRowSelect={(row) => setSelectedId(row.id)}
+          />
+        </Card>
+      </Section>
+
+      <Section title="Audit Trail" style={{ marginTop: "32px" }}>
+        <Card title="Recent Activity">
+          <AuditLog entries={auditLogs} />
+        </Card>
+      </Section>
+
+      {/* Detail Drawer */}
+      <Drawer title="Position Details" open={!!selectedId} onClose={() => setSelectedId(null)}>
+        {selectedId && (
+          <div>
+            <Metric label="Current Price" value={180.50} />
+            <Metric label="Target Price" value={185.00} />
+            <p>
+              <strong>Analysis:</strong> This position shows elevated volatility due to {positions.find(p => p.id === selectedId)?.reason}.
+              Recommend reviewing the latest earnings report before rebalancing.
+            </p>
+            <div style={{ marginTop: "24px" }}>
+              <Button label="Approve Adjustment" onPress={() => alert("Adjustment approved")} />
+              <Button label="Reject" variant="secondary" onPress={() => alert("Adjustment rejected")} />
+            </div>
+          </div>
+        )}
+      </Drawer>
+    </Page>
+  );
+};
+
+export default PortfolioScreen;
+```

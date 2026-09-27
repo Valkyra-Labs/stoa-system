@@ -1,0 +1,3 @@
+**Main Goal:** The screen helps the portfolio manager quickly identify which assets have changed value since yesterday and understand the reasons behind those changes, enabling informed decision-making.
+
+**Layout Support:** The layout prioritizes clarity and scannability. A header with the title and date sets the context. A **Comparison** component shows assets side by side with key metrics, highlighting deltas. A **Timeline** or **AuditLog** explains the reasons for changes. A **DataTable** provides detailed view of all assets with filters and bulk actions. A **Card** or **Section** summarizes overall performance. This structure allows the manager to scan, drill down, and act efficiently.

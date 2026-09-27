@@ -1,0 +1,50 @@
+```tsx
+import { Page, Header, Card, Metric, Chart, DataTable, Section } from "@stoa/react";
+
+export default function WeeklyFinanceReview() {
+  return (
+    <Page title="Weekly Finance Review">
+      <Header title="Weekly Finance Review" subtitle="Monday Overview" />
+      <Section title="Key Metrics">
+        <Card title="Revenue">
+          <Metric label="Revenue" value={150000} delta={5000} unit="USD" />
+          <Metric label="Revenue Change" value={3.5} unit="%" />
+        </Card>
+        <Card title="Expenses">
+          <Metric label="Expenses" value={100000} delta={-2000} unit="USD" />
+          <Metric label="Expense Change" value={-2} unit="%" />
+        </Card>
+        <Card title="Profit Margin">
+          <Metric label="Profit Margin" value={33.33} unit="%" />
+        </Card>
+      </Section>
+      <Section title="Financial Trends">
+        <Card title="Revenue Trends">
+          <Chart type="line" series={[{ id: "revenue", data: [[0, 145000], [1, 150000], [2, 155000]] }]}>
+            <p>Weekly revenue trends</p>
+          </Chart>
+        </Card>
+        <Card title="Expense Trends">
+          <Chart type="line" series={[{ id: "expenses", data: [[0, 102000], [1, 100000], [2, 98000]] }]}>
+            <p>Weekly expense trends</p>
+          </Chart>
+        </Card>
+      </Section>
+      <Section title="Recent Transactions">
+        <DataTable
+          columns={[
+            { id: "date", label: "Date" },
+            { id: "description", label: "Description" },
+            { id: "amount", label: "Amount", type: "currency" },
+          ]}
+          rows={[
+            { id: "1", date: "2023-10-09", description: "Payment from client A", amount: 5000 },
+            { id: "2", date: "2023-10-10", description: "Payment to supplier B", amount: -2000 },
+            { id: "3", date: "2023-10-11", description: "Bank fee", amount: -50 },
+          ]}
+        />
+      </Section>
+    </Page>
+  );
+}
+```

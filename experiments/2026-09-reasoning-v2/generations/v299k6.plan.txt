@@ -1,0 +1,12 @@
+The screen is designed for a teacher to prepare for a parent-teacher meeting about a specific student. It includes key information about the student, recent grades, behavior reports, and any relevant notes or communications. The layout is divided into several sections:
+
+1. **Header**: Displays the student's name and the meeting date.
+2. **Sidebar**: Contains navigation links to different types of information.
+3. **Main Section**: Divided into sub-sections for:
+   - **Student Profile**: Basic information and contact details.
+   - **Academic Performance**: Recent grades and progress.
+   - **Behavior Reports**: Any notable incidents or observations.
+   - **Communication Log**: Notes and messages related to the student.
+   - **Preparation Notes**: Space for the teacher to jot down meeting preparation notes.
+
+This layout helps the teacher efficiently review all necessary information and prepare effectively for the meeting.

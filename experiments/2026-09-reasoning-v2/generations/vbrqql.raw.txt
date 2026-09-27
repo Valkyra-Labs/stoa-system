@@ -1,0 +1,27 @@
+```tsx
+import { Page, Header, Section, Metric, Chart, Status, Delta } from "@stoa/react";
+
+export default function FinanceOverview() {
+  return (
+    <Page title="Finance Overview">
+      <Header title="Weekly Financial Summary" subtitle="Last updated: Monday, October 23, 2023" />
+      <main>
+        <Section title="Key Metrics">
+          <Metric label="Revenue" value={1500000} delta={{ value: 50000, basis: 1000000 }} unit="USD" />
+          <Metric label="Expenses" value={1200000} delta={{ value: -20000, basis: 1220000 }} unit="USD" />
+          <Metric label="Profit" value={300000} delta={{ value: 70000, basis: 230000 }} unit="USD" />
+          <Metric label="Cash Flow" value={250000} delta={{ value: 30000, basis: 220000 }} unit="USD" />
+        </Section>
+        <Section title="Recent Trends">
+          <Chart type="line" series={[{ id: "revenue", data: [{ x: "2023-10-16", y: 1450000 }, { x: "2023-10-23", y: 1500000 }] }]} x="date" y="value" />
+          <Chart type="line" series={[{ id: "expenses", data: [{ x: "2023-10-16", y: 1220000 }, { x: "2023-10-23", y: 1200000 }] }]} x="date" y="value" />
+        </Section>
+        <Section title="Alerts">
+          <Status tone="warning" label="Unusual Spending" />
+          <Status tone="error" label="Revenue Drop in North America" />
+        </Section>
+      </main>
+    </Page>
+  );
+}
+```

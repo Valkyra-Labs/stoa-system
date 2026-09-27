@@ -1,0 +1,56 @@
+import { Page, Section, Card, Comparison, Metric, DataTable, Button } from "@stoa/react";
+
+const FundComparisonPage = () => {
+  return (
+    <Page title="Fund Comparison">
+      <Header title="Fund Comparison" subtitle="Choose the best fund for the client" />
+      <main>
+        <Section title="Fund Overview">
+          <Comparison
+            entities={[
+              { id: "fund1", label: "Fund A", metrics: ["returns", "volatility", "expenseRatio"] },
+              { id: "fund2", label: "Fund B", metrics: ["returns", "volatility", "expenseRatio"] }
+            ]}
+            metrics={[
+              { id: "returns", label: "Returns", unit: "%" },
+              { id: "volatility", label: "Volatility", unit: "%" },
+              { id: "expenseRatio", label: "Expense Ratio", unit: "%" }
+            ]}
+          />
+        </Section>
+        <Section title="Detailed Metrics">
+          <Card title="Fund A Metrics">
+            <Metric label="1-Year Returns" value={8.5} delta={{ value: 1.2, basis: "previous year" }} unit="%" />
+            <Metric label="3-Year Volatility" value={12.3} delta={{ value: -0.5, basis: "previous year" }} unit="%" />
+            <Metric label="Expense Ratio" value={0.5} unit="%" />
+          </Card>
+          <Card title="Fund B Metrics">
+            <Metric label="1-Year Returns" value={7.8} delta={{ value: 0.9, basis: "previous year" }} unit="%" />
+            <Metric label="3-Year Volatility" value={11.5} delta={{ value: -0.3, basis: "previous year" }} unit="%" />
+            <Metric label="Expense Ratio" value={0.7} unit="%" />
+          </Card>
+        </Section>
+        <Section title="Historical Performance">
+          <DataTable
+            columns={[
+              { label: "Date", id: "date" },
+              { label: "Returns", id: "returns", unit: "%" },
+              { label: "Volatility", id: "volatility", unit: "%" }
+            ]}
+            rows={[
+              { date: "2022-12-31", returns: 8.5, volatility: 12.3 },
+              { date: "2022-09-30", returns: 7.3, volatility: 12.8 },
+              { date: "2022-06-30", returns: 6.2, volatility: 13.1 }
+            ]}
+          />
+        </Section>
+        <Section title="Recommendation">
+          <Button label="Recommend Fund A" variant="primary" />
+          <Button label="Recommend Fund B" variant="secondary" />
+        </Section>
+      </main>
+    </Page>
+  );
+};
+
+export default FundComparisonPage;

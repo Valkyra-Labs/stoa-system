@@ -1,0 +1,80 @@
+```tsx
+import { Page, Header, Card, Metric, DataTable, Status, Button } from "@stoa/react";
+
+export default function FundRecommendationScreen() {
+  const client = { name: "Eleanor Vance", goal: "Retirement", horizon: "15 years" };
+  const fundA = {
+    id: "A",
+    name: "Global Equity Growth Fund",
+    manager: "Sarah Chen",
+    fees: 0.75,
+    ytd: 12.4,
+    oneYear: 8.2,
+    threeYear: 9.1,
+    risk: "High",
+    liquidity: "Daily",
+    notes: "Strong recent performance; high volatility."
+  };
+  const fundB = {
+    id: "B",
+    name: "Dividend Income Balanced Fund",
+    manager: "Michael Ross",
+    fees: 0.65,
+    ytd: 6.1,
+    oneYear: 5.8,
+    threeYear: 7.4,
+    risk: "Medium",
+    liquidity: "Weekly",
+    notes: "Stable returns; lower downside protection."
+  };
+
+  const metrics = [
+    { key: "Fees", label: "Expense Ratio" },
+    { key: "YTD", label: "Year-to-Date Return" },
+    { key: "1Y", label: "1-Year Return" },
+    { key: "3Y", label: "3-Year Return" },
+    { key: "Risk", label: "Risk Profile" },
+    { key: "Liq", label: "Liquidity" },
+  ];
+
+  const rows = [
+    { ...fundA, delta: 0 },
+    { ...fundB, delta: 0 },
+  ];
+
+  const handleRecommend = (winnerId: string) => {
+    alert(`Recommendation generated for ${winnerId === 'A' ? fundA.name : fundB.name}`);
+  };
+
+  return (
+    <Page title={`Recommendation: ${client.name}`}>
+      <Header title="Fund Comparison" subtitle={`${client.name} - ${client.goal}`} />
+      <main>
+        <Section title="Client Context">
+          <p><strong>Goal:</strong> {client.goal} | <strong>Horizon:</strong> {client.horizon} years</p>
+        </Section>
+
+        <Section title="Fund Comparison">
+          <Card title="Global Equity Growth Fund">
+            <DataTable columns={metrics} rows={[fundA]} selectable />
+          </Card>
+          <Card title="Dividend Income Balanced Fund">
+            <DataTable columns={metrics} rows={[fundB]} selectable />
+          </Card>
+        </Section>
+
+        <Section title="Recommendation">
+          <div style={{ display: "flex", gap: "20px" }}>
+            <Button label="Recommend Fund A" onPress={() => handleRecommend("A")} variant="primary" />
+            <Button label="Recommend Fund B" onPress={() => handleRecommend("B")} variant="secondary" />
+          </div>
+        </Section>
+      </main>
+    </Page>
+  );
+}
+
+function Section({ title, children }: { title: string; children: React.ReactNode }) {
+  return <section><h2>{title}</h2>{children}</section>;
+}
+```

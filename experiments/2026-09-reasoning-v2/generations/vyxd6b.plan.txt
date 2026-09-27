@@ -1,0 +1,11 @@
+**Step 1:** The head of school reviews the dashboard periodically to prepare for board meetings, where no actions are taken directly on the screen.
+
+**Step 2:** The work involves getting a general picture of the school's performance across various metrics, with no immediate action required.
+
+**Step 3:** Key entities include the school overall, grades, and departments. Metrics cover academic performance, attendance, and student well-being. The time frame spans the current term, with comparisons to the previous term and targets.
+
+**Step 4:** No specific decision is made here; the purpose is to provide an overview for the board presentation.
+
+**Step 5:** The structure includes a header with the school name and term, followed by a series of metrics and charts showing overall performance. A section for detailed metrics and trends is also needed, but it can be less prominent.
+
+Given this, the **components** should include a **Page** with a **Header**, **Metrics**, **Charts**, and **Trend** components to display the data effectively.

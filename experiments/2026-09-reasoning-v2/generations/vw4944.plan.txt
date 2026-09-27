@@ -1,0 +1,12 @@
+**Main Goal**
+The screen's primary objective is to enable a Payments Operations Analyst to efficiently triage, investigate, and resolve a backlog of failed payouts. It prioritizes speed and clarity by presenting a prioritized list of issues with immediate context, allowing analysts to identify patterns, apply bulk fixes, and drill down into specific failures without leaving the workflow.
+
+**Layout Strategy**
+The layout supports this goal through a high-density, task-oriented structure:
+1.  **Header & Actions**: Prominently displays the current backlog count and offers high-impact actions like "Clear All" or "Export" immediately visible.
+2.  **Primary View (Explorer)**: Uses a sortable, filterable data table as the core interface. This allows the analyst to scan rows, filter by failure reason (e.g., "Card Declined"), and sort by severity or age.
+3.  **Context & Detail**: Integrates an inline "Inspector" pattern within the table rows. Hovering or clicking a row expands a panel showing the transaction ID, amount, customer info, and a concise error message, reducing the need to open new tabs.
+4.  **Bulk Actions**: Provides a "Bulk Actions" control that activates when rows are selected, enabling the analyst to apply a fix (e.g., "Retry," "Force Refund") to multiple items at once.
+5.  **Feedback & Status**: Uses distinct status badges (e.g., "Critical," "Pending") and clear success/error notifications to confirm resolutions instantly.
+
+This hierarchy ensures the most critical information (the list of failures) is front and center, while secondary details are progressively disclosed only when needed.

@@ -1,0 +1,5 @@
+The **Order and emphasis** rule shapes this screen most. It dictates that the most critical financial and academic metrics must be immediately obvious without reading every label, likely through a high-level Dashboard. This requires sorting any lists of changes (e.g., budget variances or enrollment shifts) by magnitude to highlight what matters for the board.
+
+The **Numbers** rule is equally critical; every metric presented for judgement must carry its basis (target, previous period, or budget) to allow the head of school to assess performance contextually. Since the user will not change anything, the **Empty, Partial, Stale, and Error** states must be designed to show the data is frozen and current (freshness), reinforcing the "term report" nature of the screen.
+
+Finally, the **Evidence and actions** rule implies that while no changes will be made, the data sources and last updated timestamps must be visible to build trust in the presented figures. Decorative regions or complex interactive elements should be avoided to keep the presentation clean and authoritative.

@@ -1,0 +1,84 @@
+```tsx
+import { Page, Header, Section, Card, Tabs, Metric, Chart, DataTable, FilterBar, Status, Button } from "@stoa/react";
+
+const MarketPulse: React.FC = () => {
+  const metrics = [
+    { label: "S&P 500", value: 5240.12, delta: 1.2, unit: "%" },
+    { label: "Nasdaq", value: 16850.45, delta: -0.5, unit: "%" },
+    { label: "Gold", value: 2340.00, delta: 0.8, unit: "$" },
+    { label: "Oil", value: 78.50, delta: 2.1, unit: "$" },
+  ];
+
+  const movers = [
+    { ticker: "TSLA", change: 12.5, sentiment: "bullish" },
+    { ticker: "NVDA", change: -3.2, sentiment: "bearish" },
+    { ticker: "AAPL", change: 0.8, sentiment: "neutral" },
+    { ticker: "MSFT", change: 1.1, sentiment: "bullish" },
+  ];
+
+  const newsItems = [
+    { id: 1, headline: "Fed signals rate pause", time: "08:30 AM", source: "Reuters" },
+    { id: 2, headline: "Tech earnings beat expectations", time: "09:15 AM", source: "Bloomberg" },
+    { id: 3, headline: "Geopolitical tension rises", time: "10:00 AM", source: "WSJ" },
+  ];
+
+  return (
+    <Page title="Market Pulse">
+      <Header title="Market Pulse" subtitle="Today's Overview" />
+      
+      <Section title="Market Overview">
+        <Card title="Key Metrics">
+          <Tabs items={[
+            { id: "all", label: "All Markets" },
+            { id: "tech", label: "Tech Focus" },
+          ]}>
+            <div className="grid">
+              {metrics.map((m) => (
+                <Metric key={m.label} label={m.label} value={m.value} delta={m.delta} unit={m.unit} />
+              ))}
+            </div>
+          </Tabs>
+        </Card>
+      </Section>
+
+      <Section title="Top Movers">
+        <Card title="Significant Changes">
+          <DataTable
+            columns={[
+              { key: "ticker", label: "Ticker" },
+              { key: "change", label: "Change" },
+              { key: "sentiment", label: "Sentiment" },
+            ]}
+            rows={movers}
+          />
+        </Card>
+      </Section>
+
+      <Section title="Portfolio Impact & Context">
+        <Card title="Market Trend">
+          <Chart type="line" series={[
+            { name: "S&P 500", data: [5200, 5220, 5240, 5250] },
+            { name: "Nasdaq", data: [16800, 16850, 16830, 16820] },
+          ]} x="Time" y="Index" />
+        </Card>
+
+        <Card title="Recent News & Signals">
+          <FilterBar filters={[
+            { key: "source", label: "Source", value: "All", options: ["All", "Reuters", "Bloomberg", "WSJ"] },
+          ]} />
+          <DataTable
+            columns={[
+              { key: "headline", label: "Headline" },
+              { key: "time", label: "Time" },
+              { key: "source", label: "Source" },
+            ]}
+            rows={newsItems}
+          />
+        </Card>
+      </Section>
+    </Page>
+  );
+};
+
+export default MarketPulse;
+```

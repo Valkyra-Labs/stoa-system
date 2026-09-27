@@ -1,0 +1,11 @@
+1. **Person and Session:** The finance director opens this screen weekly on Mondays to review the company’s financial performance before meetings. No specific trigger other than the routine weekly review.
+
+2. **Shape of the Work:** Getting a general picture of many unrelated numbers, with no action expected on this screen. The focus is on understanding the overall financial health and trends without deep analysis or decision-making.
+
+3. **Information:** The screen should display key financial metrics such as revenue, expenses, profit, and cash flow for the current week compared to the previous week and the same period last year. Time frame: current week vs. previous week vs. same week last year. Values should be judged against targets and previous periods.
+
+4. **Decision and Evidence:** No specific decision is made on this screen. The purpose is to inform the director about the financial performance to prepare for meetings. Evidence needed includes trend analysis, comparisons, and context around significant deviations.
+
+5. **Structure:** The screen should have a header with the title and current week's metrics summary. A main section for detailed metrics with comparisons. A sidebar or secondary section for additional context or historical data. The layout should prioritize quick overview and easy comparison.
+
+6. **Components:** Use a `Page` with a `Header` for the summary, a `Section` for detailed metrics, and a `Sidebar` for additional context. Use `Metric`, `Delta`, and `Trend` components for individual metrics and comparisons.

@@ -1,0 +1,214 @@
+```tsx
+import {
+  Page,
+  Header,
+  Sidebar,
+  Section,
+  Card,
+  Tabs,
+  Drawer,
+  Metric,
+  Trend,
+  DataTable,
+  Comparison,
+  Timeline,
+  AuditLog,
+  Status,
+  EmptyData,
+  FilterBar,
+  SavedViews,
+  Button,
+  BulkActions,
+} from "@stoa/react";
+
+// --- Mock Data ---
+
+const failedTransactions = [
+  {
+    id: "TXN-9921",
+    merchant: "TechGadgets Inc.",
+    amount: 499.99,
+    currency: "USD",
+    failureCode: "INSUFF_FUNDS",
+    failureTime: "2023-10-24T14:30:00Z",
+    status: "FAILED",
+    retryCount: 2,
+    notes: "Customer reported insufficient funds.",
+  },
+  {
+    id: "TXN-9922",
+    merchant: "Global Foods",
+    amount: 1250.00,
+    currency: "EUR",
+    failureCode: "INVALID_CARD",
+    failureTime: "2023-10-24T15:10:00Z",
+    status: "FAILED",
+    retryCount: 0,
+    notes: "",
+  },
+  {
+    id: "TXN-9923",
+    merchant: "Urban Wear",
+    amount: 89.50,
+    currency: "USD",
+    failureCode: "TIMED_OUT",
+    failureTime: "2023-10-24T16:45:00Z",
+    status: "FAILED",
+    retryCount: 1,
+    notes: "Gateway timeout during peak load.",
+  },
+  {
+    id: "TXN-9924",
+    merchant: "Home Depot",
+    amount: 3420.00,
+    currency: "USD",
+    failureCode: "DECLINED",
+    failureTime: "2023-10-24T17:00:00Z",
+    status: "FAILED",
+    retryCount: 0,
+    notes: "Security block on card.",
+  },
+];
+
+const filters = [
+  { key: "status", value: "FAILED", label: "Status", type: "select" },
+  { key: "failureCode", value: "INSUFF_FUNDS", label: "Failure Code", type: "text" },
+  { key: "amount", value: "500", label: "Min Amount", type: "number" },
+];
+
+const savedViews = [
+  { id: "v1", name: "High Value > $1k", count: 12 },
+  { id: "v2", name: "TechGadgets Inc.", count: 4 },
+  { id: "v3", name: "Last 24h", count: 28 },
+];
+
+// --- Components ---
+
+function ResolveQueue() {
+  return (
+    <Page title="Resolve Failed Payouts">
+      <Header
+        title="Resolve Failed Payouts"
+        subtitle="Review and fix failed transactions to restore customer trust."
+        actions={
+          <>
+            <SavedViews views={savedViews} />
+            <Button label="New Batch" variant="primary" />
+          </>
+        }
+      />
+
+      <main>
+        <Section title="Failed Transactions">
+          <FilterBar filters={filters} />
+
+          <Card title="Transaction List">
+            <DataTable
+              columns={[
+                { key: "id", label: "Transaction ID" },
+                { key: "merchant", label: "Merchant" },
+                { key: "amount", label: "Amount" },
+                { key: "status", label: "Status" },
+              ]}
+              rows={failedTransactions}
+              onRowSelect={(row) => handleRowSelect(row)}
+            />
+          </Card>
+        </Section>
+
+        <Section title="Metrics Overview">
+          <Comparison
+            entities={["All", "High Value", "TechGadgets Inc."]}
+            metrics={[
+              { label: "Total Failed", value: 245, unit: "count" },
+              { label: "Avg Amount", value: 1250.50, unit: "USD" },
+              { label: "Retry Success Rate", value: 15, unit: "%" },
+            ]}
+          />
+        </Section>
+      </main>
+
+      <Drawer
+        title="Transaction Details"
+        open={selectedTransaction !== null}
+        onClose={() => setSelectedTransaction(null)}
+      >
+        {selectedTransaction ? (
+          <>
+            <Section title="Core Details">
+              <Card title="Summary">
+                <Metric label="Transaction ID" value={selectedTransaction.id} />
+                <Metric label="Amount" value={selectedTransaction.amount} unit={selectedTransaction.currency} />
+                <Metric label="Failure Code" value={selectedTransaction.failureCode} />
+                <Metric label="Retry Count" value={selectedTransaction.retryCount} />
+              </Card>
+            </Section>
+
+            <Section title="Failure Timeline">
+              <Timeline
+                events={[
+                  {
+                    time: selectedTransaction.failureTime,
+                    message: `Transaction declined: ${selectedTransaction.failureCode}`,
+                    source: "Gateway",
+                  },
+                  {
+                    time: new Date(selectedTransaction.failureTime).toISOString().split("T")[0] + "T10:00:00Z",
+                    message: "Initial payout attempt",
+                    source: "System",
+                  },
+                ]}
+              />
+            </Section>
+
+            <Section title="Audit Log">
+              <AuditLog
+                entries={[
+                  {
+                    user: "System",
+                    action: "Created Transaction",
+                    time: "2023-10-24T14:30:00Z",
+                  },
+                  {
+                    user: "API Gateway",
+                    action: "Received Request",
+                    time: "2023-10-24T14:30:01Z",
+                  },
+                  {
+                    user: "Payment Processor",
+                    action: "Rejected Request",
+                    time: "2023-10-24T14:30:02Z",
+                  },
+                ]}
+              />
+            </Section>
+
+            <Section title="Actions">
+              <BulkActions
+                actions={[
+                  { label: "Retry Transaction", variant: "primary", onPress: () => alert("Retry initiated") },
+                  { label: "Escalate to Support", variant: "secondary", onPress: () => alert("Escalation sent") },
+                  { label: "Mark as Resolved", variant: "success", onPress: () => alert("Marked resolved") },
+                ]}
+              />
+            </Section>
+          </>
+        ) : (
+          <EmptyData message="Select a transaction to view details." />
+        )}
+      </Drawer>
+    </Page>
+  );
+}
+
+// Helper to handle row selection logic
+let selectedTransaction: typeof failedTransactions[0] | null = null;
+
+function handleRowSelect(row: typeof failedTransactions[0]) {
+  selectedTransaction = row;
+  // In a real app, this might trigger a local state update or navigation
+  // Here we just rely on the Drawer's open prop being controlled by the state variable above
+}
+
+export default ResolveQueue;
+```

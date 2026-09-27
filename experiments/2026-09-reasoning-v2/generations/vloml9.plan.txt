@@ -1,0 +1,7 @@
+The screen is designed to help a financial adviser compare two investment funds and recommend one to a client. The layout is divided into three main sections:
+
+1. **Overview Section**: Displays the names and key metrics (e.g., returns, risk) of both funds side by side for easy comparison.
+2. **Detailed Comparison Section**: Provides in-depth charts and tables showing historical performance, risk metrics, and other relevant data for each fund.
+3. **Recommendation Section**: Contains a summary and a recommendation based on the comparison, along with a rationale for the adviser to explain to the client.
+
+This layout ensures that the adviser can quickly assess the funds and justify their recommendation with data.

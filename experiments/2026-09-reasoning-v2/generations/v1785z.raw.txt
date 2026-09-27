@@ -1,0 +1,30 @@
+```tsx
+import { Page, Header, Section, Card, Button, FilterBar, SavedViews, Comparison, DataTable, BulkActions, ReviewQueue } from "@stoa/react";
+
+const failedPayouts = [
+  { id: "1", payer: "Alice", amount: 100, reason: "Insufficient funds", status: "Failed" },
+  { id: "2", payer: "Bob", amount: 200, reason: "Payment declined", status: "Failed" },
+  { id: "3", payer: "Charlie", amount: 150, reason: "Account closed", status: "Failed" },
+];
+
+const actions = [
+  { id: "retry", label: "Retry" },
+  { id: "escalate", label: "Escalate" },
+  { id: "cancel", label: "Cancel" },
+];
+
+const ReviewFailedPayouts = () => (
+  <Page title="Review Failed Payouts">
+    <Header title="Review Failed Payouts" subtitle="Resolve failed payouts" />
+    <Section title="Failed Payouts">
+      <ReviewQueue
+        items={failedPayouts}
+        current={failedPayouts[0]}
+        decision={actions}
+      />
+    </Section>
+  </Page>
+);
+
+export default ReviewFailedPayouts;
+```

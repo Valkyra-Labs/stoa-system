@@ -1,0 +1,37 @@
+import { Page, Header, Sidebar, Section, Card, Tabs, Metric, Trend, Chart, DataTable, Comparison, Timeline, AuditLog, Status, Button } from "@stoa/react";
+
+export default function PortfolioOverview() {
+  return (
+    <Page title="Portfolio Overview">
+      <Header title="Portfolio Overview" subtitle="Changes since yesterday" actions={<Button label="Refresh" />} />
+      <main>
+        <Section title="Key Movements">
+          <Card title="Top 5 Movements">
+            <Metric label="Total Change" value={5000} delta={200} unit="USD" />
+            <Trend series={[{ x: "2023-10-05", y: 4800 }, { x: "2023-10-06", y: 5000 }]} />
+            <Chart type="bar" series={[{ label: "Equities", data: [3000, 4000] }, { label: "Bonds", data: [1000, 1000] }]} x="day" y="value" />
+          </Card>
+        </Section>
+        <Section title="Detailed Analysis">
+          <Tabs items={[
+            { id: "equities", label: "Equities", content: <DataTable columns={["Name", "Change", "Reason"]} rows={[["AAPL", "+5%", "Market up"], ["GOOGL", "-2%", "Company news"]]} /> },
+            { id: "bonds", label: "Bonds", content: <DataTable columns={["Name", "Change", "Reason"]} rows={[["BOND1", "+1%", "Interest rates"], ["BOND2", "-1%", "Credit rating"]]} /> }
+          ]} />
+        </Section>
+      </main>
+      <aside>
+        <Sidebar>
+          <Section title="Filters">
+            <FilterBar filters={[
+              { id: "date", label: "Date Range", options: ["Yesterday", "Last Week", "Last Month"] },
+              { id: "asset", label: "Asset Type", options: ["Equities", "Bonds", "Commodities"] }
+            ]} />
+          </Section>
+          <Section title="Recent Events">
+            <Timeline events={[{ time: "2023-10-05T14:00", description: "Equities rallied due to positive market sentiment", icon: "bullish" }, { time: "2023-10-05T15:30", description: "Bond yields fell due to economic data", icon: "bearish" }]} />
+          </Section>
+        </Sidebar>
+      </aside>
+    </Page>
+  );
+}

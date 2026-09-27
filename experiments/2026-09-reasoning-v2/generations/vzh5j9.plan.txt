@@ -1,0 +1,23 @@
+### Steps 1 to 5 Summary
+
+1. **Session Context**: A financial adviser opens this screen to compare two investment funds and make a recommendation to a client. The adviser is responding to a client request or an update from the financial institution.
+
+2. **Work Shape**: The adviser is setting two objects (funds) against each other to make a decision. There are two primary entities (funds) in play, and the decision is made on this screen.
+
+3. **Information**: The screen must display key metrics and performance data for both funds, including historical returns, risk levels, and recent performance. Each value should be judged against a target or a peer (the other fund).
+
+4. **Decision and Evidence**: The adviser decides which fund to recommend based on a comparison of key metrics and performance. The decision evidence includes detailed metrics, risk assessments, and performance trends.
+
+5. **Structure**: The screen should have a header with the client's name and the task at hand. Below the header, a side-by-side comparison of the two funds should be visible, with key metrics and performance data. A timeline of recent performance events should be included. The decision area should be at the bottom, with a summary of the comparison and a place to input the recommendation.
+
+Given these steps, the **structure** will include:
+- A header with the client's name and task.
+- A side-by-side comparison of the two funds.
+- A timeline of performance events.
+- A decision area with a summary and recommendation input.
+
+### Components:
+- **Header**: Displays the client's name and the task.
+- **Compare**: For side-by-side comparison of the two funds.
+- **Timeline**: To show recent performance events.
+- **Card**: For the decision area with summary and recommendation input.

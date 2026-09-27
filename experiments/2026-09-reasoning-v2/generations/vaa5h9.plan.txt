@@ -1,0 +1,9 @@
+1. **Person & Session**: An operations analyst opens this screen in response to a batch alert indicating a high volume of failed payouts. They are responding to an anomaly, not performing a routine check.
+
+2. **Shape of Work**: The analyst is taking each item in turn to a decision. They must review the specific failure reason, see available remediation options, and approve or escalate each case individually until the queue is cleared.
+
+3. **Information**: The screen must display the transaction ID, amount, timestamp, and the specific error code. It needs to show the current status (e.g., "Pending Review") and potentially the last attempted retry. Values that change the next step are the error type and available actions (e.g., "Retry", "Escalate").
+
+4. **Decision & Evidence**: The analyst decides whether to retry the payment, fix a customer-side issue, or escalate to technical support. The evidence required is the clear error message, the transaction details, and the history of previous attempts. A wrong decision (e.g., retrying an impossible transaction) wastes resources or causes further issues.
+
+5. **Structure**: The screen should present a focused queue view at the top, listing failed items with clear "Action" buttons for each. Below the list, a persistent "Detail Drawer" or modal appears when an item is selected, showing full context and granular controls. A progress indicator at the top shows how many items remain. The action buttons sit directly on the list items to minimize clicks.

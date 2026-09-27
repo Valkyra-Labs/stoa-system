@@ -1,0 +1,71 @@
+import { Page, Header, Section, Card, Comparison, Metric, Delta, Chart, Tabs, Button, Status, EmptyData } from "@stoa/react";
+
+const FundA = {
+  name: "Global Growth Fund",
+  returns: 12.5,
+  risk: 7.8,
+  fees: 1.2,
+  performance: [
+    { year: 2020, return: 8.3 },
+    { year: 2021, return: 14.2 },
+    { year: 2022, return: -5.1 },
+    { year: 2023, return: 10.7 },
+  ],
+};
+
+const FundB = {
+  name: "Value Focus Fund",
+  returns: 9.8,
+  risk: 5.2,
+  fees: 0.9,
+  performance: [
+    { year: 2020, return: 6.4 },
+    { year: 2021, return: 11.5 },
+    { year: 2022, return: -3.7 },
+    { year: 2023, return: 8.9 },
+  ],
+};
+
+const FundComparison = () => (
+  <Page title="Fund Recommendation">
+    <Header title="Fund Recommendation" subtitle="Compare two funds to make an informed decision" />
+    <Section title="Fund Comparison">
+      <Comparison
+        entities={[FundA, FundB]}
+        metrics={[
+          { label: "Annual Return", value: (x) => x.returns, delta: (x, y) => x.returns - y.returns },
+          { label: "Risk Score", value: (x) => x.risk, delta: (x, y) => x.risk - y.risk },
+          { label: "Fees", value: (x) => x.fees, delta: (x, y) => x.fees - y.fees },
+        ]}
+      />
+    </Section>
+    <Section title="Performance Trends">
+      <Card title="Annual Returns">
+        <Chart
+          type="line"
+          series={[
+            {
+              name: FundA.name,
+              data: FundA.performance.map((p) => p.return),
+            },
+            {
+              name: FundB.name,
+              data: FundB.performance.map((p) => p.return),
+            },
+          ]}
+          x={FundA.performance.map((p) => p.year)}
+        />
+      </Card>
+    </Section>
+    <Section title="Recommendation">
+      <Card title="Recommendation Summary">
+        <p>
+          Based on the metrics, Fund A offers higher returns but with greater risk. Fund B provides more stable returns with lower fees.
+        </p>
+        <Button label="Finalize Recommendation" variant="primary" />
+      </Card>
+    </Section>
+  </Page>
+);
+
+export default FundComparison;

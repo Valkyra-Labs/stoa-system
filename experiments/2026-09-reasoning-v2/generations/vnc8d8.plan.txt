@@ -1,0 +1,3 @@
+**Main goal:** Help the analyst efficiently resolve failed payouts by filtering, reviewing, and taking action on each failed transaction.
+
+**Layout support:** The screen is structured to prioritize clarity and workflow. A header with a title and filter bar allows quick refinement of the failed payouts. A table displays the list of failed payouts with key details, and a sidebar provides context or additional information about a selected payout. Actions like retry, review, or escalate are grouped and accessible, enabling the analyst to resolve issues without unnecessary navigation. This layout supports a focused, task-oriented workflow, minimizing cognitive load and maximizing productivity.

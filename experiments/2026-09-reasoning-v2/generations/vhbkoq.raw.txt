@@ -1,0 +1,96 @@
+```tsx
+import { Page, Header, Sidebar, Section, Card, Metric, Status, Button, EmptyData, Tabs, Tabs as TabsComponent, Drawer } from "@stoa/react";
+
+const StudentId = "S-2024-8932";
+const StudentName = "Elias Thorne";
+const Grade = "8th";
+const ParentName = "Sarah Thorne";
+const MeetingTime = "2024-10-15T14:00";
+
+const academicMetrics = [
+  { label: "Math Avg", value: 78, delta: 5, unit: "%" },
+  { label: "Reading Avg", value: 85, delta: 2, unit: "%" },
+  { label: "Science Avg", value: 72, delta: -3, unit: "%" },
+];
+
+const behaviorEvents = [
+  { date: "2024-09-28", type: "positive", title: "Group Leadership", desc: "Led team to solve complex physics problem." },
+  { date: "2024-09-15", type: "warning", title: "Disruptive Conversation", desc: "Interrupted class discussion twice." },
+  { date: "2024-09-01", type: "positive", title: "Homework Completion", desc: "100% completion streak for 3 weeks." },
+];
+
+const talkingPoints = [
+  "Highlight the recent breakthrough in the science fair project.",
+  "Discuss the trend in math performance compared to last year.",
+  "Address the specific incident on Sept 15th to show it was an isolated event.",
+  "Ask about the student's interest in robotics clubs.",
+];
+
+export default function TeacherPrepScreen() {
+  return (
+    <Page title={`Prep for Parent Meeting: ${StudentName}`}>
+      <Header title={`Meeting with ${ParentName}`} subtitle={MeetingTime} actions={
+        <Button label="Print Summary" />
+      } />
+
+      <Section title="Quick Summary">
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "1rem" }}>
+          <Card title="Student Overview">
+            <p><strong>{StudentName}</strong> ({Grade})</p>
+            <p>Status: <Status tone="neutral" label="On Track with minor fluctuations" /></p>
+          </Card>
+          <Card title="Key Metrics">
+            {academicMetrics.map((m) => (
+              <Metric key={m.label} label={m.label} value={m.value} delta={m.delta} unit={m.unit} />
+            ))}
+          </Card>
+          <Card title="Action Items">
+            <ul>
+              <li>Prepare data for Math slump discussion.</li>
+              <li>Bring copy of Science Fair project.</li>
+              <li>Review IEP goals for 2024-25.</li>
+            </ul>
+          </Card>
+        </div>
+      </Section>
+
+      <Section title="Recent Events Timeline">
+        <Card title="Behavioral & Academic Notes">
+          {behaviorEvents.map((event) => (
+            <div key={event.date} style={{ borderBottom: "1px solid #eee", padding: "0.5rem 0" }}>
+              <div style={{ fontWeight: "bold", marginBottom: "0.25rem" }}>
+                <Status 
+                  tone={event.type === "positive" ? "success" : event.type === "warning" ? "warning" : "neutral"} 
+                  label={event.type} 
+                />
+                {event.date} • {event.title}
+              </div>
+              <p>{event.desc}</p>
+            </div>
+          ))}
+        </Card>
+      </Section>
+
+      <Section title="Discussion Guide">
+        <Card title="Talking Points">
+          {talkingPoints.map((point, index) => (
+            <div key={index} style={{ padding: "0.5rem", background: "#f9f9f9", borderRadius: "4px", marginBottom: "0.5rem" }}>
+              <span style={{ marginRight: "0.5rem", fontWeight: "bold" }}>Point {index + 1}:</span>
+              {point}
+            </div>
+          ))}
+        </Card>
+      </Section>
+
+      <Drawer title="Full Records" open={true}>
+        <Section title="Academic History">
+          <EmptyData message="Detailed grade reports are available in the secure archive." />
+        </Section>
+        <Section title="Teacher Notes">
+          <EmptyData message="Please review the 'Teacher Notes' tab in the student portal for detailed observations." />
+        </Section>
+      </Drawer>
+    </Page>
+  );
+}
+```

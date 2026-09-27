@@ -1,0 +1,11 @@
+**Main Goal**
+The screen aims to empower the teacher with a consolidated, at-a-glance view of a specific student's recent performance, behavior, and needs, ready for a productive conversation. It transforms raw data into actionable insights, reducing preparation time and minimizing anxiety by ensuring nothing is forgotten.
+
+**Layout Strategy**
+The layout prioritizes clarity and hierarchy to support this goal:
+1.  **Header & Context**: Clearly identifies the student and the upcoming meeting to set the scene immediately.
+2.  **Primary Insights**: A high-level dashboard section displays key metrics (grades, attendance, behavior trends) using cards and charts for quick comprehension.
+3.  **Detailed Evidence**: A secondary section offers a filtered, sortable table of specific incidents or observations for deeper discussion.
+4.  **Action & Preparation**: A dedicated area lists actionable items or draft talking points to guide the conversation.
+
+This structure moves from the "big picture" to specific details, ensuring the teacher enters the meeting confident and prepared.

@@ -1,0 +1,69 @@
+import { Page, Header, Sidebar, Section, Card, Tabs, Metric, Delta, Chart, DataTable, FilterBar, Button, BulkActions } from "@stoa/react";
+
+const WeeklyFinanceDashboard = () => {
+  const weeklyData = {
+    revenue: 1250000,
+    profit: 250000,
+    costTrend: [
+      { week: "Week 1", cost: 450000 },
+      { week: "Week 2", cost: 470000 },
+      { week: "Week 3", cost: 480000 },
+      { week: "Week 4", cost: 495000 },
+    ],
+    topExpenses: [
+      { category: "Marketing", amount: 180000 },
+      { category: "Operations", amount: 150000 },
+      { category: "R&D", amount: 120000 },
+      { category: "Admin", amount: 90000 },
+    ],
+    revenueTrend: [
+      { week: "Week 1", revenue: 1100000 },
+      { week: "Week 2", revenue: 1150000 },
+      { week: "Week 3", revenue: 1200000 },
+      { week: "Week 4", revenue: 1250000 },
+    ],
+  };
+
+  return (
+    <Page title="Weekly Finance Overview">
+      <Header title="Weekly Finance Report" subtitle="Monday, April 15, 2024" actions={<Button label="Refresh" variant="primary" />} />
+      <Sidebar>
+        <Section title="Quick Links">
+          <Card>
+            <ul>
+              <li><Button label="Cash Flow" variant="secondary" /></li>
+              <li><Button label="Expenses" variant="secondary" /></li>
+              <li><Button label="Forecast" variant="secondary" /></li>
+            </ul>
+          </Card>
+        </Section>
+      </Sidebar>
+      <main>
+        <Section title="Key Metrics">
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "1rem" }}>
+            <Metric label="Revenue" value={weeklyData.revenue} delta={<Delta value={125000} basis={1100000} />} unit="USD" />
+            <Metric label="Profit" value={weeklyData.profit} delta={<Delta value={25000} basis={225000} />} unit="USD" />
+            <Metric label="Cost Trend" value="Up 1.1%" />
+          </div>
+        </Section>
+        <Section title="Revenue Trend">
+          <Chart type="line" series={weeklyData.revenueTrend.map((d) => ({ x: d.week, y: d.revenue }))} x="week" y="revenue" />
+        </Section>
+        <Section title="Top Expenses">
+          <DataTable
+            columns={[{ key: "category", label: "Category" }, { key: "amount", label: "Amount (USD)" }]}
+            rows={weeklyData.topExpenses}
+            selectable
+          />
+        </Section>
+        <FilterBar filters={[{ label: "Department", options: ["Marketing", "Operations", "R&D", "Admin"] }]} />
+        <BulkActions>
+          <Button label="Export Data" variant="secondary" />
+          <Button label="View Details" variant="primary" />
+        </BulkActions>
+      </main>
+    </Page>
+  );
+};
+
+export default WeeklyFinanceDashboard;

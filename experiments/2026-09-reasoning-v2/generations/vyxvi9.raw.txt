@@ -1,0 +1,126 @@
+```tsx
+import { Page, Header, Section, Card, Metric, Delta, Status, Button, Divider, EmptyData, DataTable, FilterBar, SavedViews, Tabs, Tab, Drawer, Timeline, AuditLog } from "@stoa/react";
+
+const student = {
+  id: "12345",
+  name: "Emma Johnson",
+  grade: "8th",
+  class: "Science 8A",
+  teacher: "Mr. Thompson",
+  parent: "Sarah Johnson",
+  contact: "sarah.johnson@example.com",
+  lastMeeting: "2023-10-15",
+};
+
+const academicPerformance = {
+  math: { current: 85, previous: 80, trend: "up", unit: "%" },
+  science: { current: 78, previous: 75, trend: "flat", unit: "%" },
+  english: { current: 92, previous: 90, trend: "up", unit: "%" },
+};
+
+const behavior = {
+  attendance: { current: 95, previous: 93, trend: "up", unit: "%" },
+  discipline: { current: 2, previous: 3, trend: "down", unit: "incidents" },
+};
+
+const recentAssessments = [
+  { date: "2023-10-10", subject: "Math", score: 88, comment: "Strong understanding of algebra concepts" },
+  { date: "2023-10-05", subject: "Science", score: 75, comment: "Needs more practice with lab reports" },
+];
+
+const parentNotes = [
+  { date: "2023-10-10", author: "Mr. Thompson", content: "Emma is showing great improvement in math, but she needs to focus more on her science assignments." },
+  { date: "2023-09-25", author: "Sarah Johnson", content: "Emma has been struggling with math at home. Please provide extra support." },
+];
+
+const teacherNotes = [
+  { date: "2023-10-08", author: "Mr. Thompson", content: "Emma is participating actively in class discussions but needs to improve her time management." },
+];
+
+const meetingPreparation = {
+  agenda: ["Review of academic progress", "Discussion of behavior and attendance", "Parent-teacher collaboration", "Next steps"],
+  preparation: "Ensure all assessment reports are ready. Prepare a summary of Emma's progress. Review any parent concerns from previous meetings.",
+};
+
+export default function PrepareForParentMeeting() {
+  return (
+    <Page title="Prepare for Parent Meeting - Emma Johnson">
+      <Header title="Emma Johnson - Parent Meeting Preparation" subtitle="Grade 8 | Science 8A" actions={<Button label="Save Notes" />} />
+      <Section title="Student Overview">
+        <Card>
+          <div>
+            <h3>{student.name}</h3>
+            <p>{student.grade} | {student.class} | {student.teacher}</p>
+            <p>Parent: {student.parent} | Contact: {student.contact}</p>
+            <p>Last Meeting: {student.lastMeeting}</p>
+          </div>
+        </Card>
+      </Section>
+      <Section title="Academic Performance">
+        <Card>
+          <div>
+            <Metric label="Math" value={academicPerformance.math.current} delta={academicPerformance.math.previous} unit={academicPerformance.math.unit} />
+            <Metric label="Science" value={academicPerformance.science.current} delta={academicPerformance.science.previous} unit={academicPerformance.science.unit} />
+            <Metric label="English" value={academicPerformance.english.current} delta={academicPerformance.english.previous} unit={academicPerformance.english.unit} />
+          </div>
+        </Card>
+      </Section>
+      <Section title="Behavior and Attendance">
+        <Card>
+          <div>
+            <Metric label="Attendance" value={behavior.attendance.current} delta={behavior.attendance.previous} unit={behavior.attendance.unit} />
+            <Metric label="Discipline" value={behavior.discipline.current} delta={behavior.discipline.previous} unit={behavior.discipline.unit} />
+          </div>
+        </Card>
+      </Section>
+      <Section title="Recent Assessments">
+        <Card>
+          <DataTable
+            columns={[{ key: "date", label: "Date" }, { key: "subject", label: "Subject" }, { key: "score", label: "Score" }, { key: "comment", label: "Comment" }]}
+            rows={recentAssessments}
+          />
+        </Card>
+      </Section>
+      <Section title="Parent and Teacher Notes">
+        <Card>
+          <div>
+            <h4>Parent Notes</h4>
+            <DataTable
+              columns={[{ key: "date", label: "Date" }, { key: "author", label: "Author" }, { key: "content", label: "Content" }]}
+              rows={parentNotes}
+            />
+            <h4>Teacher Notes</h4>
+            <DataTable
+              columns={[{ key: "date", label: "Date" }, { key: "author", label: "Author" }, { key: "content", label: "Content" }]}
+              rows={teacherNotes}
+            />
+          </div>
+        </Card>
+      </Section>
+      <Section title="Meeting Preparation">
+        <Card>
+          <div>
+            <h4>Agenda</h4>
+            <ul>
+              {meetingPreparation.agenda.map((item, index) => (
+                <li key={index}>{item}</li>
+              ))}
+            </ul>
+            <h4>Preparation</h4>
+            <p>{meetingPreparation.preparation}</p>
+            <Button label="Add Note" />
+          </div>
+        </Card>
+      </Section>
+      <Section title="Next Steps">
+        <Card>
+          <div>
+            <p>Review all notes and assessments. Prepare a summary of Emma's progress. Plan to discuss any concerns with the parent.</p>
+            <Button label="Schedule Meeting" />
+          </div>
+        </Card>
+      </Section>
+    </Page>
+  );
+}
+```

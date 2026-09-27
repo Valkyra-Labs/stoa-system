@@ -1,0 +1,15 @@
+**1. Person and Session:** The finance director checks the screen weekly on Mondays to get a quick overview of the company's financial performance before meetings. No specific trigger other than the routine weekly review.
+
+**2. Shape of Work:** Getting a general picture of many related numbers, with no immediate action required on this screen. The numbers are high-level indicators across various departments.
+
+**3. Information:** Key financial metrics (revenue, expenses, profit) across different departments for the current week compared to the previous week and targets. Time frame is the current week.
+
+**4. Decision and Evidence:** No specific decision is required here; the purpose is to inform the finance director about the overall financial health. Evidence needed includes variance from targets and previous week's numbers.
+
+**5. Structure:** 
+- **Header:** Title and subtitle for the screen.
+- **Main Section:** High-level financial metrics for each department.
+- **Comparison Section:** Metrics compared to previous week and targets.
+- **Footer:** Optional summary or next steps.
+
+This structure ensures the finance director can quickly grasp the financial performance across departments and understand variances.

@@ -1,0 +1,9 @@
+1. **The person and the session**: A finance director opens this screen on Mondays to prepare for a weekly board meeting. It is a high-stakes, routine review where the cost of a wrong decision (missing a cash crunch or misjudging revenue) is significant, but the data is static enough that it can be reviewed thoroughly before acting.
+
+2. **The shape of the work**: The director needs a **general picture of many unrelated numbers** to understand the health of the business. No single transaction requires deep inspection; the value is in the aggregate trends and variances.
+
+3. **The information**: Entities include Revenue, Expenses, Cash Flow, and Profit. Measures are current week vs. prior week, vs. budget, and vs. year-ago. Values are judged against **targets** (budget) and **time** (previous periods).
+
+4. **The decision and its evidence**: The director decides which departments or lines of business need immediate attention in the meeting. They need to see **variances** (Delta), **trends** (Trend), and **status** (Status) immediately. A wrong decision here risks misallocating resources; however, since this is a weekly snapshot, the error is limited to the meeting's narrative and future planning, not an immediate system fix.
+
+5. **The structure**: The screen must prioritize **high-level metrics** at the top for quick scanning, followed by **visual trends** to spot anomalies. A **table** should list entities with key variances, sorted by impact. A **sidebar** or top bar should show **audit context** (period range) and **status** of the report. The focus is on "top-down" filtering, not deep drilling.

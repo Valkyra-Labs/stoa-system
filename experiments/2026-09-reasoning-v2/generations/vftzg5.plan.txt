@@ -1,0 +1,9 @@
+1. **The person and session:** A finance director opens this screen weekly on Monday mornings, triggered by the upcoming board meeting. It is a routine, high-stakes check requiring immediate clarity on financial health.
+
+2. **The shape of the work:** The director needs a general picture of many unrelated numbers (revenue, costs, cash) to get a quick overview. No deep drilling or individual record review is expected here; the goal is rapid scanning for anomalies or trends to present at the meeting.
+
+3. **The information:** Key entities are departments, product lines, and the company total. Measures include revenue, expenses, margins, and cash flow. Values are judged against weekly targets and month-over-month (MoM) or year-over-year (YoY) changes. Immediate action is presenting the status; further investigation happens elsewhere.
+
+4. **The decision and evidence:** The decision is to summarize the week's financial performance for the board. The director needs current values, variance from targets, and trend indicators (e.g., red/green deltas). A wrong summary could mislead the board, but the cost of missing a major variance is higher than a minor error, so accuracy is critical.
+
+5. **The structure:** The screen should prioritize high-level metrics at the top, followed by a comparative table of departments showing deviations. A sidebar or drawer for drill-downs keeps the overview clean. Progress is shown via the date context, and actions are limited to sharing or exporting the summary.

@@ -1,0 +1,60 @@
+import { Page, Header, Section, Metric, Delta, Status, Card, EmptyData, StaleData, Button, FilterBar, SavedViews, Explorer, DataTable, Comparison, Timeline, AuditLog, Trend, Chart, Tabs, Drawer, TabsItem, TabContent, Metric, Delta, Status, Card, EmptyData, StaleData, Button, FilterBar, SavedViews, Explorer, DataTable, Comparison, Timeline, AuditLog, Trend, Chart, Tabs, TabsItem, TabContent } from "@stoa/react";
+
+const WeeklyNumbersPage = () => {
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
+  const metrics = [
+    { label: "Revenue", value: 1250000, delta: 15000, basis: "previous week", unit: "USD" },
+    { label: "Expenses", value: 820000, delta: -12000, basis: "previous week", unit: "USD" },
+    { label: "Profit", value: 430000, delta: 25000, basis: "previous week", unit: "USD" },
+    { label: "Customer Acquisition Cost", value: 125, delta: -10, basis: "previous week", unit: "USD" },
+    { label: "Churn Rate", value: 5.2, delta: -0.3, basis: "previous week", unit: "%" },
+  ];
+
+  const staleData = <StaleData since="2 hours ago" />;
+
+  const auditLog = [
+    { user: "Alice Smith", action: "updated forecast", time: "2023-04-10T10:00:00Z" },
+    { user: "Bob Johnson", action: "added new revenue line item", time: "2023-04-10T09:30:00Z" },
+  ];
+
+  const timeline = [
+    { date: "2023-04-07", event: "Q1 revenue forecast approved" },
+    { date: "2023-04-08", event: "New customer acquisition campaign launched" },
+    { date: "2023-04-09", event: "System maintenance scheduled" },
+  ];
+
+  return (
+    <Page title="Weekly Finance Overview">
+      <Header title="Weekly Finance Overview" subtitle="Monday Morning Check" actions={<Button label="Refresh" />} />
+      <Section title="Key Metrics">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+          {metrics.map((metric, index) => (
+            <Metric key={index} label={metric.label} value={metric.value} delta={metric.delta} basis={metric.basis} unit={metric.unit} />
+          ))}
+        </div>
+      </Section>
+      <Section title="Recent Activity">
+        <Timeline events={timeline} />
+      </Section>
+      <Section title="Audit Log">
+        <AuditLog entries={auditLog} />
+      </Section>
+      <Section title="Data Status">
+        <Status tone="warning" label="Data is stale" />
+        <StaleData since="2 hours ago" />
+      </Section>
+      <Section title="Actions">
+        <Button label="View Full Report" onPress={() => setIsDrawerOpen(true)} />
+        <Drawer title="Full Report" open={isDrawerOpen} onClose={() => setIsDrawerOpen(false)}>
+          <Card>
+            <h2>Full Report</h2>
+            <p>This is a detailed report of the company's weekly numbers.</p>
+          </Card>
+        </Drawer>
+      </Section>
+    </Page>
+  );
+};
+
+export default WeeklyNumbersPage;

@@ -1,0 +1,93 @@
+```tsx
+import { Page, Header, Section, Card, Tabs, Drawer, Button, DataTable, FilterBar, Metric, Status, EmptyData, BulkActions } from "@stoa/react";
+
+const PAYOUTS = [
+  { id: "PY-8821", recipient: "Acme Corp", amount: 1250.00, currency: "USD", status: "failed", reason: "Insufficient Funds", date: "2023-10-24", retryCount: 0 },
+  { id: "PY-8822", recipient: "Globex Inc", amount: 450.50, currency: "USD", status: "failed", reason: "Invalid Account Number", date: "2023-10-24", retryCount: 1 },
+  { id: "PY-8823", recipient: "Stark Ind", amount: 2300.00, currency: "USD", status: "failed", reason: "Network Timeout", date: "2023-10-23", retryCount: 2 },
+  { id: "PY-8824", recipient: "Wayne Ent", amount: 89.99, currency: "USD", status: "failed", reason: "Card Declined", date: "2023-10-23", retryCount: 0 },
+  { id: "PY-8825", recipient: "Cyberdyne", amount: 15000.00, currency: "USD", status: "failed", reason: "Fraud Detection", date: "2023-10-22", retryCount: 0 },
+];
+
+const PAYOUT_DETAILS = {
+  id: "PY-8821",
+  recipient: "Acme Corp",
+  amount: 1250.00,
+  currency: "USD",
+  status: "failed",
+  reason: "Insufficient Funds",
+  date: "2023-10-24",
+  retryCount: 0,
+  errorDetails: "Gateway returned 402 Payment Required. Account balance check failed.",
+  notes: "Customer contacted. Requesting manual credit.",
+  actions: [
+    { label: "Retry", variant: "primary" },
+    { label: "Escalate", variant: "danger" },
+    { label: "Void", variant: "neutral" },
+  ],
+};
+
+export default function FailedPayoutsScreen() {
+  const [selectedId, setSelectedId] = useState<string | null>(null);
+  const selected = selectedId ? PAYOUTS.find(p => p.id === selectedId) : null;
+
+  return (
+    <Page title="Failed Payouts Resolution">
+      <Header title="Failed Payouts" subtitle="Work queue for failed transactions" />
+      
+      <Section title="Queue Overview">
+        <Card title="Failed Items">
+          <FilterBar filters={{ search: "Search by ID or recipient..." }} />
+          <BulkActions actions={["Retry Selected", "Escalate Selected"]} />
+          <DataTable 
+            columns={[
+              { key: "id", label: "ID" },
+              { key: "recipient", label: "Recipient" },
+              { key: "amount", label: "Amount" },
+              { key: "reason", label: "Reason" },
+              { key: "date", label: "Date" },
+              { key: "status", label: "Status", render: (val) => <Status tone="error" label={val} /> },
+            ]}
+            rows={PAYOUTS}
+            selectable
+            onRowSelect={setSelectedId}
+          />
+        </Card>
+      </Section>
+
+      {selected ? (
+        <Section title={`Resolve: ${selected.id}`}>
+          <Card title="Details">
+            <div className="grid-cols-2 gap-4">
+              <Metric label="Recipient" value={selected.recipient} />
+              <Metric label="Amount" value={`${selected.amount} ${selected.currency}`} />
+              <Metric label="Date" value={selected.date} />
+              <Metric label="Retry Attempts" value={selected.retryCount} />
+            </div>
+            <div className="mt-4 p-4 bg-gray-100 rounded">
+              <h3 className="font-semibold mb-2">Failure Reason</h3>
+              <p>{selected.reason}</p>
+              <p className="text-sm text-gray-600 mt-2">{selected.errorDetails}</p>
+            </div>
+          </Card>
+
+          <Drawer title="Resolution Actions" open={!!selectedId} onClose={() => setSelectedId(null)}>
+            <div className="space-y-4">
+              <p>Take action on {selected.id}:</p>
+              {selected.actions.map(action => (
+                <Button key={action.label} label={action.label} variant={action.variant} onPress={() => alert(`Action: ${action.label}`)} />
+              ))}
+            </div>
+          </Drawer>
+        </Section>
+      ) : (
+        <Section title="No Selection">
+          <Card title="Select a failed payout to resolve">
+            <EmptyData message="Choose an item from the list above to view details and take action." />
+          </Card>
+        </Section>
+      )}
+    </Page>
+  );
+}
+```

@@ -1,0 +1,27 @@
+```tsx
+import { Page, Header, Card, Metric, Trend, Chart } from "@stoa/react";
+
+export default function SchoolPerformanceOverview() {
+  return (
+    <Page title="School Performance Overview">
+      <Header title="School Performance Overview" subtitle="Term Summary" />
+      <main>
+        <section>
+          <Card title="Enrollment">
+            <Metric label="Total Students" value={1200} delta={-5} unit="students" />
+            <Trend series={[1200, 1205, 1202, 1198, 1200]} />
+          </Card>
+          <Card title="Student Performance">
+            <Metric label="Average GPA" value={3.2} delta={0.1} unit="points" />
+            <Chart type="line" series={[3.2, 3.1, 3.3, 3.4, 3.2]} x={["Jan", "Feb", "Mar", "Apr", "May"]} y="GPA" />
+          </Card>
+          <Card title="Financial Health">
+            <Metric label="Budget Surplus" value={50000} delta={-10000} unit="USD" />
+            <Trend series={[50000, 45000, 40000, 35000, 40000]} />
+          </Card>
+        </section>
+      </main>
+    </Page>
+  );
+}
+```

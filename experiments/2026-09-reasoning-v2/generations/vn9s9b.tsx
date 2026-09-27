@@ -1,0 +1,44 @@
+import { Page, Header, Sidebar, Section, Card, Tabs, Drawer } from "@stoa/react";
+
+const studentName = "Alice Johnson";
+const meetingDate = "Tomorrow, March 15, 2023";
+
+const studentMetrics = [
+  { label: "Math Grade", value: 85, unit: "%" },
+  { label: "English Grade", value: 90, unit: "%" },
+  { label: "Attendance", value: 95, unit: "%" },
+  { label: "Behavior Points", value: 10, unit: "Points" },
+];
+
+const timelineEvents = [
+  { date: "March 10, 2023", description: "Missed Math Class" },
+  { date: "March 12, 2023", description: "Awarded for Good Behavior" },
+  { date: "March 13, 2023", description: "Late for English Class" },
+];
+
+const notes = "Discuss recent improvement in English and address attendance issues.";
+
+const TeacherPreparationScreen = () => (
+  <Page title={`Meeting with Parent for ${studentName}`}>
+    <Header title={studentName} subtitle={`Meeting on ${meetingDate}`} />
+    <Section title="Student Metrics">
+      <Card title="Academic Performance">
+        {studentMetrics.map((metric) => (
+          <Metric key={metric.label} {...metric} />
+        ))}
+      </Card>
+    </Section>
+    <Section title="Timeline of Events">
+      <Card title="Significant Events">
+        <Timeline events={timelineEvents} />
+      </Card>
+    </Section>
+    <Section title="Meeting Notes">
+      <Card title="Preparation">
+        <p>{notes}</p>
+      </Card>
+    </Section>
+  </Page>
+);
+
+export default TeacherPreparationScreen;

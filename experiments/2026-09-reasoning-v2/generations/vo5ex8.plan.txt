@@ -1,0 +1,7 @@
+The **ReviewQueue** pattern and the **Evidence and actions** rule are the primary drivers here. The analyst's core task is resolving specific failed payouts one by one, requiring a sequential workflow with a clear "done/remaining" progress indicator.
+
+The **Evidence** rule dictates that the reason for the failure must be visible immediately next to the decision button, not hidden behind a click. This prevents cognitive load during the critical moment of resolution.
+
+The **Order and emphasis** rule ensures failed items needing immediate action (like manual reversal) appear first, sorted by the magnitude of the loss or urgency, rather than buried in averages of success.
+
+Finally, the **States** rule mandates that empty, partial, or stale data states (e.g., "data not yet imported") are explicitly designed, ensuring the analyst knows if the system is ready to work or if they should retry.

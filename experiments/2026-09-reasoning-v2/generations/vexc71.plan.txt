@@ -1,0 +1,12 @@
+The screen assists a financial adviser in recommending one of two investment funds to a client by comparing key metrics and performance data. The layout is divided into several sections:
+
+1. **Header**: Displays the title "Fund Comparison" and a brief subtitle or description.
+2. **Sidebar**: Contains navigation links to other important sections or a list of available funds.
+3. **Main Content Area**:
+   - **Top Section**: A brief introduction or summary of the comparison process.
+   - **Fund Comparison**: Side-by-side display of the two funds with key metrics (e.g., returns, risk, fees) and visual comparisons (charts).
+   - **Decision Support**: A section with qualitative factors and advice for the adviser to consider.
+   - **Recommendation Form**: A simple form where the adviser can select a fund and provide a brief rationale.
+4. **Footer**: Optional, containing additional links or legal disclaimers.
+
+This layout ensures the adviser can easily compare the funds and make an informed decision.

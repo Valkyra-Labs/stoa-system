@@ -1,0 +1,5 @@
+The most shaping rule is **Evidence and actions**: "Put the evidence for a decision next to the decision." A parent meeting requires immediate justification for any intervention; the teacher cannot separate the "problem" from the "proof" (e.g., specific incidents, data trends, or feedback).
+
+The second critical rule is **Order and emphasis**: "Put the exceptions and the items needing action before the averages." The teacher must prioritize students requiring urgent intervention or difficult conversations over those who are stable.
+
+Finally, **Evidence and actions** dictates the layout of the student details: "Do not hide it behind hover." The teacher needs to see the context (grades, behavior logs, notes) instantly while reviewing a student, supporting the **Inspector** pattern where primary details are immediately accessible without navigating away to find the reasons for a decision. These rules ensure the screen acts as a decision-support tool rather than just a data repository.

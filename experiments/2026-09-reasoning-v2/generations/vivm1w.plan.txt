@@ -1,0 +1,9 @@
+The screen is designed for a teacher to prepare for a parent-teacher meeting about a specific student. It provides a comprehensive overview of the student's academic performance, behavior, and any relevant notes or actions required before the meeting. The layout is divided into several sections:
+
+1. **Student Information**: Displays the student's basic details.
+2. **Academic Performance**: Shows the student's grades and progress in different subjects.
+3. **Behavioral Record**: Lists any behavioral incidents or commendations.
+4. **Preparation Notes**: Space for the teacher to add personal notes and reminders.
+5. **Action Items**: Lists tasks the teacher needs to complete before the meeting.
+
+This layout ensures the teacher has all necessary information at hand to prepare effectively for the meeting.

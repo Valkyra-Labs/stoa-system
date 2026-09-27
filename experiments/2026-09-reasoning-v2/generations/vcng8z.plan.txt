@@ -1,0 +1,7 @@
+The screen serves as a quick glance dashboard for the finance director to review key financial metrics and charts every Monday morning. It provides an overview of the company's financial health over the past week, highlighting trends, comparisons, and any exceptions that require immediate attention. The layout consists of a header with the title "Weekly Financial Overview," followed by a sidebar for navigation and a main section divided into three parts:
+
+1. **Metrics Section**: Displays key financial metrics such as revenue, expenses, profit, and cash flow.
+2. **Charts Section**: Includes line and bar charts showing trends and comparisons of financial data over the past week.
+3. **Exceptions Section**: Lists any financial transactions or metrics that deviate from expected norms, requiring immediate review.
+
+This layout ensures the finance director can quickly assess the company's financial status and identify any issues that need addressing before meetings.

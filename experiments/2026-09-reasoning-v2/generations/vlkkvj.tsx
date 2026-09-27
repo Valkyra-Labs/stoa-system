@@ -1,0 +1,56 @@
+import { Page, Header, Sidebar, Section, Card, Tabs, Metric, Delta, Chart, DataTable, Comparison, Timeline, AuditLog, Status, EmptyData, FilterBar, Button, BulkActions } from "@stoa/react";
+
+const WeeklyFinanceOverview = () => {
+  return (
+    <Page title="Weekly Finance Overview">
+      <Header title="Weekly Financial Summary" subtitle="Monday, April 10, 2023" actions={<Button label="Refresh" variant="primary" />} />
+      <div style={{ display: "grid", gridTemplateColumns: "250px 1fr", gap: "20px" }}>
+        <Sidebar>
+          <Section title="Quick Links">
+            <Card>
+              <p>Reports</p>
+              <ul>
+                <li><Button label="Revenue Report" /></li>
+                <li><Button label="Expense Report" /></li>
+                <li><Button label="Cash Flow Report" /></li>
+              </ul>
+            </Card>
+            <Card>
+              <p>Filters</p>
+              <FilterBar filters={["All", "Region A", "Region B", "Region C"]} />
+            </Card>
+          </Section>
+        </Sidebar>
+        <main>
+          <Section title="Key Metrics">
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "20px" }}>
+              <Card>
+                <Metric label="Revenue" value="$12.5M" delta={+2.3} unit="USD" />
+              </Card>
+              <Card>
+                <Metric label="Expenses" value="$8.2M" delta={-1.5} unit="USD" />
+              </Card>
+              <Card>
+                <Metric label="Net Profit" value="$4.3M" delta={+3.8} unit="USD" />
+              </Card>
+            </div>
+          </Section>
+          <Section title="Performance Trends">
+            <Chart type="line" series={[{ name: "Revenue", data: [10, 11, 12, 13, 14, 15, 16] }]} />
+          </Section>
+          <Section title="Department Comparison">
+            <Comparison entities={["Sales", "Marketing", "Operations"]} metrics={[{ label: "Revenue", value: [12, 8, 5] }, { label: "Expenses", value: [3, 2, 4] }]} />
+          </Section>
+          <Section title="Recent Activity">
+            <Timeline events={["Revenue increased by 2.3%", "Expense decreased by 1.5%", "Net profit up 3.8%"]} />
+          </Section>
+          <Section title="Audit Trail">
+            <AuditLog entries={["User A approved budget", "User B updated forecast", "System auto-closed report"]} />
+          </Section>
+        </main>
+      </div>
+    </Page>
+  );
+};
+
+export default WeeklyFinanceOverview;

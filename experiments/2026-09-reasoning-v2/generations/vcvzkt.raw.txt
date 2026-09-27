@@ -1,0 +1,47 @@
+```tsx
+import { Page, Header, Sidebar, Section, Card, Metric, Delta, Chart, Comparison, Status, Button } from "@stoa/react";
+
+export default function FundComparison() {
+  return (
+    <Page title="Fund Comparison">
+      <Header title="Client Smith" subtitle="Recommendation" actions={<Button label="Save" />} />
+      <main>
+        <Sidebar>
+          <Card title="Navigation">
+            <ul>
+              <li>Fund A</li>
+              <li>Fund B</li>
+              <li>Summary</li>
+            </ul>
+          </Card>
+        </Sidebar>
+        <section>
+          <Section title="Key Metrics">
+            <Comparison
+              entities={[
+                { id: "fund-a", label: "Fund A" },
+                { id: "fund-b", label: "Fund B" },
+              ]}
+              metrics={[
+                { label: "1-Year Return", field: "oneYearReturn" },
+                { label: "Risk Rating", field: "riskRating" },
+                { label: "Expense Ratio", field: "expenseRatio" },
+              ]}
+            />
+          </Section>
+          <Section title="Performance Charts">
+            <Chart type="line" series={[{ id: "fund-a", label: "Fund A", data: [{ x: "2022-01-01", y: 100 }, { x: "2023-01-01", y: 120 }] }]} x="date" y="value" />
+            <Chart type="line" series={[{ id: "fund-b", label: "Fund B", data: [{ x: "2022-01-01", y: 95 }, { x: "2023-01-01", y: 115 }] }]} x="date" y="value" />
+          </Section>
+          <Section title="Summary">
+            <p>
+              Fund A has a higher one-year return but slightly higher risk and expense ratio compared to Fund B. Fund B offers a better risk-adjusted return and lower fees.
+            </p>
+            <Status tone="positive" label="Recommend Fund B" />
+          </Section>
+        </section>
+      </main>
+    </Page>
+  );
+}
+```

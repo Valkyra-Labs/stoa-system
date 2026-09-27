@@ -1,0 +1,5 @@
+The most critical rule shaping this screen is **"Evidence and actions"**. Since the analyst must resolve failed payouts, they need immediate, visible context for every failure (the reason, history, and source) directly adjacent to the decision button. Hiding evidence behind hover states violates the requirement to state the reason next to the decision.
+
+The second shaping rule is **"Working with lists"**. The screen must support bulk resolution for common failures while allowing deep inspection for complex ones. This dictates using an `Explorer` pattern where filters persist, bulk actions are available for rows sharing a failure reason, and an `Inspector` is accessible without losing the list context.
+
+Finally, **"Order and emphasis"** dictates sorting the list by the magnitude of impact or recency (largest change/oldest failures first) and placing items needing manual intervention (e.g., customer contact) before automated retries. The layout must avoid decorative KPI cards, focusing purely on the list of failures, their evidence, and the available resolution actions.

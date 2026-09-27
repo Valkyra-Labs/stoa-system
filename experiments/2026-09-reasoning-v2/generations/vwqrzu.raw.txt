@@ -1,0 +1,66 @@
+```tsx
+import { Page, Header, Section, Card, Tabs, Metric, Delta, Comparison, Timeline, FilterBar, Drawer, Button, Status } from "@stoa/react";
+
+const portfolioAssets = [
+  { id: "ASSET1", name: "Tech Fund", value: 1500000, change: 25000, delta: 1.67, reason: "Strong Q4 earnings report" },
+  { id: "ASSET2", name: "Energy Sector", value: 980000, change: -15000, delta: -1.53, reason: "Regulatory changes in oil production" },
+  { id: "ASSET3", name: "Global Bonds", value: 1250000, change: 0, delta: 0, reason: "No significant news" },
+  { id: "ASSET4", name: "Emerging Markets", value: 670000, change: -23000, delta: -3.4, reason: "Political instability in key regions" },
+];
+
+const events = [
+  { id: "EVENT1", time: "2023-10-05 09:15", description: "Tech Fund: Strong Q4 earnings report released" },
+  { id: "EVENT2", time: "2023-10-05 08:45", description: "Energy Sector: Regulatory changes in oil production announced" },
+  { id: "EVENT3", time: "2023-10-05 11:30", description: "Emerging Markets: Political instability reported in key regions" },
+];
+
+const filters = [
+  { id: "ALL", label: "All Assets" },
+  { id: "GAINS", label: "Positive Changes" },
+  { id: "LOSSES", label: "Negative Changes" },
+];
+
+const drawerContent = (
+  <Card title="News & Analysis">
+    <p>Read more about the factors affecting your portfolio. Stay informed with the latest market insights.</p>
+    <Button label="View Full Report" variant="primary" />
+  </Card>
+);
+
+export default function PortfolioChanges() {
+  return (
+    <Page title="Portfolio Changes Since Yesterday">
+      <Header
+        title="Portfolio Changes"
+        subtitle="Overview of assets that have moved in value since yesterday"
+        actions={
+          <FilterBar filters={filters} />
+        }
+      />
+      <Section title="Top Changes">
+        <Comparison
+          entities={portfolioAssets}
+          metrics={[
+            { label: "Value", value: (a) => a.value },
+            { label: "Change", value: (a) => a.change },
+            { label: "Delta", value: (a) => a.delta },
+            { label: "Reason", value: (a) => a.reason },
+          ]}
+        />
+      </Section>
+      <Section title="Change Timeline">
+        <Timeline events={events} />
+      </Section>
+      <Section title="Additional Insights">
+        <Card title="Portfolio Status">
+          <Metric label="Total Value" value={4400000} unit="USD" />
+          <Metric label="Change" value={25000} delta={1.67} unit="USD" />
+          <Status tone="success" label="Portfolio in healthy range" />
+        </Card>
+        <Button label="Show More Details" variant="secondary" />
+      </Section>
+      <Drawer title="News & Analysis" open={false} children={drawerContent} />
+    </Page>
+  );
+}
+```

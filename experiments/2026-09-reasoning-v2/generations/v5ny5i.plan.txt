@@ -1,0 +1,9 @@
+1. **Person & Session**: The portfolio manager is a routine early-morning check. They open the screen proactively to detect market shifts or portfolio drift, acting as the primary decision-maker before trading decisions are made elsewhere.
+
+2. **Shape of Work**: This is scanning a large collection for deviations. The manager needs to quickly identify which assets moved significantly since yesterday and understand the *why* to decide if action is needed. They do not act on this screen directly but use this screen to inform actions in a trading system.
+
+3. **Information**: Entities are assets/positions; measures are price change, volume change, and fundamental metrics (e.g., earnings surprise). Values are judged against yesterday's close and a volatility threshold. Movement changes the next step (review or ignore); background data includes static portfolio weights.
+
+4. **Decision & Evidence**: The decision is "investigate" vs. "ignore." Evidence required includes the magnitude of change, the specific trigger (e.g., news event, volume spike), and data freshness. A wrong decision (ignoring a major move) costs missed opportunity or risk; a wrong investigation costs time but is reversible.
+
+5. **Structure**: A top header shows the summary state (overall portfolio drift). A central region uses a list or grid to surface top movers, with a "drill-down" or side panel for context (news, volume). A bottom section provides quick audit trails (what happened before). Progress is implicit (current date). Actions sit as inline buttons on the top movers.

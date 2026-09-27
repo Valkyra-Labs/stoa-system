@@ -1,0 +1,66 @@
+```tsx
+import { Page, Header, Section, Card, Tabs, Metric, Delta, Comparison, Button } from "@stoa/react";
+
+const FundA = {
+  name: "Fund Alpha",
+  returns: { value: 8.2, delta: 1.5, basis: 7.7, unit: "%" },
+  risk: { value: 4.8, delta: -0.3, basis: 5.1, unit: "sigma" },
+  fees: { value: 1.2, delta: 0, basis: 1.2, unit: "%" },
+  performance: [
+    { year: 2020, return: 6.8 },
+    { year: 2021, return: 9.1 },
+    { year: 2022, return: 7.5 },
+    { year: 2023, return: 8.9 },
+  ],
+};
+
+const FundB = {
+  name: "Fund Beta",
+  returns: { value: 7.9, delta: 0.8, basis: 7.1, unit: "%" },
+  risk: { value: 5.3, delta: 0.5, basis: 4.8, unit: "sigma" },
+  fees: { value: 1.5, delta: 0.3, basis: 1.2, unit: "%" },
+  performance: [
+    { year: 2020, return: 6.5 },
+    { year: 2021, return: 8.7 },
+    { year: 2022, return: 7.2 },
+    { year: 2023, return: 8.4 },
+  ],
+};
+
+export default function FundComparison() {
+  return (
+    <Page title="Fund Recommendation">
+      <Header
+        title="Fund Comparison"
+        subtitle="Choose the best fund for your client"
+        actions={
+          <Button label="Recommend" variant="primary" />
+        }
+      />
+      <Section title="Fund Overview">
+        <Comparison
+          entities={[FundA, FundB]}
+          metrics={[
+            { label: "Annual Return", value: (f) => f.returns.value },
+            { label: "Risk (sigma)", value: (f) => f.risk.value },
+            { label: "Fees (%)", value: (f) => f.fees.value },
+          ]}
+        />
+      </Section>
+      <Section title="Performance Trends">
+        <Tabs
+          items={[
+            { id: "2020-2023", label: "2020–2023", content: <Card title="Performance Over Time">{/* Placeholder for chart or table */}</Card> },
+            { id: "annual", label: "Annual Returns", content: <Card title="Annual Returns">{/* Placeholder for chart or table */}</Card> },
+          ]}
+        />
+      </Section>
+      <Section title="Recommendation">
+        <Card title="Recommendation Summary">
+          <p>Select the fund that best matches your client's risk tolerance and investment goals.</p>
+        </Card>
+      </Section>
+    </Page>
+  );
+}
+```

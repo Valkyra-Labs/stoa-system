@@ -1,0 +1,11 @@
+**1. User and Session:** A financial adviser opens this screen to recommend one of two funds to a client based on recent performance and suitability. The adviser uses this screen occasionally, prompted by a client's request or a periodic review.
+
+**2. Shape of Work:** The adviser compares two funds side by side, focusing on their performance metrics and risk factors to make a well-informed decision. The decision is made on this screen.
+
+**3. Information:** Both funds' historical performance metrics (returns, volatility, risk-adjusted returns) and recent trends are crucial. Each metric should be compared against a benchmark or the other fund.
+
+**4. Decision and Evidence:** The adviser decides which fund to recommend based on performance metrics and risk-adjustment factors. The decision is supported by detailed metrics, trend analysis, and a comparative view of both funds.
+
+**5. Structure:** The screen should display two funds side by side, with detailed metrics and trend analysis visible. A summary of key performance indicators and risk factors should be prominent. A decision area allows the adviser to choose and justify their recommendation.
+
+**Components:** Use the `Compare` pattern to display both funds side by side with shared metrics and evidence. Include `Metric` and `Trend` components for performance data and a `Button` for making the final recommendation.

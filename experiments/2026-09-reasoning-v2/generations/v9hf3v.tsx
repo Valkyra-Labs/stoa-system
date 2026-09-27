@@ -1,0 +1,81 @@
+import { Page, Header, Sidebar, Section, Card, Metric, Delta, Chart, DataTable, Tabs, TabsItem, TabsContent, Button, FilterBar, SavedViews, Status, EmptyData } from "@stoa/react";
+
+const SchoolDashboard = () => {
+  return (
+    <Page title="School Performance Dashboard">
+      <Header title="School Performance Overview" subtitle="Presented to the Board" />
+      <Sidebar>
+        <FilterBar>
+          <Button variant="secondary">Reset Filters</Button>
+          <Button variant="primary">Save View</Button>
+        </FilterBar>
+        <SavedViews views={["Last Month", "Last Quarter", "Annual"]} />
+      </Sidebar>
+      <main>
+        <Section title="Key Metrics">
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "20px" }}>
+            <Card>
+              <Metric label="Students Enrolled" value="825" unit="students" />
+              <Delta value="+15" basis="785" />
+            </Card>
+            <Card>
+              <Metric label="Average Test Scores" value="82.4" unit="%" />
+              <Delta value="+3.2" basis="79.2" />
+            </Card>
+            <Card>
+              <Metric label="Staff Efficiency" value="92%" unit="%" />
+              <Delta value="-1.5" basis="93.5" />
+            </Card>
+          </div>
+        </Section>
+        <Section title="Performance Trends">
+          <Card>
+            <Chart type="line" series={[{ name: "Math", data: [75, 80, 82, 85, 88] }, { name: "Reading", data: [70, 72, 74, 76, 78] }]} />
+          </Card>
+        </Section>
+        <Section title="Budget and Expenditures">
+          <Card>
+            <Chart type="bar" series={[{ name: "Operating", data: [120000] }, { name: "Capital", data: [80000] }]} />
+          </Card>
+        </Section>
+        <Section title="Safety and Compliance">
+          <Card>
+            <DataTable
+              columns={[{ key: "date", label: "Date" }, { key: "incident", label: "Incident" }, { key: "resolved", label: "Resolved" }]}
+              rows={[
+                { date: "2023-09-15", incident: "Falls in Hallway", resolved: "Yes" },
+                { date: "2023-09-20", incident: "Broken Window", resolved: "No" },
+                { date: "2023-09-25", incident: "Fire Alarm", resolved: "Yes" }
+              ]}
+              selectable
+            />
+          </Card>
+        </Section>
+        <Section title="Staff Performance">
+          <Tabs>
+            <TabsItem id="teachers">Teachers</TabsItem>
+            <TabsItem id="support-staff">Support Staff</TabsItem>
+            <TabsContent id="teachers">
+              <Card>
+                <DataTable
+                  columns={[{ key: "name", label: "Name" }, { key: "students", label: "Students" }, { key: "rating", label: "Rating" }]}
+                  rows={[
+                    { name: "Jane Smith", students: "35", rating: "4.5" },
+                    { name: "John Doe", students: "28", rating: "4.2" },
+                    { name: "Alice Johnson", students: "30", rating: "4.7" }
+                  ]}
+                />
+              </Card>
+            </TabsContent>
+            <TabsContent id="support-staff">
+              <Card>
+                <DataTable
+                  columns={[{ key: "name", label: "Name" }, { key: "role", label: "Role" }, { key: "hours", label: "Hours" }]}
+                  rows={[
+                    { name: "Mike Brown", role: "Custodian", hours: "40" },
+                    { name: "Sarah Lee", role: "Librarian", hours: "35" },
+                    { name: "David Kim", role: "Security", hours: "45" }
+                  ]}
+                />
+              </Card>
+            </Tabs

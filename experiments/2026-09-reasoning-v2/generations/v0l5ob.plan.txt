@@ -1,0 +1,9 @@
+1. The analyst is a payments operations professional who checks failed payouts regularly. They open this screen to resolve issues quickly, often in response to system alerts or customer complaints.
+
+2. The shape of the work is taking each item in turn to a decision, until none are left. The analyst reviews each failed payout individually to determine the cause and take corrective action.
+
+3. The entities are failed payout records, with metrics like payout amount, error code, and timestamp. Each value is judged against a target (successful payout) and historical data. The analyst needs to see the error context, payout history, and resolution status.
+
+4. The analyst decides whether to retry, investigate, or escalate a payout. They need to see the error context, payout history, and resolution status to make informed decisions. Incorrect decisions could lead to further failures or customer dissatisfaction.
+
+5. The screen should start with a list of failed payouts, allowing the analyst to scan for anomalies. Each payout should have a detail view with error context and resolution options. A progress tracker or queue system would show how many payouts remain. The resolution actions should be prominently placed for quick decision-making.

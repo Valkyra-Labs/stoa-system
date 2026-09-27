@@ -1,0 +1,9 @@
+The morning screen for a portfolio manager provides an overview of significant changes in their investment portfolio since the previous day. It highlights key performance metrics and allows the manager to dive into detailed analysis for any unusual movements. The layout is divided into three main sections:
+
+1. **Summary Metrics**: A quick glance at the overall portfolio performance with key metrics like total return, exposure, and risk.
+
+2. **Top Movers**: A list of the most impactful changes in individual assets or sectors, showing the magnitude and direction of the changes.
+
+3. **Detailed Analysis**: For selected items from the top movers, this section provides charts, financial news, and other contextual information to help understand the reasons behind the movements.
+
+This layout ensures the portfolio manager can efficiently assess the state of their portfolio and take informed actions if necessary.

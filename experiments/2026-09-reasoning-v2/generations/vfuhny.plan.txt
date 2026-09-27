@@ -1,0 +1,11 @@
+1. **Session Context**: The portfolio manager opens their book daily in the morning to review performance changes since the previous day. They are looking for significant movements that require further analysis or action.
+
+2. **Shape of the Work**: The primary task is to scan a large collection of assets for significant deviations from expected performance. The focus is on identifying outliers and understanding the reasons behind their movement.
+
+3. **Information**: The screen must display each asset's performance metrics (e.g., price, volume, volatility) since the previous day. Comparative measures include the previous day’s performance and any set targets or thresholds.
+
+4. **Decision and Evidence**: The decision involves understanding why specific assets moved significantly and determining if further action is necessary. Evidence includes detailed performance data, historical trends, and any relevant news or events.
+
+5. **Structure**: The screen should have a top-level summary of overall portfolio performance, followed by a detailed list of assets with significant movements. Each asset should have a section for detailed analysis and supporting evidence. The structure should prioritize quick scanning and easy access to detailed information.
+
+6. **Components**: Use a combination of `Page`, `Header`, `Section`, `Card`, `Comparison`, `Chart`, and `DataTable` to present the data. A `Comparison` component can show side-by-side metrics for each asset, while a `Chart` component can display historical trends. A `DataTable` can list assets with significant movements, and `Card` components can provide detailed analysis for each asset.

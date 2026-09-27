@@ -1,0 +1,5 @@
+### Main Goal and Layout Strategy
+
+The primary goal is to enable a financial adviser to make a rapid, data-driven decision between two funds by presenting a clear, side-by-side comparison. The layout prioritizes the decision itself by placing the two funds immediately adjacent in a `Compare` pattern, ensuring metrics are aligned for instant visual scanning.
+
+A top `Header` identifies the task and client context. Below this, a `Section` houses the core comparison: a `Comparison` component displaying key financial metrics (e.g., returns, risk, fees) for both funds, allowing the adviser to spot winners or outliers at a glance. Supporting details, such as a `Timeline` of recent performance and an `AuditLog` of the adviser's history with these funds, reside in a secondary `Section` below the primary decision area. This hierarchy ensures the critical choice is never obscured by data, while secondary context remains accessible for verification.

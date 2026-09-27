@@ -1,0 +1,100 @@
+import { Page, Header, Section, Card, Metric, Delta, Status, Button, EmptyData } from "@stoa/react";
+
+const StudentData = {
+  name: "Emma Johnson",
+  grade: "6th",
+  class: "Blue Class",
+  teacher: "Mr. Thompson",
+  attendance: {
+    totalDays: 180,
+    daysPresent: 172,
+    daysAbsent: 8,
+    daysLate: 0,
+  },
+  academicPerformance: {
+    math: { score: 85, trend: "stable", target: 90 },
+    english: { score: 78, trend: "declining", target: 85 },
+    science: { score: 92, trend: "improving", target: 95 },
+  },
+  behavior: {
+    incidents: 2,
+    notes: [
+      "Helped a peer during a science experiment",
+      "Talked out of turn during English lesson",
+    ],
+  },
+  recentNotes: [
+    "Emma showed great creativity in her science project.",
+    "She needs to focus more during group work.",
+  ],
+};
+
+export default function ParentTeacherConferencePrep() {
+  return (
+    <Page title="Parent-Teacher Conference Prep - Emma Johnson">
+      <Header title="Emma Johnson" subtitle="6th Grade - Blue Class" actions={<Button label="Save Notes" />} />
+      <Section title="Student Overview">
+        <Card title="Basic Info">
+          <p><strong>Grade:</strong> {StudentData.grade}</p>
+          <p><strong>Class:</strong> {StudentData.class}</p>
+          <p><strong>Teacher:</strong> {StudentData.teacher}</p>
+        </Card>
+      </Section>
+      <Section title="Academic Performance">
+        <Card title="Math">
+          <Metric label="Score" value={StudentData.academicPerformance.math.score} unit="%" />
+          <Delta value={StudentData.academicPerformance.math.trend} />
+        </Card>
+        <Card title="English">
+          <Metric label="Score" value={StudentData.academicPerformance.english.score} unit="%" />
+          <Delta value={StudentData.academicPerformance.english.trend} />
+        </Card>
+        <Card title="Science">
+          <Metric label="Score" value={StudentData.academicPerformance.science.score} unit="%" />
+          <Delta value={StudentData.academicPerformance.science.trend} />
+        </Card>
+      </Section>
+      <Section title="Behavior and Attendance">
+        <Card title="Attendance">
+          <Metric label="Days Present" value={StudentData.attendance.daysPresent} />
+          <Metric label="Days Absent" value={StudentData.attendance.daysAbsent} />
+          <Metric label="Days Late" value={StudentData.attendance.daysLate} />
+        </Card>
+        <Card title="Behavior Notes">
+          <ul>
+            {StudentData.behavior.notes.map((note, index) => (
+              <li key={index}>{note}</li>
+            ))}
+          </ul>
+        </Card>
+      </Section>
+      <Section title="Recent Notes">
+        <Card title="Teacher Notes">
+          <ul>
+            {StudentData.recentNotes.map((note, index) => (
+              <li key={index}>{note}</li>
+            ))}
+          </ul>
+        </Card>
+      </Section>
+      <Section title="Discussion Points">
+        <Card title="Key Topics">
+          <ul>
+            <li>Discuss Emma's academic progress and areas for improvement.</li>
+            <li>Review behavior incidents and strategies for positive reinforcement.</li>
+            <li>Set goals for the upcoming term and outline support plans.</li>
+          </ul>
+        </Card>
+      </Section>
+      <Section title="Next Steps">
+        <Card title="Action Items">
+          <ul>
+            <li>Prepare a summary of Emma's performance and behavior.</li>
+            <li>Review any recent assessments or observations.</li>
+            <li>Plan follow-up actions post-conference.</li>
+          </ul>
+        </Card>
+      </Section>
+    </Page>
+  );
+}

@@ -1,0 +1,93 @@
+import { Page, Header, Sidebar, Section, Card, Metric, DataTable, Status, Button, EmptyData } from "@stoa/react";
+
+const PortfolioMorningView = () => {
+  const metrics = [
+    { label: "Net Value Change", value: "+$1.2M", delta: 12.5, unit: "USD", tone: "success" },
+    { label: "Total P&L", value: "+$485k", delta: 4.2, unit: "USD", tone: "success" },
+    { label: "Volatility Index", value: "18.4", delta: -2.1, unit: "%", tone: "neutral" },
+  ];
+
+  const positions = [
+    { symbol: "SPY", name: "S&P 500 ETF", change: 1.2, changeType: "gain", volume: "2.4M", lastPrice: 445.20 },
+    { symbol: "GLD", name: "Gold ETF", change: -0.5, changeType: "loss", volume: "850K", lastPrice: 185.10 },
+    { symbol: "TSLA", name: "Tesla Inc", change: 5.8, changeType: "gain", volume: "12M", lastPrice: 240.50 },
+    { symbol: "NVDA", name: "Nvidia Corp", change: 2.1, changeType: "gain", volume: "5M", lastPrice: 890.00 },
+    { symbol: "AMD", name: "AMD Inc", change: -1.5, changeType: "loss", volume: "4M", lastPrice: 150.25 },
+    { symbol: "AAPL", name: "Apple Inc", change: 0.3, changeType: "gain", volume: "3M", lastPrice: 180.00 },
+  ];
+
+  const auditEvents = [
+    { time: "09:15", action: "Market Open", entity: "All", detail: "Positive opening across tech sector" },
+    { time: "09:30", action: "Fed Comment", entity: "NVDA", detail: "Positive sentiment on AI chip demand" },
+    { time: "10:15", action: "Price Update", entity: "GLD", detail: "Gold hit resistance at $185.50" },
+    { time: "11:00", action: "Rebalance", entity: "SPY", detail: "Automated rebalancing due to drift" },
+  ];
+
+  return (
+    <Page title="Morning Portfolio Review">
+      <Header title="Portfolio Overview" subtitle="Daily Movement & Context" />
+      <Sidebar>
+        <nav>
+          <a href="#" className="active">Today's Movement</a>
+          <a href="#">Deep Dive</a>
+          <a href="#">Risk Metrics</a>
+          <a href="#">Alerts</a>
+        </nav>
+      </Sidebar>
+      <main>
+        <Section title="Key Performance Indicators">
+          <div className="metrics-grid">
+            {metrics.map((m) => (
+              <Card key={m.label} title={m.label}>
+                <Metric label="Change" value={m.value} delta={m.delta} unit={m.unit} />
+                <Status tone={m.tone} label={m.delta > 0 ? "Positive Momentum" : "Cautious Watch"} />
+              </Card>
+            ))}
+          </div>
+        </Section>
+
+        <Section title="Positions with Significant Movement">
+          <Card title="Daily Changes">
+            <DataTable
+              columns={[
+                { key: "symbol", label: "Symbol" },
+                { key: "name", label: "Name" },
+                { key: "change", label: "Change %" },
+                { key: "volume", label: "Volume" },
+                { key: "price", label: "Last Price" },
+              ]}
+              rows={positions}
+              selectable
+              onRowSelect={(row) => console.log("Selected:", row)}
+            />
+          </Card>
+        </Section>
+
+        <Section title="Context & Drivers">
+          <Card title="Recent Market Events">
+            <DataTable
+              columns={[
+                { key: "time", label: "Time" },
+                { key: "action", label: "Event" },
+                { key: "entity", label: "Entity" },
+                { key: "detail", label: "Detail" },
+              ]}
+              rows={auditEvents}
+              stickyFirstColumn
+            />
+          </Card>
+        </Section>
+
+        <Section title="Quick Actions">
+          <div className="actions">
+            <Button label="Generate Daily Report" variant="primary" />
+            <Button label="Rebalance Portfolio" variant="secondary" />
+            <Button label="Review Risk Factors" variant="neutral" />
+          </div>
+        </Section>
+      </main>
+    </Page>
+  );
+};
+
+export default PortfolioMorningView;

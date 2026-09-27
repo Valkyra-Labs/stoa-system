@@ -1,0 +1,80 @@
+import { Page, Header, Section, Card, Metric, Delta, Trend, Chart, DataTable, FilterBar, Button, Tabs, Sidebar, Drawer, Status, EmptyData } from "@stoa/react";
+
+const WeeklyFinanceOverview = () => {
+  const weeklyMetrics = [
+    { label: "Revenue", value: 1250000, delta: 12000, unit: "USD" },
+    { label: "Expenses", value: 980000, delta: -15000, unit: "USD" },
+    { label: "Net Profit", value: 270000, delta: 8000, unit: "USD" },
+    { label: "Cash Flow", value: 320000, delta: 5000, unit: "USD" },
+  ];
+
+  const trends = [
+    { label: "Revenue Growth", value: 8.5, trend: "up" },
+    { label: "Expense Control", value: -3.2, trend: "down" },
+    { label: "Profit Margin", value: 2.1, trend: "up" },
+  ];
+
+  const departments = [
+    { name: "Sales", revenue: 650000, expenses: 320000, profit: 330000 },
+    { name: "Marketing", revenue: 400000, expenses: 250000, profit: 150000 },
+    { name: "Operations", revenue: 200000, expenses: 180000, profit: 20000 },
+  ];
+
+  const anomalies = [
+    { date: "2023-04-12", description: "Unusual spike in marketing spend" },
+    { date: "2023-04-15", description: "Sudden drop in sales in Asia" },
+  ];
+
+  return (
+    <Page title="Weekly Finance Overview">
+      <Header title="Weekly Finance Overview" subtitle="Monday Morning Check" actions={<Button label="Refresh" variant="secondary" />} />
+      <Section title="Key Metrics">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          {weeklyMetrics.map((metric, index) => (
+            <Card key={index} title={metric.label}>
+              <Metric value={metric.value} delta={metric.delta} unit={metric.unit} />
+            </Card>
+          ))}
+        </div>
+      </Section>
+      <Section title="Trends">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {trends.map((trend, index) => (
+            <Card key={index} title={trend.label}>
+              <Trend value={trend.value} trend={trend.trend} />
+            </Card>
+          ))}
+        </div>
+      </Section>
+      <Section title="Department Performance">
+        <DataTable
+          columns={[
+            { key: "name", label: "Department" },
+            { key: "revenue", label: "Revenue (USD)" },
+            { key: "expenses", label: "Expenses (USD)" },
+            { key: "profit", label: "Profit (USD)" },
+          ]}
+          rows={departments}
+          selectable
+        />
+      </Section>
+      <Section title="Anomalies">
+        <DataTable
+          columns={[
+            { key: "date", label: "Date" },
+            { key: "description", label: "Description" },
+          ]}
+          rows={anomalies}
+        />
+      </Section>
+      <Sidebar>
+        <Card title="Quick Actions">
+          <Button label="View Full Report" variant="primary" />
+          <Button label="Export Data" variant="secondary" />
+        </Card>
+      </Sidebar>
+    </Page>
+  );
+};
+
+export default WeeklyFinanceOverview;
