@@ -1,0 +1,22 @@
+{
+  "v0aqah": {"features": [0,0,0,0,0,0,1], "note": "F7 counted from four Metric values in two cards (Enrollment, Funding) at the top; the Math vs English Comparison is one section of four, so not main content for F5; Metric is used but not imported, so the page may fail to render."},
+  "v0xirl": {"features": [0,0,0,0,1,0,0], "note": "Comparison of two funds on shared tabbed metrics is the whole page; Metric and Chart are used but not imported, so the page may fail to render."},
+  "v5tfi4": {"features": [0,0,0,0,0,0,1], "note": "Asset movement DataTable has no selectable prop or row actions, so it is read as a summary panel, not a set (F1=0)."},
+  "var2dd": {"features": [0,0,0,0,0,1,0], "note": "Metrics are about the one student, so they do not count for F7; Mark as Ready and Generate Script are page-level buttons for that one object, not per-item decisions."},
+  "vcng8z": {"features": [0,0,0,0,0,0,0], "note": "Only two metric cards (Revenue, Expenses) before the charts, below the three needed for F7."},
+  "vdfr0p": {"features": [0,0,0,0,0,0,0], "note": "Almost all content, including three metrics, a selectable department table and a region comparison, sits in sidebar tabs (only the Overview tab visible by default) beside a one-paragraph main area, so no feature was credited to the main content; F7 was hardest because the three metrics are visible but in a sidebar, not a row before main content."},
+  "veou7g": {"features": [0,0,0,0,0,0,1], "note": "Top Movers table has no selectable prop or row actions, so F1=0."},
+  "vfjm6t": {"features": [0,0,0,0,0,0,1], "note": "Four metric cards in a 2x2 grid counted for F7; the School A/B/C Comparison is one section of five, so not main content for F5."},
+  "vga71u": {"features": [1,0,1,0,0,0,0], "note": "Detail cards list every payout with its own Retry/Refund/Investigate buttons (F3=1) but are not tied to row selection (F2=0); overview has only two Metrics plus a Delta (F7=0); the import line declares identifiers twice, which is a compile error, so the page may fail to render."},
+  "vgeehn": {"features": [1,0,0,0,0,0,1], "note": "Transaction log is selectable, so F1=1 under the selectable-table rule, but selection only fires an alert (F2=0) and the only item actions are disabled bulk actions (F3=0); the peer Comparison is one section of five, so F5=0."},
+  "viqueo": {"features": [1,1,1,1,0,0,1], "note": "F4 from the Pending / Resolved Today / Failed Permanently counts plus the ReviewQueue current item; the ReviewQueue rendering itself is inferred from props since the component is from the library; React is used without import."},
+  "vl99e7": {"features": [0,0,0,0,0,0,1], "note": "Program table has no selectable prop or row actions, so F1=0."},
+  "vob1i9": {"features": [0,0,0,0,0,1,0], "note": "The tables are the one student's grades, incidents and interventions, not a set to choose from; Button is used but not imported, so the page may fail to render."},
+  "vsns66": {"features": [0,0,0,0,1,0,0], "note": "Recommend Fund A/B buttons are one choice between the compared options, not a decision per item of a worked set, so F3=0; the client profile above is context, not the main content."},
+  "vw5bih": {"features": [1,0,0,1,0,0,1], "note": "F4 credited from Total Failed 12 against Pending Resolution 4 (remaining shown against total), though these numbers do not match the table; the text promises row actions but only bulk buttons exist, so F3=0."},
+  "vx9q8c": {"features": [0,0,0,0,1,0,0], "note": "Comparison metrics give only one value each, so how the two fund columns fill is unclear from code; Recommend/Finalize are page-level buttons."},
+  "vy67xu": {"features": [0,0,0,0,0,0,0], "note": "Only one Metric at the top; tabbed tables are not selectable; FilterBar is used but not imported, so the page may fail to render."},
+  "vytvta": {"features": [1,0,0,0,0,0,1], "note": "Holdings table is selectable, but the Drawer is hard-coded open={false} and onRowSelect only returns an object, so nothing opens it (F2=0)."},
+  "vyxvi9": {"features": [0,0,0,0,0,1,0], "note": "Metrics are about the one student, so F7=0; tables are the student's own records, not a set."},
+  "vzqskl": {"features": [1,1,1,0,0,0,0], "note": "The Inspector is always showing payout 12345 and is not wired to row selection, but it sits beside the list with per-item Mark as Resolved/Pending actions, so F2 and F3 were credited; Metric is used but not imported."}
+}
