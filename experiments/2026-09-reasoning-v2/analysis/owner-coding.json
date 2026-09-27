@@ -1,0 +1,50 @@
+{
+ "vcun2i": {
+  "archetype": "explorer",
+  "kpi_row": 0,
+  "fit": [
+   0,
+   0,
+   1
+  ],
+  "invalid": 0,
+  "note": "",
+  "saved": "2026-09-27T17:33:21.181Z"
+ },
+ "vmh4yc": {
+  "archetype": "dashboard",
+  "kpi_row": 1,
+  "fit": [
+   0,
+   0,
+   0
+  ],
+  "invalid": 0,
+  "note": "",
+  "saved": "2026-09-27T17:28:17.232Z"
+ },
+ "vu6lqp": {
+  "archetype": "inspector",
+  "kpi_row": 1,
+  "fit": [
+   0,
+   1,
+   0
+  ],
+  "invalid": 0,
+  "note": "",
+  "saved": "2026-09-27T17:30:38.932Z"
+ },
+ "vje8pu": {
+  "archetype": "report",
+  "kpi_row": 0,
+  "fit": [
+   0,
+   0,
+   0
+  ],
+  "invalid": 0,
+  "note": "",
+  "saved": "2026-09-27T17:34:44.413Z"
+ }
+}
