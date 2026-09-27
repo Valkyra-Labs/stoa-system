@@ -32,7 +32,7 @@ dashboards everywhere is not a success.
 | Divergence metric tracked noise | Dropped |
 | Harness context, uncontrolled sampling | Local models through the ollama HTTP API; every option recorded per generation |
 | Calibration: the planning comment was written in 1 of 4 | Two turns for every condition: first the plan, then the file |
-| Calibration: a fixed seed did not reproduce output | Seeds recorded; no reproducibility claim unless the determinism check below passes |
+| Calibration: a fixed seed did not reproduce output under ollama | llama.cpp server with one slot and the prompt cache off reproduced a sampled generation byte for byte (3 of 3); it becomes the engine, and a random 5 percent of files is regenerated to check |
 
 ## Conditions (all word-count matched within 5 percent, except A)
 
@@ -76,9 +76,13 @@ generation.
 
 ## Models and sampling
 
-Main: qwen3.5:4b, qwen3:8b, qwen2.5:14b (ollama, digests recorded).
+Main: qwen3.5:4b, qwen3:8b, qwen2.5:14b: the GGUF weights ollama
+already holds, served by llama.cpp server (build recorded) with one
+slot, context 8192, `cache_prompt: false`; file digests recorded.
 Thinking off where the model has it, recorded per run. temperature 0.7,
-top_p 0.8, num_ctx 8192, num_predict 4096. Seeds 1 to 4.
+top_p 0.8, max 4096 output tokens. Seeds 1 to 4. The server holds one
+model at a time, so runs are grouped by model in a random model order
+and shuffled within each model.
 
 Size: 3 models x 4 conditions x 6 tasks x 4 seeds = 288 generations,
 order randomised by a seeded shuffle. Wall time is estimated only after
@@ -120,9 +124,8 @@ replication follows as a separate protocol.
 
 ## Checks before pre-registration
 
-1. Determinism: two runs at temperature 0 with the same seed on qwen3:8b
-   through ollama and through llama.cpp with one slot; report whether
-   outputs are byte-identical.
+1. Determinism: done for qwen3:8b (calibration addendum); repeat once
+   per main model before the run.
 2. Timing run: 4 generations per main model, two-turn.
 3. Condition texts trimmed to within 5 percent of each other.
 4. Coding guide with archetype definitions and two worked examples per

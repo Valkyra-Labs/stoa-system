@@ -34,3 +34,21 @@ Nothing here is used as evidence.
 7. The pilot's mechanical extractor still reports a KPI row in 6 of 8;
    it is the extractor that agreed with blind coding on 29 of 36 in
    Stage 0, so this is not a structural result.
+
+## Addendum: determinism (same day)
+
+Same prompt (components condition, T1), qwen3:8b, thinking off.
+
+| engine | settings | runs | identical |
+|---|---|---|---|
+| ollama 0.32.1 | temperature 0, seed 1 | 2 | yes (2,045 tokens both) |
+| ollama 0.32.1 | temperature 0.7, seed 1 | 2 | no (finding 5) |
+| llama.cpp server b10150 (dee2a846b), one slot | temperature 0.7, top_p 0.8, seed 1, prompt cache on | 2 | no (1,947 then 2,064 tokens) |
+| same | prompt cache off (`cache_prompt: false`) | 2, plus the first run above | yes, all three byte-identical (1,947 tokens) |
+
+Reading: sampling with a seed is deterministic; the variation came from
+reusing the cached prompt between requests, which changes the numerics
+of the prompt pass. With one slot and the prompt cache off, llama.cpp
+reproduces a sampled generation exactly on this machine (3 of 3). This
+is one prompt and one model; the full run should re-generate a random
+sample of files and report how many match byte for byte.
