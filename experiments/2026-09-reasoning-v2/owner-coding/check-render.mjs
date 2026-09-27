@@ -7,7 +7,10 @@ import { fileURLToPath } from "node:url";
 
 const here = fileURLToPath(new URL(".", import.meta.url));
 execFileSync("npx", ["vite", "build", "--config", `${here}render/check.vite.mjs`], { cwd: fileURLToPath(new URL("../../..", import.meta.url)), stdio: ["ignore", "ignore", "inherit"] });
-const d = JSON.parse(readFileSync(`${here}data.json`, "utf8"));
+// Usage: node check-render.mjs [data.json] [report.json]
+const dataPath = process.argv[2] ?? `${here}data.json`;
+const reportPath = process.argv[3] ?? `${here}render-report.json`;
+const d = JSON.parse(readFileSync(dataPath, "utf8"));
 // Each screen renders in its own process with a time and memory limit: a
 // generation that renders itself recursively must not take the check down.
 const all = [...d.items, ...d.examples];
@@ -15,7 +18,7 @@ const res = all.map((item, i) => {
   try {
     const out = execFileSync("node", ["--max-old-space-size=256", "--stack-size=2000", "--input-type=module", "-e",
       `const { check } = await import(${JSON.stringify(`${here}render-dist/check/check.js`)});
-       const d = JSON.parse((await import("node:fs")).readFileSync(${JSON.stringify(`${here}data.json`)}, "utf8"));
+       const d = JSON.parse((await import("node:fs")).readFileSync(${JSON.stringify(dataPath)}, "utf8"));
        const it = [...d.items, ...d.examples][${i}];
        process.stdout.write(JSON.stringify(check([it])[0]));`], { encoding: "utf8", timeout: 15000, stdio: ["ignore", "pipe", "ignore"] });
     return JSON.parse(out);
@@ -25,7 +28,7 @@ const res = all.map((item, i) => {
 });
 // The coding page reads this to show a wireframe instead of a screen that
 // would hang or crash the page.
-writeFileSync(`${here}render-report.json`, JSON.stringify(Object.fromEntries(res.map((r) => [r.id, { status: r.status, message: r.message ?? null }]))));
+writeFileSync(reportPath, JSON.stringify(Object.fromEntries(res.map((r) => [r.id, { status: r.status, message: r.message ?? null }]))));
 const by = {};
 for (const r of res) by[r.status] = (by[r.status] ?? 0) + 1;
 console.log(by);

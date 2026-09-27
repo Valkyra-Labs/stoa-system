@@ -10,7 +10,12 @@ const [planPath, gen, outPath] = process.argv.slice(2);
 const arg = (k, d) => { const i = process.argv.indexOf(k); return i > 0 ? Number(process.argv[i + 1]) : d; };
 const plan = JSON.parse(readFileSync(planPath, "utf8"));
 const tasks = JSON.parse(readFileSync(new URL("../prompts/tasks.json", import.meta.url), "utf8"));
-const guide = readFileSync(new URL("../analysis/CODING-GUIDE.md", import.meta.url), "utf8");
+// Features mode (Stage 3 calibration): yes/no feature questions from a
+// JSON file replace the archetype and task-fit form; the guide is the rubric.
+const opt = (k) => { const i = process.argv.indexOf(k); return i > 0 ? process.argv[i + 1] : null; };
+const featuresPath = opt("--features");
+const features = featuresPath ? JSON.parse(readFileSync(featuresPath, "utf8")) : null;
+const guide = readFileSync(opt("--guide") ?? new URL("../analysis/CODING-GUIDE.md", import.meta.url), "utf8");
 
 let state = arg("--seed", 20260929);
 const rand = () => ((state = (state * 1103515245 + 12345) % 2 ** 31) / 2 ** 31);
@@ -195,5 +200,5 @@ const examples = EXAMPLES.map(([archetype, id, why]) => {
   const { sf, tree } = convert(src);
   return { id, archetype, why, code: printer.printFile(sf), tree, js: toJs(src) };
 });
-writeFileSync(outPath, JSON.stringify({ guide, items, examples }));
+writeFileSync(outPath, JSON.stringify({ guide, items, examples, ...(features ? { mode: "features", features } : {}) }));
 console.log(`${items.length} items -> ${outPath}`);

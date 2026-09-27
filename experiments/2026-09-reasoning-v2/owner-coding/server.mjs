@@ -7,6 +7,7 @@ import { readFileSync, writeFileSync, renameSync, existsSync } from "node:fs";
 const dataPath = process.argv[2] ?? new URL("data.json", import.meta.url).pathname;
 const port = Number(process.argv[3] ?? 5178);
 const answersPath = process.argv[4] ?? process.env.ANSWERS ?? new URL("../analysis/owner-coding.json", import.meta.url).pathname;
+const reportPath = process.argv[5] ?? new URL("render-report.json", import.meta.url).pathname;
 const load = () => (existsSync(answersPath) ? JSON.parse(readFileSync(answersPath, "utf8")) : {});
 
 createServer((req, res) => {
@@ -18,7 +19,7 @@ createServer((req, res) => {
   if (req.method === "GET" && req.url === "/render/render.iife.js")
     return send(200, "text/javascript; charset=utf-8", readFileSync(new URL("render-dist/render.iife.js", import.meta.url)));
   if (req.method === "GET" && req.url === "/render-report.json")
-    return send(200, "application/json", existsSync(new URL("render-report.json", import.meta.url)) ? readFileSync(new URL("render-report.json", import.meta.url)) : "{}");
+    return send(200, "application/json", existsSync(reportPath) ? readFileSync(reportPath) : "{}");
   // Server-rendered snapshot of one screen (built by check-render.mjs), for
   // visual checks where a sandboxed frame cannot be captured.
   const snap = req.method === "GET" && req.url.match(/^\/snapshot\/([a-z0-9-]{2,40})$/);
