@@ -1,0 +1,82 @@
+```tsx
+import { Page, Header, Sidebar, Section, Card, Metric, Status, DataTable, EmptyData, Button } from "@stoa/react";
+
+const WEEK_START = new Date();
+WEEK_START.setDate(WEEK_START.getDate() - WEEK_START.getDay());
+
+const metricsData = [
+  { label: "Revenue", value: "$1.2M", delta: "+5.2%", unit: "vs last week" },
+  { label: "OpEx", value: "$840K", delta: "+1.8%", unit: "vs last week" },
+  { label: "Net Profit", value: "$210K", delta: "+8.4%", unit: "vs last week" },
+  { label: "Cash Flow", value: "$450K", delta: "-2.1%", unit: "vs last week" },
+];
+
+const transactions = [
+  { id: 1, date: "2023-10-23", entity: "Acme Corp", amount: 125000, type: "Revenue", status: "Confirmed" },
+  { id: 2, date: "2023-10-22", entity: "Cloud Services", amount: 45000, type: "OpEx", status: "Pending" },
+  { id: 3, date: "2023-10-22", entity: "Marketing Q4", amount: 32000, type: "OpEx", status: "Confirmed" },
+  { id: 4, date: "2023-10-21", entity: "Client A", amount: 89000, type: "Revenue", status: "Confirmed" },
+  { id: 5, date: "2023-10-20", entity: "Software License", amount: 12000, type: "OpEx", status: "Pending" },
+  { id: 6, date: "2023-10-20", entity: "Client B", amount: 150000, type: "Revenue", status: "Confirmed" },
+];
+
+const meetingAgenda = [
+  { id: 1, time: "09:00 AM", topic: "Board Approval", status: "Ready" },
+  { id: 2, time: "10:30 AM", topic: "Q3 Review", status: "In Progress" },
+  { id: 3, time: "11:00 AM", topic: "Cash Flow Analysis", status: "Pending" },
+];
+
+export default function FinanceDashboard() {
+  return (
+    <Page title="Weekly Finance Pulse">
+      <Header title="Weekly Finance Pulse" subtitle={WEEK_START.toLocaleDateString()} actions={<Button label="Export Report" />} />
+      
+      <div style={{ display: "flex", flexDirection: "column", height: "100vh" }}>
+        <Sidebar>
+          <Section title="Upcoming Agenda">
+            {meetingAgenda.map(item => (
+              <div key={item.id} style={{ marginBottom: "1rem" }}>
+                <p style={{ fontWeight: "bold", margin: 0 }}>{item.time} - {item.topic}</p>
+                <Status tone={item.status === "Ready" ? "success" : item.status === "In Progress" ? "warning" : "neutral"} label={item.status} />
+              </div>
+            ))}
+          </Section>
+        </Sidebar>
+
+        <main style={{ flex: 1, padding: "2rem", overflowY: "auto" }}>
+          <Section title="Key Financial Metrics">
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "1.5rem" }}>
+              {metricsData.map((m, idx) => (
+                <Card key={idx} title={m.label}>
+                  <Metric value={m.value} delta={m.delta} unit={m.unit} />
+                </Card>
+              ))}
+            </div>
+          </Section>
+
+          <Section title="Detailed Transactions (Week of {WEEK_START.toLocaleDateString()})">
+            <Card title="Ledger">
+              <DataTable
+                columns={[
+                  { key: "date", label: "Date", type: "date" },
+                  { key: "entity", label: "Entity", type: "text" },
+                  { key: "amount", label: "Amount", type: "currency" },
+                  { key: "type", label: "Type", type: "text" },
+                  { key: "status", label: "Status", type: "status" },
+                ]}
+                rows={transactions}
+                selectable
+                onRowSelect={(row) => console.log("Selected:", row)}
+              />
+            </Card>
+          </Section>
+
+          {transactions.length === 0 && (
+            <EmptyData message="No transactions found for this period." />
+          )}
+        </main>
+      </div>
+    </Page>
+  );
+}
+```
