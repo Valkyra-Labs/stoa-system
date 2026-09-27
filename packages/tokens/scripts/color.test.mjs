@@ -99,7 +99,7 @@ test("WCAG contrast matches culori on the same clipped colours", () => {
 });
 
 test("eight token colours fall outside the sRGB gamut and are clipped before measuring", () => {
-  // Recorded so that a docs claim about these two never reads as exact:
+  // Recorded so that a docs claim about these colours never reads as exact:
   // a browser gamut-maps by reducing chroma instead of clipping channels.
   const outside = [];
   for (const [theme, tokens] of Object.entries(themes)) {
@@ -110,8 +110,9 @@ test("eight token colours fall outside the sRGB gamut and are clipped before mea
     }
   }
   assert.deepEqual(outside.sort(), [
-    // teal-600 is the light theme's up and bid colour, and the two washes
-    // are teal-wash and red-wash under their semantic names.
+    // teal-600 is the light theme's up and bid colour; the out-of-gamut
+    // washes are teal-wash and its semantic alias up-wash. red-wash and
+    // down-wash are inside the gamut.
     "dark/color-teal-600",
     "dark/color-teal-wash",
     "dark/color-up-wash",
@@ -248,7 +249,7 @@ test("the matrix constants match a transcription made outside this repository", 
 
   // One reference value written out from the same published table, so the
   // expected number is in the test rather than only in the comparison.
-  // Tritanomaly at severity 1.0, second column (0.930809 is the green row's
+  // Tritanopia (severity 1.0), second column (0.930809 is the green row's
   // green term, 0.691367 the blue row's): pure green is linear (0, 1, 0), so
   // the result is (-0.076749, 0.930809, 0.691367). Red clips to 0; encoding
   // the other two with 1.055 * c^(1/2.4) - 0.055,
