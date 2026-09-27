@@ -1,6 +1,8 @@
 // Resolved design tokens for canvas drawing: canvases cannot read CSS
 // variables, so components read them once per theme change.
 
+import { useEffect, useRef, type RefObject } from "react";
+
 export type CanvasTokens = {
   surface: string;
   text: string;
@@ -16,7 +18,10 @@ export type CanvasTokens = {
 };
 
 export function readCanvasTokens(el: Element): CanvasTokens {
-  const s = getComputedStyle(el);
+  // Resolve through the element's own window: a preview portalled into an
+  // iframe lives in another realm, whose styles the top-level
+  // `getComputedStyle` is not guaranteed to resolve.
+  const s = (el.ownerDocument.defaultView ?? window).getComputedStyle(el);
   const v = (n: string) => s.getPropertyValue(n).trim();
   return {
     surface: v("--stoa-color-surface"),
@@ -31,6 +36,115 @@ export function readCanvasTokens(el: Element): CanvasTokens {
     rowHeight: parseFloat(v("--stoa-density-row-height")) || 22,
     font: `${v("--stoa-density-font-size") || "12px"} ${v("--stoa-font-family-mono") || "monospace"}`,
   };
+}
+
+/** Custom event type dispatched on a preview root to tell every canvas
+ * component whose element sits under that root to re-read its tokens and
+ * redraw, even while paused. Any ancestor of the component works, since
+ * listeners key off `Node.contains`, not the exact target, and listen in
+ * the capture phase, so the event arrives whether or not it bubbles and
+ * whether or not some other listener stops its propagation. Carries no
+ * `detail`: it is a signal to re-read tokens, not a diff of what changed. */
+export const TOKENS_EVENT = "stoa:tokens";
+
+/** Dispatches {@link TOKENS_EVENT} on `root`. Call this after changing
+ * token CSS variables on `root` (for example when a playground re-themes
+ * one preview frame). `bubbles` is not required for `useTokenSignal`
+ * listeners, which use the capture phase, but is left on in case a
+ * caller also wants a bubble-phase listener of its own. */
+export function signalTokensChanged(root: Element): void {
+  root.dispatchEvent(new CustomEvent(TOKENS_EVENT, { bubbles: true }));
+}
+
+/** Whether `target` is a node that has `node` inside it. `target instanceof
+ * Node` would be false for an event target from another realm (a preview
+ * portalled into an iframe brings its own `Node` constructor), so this
+ * tests for the method rather than for the constructor. */
+function containsNode(target: EventTarget | null, node: Node): boolean {
+  const candidate = target as Node | null;
+  return candidate !== null && typeof candidate.contains === "function" && candidate.contains(node);
+}
+
+/**
+ * Subscribes a canvas component to every source that can change the
+ * tokens it reads from `el.current`, and calls `redraw` each time:
+ *
+ * - a {@link TOKENS_EVENT} dispatched on an ancestor of `el.current`
+ *   (the primary mechanism: it needs no plumbing through intermediate
+ *   components, and one dispatch on a preview root reaches every canvas
+ *   underneath it, however deeply nested);
+ * - `tokensVersion` changing (an alternative for a React caller that
+ *   already tracks a version number in state and would rather bump a
+ *   prop than dispatch a DOM event);
+ * - the existing `<html>` `data-theme`/`data-density` attributes, and the
+ *   OS colour scheme, so that global theming keeps working unchanged.
+ *
+ * The event listener is registered in the capture phase, on
+ * `el.current`'s own `ownerDocument` rather than the top-level
+ * `document`, so a preview rendered inside an iframe still gets the
+ * signal, and so does a listener whose event does not bubble or whose
+ * propagation an ancestor stops during its own bubble-phase handling
+ * (that happens on the way back up, after this listener has already
+ * fired on the way down).
+ *
+ * `redraw` is read through a ref, so subscribing does not depend on its
+ * identity being stable across renders, and nothing here dispatches
+ * {@link TOKENS_EVENT} itself, so there is no feedback loop.
+ */
+export function useTokenSignal(el: RefObject<Element | null>, tokensVersion: number | undefined, redraw: () => void): void {
+  const redrawRef = useRef(redraw);
+  redrawRef.current = redraw;
+
+  useEffect(() => {
+    const doc = el.current?.ownerDocument ?? document;
+    const onEvent = (e: Event) => {
+      const child = el.current;
+      if (child && containsNode(e.target, child)) redrawRef.current();
+    };
+    const onChange = () => redrawRef.current();
+    doc.addEventListener(TOKENS_EVENT, onEvent, true);
+    // Read `matchMedia` from the element's own window, not the top-level
+    // one, so a preview inside an iframe listens in its own realm. jsdom
+    // (used in tests) has no matchMedia; skip the OS listener there.
+    const view = doc.defaultView;
+    const mq = typeof view?.matchMedia === "function" ? view.matchMedia("(prefers-color-scheme: dark)") : null;
+    mq?.addEventListener("change", onChange);
+    const mo = new MutationObserver(onChange);
+    mo.observe(doc.documentElement, { attributes: true, attributeFilter: ["data-theme", "data-density"] });
+    return () => {
+      doc.removeEventListener(TOKENS_EVENT, onEvent, true);
+      mq?.removeEventListener("change", onChange);
+      mo.disconnect();
+    };
+  }, [el]);
+
+  useEffect(() => {
+    if (tokensVersion !== undefined) redrawRef.current();
+  }, [tokensVersion]);
+}
+
+/**
+ * Calls `invalidate` once whenever `tokensVersion` changes, from an effect
+ * that runs before the ones declared after it. A component declares this
+ * above the effect that draws from its data prop, so that a version bump
+ * arriving together with a data prop drops the cached tokens first and the
+ * data draw reads fresh ones. Without it, such a render drew twice: once
+ * with the stale cached tokens from the data effect, then again from
+ * {@link useTokenSignal}'s own redraw.
+ *
+ * The comparison is kept in a ref written from the effect, not during
+ * render, so a render that React throws away leaves nothing behind.
+ */
+export function useInvalidateOnTokensVersion(tokensVersion: number | undefined, invalidate: () => void): void {
+  const seen = useRef(tokensVersion);
+  // No dependency array: the effect runs after every render with that
+  // render's own `invalidate`, so the callback is never a stale closure.
+  useEffect(() => {
+    if (tokensVersion !== seen.current) {
+      seen.current = tokensVersion;
+      invalidate();
+    }
+  });
 }
 
 /** Size a canvas for its CSS box and the device pixel ratio; returns the
