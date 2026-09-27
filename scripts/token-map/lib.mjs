@@ -260,13 +260,20 @@ const NAMED_COLORS = new Set([
 ]);
 const norm = (s) => s.replace(/\s+/g, "");
 
+// Any custom property declaration, not just `--stoa-*`: used to tell a
+// component's own local custom property (`.x { --local-gap: 4px; ... }`)
+// apart from a genuinely undefined one.
+const CUSTOM_PROP_DECL = /(--[\w-]+)\s*:/g;
+
 /** @param {{path:string, content:string}[]} cssFiles */
 export function scanCss(cssFiles, tokens) {
   const reads = [];
   const literals = [];
+  const localCustomProps = new Map(); // file path -> Set of `--name`s declared anywhere in it
   const resolvedValues = [...tokens.values()].map((t) => ({ name: t.name, value: norm(t.resolvedValue) }));
 
   for (const { path, content } of cssFiles) {
+    const fileProps = new Set();
     for (const block of content.matchAll(/([^{}]+)\{([^{}]*)\}/g)) {
       const selectorText = block[1];
       const body = block[2];
@@ -276,6 +283,8 @@ export function scanCss(cssFiles, tokens) {
       // combinator like `.stoa-badge--warning > span:first-child` still
       // belongs to the component that owns `.stoa-badge--warning`.
       const classes = [...new Set(selectors.flatMap((s) => classesOf(s)))];
+
+      for (const m of body.matchAll(CUSTOM_PROP_DECL)) fileProps.add(m[1]);
 
       for (const varCall of findVarCalls(body)) {
         reads.push({
@@ -291,8 +300,13 @@ export function scanCss(cssFiles, tokens) {
       for (const decl of body.matchAll(/([a-zA-Z-]+)\s*:\s*([^;]+?)\s*(?:;|$)/g)) {
         const property = decl[1].trim();
         const declOffset = bodyOffset + decl.index;
-        for (const value of splitCssValue(decl[2])) {
-          if (value.includes("var(")) continue;
+        for (const rawValue of splitCssValue(decl[2])) {
+          // Strip a list-separator comma clinging to the token (a
+          // multi-layer value like `box-shadow: 0 0 0 1px red, 0 0 2px
+          // blue` splits on whitespace only, so the first layer's colour
+          // keeps its trailing comma attached).
+          const value = rawValue.replace(/^,+|,+$/g, "");
+          if (!value || value.includes("var(")) continue;
           let category = null;
           if (COLOR_LITERAL.test(value) || NAMED_COLORS.has(value.toLowerCase())) category = "color";
           else if (DURATION_LITERAL.test(value) && DURATION_PROPS.test(property)) category = "duration";
@@ -312,8 +326,9 @@ export function scanCss(cssFiles, tokens) {
         }
       }
     }
+    localCustomProps.set(path, fileProps);
   }
-  return { reads, literals };
+  return { reads, literals, localCustomProps };
 }
 
 // ---------------------------------------------------------------------------
@@ -683,7 +698,7 @@ export function buildTokenMap({ tokensCssText, cssFiles, sourceFiles, storyFiles
   const semanticAliases =
     semanticLightJson && semanticDarkJson ? resolveSemanticAliases({ semanticLightJson, semanticDarkJson }) : new Map();
   const tokens = parseTokenList(tokensCssText, semanticAliases);
-  const { reads: cssReads, literals: cssLiterals } = scanCss(cssFiles, tokens);
+  const { reads: cssReads, literals: cssLiterals, localCustomProps } = scanCss(cssFiles, tokens);
   const { reads: sourceReads, classToOwners, classPrefixToOwners, inlineLiterals } = scanSource(sourceFiles);
   const { componentToStories, directReads } = scanStories(storyFiles ?? []);
 
@@ -691,19 +706,41 @@ export function buildTokenMap({ tokensCssText, cssFiles, sourceFiles, storyFiles
   const reached = new Set();
   const undefinedRefs = [];
 
+  // Per-theme reachability: `direct` means the token itself is read (by
+  // either theme, since the same property resolves under whichever theme
+  // is active); `via` names the semantic tokens whose alias, in that
+  // theme, targets this token. A primitive with no direct reads and no
+  // `via` in a theme is unused under that theme even if the other theme
+  // reaches it (a light-only or dark-only alias target).
+  const themeReach = new Map();
+  const ensureThemeReach = (name) => {
+    if (!themeReach.has(name)) themeReach.set(name, { light: { direct: false, via: new Set() }, dark: { direct: false, via: new Set() } });
+    return themeReach.get(name);
+  };
+
   // A primitive is reached whenever a semantic token that aliases it (in
   // either theme) is read: an alias only ever resolves one level deep in
   // this system, so a single lookup per theme is enough.
   const noteReach = (name) => {
     reached.add(name);
+    const selfReach = ensureThemeReach(name);
+    selfReach.light.direct = true;
+    selfReach.dark.direct = true;
     const t = tokens.get(name);
-    if (t?.themeAliasOf?.light) reached.add(t.themeAliasOf.light);
-    if (t?.themeAliasOf?.dark) reached.add(t.themeAliasOf.dark);
+    if (t?.themeAliasOf?.light) {
+      reached.add(t.themeAliasOf.light);
+      ensureThemeReach(t.themeAliasOf.light).light.via.add(name);
+    }
+    if (t?.themeAliasOf?.dark) {
+      reached.add(t.themeAliasOf.dark);
+      ensureThemeReach(t.themeAliasOf.dark).dark.via.add(name);
+    }
   };
 
   for (const read of cssReads) {
     if (!tokens.has(read.token)) {
-      undefinedRefs.push({ name: read.token, file: read.file, line: read.line });
+      if (localCustomProps.get(read.file)?.has(read.token)) continue; // defined locally in this file's own CSS, not part of the token system
+      undefinedRefs.push({ name: read.token, file: read.file, line: read.line, fallback: read.fallback ?? undefined });
       continue;
     }
     noteReach(read.token);
@@ -735,7 +772,7 @@ export function buildTokenMap({ tokensCssText, cssFiles, sourceFiles, storyFiles
 
   for (const read of sourceReads) {
     if (!tokens.has(read.token)) {
-      undefinedRefs.push({ name: read.token, file: read.file, line: read.line });
+      undefinedRefs.push({ name: read.token, file: read.file, line: read.line, fallback: read.fallback ?? undefined });
       continue;
     }
     noteReach(read.token);
@@ -789,6 +826,7 @@ export function buildTokenMap({ tokensCssText, cssFiles, sourceFiles, storyFiles
   const tokenList = [...tokens.values()]
     .map((t) => {
       const entry = byToken.get(t.name);
+      const reach = themeReach.get(t.name);
       return {
         name: t.name,
         group: t.group,
@@ -804,6 +842,14 @@ export function buildTokenMap({ tokensCssText, cssFiles, sourceFiles, storyFiles
         readBy: {
           components: [...entry.components.values()].sort((a, b) => a.component.localeCompare(b.component) || a.file.localeCompare(b.file) || a.line - b.line),
           stories: [...entry.stories].sort(),
+        },
+        // Per theme: whether the token is itself read directly, and which
+        // semantic tokens' alias (in that theme) targets it. A token unused
+        // overall can still be reached in one theme only (e.g. a primitive
+        // only the dark theme aliases).
+        reachedByTheme: {
+          light: { direct: reach?.light.direct ?? false, via: [...(reach?.light.via ?? [])].sort() },
+          dark: { direct: reach?.dark.direct ?? false, via: [...(reach?.dark.via ?? [])].sort() },
         },
         unused: !reached.has(t.name),
       };
@@ -867,6 +913,25 @@ export function renderMarkdown(map) {
   if (map.unusedTokens.length) for (const name of map.unusedTokens) lines.push(`- \`${name}\``);
   else lines.push("None.");
 
+  // Per-theme reachability: names, for every primitive, which theme(s)
+  // reach it and through which semantic token's alias, so a primitive
+  // reached only under one theme (its `unused` flag is combined across
+  // both) is visible here instead of looking like any other used token.
+  lines.push("", "## Primitive reachability by theme", "");
+  const primitives = map.tokens.filter((t) => t.kind === "primitive");
+  const reachCell = (r) => {
+    const parts = [];
+    if (r.direct) parts.push("direct");
+    for (const via of r.via) parts.push(`via \`${via}\``);
+    return parts.length ? parts.join(", ") : "_not reached_";
+  };
+  if (primitives.length) {
+    lines.push("| Token | Light | Dark |", "| --- | --- | --- |");
+    for (const t of primitives) {
+      lines.push(`| \`${t.name}\` | ${reachCell(t.reachedByTheme.light)} | ${reachCell(t.reachedByTheme.dark)} |`);
+    }
+  } else lines.push("None.");
+
   lines.push("", "## Hard-coded literals that match or should be a token", "");
   if (map.hardcodedLiterals.length) {
     lines.push("| File | Line | Property | Value | Category | Matching token |", "| --- | --- | --- | --- | --- | --- |");
@@ -877,8 +942,8 @@ export function renderMarkdown(map) {
 
   lines.push("", "## Custom properties referenced but not defined", "");
   if (map.undefinedCustomProperties.length) {
-    lines.push("| Name | File | Line |", "| --- | --- | --- |");
-    for (const u of map.undefinedCustomProperties) lines.push(`| \`${u.name}\` | ${u.file} | ${u.line} |`);
+    lines.push("| Name | File | Line | Fallback |", "| --- | --- | --- | --- |");
+    for (const u of map.undefinedCustomProperties) lines.push(`| \`${u.name}\` | ${u.file} | ${u.line} | ${u.fallback ? `\`${u.fallback}\`` : "-"} |`);
   } else lines.push("None.");
 
   lines.push("");
