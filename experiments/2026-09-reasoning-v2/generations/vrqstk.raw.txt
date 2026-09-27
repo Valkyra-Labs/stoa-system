@@ -1,0 +1,49 @@
+```tsx
+import { Page, Header, Section, Card, Metric, Delta, Comparison, Sidebar, Button, FilterBar } from '@stoa/react';
+
+const FundComparisonPage = () => {
+  return (
+    <Page title="Fund Recommendation">
+      <Header title="Choose the Best Fund" subtitle="Compare two funds based on performance, risk, and fees" />
+      <FilterBar filters={['1 Year', '3 Years', '5 Years']} />
+      <Section title="Fund Comparison">
+        <Comparison
+          entities={['Fund A', 'Fund B']}
+          metrics={[
+            { label: 'Annual Return', value: 8.2, delta: 1.5, unit: '%' },
+            { label: 'Risk Score', value: 4.7, delta: -0.3, unit: '/10' },
+            { label: 'Fees', value: 1.2, delta: 0, unit: '%' },
+            { label: 'Dividend Yield', value: 2.8, delta: 0.5, unit: '%' },
+          ]}
+        />
+        <div style={{ display: 'flex', gap: '2rem', marginTop: '2rem' }}>
+          <Card title="Fund A Details">
+            <p>Manager: Jane Smith</p>
+            <p>Asset Class: Equity</p>
+            <p>Minimum Investment: $10,000</p>
+            <p>Performance: Strong growth over the past 5 years</p>
+          </Card>
+          <Card title="Fund B Details">
+            <p>Manager: John Doe</p>
+            <p>Asset Class: Balanced</p>
+            <p>Minimum Investment: $5,000</p>
+            <p>Performance: Stable returns with lower risk</p>
+          </Card>
+        </div>
+      </Section>
+      <Sidebar>
+        <Section title="Risk Tolerance">
+          <Metric label="Client Risk Tolerance" value="Moderate" />
+          <p>Recommended based on client's investment goals and time horizon.</p>
+        </Section>
+      </Sidebar>
+      <Section title="Recommendation">
+        <p>Based on the comparison, Fund A is recommended for clients seeking higher growth with moderate risk.</p>
+        <Button label="Finalize Recommendation" variant="primary" />
+      </Section>
+    </Page>
+  );
+};
+
+export default FundComparisonPage;
+```

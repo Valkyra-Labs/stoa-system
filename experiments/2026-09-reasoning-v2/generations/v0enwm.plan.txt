@@ -1,0 +1,9 @@
+1. **Person & Session**: A head of school preparing for a board presentation. This is a high-stakes, one-time session focused on delivering a definitive snapshot of the school's performance. The user will not edit; they will only view and present.
+
+2. **Shape of Work**: Getting a general picture of many unrelated numbers with no action expected on this screen. The goal is a consolidated, high-level overview that tells a story of success or areas needing attention, ready for verbal elaboration.
+
+3. **Information**: Entities include Academics, Finance, Student Well-being, and Facilities. Measures are key metrics like enrollment growth, budget variance, test scores, and safety incidents. Time frame is the current term compared to the previous year and a 5-year trend. Values are judged against targets and historical performance.
+
+4. **Decision & Evidence**: The decision is "This school is performing well/stably/growing." Evidence must show clear deltas from last year, adherence to budget, and positive trends. Wrong decisions (misleading the board) carry reputational and financial risk. Since no edits are made, the screen acts as a read-only summary.
+
+5. **Structure**: A top-level **Dashboard** shell containing: a **Header** with the term and date; a **Section** of high-level **Metrics** cards showing current values vs. previous year; a **Section** with **Charts** (bar for enrollment, line for budget) to visualize trends; and a **Section** with a **DataTable** listing specific itemized performance highlights. The layout prioritizes the "big picture" first, followed by supporting details.

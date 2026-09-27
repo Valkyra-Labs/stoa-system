@@ -1,0 +1,96 @@
+import { Page, Header, Section, Card, Metric, Delta, Status, EmptyData, Tabs, Button } from "@stoa/react";
+
+const SIGNIFICANT_MOVES = [
+  {
+    id: "eq-101",
+    name: "TechNova Inc.",
+    sector: "Technology",
+    change: 2.4,
+    impact: "high",
+    reason: "Q3 Earnings beat expectations by 12%",
+    timestamp: "08:15 AM",
+  },
+  {
+    id: "fx-204",
+    name: "EUR/USD",
+    sector: "Forex",
+    change: -0.8,
+    impact: "medium",
+    reason: "ECB signals potential rate hike",
+    timestamp: "07:42 AM",
+  },
+  {
+    id: "eq-105",
+    name: "GreenLeaf Energy",
+    sector: "Energy",
+    change: -1.2,
+    impact: "medium",
+    reason: "Supply chain disruption reported",
+    timestamp: "09:05 AM",
+  },
+];
+
+const DAILY_METRICS = [
+  { label: "Total Portfolio Value", value: 12450000, unit: "USD" },
+  { label: "Day's Change", value: 45200, unit: "USD", delta: 0.37 },
+  { label: "Sharpe Ratio", value: 1.84, unit: "" },
+  { label: "Volatility", value: 14.2, unit: "%" },
+];
+
+const MARKET_OVIEWS = [
+  { label: "S&P 500", value: 4782.15, delta: 0.8, unit: "pts" },
+  { label: "NASDAQ", value: 14820.30, delta: 1.2, unit: "pts" },
+  { label: "DOW", value: 37450.90, delta: 0.4, unit: "pts" },
+];
+
+export default function PortfolioMorningBook() {
+  return (
+    <Page title="Portfolio Morning Book">
+      <Header title="Portfolio Morning Book" subtitle="Today's movements and insights" />
+      
+      <Section title="Portfolio Performance">
+        <Card title="Key Metrics">
+          <div className="metrics-grid">
+            {DAILY_METRICS.map((metric) => (
+              <Metric key={metric.label} label={metric.label} value={metric.value} unit={metric.unit} delta={metric.delta} />
+            ))}
+          </div>
+        </Card>
+      </Section>
+
+      <Section title="Market Overview">
+        <Card title="Index Performance">
+          <div className="market-grid">
+            {MARKET_OVIEWS.map((market) => (
+              <Metric key={market.label} label={market.label} value={market.value} unit={market.unit} delta={market.delta} />
+            ))}
+          </div>
+        </Card>
+      </Section>
+
+      <Section title="Significant Moves">
+        <Card title="Top Drivers & Alerts">
+          {SIGNIFICANT_MOVES.length > 0 ? (
+            <div className="moves-list">
+              {SIGNIFICANT_MOVES.map((move) => (
+                <div key={move.id} className="move-item">
+                  <div className="move-header">
+                    <span className="move-name">{move.name}</span>
+                    <Delta value={move.change} basis="%" />
+                  </div>
+                  <div className="move-sector">{move.sector}</div>
+                  <div className="move-reason">
+                    <Status tone="info" label={move.reason} />
+                  </div>
+                  <div className="move-time">{move.timestamp}</div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <EmptyData message="No significant moves detected today." />
+          )}
+        </Card>
+      </Section>
+    </Page>
+  );
+}

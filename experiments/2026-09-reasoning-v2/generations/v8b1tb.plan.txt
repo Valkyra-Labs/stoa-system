@@ -1,0 +1,13 @@
+### Task: Financial Adviser Fund Recommendation
+
+**Step 1:** The financial adviser opens this screen to compare two investment funds and recommend one to a client. The decision is made based on a request or routine review.
+
+**Step 2:** The shape of the work involves setting two objects (funds) against each other to understand their relative performance and suitability for the client.
+
+**Step 3:** The information needed includes the performance metrics (returns, risk, volatility) of both funds over different time periods (e.g., 1 year, 3 years, 5 years) and any relevant benchmarks.
+
+**Step 4:** The decision involves choosing the most suitable fund based on performance and risk. The evidence needed includes historical data, recent performance trends, and risk-adjusted returns.
+
+**Step 5:** The structure should include a comparison of the two funds side by side, showing key metrics and trends. A decision area should be available for the adviser to document their reasoning and recommendation.
+
+Given this, the **composed shell** of **Compare** is suitable, as it allows for side-by-side comparison of two entities (funds) with shared metrics (performance and risk).

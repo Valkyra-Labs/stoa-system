@@ -1,0 +1,48 @@
+```tsx
+import { Page, Header, Section, Card, Tabs, Metric, Delta, Chart, DataTable, Button, Sidebar, Comparison, Timeline, EmptyData } from "@stoa/react";
+
+const FundComparisonPage = () => {
+  return (
+    <Page title="Fund Recommendation">
+      <Header title="Fund Recommendation" subtitle="Compare Fund A and Fund B to choose the best option" actions={<Button label="Recommend" variant="primary" />} />
+      <Sidebar>
+        <Section title="Navigation">
+          <Tabs
+            items={[
+              { id: "overview", label: "Overview", content: <Card title="Overview"><p>Compare key metrics and performance.</p></Card> },
+              { id: "history", label: "History", content: <Timeline events={[{ date: "2023-01", description: "Fund A launched" }, { date: "2023-05", description: "Fund B launched" }]} /> },
+              { id: "audit", label: "Audit", content: <AuditLog entries={[{ user: "admin", action: "updated fund details", time: "2023-06-15" }]} /> },
+            ]}
+          />
+        </Section>
+      </Sidebar>
+      <main>
+        <Section title="Fund Comparison">
+          <Comparison
+            entities={["Fund A", "Fund B"]}
+            metrics={[
+              { label: "Annual Return", value: "12%", delta: "+3%", unit: "%" },
+              { label: "Risk Score", value: "7/10", delta: "-1", unit: "" },
+              { label: "Fee Rate", value: "1.5%", delta: "0", unit: "%" },
+            ]}
+          />
+          <Chart type="line" series={[{ name: "Fund A", data: [10, 12, 14, 15, 13] }, { name: "Fund B", data: [8, 9, 11, 12, 10] }]} x="Year" y="Return (%)" />
+        </Section>
+        <Section title="Fund Details">
+          <DataTable
+            columns={[{ name: "Metric", sortable: true }, { name: "Fund A", sortable: true }, { name: "Fund B", sortable: true }]}
+            rows={[
+              { Metric: "Annual Return", "Fund A": "12%", "Fund B": "9%" },
+              { Metric: "Risk Score", "Fund A": "7/10", "Fund B": "5/10" },
+              { Metric: "Fee Rate", "Fund A": "1.5%", "Fund B": "0.8%" },
+              { Metric: "Minimum Investment", "Fund A": "$10,000", "Fund B": "$1,000" },
+            ]}
+          />
+        </Section>
+      </main>
+    </Page>
+  );
+};
+
+export default FundComparisonPage;
+```

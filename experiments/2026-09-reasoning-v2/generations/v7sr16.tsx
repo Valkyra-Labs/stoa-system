@@ -1,0 +1,64 @@
+import { Page, Header, Card, Metric, Trend, Chart, DataTable } from "@stoa/react";
+
+export default function WeeklyFinanceOverview() {
+  return (
+    <Page title="Weekly Finance Overview">
+      <Header title="Weekly Finance Overview" subtitle="Monday, October 2, 2023" />
+      <main>
+        <section>
+          <Card title="Key Metrics">
+            <Metric label="Revenue" value={150000} delta={5000} unit="USD" />
+            <Metric label="Expenses" value={120000} delta={-2000} unit="USD" />
+            <Metric label="Profit Margin" value={20} delta={5} unit="%" />
+            <Metric label="Cash Flow" value={30000} delta={1000} unit="USD" />
+          </Card>
+        </section>
+        <section>
+          <Card title="Revenue Trends">
+            <Trend series={[145000, 148000, 150000]} />
+          </Card>
+        </section>
+        <section>
+          <Card title="Expenses Breakdown">
+            <DataTable
+              columns={[
+                { label: "Category", key: "category" },
+                { label: "Amount", key: "amount", unit: "USD" },
+              ]}
+              rows={[
+                { category: "Salaries", amount: 60000 },
+                { category: "Rent", amount: 20000 },
+                { category: "Supplies", amount: 10000 },
+                { category: "Marketing", amount: 15000 },
+                { category: "Miscellaneous", amount: 15000 },
+              ]}
+            />
+          </Card>
+        </section>
+        <section>
+          <Card title="Profit Margin Analysis">
+            <Chart type="line" series={[15, 18, 20, 22, 23]} x="Week" y="Margin" />
+          </Card>
+        </section>
+        <section>
+          <Card title="Cash Flow Summary">
+            <DataTable
+              columns={[
+                { label: "Date", key: "date" },
+                { label: "Inflow", key: "inflow", unit: "USD" },
+                { label: "Outflow", key: "outflow", unit: "USD" },
+              ]}
+              rows={[
+                { date: "2023-09-25", inflow: 50000, outflow: 30000 },
+                { date: "2023-09-26", inflow: 40000, outflow: 25000 },
+                { date: "2023-09-27", inflow: 35000, outflow: 20000 },
+                { date: "2023-09-28", inflow: 30000, outflow: 15000 },
+                { date: "2023-09-29", inflow: 25000, outflow: 10000 },
+              ]}
+            />
+          </Card>
+        </section>
+      </main>
+    </Page>
+  );
+}

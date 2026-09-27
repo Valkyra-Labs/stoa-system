@@ -1,0 +1,9 @@
+1. The portfolio manager opens the screen daily to review changes in their portfolio since the last day, as part of their routine check to monitor performance and make informed decisions.
+
+2. The shape of the work is scanning a large collection for deviations, as the manager needs to identify unusual movements in their portfolio.
+
+3. The information includes all assets in the portfolio, their current values, and changes compared to yesterday. Each value is judged against the previous day's value, with significant changes highlighting potential issues.
+
+4. The manager decides whether to investigate or take action on significant movements. They need to see the source of the change, how recent it is, and any related context to make informed decisions.
+
+5. The structure starts with a summary of key metrics, followed by a detailed view of assets with significant changes. A comparison section highlights deviations, and a timeline shows recent movements, with actions available for further investigation.

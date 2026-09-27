@@ -1,0 +1,50 @@
+import { Page, Header, Sidebar, Section, Card, Metric, Delta, Comparison, DataTable, Button, FilterBar, SavedViews } from "@stoa/react";
+
+export default function PrepareMeeting() {
+  return (
+    <Page title="Prepare Meeting">
+      <Header title="Student Overview" subtitle="John Doe" />
+      <Section title="Overview">
+        <Card title="Recent Performance">
+          <Metric label="Last Test Score" value={85} unit="%" />
+          <Metric label="Attendance" value={90} delta={{ value: 5, basis: "previous week" }} />
+          <Metric label="Behavioral Notes" value={3} />
+        </Card>
+      </Section>
+      <Section title="Academic Data">
+        <DataTable
+          columns={[
+            { label: "Date", key: "date" },
+            { label: "Subject", key: "subject" },
+            { label: "Score", key: "score", unit: "%" },
+          ]}
+          rows={[
+            { date: "2023-10-01", subject: "Math", score: 85 },
+            { date: "2023-10-08", subject: "Science", score: 90 },
+            { date: "2023-10-15", subject: "English", score: 75 },
+          ]}
+        />
+      </Section>
+      <Section title="Behavioral Data">
+        <DataTable
+          columns={[
+            { label: "Date", key: "date" },
+            { label: "Incident", key: "incident" },
+            { label: "Description", key: "description" },
+          ]}
+          rows={[
+            { date: "2023-10-02", incident: "Late", description: "Arrived 10 minutes late" },
+            { date: "2023-10-10", incident: "Disruptive", description: "Disturbed class" },
+            { date: "2023-10-12", incident: "Absent", description: "Did not attend class" },
+          ]}
+        />
+      </Section>
+      <Section title="Action Items">
+        <Card title="Next Steps">
+          <Button label="Send Reminder Email" variant="primary" />
+          <Button label="Schedule Tutoring" variant="secondary" />
+        </Card>
+      </Section>
+    </Page>
+  );
+}

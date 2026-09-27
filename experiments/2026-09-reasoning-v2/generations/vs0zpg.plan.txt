@@ -1,0 +1,5 @@
+This screen serves as a high-level weekly financial dashboard for a finance director, designed to be scanned quickly on a Monday morning before strategic meetings. The layout prioritizes immediate insight over granular detail.
+
+The top section features a **Header** displaying the current fiscal week and a summary **Metric** card showing total revenue versus the prior week's delta. Below this, a **Section** contains a **Chart** visualizing cash flow trends over the last 12 weeks, providing context to the numbers. 
+
+To the right of the chart, a **Card** lists key performance indicators (KPIs) like EBITDA and margin, each with a **Delta** indicator. Further down, a **Section** houses a compact **DataTable** showing departmental spend, allowing the director to drill down into specific line items if needed. An **AuditLog** summary is tucked in the corner to track recent financial adjustments. The design uses clear visual hierarchy and concise data to enable rapid comprehension of the company's financial health for the upcoming week.

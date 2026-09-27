@@ -1,0 +1,45 @@
+```tsx
+import { Page, Header, Section, Metric, Delta, Status, EmptyData, Card, Timeline, Button, FilterBar, SavedViews, BulkActions } from "@stoa/react";
+
+const WeeklyFinanceDashboard = () => {
+  return (
+    <Page title="Weekly Finance Overview">
+      <Header title="Weekly Finance Summary" subtitle="Monday Review - Updated 2023-10-23" actions={<Button label="Refresh" variant="primary" />} />
+      
+      <Section title="Key Metrics">
+        <div style={{ display: "flex", gap: "2rem", flexWrap: "wrap" }}>
+          <Metric label="Revenue" value="$12.5M" unit="USD" delta={<Delta value="+1.2M" basis="$11.3M" />} />
+          <Metric label="Expenses" value="$8.2M" unit="USD" delta={<Delta value="+0.3M" basis="$7.9M" />} />
+          <Metric label="Net Profit" value="$4.3M" unit="USD" delta={<Delta value="+0.5M" basis="$3.8M" />} />
+          <Metric label="Cash Flow" value="$6.1M" unit="USD" delta={<Delta value="+0.4M" basis="$5.7M" />} />
+        </div>
+      </Section>
+
+      <Section title="Recent Activity">
+        <Timeline events={[
+          { time: "2023-10-20", description: "New client onboarding completed" },
+          { time: "2023-10-19", description: "Quarterly budget review completed" },
+          { time: "2023-10-18", description: "IT infrastructure upgrade launched" }
+        ]} />
+      </Section>
+
+      <Section title="Data Status">
+        <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
+          <Status tone="success" label="Revenue data: Fresh" />
+          <Status tone="warning" label="Expenses data: Stale (updated 2023-10-15)" />
+          <Status tone="error" label="Cash Flow data: Error (retry in 1 hour)" />
+        </div>
+      </Section>
+
+      <Section title="Actions">
+        <BulkActions>
+          <Button label="Approve Expenses" variant="secondary" />
+          <Button label="Generate Report" variant="secondary" />
+        </BulkActions>
+      </Section>
+    </Page>
+  );
+};
+
+export default WeeklyFinanceDashboard;
+```

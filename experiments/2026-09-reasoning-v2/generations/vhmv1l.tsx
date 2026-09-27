@@ -1,0 +1,49 @@
+import { Page, Header, Sidebar, Section, Card, Timeline, Button, DataTable } from "@stoa/react";
+
+export default function ParentMeetingPrep() {
+  return (
+    <Page title="Parent Meeting Prep">
+      <Header title="Parent Meeting Prep" subtitle="Prepare for the meeting with John Doe's parent" />
+      <main>
+        <section>
+          <Section title="Student Summary">
+            <Card title="John Doe">
+              <p>Grade: 10</p>
+              <p>Photo: (Placeholder for student photo)</p>
+            </Card>
+          </Section>
+        </section>
+        <section>
+          <Section title="Recent Activity">
+            <Timeline events={[
+              { date: "2023-10-15", description: "John submitted Math homework" },
+              { date: "2023-10-14", description: "John attended a school assembly" },
+              { date: "2023-10-13", description: "John received a detention for tardiness" },
+              { date: "2023-10-12", description: "John's English essay graded" },
+            ]} />
+          </Section>
+        </section>
+        <section>
+          <Section title="Preparation Notes">
+            <Card title="Meeting Notes">
+              <p>Reminder to discuss John's recent improvement in Math.</p>
+              <p>Note to mention John's detention and discuss behavior.</p>
+            </Card>
+            <Card title="Resources">
+              <DataTable
+                columns={[
+                  { label: "Resource", field: "resource" },
+                  { label: "Description", field: "description" },
+                ]}
+                rows={[
+                  { resource: "Student Progress Report", description: "Detailed report of John's performance" },
+                  { resource: "Behavior Log", description: "Log of John's behavior incidents" },
+                ]}
+              />
+            </Card>
+          </Section>
+        </section>
+      </main>
+    </Page>
+  );
+}

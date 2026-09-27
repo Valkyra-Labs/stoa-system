@@ -1,0 +1,33 @@
+```tsx
+import { Page, Header, Sidebar, Section, Card, Button } from "@stoa/react";
+
+export default function FailedPayouts() {
+  return (
+    <Page title="Failed Payouts">
+      <Header title="Failed Payouts" subtitle="Resolve failed payouts" />
+      <Sidebar>
+        <Section title="Quick Actions">
+          <Button label="Retry All" variant="primary" />
+          <Button label="Mark All as Resolved" variant="secondary" />
+        </Section>
+      </Sidebar>
+      <main>
+        <Section title="Payout Queue">
+          <Card title="Payout 123456">
+            <p>Recipient: Alice Smith</p>
+            <p>Reason: Insufficient Funds</p>
+            <Button label="Retry" variant="primary" />
+            <Button label="Mark as Resolved" variant="secondary" />
+          </Card>
+          <Card title="Payout 789012">
+            <p>Recipient: Bob Johnson</p>
+            <p>Reason: Account Closed</p>
+            <Button label="Retry" variant="primary" />
+            <Button label="Mark as Resolved" variant="secondary" />
+          </Card>
+        </Section>
+      </main>
+    </Page>
+  );
+}
+```

@@ -1,0 +1,40 @@
+import { Page, Comparison, Metric, Delta, Chart, Button } from "@stoa/react";
+
+export default function FundComparison() {
+  return (
+    <Page title="Fund Comparison">
+      <Header title="Fund Comparison" subtitle="Choose the best fund for your client" />
+      <Comparison
+        entities={[
+          { id: "fundA", label: "Growth Fund" },
+          { id: "fundB", label: "Stability Fund" },
+        ]}
+        metrics={[
+          { id: "returns", label: "Returns", unit: "%" },
+          { id: "risk", label: "Risk", unit: "Units" },
+          { id: "fees", label: "Fees", unit: "$" },
+        ]}
+      >
+        {({ entity, metric, data }) => (
+          <Metric
+            label={`${entity.label} - ${metric.label}`}
+            value={data.value}
+            delta={data.delta}
+            unit={metric.unit}
+          />
+        )}
+      </Comparison>
+      <Chart
+        type="line"
+        series={[
+          { id: "fundA", label: "Growth Fund", data: [{ x: 1, y: 10 }, { x: 2, y: 12 }, { x: 3, y: 15 }] },
+          { id: "fundB", label: "Stability Fund", data: [{ x: 1, y: 8 }, { x: 2, y: 9 }, { x: 3, y: 10 }] },
+        ]}
+        x="Month"
+        y="Returns (%)"
+      />
+      <Button label="Recommend Growth Fund" variant="primary" />
+      <Button label="Recommend Stability Fund" variant="secondary" />
+    </Page>
+  );
+}

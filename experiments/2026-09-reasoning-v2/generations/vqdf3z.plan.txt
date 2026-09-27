@@ -1,0 +1,9 @@
+1. The finance director is a routine user who checks weekly numbers every Monday to prepare for meetings. This is a regular, time-bound task with no urgent action required on the screen itself.
+
+2. The shape of the work is getting a general picture of many unrelated numbers with no action expected on this screen. The director is reviewing a set of financial metrics, not making decisions here.
+
+3. The information includes company-wide financial metrics (revenue, expenses, profit) for the past week, compared to the previous week and targets. The values are judged against targets and previous periods.
+
+4. The decision is not made here, but the director needs to see the data to prepare for meetings. They need to know if numbers are on track, and the context of changes (like previous periods or targets) helps in assessing the situation.
+
+5. The structure starts with a header showing the week and context. A dashboard with metrics and charts is central, showing key figures and trends. A sidebar provides additional context like departmental breakdowns or key drivers. No detail or action is needed on this screen, so it's a high-level overview.

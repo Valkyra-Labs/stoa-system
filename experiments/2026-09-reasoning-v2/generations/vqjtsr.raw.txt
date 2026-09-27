@@ -1,0 +1,106 @@
+```tsx
+import {
+  Page,
+  Header,
+  Section,
+  Card,
+  Metric,
+  Delta,
+  Trend,
+  DataTable,
+  Status,
+  AuditLog,
+  Tabs,
+  EmptyData,
+  Button,
+} from "@stoa/react";
+
+const schoolName = "Springfield Academy";
+const termName = "Spring 2024";
+const date = "May 15, 2024";
+
+const metrics = [
+  { label: "Enrollment", value: 1245, delta: 12, unit: "students", basis: "vs. previous term" },
+  { label: "Budget Utilization", value: 87.5, unit: "%", basis: "vs. plan" },
+  { label: "Attendance Rate", value: 94.2, unit: "%", basis: "weekly avg" },
+  { label: "Student-Teacher Ratio", value: 18, unit: "students", basis: "current" },
+];
+
+const trendData = [
+  { x: "Jan", y: 1180 },
+  { x: "Feb", y: 1195 },
+  { x: "Mar", y: 1210 },
+  { x: "Apr", y: 1225 },
+  { x: "May", y: 1245 },
+];
+
+const performanceRows = [
+  { id: 1, category: "Academic", metric: "Average Test Score", value: "92%", status: "Excellent", trend: "+3%" },
+  { id: 2, category: "Extracurricular", metric: "Club Participation", value: "98%", status: "Excellent", trend: "+5%" },
+  { id: 3, category: "Facilities", metric: "Building Maintenance", value: "95%", status: "Good", trend: "-1%" },
+  { id: 4, category: "Safety", metric: "Incident Reports", value: "0", status: "Excellent", trend: "0" },
+];
+
+const recentEvents = [
+  { id: 1, date: "May 10", actor: "Admin", action: "Approved new STEM lab funding", status: "Completed" },
+  { id: 2, date: "May 05", actor: "Finance", action: "Submitted Q1 audit", status: "Completed" },
+  { id: 3, date: "Apr 28", actor: "HR", action: "Hired 3 new teaching assistants", status: "Completed" },
+];
+
+export default function SchoolDashboard() {
+  return (
+    <Page title={`${schoolName} | Term ${termName} Overview`}>
+      <Header
+        title={`${schoolName} Performance Dashboard`}
+        subtitle={`Term: ${termName} • Date: ${date}`}
+        actions={
+          <>
+            <Button label="Export Report" variant="secondary" />
+            <Button label="Present Now" />
+          </>
+        }
+      />
+
+      <main>
+        <Section title="Executive Summary">
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "16px", marginBottom: "24px" }}>
+            {metrics.map((m) => (
+              <Card key={m.label} title={m.label}>
+                <Metric value={m.value} delta={m.delta} unit={m.unit} />
+                <Delta value={m.delta} basis={m.basis} />
+              </Card>
+            ))}
+          </div>
+
+          <Card title="Enrollment Trend (Jan - May)">
+            <Trend series={trendData} x={d => d.x} y={d => d.y} />
+          </Card>
+        </Section>
+
+        <Section title="Key Performance Indicators">
+          <DataTable
+            columns={[
+              { key: "category", label: "Category" },
+              { key: "metric", label: "Metric" },
+              { key: "value", label: "Current Value" },
+              { key: "status", label: "Status" },
+              { key: "trend", label: "Trend" },
+            ]}
+            rows={performanceRows}
+          />
+        </Section>
+
+        <Section title="Recent Operational Activities">
+          <AuditLog entries={recentEvents} />
+        </Section>
+
+        <Section title="Overall School Health">
+          <Card>
+            <Status tone="success" label="School Status: Operational & On Track" />
+          </Card>
+        </Section>
+      </main>
+    </Page>
+  );
+}
+```

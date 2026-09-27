@@ -1,0 +1,6 @@
+The rules that shape this screen most are:  
+- **Order and emphasis**: Exceptions and actionable items (failed payouts) are prioritized over averages, ensuring the analyst sees what needs attention first.  
+- **Numbers**: All values (e.g., payout amounts, error codes) are clearly labeled with units and context, avoiding ambiguity.  
+- **Working with lists**: Context is preserved by showing failed payouts in a list with a detail view open beside it, not replacing it. Filters and bulk actions are persistent, enabling efficient triage.  
+- **Evidence and actions**: Each failed payout includes evidence (e.g., error logs, timestamps) alongside actions (e.g., retry, investigate), ensuring decisions are informed and reversible.  
+These rules ensure clarity, efficiency, and accountability in resolving failed payouts.

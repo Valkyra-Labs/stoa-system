@@ -1,0 +1,93 @@
+import { Page, Header, Section, Card, Metric, Delta, Trend, Chart, DataTable, Comparison, Timeline, Status, EmptyData } from '@stoa/react';
+
+const schoolData = {
+  name: 'Green Valley School',
+  students: 850,
+  staff: 60,
+  budget: 2500000,
+  safetyIncidents: 3,
+  satisfactionScore: 88,
+  academicPerformance: {
+    math: 82,
+    reading: 85,
+    science: 80
+  },
+  staffPerformance: {
+    avgRating: 4.2,
+    turnoverRate: 5
+  },
+  financialHealth: {
+    budgetSpent: 2300000,
+    remaining: 200000,
+    variance: 10
+  },
+  timelineEvents: [
+    { date: '2023-09', description: 'New science lab opened' },
+    { date: '2023-10', description: 'Staff training program launched' },
+    { date: '2023-11', description: 'Parent satisfaction survey conducted' },
+    { date: '2023-12', description: 'Winter sports season started' }
+  ]
+};
+
+export default function SchoolPerformanceReport() {
+  return (
+    <Page title="School Performance Report">
+      <Header title="Green Valley School Term Report" subtitle="Presented to the Board" />
+      <Section title="Overview">
+        <Card title="School Summary">
+          <div className="grid grid-cols-2 gap-4">
+            <Metric label="Students" value={schoolData.students} />
+            <Metric label="Staff" value={schoolData.staff} />
+            <Metric label="Budget" value={schoolData.budget} unit="USD" />
+            <Metric label="Safety Incidents" value={schoolData.safetyIncidents} />
+            <Metric label="Satisfaction Score" value={schoolData.satisfactionScore} />
+          </div>
+        </Card>
+      </Section>
+      <Section title="Academic Performance">
+        <Card title="Subject Performance">
+          <div className="grid grid-cols-3 gap-4">
+            <Metric label="Math" value={schoolData.academicPerformance.math} />
+            <Metric label="Reading" value={schoolData.academicPerformance.reading} />
+            <Metric label="Science" value={schoolData.academicPerformance.science} />
+          </div>
+        </Card>
+        <Card title="Trend Analysis">
+          <Trend series={[80, 82, 84, 85, 83]} />
+        </Card>
+      </Section>
+      <Section title="Staff and Financial Health">
+        <Card title="Staff Performance">
+          <div className="grid grid-cols-2 gap-4">
+            <Metric label="Average Rating" value={schoolData.staffPerformance.avgRating} />
+            <Metric label="Turnover Rate" value={schoolData.staffPerformance.turnoverRate} />
+          </div>
+        </Card>
+        <Card title="Financial Overview">
+          <div className="grid grid-cols-3 gap-4">
+            <Metric label="Budget Spent" value={schoolData.financialHealth.budgetSpent} unit="USD" />
+            <Metric label="Remaining" value={schoolData.financialHealth.remaining} unit="USD" />
+            <Delta value={schoolData.financialHealth.variance} basis={100} />
+          </div>
+        </Card>
+      </Section>
+      <Section title="Comparison with Peers">
+        <Card title="Peer Comparison">
+          <Comparison
+            entities={[
+              { name: 'Green Valley School', metrics: { math: 82, reading: 85, science: 80 } },
+              { name: 'Maple Grove School', metrics: { math: 78, reading: 83, science: 79 } },
+              { name: 'Oakwood School', metrics: { math: 84, reading: 86, science: 82 } }
+            ]}
+            metrics={['math', 'reading', 'science']}
+          />
+        </Card>
+      </Section>
+      <Section title="Key Events">
+        <Card title="Timeline of Key Events">
+          <Timeline events={schoolData.timelineEvents} />
+        </Card>
+      </Section>
+    </Page>
+  );
+}

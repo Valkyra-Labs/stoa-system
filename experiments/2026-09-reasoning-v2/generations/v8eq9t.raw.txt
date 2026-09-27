@@ -1,0 +1,57 @@
+```tsx
+import { Page, Header, Sidebar, Section, Card, DataTable, Button, FilterBar, SavedViews, BulkActions, Comparison, Status } from "@stoa/react";
+
+export default function FailedPayoutsScreen() {
+  return (
+    <Page title="Failed Payouts">
+      <Header title="Failed Payouts" subtitle="Resolve failed payouts" actions={<Button label="Mark as Resolved" />} />
+      <Section title="Filters">
+        <FilterBar filters={[
+          { label: "Date Range", value: "last 7 days" },
+          { label: "Payment Method", value: "Credit Card" },
+          { label: "Status", value: "Failed" }
+        ]} />
+        <SavedViews views={[
+          { label: "All Failed", filters: [] },
+          { label: "Last 7 Days", filters: [{ label: "Date Range", value: "last 7 days" }] }
+        ]} />
+      </Section>
+      <Section title="Failed Payouts List">
+        <DataTable
+          columns={[
+            { label: "Payout ID", key: "id" },
+            { label: "Date", key: "date" },
+            { label: "Amount", key: "amount", type: "number" },
+            { label: "Status", key: "status" },
+            { label: "Error Code", key: "errorCode" }
+          ]}
+          rows={[
+            { id: "12345", date: "2023-10-01", amount: 100.00, status: "Failed", errorCode: "400" },
+            { id: "67890", date: "2023-10-02", amount: 200.00, status: "Failed", errorCode: "500" }
+          ]}
+          selectable
+          stickyFirstColumn
+          onRowSelect={(row) => console.log(`Selected row: ${row.id}`)}
+        />
+        <BulkActions actions={[
+          { label: "Mark as Resolved", onPress: () => console.log("Marked as resolved") },
+          { label: "Retry Payment", onPress: () => console.log("Retried payment") }
+        ]} />
+      </Section>
+      <Section title="Resolution Details">
+        <Card title="Payout Details">
+          <Comparison entities={[
+            { id: "12345", metrics: [
+              { label: "Amount", value: 100.00, unit: "USD" },
+              { label: "Date", value: "2023-10-01" },
+              { label: "Error Code", value: "400" }
+            ] }
+          ]} />
+          <Status tone="warning" label="Pending Review" />
+          <Button label="Mark as Resolved" variant="primary" onPress={() => console.log("Marked as resolved")} />
+        </Card>
+      </Section>
+    </Page>
+  );
+}
+```

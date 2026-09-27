@@ -1,0 +1,141 @@
+import {
+  Page,
+  Header,
+  Section,
+  Card,
+  Metric,
+  DataTable,
+  FilterBar,
+  Drawer,
+  Button,
+  Status,
+  EmptyData,
+} from "@stoa/react";
+
+const PortfolioBriefing = () => {
+  const portfolioName = "Quantum Alpha Fund";
+  const dateRange = "YTD";
+
+  const metrics = [
+    { label: "Net P&L", value: "$1.24M", delta: "+4.8%", unit: "vs yesterday" },
+    { label: "Unrealized Gains", value: "$890K", delta: "+2.1%", unit: "vs yesterday" },
+    { label: "Volatility", value: "18.4", delta: "-1.2", unit: "%" },
+    { label: "Sector Rotation", value: "Tech → Health", delta: "Strong", unit: "" },
+  ];
+
+  const columns = [
+    { key: "ticker", label: "Ticker", width: "10%" },
+    { key: "name", label: "Name", width: "25%" },
+    { key: "weight", label: "Weight", width: "10%" },
+    { key: "change", label: "Change", width: "12%" },
+    { key: "reason", label: "Reason", width: "43%" },
+  ];
+
+  const rows = [
+    {
+      ticker: "NVDA",
+      name: "NVIDIA Corp",
+      weight: "4.2%",
+      change: "+8.4%",
+      reason: "New AI chip orders surge; analyst upgrade to 'Strong Buy'.",
+    },
+    {
+      ticker: "MRK",
+      name: "Merck & Co",
+      weight: "2.8%",
+      change: "+1.2%",
+      reason: "FDA approval for new oncology drug accelerated.",
+    },
+    {
+      ticker: "BABA",
+      name: "Alibaba Group",
+      weight: "1.5%",
+      change: "-3.1%",
+      reason: "Regulatory uncertainty in China; guidance miss.",
+    },
+    {
+      ticker: "TSLA",
+      name: "Tesla Inc",
+      weight: "3.1%",
+      change: "-0.5%",
+      reason: "Margin compression concerns; lower EV sales forecast.",
+    },
+    {
+      ticker: "MSFT",
+      name: "Microsoft",
+      weight: "5.0%",
+      change: "+0.3%",
+      reason: "Azure cloud growth outpaced expectations.",
+    },
+  ];
+
+  const drawerContent = (item: typeof rows[0]) => (
+    <Section title={`Analysis: ${item.name}`}>
+      <Card title="Market Drivers">
+        <p>Recent news indicates a significant shift in investor sentiment regarding {item.ticker}. Key drivers include:</p>
+        <ul>
+          <li>Analyst upgrade from Goldman Sachs citing improved revenue guidance.</li>
+          <li>Positive sentiment from institutional investors increasing allocation.</li>
+        </ul>
+      </Card>
+      <Card title="Risk Factors">
+        <p>Despite the positive momentum, short-term volatility remains elevated due to broader market rotation.</p>
+      </Card>
+      <Card title="Manager's Note">
+        <p>We are maintaining our overweight position but monitoring liquidity conditions closely.</p>
+      </Card>
+    </Section>
+  );
+
+  return (
+    <Page title={`${portfolioName} Morning Briefing`}>
+      <Header
+        title={portfolioName}
+        subtitle={`Period: ${dateRange}`}
+        actions={
+          <>
+            <Button label="Save View" variant="secondary" />
+            <Button label="Export Report" />
+          </>
+        }
+      />
+
+      <Section title="Portfolio Performance">
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "1rem" }}>
+          {metrics.map((m, idx) => (
+            <Card key={idx} title={m.label}>
+              <Metric label={m.label} value={m.value} delta={m.delta} unit={m.unit} />
+            </Card>
+          ))}
+        </div>
+      </Section>
+
+      <Section title="Holdings with Significant Movement">
+        <FilterBar
+          filters={{
+            sortBy: "change",
+            sortDesc: true,
+            minDelta: 0.5,
+          }}
+        />
+        <DataTable
+          columns={columns}
+          rows={rows}
+          selectable
+          onRowSelect={(item) => {
+            const drawerOpen = true;
+            const drawerTitle = `${item.ticker}: ${item.name}`;
+            const drawerContent = drawerContent(item);
+            return { drawerOpen, drawerTitle, drawerContent };
+          }}
+        />
+      </Section>
+
+      <Drawer title="Position Details" open={false} content={null}>
+        {/* Drawer content injected via onRowSelect callback */}
+      </Drawer>
+    </Page>
+  );
+};
+
+export default PortfolioBriefing;

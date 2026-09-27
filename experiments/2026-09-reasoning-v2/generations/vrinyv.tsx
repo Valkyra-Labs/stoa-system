@@ -1,0 +1,92 @@
+import { Page, Header, Section, Card, DataTable, Button, FilterBar, Tabs, Drawer, Metric, Delta, Status, EmptyData, BulkActions } from "@stoa/react";
+
+const failedPayouts = [
+  {
+    id: "P-1001",
+    amount: "$150.00",
+    status: "Failed",
+    error: "Invalid account number",
+    timestamp: "2023-09-20T14:32:00Z",
+    retries: 2,
+    lastAttempt: "2023-09-20T14:25:00Z",
+    customer: "John Doe",
+    paymentMethod: "Card ending in 4242",
+  },
+  {
+    id: "P-1002",
+    amount: "$75.50",
+    status: "Failed",
+    error: "Insufficient funds",
+    timestamp: "2023-09-20T13:15:00Z",
+    retries: 1,
+    lastAttempt: "2023-09-20T13:10:00Z",
+    customer: "Jane Smith",
+    paymentMethod: "Card ending in 5100",
+  },
+  {
+    id: "P-1003",
+    amount: "$200.00",
+    status: "Failed",
+    error: "Transaction declined",
+    timestamp: "2023-09-20T12:45:00Z",
+    retries: 0,
+    lastAttempt: "2023-09-20T12:45:00Z",
+    customer: "Alice Johnson",
+    paymentMethod: "Card ending in 4111",
+  },
+];
+
+const columns = [
+  { key: "id", label: "ID" },
+  { key: "amount", label: "Amount" },
+  { key: "status", label: "Status" },
+  { key: "error", label: "Error" },
+  { key: "timestamp", label: "Timestamp" },
+  { key: "customer", label: "Customer" },
+  { key: "paymentMethod", label: "Payment Method" },
+];
+
+const resolveOptions = [
+  { id: "retry", label: "Retry Payment" },
+  { id: "refund", label: "Issue Refund" },
+  { id: "investigate", label: "Investigate Manually" },
+];
+
+export default function FailedPayouts() {
+  return (
+    <Page title="Failed Payouts">
+      <Header
+        title="Failed Payouts"
+        subtitle="Review and resolve failed transactions"
+        actions={
+          <Button variant="primary">Resolve All</Button>
+        }
+      />
+      <FilterBar filters={["All", "Retryable", "Non-Retryable"]} />
+      <Section title="Failed Payouts">
+        <DataTable
+          columns={columns}
+          rows={failedPayouts}
+          selectable
+          stickyFirstColumn
+          onRowSelect={(selected) => console.log("Selected:", selected)}
+        />
+        <BulkActions actions={resolveOptions} />
+      </Section>
+      <Drawer
+        title="Payout Details"
+        open={false}
+      >
+        <Card title="Payout Details">
+          <Metric label="Amount" value="$150.00" />
+          <Metric label="Status" value="Failed" />
+          <Metric label="Error" value="Invalid account number" />
+          <Metric label="Timestamp" value="2023-09-20T14:32:00Z" />
+          <Metric label="Customer" value="John Doe" />
+          <Metric label="Payment Method" value="Card ending in 4242" />
+          <Status tone="critical" label="Action Required" />
+        </Card>
+      </Drawer>
+    </Page>
+  );
+}

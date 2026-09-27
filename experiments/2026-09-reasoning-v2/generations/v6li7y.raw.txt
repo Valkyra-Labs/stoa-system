@@ -1,0 +1,78 @@
+```tsx
+import { Page, Header, Section, Card, Metric, Comparison, Button, Status, EmptyData } from "@stoa/react";
+
+const fundA = {
+  id: "fund-a",
+  name: "Growth Horizon Fund",
+  type: "Equity",
+  riskLevel: "High",
+  expenseRatio: 0.75,
+  ytdReturn: 12.4,
+  maxDrawdown: -8.2,
+  description: "Aggressive growth strategy targeting emerging markets and tech sectors.",
+};
+
+const fundB = {
+  id: "fund-b",
+  name: "Steady Capital Fund",
+  type: "Balanced",
+  riskLevel: "Medium",
+  expenseRatio: 0.60,
+  ytdReturn: 8.1,
+  maxDrawdown: -4.5,
+  description: "Conservative approach focusing on dividend yield and stable bond allocations.",
+};
+
+const metrics = [
+  { label: "YTD Return", fundA: fundA.ytdReturn, fundB: fundB.ytdReturn, unit: "%" },
+  { label: "Expense Ratio", fundA: fundA.expenseRatio, fundB: fundB.expenseRatio, unit: "%" },
+  { label: "Max Drawdown", fundA: fundA.maxDrawdown, fundB: fundB.maxDrawdown, unit: "%" },
+  { label: "Risk Level", fundA: fundA.riskLevel, fundB: fundB.riskLevel, unit: "" },
+];
+
+export default function FundSelectionScreen() {
+  return (
+    <Page title="Fund Selection for Client: Sarah J.">
+      <Header title="Fund Recommendation" subtitle="Select the best fit for client portfolio goals" />
+      
+      <main>
+        <Section title="Client Profile Summary">
+          <p>Client Sarah J. has a 20-year time horizon, a high risk tolerance, and an income goal of $80k/year.</p>
+        </Section>
+
+        <Section title="Fund Comparison">
+          <Card title="Side-by-Side Analysis">
+            <Comparison entities={[fundA, fundB]} metrics={metrics} />
+          </Card>
+        </Section>
+
+        <Section title="Decision Factors">
+          <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap' }}>
+            <Card title="Option A: Growth Horizon">
+              <Metric label="Best for" value="Maximizing returns" />
+              <Metric label="Strategy" value="Aggressive Equity" />
+              <Status tone="neutral" label="Requires regular rebalancing due to volatility" />
+            </Card>
+            <Card title="Option B: Steady Capital">
+              <Metric label="Best for" value="Capital preservation" />
+              <Metric label="Strategy" value="Balanced Allocation" />
+              <Status tone="success" label="Lower volatility, consistent dividends" />
+            </Card>
+          </div>
+        </Section>
+
+        <Section title="Final Recommendation">
+          <Card title="Recommended Choice">
+            <div style={{ textAlign: 'center', padding: '20px' }}>
+              <h2>Growth Horizon Fund</h2>
+              <p>This fund aligns best with the client's aggressive growth goals and long time horizon.</p>
+              <Button label="Confirm Recommendation" onPress={() => alert("Recommendation confirmed.")} variant="primary" />
+              <Button label="Review Alternatives" onPress={() => alert("Reviewing alternatives.")} variant="secondary" />
+            </div>
+          </Card>
+        </Section>
+      </main>
+    </Page>
+  );
+}
+```

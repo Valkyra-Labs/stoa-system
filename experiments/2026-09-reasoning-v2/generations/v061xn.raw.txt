@@ -1,0 +1,43 @@
+```tsx
+import { Page, Header, Card, Metric, Delta, Chart, DataTable } from "@stoa/react";
+
+export default function WeeklyFinanceOverview() {
+  return (
+    <Page title="Weekly Finance Overview">
+      <Header title="Finance Overview" subtitle="Monday, April 10, 2023" />
+      <main>
+        <section>
+          <Header title="Key Metrics" />
+          <Card title="Revenue">
+            <Metric label="Total Revenue" value={1200000} unit="USD" />
+            <Metric label="Week-over-Week Change" value={-20000} delta={-20000} basis={1220000} />
+          </Card>
+          <Card title="Expenses">
+            <Metric label="Total Expenses" value={900000} unit="USD" />
+            <Metric label="Week-over-Week Change" value={10000} delta={10000} basis={890000} />
+          </Card>
+        </section>
+        <section>
+          <Header title="Revenue by Region" />
+          <Chart type="bar" series={[{ name: "North", data: [100000, 110000, 120000] }, { name: "South", data: [80000, 90000, 100000] }]} x="Week" y="Revenue" />
+        </section>
+        <section>
+          <Header title="Expense Breakdown" />
+          <DataTable
+            columns={[
+              { name: "Category", sortable: true },
+              { name: "Amount", sortable: true, numeric: true },
+              { name: "Week-over-Week Change", sortable: true, numeric: true },
+            ]}
+            rows={[
+              { Category: "Salaries", Amount: 500000, "Week-over-Week Change": 5000 },
+              { Category: "Rent", Amount: 100000, "Week-over-Week Change": -5000 },
+              { Category: "Marketing", Amount: 150000, "Week-over-Week Change": 2000 },
+            ]}
+          />
+        </section>
+      </main>
+    </Page>
+  );
+}
+```

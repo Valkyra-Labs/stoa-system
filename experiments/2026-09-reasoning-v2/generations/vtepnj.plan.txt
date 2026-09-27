@@ -1,0 +1,9 @@
+1. **Person & Session**: The analyst opens this screen in response to a daily "Failed Payouts" alert. It is a routine but time-sensitive task where missing a resolution can trigger customer service backlogs and reputational risk.
+
+2. **Shape of the Work**: This is a "taking each item in turn to a decision" session. The analyst must review a batch of failed transactions, identify the root cause for each, and execute a specific resolution action (e.g., retry, refund, void).
+
+3. **The Information**: The screen requires the transaction ID, amount, timestamp, the specific failure reason code, and the current status of the account. Values change the next step immediately (e.g., a "Insufficient Funds" error requires different handling than a "Gateway Timeout").
+
+4. **Decision & Evidence**: The analyst decides whether to retry, refund, or escalate. They need to see the failure reason, the amount at risk, and the time elapsed since failure to decide well. A wrong decision (e.g., retrying an invalid card) costs customer trust; escalation is the safe default.
+
+5. **Structure**: The screen needs a list view of failed items with a prominent "Resolve" action per row. A detail drawer or modal should open when an item is selected, showing the full context (metadata, history) to support the decision before the final action is committed.

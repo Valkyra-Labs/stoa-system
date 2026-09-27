@@ -1,0 +1,5 @@
+The rules of **Order and emphasis** and **Evidence and actions** shape this screen most critically.
+
+**Order and emphasis** dictates that the screen must immediately present the two funds side-by-side (Comparison pattern) with their most relevant financial metrics. The fund that meets the client's specific criteria (e.g., risk tolerance, return target) must be highlighted or positioned first, while the other is presented as an alternative. Metrics must show deltas against benchmarks or the client's previous portfolio to provide immediate context for judgment.
+
+**Evidence and actions** requires that the recommendation logic be transparent. The screen must display the rationale for each fund's standing (e.g., fund performance history, fee structure, risk profile) directly next to the comparison data. When the user selects a fund to proceed with the recommendation, the system must state the consequences (e.g., "Client accepts Fund A; proceeds to contract generation") before finalizing. The choice must be irreversible or require a clear confirmation step to prevent accidental selections, ensuring the adviser feels confident in their decision.

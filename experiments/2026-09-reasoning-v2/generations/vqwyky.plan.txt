@@ -1,0 +1,5 @@
+1. The head of school reviews the school's performance regularly, preparing a fixed report for the board. This is a routine, scheduled task with no changes needed.  
+2. The shape of the work is getting a general picture of many unrelated numbers with no action expected on this screen.  
+3. The information includes student performance metrics, staff metrics, financial data, and safety indicators. These are judged against targets, previous periods, and benchmarks.  
+4. The head decides on the overall health of the school. They need context like data sources, trends, and comparisons to make informed judgments.  
+5. The structure starts with an overview of key metrics, followed by detailed sections on each area (students, staff, finances, safety), and ends with a summary and next steps.

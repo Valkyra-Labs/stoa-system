@@ -1,0 +1,70 @@
+import { Page, Header, Section, Card, Metric, Delta, EmptyData, StaleData } from "@stoa/react";
+
+export default function SchoolTermReport() {
+  const financialMetrics = [
+    { label: "Total Budget", value: 12500000, unit: "USD", delta: 0, basis: "Budget" },
+    { label: "Spent to Date", value: 4120000, unit: "USD", delta: 185000, basis: "Budget" },
+    { label: "Run Rate", value: 4120000, unit: "USD/term", delta: -240000, basis: "Plan" },
+  ];
+
+  const academicMetrics = [
+    { label: "Enrollment", value: 842, unit: "students", delta: 12, basis: "Last Term" },
+    { label: "Attendance", value: 94.5, unit: "%", delta: 0.2, basis: "Target" },
+    { label: "Standardized Test Avg", value: 88, unit: "points", delta: -2, basis: "State Avg" },
+  ];
+
+  const variances = [
+    { entity: "Science Dept", metric: "Budget Usage", value: 120000, delta: 8000, basis: "Plan", tone: "warning" },
+    { entity: "Arts Program", metric: "Enrollment", value: 45, delta: -5, basis: "Last Term", tone: "info" },
+    { entity: "Facilities", metric: "Maintenance Cost", value: 22000, delta: 0, basis: "Threshold", tone: "neutral" },
+  ];
+
+  return (
+    <Page title="Term 4 Financial & Academic Report" subtitle="Fiscal Year 2023-2024">
+      <Header title="School Performance Dashboard" subtitle="Term 4 - No Changes Pending" />
+
+      <Section title="Executive Summary">
+        <Card title="Financial Position">
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "16px" }}>
+            {financialMetrics.map((m) => (
+              <Metric key={m.label} label={m.label} value={m.value.toLocaleString()} unit={m.unit} delta={m.delta} basis={m.basis} />
+            ))}
+          </div>
+        </Card>
+        <Card title="Academic Indicators">
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "16px" }}>
+            {academicMetrics.map((m) => (
+              <Metric key={m.label} label={m.label} value={m.value} unit={m.unit} delta={m.delta} basis={m.basis} />
+            ))}
+          </div>
+        </Card>
+      </Section>
+
+      <Section title="Critical Variances">
+        <Card title="Top Variations vs Plan">
+          <DataTable 
+            columns={[
+              { key: "entity", label: "Department", sticky: true },
+              { key: "metric", label: "Metric", sticky: true },
+              { key: "value", label: "Current", rightAlign: true },
+              { key: "delta", label: "Variance", rightAlign: true },
+              { key: "basis", label: "Basis", sticky: true },
+            ]}
+            rows={variances.map((v, i) => ({ ...v, id: i }))}
+            selectable
+          />
+          <StaleData since="2023-10-01" message="Data frozen as of October 1st, 2023. No further updates expected until term end." />
+        </Card>
+      </Section>
+
+      <Section title="Detailed Breakdown">
+        <Card title="Budget by Category">
+          <EmptyData message="Detailed budget categories are available in the attached PDF appendix. This view shows only aggregate term performance." />
+        </Card>
+        <Card title="Enrollment by Grade">
+          <EmptyData message="Grade-specific enrollment data is included in the appendix." />
+        </Card>
+      </Section>
+    </Page>
+  );
+}

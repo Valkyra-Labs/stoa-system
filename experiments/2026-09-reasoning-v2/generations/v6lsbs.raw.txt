@@ -1,0 +1,145 @@
+```tsx
+import { Page, Header, Section, Card, Metric, Comparison, DataTable, Button, Status, EmptyData } from "@stoa/react";
+
+// Realistic placeholder data for fund comparison
+const fundA = {
+  id: "FUND-A",
+  name: "Aggressive Growth Fund",
+  category: "Large Cap Growth",
+  expenseRatio: 0.85,
+  return1y: 28.4,
+  return3y: 15.2,
+  return5y: 12.8,
+  volatility: 22.5,
+  sharpeRatio: 0.95,
+  maxDrawdown: -18.2,
+  manager: "Sarah Jenkins",
+  aum: "$4.2B",
+};
+
+const fundB = {
+  id: "FUND-B",
+  name: "Balanced Value Fund",
+  category: "Core Blend",
+  expenseRatio: 0.62,
+  return1y: 14.1,
+  return3y: 9.8,
+  return5y: 8.5,
+  volatility: 12.1,
+  sharpeRatio: 1.12,
+  maxDrawdown: -8.4,
+  manager: "David Chen",
+  aum: "$1.8B",
+};
+
+const benchmark = {
+  id: "BENCHMARK",
+  name: "S&P 500 Index",
+  return1y: 24.2,
+  return3y: 11.5,
+  return5y: 10.2,
+};
+
+const peers = [
+  { name: "Tech Giant Fund", return1y: 32.1, return3y: 14.5 },
+  { name: "Blue Chip Mix", return1y: 16.3, return3y: 10.1 },
+];
+
+export default function FundSelectorScreen() {
+  return (
+    <Page title="Fund Recommendation">
+      <Header title="Select the Best Fund" subtitle="Compare performance, risk, and costs to recommend to your client" />
+
+      <Section title="Client Profile & Constraints">
+        <Card title="Risk Profile">
+          <div style={{ display: "flex", gap: "1rem", alignItems: "center" }}>
+            <Status tone="neutral" label="Aggressive" />
+            <Status tone="warning" label="Moderate" />
+            <Status tone="success" label="Conservative" />
+          </div>
+          <p>Client has a <strong>Conservative</strong> risk profile. Avoid high volatility options.</p>
+        </Card>
+        <Card title="Time Horizon">
+          <p>Investment horizon: 5+ years. Long-term compounding is expected.</p>
+        </Card>
+      </Section>
+
+      <Section title="Comparative Analysis">
+        {/* 
+          Rule Application: Evidence and actions. 
+          The decision is based on the Comparison component showing metrics side-by-side 
+          with clear deltas against the benchmark and each other.
+        */}
+        <Comparison entities={[fundA, fundB, benchmark]} metrics={[
+          { key: "return1y", label: "1-Year Return", unit: "%" },
+          { key: "return3y", label: "3-Year Return", unit: "%" },
+          { key: "return5y", label: "5-Year Return", unit: "%" },
+          { key: "volatility", label: "Volatility", unit: "%" },
+          { key: "sharpeRatio", label: "Sharpe Ratio", unit: "" },
+          { key: "expenseRatio", label: "Expense Ratio", unit: "%", invert: true },
+          { key: "maxDrawdown", label: "Max Drawdown", unit: "%", invert: true },
+        ]} />
+
+        {/* 
+          Rule Application: Order and emphasis.
+          We show the exceptions (high volatility) for Fund A immediately after the main comparison 
+          because the client is conservative.
+        */}
+        <Section title="Risk Exceptions & Warnings">
+          <Card title="Volatility Alert">
+            <Metric label="Fund A 1-Year Volatility" value={fundA.volatility} unit="%" delta={-4.3} basis="Benchmark" />
+            <p style={{ color: "#d32f2f", marginTop: "0.5rem" }}>
+              Fund A shows significantly higher volatility than the benchmark and Fund B. 
+              This may trigger stop-loss orders for conservative clients during market downturns.
+            </p>
+          </Card>
+        </Section>
+      </Section>
+
+      <Section title="Peer Group Context">
+        <Card title="How Fund A and B Stack Up vs. Peers">
+          <DataTable 
+            columns={[
+              { key: "entity", label: "Fund", sticky: true },
+              { key: "1y", label: "1Y Return", rightAlign: true },
+              { key: "3y", label: "3Y Return", rightAlign: true },
+            ]}
+            rows={[
+              { ...fundA, 1y: fundA.return1y, 3y: fundA.return3y },
+              { ...fundB, 1y: fundB.return1y, 3y: fundB.return3y },
+              { ...benchmark, 1y: benchmark.return1y, 3y: benchmark.return3y },
+              ...peers.map(p => ({ name: p.name, 1y: p.return1y, 3y: p.return3y })),
+            ]}
+          />
+        </Card>
+      </Section>
+
+      <Section title="Final Recommendation">
+        <Card title="Recommended Choice: Fund B (Balanced Value Fund)">
+          <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+            <div>
+              <Metric label="Current Recommendation" value="Fund B" />
+              <Metric label="Rationale" value="Lower volatility (12.1%) vs Benchmark (15.2%) while maintaining decent returns (9.8% over 3 years)." />
+            </div>
+            <div>
+              <Metric label="Cost Efficiency" value="Better" />
+              <Delta value="23 bps" basis="Fund A" />
+              <p>Lower expense ratio (0.62% vs 0.85%) preserves more capital for the client over time.</p>
+            </div>
+            <div>
+              <Metric label="Risk Control" value="Superior" />
+              <Delta value="9.8%" basis="Fund A" />
+              <p>Maximum drawdown of 8.4% is significantly lower than Fund A's 18.2%, fitting the client's conservative profile.</p>
+            </div>
+            
+            <div style={{ marginTop: "1.5rem" }}>
+              <Button label="Generate Client Summary" variant="primary" onPress={() => alert("Summary generated with rationale.")} />
+              <Button label="Show Historical Chart" variant="secondary" onPress={() => alert("Chart loading...")} />
+            </div>
+          </div>
+        </Card>
+      </Section>
+    </Page>
+  );
+}
+```

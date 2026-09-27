@@ -1,0 +1,121 @@
+import {
+  Page,
+  Header,
+  Card,
+  Tabs,
+  Section,
+  Metric,
+  Delta,
+  Comparison,
+  Status,
+  Button,
+} from "@stoa/react";
+
+// Placeholder data for the two funds
+const fundA = {
+  id: "A",
+  name: "Aggressive Growth Fund",
+  category: "Equity",
+  returns: 12.5,
+  volatility: 18.2,
+  fees: 0.75,
+  manager: "Sarah Chen",
+  rating: "4.2/5",
+  description: "High growth potential with moderate risk.",
+};
+
+const fundB = {
+  id: "B",
+  name: "Balanced Income Fund",
+  category: "Hybrid",
+  returns: 8.2,
+  volatility: 9.5,
+  fees: 0.60,
+  manager: "Michael Ross",
+  rating: "3.8/5",
+  description: "Steady returns with low risk profile.",
+};
+
+// Shared metrics for comparison
+const sharedMetrics = [
+  { label: "YTD Return", fundA: fundA.returns, fundB: fundB.returns, unit: "%" },
+  { label: "Volatility", fundA: fundA.volatility, fundB: fundB.volatility, unit: "%" },
+  { label: "Expense Ratio", fundA: fundA.fees, fundB: fundB.fees, unit: "%" },
+  { label: "Manager Rating", fundA: fundA.rating, fundB: fundB.rating, unit: "stars" },
+];
+
+export default function FundComparisonPage() {
+  return (
+    <Page title="Fund Recommendation" children={<ClientFundComparison />} />
+  );
+}
+
+function ClientFundComparison() {
+  return (
+    <div className="flex flex-col gap-6 p-6">
+      <Header
+        title="Client Fund Selection"
+        subtitle="Compare Aggressive Growth vs. Balanced Income"
+        actions={
+          <>
+            <Button label="Export Report" variant="secondary" />
+            <Button label="Save Recommendation" variant="primary" />
+          </>
+        }
+      />
+
+      <Section title="Client Profile Context">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <Card title="Risk Tolerance">
+            <p className="text-sm text-gray-500">Client prefers moderate risk with steady growth.</p>
+            <Status tone="neutral" label="Moderate" />
+          </Card>
+          <Card title="Time Horizon">
+            <p className="text-sm text-gray-500">5-year investment horizon.</p>
+            <Status tone="neutral" label="Medium-Term" />
+          </Card>
+          <Card title="Capital Allocation">
+            <p className="text-sm text-gray-500">Allocating $50,000 to new funds.</p>
+            <Status tone="neutral" label="$50k" />
+          </Card>
+        </div>
+      </Section>
+
+      <Section title="Fund Comparison" className="flex-1">
+        <Comparison
+          entities={[fundA, fundB]}
+          metrics={sharedMetrics}
+          showDelta={true}
+          showEvidence={true}
+        />
+      </Section>
+
+      <Section title="Recommendation Decision">
+        <Card title="Select Recommended Fund">
+          <div className="flex flex-col md:flex-row gap-4">
+            <div className="flex-1">
+              <Button
+                label="Recommend Fund A"
+                onPress={() => alert("Recommended Fund A")}
+                variant="outline"
+              />
+              <p className="text-sm text-gray-500 mt-2">
+                Rationale: Higher returns align with client's 5-year horizon, accepting moderate volatility.
+              </p>
+            </div>
+            <div className="flex-1">
+              <Button
+                label="Recommend Fund B"
+                onPress={() => alert("Recommended Fund B")}
+                variant="outline"
+              />
+              <p className="text-sm text-gray-500 mt-2">
+                Rationale: Lower volatility matches client's preference for steady growth, though returns are lower.
+              </p>
+            </div>
+          </div>
+        </Card>
+      </Section>
+    </div>
+  );
+}

@@ -1,0 +1,74 @@
+import { Page, Header, Sidebar, Section, Tabs, Card, Metric, Trend, Button, Comparison } from "@stoa/react";
+
+const FundA = {
+  id: "fund-a",
+  name: "Growth Fund",
+  metrics: {
+    return: 0.08,
+    volatility: 0.05,
+    sharpeRatio: 1.2,
+  },
+  trends: [
+    { period: "1M", value: 0.02 },
+    { period: "3M", value: 0.05 },
+    { period: "6M", value: 0.07 },
+    { period: "1Y", value: 0.08 },
+  ],
+};
+
+const FundB = {
+  id: "fund-b",
+  name: "Value Fund",
+  metrics: {
+    return: 0.06,
+    volatility: 0.04,
+    sharpeRatio: 1.1,
+  },
+  trends: [
+    { period: "1M", value: 0.01 },
+    { period: "3M", value: 0.04 },
+    { period: "6M", value: 0.06 },
+    { period: "1Y", value: 0.06 },
+  ],
+};
+
+const FundComparison = ({ fundA, fundB }) => (
+  <Comparison
+    entities={[fundA, fundB]}
+    metrics={[
+      { label: "Return", value: "metrics.return" },
+      { label: "Volatility", value: "metrics.volatility" },
+      { label: "Sharpe Ratio", value: "metrics.sharpeRatio" },
+    ]}
+  />
+);
+
+const FundDetails = ({ fund }) => (
+  <Card title={fund.name}>
+    <Metric label="Return" value={fund.metrics.return} unit="%" />
+    <Metric label="Volatility" value={fund.metrics.volatility} unit="%" />
+    <Metric label="Sharpe Ratio" value={fund.metrics.sharpeRatio} />
+    <Trend series={fund.trends.map(({ period, value }) => ({ x: period, y: value }))} />
+  </Card>
+);
+
+const RecommendFund = ({ fundA, fundB }) => (
+  <Page title="Recommend Fund">
+    <Header title="Recommend Fund" subtitle="Choose the best fund for your client" />
+    <Sidebar>
+      <Section title="Fund Details">
+        <FundDetails fund={fundA} />
+        <FundDetails fund={fundB} />
+      </Section>
+    </Sidebar>
+    <main>
+      <FundComparison fundA={fundA} fundB={fundB} />
+      <Section title="Decision">
+        <Button label="Recommend Fund A" onPress={() => console.log("Recommend Fund A")} />
+        <Button label="Recommend Fund B" onPress={() => console.log("Recommend Fund B")} />
+      </Section>
+    </main>
+  </Page>
+);
+
+export default RecommendFund;

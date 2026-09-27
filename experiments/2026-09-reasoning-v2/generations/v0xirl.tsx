@@ -1,0 +1,55 @@
+import { Page, Header, Comparison, Tabs, Card } from "@stoa/react";
+
+export default function FundComparison() {
+  return (
+    <Page title="Fund Comparison">
+      <Header title="Compare Funds" subtitle="Choose the best fund for your client" />
+      <Comparison
+        entities={[
+          { id: "fund1", label: "Growth Fund", content: (
+            <Tabs items={[
+              { id: "metrics", label: "Metrics", content: (
+                <Card title="Key Metrics">
+                  <Metric label="Return Rate" value={7.2} delta={0.5} unit="%" />
+                  <Metric label="Risk Level" value={6.5} delta={-0.3} unit="%" />
+                  <Metric label="Expense Ratio" value={0.5} delta={0.01} unit="%" />
+                </Card>
+              )},
+              { id: "charts", label: "Charts", content: (
+                <Card title="Performance Charts">
+                  <Chart type="line" series={{ data: [[1, 2, 3, 4, 5], [10, 20, 30, 40, 50]] }} x="Month" y="Return" />
+                </Card>
+              )},
+              { id: "description", label: "Description", content: (
+                <Card title="Description">
+                  <p>The Growth Fund aims to provide high returns with moderate risk. Ideal for clients seeking long-term growth.</p>
+                </Card>
+              )}
+            ]} />
+          )},
+          { id: "fund2", label: "Income Fund", content: (
+            <Tabs items={[
+              { id: "metrics", label: "Metrics", content: (
+                <Card title="Key Metrics">
+                  <Metric label="Return Rate" value={5.8} delta={0.4} unit="%" />
+                  <Metric label="Risk Level" value={4.0} delta={0.2} unit="%" />
+                  <Metric label="Expense Ratio" value={0.3} delta={0.01} unit="%" />
+                </Card>
+              )},
+              { id: "charts", label: "Charts", content: (
+                <Card title="Performance Charts">
+                  <Chart type="line" series={{ data: [[1, 2, 3, 4, 5], [8, 16, 24, 32, 40]] }} x="Month" y="Return" />
+                </Card>
+              )},
+              { id: "description", label: "Description", content: (
+                <Card title="Description">
+                  <p>The Income Fund focuses on stable returns with low risk. Suitable for conservative investors.</p>
+                </Card>
+              )}
+            ]} />
+          )}
+        ]}
+      />
+    </Page>
+  );
+}

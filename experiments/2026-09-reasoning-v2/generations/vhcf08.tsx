@@ -1,0 +1,42 @@
+import { Page, Header, Sidebar, Section, Card, Tabs, Chart, Comparison, DataTable, AuditLog, Status, Button, FilterBar, SavedViews, Comparison, Inspector } from "@stoa/react";
+
+const PortfolioOverview = () => {
+  return (
+    <Page title="Portfolio Overview">
+      <Header title="Portfolio Overview" subtitle="Review changes since yesterday" actions={<Button label="Refresh" />} />
+      <Section title="Portfolio Summary">
+        <Card title="Key Metrics">
+          <Metric label="Total Value" value={1000000} delta={-500} unit="USD" />
+          <Metric label="Daily Change" value={-0.5} unit="%" />
+          <Metric label="Top Mover" value="AAPL" delta={-2.5} unit="%" />
+        </Card>
+        <Chart type="line" series={[{ label: "Portfolio Value", data: [[1, 1000000], [2, 995000], [3, 1000500]] }]}>
+          <Metric label="Portfolio Value" value={1000000} unit="USD" />
+        </Chart>
+      </Section>
+      <Section title="Asset Changes">
+        <DataTable
+          columns={[
+            { label: "Asset", key: "symbol" },
+            { label: "Change", key: "change" },
+            { label: "Volume", key: "volume" },
+            { label: "Recent Events", key: "events" },
+          ]}
+          rows={[
+            { symbol: "AAPL", change: -2.5, volume: 500000, events: ["News: Apple Inc. announces Q4 earnings."], id: 1 },
+            { symbol: "GOOGL", change: 1.2, volume: 300000, events: ["News: Google releases new product."], id: 2 },
+            { symbol: "MSFT", change: -0.5, volume: 400000, events: ["News: Microsoft partnership announced."], id: 3 },
+          ]}
+        />
+      </Section>
+      <Inspector
+        primary={<Card title="AAPL">...</Card>}
+        context={<Card title="Recent Events">...</Card>}
+        history={<AuditLog entries={[{ timestamp: "2023-10-05T12:00:00Z", actor: "John Doe", action: "Bought AAPL" }, { timestamp: "2023-10-04T15:00:00Z", actor: "Jane Smith", action: "Sold AAPL" }]} />}
+        actions={<Button label="Review" variant="primary" />}
+      />
+    </Page>
+  );
+};
+
+export default PortfolioOverview;

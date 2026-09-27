@@ -1,0 +1,7 @@
+The screen is a finance director's dashboard for a quick weekly overview of the company's financial performance. It is designed to be concise and focused, providing key metrics, recent trends, and any notable exceptions or alerts. The layout is divided into three main sections:
+
+1. **Metrics Section**: Displays critical financial metrics such as revenue, expenses, profit, and cash flow, with percentage changes from the previous week.
+2. **Trends Section**: Shows line charts for revenue and expenses over the past four weeks to highlight any trends or anomalies.
+3. **Alerts Section**: Lists any financial alerts or exceptions that require immediate attention, such as unusual spending or revenue drops.
+
+The dashboard is intended for a brief review, ensuring the finance director is up-to-date before meetings.

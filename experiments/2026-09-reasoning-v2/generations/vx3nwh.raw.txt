@@ -1,0 +1,129 @@
+```tsx
+import { Page, Header, Section, Card, Metric, Delta, EmptyData, Status, Button } from "@stoa/react";
+
+export default function FinanceWeekly() {
+  const metrics = [
+    { label: "Revenue", value: 12450000, delta: 5.2, unit: "USD" },
+    { label: "EBITDA", value: 2100000, delta: -1.4, unit: "USD" },
+    { label: "Gross Margin", value: 38.5, delta: 0.8, unit: "%" },
+    { label: "Operating Expenses", value: 8500000, delta: 12.3, unit: "USD" },
+    { label: "Cash Flow", value: 320000, delta: -8.1, unit: "USD" },
+  ];
+
+  const alerts = [
+    { id: 1, entity: "Q3 Marketing Spend", value: 450000, delta: -15, unit: "USD", severity: "critical" },
+    { id: 2, entity: "Cloud Infrastructure", value: 120000, delta: 8, unit: "USD", severity: "warning" },
+    { id: 3, entity: "Regional Sales (West)", value: 2100000, delta: -3.2, unit: "USD", severity: "info" },
+  ];
+
+  return (
+    <Page title="Weekly Financial Overview" children={<FinanceContent metrics={metrics} alerts={alerts} />}>
+      <Header title="Finance Director Dashboard" subtitle="Weekly Performance Review" />
+      <main>
+        <Section title="Executive Summary" children={<Summary metrics={metrics} />}>
+          <Card title="Key Metrics" children={<MetricGrid metrics={metrics} />} />
+        </Section>
+
+        <Section title="Anomalies & Alerts" children={<AlertsList alerts={alerts} />}>
+          <Card title="Critical Items" children={<AlertsList alerts={alerts.filter(a => a.severity === "critical")} />} />
+          <Card title="Warnings" children={<AlertsList alerts={alerts.filter(a => a.severity === "warning")} />} />
+        </Section>
+
+        <Section title="Detailed Breakdown" children={<DataTable />}>
+          <Card title="Revenue by Segment" children={<SegmentTable />} />
+          <Card title="Expense Variance" children={<ExpenseTable />} />
+        </Section>
+      </main>
+    </Page>
+  );
+}
+
+function FinanceContent({ metrics, alerts }: { metrics: Metric[]; alerts: any[] }) {
+  return (
+    <div>
+      <Section title="Performance Overview" children={<MetricGrid metrics={metrics} />} />
+      <Section title="Risk Assessment" children={<AlertsList alerts={alerts} />} />
+      <Section title="Deep Dive" children={<DataTable />} />
+    </div>
+  );
+}
+
+function MetricGrid({ metrics }: { metrics: Metric[] }) {
+  return (
+    <div>
+      {metrics.map((m, idx) => (
+        <Metric key={idx} label={m.label} value={m.value} delta={m.delta} unit={m.unit} />
+      ))}
+    </div>
+  );
+}
+
+function AlertsList({ alerts }: { alerts: any[] }) {
+  if (alerts.length === 0) {
+    return <EmptyData message="No alerts for this period." />;
+  }
+  return (
+    <div>
+      {alerts.map((alert) => (
+        <Card key={alert.id} title={alert.entity} children={<AlertRow alert={alert} />} />
+      ))}
+    </div>
+  );
+}
+
+function AlertRow({ alert }: { alert: any }) {
+  return (
+    <div>
+      <div className="alert-header">
+        <Status tone={alert.severity === "critical" ? "error" : alert.severity === "warning" ? "warning" : "neutral"} label={alert.severity} />
+        <span className="alert-value">Variance: {alert.delta}% ({alert.value} {alert.unit})</span>
+      </div>
+      <p className="alert-desc">Analysis pending. Requires review before board meeting.</p>
+      <Button label="Review Details" onPress={() => {}} variant="primary" />
+    </div>
+  );
+}
+
+function DataTable() {
+  return <div className="table-container"><DataTable /></div>;
+}
+
+function SegmentTable() {
+  return (
+    <table>
+      <thead>
+        <tr>
+          <th>Segment</th>
+          <th>Actual</th>
+          <th>Target</th>
+          <th>Variance</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Enterprise</td><td>$5.2M</td><td>$5.0M</td><td>+4.0%</td></tr>
+        <tr><td>SMB</td><td>$4.1M</td><td>$4.5M</td><td>-8.9%</td></tr>
+        <tr><td>Consumer</td><td>$3.1M</td><td>$2.5M</td><td>+24.0%</td></tr>
+      </tbody>
+    </table>
+  );
+}
+
+function ExpenseTable() {
+  return (
+    <table>
+      <thead>
+        <tr>
+          <th>Category</th>
+          <th>QoQ Change</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>R&D</td><td>+2.1%</td><td>On Track</td></tr>
+        <tr><td>Marketing</td><td>-12.3%</td><td>Over Budget</td></tr>
+        <tr><td>Ops</td><td>+5.4%</td><td>Monitor</td></tr>
+      </tbody>
+    </table>
+  );
+}
+```

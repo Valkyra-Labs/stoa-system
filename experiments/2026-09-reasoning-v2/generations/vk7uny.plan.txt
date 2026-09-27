@@ -1,0 +1,9 @@
+1. The finance director opens this screen weekly to review financial data before meetings. It's a routine check to stay informed and prepared.  
+
+2. The shape of the work is getting a general picture of many unrelated numbers with no action expected on this screen.  
+
+3. The entities are financial metrics (revenue, expenses, profit) across departments and time frames. Values are judged against targets and previous weeks.  
+
+4. The director decides if performance is on track. They need to see context like trends, variances, and data freshness to make informed decisions.  
+
+5. The structure starts with an overview of key metrics, followed by departmental breakdowns and a comparison to targets. A timeline shows weekly trends, and a drawer provides detailed data sources and audit logs.

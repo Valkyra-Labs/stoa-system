@@ -1,0 +1,52 @@
+import { Page, Header, Section, Card, Metric, Delta, Trend, DataTable, FilterBar, Button, EmptyData, StaleData } from "@stoa/react";
+
+const portfolioData = [
+  { id: "1", name: "Tech Fund", value: 15000000, change: 2.3, delta: 345000, unit: "USD", stale: false },
+  { id: "2", name: "Energy Sector", value: 8500000, change: -1.8, delta: -153000, unit: "USD", stale: true },
+  { id: "3", name: "Healthcare ETF", value: 12000000, change: 0.5, delta: 60000, unit: "USD", stale: false },
+  { id: "4", name: "Real Estate", value: 6000000, change: -3.2, delta: -192000, unit: "USD", stale: false },
+  { id: "5", name: "Global Bonds", value: 9000000, change: 1.1, delta: 99000, unit: "USD", stale: true },
+];
+
+const PortfolioOverview = () => (
+  <Page title="Portfolio Overview">
+    <Header title="Portfolio Changes Since Yesterday" subtitle="Review significant movements and understand the reasons" />
+    <Section title="Top Changes">
+      <Card>
+        <DataTable
+          columns={[
+            { key: "name", label: "Fund/Portfolio" },
+            { key: "value", label: "Value", align: "right" },
+            { key: "change", label: "Change", align: "right" },
+            { key: "delta", label: "Delta", align: "right" },
+            { key: "unit", label: "Unit" },
+            { key: "stale", label: "Stale", align: "center" },
+          ]}
+          rows={portfolioData}
+          stickyFirstColumn
+        />
+      </Card>
+    </Section>
+    <Section title="Key Metrics">
+      <Card>
+        <div style={{ display: "flex", gap: "2rem", flexWrap: "wrap" }}>
+          <Metric label="Total Portfolio Value" value="32,500,000 USD" />
+          <Metric label="Total Change" value="2.1%" />
+          <Metric label="Positive Changes" value="3" />
+          <Metric label="Negative Changes" value="2" />
+          <Metric label="Stale Data" value="2" />
+        </div>
+      </Card>
+    </Section>
+    <Section title="Stale Data">
+      <Card>
+        <StaleData since="2023-10-05T14:30:00Z" />
+        <p style={{ marginTop: "1rem" }}>
+          Some data is delayed. Review the latest updates before making decisions.
+        </p>
+      </Card>
+    </Section>
+  </Page>
+);
+
+export default PortfolioOverview;

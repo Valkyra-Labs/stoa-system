@@ -1,0 +1,137 @@
+```tsx
+import {
+  Page,
+  Header,
+  Sidebar,
+  Section,
+  Card,
+  Tabs,
+  Drawer,
+  Metric,
+  Delta,
+  Trend,
+  Chart,
+  DataTable,
+  Comparison,
+  Timeline,
+  AuditLog,
+  Status,
+  EmptyData,
+  FilterBar,
+  SavedViews,
+  Button,
+  BulkActions,
+} from "@stoa/react";
+
+// --- Mock Data ---
+
+const failedPayouts = [
+  { id: "TXN-8821", merchant: "Acme Corp", amount: 1250.00, currency: "USD", status: "FAILED", reason: "Insufficient Funds", timestamp: "2023-10-24T14:30:00Z", attempts: 1 },
+  { id: "TXN-8822", merchant: "Globex Inc", amount: 450.50, currency: "USD", status: "FAILED", reason: "Card Declined", timestamp: "2023-10-24T14:32:00Z", attempts: 3 },
+  { id: "TXN-8823", merchant: "Soylent Corp", amount: 8900.00, currency: "USD", status: "FAILED", reason: "Fraud Alert", timestamp: "2023-10-24T14:35:00Z", attempts: 1 },
+  { id: "TXN-8824", merchant: "Umbrella Corp", amount: 320.00, currency: "USD", status: "FAILED", reason: "Routing Error", timestamp: "2023-10-24T14:40:00Z", attempts: 2 },
+  { id: "TXN-8825", merchant: "Wayne Ent", amount: 15000.00, currency: "USD", status: "FAILED", reason: "Insufficient Funds", timestamp: "2023-10-24T14:45:00Z", attempts: 1 },
+  { id: "TXN-8826", merchant: "Stark Ind", amount: 2100.00, currency: "USD", status: "FAILED", reason: "Expiry Date", timestamp: "2023-10-24T14:50:00Z", attempts: 1 },
+];
+
+const relatedEvents = [
+  { id: 1, type: "INITIATED", message: "Payout request received", time: "14:30:00" },
+  { id: 2, type: "VALIDATED", message: "Card validation passed", time: "14:30:05" },
+  { id: 3, type: "FAILED", message: "Insufficient Funds error received", time: "14:30:12" },
+];
+
+const auditEntries = [
+  { id: 1, actor: "System", action: "Initiated Payout", time: "2023-10-24T14:30:00Z" },
+  { id: 2, actor: "User: Alice", action: "Manually Triggered Retry", time: "2023-10-24T15:00:00Z" },
+  { id: 3, actor: "System", action: "Retry Attempt 1", time: "2023-10-24T15:05:00Z" },
+];
+
+// --- Components ---
+
+const FailedPayoutsScreen = () => {
+  const [selectedId, setSelectedId] = React.useState<string | null>(null);
+
+  return (
+    <Page title="Failed Payouts Resolution">
+      <Header title="Failed Payouts" subtitle="Resolve outstanding transaction failures" />
+      
+      <main>
+        <Section title="Overview & Filters">
+          <div style={{ display: "flex", gap: "20px", alignItems: "center", flexWrap: "wrap" }}>
+            <SavedViews views={["All Failed", "Last 24h", "High Value"]}>
+              <Button variant="secondary" label="Clear Filters" onPress={() => console.log("Clear")}>
+                Clear
+              </Button>
+            </SavedViews>
+            
+            <Metric label="Total Failed" value={failedPayouts.length} />
+            <Metric label="Last 24h" value={12} />
+            <Metric label="Avg Retry Success" value="65%" />
+          </div>
+        </Section>
+
+        <Section title="Resolution Queue">
+          <FilterBar filters={["Status: Failed", "Reason: Insufficient Funds", "Amount > $1000"]} />
+          
+          <BulkActions actions={[
+            { label: "Retry All", count: failedPayouts.length, onPress: () => console.log("Retry all") },
+            { label: "Escalate All", count: failedPayouts.length, onPress: () => console.log("Escalate all") },
+          ]} />
+
+          <DataTable 
+            columns={[
+              { key: "id", label: "Transaction ID", type: "text" },
+              { key: "merchant", label: "Merchant", type: "text" },
+              { key: "amount", label: "Amount", type: "currency" },
+              { key: "reason", label: "Failure Reason", type: "text" },
+              { key: "status", label: "Status", type: "status" },
+              { key: "actions", label: "Actions", type: "button" },
+            ]}
+            rows={failedPayouts}
+            selectable={true}
+            onRowSelect={(id) => setSelectedId(id)}
+          />
+
+          {selectedId && (
+            <Drawer title="Transaction Details" open={true}>
+              <Section title="Transaction Summary">
+                <Card title="Details">
+                  <div className="flex-row">
+                    <Metric label="Amount" value="$1250.00" />
+                    <Metric label="Currency" value="USD" />
+                    <Metric label="Attempts" value={1} />
+                  </div>
+                </Card>
+              </Section>
+
+              <Section title="Failure Timeline">
+                <Timeline events={relatedEvents} />
+              </Section>
+
+              <Section title="Audit History">
+                <AuditLog entries={auditEntries} />
+              </Section>
+
+              <Section title="Actions">
+                <div className="flex-row gap-2">
+                  <Button label="Retry Transaction" onPress={() => console.log("Retry")}>
+                    Retry
+                  </Button>
+                  <Button label="Create Support Ticket" onPress={() => console.log("Ticket")}>
+                    Ticket
+                  </Button>
+                  <Button label="Mark Resolved" variant="secondary" onPress={() => console.log("Resolved")}>
+                    Resolve
+                  </Button>
+                </div>
+              </Section>
+            </Drawer>
+          )}
+        </Section>
+      </main>
+    </Page>
+  );
+};
+
+export default FailedPayoutsScreen;
+```

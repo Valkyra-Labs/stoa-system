@@ -1,0 +1,30 @@
+import { Page, Header, FilterBar, DataTable, BulkActions, Button, Section, Card, EmptyData } from "@stoa/react";
+
+const failedPayouts = [
+  { id: "P-1001", amount: "$50.00", method: "Bank Transfer", reason: "Account Locked", status: "Failed" },
+  { id: "P-1002", amount: "$75.00", method: "Credit Card", reason: "Invalid Card", status: "Failed" },
+  { id: "P-1003", amount: "$120.00", method: "PayPal", reason: "Transaction Reversed", status: "Failed" },
+];
+
+const FailedPayoutsQueue = () => {
+  return (
+    <Page title="Failed Payouts Review">
+      <Header title="Failed Payouts" subtitle="Resolve failed transactions to improve payment success rates" />
+      <FilterBar filters={[{ label: "All", value: "all" }, { label: "Bank Transfer", value: "bank" }, { label: "Credit Card", value: "credit" }]} />
+      <Section title="Failed Payouts">
+        <DataTable
+          columns={[{ key: "id", label: "ID" }, { key: "amount", label: "Amount" }, { key: "method", label: "Method" }, { key: "reason", label: "Reason" }, { key: "status", label: "Status" }]}
+          rows={failedPayouts}
+          selectable
+        />
+        <BulkActions>
+          <Button variant="secondary" label="Retry" />
+          <Button variant="danger" label="Refund" />
+          <Button variant="outline" label="Cancel" />
+        </BulkActions>
+      </Section>
+    </Page>
+  );
+};
+
+export default FailedPayoutsQueue;

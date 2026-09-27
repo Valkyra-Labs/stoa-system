@@ -1,0 +1,54 @@
+import { Page, Header, Sidebar, Section, Card, Comparison, Chart, Button } from "@stoa/react";
+
+export default function FundComparisonPage() {
+  return (
+    <Page title="Fund Comparison">
+      <Header title="Fund Comparison" subtitle="Choose the best fund for your client" />
+      <Sidebar>
+        <Card title="Quick Links">
+          <p>Fund A</p>
+          <p>Fund B</p>
+          <p>Other Funds</p>
+        </Card>
+      </Sidebar>
+      <main>
+        <Section title="Overview">
+          <p>Select and compare two funds to recommend to your client.</p>
+        </Section>
+        <Section title="Fund Comparison">
+          <Comparison
+            entities={[
+              { id: "fund-a", name: "Fund A" },
+              { id: "fund-b", name: "Fund B" },
+            ]}
+            metrics={[
+              { id: "returns", label: "Returns" },
+              { id: "risk", label: "Risk" },
+              { id: "fees", label: "Fees" },
+            ]}
+          />
+        </Section>
+        <Section title="Performance Charts">
+          <Chart
+            type="line"
+            series={[
+              { id: "fund-a", label: "Fund A", data: [{ x: "2023-01-01", y: 1.02 }, { x: "2023-02-01", y: 1.03 }, { x: "2023-03-01", y: 1.04 }] },
+              { id: "fund-b", label: "Fund B", data: [{ x: "2023-01-01", y: 1.01 }, { x: "2023-02-01", y: 1.02 }, { x: "2023-03-01", y: 1.03 }] },
+            ]}
+            x="date"
+            y="value"
+          />
+        </Section>
+        <Section title="Decision Support">
+          <p>Consider qualitative factors such as fund manager experience and market trends.</p>
+        </Section>
+        <Section title="Recommendation">
+          <Card title="Make Your Recommendation">
+            <Button label="Recommend Fund A" onPress={() => console.log("Recommend Fund A")} />
+            <Button label="Recommend Fund B" onPress={() => console.log("Recommend Fund B")} />
+          </Card>
+        </Section>
+      </main>
+    </Page>
+  );
+}

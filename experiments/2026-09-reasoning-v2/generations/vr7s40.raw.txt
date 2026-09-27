@@ -1,0 +1,159 @@
+```tsx
+import { Page, Header, Section, Card, Tabs, Metric, Trend, DataTable, Button, Status } from "@stoa/react";
+
+export default function FundComparisonScreen() {
+  const client = { id: "CLI-2024-089", name: "Sarah J.", profile: "Aggressive Growth", riskTolerance: "High" };
+
+  const fundA = {
+    id: "FUND-X",
+    name: "Horizon Growth Equity",
+    manager: "Elena R.",
+    expenseRatio: 0.75,
+    ytdReturn: 12.4,
+    oneYearReturn: 8.2,
+    volatility: 18.5,
+    sharpeRatio: 1.45,
+    holdingsCount: 42,
+    minInvestment: 10000,
+    description: "Focused on emerging markets and technology sectors with a bias toward high-growth potential.",
+    managerHistory: [
+      { year: 2021, return: 11.2 },
+      { year: 2022, return: -5.4 },
+      { year: 2023, return: 14.8 },
+    ],
+  };
+
+  const fundB = {
+    id: "FUND-Y",
+    name: "Stellar Value Fund",
+    manager: "Marcus T.",
+    expenseRatio: 0.65,
+    ytdReturn: 9.8,
+    oneYearReturn: 7.5,
+    volatility: 12.3,
+    sharpeRatio: 1.28,
+    holdingsCount: 156,
+    minInvestment: 5000,
+    description: "Dividend-focused strategy with a heavy emphasis on value stocks and financial services.",
+    managerHistory: [
+      { year: 2021, return: 8.5 },
+      { year: 2022, return: 2.1 },
+      { year: 2023, return: 11.5 },
+    ],
+  };
+
+  const metrics = [
+    { label: "YTD Return", valueA: fundA.ytdReturn, valueB: fundB.ytdReturn, unit: "%" },
+    { label: "One-Year Return", valueA: fundA.oneYearReturn, valueB: fundB.oneYearReturn, unit: "%" },
+    { label: "Volatility", valueA: fundA.volatility, valueB: fundB.volatility, unit: "%" },
+    { label: "Expense Ratio", valueA: fundA.expenseRatio, valueB: fundB.expenseRatio, unit: "%" },
+    { label: "Sharpe Ratio", valueA: fundA.sharpeRatio, valueB: fundB.sharpeRatio, unit: "" },
+  ];
+
+  const tableData = [
+    {
+      entity: fundA.name,
+      metric: "Holdings", value: fundA.holdingsCount, unit: "funds", delta: null,
+    },
+    {
+      entity: fundA.name,
+      metric: "Min Investment", value: fundA.minInvestment, unit: "$", delta: null,
+    },
+    {
+      entity: fundA.name,
+      metric: "Manager Tenure", value: 12, unit: "years", delta: null,
+    },
+    {
+      entity: fundB.name,
+      metric: "Holdings", value: fundB.holdingsCount, unit: "funds", delta: null,
+    },
+    {
+      entity: fundB.name,
+      metric: "Min Investment", value: fundB.minInvestment, unit: "$", delta: null,
+    },
+    {
+      entity: fundB.name,
+      metric: "Manager Tenure", value: 8, unit: "years", delta: null,
+    },
+  ];
+
+  return (
+    <Page title="Fund Recommendation">
+      <Header title={`Client: ${client.name}`} subtitle="Fund Selection Session" />
+      <main>
+        <Section title="Client Profile">
+          <Card title="Risk Profile">
+            <p>Target: {client.profile} | Tolerance: {client.riskTolerance}</p>
+          </Card>
+        </Section>
+
+        <Section title="Side-by-Side Comparison">
+          <Card title="Performance & Risk Metrics">
+            <Tabs
+              items={[
+                { id: "fundA", label: "Horizon Growth Equity", content: <FundDetails key="A" fund={fundA} /> },
+                { id: "fundB", label: "Stellar Value Fund", content: <FundDetails key="B" fund={fundB} /> },
+              ]}
+            />
+            <div style={{ display: "flex", gap: "1rem", marginTop: "1.5rem" }}>
+              {metrics.map((m) => (
+                <Card key={m.label} title={m.label}>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                    <Metric label="Fund A" value={m.valueA} unit={m.unit} />
+                    <Metric label="Fund B" value={m.valueB} unit={m.unit} />
+                  </div>
+                </Card>
+              ))}
+            </div>
+          </Card>
+        </Section>
+
+        <Section title="Fund Details & History">
+          <DataTable
+            columns={[
+              { key: "entity", label: "Fund Name" },
+              { key: "metric", label: "Metric" },
+              { key: "value", label: "Value" },
+              { key: "unit", label: "Unit" },
+            ]}
+            rows={tableData}
+            selectable
+          />
+        </Section>
+
+        <Section title="Recommendation Action">
+          <Card title="Final Decision">
+            <div style={{ display: "flex", gap: "1.5rem", justifyContent: "center" }}>
+              <Button label="Recommend Fund A" variant="primary" onPress={() => alert("Recommendation: Horizon Growth Equity")} />
+              <Button label="Recommend Fund B" variant="secondary" onPress={() => alert("Recommendation: Stellar Value Fund")} />
+            </div>
+            <p style={{ textAlign: "center", marginTop: "1rem", color: "#666" }}>
+              This decision will be recorded in the client file and sent to the portfolio manager.
+            </p>
+          </Card>
+        </Section>
+      </main>
+    </Page>
+  );
+}
+
+function FundDetails({ fund }: { fund: typeof fundA }) {
+  return (
+    <div>
+      <p><strong>Description:</strong> {fund.description}</p>
+      <p><strong>Manager:</strong> {fund.manager}</p>
+      <div style={{ marginBottom: "1rem" }}>
+        <p>Manager History (3-Year):</p>
+        <Trend series={[
+          { x: 2021, y: fund.managerHistory[0].return },
+          { x: 2022, y: fund.managerHistory[1].return },
+          { x: 2023, y: fund.managerHistory[2].return },
+        ]} />
+      </div>
+      <p><strong>Min Investment:</strong> ${fund.minInvestment.toLocaleString()}</p>
+      <p><strong>Holdings:</strong> {fund.holdingsCount} funds</p>
+      <p><strong>Manager Tenure:</strong> {fund.managerHistory.length} years</p>
+    </div>
+  );
+}
+```

@@ -1,0 +1,9 @@
+1. **Person & Session**: A teacher preparing for a specific parent meeting tomorrow. It is a high-stakes, single-object session requiring focused analysis and a clear narrative.
+
+2. **Shape of Work**: Understanding one object fully before acting on it. The goal is to synthesize a student's performance, behavior, and context into a coherent story for the parent.
+
+3. **Information**: The student entity is central. Key metrics include recent grades, attendance, behavioral notes, and assessment scores. Values are judged against targets (passing grades) and historical trends (improvement). The "next step" is the meeting agenda and talking points.
+
+4. **Decision & Evidence**: The teacher decides on the meeting's tone (concerning, encouraging, neutral) and structure. Evidence needed includes specific data points (e.g., "Math dropped 15%") and context (e.g., "but reading is on track"). Wrong decisions risk damaging trust; the meeting notes can be revised later.
+
+5. **Structure**: A focused view of one student. The top shows the student's status and the meeting's objective. The middle provides a "dashboard" of key metrics with trends. The bottom offers detailed rows of evidence (grades, incidents) with filters for time. A sidebar lists the meeting agenda items derived from the data.

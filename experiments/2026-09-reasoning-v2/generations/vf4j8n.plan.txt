@@ -1,0 +1,11 @@
+### Main Goal
+The screen's primary goal is to provide the Head of School with a single, undeniable view of the school's performance for the upcoming board presentation. It must synthesize complex operational data into a clear, authoritative narrative that highlights achievements, identifies key trends, and justifies the term's outcome. The design prioritizes readability and impact over interactivity, ensuring the data tells a compelling story immediately.
+
+### Layout Strategy
+The layout supports this goal through a strict hierarchy of information:
+1.  **Executive Summary Header**: A prominent top section displaying the school name, term date, and high-level aggregate metrics (e.g., attendance, average score) using large, clear `Metric` components.
+2.  **Trend Narrative**: A central `Dashboard` section featuring `Chart` components to visualize growth and stability over the term, allowing the audience to see progress at a glance.
+3.  **Evidence Table**: Below the charts, a focused `DataTable` provides the granular details (student cohorts, specific departments) required to back up the high-level claims, with clear row labels and status indicators.
+4.  **Supporting Context**: A secondary sidebar or bottom panel offers `AuditLog` snippets for accountability and `Status` indicators for critical operational health, ensuring transparency without distracting from the main narrative.
+
+This structure moves the audience from the "what" (metrics) to the "how" (charts) to the "why" (table details), creating a logical flow for a high-stakes presentation.

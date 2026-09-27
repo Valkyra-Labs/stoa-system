@@ -1,0 +1,9 @@
+The screen serves as a morning dashboard for a portfolio manager to quickly assess the performance and movements of their investment portfolio since the previous day. The layout is designed to provide a clear and concise overview, divided into several key sections:
+
+1. **Overview Metrics**: A row of metrics showing the portfolio's overall performance indicators such as total value, gains/losses, and key ratios.
+2. **Top Movers**: A section highlighting the most significant changes in individual assets, including stocks, bonds, and other securities, with brief explanations of market events affecting them.
+3. **Performance Charts**: A set of charts displaying the portfolio's performance over the past 24 hours, including line charts for total value and pie charts for asset distribution.
+4. **Review Log**: A log of significant events and actions taken in the portfolio, such as trades or adjustments, along with comments on market conditions.
+5. **Action Items**: A list of actionable insights and next steps based on the day's performance and market conditions.
+
+This layout ensures that the portfolio manager can quickly grasp the critical information needed to make informed decisions for the day.

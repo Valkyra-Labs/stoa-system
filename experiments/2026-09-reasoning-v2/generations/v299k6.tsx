@@ -1,0 +1,85 @@
+import { Page, Header, Sidebar, Section, Card, Metric, DataTable, Status, EmptyData } from "@stoa/react";
+
+export default function MeetingPreparation() {
+  return (
+    <Page title="Meeting Preparation">
+      <Header title="Student Meeting" subtitle="Tomorrow at 3 PM" actions={<Button label="Save Notes" />} />
+      <div style={{ display: "flex" }}>
+        <Sidebar>
+          <Card title="Navigation">
+            <div style={{ padding: "1rem" }}>
+              <div>Student Profile</div>
+              <div>Academic Performance</div>
+              <div>Behavior Reports</div>
+              <div>Communication Log</div>
+              <div>Preparation Notes</div>
+            </div>
+          </Card>
+        </Sidebar>
+        <main style={{ flex: 1, padding: "1rem" }}>
+          <Section title="Student Profile">
+            <Card title="Basic Information">
+              <p>Name: John Doe</p>
+              <p>Grade: 8th</p>
+              <p>Age: 14</p>
+              <p>Parent Contact: Jane Doe</p>
+            </Card>
+          </Section>
+          <Section title="Academic Performance">
+            <Card title="Recent Grades">
+              <DataTable
+                columns={[
+                  { label: "Subject", key: "subject" },
+                  { label: "Grade", key: "grade" },
+                  { label: "Date", key: "date" },
+                ]}
+                rows={[
+                  { subject: "Math", grade: "B", date: "2023-10-01" },
+                  { subject: "English", grade: "A-", date: "2023-10-05" },
+                  { subject: "Science", grade: "C+", date: "2023-10-10" },
+                ]}
+              />
+            </Card>
+          </Section>
+          <Section title="Behavior Reports">
+            <Card title="Incidents">
+              <DataTable
+                columns={[
+                  { label: "Date", key: "date" },
+                  { label: "Incident", key: "incident" },
+                  { label: "Notes", key: "notes" },
+                ]}
+                rows={[
+                  { date: "2023-10-01", incident: "Late to class", notes: "Arrived 10 minutes late" },
+                  { date: "2023-10-05", incident: "Disruptive behavior", notes: "Interrupted class discussion" },
+                ]}
+              />
+            </Card>
+          </Section>
+          <Section title="Communication Log">
+            <Card title="Notes and Messages">
+              <DataTable
+                columns={[
+                  { label: "Date", key: "date" },
+                  { label: "Sender", key: "sender" },
+                  { label: "Message", key: "message" },
+                ]}
+                rows={[
+                  { date: "2023-10-01", sender: "Jane Doe", message: "Concerned about recent grades" },
+                  { date: "2023-10-05", sender: "Teacher Smith", message: "Behavior improvement needed" },
+                ]}
+              />
+            </Card>
+          </Section>
+          <Section title="Preparation Notes">
+            <Card title="Meeting Notes">
+              <p>Discuss recent grades and behavior.</p>
+              <p>Highlight areas of improvement.</p>
+              <p>Discuss strategies for better performance.</p>
+            </Card>
+          </Section>
+        </main>
+      </div>
+    </Page>
+  );
+}

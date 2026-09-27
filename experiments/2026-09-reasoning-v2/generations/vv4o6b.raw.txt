@@ -1,0 +1,86 @@
+```tsx
+import { Page, Header, Card, Chart, DataTable, Status } from "@stoa/react";
+
+export default function SchoolPerformanceOverview() {
+  return (
+    <Page title="School Performance Overview">
+      <Header title="School Performance" subtitle="Current Term" />
+      <main>
+        <section>
+          <Header title="Key Metrics" />
+          <div style={{ display: "flex", gap: "20px" }}>
+            <Card title="Student Attendance">
+              <Metric label="Attendance Rate" value={92.5} delta={-0.3} unit="%" />
+              <Trend series={[{ x: "2023-09-01", y: 93 }, { x: "2023-09-15", y: 92.7 }, { x: "2023-10-01", y: 92.5 }]} />
+            </Card>
+            <Card title="Teacher Performance">
+              <Metric label="Average Evaluation Score" value={4.2} delta={0.1} unit="out of 5" />
+              <Trend series={[{ x: "2023-09-01", y: 4.1 }, { x: "2023-09-15", y: 4.15 }, { x: "2023-10-01", y: 4.2 }]} />
+            </Card>
+            <Card title="Academic Progress">
+              <Metric label="Average GPA" value={3.5} delta={0.05} unit="out of 4" />
+              <Trend series={[{ x: "2023-09-01", y: 3.45 }, { x: "2023-09-15", y: 3.48 }, { x: "2023-10-01", y: 3.5 }]} />
+            </Card>
+          </div>
+        </section>
+        <section>
+          <Header title="Detailed Charts" />
+          <div style={{ display: "flex", gap: "20px" }}>
+            <Card title="Student Attendance Trends">
+              <Chart type="line" series={[{ x: "2023-09-01", y: 93 }, { x: "2023-09-15", y: 92.7 }, { x: "2023-10-01", y: 92.5 }]} x="date" y="attendance" />
+            </Card>
+            <Card title="Teacher Evaluation Scores">
+              <Chart type="bar" series={[{ x: "2023-09-01", y: 4.1 }, { x: "2023-09-15", y: 4.15 }, { x: "2023-10-01", y: 4.2 }]} x="date" y="score" />
+            </Card>
+            <Card title="Academic GPA Trends">
+              <Chart type="line" series={[{ x: "2023-09-01", y: 3.45 }, { x: "2023-09-15", y: 3.48 }, { x: "2023-10-01", y: 3.5 }]} x="date" y="gpa" />
+            </Card>
+          </div>
+        </section>
+        <section>
+          <Header title="Detailed Data" />
+          <Card title="Student Attendance Records">
+            <DataTable
+              columns={[
+                { label: "Date", key: "date" },
+                { label: "Attendance Rate", key: "attendanceRate" },
+              ]}
+              rows={[
+                { date: "2023-09-01", attendanceRate: 93 },
+                { date: "2023-09-15", attendanceRate: 92.7 },
+                { date: "2023-10-01", attendanceRate: 92.5 },
+              ]}
+            />
+          </Card>
+          <Card title="Teacher Evaluation Scores">
+            <DataTable
+              columns={[
+                { label: "Date", key: "date" },
+                { label: "Average Score", key: "averageScore" },
+              ]}
+              rows={[
+                { date: "2023-09-01", averageScore: 4.1 },
+                { date: "2023-09-15", averageScore: 4.15 },
+                { date: "2023-10-01", averageScore: 4.2 },
+              ]}
+            />
+          </Card>
+          <Card title="Academic GPA Records">
+            <DataTable
+              columns={[
+                { label: "Date", key: "date" },
+                { label: "Average GPA", key: "averageGpa" },
+              ]}
+              rows={[
+                { date: "2023-09-01", averageGpa: 3.45 },
+                { date: "2023-09-15", averageGpa: 3.48 },
+                { date: "2023-10-01", averageGpa: 3.5 },
+              ]}
+            />
+          </Card>
+        </section>
+      </main>
+    </Page>
+  );
+}
+```

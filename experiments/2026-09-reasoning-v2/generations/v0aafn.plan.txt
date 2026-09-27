@@ -1,0 +1,5 @@
+This screen is the weekly financial dashboard for a finance director, designed for rapid Monday morning decision-making. It consolidates key performance indicators, comparative analysis, and data anomalies into a single view.
+
+The layout features a top header with the current period and navigation actions. Below, a primary metric section displays three core financial totals (Revenue, Expenses, Net Profit) with trend indicators. To the right, a comparative chart visualizes the current week against last week and the same period last year.
+
+A central section presents a compact table of revenue streams or cost centers, filtered by status. An "Alerts" sidebar highlights exceptions or outliers requiring immediate review. The bottom section includes a summary audit log of recent significant transactions. All elements use concise labels and color-coded deltas to enable quick comprehension without scrolling.

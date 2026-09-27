@@ -1,0 +1,161 @@
+import { Page, Header, Section, Card, Tabs, Metric, DataTable, Status, EmptyData, ErrorData } from "@stoa/react";
+
+export default function ParentMeetingPrep() {
+  // Realistic placeholder data for a teacher's prep screen
+  const students = [
+    {
+      id: "S-101",
+      name: "Elena Vance",
+      grade: "8B",
+      status: "Urgent",
+      reason: "Behavioral escalation & attendance gap",
+      meetingTime: "Tomorrow 10:00 AM",
+      notes: "Student missed 5 days of school. Teacher observes increased aggression in class. Parent contact log shows last attempt was 2 weeks ago.",
+      metrics: {
+        attendance: { value: 72, target: 95, unit: "%" },
+        engagement: { value: 34, target: 70, unit: "points" },
+        discipline: { value: 4, target: 0, unit: "incidents" }
+      }
+    },
+    {
+      id: "S-102",
+      name: "Marcus Chen",
+      grade: "9A",
+      status: "Review",
+      reason: "Math performance dip",
+      meetingTime: "Tomorrow 11:30 AM",
+      notes: "Math scores dropped 20% in last trimester. Parent expressed concern about homework completion. Student seems distracted by mobile devices.",
+      metrics: {
+        attendance: { value: 98, target: 95, unit: "%" },
+        engagement: { value: 65, target: 70, unit: "points" },
+        discipline: { value: 0, target: 0, unit: "incidents" }
+      }
+    },
+    {
+      id: "S-103",
+      name: "Sarah Okafor",
+      grade: "7C",
+      status: "Stable",
+      reason: "Standard check-in",
+      meetingTime: "Next week",
+      notes: "Academics on track. Social integration positive. Meeting scheduled for next week to discuss extracurriculars.",
+      metrics: {
+        attendance: { value: 92, target: 95, unit: "%" },
+        engagement: { value: 78, target: 70, unit: "points" },
+        discipline: { value: 0, target: 0, unit: "incidents" }
+      }
+    },
+    {
+      id: "S-104",
+      name: "David Ross",
+      grade: "8B",
+      status: "Urgent",
+      reason: "Safety concern - bullying incident",
+      meetingTime: "Tomorrow 2:00 PM",
+      notes: "Reported by peer. Teacher intervened immediately. Requires follow-up on school policy and peer mediation plan.",
+      metrics: {
+        attendance: { value: 94, target: 95, unit: "%" },
+        engagement: { value: 55, target: 70, unit: "points" },
+        discipline: { value: 1, target: 0, unit: "incidents" }
+      }
+    }
+  ];
+
+  // Sort students by status (Urgent first) then by meeting time
+  const sortedStudents = [...students].sort((a, b) => {
+    const statusOrder = { "Urgent": 1, "Review": 2, "Stable": 3 };
+    if (statusOrder[a.status] !== statusOrder[b.status]) {
+      return statusOrder[a.status] - statusOrder[b.status];
+    }
+    return a.meetingTime.localeCompare(b.meetingTime);
+  });
+
+  return (
+    <Page title="Parent Meeting Preparation">
+      <Header title="Upcoming Meetings" subtitle="Teacher Prep Dashboard" actions={<Button label="Clear Schedule" onPress={() => {}} />} />
+
+      <Section title="Priority Meetings (Tomorrow)">
+        <Card title="Urgent Interventions">
+          <DataTable
+            columns={[
+              { key: "name", label: "Student" },
+              { key: "reason", label: "Reason for Meeting" },
+              { key: "meetingTime", label: "Time" },
+              { key: "metrics.discipline", label: "Discipline Incidents", align: "right" }
+            ]}
+            rows={sortedStudents.filter(s => s.status === "Urgent").map(s => ({
+              id: s.id,
+              name: s.name,
+              reason: s.reason,
+              meetingTime: s.meetingTime,
+              "metrics.discipline": s.metrics.discipline.value
+            }))}
+            selectable
+            onRowSelect={(id) => {
+              // In a real app, this would open the detail view inline
+              console.log("Opening detail for:", id);
+            }}
+          />
+        </Card>
+      </Section>
+
+      <Section title="Standard Reviews">
+        <Card title="Review & Check-ins">
+          <DataTable
+            columns={[
+              { key: "name", label: "Student" },
+              { key: "reason", label: "Reason for Meeting" },
+              { key: "meetingTime", label: "Time" }
+            ]}
+            rows={sortedStudents.filter(s => s.status !== "Urgent").map(s => ({
+              id: s.id,
+              name: s.name,
+              reason: s.reason,
+              meetingTime: s.meetingTime
+            }))}
+          />
+        </Card>
+      </Section>
+
+      <Section title="Evidence & Notes">
+        <Tabs
+          items={[
+            { id: "all", label: "All Notes", content: <ListNotes items={sortedStudents} /> },
+            { id: "urgent", label: "Urgent Details", content: <ListNotes items={sortedStudents.filter(s => s.status === "Urgent")} /> }
+          ]}
+        />
+      </Section>
+    </Page>
+  );
+}
+
+function ListNotes({ items }: { items: typeof students }) {
+  if (items.length === 0) {
+    return <EmptyData message="No meeting notes available." />;
+  }
+
+  return (
+    <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: "1rem" }}>
+      {items.map((item) => (
+        <Card key={item.id} title={item.name}>
+          <div className="metric-block">
+            <Metric label="Attendance" value={item.metrics.attendance.value} unit={item.metrics.attendance.unit} />
+            <Metric label="Engagement" value={item.metrics.engagement.value} unit={item.metrics.engagement.unit} />
+            <Metric label="Discipline" value={item.metrics.discipline.value} unit={item.metrics.discipline.unit} />
+          </div>
+          <div className="note-block">
+            <Status tone={item.status} label={item.status} />
+            <p><strong>Reason:</strong> {item.reason}</p>
+            <p><strong>Notes:</strong> {item.notes}</p>
+            <p><strong>Schedule:</strong> {item.meetingTime}</p>
+          </div>
+          <Button label="View Full History" onPress={() => console.log("View history")} />
+        </Card>
+      ))}
+    </div>
+  );
+}
+
+function Button({ label, onPress, variant = "primary" }: { label: string, onPress: () => void, variant?: "primary" | "secondary" }) {
+  return <button onClick={onPress}>{label}</button>;
+}

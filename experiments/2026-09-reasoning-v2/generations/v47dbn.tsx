@@ -1,0 +1,123 @@
+import {
+  Page,
+  Header,
+  Section,
+  Card,
+  Comparison,
+  Metric,
+  Status,
+  Timeline,
+  AuditLog,
+  Button,
+  FilterBar,
+  ReviewQueue,
+} from "@stoa/react";
+
+export default function FundComparisonScreen() {
+  const clientName = "Jane Doe";
+  const fundA = { name: "Growth Horizon Fund", ticker: "GHE" };
+  const fundB = { name: "Steady Capital Fund", ticker: "SCF" };
+  const currentPeriod = "Q3 2023";
+
+  const sharedMetrics = [
+    { label: "Expense Ratio", value: "0.45%", delta: "-0.10%", basis: "vs previous" },
+    { label: "Sharpe Ratio", value: "1.2", delta: "+0.3", basis: "vs previous" },
+    { label: "Max Drawdown (1Y)", value: "8.2%", delta: "-2.1%", basis: "vs previous" },
+    { label: "Top Sector Weight", value: "Technology", delta: null, basis: "vs previous" },
+  ];
+
+  const fundADetails = {
+    name: fundA.name,
+    ticker: fundA.ticker,
+    metrics: [
+      { label: "Return (1Y)", value: "12.5%", delta: "+1.2%", basis: "vs benchmark" },
+      { label: "Return (3Y)", value: "9.8%", delta: "+0.5%", basis: "vs benchmark" },
+    ],
+    recentEvents: [
+      { date: "2023-09-15", type: "signal", message: "High volatility detected in tech sector." },
+      { date: "2023-09-01", type: "review", message: "Q3 performance review completed." },
+    ],
+    auditLog: [
+      { user: "System", action: "Updated valuation", time: "2023-09-20T10:00:00Z" },
+      { user: "Jane Doe", action: "Adjusted allocation", time: "2023-09-18T14:30:00Z" },
+    ],
+  };
+
+  const fundBDetails = {
+    name: fundB.name,
+    ticker: fundB.ticker,
+    metrics: [
+      { label: "Return (1Y)", value: "11.3%", delta: "+0.8%", basis: "vs benchmark" },
+      { label: "Return (3Y)", value: "8.9%", delta: "-0.2%", basis: "vs benchmark" },
+    ],
+    recentEvents: [
+      { date: "2023-09-12", type: "signal", message: "Consistent outperformance in bonds." },
+      { date: "2023-08-15", type: "review", message: "Monthly performance review completed." },
+    ],
+    auditLog: [
+      { user: "System", action: "Updated valuation", time: "2023-09-20T10:00:00Z" },
+      { user: "Jane Doe", action: "Added to watchlist", time: "2023-09-10T09:15:00Z" },
+    ],
+  };
+
+  return (
+    <Page title={`Fund Comparison: ${clientName}`}>
+      <Header
+        title={`${currentPeriod} Fund Comparison`}
+        subtitle={`Comparing ${fundA.name} and ${fundB.name}`}
+        actions={
+          <>
+            <Button label="Save Comparison" variant="secondary" />
+            <Button label="Export Report" variant="primary" />
+          </>
+        }
+      />
+
+      <Section title="Shared Metrics Overview">
+        <Comparison entities={[fundA, fundB]} metrics={sharedMetrics} />
+      </Section>
+
+      <Section title="Detailed Fund Analysis">
+        <div style={{ display: "flex", gap: "24px", flexWrap: "wrap" }}>
+          <Card title={fundADetails.name}>
+            <div style={{ marginBottom: "16px" }}>
+              <Metric label="1-Year Return" value={fundADetails.metrics[0].value} delta={fundADetails.metrics[0].delta} />
+              <Metric label="3-Year Return" value={fundADetails.metrics[1].value} delta={fundADetails.metrics[1].delta} />
+            </div>
+            <Timeline events={fundADetails.recentEvents} />
+            <AuditLog entries={fundADetails.auditLog} />
+          </Card>
+          <Card title={fundBDetails.name}>
+            <div style={{ marginBottom: "16px" }}>
+              <Metric label="1-Year Return" value={fundBDetails.metrics[0].value} delta={fundBDetails.metrics[0].delta} />
+              <Metric label="3-Year Return" value={fundBDetails.metrics[1].value} delta={fundBDetails.metrics[1].delta} />
+            </div>
+            <Timeline events={fundBDetails.recentEvents} />
+            <AuditLog entries={fundBDetails.auditLog} />
+          </Card>
+        </div>
+      </Section>
+
+      <Section title="Adviser Decision & Review">
+        <FilterBar filters={[{ key: "risk", value: "moderate" }, { key: "return", value: "high" }]} />
+        <ReviewQueue
+          items={[
+            { id: "fund-a", label: fundA.name, status: "pending" },
+            { id: "fund-b", label: fundB.name, status: "pending" },
+          ]}
+          current={0}
+          decisions={[
+            { id: "fund-a", decision: "Recommend", notes: "Better risk-adjusted returns" },
+            { id: "fund-b", decision: "Pass", notes: "Higher fees" },
+          ]}
+          actions={
+            <>
+              <Button label="Reject Current Selection" variant="danger" />
+              <Button label="Confirm Recommendation" variant="primary" />
+            </>
+          }
+        />
+      </Section>
+    </Page>
+  );
+}

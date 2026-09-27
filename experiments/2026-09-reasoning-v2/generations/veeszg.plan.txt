@@ -1,0 +1,11 @@
+1. **User and Session**: A portfolio manager opens their book daily in the morning to review changes since the previous day. The focus is on understanding what moved and why, often triggered by overnight market movements or scheduled updates.
+
+2. **Shape of Work**: The session involves scanning a large collection of assets for those that have changed significantly, followed by a deep dive into each to understand the reasons behind the changes.
+
+3. **Information**: The screen must display a list of assets with their key metrics (e.g., price, volume, returns) and highlight those that have moved significantly since the previous day. Each metric should be compared against the previous day's value and any relevant targets or thresholds.
+
+4. **Decision and Evidence**: The decision involves understanding the reasons behind significant changes and deciding whether to take action based on this analysis. Key evidence includes historical data, recent news, and market indicators.
+
+5. **Structure**: The screen should start with a list of assets, prominently highlighting those that have moved. Each asset should have a detailed view available for deeper analysis. A timeline of recent events and news related to each asset should be accessible for context.
+
+6. **Components**: Use an **Explorer** pattern with a **Toolbar** for filtering, a **Table** for the list of assets, and a **Detail** section for in-depth analysis. Include a **Timeline** for recent events and a **Chart** for visualizing changes over time.

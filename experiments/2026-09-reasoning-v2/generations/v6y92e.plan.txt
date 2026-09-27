@@ -1,0 +1,5 @@
+This screen is an **Inspector** for a Payments Operations Analyst to resolve a specific failed payout. It focuses on one transaction at a time, providing deep context to identify the root cause (e.g., bank decline, card decline, insufficient funds).
+
+The layout centers on a detailed record view. On the left, the **primary** transaction details are displayed, including the customer, amount, failure reason, and timestamp. On the right, the **context** panel shows related data: the original approval, the specific bank's rejection code, and a history of previous attempts.
+
+Below the details, a **history** section logs the chronological events of this transaction. At the bottom, **actions** allow the analyst to mark the issue as resolved, escalate it, or note internal comments. This focused, single-record design prevents cognitive load while ensuring all necessary information to fix the failure is immediately visible.

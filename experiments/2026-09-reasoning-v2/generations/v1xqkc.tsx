@@ -1,0 +1,82 @@
+import { Page, Header, Section, Card, Button, DataTable, FilterBar, EmptyData, Status, Delta, Metric, Tabs, Drawer } from "@stoa/react";
+
+const failedPayouts = [
+  {
+    id: "P-1001",
+    amount: 500,
+    currency: "USD",
+    status: "failed",
+    reason: "Bank account not found",
+    createdAt: "2023-10-01T14:30:00Z",
+    merchant: "Shopify Inc.",
+    paymentMethod: "Bank Transfer",
+  },
+  {
+    id: "P-1002",
+    amount: 200,
+    currency: "USD",
+    status: "failed",
+    reason: "Insufficient funds",
+    createdAt: "2023-10-01T10:15:00Z",
+    merchant: "Amazon LLC",
+    paymentMethod: "Credit Card",
+  },
+  {
+    id: "P-1003",
+    amount: 150,
+    currency: "USD",
+    status: "failed",
+    reason: "Transaction declined",
+    createdAt: "2023-10-01T09:45:00Z",
+    merchant: "Netflix Co.",
+    paymentMethod: "Debit Card",
+  },
+];
+
+const statuses = ["failed", "pending", "success"];
+const reasons = ["Bank account not found", "Insufficient funds", "Transaction declined", "Invalid card"];
+
+export default function FailedPayoutsPage() {
+  return (
+    <Page title="Failed Payouts">
+      <Header
+        title="Failed Payouts"
+        subtitle="Resolve failed transactions and prevent recurrence"
+        actions={
+          <Button variant="primary">Resolve Selected</Button>
+        }
+      />
+      <FilterBar filters={{ status: statuses, reason: reasons }} />
+      <Section title="Failed Payouts">
+        <DataTable
+          columns={[
+            { key: "id", label: "ID" },
+            { key: "amount", label: "Amount", align: "right" },
+            { key: "currency", label: "Currency" },
+            { key: "status", label: "Status", render: (status) => <Status tone={status === "failed" ? "error" : "warning"} label={status} /> },
+            { key: "reason", label: "Reason" },
+            { key: "createdAt", label: "Created At" },
+            { key: "merchant", label: "Merchant" },
+            { key: "paymentMethod", label: "Payment Method" },
+          ]}
+          rows={failedPayouts}
+          selectable
+        />
+      </Section>
+      <Section title="Resolution Actions">
+        <Card>
+          <p>
+            Review failed payouts and take appropriate action. Click "Resolve Selected" to mark as resolved or escalate.
+          </p>
+          <Button variant="secondary">Escalate Selected</Button>
+        </Card>
+      </Section>
+      <Section title="Insights">
+        <Card>
+          <Metric label="Failed Payouts" value={failedPayouts.length} />
+          <Delta value={failedPayouts.length} basis={10} />
+        </Card>
+      </Section>
+    </Page>
+  );
+}

@@ -1,0 +1,21 @@
+import { Page, Header, Card, Section, Metric, Delta, Timeline, Button } from "@stoa/react";
+
+export default function PortfolioOverview() {
+  return (
+    <Page title="Portfolio Overview">
+      <Header title="Portfolio Overview" subtitle="Changes since yesterday" actions={<Button label="Refresh" />} />
+      <Card title="Key Metrics">
+        <Metric label="Total Value" value="$1,234,567.89" unit="USD" />
+        <Metric label="Net Change" value="+$123.45" delta={<Delta value="+$123.45" basis="$1,224,314.44" />} />
+        <Metric label="Top Mover" value="AAPL" />
+      </Card>
+      <Section title="Recent Activity">
+        <Timeline events={[
+          { time: "10:00 AM", description: "Sold 100 shares of AAPL at $150.25", type: "trade" },
+          { time: "11:30 AM", description: "Market volatility increased", type: "event" },
+          { time: "2:00 PM", description: "Bought 50 shares of TSLA at $200.00", type: "trade" }
+        ]} />
+      </Section>
+    </Page>
+  );
+}

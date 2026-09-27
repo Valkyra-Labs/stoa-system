@@ -1,0 +1,3 @@
+**Main goal**: To present a clear, concise, and visually engaging overview of the school's performance across key metrics for the board's review, without any interactive elements or changes.  
+
+**Layout support**: The screen is structured with a **Header** for the title and context, followed by **Sections** grouping related data like academic performance, student engagement, and financial health. Each section uses **Cards** to highlight key **Metrics** and **Trends**, while **Charts** provide visual context. A **Timeline** shows major events, and a **Comparison** section contrasts the school with regional benchmarks. This layout ensures the board can quickly scan and understand the school’s status without distractions.

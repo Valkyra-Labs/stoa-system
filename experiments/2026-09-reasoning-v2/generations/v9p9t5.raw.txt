@@ -1,0 +1,50 @@
+```tsx
+import { Page, Header, Section, Card, Tabs, Button, Metric, Delta, DataTable, FilterBar, SavedViews, Status, EmptyData } from "@stoa/react";
+
+const StudentProfile = () => (
+  <Page title="Parent-Teacher Meeting Prep">
+    <Header title="Parent-Teacher Meeting Prep" subtitle="Student: Emily Johnson" actions={<Button label="Save Notes" variant="primary" />} />
+    <Section title="Student Overview">
+      <Card title="Student Profile">
+        <p><strong>Name:</strong> Emily Johnson</p>
+        <p><strong>Grade:</strong> 3rd</p>
+        <p><strong>Teacher:</strong> Mr. Thompson</p>
+        <p><strong>Meeting Date:</strong> Tomorrow, 3:00 PM</p>
+      </Card>
+    </Section>
+    <Section title="Academic Progress">
+      <Card title="Recent Performance">
+        <Metric label="Math" value="85" delta={+5} unit="%" />
+        <Metric label="Reading" value="78" delta={-2} unit="%" />
+        <Metric label="Writing" value="92" delta={+3} unit="%" />
+        <Delta value={+5} basis="Last Month" />
+      </Card>
+    </Section>
+    <Section title="Behavior and Participation">
+      <Card title="Behavior Summary">
+        <p><strong>Attendance:</strong> 98% (Last Month)</p>
+        <p><strong>Participation:</strong> High in group activities</p>
+        <p><strong>Behavior:</strong> Generally respectful, needs more focus during independent work</p>
+      </Card>
+    </Section>
+    <Section title="Discussion Points">
+      <Card title="Suggested Topics">
+        <ul>
+          <li>Review of recent academic performance</li>
+          <li>Discuss strategies for improving focus during independent work</li>
+          <li>Share observations on social interactions with peers</li>
+          <li>Set goals for the next grading period</li>
+        </ul>
+      </Card>
+    </Section>
+    <Section title="Notes and Actions">
+      <Card title="Quick Notes">
+        <p><strong>Notes:</strong> Emily is eager to learn but sometimes gets distracted during quiet work. She needs more structured time to stay on task.</p>
+        <p><strong>Actions:</strong> Send home a focus worksheet, schedule a follow-up meeting in two weeks.</p>
+      </Card>
+    </Section>
+  </Page>
+);
+
+export default StudentProfile;
+```

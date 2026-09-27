@@ -1,0 +1,13 @@
+**Steps 1 to 5 Summary:**
+
+1. **Person and Session:** The head of school is preparing a presentation for the board, reviewing the current state of the school without making any changes.
+
+2. **Shape of Work:** The task involves getting a general picture of the school's performance across multiple metrics without needing to take any action on this screen.
+
+3. **Information:** Key entities include the school as a whole, with measures such as student attendance, teacher performance, and academic progress. The time frame covers the current term. Each metric is judged against targets and historical trends.
+
+4. **Decision and Evidence:** The decision is to present a comprehensive overview of the school's performance. Evidence needed includes current values, historical data, and target comparisons.
+
+5. **Structure:** The screen should start with an overview of key metrics, followed by detailed charts and tables showing trends and comparisons. The structure should allow for easy navigation between high-level summaries and detailed data.
+
+Given these steps, the screen should use a **Dashboard** pattern to present an overview of metrics, detailed charts, and tables.

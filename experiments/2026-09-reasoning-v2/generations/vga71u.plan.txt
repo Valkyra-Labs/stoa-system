@@ -1,0 +1,5 @@
+1. The analyst is likely a routine checker, reviewing failed payouts regularly to resolve issues and ensure smooth operations.  
+2. The shape of the work is taking each item in turn to a decision, resolving one payout at a time until none remain.  
+3. The entities are failed payouts, with metrics like payout amount, failure reason, and timestamp. Each value is judged against a target resolution time and previous payout success.  
+4. The analyst decides whether to retry, refund, or investigate further. They need evidence like error logs, timestamps, and previous attempts to make informed decisions.  
+5. The structure starts with a list of failed payouts, showing key metrics and reasons. Each payout's details and actions appear below, with progress through the list shown via a counter or status. Actions like retry or refund are prominently placed, with a summary of resolved items at the end.

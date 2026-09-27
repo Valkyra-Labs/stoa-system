@@ -1,0 +1,88 @@
+```tsx
+import { Page, Header, Section, Card, Metric, Delta, Chart, DataTable, Tabs, Sidebar, Button } from "@stoa/react";
+
+const termPerformanceData = {
+  academic: {
+    overallPerformance: "85%",
+    improvement: "+5%",
+    topSubjects: ["Math", "Science", "English"],
+  },
+  operational: {
+    attendanceRate: "92%",
+    incidents: "12",
+    staffTurnover: "8%",
+  },
+  financial: {
+    budgetUtilization: "90%",
+    expenses: "$2.1M",
+    savings: "$350K",
+  },
+  wellBeing: {
+    satisfactionScore: "4.2/5",
+    mentalHealthSupport: "12 sessions/month",
+    studentEngagement: "88%",
+  },
+  students: [
+    { id: 1, name: "Alice Johnson", grade: "10", performance: "A", attendance: "98%", },
+    { id: 2, name: "Bob Smith", grade: "11", performance: "B", attendance: "95%", },
+    { id: 3, name: "Charlie Brown", grade: "12", performance: "A-", attendance: "97%", },
+  ],
+};
+
+export default function TermPerformanceReport() {
+  return (
+    <Page title="Term Performance Report">
+      <Header title="Term Performance Overview" subtitle="School Performance for the Current Term" />
+      <Section title="Key Metrics">
+        <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
+          <Card title="Academic Performance" className="bg-blue-50">
+            <Metric label="Overall" value={termPerformanceData.academic.overallPerformance} unit="%" />
+            <Delta value={termPerformanceData.academic.improvement} basis="Last Term" />
+          </Card>
+          <Card title="Operational Efficiency" className="bg-green-50">
+            <Metric label="Attendance Rate" value={termPerformanceData.operational.attendanceRate} unit="%" />
+            <Delta value={termPerformanceData.operational.incidents} basis="Last Term" />
+          </Card>
+          <Card title="Financial Health" className="bg-purple-50">
+            <Metric label="Budget Utilization" value={termPerformanceData.financial.budgetUtilization} unit="%" />
+            <Delta value={termPerformanceData.financial.savings} basis="Last Term" />
+          </Card>
+          <Card title="Student Well-being" className="bg-yellow-50">
+            <Metric label="Satisfaction Score" value={termPerformanceData.wellBeing.satisfactionScore} />
+            <Delta value={termPerformanceData.wellBeing.mentalHealthSupport} basis="Last Term" />
+          </Card>
+        </div>
+      </Section>
+      <Section title="Performance Trends">
+        <Chart
+          type="line"
+          series={[{ name: "Academic", data: [80, 85, 88, 90, 87, 85, 88, 89, 91, 86, 89, 90] }]}
+          x="Term"
+          y="Performance (%)"
+        />
+      </Section>
+      <Section title="Student Performance">
+        <DataTable
+          columns={[
+            { name: "Student", key: "name" },
+            { name: "Grade", key: "grade" },
+            { name: "Performance", key: "performance" },
+            { name: "Attendance", key: "attendance" },
+          ]}
+          rows={termPerformanceData.students}
+          selectable
+        />
+      </Section>
+      <Sidebar>
+        <Header title="Reports" subtitle="Access detailed reports" />
+        <div className="space-y-2">
+          <Button variant="secondary">Academic Report</Button>
+          <Button variant="secondary">Operational Report</Button>
+          <Button variant="secondary">Financial Report</Button>
+          <Button variant="secondary">Well-being Report</Button>
+        </div>
+      </Sidebar>
+    </Page>
+  );
+}
+```

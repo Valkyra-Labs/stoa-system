@@ -1,0 +1,6 @@
+The screen serves as a morning overview for a portfolio manager, highlighting key changes in the portfolio since the previous day. It is divided into two main sections: a summary of significant movements and an analysis of why these changes occurred. The layout includes a header with the title "Morning Review" and a subtitle indicating the date range. Below the header, there are two primary sections: 
+
+1. **Portfolio Changes**: A card summarizing the most impactful changes in the portfolio, including metrics like total return, volatility, and key asset shifts.
+2. **Reasons for Changes**: A detailed comparison view showing the primary factors driving these changes, such as market events, economic indicators, and trading activities.
+
+This layout helps the manager quickly grasp the day's critical developments and their underlying causes.

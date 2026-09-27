@@ -1,0 +1,8 @@
+The screen is designed for a teacher to prepare for a meeting with a parent about a specific student. It provides an overview of the student's academic performance, behavior, and any relevant notes or documents. The layout consists of a header with the student's name and meeting details, followed by several sections:
+
+1. **Overview**: A brief summary of the student's key performance indicators and behavior trends.
+2. **Performance**: A chart displaying the student's academic progress over time.
+3. **Behavior**: A list of recent behavioral incidents, including dates and descriptions.
+4. **Documents**: A tabbed section with tabs for Notes and Reports, containing any relevant documents or notes the teacher has prepared for the meeting.
+
+This layout ensures the teacher has all necessary information at hand to discuss the student's progress comprehensively with the parent.

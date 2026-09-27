@@ -1,0 +1,32 @@
+import { Page, Header, Section, Metric, Chart } from "@stoa/react";
+
+export default function WeeklyFinanceOverview() {
+  return (
+    <Page title="Weekly Finance Overview">
+      <Header title="Current Week's Metrics" subtitle="Monday Morning Review">
+        <Metric label="Revenue" value={1234567.89} delta={-12345.67} unit="USD" />
+        <Metric label="Expenses" value={876543.21} delta={23456.78} unit="USD" />
+        <Metric label="Profit" value={358024.68} delta={-35812.45} unit="USD" />
+        <Metric label="Cash Flow" value={250000.00} delta={10000.00} unit="USD" />
+      </Header>
+      <Section title="Metric Comparisons">
+        <Metric label="Revenue (vs Previous Week)" value={1234567.89} delta={-12345.67} unit="USD" />
+        <Metric label="Revenue (vs Same Week Last Year)" value={1234567.89} delta={-12345.67} unit="USD" />
+        <Metric label="Expenses (vs Previous Week)" value={876543.21} delta={23456.78} unit="USD" />
+        <Metric label="Expenses (vs Same Week Last Year)" value={876543.21} delta={23456.78} unit="USD" />
+        <Metric label="Profit (vs Previous Week)" value={358024.68} delta={-35812.45} unit="USD" />
+        <Metric label="Profit (vs Same Week Last Year)" value={358024.68} delta={-35812.45} unit="USD" />
+        <Metric label="Cash Flow (vs Previous Week)" value={250000.00} delta={10000.00} unit="USD" />
+        <Metric label="Cash Flow (vs Same Week Last Year)" value={250000.00} delta={10000.00} unit="USD" />
+      </Section>
+      <Section title="Trend Analysis">
+        <Chart type="line" series={[
+          { label: "Revenue", data: [[1, 1200000], [2, 1250000], [3, 1234567.89]] },
+          { label: "Expenses", data: [[1, 850000], [2, 860000], [3, 876543.21]] },
+          { label: "Profit", data: [[1, 350000], [2, 390000], [3, 358024.68]] },
+          { label: "Cash Flow", data: [[1, 240000], [2, 245000], [3, 250000]] }
+        ]} x="Week" y="Value" />
+      </Section>
+    </Page>
+  );
+}

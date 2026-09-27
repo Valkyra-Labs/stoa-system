@@ -1,0 +1,48 @@
+```tsx
+import { Page, Sidebar, Header, Section, Card, Button, FilterBar, SavedViews, DataTable, Comparison, Timeline, AuditLog, Status, EmptyData, ErrorData, Drawer } from "@stoa/react";
+
+const FailedPayoutsScreen = () => {
+  return (
+    <Page title="Failed Payouts">
+      <Header title="Failed Payouts" subtitle="Resolve failed payouts" />
+      <Sidebar>
+        <Section title="Navigation">
+          <Card title="Filters">
+            <FilterBar filters={[{ label: "Date Range", value: "Last 7 days" }]} />
+            <SavedViews views={[{ label: "Default", description: "Date Range: Last 7 days" }]} />
+          </Card>
+        </Section>
+      </Sidebar>
+      <main>
+        <Section title="Failed Payouts Queue">
+          <DataTable
+            columns={[
+              { label: "Transaction ID", key: "transactionId" },
+              { label: "Recipient", key: "recipient" },
+              { label: "Reason", key: "reason" },
+              { label: "Date", key: "date" },
+            ]}
+            rows={[
+              { transactionId: "TX123456", recipient: "Alice", reason: "Insufficient Funds", date: "2023-10-01" },
+              { transactionId: "TX789012", recipient: "Bob", reason: "Bank Error", date: "2023-10-02" },
+            ]}
+            selectable
+          />
+        </Section>
+        <Section title="Current Item Details">
+          <Card title="Transaction Details">
+            <h3>Transaction ID: TX123456</h3>
+            <p>Recipient: Alice</p>
+            <p>Reason: Insufficient Funds</p>
+            <p>Date: 2023-10-01</p>
+            <Button label="Resubmit Payment" variant="primary" />
+            <Button label="Mark as Resolved" variant="secondary" />
+          </Card>
+        </Section>
+      </main>
+    </Page>
+  );
+};
+
+export default FailedPayoutsScreen;
+```

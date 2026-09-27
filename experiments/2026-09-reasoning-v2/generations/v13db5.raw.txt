@@ -1,0 +1,50 @@
+```tsx
+import { Page, Header, FilterBar, SavedViews, DataTable, BulkActions, Button, Section, Card, EmptyData, Status } from "@stoa/react";
+
+const failedPayouts = [
+  { id: "P-1001", amount: "$50.00", method: "Bank Transfer", reason: "Insufficient Funds", status: "Failed", timestamp: "2023-10-05T14:30:00Z" },
+  { id: "P-1002", amount: "$75.00", method: "Credit Card", reason: "Expired Card", status: "Failed", timestamp: "2023-10-05T14:25:00Z" },
+  { id: "P-1003", amount: "$120.00", method: "PayPal", reason: "Account Locked", status: "Failed", timestamp: "2023-10-05T14:15:00Z" },
+];
+
+const actions = [
+  { label: "Retry", variant: "primary" },
+  { label: "Escalate", variant: "default" },
+  { label: "Mark as Resolved", variant: "default" },
+];
+
+export default function FailedPayoutsPage() {
+  return (
+    <Page title="Failed Payouts">
+      <Header title="Failed Payouts" subtitle="Review and resolve failed transactions" />
+      <FilterBar filters={[{ label: "Last 7 Days", value: "7d" }, { label: "Last 30 Days", value: "30d" }]} />
+      <SavedViews views={["All", "Bank Transfer", "Credit Card"]} />
+      <Section title="Failed Payouts">
+        <DataTable
+          columns={[
+            { key: "id", label: "ID" },
+            { key: "amount", label: "Amount" },
+            { key: "method", label: "Method" },
+            { key: "reason", label: "Reason" },
+            { key: "status", label: "Status" },
+            { key: "timestamp", label: "Timestamp" },
+          ]}
+          rows={failedPayouts}
+          selectable
+          stickyFirstColumn
+        />
+        <BulkActions actions={actions} />
+      </Section>
+      <Card title="Current Item">
+        <p>No item selected</p>
+      </Card>
+      <Card title="Decision">
+        <p>Resolve the issue and click "Mark as Resolved"</p>
+      </Card>
+      <Section title="Audit">
+        <p>No audit log available</p>
+      </Section>
+    </Page>
+  );
+}
+```

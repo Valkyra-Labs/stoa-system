@@ -1,0 +1,75 @@
+import { Page, Header, Section, Card, Metric, Trend, DataTable, Status } from "@stoa/react";
+
+export default function SchoolDashboard() {
+  return (
+    <Page title="Term 2024-25 Overview">
+      <Header title="Spring Term Report" subtitle="Academic & Operational Performance" />
+
+      <Section title="Key Performance Indicators">
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "1rem" }}>
+          <Card title="Average GPA">
+            <Metric label="Overall Average" value="3.42" unit="GPA" />
+            <Metric label="Math" value="3.15" />
+            <Metric label="Science" value="3.28" />
+          </Card>
+          <Card title="Enrollment & Finance">
+            <Metric label="Total Enrollment" value="1,240" unit="students" />
+            <Metric label="Budget Variance" value="2.1" unit="%" />
+            <Metric label="Staff Retention" value="94%" />
+          </Card>
+          <Card title="Graduation Metrics">
+            <Metric label="On-Time Graduation" value="96.5" unit="%" />
+            <Metric label="College Acceptance" value="82%" />
+            <Metric label="Scholarship Rate" value="34%" />
+          </Card>
+          <Card title="Safety & Compliance">
+            <Metric label="Incident Rate" value="0.4" unit="per 1000" />
+            <Metric label="Zero-Tolerance" value="100%" />
+            <Metric label="Fire Drill Score" value="A" />
+          </Card>
+        </div>
+      </Section>
+
+      <Section title="Academic Trend Analysis">
+        <Card title="Student Performance Trajectory (2020-2025)">
+          <Trend
+            series={[
+              { x: "2020", y: 3.1 },
+              { x: "2021", y: 3.15 },
+              { x: "2022", y: 3.2 },
+              { x: "2023", y: 3.3 },
+              { x: "2024", y: 3.42 },
+            ]}
+          />
+        </Card>
+      </Section>
+
+      <Section title="Departmental Performance Matrix">
+        <DataTable
+          columns={[
+            { key: "dept", label: "Department" },
+            { key: "avg", label: "Avg. Grade" },
+            { key: "target", label: "Target" },
+            { key: "status", label: "Status" },
+          ]}
+          rows={[
+            { dept: "Mathematics", avg: 3.45, target: 3.4, status: "Above Target" },
+            { dept: "Literature", avg: 3.38, target: 3.4, status: "On Track" },
+            { dept: "Physics", avg: 3.25, target: 3.4, status: "Needs Attention" },
+            { dept: "History", avg: 3.52, target: 3.4, status: "Above Target" },
+            { dept: "Biology", avg: 3.30, target: 3.4, status: "On Track" },
+          ]}
+        />
+      </Section>
+
+      <Section title="Compliance & Safety Audit">
+        <Card title="Term Safety Audit">
+          <Status tone="success" label="All mandatory drills completed" />
+          <Status tone="success" label="Zero disciplinary suspensions" />
+          <Status tone="warning" label="Two minor cafeteria incidents reported" />
+          <Status tone="success" label="Accessibility audit passed" />
+        </Card>
+      </Section>
+    </Page>
+  );
+}

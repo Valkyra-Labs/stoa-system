@@ -1,0 +1,99 @@
+```tsx
+import { Page, Section, Card, Button, DataTable, Metric, Delta, Status, EmptyData, FilterBar, Tabs, Tab, Header, Sidebar, Drawer, Timeline, AuditLog, Comparison, Chart, Trend, Status, Metric, Delta, Timeline, AuditLog, Comparison, Chart, Trend, DataTable, FilterBar, Tabs, Tab, Header, Sidebar, Drawer, Section, Card, Button, Page } from "@stoa/react";
+
+const failedPayouts = [
+  {
+    id: "P-1001",
+    amount: 250,
+    reason: "Bank account not found",
+    timestamp: "2023-09-15T14:32:00Z",
+    status: "failed",
+    retries: 0,
+    lastAttempt: "2023-09-15T14:32:00Z",
+    evidence: [
+      { type: "log", message: "Account not found: ACCT-123456" },
+      { type: "error", code: "404", message: "Bank account not found" },
+    ],
+  },
+  {
+    id: "P-1002",
+    amount: 150,
+    reason: "Insufficient funds",
+    timestamp: "2023-09-15T13:15:00Z",
+    status: "failed",
+    retries: 1,
+    lastAttempt: "2023-09-15T13:15:00Z",
+    evidence: [
+      { type: "log", message: "Insufficient funds in account ACCT-678901" },
+      { type: "error", code: "402", message: "Insufficient funds" },
+    ],
+  },
+  {
+    id: "P-1003",
+    amount: 500,
+    reason: "Network error",
+    timestamp: "2023-09-15T12:45:00Z",
+    status: "failed",
+    retries: 2,
+    lastAttempt: "2023-09-15T12:45:00Z",
+    evidence: [
+      { type: "log", message: "Network error during payout processing" },
+      { type: "error", code: "503", message: "Network error" },
+    ],
+  },
+];
+
+const failedPayoutsColumns = [
+  { key: "id", label: "ID" },
+  { key: "amount", label: "Amount" },
+  { key: "reason", label: "Reason" },
+  { key: "timestamp", label: "Timestamp" },
+  { key: "status", label: "Status" },
+  { key: "retries", label: "Retries" },
+];
+
+const FailedPayoutsPage = () => (
+  <Page title="Failed Payouts">
+    <Header title="Failed Payouts" subtitle="Review and resolve failed payouts" actions={[<Button label="New Payout" variant="primary" />]} />
+    <Section title="Overview">
+      <Card>
+        <div className="flex flex-col md:flex-row gap-4">
+          <Metric label="Total Failed Payouts" value={failedPayouts.length} />
+          <Metric label="Average Amount" value={failedPayouts.reduce((sum, p) => sum + p.amount, 0) / failedPayouts.length} unit="USD" />
+          <Delta value={failedPayouts.length} basis={failedPayouts.length - 1} />
+        </div>
+      </Card>
+    </Section>
+    <Section title="Failed Payouts">
+      <DataTable
+        columns={failedPayoutsColumns}
+        rows={failedPayouts}
+        selectable
+        stickyFirstColumn
+        onRowSelect={(selected) => console.log("Selected:", selected)}
+      />
+    </Section>
+    <Section title="Payout Details">
+      {failedPayouts.map((payout) => (
+        <Card key={payout.id}>
+          <h3>{payout.id}</h3>
+          <p>Amount: ${payout.amount}</p>
+          <p>Reason: {payout.reason}</p>
+          <p>Timestamp: {payout.timestamp}</p>
+          <p>Retries: {payout.retries}</p>
+          <div>
+            <h4>Actions</h4>
+            <Button label="Retry" variant="secondary" />
+            <Button label="Refund" variant="secondary" />
+            <Button label="Investigate" variant="secondary" />
+          </div>
+          <h4>Evidence</h4>
+          <Timeline events={payout.evidence} />
+        </Card>
+      ))}
+    </Section>
+  </Page>
+);
+
+export default FailedPayoutsPage;
+```

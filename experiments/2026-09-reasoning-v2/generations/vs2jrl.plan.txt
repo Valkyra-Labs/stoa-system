@@ -1,0 +1,9 @@
+### Main Goal
+The screen's primary objective is to enable a financial adviser to make a confident, data-driven decision between two funds by presenting a clear, side-by-side comparison of their performance, risk, and suitability for a specific client profile. It must reduce cognitive load by highlighting the single recommended fund immediately while allowing deep-dive analysis of the alternative.
+
+### Layout Strategy
+The layout prioritizes the decision process through a structured hierarchy:
+1.  **Header & Context:** A concise header states the client's goals and the specific comparison.
+2.  **Primary Decision Area:** A prominent `Comparison` component displays the two funds side-by-side with key `Metric` cards (e.g., Expected Return, Risk Level) and a visual `Trend` chart. The "Recommended" fund is highlighted with a `Status` badge.
+3.  **Detail & Evidence:** Below the summary, a `DataTable` lists detailed historical data and fee structures, filtered by the client's parameters.
+4.  **Action & Review:** A `ReviewQueue` or `Drawer` mechanism allows the adviser to add notes, view the `AuditLog` of changes, and finalize the recommendation with a single `Button` action, ensuring the choice is documented and reversible.

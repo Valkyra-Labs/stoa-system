@@ -1,0 +1,58 @@
+```tsx
+import { Page, Header, Section, Card, Metric, Delta, Status, EmptyData, Button, FilterBar, SavedViews, Explorer, Inspector, Tabs, Drawer, Timeline, DataTable, Comparison, Chart, AuditLog, Metric, Delta, Trend, Chart, DataTable, Comparison, Timeline, AuditLog, Status, EmptyData, PartialData, StaleData, ErrorData, Button, FilterBar, SavedViews, Explorer, Inspector, Tabs, Drawer, Metric, Delta, Trend, Chart, DataTable, Comparison, Timeline, AuditLog, Status, EmptyData, PartialData, StaleData, ErrorData } from "@stoa/react";
+
+export default function PrepareForParentMeeting() {
+  return (
+    <Page title="Prepare for Parent Meeting">
+      <Header title="Student: Emily Johnson" subtitle="Grade 8 | Math | Parent Meeting: Tomorrow at 3 PM" actions={<Button label="Save Notes" variant="primary" />} />
+      
+      <Explorer
+        toolbar={
+          <FilterBar filters={["Recent Progress", "Behavior Reports", "Teacher Notes"]} />
+        }
+        table={
+          <DataTable
+            columns={[
+              { key: "date", label: "Date" },
+              { key: "subject", label: "Subject" },
+              { key: "type", label: "Type" },
+              { key: "notes", label: "Notes" }
+            ]}
+            rows={[
+              { date: "2024-04-05", subject: "Math", type: "Progress", notes: "Test score: 72% (Target: 85%)" },
+              { date: "2024-04-03", subject: "Math", type: "Behavior", notes: "Disruptive during class; 2 warnings" },
+              { date: "2024-03-30", subject: "Math", type: "Notes", notes: "Struggles with fractions; needs extra support" }
+            ]}
+            selectable
+          />
+        }
+        detail={
+          <Inspector>
+            <Section title="Student Profile">
+              <Card title="Academic Performance">
+                <Metric label="Current Grade" value="72%" unit="%" />
+                <Delta value="72" basis="85" tone="negative" />
+                <Metric label="Target Grade" value="85%" unit="%" />
+              </Card>
+              <Card title="Behavior">
+                <Metric label="Warnings" value="2" />
+                <Metric label="Detentions" value="0" />
+              </Card>
+            </Section>
+            <Section title="Parent Meeting Notes">
+              <Card title="Key Concerns">
+                <Metric label="Main Issue" value="Struggles with fractions and needs support" />
+                <Metric label="Recommendation" value="Additional tutoring and parent involvement" />
+              </Card>
+              <Card title="Next Steps">
+                <Metric label="Follow-Up" value="Schedule tutoring session next week" />
+                <Metric label="Parent Action" value="Review math materials at home" />
+              </Card>
+            </Section>
+          </Inspector>
+        }
+      />
+    </Page>
+  );
+}
+```

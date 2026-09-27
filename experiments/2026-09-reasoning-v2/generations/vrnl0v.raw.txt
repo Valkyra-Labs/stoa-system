@@ -1,0 +1,43 @@
+```tsx
+import { Page, Header, Section, Metric, Delta, DataTable, Status, StaleData } from "@stoa/react";
+
+export default function SchoolPerformance() {
+  return (
+    <Page title="School Performance">
+      <Header title="School Performance" subtitle="Term Summary" />
+      <Section title="Key Metrics">
+        <Metric label="Total Enrollment" value={1200} unit="students" />
+        <Metric label="Average Daily Attendance" value={95.5} unit="%" />
+        <Metric label="Graduation Rate" value={90} unit="%" />
+        <Metric label="Teacher Turnover Rate" value={10} unit="%" />
+      </Section>
+      <Section title="Recent Changes">
+        <Metric label="Enrollment Change" value={20} delta={5} basis="previous term" />
+        <Metric label="Attendance Change" value={-1.5} delta={-1} basis="previous term" />
+        <Metric label="Graduation Rate Change" value={2} delta={2} basis="previous term" />
+        <Metric label="Teacher Turnover Rate Change" value={-2} delta={-2} basis="previous term" />
+      </Section>
+      <Section title="Detailed Data">
+        <DataTable
+          columns={[
+            { label: "Metric", field: "metric" },
+            { label: "Value", field: "value" },
+            { label: "Delta", field: "delta" },
+            { label: "Basis", field: "basis" },
+          ]}
+          rows={[
+            { metric: "Total Enrollment", value: 1200, delta: 20, basis: "previous term" },
+            { metric: "Average Daily Attendance", value: 95.5, delta: -1.5, basis: "previous term" },
+            { metric: "Graduation Rate", value: 90, delta: 2, basis: "previous term" },
+            { metric: "Teacher Turnover Rate", value: 10, delta: -2, basis: "previous term" },
+          ]}
+        />
+      </Section>
+      <Section title="Status">
+        <Status tone="info" label="Data Last Updated" />
+        <Status tone="warning" label="Stale Data" since="2 days ago" />
+      </Section>
+    </Page>
+  );
+}
+```

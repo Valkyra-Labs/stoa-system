@@ -1,0 +1,5 @@
+The **Order and emphasis** rule dominates, mandating that exceptions and items needing action appear before averages. Since the Finance Director reviews weekly numbers before a meeting, the screen must immediately surface the largest variances against targets or peers, sorted by magnitude. This ensures critical issues are visible without scrolling.
+
+The **Numbers** rule is equally critical; every metric must display its basis (target, prior period, or peer) alongside the value to enable instant judgment. Right-aligning numeric columns in tables keeps comparisons precise, while showing units and timeframes next to values avoids ambiguous legends.
+
+Finally, the **States** rule applies to all data regions. Given the weekly cadence, the screen must gracefully handle empty periods (new week), stale imports, or API errors with specific feedback, ensuring the Director never faces a blank or confusing screen during the Monday briefing.

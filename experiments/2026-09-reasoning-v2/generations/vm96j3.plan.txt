@@ -1,0 +1,3 @@
+**Main goal**: Provide a quick, high-level overview of the company's financial performance for the week, enabling the finance director to make informed decisions before meetings.
+
+**Layout support**: The screen is structured to prioritize key metrics and trends at the top for rapid scanning. A header with the week's date and a summary of the most critical financial indicators (revenue, profit, expenses) is followed by a dashboard of charts and tables. A sidebar offers quick access to drill-down options and filters, while a section at the bottom displays recent anomalies or alerts. This layout supports fast decision-making by emphasizing the most relevant data and keeping the interface clean and focused.

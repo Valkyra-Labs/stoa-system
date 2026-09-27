@@ -1,0 +1,23 @@
+import { Page, Header, Section, Metric, Trend, Timeline } from "@stoa/react";
+
+export default function SchoolPerformanceOverview() {
+  return (
+    <Page title="School Performance Overview">
+      <Header title="Acme High School" subtitle="Term Overview" />
+      <Section title="Key Metrics">
+        <Metric label="Enrollment" value={1200} delta={15} unit="students" />
+        <Metric label="Attendance Rate" value={95} delta={-2} unit="%" />
+        <Metric label="Average GPA" value={3.2} delta={0.1} unit="points" />
+        <Trend series={[3.2, 3.1, 3.3, 3.2, 3.4]} />
+      </Section>
+      <Section title="Recent Events">
+        <Timeline events={[
+          { date: "2023-10-01", label: "New Science Lab Opened", description: "The new science lab was inaugurated with a ribbon-cutting ceremony." },
+          { date: "2023-10-05", label: "Parent-Teacher Meeting", description: "A parent-teacher meeting was held to discuss student progress and upcoming events." },
+          { date: "2023-10-10", label: "Sports Day", description: "Sports Day was a huge success with participation from all grades." },
+          { date: "2023-10-15", label: "Guest Lecture", description: "A guest lecture on environmental science was delivered by Dr. Smith." }
+        ]} />
+      </Section>
+    </Page>
+  );
+}

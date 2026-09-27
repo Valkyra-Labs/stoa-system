@@ -1,0 +1,9 @@
+1. **The person and the session**: An operations analyst is responding to an automated alert or a queue notification indicating a backlog of failed payout transactions. The session is urgent, time-sensitive, and driven by the need to restore service quickly.
+
+2. **The shape of the work**: This is a "taking each item in turn to a decision" session. The analyst must iterate through a list of failed items, diagnose the specific failure reason for each, apply a fix (e.g., retry, manual override, rejection), and move to the next. The primary goal is to clear the backlog.
+
+3. **The information**: The core entity is the "Failed Payout," containing transaction ID, amount, recipient, failure timestamp, and a specific error code/message. Values change the next step: a "Insufficient Funds" error requires a retry or hold; a "Card Declined" might need customer notification; a "System Error" requires a retry or escalation. The time frame is immediate (current batch) but includes historical context for the specific transaction.
+
+4. **The decision and its evidence**: The analyst decides whether to Retry, Escalate, or Reject. They need to see the error message clearly, the transaction amount (to verify validity), the recipient details, and the exact time of failure to determine if a retry is feasible or if human intervention is required. A wrong decision (e.g., retrying a permanently lost card) causes financial loss or customer dissatisfaction.
+
+5. **The structure**: The screen must prioritize the list of items with their status and action buttons. The main view is a detailed list or table where the analyst can select one item to see full context (error details, recipient info) and perform an action. A progress indicator showing how many items remain and how many have been resolved is essential to manage the session's scope. The action (resolution) sits directly on the item view.

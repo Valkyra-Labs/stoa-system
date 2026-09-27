@@ -1,0 +1,131 @@
+```tsx
+import { Page, Header, Sidebar, Section, Card, DataTable, Metric, Status, Button, EmptyData } from "@stoa/react";
+
+const PAGE_TITLE = "Portfolio Morning Book";
+
+export default function PortfolioMorningBook() {
+  const columns = [
+    { key: "ticker", label: "Ticker", width: 120 },
+    { key: "name", label: "Asset Name", width: 200 },
+    { key: "changePct", label: "Change %", width: 100, type: "number" },
+    { key: "changeAbs", label: "Change ($)", width: 120, type: "number" },
+    { key: "volume", label: "Volume", width: 100, type: "number" },
+    { key: "reason", label: "Reason", width: 250, type: "text" },
+  ];
+
+  const rows = [
+    {
+      ticker: "SPY",
+      name: "S&P 500 ETF",
+      changePct: 0.45,
+      changeAbs: 12.5,
+      volume: 45000000,
+      reason: "Tech sector rally on earnings beat",
+      status: "approved",
+    },
+    {
+      ticker: "QQQ",
+      name: "Nasdaq 100 ETF",
+      changePct: 0.82,
+      changeAbs: 21.3,
+      volume: 32000000,
+      reason: "AI news flow",
+      status: "pending",
+    },
+    {
+      ticker: "GLD",
+      name: "Gold Trust",
+      changePct: -0.15,
+      changeAbs: -4.2,
+      volume: 5000000,
+      reason: "Dollar strength",
+      status: "rejected",
+    },
+    {
+      ticker: "TSLA",
+      name: "Tesla Inc",
+      changePct: -2.34,
+      changeAbs: -35.6,
+      volume: 89000000,
+      reason: "Production delay report",
+      status: "review",
+    },
+    {
+      ticker: "NVDA",
+      name: "Nvidia Corp",
+      changePct: 1.2,
+      changeAbs: 8.4,
+      volume: 55000000,
+      reason: "Data center demand",
+      status: "approved",
+    },
+  ];
+
+  const handleRowSelect = (row: typeof rows[0]) => {
+    console.log("Selected", row.ticker);
+  };
+
+  return (
+    <Page title={PAGE_TITLE}>
+      <Header
+        title={PAGE_TITLE}
+        subtitle={`Morning Book: ${new Date().toLocaleDateString()}`}
+        actions={
+          <>
+            <Button label="Filter Volatility" variant="secondary" />
+            <Button label="Export CSV" />
+          </>
+        }
+      />
+
+      <Section title="Summary Metrics">
+        <Card>
+          <div style={{ display: "flex", gap: "20px", flexWrap: "wrap" }}>
+            <Metric label="Total P&L" value="1.24M" delta={0.5} unit="%" />
+            <Metric label="Open Positions" value={142} />
+            <Metric label="Unresolved Flags" value={3} status={{ tone: "warning", label: "Requires Attention" }} />
+          </div>
+        </Card>
+      </Section>
+
+      <Section title="Market Movements Since Yesterday">
+        <Card>
+          <DataTable
+            columns={columns}
+            rows={rows}
+            selectable={true}
+            onRowSelect={handleRowSelect}
+          />
+        </Card>
+      </Section>
+
+      <Section title="Reasoning & Context">
+        <Card>
+          <DataTable
+            columns={[
+              { key: "ticker", label: "Ticker", width: 120 },
+              { key: "reason", label: "Event/News", width: 300, type: "text" },
+              { key: "source", label: "Source", width: 150, type: "text" },
+              { key: "timestamp", label: "Time", width: 120, type: "text" },
+            ]}
+            rows={[
+              { ticker: "SPY", reason: "Tech sector rally on earnings beat", source: "Bloomberg", timestamp: "08:15" },
+              { ticker: "QQQ", reason: "AI news flow", source: "Reuters", timestamp: "09:30" },
+              { ticker: "TSLA", reason: "Production delay report", source: "SEC Filings", timestamp: "07:45" },
+              { ticker: "GLD", reason: "Dollar strength", source: "FX Markets", timestamp: "08:00" },
+            ]}
+          />
+        </Card>
+      </Section>
+
+      <Section title="Actions">
+        <Card>
+          <Button label="Approve All Pending" variant="primary" onPress={() => alert("Approve action simulated")} />
+          <Button label="Reject All Rejected" variant="danger" onPress={() => alert("Reject action simulated")} />
+          <Button label="Clear History" variant="secondary" onPress={() => alert("History cleared")} />
+        </Card>
+      </Section>
+    </Page>
+  );
+}
+```

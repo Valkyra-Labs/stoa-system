@@ -1,0 +1,40 @@
+import { Page, Header, Sidebar, Section, Card, Tabs, Metric, Delta, Timeline, Button, FilterBar, SavedViews, Explorer, Comparison, Inspector, Monitor, ReviewQueue, Dashboard } from "@stoa/react";
+
+export default function PortfolioOverview() {
+  return (
+    <Page title="Portfolio Overview">
+      <Header title="What Moved Since Yesterday" subtitle="Understand changes in positions and performance" actions={<Button label="Refresh" variant="primary" />} />
+      <Sidebar>
+        <FilterBar filters={[{ id: "date", label: "Date", value: "2023-10-10" }, { id: "category", label: "Category", value: "Equity" }]} />
+        <SavedViews views={["Daily", "Weekly", "Monthly"]} />
+      </Sidebar>
+      <main>
+        <Section title="Position Comparison">
+          <Comparison entities={["Portfolio A", "Portfolio B"]} metrics={[{ name: "Value", value: 15000000, delta: 250000 }, { name: "Return", value: 0.03, delta: 0.005 }]} />
+        </Section>
+        <Section title="Top Movers">
+          <Card title="Top 5 Positions">
+            <ul>
+              <li><Metric label="Stock X" value={1000000} delta={250000} unit="USD" /></li>
+              <li><Metric label="Bond Y" value={800000} delta={-150000} unit="USD" /></li>
+              <li><Metric label="ETF Z" value={600000} delta={100000} unit="USD" /></li>
+              <li><Metric label="Fund A" value={400000} delta={-50000} unit="USD" /></li>
+              <li><Metric label="Crypto B" value={200000} delta={150000} unit="USD" /></li>
+            </ul>
+          </Card>
+        </Section>
+        <Section title="Reasons for Movement">
+          <Card title="Key Events">
+            <Timeline events={[
+              { time: "09:30", description: "Stock X announced quarterly earnings, up 2.5%" },
+              { time: "10:15", description: "Bond Y interest rates increased by 0.25%" },
+              { time: "11:00", description: "ETF Z added 10% in tech stocks" },
+              { time: "14:00", description: "Fund A rebalanced to increase cash allocation" },
+              { time: "15:30", description: "Crypto B surged due to regulatory news" }
+            ]} />
+          </Card>
+        </Section>
+      </main>
+    </Page>
+  );
+}

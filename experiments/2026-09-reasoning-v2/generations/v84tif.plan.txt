@@ -1,0 +1,9 @@
+1. **The person and session:** A teacher preparing for a specific parent meeting. It is a high-stakes, low-frequency task driven by a scheduled appointment, not routine monitoring.
+
+2. **The shape of the work:** Understanding one object fully before acting. The teacher needs a complete picture of that single student to build a coherent narrative for the parent.
+
+3. **The information:** The screen must center on one student entity, displaying their academic metrics, behavioral history, and recent interactions. Values are judged against targets, previous periods, and peer comparisons.
+
+4. **The decision and evidence:** The teacher decides on the meeting's focus and tone. They need fresh, verified data (not stale) and context (e.g., teacher notes, peer data) to explain progress or concerns accurately.
+
+5. **The structure:** The layout should feature a fixed header with the student's name. The main area will be a detailed "Inspector" view showing primary metrics and a secondary context column for peer/previous data. A sidebar or bottom section will show the meeting agenda or notes being drafted.
