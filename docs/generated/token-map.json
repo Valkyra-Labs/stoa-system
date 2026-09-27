@@ -29,13 +29,13 @@
           {
             "component": "Heatmap",
             "file": "packages/react/src/Heatmap.tsx",
-            "line": 30,
+            "line": 35,
             "via": "readCanvasTokens"
           },
           {
             "component": "Ladder",
             "file": "packages/react/src/Ladder.tsx",
-            "line": 30,
+            "line": 35,
             "via": "readCanvasTokens"
           },
           {
@@ -58,6 +58,7 @@
           "Data/Ladder > Empty",
           "Data/Ladder > Live",
           "Data/Ladder > Static",
+          "Data/Ladder > TwoThemes",
           "Foundations/Colour > SemanticColours"
         ]
       },
@@ -126,13 +127,13 @@
           {
             "component": "Heatmap",
             "file": "packages/react/src/Heatmap.tsx",
-            "line": 27,
+            "line": 32,
             "via": "readCanvasTokens"
           },
           {
             "component": "Ladder",
             "file": "packages/react/src/Ladder.tsx",
-            "line": 27,
+            "line": 32,
             "via": "readCanvasTokens"
           }
         ],
@@ -142,6 +143,7 @@
           "Data/Ladder > Empty",
           "Data/Ladder > Live",
           "Data/Ladder > Static",
+          "Data/Ladder > TwoThemes",
           "Foundations/Colour > SemanticColours"
         ]
       },
@@ -212,13 +214,13 @@
           {
             "component": "Heatmap",
             "file": "packages/react/src/Heatmap.tsx",
-            "line": 26,
+            "line": 31,
             "via": "readCanvasTokens"
           },
           {
             "component": "Ladder",
             "file": "packages/react/src/Ladder.tsx",
-            "line": 26,
+            "line": 31,
             "via": "readCanvasTokens"
           }
         ],
@@ -228,6 +230,7 @@
           "Data/Ladder > Empty",
           "Data/Ladder > Live",
           "Data/Ladder > Static",
+          "Data/Ladder > TwoThemes",
           "Foundations/Colour > SemanticColours"
         ]
       },
@@ -279,13 +282,13 @@
           {
             "component": "Heatmap",
             "file": "packages/react/src/Heatmap.tsx",
-            "line": 30,
+            "line": 35,
             "via": "--stoa-color-accent"
           },
           {
             "component": "Ladder",
             "file": "packages/react/src/Ladder.tsx",
-            "line": 30,
+            "line": 35,
             "via": "--stoa-color-accent"
           },
           {
@@ -328,6 +331,7 @@
           "Data/Ladder > Empty",
           "Data/Ladder > Live",
           "Data/Ladder > Static",
+          "Data/Ladder > TwoThemes",
           "Foundations/Colour > SemanticColours"
         ]
       },
@@ -431,13 +435,13 @@
           {
             "component": "Heatmap",
             "file": "packages/react/src/Heatmap.tsx",
-            "line": 30,
+            "line": 35,
             "via": "--stoa-color-accent"
           },
           {
             "component": "Ladder",
             "file": "packages/react/src/Ladder.tsx",
-            "line": 30,
+            "line": 35,
             "via": "--stoa-color-accent"
           },
           {
@@ -462,6 +466,7 @@
           "Data/Ladder > Empty",
           "Data/Ladder > Live",
           "Data/Ladder > Static",
+          "Data/Ladder > TwoThemes",
           "Foundations/Colour > SemanticColours"
         ]
       },
@@ -498,13 +503,13 @@
           {
             "component": "Heatmap",
             "file": "packages/react/src/Heatmap.tsx",
-            "line": 25,
+            "line": 30,
             "via": "readCanvasTokens"
           },
           {
             "component": "Ladder",
             "file": "packages/react/src/Ladder.tsx",
-            "line": 25,
+            "line": 30,
             "via": "readCanvasTokens"
           },
           {
@@ -531,7 +536,8 @@
           "Data/Heatmap > Sparse",
           "Data/Ladder > Empty",
           "Data/Ladder > Live",
-          "Data/Ladder > Static"
+          "Data/Ladder > Static",
+          "Data/Ladder > TwoThemes"
         ]
       },
       "reachedByTheme": {
@@ -666,13 +672,13 @@
           {
             "component": "Heatmap",
             "file": "packages/react/src/Heatmap.tsx",
-            "line": 29,
+            "line": 34,
             "via": "readCanvasTokens"
           },
           {
             "component": "Ladder",
             "file": "packages/react/src/Ladder.tsx",
-            "line": 29,
+            "line": 34,
             "via": "readCanvasTokens"
           }
         ],
@@ -681,7 +687,8 @@
           "Data/Heatmap > Sparse",
           "Data/Ladder > Empty",
           "Data/Ladder > Live",
-          "Data/Ladder > Static"
+          "Data/Ladder > Static",
+          "Data/Ladder > TwoThemes"
         ]
       },
       "reachedByTheme": {
@@ -793,13 +800,13 @@
           {
             "component": "Heatmap",
             "file": "packages/react/src/Heatmap.tsx",
-            "line": 22,
+            "line": 27,
             "via": "--stoa-color-surface"
           },
           {
             "component": "Ladder",
             "file": "packages/react/src/Ladder.tsx",
-            "line": 22,
+            "line": 27,
             "via": "--stoa-color-surface"
           },
           {
@@ -824,6 +831,7 @@
           "Data/Ladder > Empty",
           "Data/Ladder > Live",
           "Data/Ladder > Static",
+          "Data/Ladder > TwoThemes",
           "Foundations/Colour > SemanticColours"
         ]
       },
@@ -871,13 +879,13 @@
           {
             "component": "Heatmap",
             "file": "packages/react/src/Heatmap.tsx",
-            "line": 23,
+            "line": 28,
             "via": "--stoa-color-text"
           },
           {
             "component": "Ladder",
             "file": "packages/react/src/Ladder.tsx",
-            "line": 23,
+            "line": 28,
             "via": "--stoa-color-text"
           },
           {
@@ -908,6 +916,7 @@
           "Data/Ladder > Empty",
           "Data/Ladder > Live",
           "Data/Ladder > Static",
+          "Data/Ladder > TwoThemes",
           "Foundations/Colour > SemanticColours"
         ]
       },
@@ -1011,13 +1020,13 @@
           {
             "component": "Heatmap",
             "file": "packages/react/src/Heatmap.tsx",
-            "line": 25,
+            "line": 30,
             "via": "--stoa-color-border"
           },
           {
             "component": "Ladder",
             "file": "packages/react/src/Ladder.tsx",
-            "line": 25,
+            "line": 30,
             "via": "--stoa-color-border"
           },
           {
@@ -1047,7 +1056,8 @@
           "Data/Heatmap > Sparse",
           "Data/Ladder > Empty",
           "Data/Ladder > Live",
-          "Data/Ladder > Static"
+          "Data/Ladder > Static",
+          "Data/Ladder > TwoThemes"
         ]
       },
       "reachedByTheme": {
@@ -1130,13 +1140,13 @@
           {
             "component": "Heatmap",
             "file": "packages/react/src/Heatmap.tsx",
-            "line": 24,
+            "line": 29,
             "via": "--stoa-color-text-muted"
           },
           {
             "component": "Ladder",
             "file": "packages/react/src/Ladder.tsx",
-            "line": 24,
+            "line": 29,
             "via": "--stoa-color-text-muted"
           },
           {
@@ -1191,6 +1201,7 @@
           "Data/Ladder > Empty",
           "Data/Ladder > Live",
           "Data/Ladder > Static",
+          "Data/Ladder > TwoThemes",
           "Foundations/Colour > SemanticColours"
         ]
       },
@@ -1275,13 +1286,13 @@
           {
             "component": "Heatmap",
             "file": "packages/react/src/Heatmap.tsx",
-            "line": 24,
+            "line": 29,
             "via": "--stoa-color-text-muted"
           },
           {
             "component": "Ladder",
             "file": "packages/react/src/Ladder.tsx",
-            "line": 24,
+            "line": 29,
             "via": "--stoa-color-text-muted"
           },
           {
@@ -1336,6 +1347,7 @@
           "Data/Ladder > Empty",
           "Data/Ladder > Live",
           "Data/Ladder > Static",
+          "Data/Ladder > TwoThemes",
           "Foundations/Colour > SemanticColours"
         ]
       },
@@ -1442,13 +1454,13 @@
           {
             "component": "Heatmap",
             "file": "packages/react/src/Heatmap.tsx",
-            "line": 25,
+            "line": 30,
             "via": "--stoa-color-border"
           },
           {
             "component": "Ladder",
             "file": "packages/react/src/Ladder.tsx",
-            "line": 25,
+            "line": 30,
             "via": "--stoa-color-border"
           },
           {
@@ -1478,7 +1490,8 @@
           "Data/Heatmap > Sparse",
           "Data/Ladder > Empty",
           "Data/Ladder > Live",
-          "Data/Ladder > Static"
+          "Data/Ladder > Static",
+          "Data/Ladder > TwoThemes"
         ]
       },
       "reachedByTheme": {
@@ -1591,25 +1604,25 @@
           {
             "component": "Heatmap",
             "file": "packages/react/src/Heatmap.tsx",
-            "line": 22,
+            "line": 27,
             "via": "--stoa-color-surface"
           },
           {
             "component": "Heatmap",
             "file": "packages/react/src/Heatmap.tsx",
-            "line": 23,
+            "line": 28,
             "via": "--stoa-color-text"
           },
           {
             "component": "Ladder",
             "file": "packages/react/src/Ladder.tsx",
-            "line": 22,
+            "line": 27,
             "via": "--stoa-color-surface"
           },
           {
             "component": "Ladder",
             "file": "packages/react/src/Ladder.tsx",
-            "line": 23,
+            "line": 28,
             "via": "--stoa-color-text"
           },
           {
@@ -1652,6 +1665,7 @@
           "Data/Ladder > Empty",
           "Data/Ladder > Live",
           "Data/Ladder > Static",
+          "Data/Ladder > TwoThemes",
           "Foundations/Colour > SemanticColours"
         ]
       },
@@ -1683,13 +1697,13 @@
           {
             "component": "Heatmap",
             "file": "packages/react/src/Heatmap.tsx",
-            "line": 27,
+            "line": 32,
             "via": "--stoa-color-ask"
           },
           {
             "component": "Ladder",
             "file": "packages/react/src/Ladder.tsx",
-            "line": 27,
+            "line": 32,
             "via": "--stoa-color-ask"
           },
           {
@@ -1714,6 +1728,7 @@
           "Data/Ladder > Empty",
           "Data/Ladder > Live",
           "Data/Ladder > Static",
+          "Data/Ladder > TwoThemes",
           "Foundations/Colour > SemanticColours"
         ]
       },
@@ -1744,13 +1759,13 @@
           {
             "component": "Heatmap",
             "file": "packages/react/src/Heatmap.tsx",
-            "line": 27,
+            "line": 32,
             "via": "--stoa-color-ask"
           },
           {
             "component": "Ladder",
             "file": "packages/react/src/Ladder.tsx",
-            "line": 27,
+            "line": 32,
             "via": "--stoa-color-ask"
           },
           {
@@ -1775,6 +1790,7 @@
           "Data/Ladder > Empty",
           "Data/Ladder > Live",
           "Data/Ladder > Static",
+          "Data/Ladder > TwoThemes",
           "Foundations/Colour > SemanticColours"
         ]
       },
@@ -1805,13 +1821,13 @@
           {
             "component": "Heatmap",
             "file": "packages/react/src/Heatmap.tsx",
-            "line": 29,
+            "line": 34,
             "via": "--stoa-color-down-wash"
           },
           {
             "component": "Ladder",
             "file": "packages/react/src/Ladder.tsx",
-            "line": 29,
+            "line": 34,
             "via": "--stoa-color-down-wash"
           }
         ],
@@ -1820,7 +1836,8 @@
           "Data/Heatmap > Sparse",
           "Data/Ladder > Empty",
           "Data/Ladder > Live",
-          "Data/Ladder > Static"
+          "Data/Ladder > Static",
+          "Data/Ladder > TwoThemes"
         ]
       },
       "reachedByTheme": {
@@ -1878,13 +1895,13 @@
           {
             "component": "Heatmap",
             "file": "packages/react/src/Heatmap.tsx",
-            "line": 22,
+            "line": 27,
             "via": "readCanvasTokens"
           },
           {
             "component": "Ladder",
             "file": "packages/react/src/Ladder.tsx",
-            "line": 22,
+            "line": 27,
             "via": "readCanvasTokens"
           },
           {
@@ -1907,6 +1924,7 @@
           "Data/Ladder > Empty",
           "Data/Ladder > Live",
           "Data/Ladder > Static",
+          "Data/Ladder > TwoThemes",
           "Foundations/Colour > SemanticColours"
         ]
       },
@@ -2009,13 +2027,13 @@
           {
             "component": "Heatmap",
             "file": "packages/react/src/Heatmap.tsx",
-            "line": 26,
+            "line": 31,
             "via": "--stoa-color-bid"
           },
           {
             "component": "Ladder",
             "file": "packages/react/src/Ladder.tsx",
-            "line": 26,
+            "line": 31,
             "via": "--stoa-color-bid"
           },
           {
@@ -2040,6 +2058,7 @@
           "Data/Ladder > Empty",
           "Data/Ladder > Live",
           "Data/Ladder > Static",
+          "Data/Ladder > TwoThemes",
           "Foundations/Colour > SemanticColours"
         ]
       },
@@ -2070,13 +2089,13 @@
           {
             "component": "Heatmap",
             "file": "packages/react/src/Heatmap.tsx",
-            "line": 26,
+            "line": 31,
             "via": "--stoa-color-bid"
           },
           {
             "component": "Ladder",
             "file": "packages/react/src/Ladder.tsx",
-            "line": 26,
+            "line": 31,
             "via": "--stoa-color-bid"
           },
           {
@@ -2101,6 +2120,7 @@
           "Data/Ladder > Empty",
           "Data/Ladder > Live",
           "Data/Ladder > Static",
+          "Data/Ladder > TwoThemes",
           "Foundations/Colour > SemanticColours"
         ]
       },
@@ -2131,13 +2151,13 @@
           {
             "component": "Heatmap",
             "file": "packages/react/src/Heatmap.tsx",
-            "line": 28,
+            "line": 33,
             "via": "--stoa-color-up-wash"
           },
           {
             "component": "Ladder",
             "file": "packages/react/src/Ladder.tsx",
-            "line": 28,
+            "line": 33,
             "via": "--stoa-color-up-wash"
           }
         ],
@@ -2146,7 +2166,8 @@
           "Data/Heatmap > Sparse",
           "Data/Ladder > Empty",
           "Data/Ladder > Live",
-          "Data/Ladder > Static"
+          "Data/Ladder > Static",
+          "Data/Ladder > TwoThemes"
         ]
       },
       "reachedByTheme": {
@@ -2199,13 +2220,13 @@
           {
             "component": "Heatmap",
             "file": "packages/react/src/Heatmap.tsx",
-            "line": 23,
+            "line": 28,
             "via": "readCanvasTokens"
           },
           {
             "component": "Ladder",
             "file": "packages/react/src/Ladder.tsx",
-            "line": 23,
+            "line": 28,
             "via": "readCanvasTokens"
           },
           {
@@ -2233,6 +2254,7 @@
           "Data/Ladder > Empty",
           "Data/Ladder > Live",
           "Data/Ladder > Static",
+          "Data/Ladder > TwoThemes",
           "Foundations/Colour > SemanticColours"
         ]
       },
@@ -2267,13 +2289,13 @@
           {
             "component": "Heatmap",
             "file": "packages/react/src/Heatmap.tsx",
-            "line": 24,
+            "line": 29,
             "via": "readCanvasTokens"
           },
           {
             "component": "Ladder",
             "file": "packages/react/src/Ladder.tsx",
-            "line": 24,
+            "line": 29,
             "via": "readCanvasTokens"
           },
           {
@@ -2321,6 +2343,7 @@
           "Data/Ladder > Empty",
           "Data/Ladder > Live",
           "Data/Ladder > Static",
+          "Data/Ladder > TwoThemes",
           "Foundations/Colour > SemanticColours"
         ]
       },
@@ -2431,13 +2454,13 @@
           {
             "component": "Heatmap",
             "file": "packages/react/src/Heatmap.tsx",
-            "line": 28,
+            "line": 33,
             "via": "readCanvasTokens"
           },
           {
             "component": "Ladder",
             "file": "packages/react/src/Ladder.tsx",
-            "line": 28,
+            "line": 33,
             "via": "readCanvasTokens"
           }
         ],
@@ -2446,7 +2469,8 @@
           "Data/Heatmap > Sparse",
           "Data/Ladder > Empty",
           "Data/Ladder > Live",
-          "Data/Ladder > Static"
+          "Data/Ladder > Static",
+          "Data/Ladder > TwoThemes"
         ]
       },
       "reachedByTheme": {
@@ -2557,13 +2581,13 @@
           {
             "component": "Heatmap",
             "file": "packages/react/src/Heatmap.tsx",
-            "line": 32,
+            "line": 37,
             "via": "readCanvasTokens"
           },
           {
             "component": "Ladder",
             "file": "packages/react/src/Ladder.tsx",
-            "line": 32,
+            "line": 37,
             "via": "readCanvasTokens"
           },
           {
@@ -2580,7 +2604,8 @@
           "Data/Heatmap > Sparse",
           "Data/Ladder > Empty",
           "Data/Ladder > Live",
-          "Data/Ladder > Static"
+          "Data/Ladder > Static",
+          "Data/Ladder > TwoThemes"
         ]
       },
       "reachedByTheme": {
@@ -2612,13 +2637,13 @@
           {
             "component": "Heatmap",
             "file": "packages/react/src/Heatmap.tsx",
-            "line": 31,
+            "line": 36,
             "via": "readCanvasTokens"
           },
           {
             "component": "Ladder",
             "file": "packages/react/src/Ladder.tsx",
-            "line": 31,
+            "line": 36,
             "via": "readCanvasTokens"
           },
           {
@@ -2635,7 +2660,8 @@
           "Data/Heatmap > Sparse",
           "Data/Ladder > Empty",
           "Data/Ladder > Live",
-          "Data/Ladder > Static"
+          "Data/Ladder > Static",
+          "Data/Ladder > TwoThemes"
         ]
       },
       "reachedByTheme": {
@@ -2758,13 +2784,13 @@
           {
             "component": "Heatmap",
             "file": "packages/react/src/Heatmap.tsx",
-            "line": 32,
+            "line": 37,
             "via": "readCanvasTokens"
           },
           {
             "component": "Ladder",
             "file": "packages/react/src/Ladder.tsx",
-            "line": 32,
+            "line": 37,
             "via": "readCanvasTokens"
           },
           {
@@ -2796,7 +2822,8 @@
           "Data/Heatmap > Sparse",
           "Data/Ladder > Empty",
           "Data/Ladder > Live",
-          "Data/Ladder > Static"
+          "Data/Ladder > Static",
+          "Data/Ladder > TwoThemes"
         ]
       },
       "reachedByTheme": {
