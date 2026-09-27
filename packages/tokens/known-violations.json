@@ -1,0 +1,78 @@
+{
+  "$comment": [
+    "Failures of the enforced rules in src/checks.mjs that exist today, so CI stays green while the",
+    "rules are added. scripts/checks.test.mjs fails on any enforced failure missing from this list, on",
+    "any entry here that now passes, on any entry whose id no longer exists, and on any entry whose",
+    "measured value has moved by more than `tolerance`. The file cannot go stale in either direction.",
+    "Stage 2 changes the token values and empties this list. Nothing here is a reported-only",
+    "measurement: those are in dist/verify.json and never fail a test."
+  ],
+  "measuredOn": "73962e77ff139c29a76094764999f6f9debb404a",
+  "measuredOnNote": "Token values as of that commit. This branch changes no token value, so the numbers hold for its head too.",
+  "tolerance": 0.02,
+  "violations": [
+    {
+      "id": "text-contrast/light/warning-on-surface",
+      "value": 2.0332,
+      "threshold": 4.5,
+      "unit": "ratio",
+      "note": "amber-500 is a light hue; as text it needs a darker value or a text-on-warning pairing."
+    },
+    {
+      "id": "text-contrast/light/warning-on-bg",
+      "value": 1.9477,
+      "threshold": 4.5,
+      "unit": "ratio",
+      "note": "Same colour, one step lighter background."
+    },
+    {
+      "id": "text-contrast/dark/text-subtle-on-surface",
+      "value": 4.0046,
+      "threshold": 4.5,
+      "unit": "ratio",
+      "note": "text-subtle is neutral-500 in both themes; that lands under AA on the dark surface."
+    },
+    {
+      "id": "text-contrast/dark/text-subtle-on-bg",
+      "value": 4.1508,
+      "threshold": 4.5,
+      "unit": "ratio",
+      "note": "Same colour on the darker page background."
+    },
+    {
+      "id": "non-text-contrast/light/border-strong-on-surface",
+      "value": 1.481,
+      "threshold": 3,
+      "unit": "ratio",
+      "note": "The boundary of a text field, a button and the slider track, so this is a WCAG 1.4.11 failure."
+    },
+    {
+      "id": "non-text-contrast/light/border-strong-on-bg",
+      "value": 1.4187,
+      "threshold": 3,
+      "unit": "ratio",
+      "note": "The same controls on the page background."
+    },
+    {
+      "id": "non-text-contrast/dark/border-strong-on-surface",
+      "value": 1.3309,
+      "threshold": 3,
+      "unit": "ratio",
+      "note": "Same failure in the dark theme, slightly worse."
+    },
+    {
+      "id": "non-text-contrast/dark/border-strong-on-bg",
+      "value": 1.3795,
+      "threshold": 3,
+      "unit": "ratio",
+      "note": "The same controls on the dark page background."
+    },
+    {
+      "id": "target-size/compact/density-row-height",
+      "value": 22,
+      "threshold": 24,
+      "unit": "px",
+      "note": "Compact rows are 22px against the 24px of WCAG 2.2 2.5.8. Regular and comfortable pass."
+    }
+  ]
+}

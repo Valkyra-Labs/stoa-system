@@ -23,9 +23,14 @@ them.
   regular | comfortable"` changes row height, cell padding and type
   size together.
 - **Colour never carries meaning alone.** Up and down, bid and ask use
-  colour and a shape or sign. Every text colour meets WCAG AA (4.5:1) on
-  its surfaces in both themes; body text meets 7:1. This is a test
-  (`packages/tokens/scripts/contrast.test.mjs`), not a claim.
+  colour and a shape or sign. Contrast is measured rather than claimed:
+  `packages/tokens/src/pairs.mjs` lists every colour pair and size that is
+  checked and why, `pnpm --filter @valkyra-labs/stoa-tokens verify` prints
+  the current numbers, and the failures that exist today are recorded in
+  `packages/tokens/known-violations.json`. Body text meets 7:1 on both
+  surfaces and most text roles meet AA; the warning colour used as text,
+  `text-subtle` in the dark theme, and the boundary of a text field or
+  button are below their thresholds and are Stage 2 work.
 - **Motion explains a change of state** and follows the user's
   reduced-motion setting: every duration token goes to zero.
 - **Right-to-left from the start**: logical properties only, and a type
