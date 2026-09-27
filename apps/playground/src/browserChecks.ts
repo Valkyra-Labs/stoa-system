@@ -8,11 +8,12 @@ import { NON_TEXT_PAIRS, TARGETS, TEXT_PAIRS, UP_DOWN, type Pair } from "@valkyr
 import knownViolationsJson from "../../../packages/tokens/known-violations.json";
 import { DENSITY_MODES, type DensityMode, type ResolvedTokens, type Theme } from "./tokenModel";
 
-const knownIds = new Set((knownViolationsJson as { violations: { id: string }[] }).violations.map((v) => v.id));
+type KnownViolation = { id: string };
 
-/** Whether a result matches nothing, a known entry, or neither, against
- * `known-violations.json` the same four ways scripts/checks.test.mjs gates
- * it:
+const recordedViolations = (knownViolationsJson as { violations: KnownViolation[] }).violations;
+
+/** Where a result stands against `known-violations.json`, following the
+ * gate in scripts/checks.test.mjs:
  * - `pass`: not a violation, and never was one.
  * - `fixed`: recorded as a known violation, but passes now. The file has
  *   gone stale in the direction that fails a test ("these now pass and
@@ -20,9 +21,15 @@ const knownIds = new Set((knownViolationsJson as { violations: { id: string }[] 
  * - `known`: fails, exactly as recorded.
  * - `new`: an enforced failure the file does not list.
  * - `reported`: fails a rule that is not enforced (see pairs.mjs); never
- *   fails a test whether or not it is listed.
+ *   fails a test as long as it is not listed.
+ * - `listed-reported`: listed in the file, but the rule is reported only.
+ *   The gate fails on it ("is reported only, so it does not belong
+ *   here"), pass or fail.
+ *
+ * The gate's remaining case, an entry no rule produces, has no result to
+ * attach a status to; `BrowserChecks.unproduced` lists those entries.
  */
-export type CheckStatus = "pass" | "fixed" | "known" | "new" | "reported";
+export type CheckStatus = "pass" | "fixed" | "known" | "new" | "reported" | "listed-reported";
 
 export type BrowserCheck = CheckResult & {
   status: CheckStatus;
@@ -37,16 +44,26 @@ export type BrowserChecks =
   | {
       available: true;
       checks: BrowserCheck[];
-      /** Whether the current values would make `scripts/checks.test.mjs`
-       * fail on pass/fail alone: any `new` or `fixed` result. Reported-only
-       * failures and recorded known ones cannot. Does not reproduce the
-       * gate's tolerance check on a known violation's recorded value, so a
-       * value that drifted but is still failing reads as agreeing here
-       * even where the server test would fail on drift. */
+      /** Ids listed in `known-violations.json` that no rule produced on
+       * these values. The gate fails on each ("is not produced by any
+       * rule"). */
+      unproduced: string[];
+      /** Whether the current values would make the known-violations gate
+       * in `scripts/checks.test.mjs` fail on pass/fail and listing alone:
+       * any `new`, `fixed` or `listed-reported` result, or any unproduced
+       * entry. Reported-only failures and recorded known ones cannot. Does
+       * not reproduce the gate's tolerance check on a known violation's
+       * recorded value, so a value that drifted but is still failing reads
+       * as passing the gate here even where the server test would fail on
+       * drift. Says nothing about the package's other test files. */
       wouldFailServerTests: boolean;
     };
 
+/** Statuses the known-violations gate fails on. */
+const GATE_FAILURES: ReadonlySet<CheckStatus> = new Set(["new", "fixed", "listed-reported"]);
+
 function classify(pass: boolean, enforced: boolean, known: boolean): CheckStatus {
+  if (known && !enforced) return "listed-reported";
   if (pass) return known ? "fixed" : "pass";
   if (!enforced) return "reported";
   return known ? "known" : "new";
@@ -140,6 +157,9 @@ export type BrowserCheckInputs = {
   /** Resolved tokens per density mode (light theme; density tokens do not
    * vary by theme), so target-size is checked in all three, as CI does. */
   densities: Record<DensityMode, ResolvedTokens>;
+  /** The recorded violations to match against; `known-violations.json`
+   * unless a test passes its own. */
+  known?: KnownViolation[];
 };
 
 /** Run every rule in packages/tokens/src/checks.mjs on the live values.
@@ -147,19 +167,22 @@ export type BrowserCheckInputs = {
  * that is not a colour, say) is reported as unavailable rather than
  * crashing the panel, because the panel must not imply that the live
  * values passed anything they were not checked against. */
-export function runBrowserChecks({ themes, densities }: BrowserCheckInputs): BrowserChecks {
+export function runBrowserChecks({ themes, densities, known = recordedViolations }: BrowserCheckInputs): BrowserChecks {
   try {
     const results = runAllChecks({
       themes: { light: tokenMap(themes.light.variables), dark: tokenMap(themes.dark.variables) },
       densities: Object.fromEntries(DENSITY_MODES.map((mode) => [mode, tokenMap(densities[mode].variables)])),
     });
+    const knownIds = new Set(known.map((v) => v.id));
+    const producedIds = new Set(results.map((r) => r.id));
     const checks = results.map((result) => ({
       ...result,
       status: classify(result.pass, result.enforced, knownIds.has(result.id)),
       tokens: tokensForCheck(result),
     }));
-    const wouldFailServerTests = checks.some((c) => c.status === "new" || c.status === "fixed");
-    return { available: true, checks, wouldFailServerTests };
+    const unproduced = [...knownIds].filter((id) => !producedIds.has(id));
+    const wouldFailServerTests = unproduced.length > 0 || checks.some((c) => GATE_FAILURES.has(c.status));
+    return { available: true, checks, unproduced, wouldFailServerTests };
   } catch (cause) {
     return { available: false, note: cause instanceof Error ? cause.message : String(cause) };
   }

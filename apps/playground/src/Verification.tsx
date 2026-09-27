@@ -43,12 +43,36 @@ const THEMES: Theme[] = ["light", "dark"];
 /** Disagreements listed before the rest are counted only. */
 const SHOWN = 8;
 
+/** The browser checks predict only the known-violations gate in
+ * scripts/checks.test.mjs; the server runs every test file in
+ * packages/tokens. So a server failure the browser does not predict is not
+ * a disagreement: it may come from another test file, or from a known
+ * violation's value drifting past the recorded tolerance, which the
+ * browser does not check. Only a server pass beside a predicted gate
+ * failure contradicts the browser. */
+function GateAgreement({ testsPassed, browserFails }: { testsPassed: boolean; browserFails: boolean }) {
+  if (testsPassed && !browserFails) return <StatusBadge tone="positive">agree: both pass</StatusBadge>;
+  if (testsPassed && browserFails) {
+    return <StatusBadge tone="negative">disagree: server tests passed, the browser checks would fail the gate</StatusBadge>;
+  }
+  if (browserFails) {
+    return <StatusBadge tone="neutral">server tests failed, the browser checks would fail the gate too</StatusBadge>;
+  }
+  return (
+    <StatusBadge tone="warning">
+      server tests failed on something the browser checks do not cover: see the test output
+    </StatusBadge>
+  );
+}
+
 export function Verification({ tokens, densityTokens, density, files, onSelectCheck }: VerificationProps) {
   const [busy, setBusy] = useState(false);
   const [verdict, setVerdict] = useState<Verdict | null>(null);
   const [failure, setFailure] = useState<Failure | null>(null);
   const [browser, setBrowser] = useState<BrowserChecks>(() => runBrowserChecks({ themes: tokens, densities: densityTokens }));
-  const [browserMs, setBrowserMs] = useState(0);
+  /** How long the last debounced run took; null until one has run, since
+   * the first result above is computed on mount without being timed. */
+  const [browserMs, setBrowserMs] = useState<number | null>(null);
 
   useEffect(() => {
     const handle = setTimeout(() => {
@@ -146,16 +170,9 @@ export function Verification({ tokens, densityTokens, density, files, onSelectCh
           </dd>
           {result.build.ok && browser.available && (
             <>
-              <dt>Browser checks vs server tests</dt>
+              <dt>Known-violations gate: browser vs server tests</dt>
               <dd data-testid="checks-agreement-status">
-                {result.test.ok === !browser.wouldFailServerTests ? (
-                  <StatusBadge tone="positive">agree</StatusBadge>
-                ) : (
-                  <StatusBadge tone="negative">
-                    disagree: server tests {result.test.ok ? "passed" : "failed"}, the browser checks{" "}
-                    {browser.wouldFailServerTests ? "would fail them" : "would not"}
-                  </StatusBadge>
-                )}
+                <GateAgreement testsPassed={result.test.ok} browserFails={browser.wouldFailServerTests} />
               </dd>
             </>
           )}
@@ -209,10 +226,13 @@ export function Verification({ tokens, densityTokens, density, files, onSelectCh
       {browser.available ? (
         <>
           <p className="pg-note" data-testid="browser-checks-cost">
-            {browser.checks.length} checks in {browserMs.toFixed(2)} ms
+            {browserMs === null
+              ? `${browser.checks.length} checks, not yet timed`
+              : `${browser.checks.length} checks in ${browserMs.toFixed(2)} ms`}
           </p>
           <BrowserChecksPanel
             checks={browser.checks}
+            unproduced={browser.unproduced}
             onSelect={(check: BrowserCheck) => onSelectCheck(tabForRule(check.rule), check.tokens)}
           />
         </>

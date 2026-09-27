@@ -89,6 +89,35 @@ describe("runBrowserChecks reacting to an override", () => {
   });
 });
 
+describe("runBrowserChecks against a known-violations list the gate would reject", () => {
+  // scripts/checks.test.mjs fails on a listed entry whose rule is reported
+  // only, and on a listed entry no rule produces. The real file has
+  // neither, so these pass their own lists.
+  const base = knownViolations.violations.map((v) => ({ id: v.id }));
+
+  it("marks a listed entry whose rule is reported only, and says the gate would fail", () => {
+    const result = runBrowserChecks({ ...inputsFor({}), known: [...base, { id: "up-down-distinguishability/light/contrast" }] });
+    if (!result.available) throw new Error(result.note);
+    expect(byId(result.checks).get("up-down-distinguishability/light/contrast")?.status).toBe("listed-reported");
+    expect(result.unproduced).toEqual([]);
+    expect(result.wouldFailServerTests).toBe(true);
+  });
+
+  it("lists an entry no rule produces, and says the gate would fail", () => {
+    const result = runBrowserChecks({ ...inputsFor({}), known: [...base, { id: "text-contrast/light/no-such-pair" }] });
+    if (!result.available) throw new Error(result.note);
+    expect(result.unproduced).toEqual(["text-contrast/light/no-such-pair"]);
+    expect(result.checks.filter((c) => c.status === "new" || c.status === "listed-reported")).toEqual([]);
+    expect(result.wouldFailServerTests).toBe(true);
+  });
+
+  it("lists nothing as unproduced for the real file", () => {
+    const result = runBrowserChecks(inputsFor({}));
+    if (!result.available) throw new Error(result.note);
+    expect(result.unproduced).toEqual([]);
+  });
+});
+
 describe("tokensForCheck", () => {
   it("names the semantic colour tokens a contrast result reads", () => {
     expect(tokensForCheck({ id: "text-contrast/light/text-on-surface", rule: "text-contrast" })).toEqual([
