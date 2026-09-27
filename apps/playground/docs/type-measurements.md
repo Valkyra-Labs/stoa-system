@@ -40,9 +40,9 @@ the engine's tests assert them.
 
 ## Digit advances
 
-In font units, each digit shaped on its own, zero first. A set every digit
-of which shaped to glyph id 0 is reported as absent: the file does not
-contain it, and the equal .notdef advances mean nothing.
+In font units, each digit shaped on its own, zero first. A set in which at
+least one digit shaped to glyph id 0 is reported as absent: the file does
+not contain it, and the .notdef advances mean nothing.
 
 | File | Set | Asked for | Verdict | Distinct | Advances |
 |---|---|---|---|---:|---|
@@ -77,11 +77,15 @@ What the brief states, and what this says:
 - The brief gives the Plex Sans Arabic range as "10 distinct advances, 263
   to 630 units". The range is the same. The count here is **nine**, not
   ten: two digits share an advance of 531 when each digit is shaped on its
-  own. Shaped as one run the ten advances are 508, 531, 481, 503, 526, 486,
-  630, 485, 263, 282, which is ten distinct values, because a contextual
-  alternate gives U+0662 a 481-unit form among other digits and a 531-unit
-  form on its own. Both are reported: the verdict is about the glyphs' own
-  advances, and the run is recorded beside it.
+  own. Shaped as one run the ten advances, zero first, are 282, 263, 485,
+  630, 486, 526, 503, 481, 531, 508, which is ten distinct values, because
+  a contextual alternate gives U+0667 a 481-unit form among other digits
+  and a 531-unit form on its own. Both are reported: the verdict is about
+  the glyphs' own advances, and the run is recorded beside it. The run was
+  re-measured at commit `1de80ba99e44a8a1664d8134b13dc25d8e3f5151`, in the
+  full release and in the Fontsource subset, after the engine began putting
+  a right-to-left run back in logical order; HarfBuzz returns it in visual
+  order, and the earlier reading listed it back to front.
 
 ## Why the advances are measured per glyph
 
@@ -96,7 +100,7 @@ next to it, and says so when the two disagree.
 | File | Set | Glyphs' own advances | The same ten as one run |
 |---|---|---|---|
 | Inter, full variable release | Latin, as shaped | ..., 1270, **1159**, 1267, 1270 | ..., 1270, **1130**, 1267, 1270 |
-| IBM Plex Sans Arabic, full release | Arabic-Indic, either | 282, 263, 485, 630, 486, 526, 503, **531**, 531, 508 | 508, 531, **481**, 503, 526, 486, 630, 485, 263, 282 |
+| IBM Plex Sans Arabic, full release | Arabic-Indic, either | 282, 263, 485, 630, 486, 526, 503, **531**, 531, 508 | 282, 263, 485, 630, 486, 526, 503, **481**, 531, 508 |
 
 ## Features kept by a web subset
 
