@@ -10,4 +10,9 @@ export default defineConfig({
   // The font worker imports harfbuzzjs, which initialises its WASM with a
   // top-level await; the default `iife` worker format cannot carry one.
   worker: { format: "es" },
+  // Only the worker imports these, so the dependency scan at startup does
+  // not see them; found later, they make Vite re-optimise and reload the
+  // page, which on a cold cache lands in the middle of whatever test runs
+  // first. Listing them bundles them before the first page is served.
+  optimizeDeps: { include: ["harfbuzzjs", "woff2-encoder/decompress"] },
 });
