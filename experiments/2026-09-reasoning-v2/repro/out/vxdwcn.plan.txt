@@ -1,0 +1,9 @@
+1. **Person & Session:** A teacher preparing for a specific, high-stakes meeting tomorrow. This is a routine but critical job requiring deep focus on one entity (the student) before acting (the meeting).
+
+2. **Shape of Work:** Understanding one object fully before acting on it. The teacher needs to synthesize multiple data points about a single student to form a coherent narrative.
+
+3. **Information:** The student's recent academic metrics, behavioral incidents, attendance records, and teacher notes. Values are judged against targets (grades), historical trends (progress), and thresholds (suspensions). The "freshness" of data (e.g., "last week") matters for relevance.
+
+4. **Decision & Evidence:** The teacher decides on the meeting's focus (e.g., "improvement needed," "support required"). They need to see *where* values came from (source of note), *how fresh* the data is, and *what happened before* (trend). A wrong decision risks miscommunication or missing a support need; it cannot be easily undone once the meeting starts.
+
+5. **Structure:** A focused view of the student as the central entity. A header identifies the student. A primary section displays the key metrics and status. A secondary section lists supporting evidence (incidents, notes) with filters. A sidebar or drawer contains the meeting agenda and action items. Progress is implicit (this is the *one* student).

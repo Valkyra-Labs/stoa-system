@@ -1,0 +1,117 @@
+```tsx
+import { Page, Header, Section, Card, Tabs, Status, Metric, EmptyData, Button, Drawer } from "@stoa/react";
+
+export default function StudentMeetingPrep() {
+  const student = {
+    id: "S-2024-089",
+    name: "Alexandra Chen",
+    grade: "8th Grade",
+    meetingDate: "2023-10-24",
+    status: "Needs Support",
+    attendance: { current: 82, lastWeek: 75, target: 95 },
+    grades: { math: 65, science: 70, english: 78 },
+    recentNotes: [
+      { id: 1, date: "2023-10-18", author: "Mrs. G.", text: "Alexandra struggled with algebraic equations today." },
+      { id: 2, date: "2023-10-15", author: "Mr. H.", text: "Excellent participation in group work." },
+      { id: 3, date: "2023-10-10", author: "Mrs. G.", text: "Missing three homework assignments due to confusion." },
+    ],
+    actions: [
+      { id: "A1", title: "Schedule follow-up", status: "Pending", due: "2023-10-25" },
+      { id: "A2", title: "Prepare resource list", status: "Pending", due: "2023-10-23" },
+    ],
+  };
+
+  const handleSaveDraft = () => alert("Meeting draft saved to draftbox.");
+  const handleMarkComplete = () => alert("Preparation marked as complete.");
+
+  return (
+    <Page title={`Preparation: ${student.name}`}>
+      <Header title={`Meeting Prep: ${student.name}`} subtitle={`Grade ${student.grade}`} actions={<Button label="Save Draft" onPress={handleSaveDraft} />} />
+
+      <main>
+        <Section title="Student Overview">
+          <Card title="Profile & Status">
+            <div style={{ display: "flex", gap: "2rem", alignItems: "flex-start" }}>
+              <div>
+                <h3>Student ID</h3>
+                <p>{student.id}</p>
+              </div>
+              <div>
+                <h3>Meeting Date</h3>
+                <p>{student.meetingDate}</p>
+              </div>
+              <div>
+                <h3>Overall Status</h3>
+                <Status tone="warning" label={student.status} />
+              </div>
+            </div>
+          </Card>
+
+          <Card title="Academic Performance">
+            <div style={{ display: "flex", gap: "2rem" }}>
+              <Metric label="Attendance (Current)" value={student.attendance.current} unit="%" delta={student.attendance.lastWeek} />
+              <Metric label="Attendance (Last Week)" value={student.attendance.lastWeek} unit="%" delta={student.attendance.target - student.attendance.current} />
+              <Metric label="Target Attendance" value={student.attendance.target} unit="%" />
+            </div>
+            <div style={{ marginTop: "1rem", display: "flex", gap: "1.5rem" }}>
+              <Metric label="Math" value={student.grades.math} unit="%" />
+              <Metric label="Science" value={student.grades.science} unit="%" />
+              <Metric label="English" value={student.grades.english} unit="%" />
+            </div>
+          </Card>
+
+          <Card title="Recent Teacher Notes">
+            {student.recentNotes.length === 0 ? (
+              <EmptyData message="No recent notes available." />
+            ) : (
+              <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+                {student.recentNotes.map((note) => (
+                  <div key={note.id} style={{ padding: "1rem", border: "1px solid #eee", borderRadius: "4px", backgroundColor: "#fafafa" }}>
+                    <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "0.5rem" }}>
+                      <strong>{note.author}</strong>
+                      <span>{note.date}</span>
+                    </div>
+                    <p>{note.text}</p>
+                  </div>
+                ))}
+              </div>
+            )}
+          </Card>
+        </Section>
+
+        <Section title="Action Plan for Meeting">
+          <Card title="Action Items">
+            <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+              {student.actions.map((action) => (
+                <div key={action.id} style={{ padding: "1rem", borderLeft: "4px solid #333", backgroundColor: "#fff" }}>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                    <div>
+                      <strong>{action.title}</strong>
+                      <p style={{ margin: "0.5rem 0 0", color: "#666" }}>Due: {action.due}</p>
+                    </div>
+                    <Status tone={action.status === "Pending" ? "neutral" : "success"} label={action.status} />
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div style={{ marginTop: "1rem", textAlign: "right" }}>
+              <Button label="Mark Preparation Complete" onPress={handleMarkComplete} variant="primary" />
+            </div>
+          </Card>
+        </Section>
+      </main>
+
+      <Drawer title="Additional Context" open={false}>
+        <Card title="Parent Contact Info">
+          <p><strong>Email:</strong> parent.chen@example.com</p>
+          <p><strong>Phone:</strong> (555) 123-4567</p>
+          <p><strong>Preferred Time:</strong> After school (3:30 PM - 4:30 PM)</p>
+        </Card>
+        <Card title="School Policies">
+          <p>Remember to mention the new IEP guidelines effective next semester.</p>
+        </Card>
+      </Drawer>
+    </Page>
+  );
+}
+```

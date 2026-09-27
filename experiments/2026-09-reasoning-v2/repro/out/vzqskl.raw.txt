@@ -1,0 +1,83 @@
+```tsx
+import { Page, Header, Sidebar, Section, Card, Button, FilterBar, SavedViews, BulkActions, DataTable, Comparison, Inspector, EmptyData } from "@stoa/react";
+
+export default function FailedPayouts() {
+  return (
+    <Page title="Failed Payouts">
+      <Header title="Failed Payouts" subtitle="Resolve issues with payouts" actions={<Button label="Add Filter" variant="secondary" />} />
+      <Section title="Filters">
+        <FilterBar filters={[
+          { label: "Status", value: "All", options: ["All", "Pending", "Rejected", "Failed"] },
+          { label: "Reason", value: "All", options: ["All", "Insufficient Funds", "Account Closure", "Payment Limit"] }
+        ]} />
+        <SavedViews views={[
+          { label: "All Failed", filters: [] },
+          { label: "Pending Review", filters: [{ label: "Status", value: "Pending" }] }
+        ]} />
+      </Section>
+      <Section title="Failed Payouts List">
+        <DataTable
+          columns={[
+            { label: "ID", key: "id" },
+            { label: "Status", key: "status" },
+            { label: "Amount", key: "amount", unit: "USD" },
+            { label: "Reason", key: "reason" },
+            { label: "Date", key: "date", format: "YYYY-MM-DD" }
+          ]}
+          rows={[
+            { id: "12345", status: "Pending", amount: 150.00, reason: "Insufficient Funds", date: "2023-09-01" },
+            { id: "67890", status: "Rejected", amount: 200.00, reason: "Account Closure", date: "2023-09-02" },
+            { id: "11111", status: "Failed", amount: 100.00, reason: "Payment Limit", date: "2023-09-03" }
+          ]}
+          selectable
+          onRowSelect={(row) => console.log(`Selected row ${row.id}`)}
+        />
+        <BulkActions actions={[
+          { label: "Mark as Resolved", onPress: () => console.log("Mark as Resolved") },
+          { label: "Mark as Pending", onPress: () => console.log("Mark as Pending") }
+        ]} />
+      </Section>
+      <Section title="Detail View">
+        <Inspector
+          primary={<Card title="Payout Details">
+            <Metric label="Amount" value={150.00} unit="USD" />
+            <Metric label="Status" value="Pending" />
+            <Metric label="Reason" value="Insufficient Funds" />
+            <Metric label="Date" value="2023-09-01" />
+          </Card>}
+          context={<Card title="Transaction History">
+            <DataTable
+              columns={[
+                { label: "Date", key: "date", format: "YYYY-MM-DD" },
+                { label: "Description", key: "description" },
+                { label: "Amount", key: "amount", unit: "USD" }
+              ]}
+              rows={[
+                { date: "2023-09-01", description: "Initial Transaction", amount: 150.00 },
+                { date: "2023-09-02", description: "Failed Payout", amount: -150.00 }
+              ]}
+            />
+          </Card>}
+          history={<Card title="Resolution History">
+            <DataTable
+              columns={[
+                { label: "Date", key: "date", format: "YYYY-MM-DD" },
+                { label: "Action", key: "action" },
+                { label: "User", key: "user" }
+              ]}
+              rows={[
+                { date: "2023-09-01", action: "Marked as Pending", user: "John Doe" },
+                { date: "2023-09-02", action: "Marked as Failed", user: "Jane Smith" }
+              ]}
+            />
+          </Card>}
+          actions={<Card title="Actions">
+            <Button label="Mark as Resolved" onPress={() => console.log("Mark as Resolved")} />
+            <Button label="Mark as Pending" onPress={() => console.log("Mark as Pending")} />
+          </Card>}
+        />
+      </Section>
+    </Page>
+  );
+}
+```
