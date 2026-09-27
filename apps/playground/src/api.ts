@@ -17,6 +17,28 @@ export type BuildResult = {
 
 export type SaveResult = { path: string; commit: string; dirty: boolean };
 
+/** A refusal from the endpoint itself. The status is kept because the
+ * snapshot panel treats "this name is taken" (409) as a question to the
+ * user rather than as an error. */
+export class ApiError extends Error {
+  readonly status: number;
+  constructor(status: number, message: string) {
+    super(message);
+    this.name = "ApiError";
+    this.status = status;
+  }
+}
+
+/** The endpoint's own message, when it sent one. */
+function reported(text: string): string | null {
+  try {
+    const error = (JSON.parse(text) as { error?: unknown }).error;
+    return typeof error === "string" ? error : null;
+  } catch {
+    return null;
+  }
+}
+
 async function post<T>(url: string, body: unknown): Promise<T> {
   const response = await fetch(url, {
     method: "POST",
@@ -24,7 +46,9 @@ async function post<T>(url: string, body: unknown): Promise<T> {
     body: JSON.stringify(body),
   });
   const text = await response.text();
-  if (!response.ok) throw new Error(`${url}: ${response.status} ${text.slice(0, 400)}`);
+  if (!response.ok) {
+    throw new ApiError(response.status, reported(text) ?? `${url}: ${response.status} ${text.slice(0, 400)}`);
+  }
   return JSON.parse(text) as T;
 }
 
@@ -34,11 +58,15 @@ export function requestBuild(files: Record<string, string>): Promise<BuildResult
   return post<BuildResult>("/api/build", { files });
 }
 
-/** Write a snapshot of the current token files and overrides. */
+/** Write a snapshot of the current token files and overrides. An unnamed
+ * save is stamped with the time it was written. Without `overwrite` the
+ * server refuses a name that is already on disk, and it refuses the
+ * committed baseline whatever this says. */
 export function saveSnapshot(payload: {
   name: string;
   files: Record<string, string>;
   overrides: Record<string, string>;
+  overwrite?: boolean;
 }): Promise<SaveResult> {
   return post<SaveResult>("/api/save", payload);
 }

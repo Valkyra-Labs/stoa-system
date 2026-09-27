@@ -8,9 +8,9 @@ import { OverrideList } from "./OverrideList";
 import { PreviewGrid } from "./PreviewGrid";
 import { Verification } from "./Verification";
 import { editableTabs } from "./editable";
-import { canRedo, canUndo, clearAll, clearOverride, emptyHistory, redo, setOverride, undo } from "./history";
+import { canRedo, canUndo, clearAll, clearOverride, emptyHistory, endEdit, redo, setOverride, undo } from "./history";
 import { createStream } from "./stream";
-import { saveSnapshot } from "./api";
+import { ApiError, saveSnapshot } from "./api";
 import {
   DENSITY_MODES,
   baseTokens,
@@ -36,9 +36,14 @@ export function App() {
   const [density, setDensity] = useState<DensityMode>("regular");
   const [running, setRunning] = useState(true);
   const [speed, setSpeed] = useState("1");
-  const [name, setName] = useState("stoa-today");
+  // Empty: the server stamps an unnamed save with the time it was written,
+  // so a save never lands on an earlier snapshot by default.
+  const [name, setName] = useState("");
   const [saved, setSaved] = useState<string | null>(null);
   const [saveError, setSaveError] = useState<string | null>(null);
+  /** The server refused this name because it is taken; only then may the
+   * user ask for it to be written over. */
+  const [taken, setTaken] = useState(false);
   const [renderMs, setRenderMs] = useState(0);
 
   const overrides = history.present;
@@ -66,13 +71,16 @@ export function App() {
     return () => stream.stop();
   }, [stream, running, interval]);
 
-  const save = async () => {
+  const save = async (overwrite = false) => {
     setSaveError(null);
     try {
-      const result = await saveSnapshot({ name, files, overrides });
+      const result = await saveSnapshot({ name, files, overrides, overwrite });
+      setTaken(false);
       setSaved(`${result.path} on ${result.commit.slice(0, 7)}${result.dirty ? " (working tree dirty)" : ""}`);
     } catch (cause) {
       setSaved(null);
+      // 409 is the one refusal the user can answer: the name is taken.
+      setTaken(cause instanceof ApiError && cause.status === 409);
       setSaveError(cause instanceof Error ? cause.message : String(cause));
     }
   };
@@ -127,7 +135,16 @@ export function App() {
             tabs={tabs}
             overrides={overrides}
             values={values}
-            onEdit={(id, value) => setHistory((h) => setOverride(h, id, value))}
+            onEdit={(id, value, held) => {
+              // The moment is read here, not in the updater, which has to
+              // stay pure: React may run it more than once.
+              const at = Date.now();
+              setHistory((h) => setOverride(h, id, value, { at, held }));
+            }}
+            onEditEnd={() => {
+              const at = Date.now();
+              setHistory((h) => endEdit(h, at));
+            }}
             onReset={(id) => setHistory((h) => clearOverride(h, id))}
           />
         </Panel>
@@ -150,14 +167,18 @@ export function App() {
             <TextField
               label="Snapshot name"
               value={name}
-              onChange={setName}
+              onChange={(value) => {
+                setName(value);
+                setTaken(false);
+              }}
               dir="ltr"
-              description="Written to apps/playground/snapshots, with the commit it was based on."
+              description="Written to apps/playground/snapshots, with the commit it was based on. Empty: named after the time it was saved."
             />
             <div className="pg-row">
-              <Button variant="primary" onPress={save}>
+              <Button variant="primary" onPress={() => void save()}>
                 Save snapshot
               </Button>
+              {taken && <Button onPress={() => void save(true)}>Replace {name.trim()}</Button>}
               {saved && <StatusBadge tone="positive">{saved}</StatusBadge>}
               {saveError && <StatusBadge tone="negative">{saveError}</StatusBadge>}
             </div>

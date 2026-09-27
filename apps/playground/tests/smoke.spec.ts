@@ -85,4 +85,19 @@ test("the build endpoint builds and tests the unmodified base", async ({ page })
   await expect(page.getByTestId("test-output")).toContainText("pass");
   // The values the previews are using are the values the build emitted.
   await expect(page.getByTestId("agreement-status")).toContainText("agrees on");
+
+  // The verdict is about the files it was taken on: an edit retires it
+  // rather than leaving a "passed" beside tokens that have since changed.
+  await page.locator(`[data-token="${TOKEN}"] input`).fill(EDITED_VALUE);
+  await expect(results).toBeHidden();
+});
+
+test("saving refuses to write over the committed baseline", async ({ page }) => {
+  await page.goto("/");
+  await page.getByRole("textbox", { name: "Snapshot name" }).fill("stoa-today");
+  await page.getByRole("button", { name: "Save snapshot" }).click();
+
+  // Refused with no way to force it: the file is the base of every override.
+  await expect(page.getByText("is never written over")).toBeVisible();
+  await expect(page.getByRole("button", { name: /^Replace/ })).toHaveCount(0);
 });

@@ -10,7 +10,11 @@ export type ControlPanelProps = {
   tabs: EditableTab[];
   overrides: Overrides;
   values: ResolvedTokens["values"];
-  onEdit: (id: string, value: string) => void;
+  /** One edit to one field. `held` marks an edit inside a gesture that has
+   * not ended (a slider drag), so the whole drag is one step back. */
+  onEdit: (id: string, value: string, held?: boolean) => void;
+  /** The gesture ended: the slider was released. */
+  onEditEnd: () => void;
   onReset: (id: string) => void;
 };
 
@@ -24,7 +28,7 @@ function isColor(value: string): boolean {
 const sourceText = (value: string | number | (string | number)[]) =>
   Array.isArray(value) ? value.join(", ") : String(value);
 
-export function ControlPanel({ tabs, overrides, values, onEdit, onReset }: ControlPanelProps) {
+export function ControlPanel({ tabs, overrides, values, onEdit, onEditEnd, onReset }: ControlPanelProps) {
   const [selected, setSelected] = useState(tabs[0]?.id);
   return (
     <Tabs
@@ -46,6 +50,7 @@ export function ControlPanel({ tabs, overrides, values, onEdit, onReset }: Contr
                     override={overrides[item.entry.id]}
                     resolved={values[item.entry.id]}
                     onEdit={onEdit}
+                    onEditEnd={onEditEnd}
                     onReset={onReset}
                   />
                 ))}
@@ -63,12 +68,14 @@ function TokenControl({
   override,
   resolved,
   onEdit,
+  onEditEnd,
   onReset,
 }: {
   item: EditableItem;
   override: string | undefined;
   resolved: { derived: string; effective: string } | undefined;
-  onEdit: (id: string, value: string) => void;
+  onEdit: (id: string, value: string, held?: boolean) => void;
+  onEditEnd: () => void;
   onReset: (id: string) => void;
 }) {
   const id = item.entry.id;
@@ -89,7 +96,9 @@ function TokenControl({
             max={control.max}
             step={control.step}
             value={number}
-            onChange={(value) => onEdit(id, `${value}px`)}
+            // The drag holds one step open; releasing it closes that step.
+            onChange={(value) => onEdit(id, `${value}px`, true)}
+            onChangeEnd={onEditEnd}
             format={(value) => `${value}px`}
           />
         </div>

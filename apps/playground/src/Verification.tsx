@@ -3,7 +3,7 @@
 // comparison between the values the previews are using and the values the
 // build emitted. A disagreement means the previews are lying and is shown
 // as a failure, not a warning.
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { Button, StatusBadge } from "@valkyra-labs/stoa-react";
 import { requestBuild, type BuildResult } from "./api";
 import { compareVariables, variablesFromCss, type Disagreement } from "./builtCss";
@@ -19,35 +19,54 @@ export type VerificationProps = {
 
 type Agreement = Record<Theme, Disagreement[]>;
 
+/** A build result, and the token files it was taken on as written text. */
+type Verdict = { files: string; built: BuildResult };
+/** A refusal from the endpoint, and the files the request carried. */
+type Failure = { files: string; message: string };
+
 const THEMES: Theme[] = ["light", "dark"];
 /** Disagreements listed before the rest are counted only. */
 const SHOWN = 8;
 
 export function Verification({ tokens, density, files }: VerificationProps) {
   const [busy, setBusy] = useState(false);
-  const [result, setResult] = useState<BuildResult | null>(null);
-  const [agreement, setAgreement] = useState<Agreement | null>(null);
-  const [error, setError] = useState<string | null>(null);
+  const [verdict, setVerdict] = useState<Verdict | null>(null);
+  const [failure, setFailure] = useState<Failure | null>(null);
   const browser = runBrowserChecks(tokens);
 
+  // A verdict belongs to the token files it was taken on, so it is kept with
+  // them and shown only while they are the files on screen. An edit retires
+  // it the moment it lands, including an edit made while the build is still
+  // running: a "passed" beside changed tokens is the one thing this panel
+  // must not show.
+  const filesKey = JSON.stringify(files);
+  const result = verdict !== null && verdict.files === filesKey ? verdict.built : null;
+  const error = failure !== null && failure.files === filesKey ? failure.message : null;
+
+  // The comparison is read off the CSS the build emitted rather than stored
+  // beside it, so it follows the theme and density on screen and cannot
+  // outlive the result it came from.
+  const agreement = useMemo<Agreement | null>(
+    () =>
+      result?.css
+        ? {
+            light: compareVariables(tokens.light.variables, variablesFromCss(result.css, "light", density)),
+            dark: compareVariables(tokens.dark.variables, variablesFromCss(result.css, "dark", density)),
+          }
+        : null,
+    [result, tokens, density],
+  );
+
   const run = async () => {
+    const ranOn = filesKey;
     setBusy(true);
-    setError(null);
+    setFailure(null);
     try {
       const built = await requestBuild(files);
-      setResult(built);
-      setAgreement(
-        built.css
-          ? {
-              light: compareVariables(tokens.light.variables, variablesFromCss(built.css, "light", density)),
-              dark: compareVariables(tokens.dark.variables, variablesFromCss(built.css, "dark", density)),
-            }
-          : null,
-      );
+      setVerdict({ files: ranOn, built });
     } catch (cause) {
-      setResult(null);
-      setAgreement(null);
-      setError(cause instanceof Error ? cause.message : String(cause));
+      setVerdict(null);
+      setFailure({ files: ranOn, message: cause instanceof Error ? cause.message : String(cause) });
     } finally {
       setBusy(false);
     }
