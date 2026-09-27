@@ -1,6 +1,6 @@
 import { useEffect, useImperativeHandle, useRef, useState, type Ref } from "react";
 import { describeBook, ladderRows, parseBook, type Book } from "./book";
-import { fitCanvas, readCanvasTokens, type CanvasTokens } from "./tokens";
+import { fitCanvas, readCanvasTokens, useTokenSignal, type CanvasTokens } from "./tokens";
 
 export type LadderHandle = {
   /** Draw a book in the flat engine form, without a React render. */
@@ -14,6 +14,9 @@ export type LadderProps = {
   data?: ArrayLike<number> | null;
   label: string;
   formatPrice?: (p: number) => string;
+  /** Bumped to force a token re-read and redraw, as an alternative to
+   * dispatching `stoa:tokens` on an ancestor (see `useTokenSignal`). */
+  tokensVersion?: number;
   ref?: Ref<LadderHandle>;
 };
 
@@ -49,17 +52,19 @@ function draw(canvas: HTMLCanvasElement, t: CanvasTokens, book: Book, depth: num
 /** An order-book ladder on a canvas: asks above, bids below, a size bar
  * per level. Screen readers get the top of the book as text, updated at
  * most once a second. */
-export function Ladder({ depth = 12, data, label, formatPrice = (p) => p.toFixed(2), ref }: LadderProps) {
+export function Ladder({ depth = 12, data, label, formatPrice = (p) => p.toFixed(2), tokensVersion, ref }: LadderProps) {
   const canvas = useRef<HTMLCanvasElement>(null);
   const tokens = useRef<CanvasTokens | null>(null);
   const [summary, setSummary] = useState("The book is empty.");
   const lastSummary = useRef(0);
   const latest = useRef<Book>({ bids: [], asks: [] });
+  const lastFlat = useRef<ArrayLike<number> | null>(null);
   const trailing = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const render = (flat: ArrayLike<number> | null) => {
     const c = canvas.current;
     if (!c) return;
+    lastFlat.current = flat;
     tokens.current ??= readCanvasTokens(c);
     const book = parseBook(flat);
     draw(c, tokens.current, book, depth, formatPrice);
@@ -84,18 +89,10 @@ export function Ladder({ depth = 12, data, label, formatPrice = (p) => p.toFixed
   useEffect(() => {
     if (data !== undefined) render(data);
   });
-  useEffect(() => {
-    // Re-read tokens when the theme or density changes.
-    const reset = () => (tokens.current = null);
-    const mq = matchMedia("(prefers-color-scheme: dark)");
-    mq.addEventListener("change", reset);
-    const mo = new MutationObserver(reset);
-    mo.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme", "data-density"] });
-    return () => {
-      mq.removeEventListener("change", reset);
-      mo.disconnect();
-    };
-  }, []);
+  useTokenSignal(canvas, tokensVersion, () => {
+    tokens.current = null;
+    render(lastFlat.current);
+  });
 
   return (
     <figure className="stoa-ladder" aria-label={label}>

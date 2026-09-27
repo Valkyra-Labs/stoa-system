@@ -1,6 +1,6 @@
 import { useEffect, useImperativeHandle, useRef, type Ref } from "react";
 import { cellAlpha, maxAbs } from "./heatmapScale";
-import { fitCanvas, readCanvasTokens, type CanvasTokens } from "./tokens";
+import { fitCanvas, readCanvasTokens, useTokenSignal, type CanvasTokens } from "./tokens";
 
 export type HeatmapData = {
   /** Column-major cells: `columns` slices of `rows` prices, top row first;
@@ -21,6 +21,9 @@ export type HeatmapProps = {
   /** Plain-language description of what the chart shows now. */
   description?: string;
   data?: HeatmapData | null;
+  /** Bumped to force a token re-read and redraw, as an alternative to
+   * dispatching `stoa:tokens` on an ancestor (see `useTokenSignal`). */
+  tokensVersion?: number;
   ref?: Ref<HeatmapHandle>;
 };
 
@@ -55,18 +58,24 @@ function draw(canvas: HTMLCanvasElement, t: CanvasTokens, d: HeatmapData | null,
 /** Displayed liquidity over time on a canvas: time left to right, price
  * top to bottom, bids in the bid colour and asks in the ask colour,
  * opacity by size on a log scale. */
-export function Heatmap({ height = 240, label, description, data, ref }: HeatmapProps) {
+export function Heatmap({ height = 240, label, description, data, tokensVersion, ref }: HeatmapProps) {
   const canvas = useRef<HTMLCanvasElement>(null);
   const tokens = useRef<CanvasTokens | null>(null);
+  const lastData = useRef<HeatmapData | null>(null);
   const render = (d: HeatmapData | null) => {
     const c = canvas.current;
     if (!c) return;
+    lastData.current = d;
     tokens.current ??= readCanvasTokens(c);
     draw(c, tokens.current, d, height);
   };
   useImperativeHandle(ref, () => ({ draw: render }));
   useEffect(() => {
     if (data !== undefined) render(data);
+  });
+  useTokenSignal(canvas, tokensVersion, () => {
+    tokens.current = null;
+    render(lastData.current);
   });
   return (
     <figure className="stoa-heatmap" aria-label={label}>
