@@ -66,6 +66,9 @@ export function saveSnapshot(payload: {
   name: string;
   files: Record<string, string>;
   overrides: Record<string, string>;
+  /** What each area panel records, by panel id: font references and type
+   * roles for the type panel. References, never font bytes. */
+  panels?: Record<string, unknown>;
   overwrite?: boolean;
 }): Promise<SaveResult> {
   return post<SaveResult>("/api/save", payload);
