@@ -23,5 +23,6 @@ jobs:
       - run: pnpm build
       - run: pnpm -r typecheck
       - run: pnpm test
+      - run: node scripts/token-map.mjs --check
       - name: House style (emoji, attribution)
         run: node scripts/check-text.mjs ${{ github.event_name == 'pull_request' && format('origin/{0}', github.base_ref) || 'HEAD~1' }}
