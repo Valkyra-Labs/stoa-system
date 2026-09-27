@@ -3,26 +3,41 @@
 // comparison between the values the previews are using and the values the
 // build emitted. A disagreement means the previews are lying and is shown
 // as a failure, not a warning.
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Button, StatusBadge } from "@valkyra-labs/stoa-react";
+import { RULES } from "@valkyra-labs/stoa-tokens/checks";
 import { requestBuild, type BuildResult } from "./api";
 import { compareVariables, variablesFromCss, type Disagreement } from "./builtCss";
-import { runBrowserChecks } from "./browserChecks";
+import { BrowserChecksPanel } from "./BrowserChecksPanel";
+import { runBrowserChecks, type BrowserCheck, type BrowserChecks } from "./browserChecks";
 import type { DensityMode, ResolvedTokens, Theme } from "./tokenModel";
+
+/** How long after the last token change to wait before re-running every
+ * check: typing a colour or dragging a slider changes the resolved tokens
+ * on every keystroke or frame, and a full run is cheap but not free. */
+const CHECK_DEBOUNCE_MS = 120;
 
 export type VerificationProps = {
   tokens: Record<Theme, ResolvedTokens>;
+  /** Resolved tokens per density mode, so target-size is checked in all
+   * three the way CI checks it, not only the one the previews show. */
+  densityTokens: Record<DensityMode, ResolvedTokens>;
   density: DensityMode;
   /** The current token files as text, exactly as they would be written. */
   files: Record<string, string>;
   /** Whether a parameter set is deriving the values on screen. The build
    * reads token files, and a derived tree is not one: exporting it to DTCG
    * files is out of scope for brief 05. So the build still runs the
-   * sources with the override layer, and the comparison between the
-   * previews and the built CSS is withheld rather than reported as a
-   * disagreement it cannot speak to. */
+   * sources with the override layer, and the comparisons between what is
+   * on screen and what the build did are withheld rather than reported as
+   * agreement or disagreement they cannot speak to. */
   derived: boolean;
+  /** A verification failure was picked: which tab to show and which
+   * tokens to highlight in it. */
+  onSelectCheck: (tab: string, tokens: string[]) => void;
 };
+
+const tabForRule = (rule: string): string => (rule === RULES.targetSize ? "density" : "colour");
 
 type Agreement = Record<Theme, Disagreement[]>;
 
@@ -35,11 +50,46 @@ const THEMES: Theme[] = ["light", "dark"];
 /** Disagreements listed before the rest are counted only. */
 const SHOWN = 8;
 
-export function Verification({ tokens, density, files, derived }: VerificationProps) {
+/** The browser checks predict only the known-violations gate in
+ * scripts/checks.test.mjs; the server runs every test file in
+ * packages/tokens. So a server failure the browser does not predict is not
+ * a disagreement: it may come from another test file, or from a known
+ * violation's value drifting past the recorded tolerance, which the
+ * browser does not check. Only a server pass beside a predicted gate
+ * failure contradicts the browser. */
+function GateAgreement({ testsPassed, browserFails }: { testsPassed: boolean; browserFails: boolean }) {
+  if (testsPassed && !browserFails) return <StatusBadge tone="positive">agree: both pass</StatusBadge>;
+  if (testsPassed && browserFails) {
+    return <StatusBadge tone="negative">disagree: server tests passed, the browser checks would fail the gate</StatusBadge>;
+  }
+  if (browserFails) {
+    return <StatusBadge tone="neutral">server tests failed, the browser checks would fail the gate too</StatusBadge>;
+  }
+  return (
+    <StatusBadge tone="warning">
+      server tests failed on something the browser checks do not cover: see the test output
+    </StatusBadge>
+  );
+}
+
+export function Verification({ tokens, densityTokens, density, files, derived, onSelectCheck }: VerificationProps) {
   const [busy, setBusy] = useState(false);
   const [verdict, setVerdict] = useState<Verdict | null>(null);
   const [failure, setFailure] = useState<Failure | null>(null);
-  const browser = runBrowserChecks(tokens);
+  const [browser, setBrowser] = useState<BrowserChecks>(() => runBrowserChecks({ themes: tokens, densities: densityTokens }));
+  /** How long the last debounced run took; null until one has run, since
+   * the first result above is computed on mount without being timed. */
+  const [browserMs, setBrowserMs] = useState<number | null>(null);
+
+  useEffect(() => {
+    const handle = setTimeout(() => {
+      const start = performance.now();
+      const next = runBrowserChecks({ themes: tokens, densities: densityTokens });
+      setBrowserMs(performance.now() - start);
+      setBrowser(next);
+    }, CHECK_DEBOUNCE_MS);
+    return () => clearTimeout(handle);
+  }, [tokens, densityTokens]);
 
   // A verdict belongs to the token files it was taken on, so it is kept with
   // them and shown only while they are the files on screen. An edit retires
@@ -127,6 +177,18 @@ export function Verification({ tokens, density, files, derived }: VerificationPr
               </StatusBadge>
             )}
           </dd>
+          {result.build.ok && browser.available && (
+            <>
+              <dt>Known-violations gate: browser vs server tests</dt>
+              <dd data-testid="checks-agreement-status">
+                {derived ? (
+                  <StatusBadge tone="neutral">not compared: the browser checks ran on a derived tree, the tests on the token sources</StatusBadge>
+                ) : (
+                  <GateAgreement testsPassed={result.test.ok} browserFails={browser.wouldFailServerTests} />
+                )}
+              </dd>
+            </>
+          )}
         </dl>
       )}
 
@@ -175,15 +237,22 @@ export function Verification({ tokens, density, files, derived }: VerificationPr
 
       <h3 className="pg-group__title">In-browser checks</h3>
       {browser.available ? (
-        <ul className="pg-checks">
-          {browser.checks.map((check) => (
-            <li key={check.name}>
-              <StatusBadge tone={check.ok ? "positive" : "negative"}>{check.name}</StatusBadge> {check.detail}
-            </li>
-          ))}
-        </ul>
+        <>
+          <p className="pg-note" data-testid="browser-checks-cost">
+            {browserMs === null
+              ? `${browser.checks.length} checks, not yet timed`
+              : `${browser.checks.length} checks in ${browserMs.toFixed(2)} ms`}
+          </p>
+          <BrowserChecksPanel
+            checks={browser.checks}
+            unproduced={browser.unproduced}
+            onSelect={(check: BrowserCheck) => onSelectCheck(tabForRule(check.rule), check.tokens)}
+          />
+        </>
       ) : (
-        <p className="pg-note">{browser.note}</p>
+        <p className="pg-note" role="alert">
+          {browser.note}
+        </p>
       )}
     </div>
   );

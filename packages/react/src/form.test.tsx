@@ -21,6 +21,18 @@ describe("TextField", () => {
     fireEvent.keyDown(input, { key: "Enter" });
     expect(onEnter).toHaveBeenCalledOnce();
   });
+
+  it("keeps its own description and adds an extra one when given", () => {
+    render(
+      <>
+        <p id="field-notes">Read by two checks</p>
+        <TextField label="Colour" value="red" onChange={() => {}} description="--stoa-color-text" aria-describedby="field-notes" />
+      </>,
+    );
+    const ids = screen.getByLabelText("Colour").getAttribute("aria-describedby")?.split(" ") ?? [];
+    expect(ids).toContain("field-notes");
+    expect(ids.map((id) => document.getElementById(id)?.textContent)).toContain("--stoa-color-text");
+  });
 });
 
 describe("Tabs", () => {

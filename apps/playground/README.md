@@ -42,9 +42,50 @@ pnpm --filter playground dev   # http://localhost:5173
   parameter model underneath the comparison is withheld and says so:
   writing a derived tree back out as DTCG files is not part of this
   version.
-- Snapshots (parameters, token files, overrides, and the commit they were
-  based on) are written to `snapshots/`, and loading one restores its
-  parameters and its overrides.
+- The type panel loads fonts (dropped files or Fontsource ids), reads what
+  each file really contains with HarfBuzz in a worker, and tunes six type
+  roles whose specimens are rendered in a table row inside all four frames.
+  See "Type" below.
+- Snapshots (parameters, token files, overrides, what each area panel
+  recorded, and the commit they were based on) are written to
+  `snapshots/`, and loading one restores its parameters and its
+  overrides.
+
+## Type
+
+`src/type/` is brief 07: the font engine, the inspector and the roles.
+
+- The engine (`engine.ts`) runs in a worker (`worker.ts`) and is the only
+  thing that answers questions about a font: axes and their named
+  instances, the layout features the file still has and what each does to a
+  probe, the metrics, and the digit advances for Latin and Arabic-Indic
+  with and without `tnum`. Nothing is taken from a feature list.
+- A file is brought to an sfnt first (`sfnt.ts`). HarfBuzz given a WOFF2
+  file does not fail: every code point maps to glyph 0 and .notdef has one
+  advance, so a check that only compares advances would call an unread file
+  tabular. WOFF2 is decoded, WOFF 1.0 is refused, and a digit set that
+  shaped to glyph 0 is reported as absent, never as tabular.
+- Digit advances are measured per glyph, and the same ten digits shaped as
+  one run are recorded beside them, because a run carries pair kerning and
+  contextual alternates that are not the glyphs' own advances.
+- Reading roles (display, heading, body) come off a modular scale, base and
+  ratio, rounded to whole pixels. Working roles (label, numeric, code) come
+  off the density mode's font size with an offset. Each role states which
+  rule produced the size on screen.
+- An Arabic pairing gets a `size-adjust` computed from the two x-heights,
+  and the pairing face is registered under that adjustment.
+- Canvas numerics: `ctx.font` carries no feature settings, so the numeric
+  face is registered as a `FontFace` with `featureSettings` and the digits
+  are measured on a canvas. The panel reports what this browser did, for
+  three routes, and whether Ladder's own font shorthand comes out tabular.
+
+Measurements, including the digit advances of IBM Plex Sans, IBM Plex Sans
+Arabic and Noto Sans Arabic, are in `docs/type-measurements.md`. To take
+them again, or to measure another file:
+
+```
+node apps/playground/scripts/font-report.mjs "IBM Plex Sans=path/to/IBMPlexSans-Regular.woff2"
+```
 
 ## Scripts
 
@@ -80,7 +121,11 @@ All three are development only and live in `server/tokenServer.ts`.
   stamped with the time it was written. A name already on disk is refused
   with 409 until the request says `overwrite: true`; `stoa-today` is
   refused with 403 whatever the request says, because it is the committed
-  base every override is stated against.
+  base every override is stated against. What the area panels
+  contributed is recorded under `panels`, by panel id; the type panel puts
+  font references and role tokens there, and the endpoint refuses panel
+  state that carries embedded font data or runs past 64 KB, because a
+  snapshot records a session and is not a font store.
 - `GET /api/snapshots` lists the snapshot names on disk;
   `GET /api/snapshots?name=<slug>` returns one of them. A name that is not
   a slug a save would write is refused rather than cleaned up, so the
@@ -94,11 +139,21 @@ another origin cannot drive the commands they run.
 ## Not here yet
 
 - The parameter model covers seven parameters. Type, numeric style, change
-  encoding and motion are later briefs, so the type ramp, the space scale
-  and the motion tokens are carried through unchanged and are not editable
-  in this version.
+  encoding and motion are later briefs, so the model carries the type
+  ramp, the space scale and the motion tokens through unchanged and they
+  are not editable as parameters in this version. The type panel tunes
+  its roles for the previews on its own, outside the model.
 - No export of a derived tree to DTCG token files, so the build endpoint
   always builds the token sources with the override layer written in.
+- The type panel does not write token files. It produces role tokens (DTCG
+  typography, with axes, features and the pairing under
+  `$extensions["dev.stoa.type"]`) into a snapshot; migrating the token
+  sources is Stage 2, and the specification generator is Wave 3. Loading
+  a snapshot restores parameters and overrides, not the panel state.
+- The Fontsource path is written against the keyless v1 API and is covered
+  by unit tests with a stubbed fetch. It has not been exercised against
+  the live endpoints in this environment, which has no route to
+  `api.fontsource.org`.
 - Canvas components read their colours once, so a token edit re-mounts
   them (`revision` in `PreviewGrid.tsx`). The token-change signal of
   brief 02 replaces that.
