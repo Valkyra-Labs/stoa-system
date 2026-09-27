@@ -202,8 +202,9 @@ describe("inspectFont, IBM Plex Sans Arabic Fontsource subset (WOFF2)", () => {
     for (const feature of ["none", "tnum"] as const) {
       const arabic = row(report, "arabic-indic", feature);
       expect(arabic.advances).toEqual([282, 263, 485, 630, 486, 526, 503, 531, 531, 508]);
-      // HarfBuzz hands the run back in visual order, 508 first. Only U+0667
-      // changes in a run, 531 on its own and 481 among other digits.
+      // Stored in logical order, zero first (the engine sorts HarfBuzz's
+      // visual order by cluster). Only U+0667 changes in a run, 531 on its
+      // own and 481 among other digits.
       expect(arabic.runAdvances).toEqual([282, 263, 485, 630, 486, 526, 503, 481, 531, 508]);
       expect(runAgrees(arabic)).toBe(false);
     }
@@ -242,7 +243,7 @@ describe("digitVerdict", () => {
     expect(digitVerdict([600, 601, 600], true)).toBe("proportional");
     // The shape of the IBM Plex Sans Arabic finding: ten real glyphs, ten
     // different advances, tnum asked for and nothing changed.
-    expect(digitVerdict([508, 531, 481, 503, 526, 486, 630, 485, 263, 282], true)).toBe("proportional");
+    expect(digitVerdict([282, 263, 485, 630, 486, 526, 503, 481, 531, 508], true)).toBe("proportional");
     expect(digitVerdict([472, 472, 472], false)).toBe("absent");
     expect(digitVerdict([], true)).toBe("absent");
   });
