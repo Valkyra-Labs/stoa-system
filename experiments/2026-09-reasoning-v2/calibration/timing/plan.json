@@ -1,0 +1,86 @@
+{
+ "purpose": "Timing and reproducibility per main model, two-turn. Not evidence.",
+ "tasks": {
+  "P2": "A portfolio manager opens their book in the morning. Build the screen they use to see what moved since yesterday and understand why."
+ },
+ "options": {
+  "temperature": 0.7,
+  "top_p": 0.8,
+  "max_tokens": 4096
+ },
+ "ctx": 8192,
+ "runs": [
+  {
+   "id": "t6",
+   "model": "qwen3:8b",
+   "condition": "components",
+   "task": "P2",
+   "seed": 1
+  },
+  {
+   "id": "t7",
+   "model": "qwen3:8b",
+   "condition": "generic",
+   "task": "P2",
+   "seed": 1
+  },
+  {
+   "id": "t8",
+   "model": "qwen3:8b",
+   "condition": "rules",
+   "task": "P2",
+   "seed": 1
+  },
+  {
+   "id": "t9",
+   "model": "qwen3:8b",
+   "condition": "reasoning",
+   "task": "P2",
+   "seed": 1
+  },
+  {
+   "id": "t10",
+   "model": "qwen3:8b",
+   "condition": "reasoning",
+   "task": "P2",
+   "seed": 1,
+   "repeat_of": "t9"
+  },
+  {
+   "id": "t11",
+   "model": "qwen2.5:14b",
+   "condition": "components",
+   "task": "P2",
+   "seed": 1
+  },
+  {
+   "id": "t12",
+   "model": "qwen2.5:14b",
+   "condition": "generic",
+   "task": "P2",
+   "seed": 1
+  },
+  {
+   "id": "t13",
+   "model": "qwen2.5:14b",
+   "condition": "rules",
+   "task": "P2",
+   "seed": 1
+  },
+  {
+   "id": "t14",
+   "model": "qwen2.5:14b",
+   "condition": "reasoning",
+   "task": "P2",
+   "seed": 1
+  },
+  {
+   "id": "t15",
+   "model": "qwen2.5:14b",
+   "condition": "reasoning",
+   "task": "P2",
+   "seed": 1,
+   "repeat_of": "t14"
+  }
+ ]
+}

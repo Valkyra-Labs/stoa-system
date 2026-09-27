@@ -31,7 +31,8 @@ Evidence and actions
   the history, the source. Do not hide it behind hover or a second page.
 - State the consequence of an action before it runs, next to the
   button that runs it.
-- Give every destructive or irreversible action a confirmation step.
+- Give every destructive or irreversible action a confirmation step, and
+  say whether it can be undone.
 
 States
 - Design the empty, partial, stale and error states of every data
@@ -46,6 +47,3 @@ Avoid
 - A sidebar of navigation that the task does not need.
 - Decorative regions that carry no information the person uses.
 - Repeating the same number in two places on the screen.
-
-Before writing code, state in one comment at the top of the file which
-of these rules shaped the screen most.

@@ -52,3 +52,24 @@ of the prompt pass. With one slot and the prompt cache off, llama.cpp
 reproduces a sampled generation exactly on this machine (3 of 3). This
 is one prompt and one model; the full run should re-generate a random
 sample of files and report how many match byte for byte.
+
+## Addendum: two-turn timing and reproducibility on llama.cpp (same day)
+
+`runner/llama.mjs`, llama.cpp 10150 (dee2a846b), one slot, prompt cache off,
+temperature 0.7, top_p 0.8, seed 1, task P2 (portfolio manager), the
+four draft conditions after the planning-comment lines were removed and
+lengths balanced (generic 370, rules 373, reasoning 378 words). Plan
+turn, then file turn. Files in `timing/out/`.
+
+| model | wall time per two-turn generation | files that parse | repeat of the reasoning run |
+|---|---|---|---|
+| qwen3:8b | 26 to 33 s | 5 of 5 | plan and file byte-identical |
+| qwen2.5:14b | 33 to 60 s | 4 of 5 (t11 does not parse) | plan and file byte-identical |
+| qwen3.5:4b | not run | | ollama's GGUF does not load in this llama.cpp build: `qwen35.rope.dimension_sections has wrong array length; expected 4, got 3` |
+
+- The plan turn is followed: each plan speaks in its condition's terms
+  (the reasoning plans answer steps 1 to 5; the rules plans name
+  rules), unlike the single-turn planning comment (1 of 4).
+- Reproducibility now holds on two models and both turns.
+- At these times 288 generations over three models of this size take
+  roughly three hours; the third model's time is unknown until it runs.

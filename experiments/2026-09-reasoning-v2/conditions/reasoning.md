@@ -44,6 +44,3 @@ constrains the next.
 Check the result against your answers: every region should serve a
 question from steps 2 to 4, and nothing the person needs for the
 decision should be hidden or a step away.
-
-Before writing code, state in one comment at the top of the file your
-short answers to steps 1 to 5.

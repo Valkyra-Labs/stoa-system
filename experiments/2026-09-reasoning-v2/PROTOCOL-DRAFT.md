@@ -76,8 +76,8 @@ generation.
 
 ## Models and sampling
 
-Main: qwen3.5:4b, qwen3:8b, qwen2.5:14b: the GGUF weights ollama
-already holds, served by llama.cpp server (build recorded) with one
+Main: a small model (qwen3.5:4b if its official GGUF loads in
+llama.cpp; ollama's file does not), qwen3:8b, qwen2.5:14b: GGUF weights served by llama.cpp server (build recorded) with one
 slot, context 8192, `cache_prompt: false`; file digests recorded.
 Thinking off where the model has it, recorded per run. temperature 0.7,
 top_p 0.8, max 4096 output tokens. Seeds 1 to 4. The server holds one

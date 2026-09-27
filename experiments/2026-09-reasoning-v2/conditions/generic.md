@@ -36,12 +36,9 @@ Layout
   several things at once.
 - Keep the density appropriate for the audience: professionals tolerate
   more information per screen than occasional visitors.
-- Make empty states helpful by explaining what will appear and how to
-  get started.
+- Make empty states explain what will appear.
 - Use progressive disclosure for rarely needed details, but keep the
   information needed for the main task visible.
-- Test the layout at common screen widths and make sure nothing
-  important is cut off or requires horizontal scrolling.
 
 Avoid
 - Clutter: too many elements competing for attention.
@@ -49,6 +46,3 @@ Avoid
 - Long unbroken walls of text or numbers without grouping.
 - Hidden or ambiguous controls.
 - Decorative elements that do not support the content.
-
-Before writing code, state in one comment at the top of the file: the
-main goal of the screen and how its layout supports it.

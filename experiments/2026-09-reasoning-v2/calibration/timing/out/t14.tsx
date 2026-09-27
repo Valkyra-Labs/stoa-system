@@ -1,0 +1,56 @@
+import { Page, Header, Section, Card, Comparison, Chart, DataTable } from "@stoa/react";
+
+export default function PortfolioReview() {
+  return (
+    <Page title="Portfolio Review">
+      <Header title="Portfolio Review" subtitle="Summary of performance changes since yesterday" />
+      <Section title="Overall Performance">
+        <Metric label="Total Return" value={0.02} delta={0.01} unit="%" />
+        <Metric label="Volatility" value={0.03} delta={-0.01} unit="%" />
+      </Section>
+      <Section title="Assets with Significant Movements">
+        <DataTable
+          columns={[
+            { label: "Asset", key: "asset" },
+            { label: "Return", key: "return", unit: "%" },
+            { label: "Volatility", key: "volatility", unit: "%" },
+          ]}
+          rows={[
+            { asset: "AAPL", return: 0.05, volatility: 0.04 },
+            { asset: "GOOGL", return: -0.03, volatility: 0.05 },
+            { asset: "MSFT", return: 0.01, volatility: 0.02 },
+          ]}
+        />
+      </Section>
+      <Section title="Detailed Analysis">
+        <Card title="AAPL">
+          <Comparison
+            entities={[
+              { id: "AAPL", label: "AAPL", metrics: [{ label: "Return", value: 0.05 }, { label: "Volatility", value: 0.04 }] },
+              { id: "previous", label: "Previous Day", metrics: [{ label: "Return", value: 0.02 }, { label: "Volatility", value: 0.05 }] },
+            ]}
+          />
+          <Chart type="line" series={[{ data: [[0, 0.02], [1, 0.03], [2, 0.05]], label: "Return" }]} x="day" y="value" />
+        </Card>
+        <Card title="GOOGL">
+          <Comparison
+            entities={[
+              { id: "GOOGL", label: "GOOGL", metrics: [{ label: "Return", value: -0.03 }, { label: "Volatility", value: 0.05 }] },
+              { id: "previous", label: "Previous Day", metrics: [{ label: "Return", value: 0.01 }, { label: "Volatility", value: 0.04 }] },
+            ]}
+          />
+          <Chart type="line" series={[{ data: [[0, 0.01], [1, -0.02], [2, -0.03]], label: "Return" }]} x="day" y="value" />
+        </Card>
+        <Card title="MSFT">
+          <Comparison
+            entities={[
+              { id: "MSFT", label: "MSFT", metrics: [{ label: "Return", value: 0.01 }, { label: "Volatility", value: 0.02 }] },
+              { id: "previous", label: "Previous Day", metrics: [{ label: "Return", value: -0.01 }, { label: "Volatility", value: 0.03 }] },
+            ]}
+          />
+          <Chart type="line" series={[{ data: [[0, -0.01], [1, 0.01], [2, 0.02]], label: "Return" }]} x="day" y="value" />
+        </Card>
+      </Section>
+    </Page>
+  );
+}
