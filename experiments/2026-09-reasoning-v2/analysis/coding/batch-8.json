@@ -1,0 +1,530 @@
+{
+ "v0enwm": {
+  "archetype": "dashboard",
+  "kpi_row": 1,
+  "fit": [
+   1,
+   1,
+   0
+  ],
+  "invalid": 0,
+  "note": "Four KPI cards with deltas against the previous year, trend charts and year-group and financial tables; no callout."
+ },
+ "v0pnih": {
+  "archetype": "dashboard",
+  "kpi_row": 1,
+  "fit": [
+   1,
+   0,
+   0
+  ],
+  "invalid": 0,
+  "note": "Key metric cards for enrollment, performance and finance with unbased deltas, an events timeline and a GPA trend chart."
+ },
+ "v1785z": {
+  "archetype": "queue",
+  "kpi_row": 0,
+  "fit": [
+   0,
+   0,
+   0
+  ],
+  "invalid": 0,
+  "note": "ReviewQueue of three failed payouts with a current item (payer, amount, reason) and retry/escalate/cancel decisions; no attempt history, consequences or position shown."
+ },
+ "v1n3es": {
+  "archetype": "comparison",
+  "kpi_row": 0,
+  "fit": [
+   1,
+   1,
+   1
+  ],
+  "invalid": 0,
+  "note": "Comparison with return, risk and fee deltas plus a two-fund line chart and a metric-by-fund table."
+ },
+ "v23wjc": {
+  "archetype": "explorer",
+  "kpi_row": 0,
+  "fit": [
+   0,
+   0,
+   0
+  ],
+  "invalid": 0,
+  "note": "Filter bar, saved views and a payout table with a per-row Resolve button and bulk resolve; no detail pane or current item."
+ },
+ "v3x962": {
+  "archetype": "dashboard",
+  "kpi_row": 1,
+  "fit": [
+   0,
+   0,
+   1
+  ],
+  "invalid": 0,
+  "note": "Portfolio and index metric rows, then a significant-moves card list with each move's reason; moves not ordered by size and deltas carry no basis."
+ },
+ "v444p4": {
+  "archetype": "dashboard",
+  "kpi_row": 0,
+  "fit": [
+   0,
+   0,
+   0
+  ],
+  "invalid": 0,
+  "note": "A one-entity Comparison summary and tabs of market, economic and trading panels; no list of moves."
+ },
+ "v4sbkh": {
+  "archetype": "report",
+  "kpi_row": 0,
+  "fit": [
+   0,
+   0,
+   0
+  ],
+  "invalid": 0,
+  "note": "Several students in urgent and standard meeting tables followed by per-student note cards; no marks, bases or history shown."
+ },
+ "v5tfi4": {
+  "archetype": "dashboard",
+  "kpi_row": 1,
+  "fit": [
+   0,
+   0,
+   0
+  ],
+  "invalid": 0,
+  "note": "Three metric cards, an unsorted asset movement table without a basis, and a separate events timeline and audit log."
+ },
+ "v6ifhx": {
+  "archetype": "dashboard",
+  "kpi_row": 1,
+  "fit": [
+   1,
+   1,
+   0
+  ],
+  "invalid": 0,
+  "note": "Four header KPIs, then each number repeated with vs-previous-week and vs-last-year labels, and a trend chart; nothing flagged."
+ },
+ "v7tzg6": {
+  "archetype": "inspector",
+  "kpi_row": 0,
+  "fit": [
+   0,
+   0,
+   1
+  ],
+  "invalid": 0,
+  "note": "One student's profile with grade and attendance metrics (deltas without basis), narrative progress tabs, behaviour and attendance notes, and discussion points."
+ },
+ "v84tif": {
+  "archetype": "inspector",
+  "kpi_row": 0,
+  "fit": [
+   0,
+   1,
+   1
+  ],
+  "invalid": 0,
+  "note": "One student's details, subject metrics with unbased deltas, a behavioural event timeline, an audit log and pre-meeting actions."
+ },
+ "v8l1q5": {
+  "archetype": "dashboard",
+  "kpi_row": 1,
+  "fit": [
+   1,
+   1,
+   1
+  ],
+  "invalid": 0,
+  "note": "Tabs whose default shows four metrics with deltas against target, plus a variances table and transactions in other tabs, and an audit log."
+ },
+ "v8y7u7": {
+  "archetype": "comparison",
+  "kpi_row": 0,
+  "fit": [
+   0,
+   0,
+   0
+  ],
+  "invalid": 0,
+  "note": "Comparison component declares two funds and three measures but supplies no values; charts and a fee table carry unattributed placeholder data."
+ },
+ "v9kah3": {
+  "archetype": "dashboard",
+  "kpi_row": 0,
+  "fit": [
+   1,
+   0,
+   1
+  ],
+  "invalid": 0,
+  "note": "Top-mover cards (largest gainer and loser) with trend and cause text lead, followed by an unsorted holdings table and an events timeline."
+ },
+ "v9kav6": {
+  "archetype": "inspector",
+  "kpi_row": 0,
+  "fit": [
+   0,
+   1,
+   1
+  ],
+  "invalid": 0,
+  "note": "One student's sidebar metrics, current grades, a behavioural timeline, agenda tabs, a parent feedback table and an agenda queue."
+ },
+ "va1sv9": {
+  "archetype": "dashboard",
+  "kpi_row": 1,
+  "fit": [
+   0,
+   0,
+   0
+  ],
+  "invalid": 0,
+  "note": "Three status metrics, an unfiltered payout table whose selection only alerts, and resolve/retry/escalate buttons hard-wired to one payout."
+ },
+ "vaa7a4": {
+  "archetype": "comparison",
+  "kpi_row": 0,
+  "fit": [
+   1,
+   1,
+   1
+  ],
+  "invalid": 0,
+  "note": "Comparison of two funds on return, expense ratio and risk, then prose stating which is higher on each and recommend buttons."
+ },
+ "vc6ngs": {
+  "archetype": "inspector",
+  "kpi_row": 0,
+  "fit": [
+   0,
+   0,
+   1
+  ],
+  "invalid": 0,
+  "note": "One student's subject scores with unbased deltas and absences/discipline in a sidebar; the main area is meeting notes and a checklist."
+ },
+ "vcz82r": {
+  "archetype": "dashboard",
+  "kpi_row": 1,
+  "fit": [
+   1,
+   0,
+   0
+  ],
+  "invalid": 0,
+  "note": "Four KPIs with unbased deltas, a subject trend chart, financial metrics, a milestones table and board action items."
+ },
+ "vdfr0p": {
+  "archetype": "dashboard",
+  "kpi_row": 1,
+  "fit": [
+   1,
+   0,
+   0
+  ],
+  "invalid": 0,
+  "note": "Sidebar tabs holding three unbased metrics, a trend chart, a department table and a region comparison; main area is one insight paragraph."
+ },
+ "vet77z": {
+  "archetype": "explorer",
+  "kpi_row": 0,
+  "fit": [
+   1,
+   0,
+   1
+  ],
+  "invalid": 0,
+  "note": "Asset table with a catalyst column plus sidebar views and review buttons for moves over 5%; the defined detail pane is never rendered, so selection opens nothing."
+ },
+ "vhe7o5": {
+  "archetype": "comparison",
+  "kpi_row": 0,
+  "fit": [
+   1,
+   0,
+   1
+  ],
+  "invalid": 0,
+  "note": "Comparison of two funds on 1/3/5-year return, risk and expense ratio with no differences marked; sidebar recommend buttons."
+ },
+ "vhknsk": {
+  "archetype": "inspector",
+  "kpi_row": 0,
+  "fit": [
+   0,
+   1,
+   1
+  ],
+  "invalid": 0,
+  "note": "One student's summary metrics, a dated score table, a behavioural incident table and next-step buttons."
+ },
+ "vhmv1l": {
+  "archetype": "inspector",
+  "kpi_row": 0,
+  "fit": [
+   0,
+   1,
+   0
+  ],
+  "invalid": 0,
+  "note": "One student's basic card, a recent-activity timeline, meeting notes and a resource list; no marks shown."
+ },
+ "vjmknm": {
+  "archetype": "dashboard",
+  "kpi_row": 1,
+  "fit": [
+   0,
+   0,
+   1
+  ],
+  "invalid": 0,
+  "note": "Three summary metrics, an unsorted movements table with a reason column, a separate reasoning table and bulk action buttons."
+ },
+ "vmocvo": {
+  "archetype": "dashboard",
+  "kpi_row": 1,
+  "fit": [
+   1,
+   0,
+   0
+  ],
+  "invalid": 0,
+  "note": "Sidebar tabs holding three unbased metrics, a trend, a week-over-week comparison and a detail table; main area is one status chip."
+ },
+ "vnq1ol": {
+  "archetype": "comparison",
+  "kpi_row": 0,
+  "fit": [
+   0,
+   1,
+   1
+  ],
+  "invalid": 0,
+  "note": "Comparison holds only Fund A values with deltas; Fund B appears only in a return chart and descriptive sidebar cards."
+ },
+ "vnvt9i": {
+  "archetype": "dashboard",
+  "kpi_row": 1,
+  "fit": [
+   0,
+   0,
+   1
+  ],
+  "invalid": 0,
+  "note": "Portfolio metrics with separate benchmark tiles, a timeline and an unsorted changes table with a reason column; deltas carry no basis."
+ },
+ "vp85b2": {
+  "archetype": "dashboard",
+  "kpi_row": 1,
+  "fit": [
+   1,
+   0,
+   0
+  ],
+  "invalid": 0,
+  "note": "Four metric cards with unbased deltas, an empty department comparison, a timeline, an audit log, generic status cards and charts."
+ },
+ "vpvtsx": {
+  "archetype": "dashboard",
+  "kpi_row": 1,
+  "fit": [
+   1,
+   1,
+   0
+  ],
+  "invalid": 0,
+  "note": "Four KPI cards with deltas labelled vs last week, a chart placeholder, a transactions table and a status list; nothing flagged."
+ },
+ "vqxfk1": {
+  "archetype": "inspector",
+  "kpi_row": 0,
+  "fit": [
+   1,
+   1,
+   1
+  ],
+  "invalid": 0,
+  "note": "One student's metrics, GPA against class and school averages, an event timeline, an incident log and draft conference notes."
+ },
+ "vr3gan": {
+  "archetype": "dashboard",
+  "kpi_row": 0,
+  "fit": [
+   1,
+   0,
+   0
+  ],
+  "invalid": 0,
+  "note": "Enrollment, finance and academics cards each mixing metrics with a chart or table; only one metric carries a basis."
+ },
+ "vr6ef0": {
+  "archetype": "dashboard",
+  "kpi_row": 1,
+  "fit": [
+   1,
+   0,
+   0
+  ],
+  "invalid": 0,
+  "note": "Three KPIs without comparison, a trend chart, a separate current-vs-previous-term comparison, events, finance table and unlabelled status chips."
+ },
+ "vs4971": {
+  "archetype": "dashboard",
+  "kpi_row": 0,
+  "fit": [
+   1,
+   0,
+   0
+  ],
+  "invalid": 0,
+  "note": "Two metrics, separate top-gainer and top-loser lists with basis 0 deltas, and a separate events feed."
+ },
+ "vtepnj": {
+  "archetype": "dashboard",
+  "kpi_row": 0,
+  "fit": [
+   0,
+   0,
+   0
+  ],
+  "invalid": 0,
+  "note": "Two summary cards, a tabbed payout table whose selection opens nothing, and bulk retry/refund buttons without stated consequences."
+ },
+ "vtqis0": {
+  "archetype": "queue",
+  "kpi_row": 0,
+  "fit": [
+   0,
+   0,
+   0
+  ],
+  "invalid": 0,
+  "note": "ReviewQueue with the current payout card (amount, reason, timestamp, recipient name) and resolve/mark-exception decisions; no attempts or progress."
+ },
+ "vtvo5q": {
+  "archetype": "other",
+  "kpi_row": 0,
+  "fit": [
+   0,
+   0,
+   0
+  ],
+  "invalid": 1,
+  "note": "Marked does-not-parse in index.txt."
+ },
+ "vu9594": {
+  "archetype": "other",
+  "kpi_row": 0,
+  "fit": [
+   0,
+   0,
+   0
+  ],
+  "invalid": 1,
+  "note": "Marked does-not-parse in index.txt."
+ },
+ "vw3phq": {
+  "archetype": "comparison",
+  "kpi_row": 0,
+  "fit": [
+   1,
+   1,
+   1
+  ],
+  "invalid": 0,
+  "note": "Client profile, a two-fund Comparison on returns, volatility, Sharpe and fees, per-fund evidence cards and a recommendation with rationale."
+ },
+ "vw5bih": {
+  "archetype": "dashboard",
+  "kpi_row": 1,
+  "fit": [
+   0,
+   0,
+   0
+  ],
+  "invalid": 0,
+  "note": "Four summary metrics, pending and escalated payout tables with no detail, and bulk resolution buttons."
+ },
+ "vw5sks": {
+  "archetype": "dashboard",
+  "kpi_row": 0,
+  "fit": [
+   1,
+   1,
+   1
+  ],
+  "invalid": 0,
+  "note": "Exception alert cards (current vs target) lead, then an actual/target table, a trend and health metric cards."
+ },
+ "vx3nwh": {
+  "archetype": "dashboard",
+  "kpi_row": 1,
+  "fit": [
+   1,
+   0,
+   1
+  ],
+  "invalid": 0,
+  "note": "Five unbased KPIs, critical and warning alert cards with variances, and segment and expense tables against target."
+ },
+ "vx5i58": {
+  "archetype": "comparison",
+  "kpi_row": 0,
+  "fit": [
+   0,
+   0,
+   1
+  ],
+  "invalid": 0,
+  "note": "Funds shown one at a time in tabs with identical metric sets, a mixed details list, an unlabelled two-series chart, and history/audit tables."
+ },
+ "vz7dhk": {
+  "archetype": "dashboard",
+  "kpi_row": 0,
+  "fit": [
+   1,
+   1,
+   1
+  ],
+  "invalid": 0,
+  "note": "Today/yesterday total with a delta against yesterday's value, top-gainer and top-loser tables with a reason column, and a timeline; sidebar filters."
+ },
+ "vzh5j9": {
+  "archetype": "comparison",
+  "kpi_row": 0,
+  "fit": [
+   1,
+   0,
+   1
+  ],
+  "invalid": 0,
+  "note": "Compare of two funds on return, risk and recent performance with no differences marked, an events timeline and recommend buttons."
+ },
+ "vzi9we": {
+  "archetype": "inspector",
+  "kpi_row": 0,
+  "fit": [
+   0,
+   1,
+   1
+  ],
+  "invalid": 0,
+  "note": "One student's profile and timeline sidebar, a grades table with per-subject trends, a behaviour log and preparation notes; duplicated imports."
+ },
+ "vzrj07": {
+  "archetype": "comparison",
+  "kpi_row": 0,
+  "fit": [
+   1,
+   1,
+   1
+  ],
+  "invalid": 0,
+  "note": "Comparison of two funds with computed return, risk and fee differences, a two-fund returns chart and a recommendation summary."
+ }
+}

@@ -1,0 +1,2258 @@
+{
+ "v06low": [
+  {
+   "batch": 1,
+   "second": false
+  }
+ ],
+ "v0aafn": [
+  {
+   "batch": 1,
+   "second": false
+  }
+ ],
+ "v0c2c1": [
+  {
+   "batch": 1,
+   "second": false
+  }
+ ],
+ "v1cdw4": [
+  {
+   "batch": 1,
+   "second": false
+  }
+ ],
+ "v1xm5y": [
+  {
+   "batch": 1,
+   "second": false
+  }
+ ],
+ "v299k6": [
+  {
+   "batch": 1,
+   "second": false
+  }
+ ],
+ "v5ny5i": [
+  {
+   "batch": 1,
+   "second": false
+  }
+ ],
+ "v6tvlt": [
+  {
+   "batch": 1,
+   "second": false
+  }
+ ],
+ "v84bdx": [
+  {
+   "batch": 1,
+   "second": false
+  }
+ ],
+ "v8b160": [
+  {
+   "batch": 1,
+   "second": false
+  }
+ ],
+ "v8enme": [
+  {
+   "batch": 1,
+   "second": false
+  },
+  {
+   "batch": 2,
+   "second": true
+  }
+ ],
+ "v96w2h": [
+  {
+   "batch": 1,
+   "second": false
+  }
+ ],
+ "va1j1p": [
+  {
+   "batch": 1,
+   "second": false
+  },
+  {
+   "batch": 2,
+   "second": true
+  }
+ ],
+ "vdmh8y": [
+  {
+   "batch": 1,
+   "second": false
+  }
+ ],
+ "ve1ybd": [
+  {
+   "batch": 1,
+   "second": false
+  }
+ ],
+ "ven5c5": [
+  {
+   "batch": 1,
+   "second": false
+  }
+ ],
+ "vexc71": [
+  {
+   "batch": 1,
+   "second": false
+  }
+ ],
+ "vgcz3b": [
+  {
+   "batch": 1,
+   "second": false
+  }
+ ],
+ "vgvfz4": [
+  {
+   "batch": 1,
+   "second": false
+  }
+ ],
+ "vh4h9x": [
+  {
+   "batch": 1,
+   "second": false
+  }
+ ],
+ "vi99z2": [
+  {
+   "batch": 1,
+   "second": false
+  }
+ ],
+ "vike5t": [
+  {
+   "batch": 1,
+   "second": false
+  }
+ ],
+ "viqueo": [
+  {
+   "batch": 1,
+   "second": false
+  }
+ ],
+ "vj4z34": [
+  {
+   "batch": 1,
+   "second": false
+  }
+ ],
+ "vj8ivh": [
+  {
+   "batch": 1,
+   "second": false
+  }
+ ],
+ "vje8pu": [
+  {
+   "batch": 1,
+   "second": false
+  }
+ ],
+ "vjmknm": [
+  {
+   "batch": 1,
+   "second": true
+  },
+  {
+   "batch": 8,
+   "second": false
+  }
+ ],
+ "vlh9rr": [
+  {
+   "batch": 1,
+   "second": false
+  }
+ ],
+ "vlkyqp": [
+  {
+   "batch": 1,
+   "second": false
+  }
+ ],
+ "vn0n6n": [
+  {
+   "batch": 1,
+   "second": false
+  }
+ ],
+ "vnnk4c": [
+  {
+   "batch": 1,
+   "second": false
+  }
+ ],
+ "vps2mf": [
+  {
+   "batch": 1,
+   "second": false
+  }
+ ],
+ "vpu15g": [
+  {
+   "batch": 1,
+   "second": false
+  }
+ ],
+ "vqdjbg": [
+  {
+   "batch": 1,
+   "second": false
+  },
+  {
+   "batch": 2,
+   "second": true
+  }
+ ],
+ "vqjtsr": [
+  {
+   "batch": 1,
+   "second": false
+  }
+ ],
+ "vqsk64": [
+  {
+   "batch": 1,
+   "second": false
+  }
+ ],
+ "vr3trz": [
+  {
+   "batch": 1,
+   "second": false
+  }
+ ],
+ "vr6ef0": [
+  {
+   "batch": 1,
+   "second": true
+  },
+  {
+   "batch": 8,
+   "second": false
+  }
+ ],
+ "vu6lqp": [
+  {
+   "batch": 1,
+   "second": false
+  }
+ ],
+ "vua2hd": [
+  {
+   "batch": 1,
+   "second": false
+  }
+ ],
+ "vuk4a9": [
+  {
+   "batch": 1,
+   "second": false
+  }
+ ],
+ "vv4o6b": [
+  {
+   "batch": 1,
+   "second": false
+  }
+ ],
+ "vv9531": [
+  {
+   "batch": 1,
+   "second": false
+  }
+ ],
+ "vvuzl1": [
+  {
+   "batch": 1,
+   "second": false
+  }
+ ],
+ "vvx7lf": [
+  {
+   "batch": 1,
+   "second": false
+  }
+ ],
+ "vy86ep": [
+  {
+   "batch": 1,
+   "second": false
+  }
+ ],
+ "vzi9we": [
+  {
+   "batch": 1,
+   "second": true
+  },
+  {
+   "batch": 8,
+   "second": false
+  }
+ ],
+ "vzqevl": [
+  {
+   "batch": 1,
+   "second": false
+  }
+ ],
+ "v0l5ob": [
+  {
+   "batch": 2,
+   "second": false
+  }
+ ],
+ "v0t4c5": [
+  {
+   "batch": 2,
+   "second": false
+  }
+ ],
+ "v2jrnc": [
+  {
+   "batch": 2,
+   "second": false
+  },
+  {
+   "batch": 3,
+   "second": true
+  }
+ ],
+ "v3ex12": [
+  {
+   "batch": 2,
+   "second": false
+  }
+ ],
+ "v52x2k": [
+  {
+   "batch": 2,
+   "second": false
+  }
+ ],
+ "v554m7": [
+  {
+   "batch": 2,
+   "second": false
+  }
+ ],
+ "v6k9e5": [
+  {
+   "batch": 2,
+   "second": false
+  }
+ ],
+ "v6x0u0": [
+  {
+   "batch": 2,
+   "second": false
+  }
+ ],
+ "v7pbg7": [
+  {
+   "batch": 2,
+   "second": false
+  }
+ ],
+ "v8b1tb": [
+  {
+   "batch": 2,
+   "second": false
+  }
+ ],
+ "v96rz7": [
+  {
+   "batch": 2,
+   "second": false
+  }
+ ],
+ "v9jvbg": [
+  {
+   "batch": 2,
+   "second": false
+  }
+ ],
+ "vb1iay": [
+  {
+   "batch": 2,
+   "second": false
+  }
+ ],
+ "vcng8z": [
+  {
+   "batch": 2,
+   "second": false
+  }
+ ],
+ "vctm85": [
+  {
+   "batch": 2,
+   "second": false
+  }
+ ],
+ "vcu9iw": [
+  {
+   "batch": 2,
+   "second": false
+  }
+ ],
+ "vcun2i": [
+  {
+   "batch": 2,
+   "second": false
+  },
+  {
+   "batch": 3,
+   "second": true
+  }
+ ],
+ "veeszg": [
+  {
+   "batch": 2,
+   "second": false
+  }
+ ],
+ "vf4j8n": [
+  {
+   "batch": 2,
+   "second": false
+  }
+ ],
+ "vfryy7": [
+  {
+   "batch": 2,
+   "second": false
+  }
+ ],
+ "vfuhny": [
+  {
+   "batch": 2,
+   "second": false
+  }
+ ],
+ "vgbxje": [
+  {
+   "batch": 2,
+   "second": false
+  }
+ ],
+ "vgcysy": [
+  {
+   "batch": 2,
+   "second": false
+  }
+ ],
+ "vhu9bn": [
+  {
+   "batch": 2,
+   "second": false
+  }
+ ],
+ "vkwlup": [
+  {
+   "batch": 2,
+   "second": false
+  }
+ ],
+ "vlkkvj": [
+  {
+   "batch": 2,
+   "second": false
+  }
+ ],
+ "vm7bh6": [
+  {
+   "batch": 2,
+   "second": false
+  }
+ ],
+ "vmh4yc": [
+  {
+   "batch": 2,
+   "second": false
+  }
+ ],
+ "voe4ms": [
+  {
+   "batch": 2,
+   "second": false
+  }
+ ],
+ "vq6dmw": [
+  {
+   "batch": 2,
+   "second": false
+  }
+ ],
+ "vqcj8a": [
+  {
+   "batch": 2,
+   "second": false
+  }
+ ],
+ "vqdf3z": [
+  {
+   "batch": 2,
+   "second": false
+  }
+ ],
+ "vqtzi7": [
+  {
+   "batch": 2,
+   "second": false
+  }
+ ],
+ "vqwyky": [
+  {
+   "batch": 2,
+   "second": false
+  }
+ ],
+ "vr91p0": [
+  {
+   "batch": 2,
+   "second": false
+  }
+ ],
+ "vrgeid": [
+  {
+   "batch": 2,
+   "second": false
+  },
+  {
+   "batch": 3,
+   "second": true
+  }
+ ],
+ "vrtgv9": [
+  {
+   "batch": 2,
+   "second": false
+  }
+ ],
+ "vs0zpg": [
+  {
+   "batch": 2,
+   "second": false
+  }
+ ],
+ "vs4u9z": [
+  {
+   "batch": 2,
+   "second": false
+  }
+ ],
+ "vultv6": [
+  {
+   "batch": 2,
+   "second": false
+  }
+ ],
+ "vwqrzu": [
+  {
+   "batch": 2,
+   "second": false
+  }
+ ],
+ "vwqsbv": [
+  {
+   "batch": 2,
+   "second": false
+  }
+ ],
+ "vx9q8c": [
+  {
+   "batch": 2,
+   "second": false
+  }
+ ],
+ "vxsyqv": [
+  {
+   "batch": 2,
+   "second": false
+  }
+ ],
+ "vz6hvh": [
+  {
+   "batch": 2,
+   "second": false
+  }
+ ],
+ "v08kf4": [
+  {
+   "batch": 3,
+   "second": false
+  }
+ ],
+ "v13db5": [
+  {
+   "batch": 3,
+   "second": false
+  }
+ ],
+ "v2g1fa": [
+  {
+   "batch": 3,
+   "second": false
+  }
+ ],
+ "v2q2hj": [
+  {
+   "batch": 3,
+   "second": false
+  }
+ ],
+ "v3q35l": [
+  {
+   "batch": 3,
+   "second": false
+  }
+ ],
+ "v6nuez": [
+  {
+   "batch": 3,
+   "second": false
+  }
+ ],
+ "v71p0t": [
+  {
+   "batch": 3,
+   "second": false
+  }
+ ],
+ "v71v7h": [
+  {
+   "batch": 3,
+   "second": false
+  }
+ ],
+ "v8xk8v": [
+  {
+   "batch": 3,
+   "second": false
+  }
+ ],
+ "v9hf3v": [
+  {
+   "batch": 3,
+   "second": false
+  }
+ ],
+ "v9j96g": [
+  {
+   "batch": 3,
+   "second": false
+  }
+ ],
+ "var2dd": [
+  {
+   "batch": 3,
+   "second": false
+  }
+ ],
+ "vaygui": [
+  {
+   "batch": 3,
+   "second": false
+  }
+ ],
+ "vbrqql": [
+  {
+   "batch": 3,
+   "second": false
+  }
+ ],
+ "vbykcy": [
+  {
+   "batch": 3,
+   "second": false
+  }
+ ],
+ "vc1rzn": [
+  {
+   "batch": 3,
+   "second": false
+  }
+ ],
+ "vcvzkt": [
+  {
+   "batch": 3,
+   "second": false
+  }
+ ],
+ "veou7g": [
+  {
+   "batch": 3,
+   "second": false
+  }
+ ],
+ "vfu7x3": [
+  {
+   "batch": 3,
+   "second": false
+  }
+ ],
+ "vgygix": [
+  {
+   "batch": 3,
+   "second": false
+  }
+ ],
+ "vhbkoq": [
+  {
+   "batch": 3,
+   "second": false
+  }
+ ],
+ "vhcf08": [
+  {
+   "batch": 3,
+   "second": false
+  }
+ ],
+ "vhpgzt": [
+  {
+   "batch": 3,
+   "second": false
+  },
+  {
+   "batch": 4,
+   "second": true
+  }
+ ],
+ "vjt9bl": [
+  {
+   "batch": 3,
+   "second": false
+  }
+ ],
+ "vloml9": [
+  {
+   "batch": 3,
+   "second": false
+  }
+ ],
+ "vlr7va": [
+  {
+   "batch": 3,
+   "second": false
+  }
+ ],
+ "vm5aff": [
+  {
+   "batch": 3,
+   "second": false
+  }
+ ],
+ "vmb1l2": [
+  {
+   "batch": 3,
+   "second": false
+  }
+ ],
+ "vmvhmx": [
+  {
+   "batch": 3,
+   "second": false
+  }
+ ],
+ "vn9i31": [
+  {
+   "batch": 3,
+   "second": false
+  }
+ ],
+ "vnx3u3": [
+  {
+   "batch": 3,
+   "second": false
+  }
+ ],
+ "vo3m4o": [
+  {
+   "batch": 3,
+   "second": false
+  }
+ ],
+ "vob1i9": [
+  {
+   "batch": 3,
+   "second": false
+  }
+ ],
+ "vpo4m0": [
+  {
+   "batch": 3,
+   "second": false
+  },
+  {
+   "batch": 4,
+   "second": true
+  }
+ ],
+ "vq6090": [
+  {
+   "batch": 3,
+   "second": false
+  }
+ ],
+ "vr7s40": [
+  {
+   "batch": 3,
+   "second": false
+  }
+ ],
+ "vs2jrl": [
+  {
+   "batch": 3,
+   "second": false
+  }
+ ],
+ "vsixna": [
+  {
+   "batch": 3,
+   "second": false
+  }
+ ],
+ "vsns66": [
+  {
+   "batch": 3,
+   "second": false
+  }
+ ],
+ "vu8hro": [
+  {
+   "batch": 3,
+   "second": false
+  }
+ ],
+ "vvoa1z": [
+  {
+   "batch": 3,
+   "second": false
+  }
+ ],
+ "vx0kqt": [
+  {
+   "batch": 3,
+   "second": false
+  }
+ ],
+ "vx4gsi": [
+  {
+   "batch": 3,
+   "second": false
+  },
+  {
+   "batch": 4,
+   "second": true
+  }
+ ],
+ "vy3le9": [
+  {
+   "batch": 3,
+   "second": false
+  }
+ ],
+ "vybe1j": [
+  {
+   "batch": 3,
+   "second": false
+  }
+ ],
+ "v0gzgm": [
+  {
+   "batch": 4,
+   "second": false
+  }
+ ],
+ "v0j5cm": [
+  {
+   "batch": 4,
+   "second": false
+  },
+  {
+   "batch": 5,
+   "second": true
+  }
+ ],
+ "v19xg4": [
+  {
+   "batch": 4,
+   "second": false
+  },
+  {
+   "batch": 5,
+   "second": true
+  }
+ ],
+ "v1hutx": [
+  {
+   "batch": 4,
+   "second": false
+  }
+ ],
+ "v1kks3": [
+  {
+   "batch": 4,
+   "second": false
+  }
+ ],
+ "v1xqkc": [
+  {
+   "batch": 4,
+   "second": false
+  }
+ ],
+ "v2mjym": [
+  {
+   "batch": 4,
+   "second": false
+  }
+ ],
+ "v32au8": [
+  {
+   "batch": 4,
+   "second": false
+  }
+ ],
+ "v3njpv": [
+  {
+   "batch": 4,
+   "second": false
+  }
+ ],
+ "v3u2tq": [
+  {
+   "batch": 4,
+   "second": false
+  }
+ ],
+ "v42c6w": [
+  {
+   "batch": 4,
+   "second": false
+  }
+ ],
+ "v5g6fr": [
+  {
+   "batch": 4,
+   "second": false
+  }
+ ],
+ "v5mvvr": [
+  {
+   "batch": 4,
+   "second": false
+  }
+ ],
+ "v6pgbc": [
+  {
+   "batch": 4,
+   "second": false
+  }
+ ],
+ "v6ubvv": [
+  {
+   "batch": 4,
+   "second": false
+  }
+ ],
+ "v6y92e": [
+  {
+   "batch": 4,
+   "second": false
+  }
+ ],
+ "v7kaoh": [
+  {
+   "batch": 4,
+   "second": false
+  }
+ ],
+ "v7sr16": [
+  {
+   "batch": 4,
+   "second": false
+  }
+ ],
+ "v9p9t5": [
+  {
+   "batch": 4,
+   "second": false
+  }
+ ],
+ "v9w2zp": [
+  {
+   "batch": 4,
+   "second": false
+  }
+ ],
+ "va34d6": [
+  {
+   "batch": 4,
+   "second": false
+  }
+ ],
+ "vaa5h9": [
+  {
+   "batch": 4,
+   "second": false
+  }
+ ],
+ "vbd9cm": [
+  {
+   "batch": 4,
+   "second": false
+  }
+ ],
+ "ve63i4": [
+  {
+   "batch": 4,
+   "second": false
+  }
+ ],
+ "vekt3d": [
+  {
+   "batch": 4,
+   "second": false
+  }
+ ],
+ "vfk1l8": [
+  {
+   "batch": 4,
+   "second": false
+  }
+ ],
+ "vfp6vc": [
+  {
+   "batch": 4,
+   "second": false
+  }
+ ],
+ "vh3ot0": [
+  {
+   "batch": 4,
+   "second": false
+  }
+ ],
+ "vi9i23": [
+  {
+   "batch": 4,
+   "second": false
+  }
+ ],
+ "vjeh4d": [
+  {
+   "batch": 4,
+   "second": false
+  }
+ ],
+ "vjmov8": [
+  {
+   "batch": 4,
+   "second": false
+  }
+ ],
+ "vjwnly": [
+  {
+   "batch": 4,
+   "second": false
+  }
+ ],
+ "vlbmsg": [
+  {
+   "batch": 4,
+   "second": false
+  }
+ ],
+ "vm02ps": [
+  {
+   "batch": 4,
+   "second": false
+  }
+ ],
+ "vm5fvf": [
+  {
+   "batch": 4,
+   "second": false
+  }
+ ],
+ "vmnj0q": [
+  {
+   "batch": 4,
+   "second": false
+  }
+ ],
+ "vnx4d4": [
+  {
+   "batch": 4,
+   "second": false
+  }
+ ],
+ "vo5ex8": [
+  {
+   "batch": 4,
+   "second": false
+  }
+ ],
+ "vqwd6v": [
+  {
+   "batch": 4,
+   "second": false
+  }
+ ],
+ "vrtcqp": [
+  {
+   "batch": 4,
+   "second": false
+  },
+  {
+   "batch": 5,
+   "second": true
+  }
+ ],
+ "vssvwu": [
+  {
+   "batch": 4,
+   "second": false
+  }
+ ],
+ "vw1mr3": [
+  {
+   "batch": 4,
+   "second": false
+  }
+ ],
+ "vw1qeq": [
+  {
+   "batch": 4,
+   "second": false
+  }
+ ],
+ "vwakcj": [
+  {
+   "batch": 4,
+   "second": false
+  }
+ ],
+ "vwnwd8": [
+  {
+   "batch": 4,
+   "second": false
+  }
+ ],
+ "v06946": [
+  {
+   "batch": 5,
+   "second": false
+  }
+ ],
+ "v22pq2": [
+  {
+   "batch": 5,
+   "second": false
+  }
+ ],
+ "v2byob": [
+  {
+   "batch": 5,
+   "second": false
+  }
+ ],
+ "v2pmyi": [
+  {
+   "batch": 5,
+   "second": false
+  }
+ ],
+ "v3aqi5": [
+  {
+   "batch": 5,
+   "second": false
+  }
+ ],
+ "v5ma7j": [
+  {
+   "batch": 5,
+   "second": false
+  }
+ ],
+ "v6k7qh": [
+  {
+   "batch": 5,
+   "second": false
+  }
+ ],
+ "v6li7y": [
+  {
+   "batch": 5,
+   "second": false
+  }
+ ],
+ "v6lsbs": [
+  {
+   "batch": 5,
+   "second": false
+  }
+ ],
+ "v74b3w": [
+  {
+   "batch": 5,
+   "second": false
+  }
+ ],
+ "v7ics1": [
+  {
+   "batch": 5,
+   "second": false
+  }
+ ],
+ "v8ee37": [
+  {
+   "batch": 5,
+   "second": false
+  }
+ ],
+ "v9u7pk": [
+  {
+   "batch": 5,
+   "second": false
+  }
+ ],
+ "vb574u": [
+  {
+   "batch": 5,
+   "second": false
+  }
+ ],
+ "vbn5dd": [
+  {
+   "batch": 5,
+   "second": false
+  }
+ ],
+ "vbv3fj": [
+  {
+   "batch": 5,
+   "second": false
+  }
+ ],
+ "vcg4lh": [
+  {
+   "batch": 5,
+   "second": false
+  }
+ ],
+ "vfly4e": [
+  {
+   "batch": 5,
+   "second": false
+  }
+ ],
+ "vgc6i5": [
+  {
+   "batch": 5,
+   "second": false
+  }
+ ],
+ "vikryk": [
+  {
+   "batch": 5,
+   "second": false
+  }
+ ],
+ "viw652": [
+  {
+   "batch": 5,
+   "second": false
+  }
+ ],
+ "vizsap": [
+  {
+   "batch": 5,
+   "second": false
+  }
+ ],
+ "vk1h7e": [
+  {
+   "batch": 5,
+   "second": false
+  }
+ ],
+ "vktx98": [
+  {
+   "batch": 5,
+   "second": false
+  },
+  {
+   "batch": 6,
+   "second": true
+  }
+ ],
+ "vlzcbx": [
+  {
+   "batch": 5,
+   "second": false
+  }
+ ],
+ "vncm2c": [
+  {
+   "batch": 5,
+   "second": false
+  },
+  {
+   "batch": 6,
+   "second": true
+  }
+ ],
+ "vnkl5u": [
+  {
+   "batch": 5,
+   "second": false
+  }
+ ],
+ "vnzw1z": [
+  {
+   "batch": 5,
+   "second": false
+  }
+ ],
+ "voifra": [
+  {
+   "batch": 5,
+   "second": false
+  }
+ ],
+ "vp83ma": [
+  {
+   "batch": 5,
+   "second": false
+  },
+  {
+   "batch": 6,
+   "second": true
+  }
+ ],
+ "vplzcc": [
+  {
+   "batch": 5,
+   "second": false
+  }
+ ],
+ "vpvsof": [
+  {
+   "batch": 5,
+   "second": false
+  }
+ ],
+ "vqp3h4": [
+  {
+   "batch": 5,
+   "second": false
+  }
+ ],
+ "vss21m": [
+  {
+   "batch": 5,
+   "second": false
+  }
+ ],
+ "vteoc3": [
+  {
+   "batch": 5,
+   "second": false
+  }
+ ],
+ "vvizao": [
+  {
+   "batch": 5,
+   "second": false
+  }
+ ],
+ "vvpwxy": [
+  {
+   "batch": 5,
+   "second": false
+  }
+ ],
+ "vwpjnp": [
+  {
+   "batch": 5,
+   "second": false
+  }
+ ],
+ "vxdwcn": [
+  {
+   "batch": 5,
+   "second": false
+  }
+ ],
+ "vy67xu": [
+  {
+   "batch": 5,
+   "second": false
+  }
+ ],
+ "vybw7c": [
+  {
+   "batch": 5,
+   "second": false
+  }
+ ],
+ "vytvta": [
+  {
+   "batch": 5,
+   "second": false
+  }
+ ],
+ "vyxvi9": [
+  {
+   "batch": 5,
+   "second": false
+  }
+ ],
+ "vzk5wu": [
+  {
+   "batch": 5,
+   "second": false
+  }
+ ],
+ "vzqskl": [
+  {
+   "batch": 5,
+   "second": false
+  }
+ ],
+ "v061xn": [
+  {
+   "batch": 6,
+   "second": false
+  }
+ ],
+ "v0aqah": [
+  {
+   "batch": 6,
+   "second": false
+  }
+ ],
+ "v19ggu": [
+  {
+   "batch": 6,
+   "second": false
+  }
+ ],
+ "v37s03": [
+  {
+   "batch": 6,
+   "second": false
+  }
+ ],
+ "v3k7um": [
+  {
+   "batch": 6,
+   "second": false
+  }
+ ],
+ "v49gbp": [
+  {
+   "batch": 6,
+   "second": false
+  }
+ ],
+ "v5rg9m": [
+  {
+   "batch": 6,
+   "second": false
+  }
+ ],
+ "v8ab6n": [
+  {
+   "batch": 6,
+   "second": false
+  }
+ ],
+ "v8un60": [
+  {
+   "batch": 6,
+   "second": false
+  },
+  {
+   "batch": 7,
+   "second": true
+  }
+ ],
+ "vafq2t": [
+  {
+   "batch": 6,
+   "second": false
+  }
+ ],
+ "vahroz": [
+  {
+   "batch": 6,
+   "second": false
+  }
+ ],
+ "vak4d8": [
+  {
+   "batch": 6,
+   "second": false
+  }
+ ],
+ "vb8weu": [
+  {
+   "batch": 6,
+   "second": false
+  }
+ ],
+ "vbws8m": [
+  {
+   "batch": 6,
+   "second": false
+  }
+ ],
+ "vc9s2y": [
+  {
+   "batch": 6,
+   "second": false
+  },
+  {
+   "batch": 7,
+   "second": true
+  }
+ ],
+ "vcotpl": [
+  {
+   "batch": 6,
+   "second": false
+  }
+ ],
+ "vcycf9": [
+  {
+   "batch": 6,
+   "second": false
+  }
+ ],
+ "vf7rgo": [
+  {
+   "batch": 6,
+   "second": false
+  }
+ ],
+ "vfp8cn": [
+  {
+   "batch": 6,
+   "second": false
+  }
+ ],
+ "vfzagb": [
+  {
+   "batch": 6,
+   "second": false
+  }
+ ],
+ "vgpawj": [
+  {
+   "batch": 6,
+   "second": false
+  }
+ ],
+ "vh1qip": [
+  {
+   "batch": 6,
+   "second": false
+  }
+ ],
+ "vh9535": [
+  {
+   "batch": 6,
+   "second": false
+  }
+ ],
+ "vivm1w": [
+  {
+   "batch": 6,
+   "second": false
+  }
+ ],
+ "vk7uny": [
+  {
+   "batch": 6,
+   "second": false
+  }
+ ],
+ "vl99e7": [
+  {
+   "batch": 6,
+   "second": false
+  },
+  {
+   "batch": 7,
+   "second": true
+  }
+ ],
+ "vms47l": [
+  {
+   "batch": 6,
+   "second": false
+  }
+ ],
+ "vmw918": [
+  {
+   "batch": 6,
+   "second": false
+  }
+ ],
+ "vn9s9b": [
+  {
+   "batch": 6,
+   "second": false
+  }
+ ],
+ "vnc8d8": [
+  {
+   "batch": 6,
+   "second": false
+  }
+ ],
+ "vnixf6": [
+  {
+   "batch": 6,
+   "second": false
+  }
+ ],
+ "vnj52o": [
+  {
+   "batch": 6,
+   "second": false
+  }
+ ],
+ "vp0roo": [
+  {
+   "batch": 6,
+   "second": false
+  }
+ ],
+ "vr4hhk": [
+  {
+   "batch": 6,
+   "second": false
+  }
+ ],
+ "vrq43r": [
+  {
+   "batch": 6,
+   "second": false
+  }
+ ],
+ "vrqstk": [
+  {
+   "batch": 6,
+   "second": false
+  }
+ ],
+ "vss1yf": [
+  {
+   "batch": 6,
+   "second": false
+  }
+ ],
+ "vuk185": [
+  {
+   "batch": 6,
+   "second": false
+  }
+ ],
+ "vvhcpp": [
+  {
+   "batch": 6,
+   "second": false
+  }
+ ],
+ "vw4944": [
+  {
+   "batch": 6,
+   "second": false
+  }
+ ],
+ "vwy9is": [
+  {
+   "batch": 6,
+   "second": false
+  }
+ ],
+ "vx3hyn": [
+  {
+   "batch": 6,
+   "second": false
+  }
+ ],
+ "vxocjx": [
+  {
+   "batch": 6,
+   "second": false
+  }
+ ],
+ "vyeezt": [
+  {
+   "batch": 6,
+   "second": false
+  }
+ ],
+ "vyj08x": [
+  {
+   "batch": 6,
+   "second": false
+  }
+ ],
+ "v03y6d": [
+  {
+   "batch": 7,
+   "second": false
+  }
+ ],
+ "v0xirl": [
+  {
+   "batch": 7,
+   "second": false
+  }
+ ],
+ "v1gji0": [
+  {
+   "batch": 7,
+   "second": false
+  }
+ ],
+ "v2300f": [
+  {
+   "batch": 7,
+   "second": false
+  }
+ ],
+ "v23wjc": [
+  {
+   "batch": 7,
+   "second": false
+  },
+  {
+   "batch": 8,
+   "second": true
+  }
+ ],
+ "v2lat1": [
+  {
+   "batch": 7,
+   "second": false
+  }
+ ],
+ "v47dbn": [
+  {
+   "batch": 7,
+   "second": false
+  }
+ ],
+ "v5uk88": [
+  {
+   "batch": 7,
+   "second": false
+  }
+ ],
+ "v5uryj": [
+  {
+   "batch": 7,
+   "second": false
+  }
+ ],
+ "v5zcvz": [
+  {
+   "batch": 7,
+   "second": false
+  }
+ ],
+ "v6bq1v": [
+  {
+   "batch": 7,
+   "second": false
+  }
+ ],
+ "v8eq9t": [
+  {
+   "batch": 7,
+   "second": false
+  }
+ ],
+ "va40q5": [
+  {
+   "batch": 7,
+   "second": false
+  }
+ ],
+ "vaa7a4": [
+  {
+   "batch": 7,
+   "second": false
+  },
+  {
+   "batch": 8,
+   "second": true
+  }
+ ],
+ "vbmwqd": [
+  {
+   "batch": 7,
+   "second": false
+  }
+ ],
+ "vctjka": [
+  {
+   "batch": 7,
+   "second": false
+  }
+ ],
+ "vctv8b": [
+  {
+   "batch": 7,
+   "second": false
+  }
+ ],
+ "vcvr4v": [
+  {
+   "batch": 7,
+   "second": false
+  }
+ ],
+ "vcwsg7": [
+  {
+   "batch": 7,
+   "second": false
+  }
+ ],
+ "vedpcq": [
+  {
+   "batch": 7,
+   "second": false
+  }
+ ],
+ "vei0ih": [
+  {
+   "batch": 7,
+   "second": false
+  }
+ ],
+ "vfjm6t": [
+  {
+   "batch": 7,
+   "second": false
+  }
+ ],
+ "vftzg5": [
+  {
+   "batch": 7,
+   "second": false
+  }
+ ],
+ "vga71u": [
+  {
+   "batch": 7,
+   "second": false
+  }
+ ],
+ "vgeehn": [
+  {
+   "batch": 7,
+   "second": false
+  }
+ ],
+ "vgqueu": [
+  {
+   "batch": 7,
+   "second": false
+  }
+ ],
+ "vgw50x": [
+  {
+   "batch": 7,
+   "second": false
+  }
+ ],
+ "vhcyni": [
+  {
+   "batch": 7,
+   "second": false
+  }
+ ],
+ "vho4wn": [
+  {
+   "batch": 7,
+   "second": false
+  }
+ ],
+ "vm96j3": [
+  {
+   "batch": 7,
+   "second": false
+  }
+ ],
+ "vo5db6": [
+  {
+   "batch": 7,
+   "second": false
+  }
+ ],
+ "vp85b2": [
+  {
+   "batch": 7,
+   "second": false
+  },
+  {
+   "batch": 8,
+   "second": true
+  }
+ ],
+ "vqahmt": [
+  {
+   "batch": 7,
+   "second": false
+  }
+ ],
+ "vr6f2k": [
+  {
+   "batch": 7,
+   "second": false
+  }
+ ],
+ "vrinyv": [
+  {
+   "batch": 7,
+   "second": false
+  }
+ ],
+ "vrip3d": [
+  {
+   "batch": 7,
+   "second": false
+  }
+ ],
+ "vrnl0v": [
+  {
+   "batch": 7,
+   "second": false
+  }
+ ],
+ "vt6yxu": [
+  {
+   "batch": 7,
+   "second": false
+  }
+ ],
+ "vv239a": [
+  {
+   "batch": 7,
+   "second": false
+  }
+ ],
+ "vvgqwd": [
+  {
+   "batch": 7,
+   "second": false
+  }
+ ],
+ "vvrxf4": [
+  {
+   "batch": 7,
+   "second": false
+  }
+ ],
+ "vx965x": [
+  {
+   "batch": 7,
+   "second": false
+  }
+ ],
+ "vyiqck": [
+  {
+   "batch": 7,
+   "second": false
+  }
+ ],
+ "vyxd6b": [
+  {
+   "batch": 7,
+   "second": false
+  }
+ ],
+ "vzh1ao": [
+  {
+   "batch": 7,
+   "second": false
+  }
+ ],
+ "v0enwm": [
+  {
+   "batch": 8,
+   "second": false
+  }
+ ],
+ "v0pnih": [
+  {
+   "batch": 8,
+   "second": false
+  }
+ ],
+ "v1785z": [
+  {
+   "batch": 8,
+   "second": false
+  }
+ ],
+ "v1n3es": [
+  {
+   "batch": 8,
+   "second": false
+  }
+ ],
+ "v3x962": [
+  {
+   "batch": 8,
+   "second": false
+  }
+ ],
+ "v444p4": [
+  {
+   "batch": 8,
+   "second": false
+  }
+ ],
+ "v4sbkh": [
+  {
+   "batch": 8,
+   "second": false
+  }
+ ],
+ "v5tfi4": [
+  {
+   "batch": 8,
+   "second": false
+  }
+ ],
+ "v6ifhx": [
+  {
+   "batch": 8,
+   "second": false
+  }
+ ],
+ "v7tzg6": [
+  {
+   "batch": 8,
+   "second": false
+  }
+ ],
+ "v84tif": [
+  {
+   "batch": 8,
+   "second": false
+  }
+ ],
+ "v8l1q5": [
+  {
+   "batch": 8,
+   "second": false
+  }
+ ],
+ "v8y7u7": [
+  {
+   "batch": 8,
+   "second": false
+  }
+ ],
+ "v9kah3": [
+  {
+   "batch": 8,
+   "second": false
+  }
+ ],
+ "v9kav6": [
+  {
+   "batch": 8,
+   "second": false
+  }
+ ],
+ "va1sv9": [
+  {
+   "batch": 8,
+   "second": false
+  }
+ ],
+ "vc6ngs": [
+  {
+   "batch": 8,
+   "second": false
+  }
+ ],
+ "vcz82r": [
+  {
+   "batch": 8,
+   "second": false
+  }
+ ],
+ "vdfr0p": [
+  {
+   "batch": 8,
+   "second": false
+  }
+ ],
+ "vet77z": [
+  {
+   "batch": 8,
+   "second": false
+  }
+ ],
+ "vhe7o5": [
+  {
+   "batch": 8,
+   "second": false
+  }
+ ],
+ "vhknsk": [
+  {
+   "batch": 8,
+   "second": false
+  }
+ ],
+ "vhmv1l": [
+  {
+   "batch": 8,
+   "second": false
+  }
+ ],
+ "vmocvo": [
+  {
+   "batch": 8,
+   "second": false
+  }
+ ],
+ "vnq1ol": [
+  {
+   "batch": 8,
+   "second": false
+  }
+ ],
+ "vnvt9i": [
+  {
+   "batch": 8,
+   "second": false
+  }
+ ],
+ "vpvtsx": [
+  {
+   "batch": 8,
+   "second": false
+  }
+ ],
+ "vqxfk1": [
+  {
+   "batch": 8,
+   "second": false
+  }
+ ],
+ "vr3gan": [
+  {
+   "batch": 8,
+   "second": false
+  }
+ ],
+ "vs4971": [
+  {
+   "batch": 8,
+   "second": false
+  }
+ ],
+ "vtepnj": [
+  {
+   "batch": 8,
+   "second": false
+  }
+ ],
+ "vtqis0": [
+  {
+   "batch": 8,
+   "second": false
+  }
+ ],
+ "vtvo5q": [
+  {
+   "batch": 8,
+   "second": false
+  }
+ ],
+ "vu9594": [
+  {
+   "batch": 8,
+   "second": false
+  }
+ ],
+ "vw3phq": [
+  {
+   "batch": 8,
+   "second": false
+  }
+ ],
+ "vw5bih": [
+  {
+   "batch": 8,
+   "second": false
+  }
+ ],
+ "vw5sks": [
+  {
+   "batch": 8,
+   "second": false
+  }
+ ],
+ "vx3nwh": [
+  {
+   "batch": 8,
+   "second": false
+  }
+ ],
+ "vx5i58": [
+  {
+   "batch": 8,
+   "second": false
+  }
+ ],
+ "vz7dhk": [
+  {
+   "batch": 8,
+   "second": false
+  }
+ ],
+ "vzh5j9": [
+  {
+   "batch": 8,
+   "second": false
+  }
+ ],
+ "vzrj07": [
+  {
+   "batch": 8,
+   "second": false
+  }
+ ]
+}

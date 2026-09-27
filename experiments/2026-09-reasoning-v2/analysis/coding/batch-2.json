@@ -1,0 +1,530 @@
+{
+ "v0l5ob": {
+  "archetype": "report",
+  "kpi_row": 0,
+  "fit": [
+   1,
+   0,
+   0
+  ],
+  "invalid": 0,
+  "note": "Unfiltered payout table, then a detail card for every payout (reason, retry count, last attempt, merchant) and bulk action buttons; selection opens nothing."
+ },
+ "v0t4c5": {
+  "archetype": "report",
+  "kpi_row": 1,
+  "fit": [
+   0,
+   0,
+   0
+  ],
+  "invalid": 0,
+  "note": "Three queue metrics over a single unfiltered payout table whose selection only logs, plus bulk actions (retry all, escalate)."
+ },
+ "v2jrnc": {
+  "archetype": "inspector",
+  "kpi_row": 0,
+  "fit": [
+   1,
+   1,
+   1
+  ],
+  "invalid": 0,
+  "note": "One student's profile, subject cards with current, target and change, attendance and participation cards, an event log and a meeting action plan."
+ },
+ "v3ex12": {
+  "archetype": "inspector",
+  "kpi_row": 0,
+  "fit": [
+   1,
+   1,
+   1
+  ],
+  "invalid": 0,
+  "note": "One student's overview metrics with last-semester or last-month basis, a behavior trend chart, strengths and concerns, an incident log and a checklist."
+ },
+ "v52x2k": {
+  "archetype": "dashboard",
+  "kpi_row": 0,
+  "fit": [
+   0,
+   1,
+   1
+  ],
+  "invalid": 0,
+  "note": "Unsorted per-holding cards with change, basis prop and reason, then reason-count cards and a timeline; nothing selected."
+ },
+ "v554m7": {
+  "archetype": "dashboard",
+  "kpi_row": 0,
+  "fit": [
+   1,
+   0,
+   0
+  ],
+  "invalid": 0,
+  "note": "Enrollment and finance metrics in a sidebar, two performance metrics and a GPA trend, then a chart and a data table; deltas carry no basis."
+ },
+ "v6k9e5": {
+  "archetype": "other",
+  "kpi_row": 0,
+  "fit": [
+   0,
+   0,
+   0
+  ],
+  "invalid": 1,
+  "note": "Marked does-not-parse in index.txt."
+ },
+ "v6x0u0": {
+  "archetype": "dashboard",
+  "kpi_row": 1,
+  "fit": [
+   1,
+   0,
+   0
+  ],
+  "invalid": 0,
+  "note": "Three cards, each a school metric with an unqualified delta and a trend or chart."
+ },
+ "v7pbg7": {
+  "archetype": "dashboard",
+  "kpi_row": 1,
+  "fit": [
+   1,
+   1,
+   0
+  ],
+  "invalid": 0,
+  "note": "Four key metrics, a current versus previous term comparison of the same measures, a per-grade table and a system status."
+ },
+ "v8b1tb": {
+  "archetype": "comparison",
+  "kpi_row": 0,
+  "fit": [
+   1,
+   0,
+   1
+  ],
+  "invalid": 0,
+  "note": "Compare grid of two funds on return, volatility and Sharpe with per-fund delta and basis, trends, a history table and a text recommendation."
+ },
+ "v8enme": {
+  "archetype": "dashboard",
+  "kpi_row": 0,
+  "fit": [
+   1,
+   0,
+   1
+  ],
+  "invalid": 0,
+  "note": "Two book metrics with yesterday basis, an unsorted changes table with a reason column, and separate top gainers and top losers tables."
+ },
+ "v96rz7": {
+  "archetype": "dashboard",
+  "kpi_row": 1,
+  "fit": [
+   1,
+   0,
+   0
+  ],
+  "invalid": 0,
+  "note": "Three rate cards with unqualified deltas, a progress chart and a student table, with more metrics behind sidebar tabs."
+ },
+ "v9jvbg": {
+  "archetype": "explorer",
+  "kpi_row": 0,
+  "fit": [
+   0,
+   0,
+   0
+  ],
+  "invalid": 0,
+  "note": "Filter bar and payout table with a selection-bound drawer (failure code, retries, timeline, audit log, actions) but no recipient details; drawer state wiring is broken."
+ },
+ "va1j1p": {
+  "archetype": "dashboard",
+  "kpi_row": 0,
+  "fit": [
+   0,
+   0,
+   0
+  ],
+  "invalid": 0,
+  "note": "Market index metrics in tabs, an unsorted movers table with sentiment, a market chart and a separate news feed."
+ },
+ "vb1iay": {
+  "archetype": "dashboard",
+  "kpi_row": 0,
+  "fit": [
+   0,
+   0,
+   0
+  ],
+  "invalid": 0,
+  "note": "One performance metric, a two-stock comparison, a price chart and a trade audit log stacked with no selection."
+ },
+ "vcng8z": {
+  "archetype": "dashboard",
+  "kpi_row": 0,
+  "fit": [
+   1,
+   1,
+   0
+  ],
+  "invalid": 0,
+  "note": "Revenue and expense cards with a Delta and a basis, two charts, and an exceptions card with generic pending and over-budget chips."
+ },
+ "vctm85": {
+  "archetype": "report",
+  "kpi_row": 0,
+  "fit": [
+   0,
+   0,
+   0
+  ],
+  "invalid": 0,
+  "note": "Single payout table with an empty filter bar and selection that only logs, followed by small summary and recent-activity cards."
+ },
+ "vcu9iw": {
+  "archetype": "dashboard",
+  "kpi_row": 1,
+  "fit": [
+   1,
+   1,
+   0
+  ],
+  "invalid": 0,
+  "note": "Four metric cards each with a delta and a basis, then a school comparison, timeline, audit log, student table and stale-data notice."
+ },
+ "vcun2i": {
+  "archetype": "inspector",
+  "kpi_row": 0,
+  "fit": [
+   0,
+   1,
+   1
+  ],
+  "invalid": 0,
+  "note": "One student's info, a single-quarter grades table without a basis, dated attendance and behavior tables, and an empty notes card."
+ },
+ "veeszg": {
+  "archetype": "explorer",
+  "kpi_row": 1,
+  "fit": [
+   0,
+   0,
+   0
+  ],
+  "invalid": 0,
+  "note": "Three book metrics and an event timeline, then an Explorer with filter, unsorted asset table and a fixed asset detail pane."
+ },
+ "vf4j8n": {
+  "archetype": "dashboard",
+  "kpi_row": 1,
+  "fit": [
+   1,
+   0,
+   1
+  ],
+  "invalid": 0,
+  "note": "Four executive metrics with unqualified deltas, a trend chart, a department table, and a sidebar with a warning alert and goals versus actuals; local re-declarations of imported components shadow them."
+ },
+ "vfryy7": {
+  "archetype": "dashboard",
+  "kpi_row": 1,
+  "fit": [
+   1,
+   1,
+   0
+  ],
+  "invalid": 0,
+  "note": "Three metric cards with a delta and prior-week basis, a trend chart, a week-over-week table and a sidebar activity list."
+ },
+ "vfuhny": {
+  "archetype": "report",
+  "kpi_row": 0,
+  "fit": [
+   1,
+   1,
+   0
+  ],
+  "invalid": 0,
+  "note": "Two overall metrics, a movers table in descending absolute order, then per-asset cards comparing each asset with the previous day, read in order."
+ },
+ "vgbxje": {
+  "archetype": "other",
+  "kpi_row": 0,
+  "fit": [
+   0,
+   0,
+   0
+  ],
+  "invalid": 1,
+  "note": "Marked does-not-parse in index.txt."
+ },
+ "vgcysy": {
+  "archetype": "dashboard",
+  "kpi_row": 0,
+  "fit": [
+   1,
+   1,
+   1
+  ],
+  "invalid": 0,
+  "note": "Critical-issue cards with basis and context lead, then a KPI comparison with basis per measure and metric cards with basis."
+ },
+ "vhu9bn": {
+  "archetype": "dashboard",
+  "kpi_row": 1,
+  "fit": [
+   1,
+   0,
+   1
+  ],
+  "invalid": 0,
+  "note": "Three book metrics, a top-movers table in descending order, sector shifts, an activity table with a reason per move, and review items."
+ },
+ "vkwlup": {
+  "archetype": "dashboard",
+  "kpi_row": 1,
+  "fit": [
+   1,
+   0,
+   0
+  ],
+  "invalid": 0,
+  "note": "Four metric cards with unqualified deltas, a trend chart, a school versus region comparison, milestones and a department budget table."
+ },
+ "vlkkvj": {
+  "archetype": "dashboard",
+  "kpi_row": 1,
+  "fit": [
+   1,
+   0,
+   0
+  ],
+  "invalid": 0,
+  "note": "Three metric cards with unqualified deltas, a trend chart, a department comparison, an activity timeline and an audit trail."
+ },
+ "vm7bh6": {
+  "archetype": "dashboard",
+  "kpi_row": 1,
+  "fit": [
+   1,
+   0,
+   0
+  ],
+  "invalid": 0,
+  "note": "Three metric cards with unqualified deltas, department cards, trend sparklines and an audit table."
+ },
+ "vmh4yc": {
+  "archetype": "explorer",
+  "kpi_row": 1,
+  "fit": [
+   0,
+   0,
+   0
+  ],
+  "invalid": 0,
+  "note": "Sidebar filters and three summary metrics over a payout table; the per-row evidence and actions are JSX returned from onRowSelect and never rendered."
+ },
+ "voe4ms": {
+  "archetype": "dashboard",
+  "kpi_row": 1,
+  "fit": [
+   1,
+   0,
+   0
+  ],
+  "invalid": 0,
+  "note": "Three key metrics (two with a Delta and a basis, one without), a revenue trend and a top-expenses table."
+ },
+ "vq6dmw": {
+  "archetype": "dashboard",
+  "kpi_row": 1,
+  "fit": [
+   1,
+   1,
+   0
+  ],
+  "invalid": 0,
+  "note": "Three key metrics, trend sparklines, a current versus previous term comparison of the same measures and a per-grade table."
+ },
+ "vqcj8a": {
+  "archetype": "dashboard",
+  "kpi_row": 1,
+  "fit": [
+   1,
+   1,
+   0
+  ],
+  "invalid": 0,
+  "note": "Three metric cards each with a Delta and a basis, trend charts and a filterable department table."
+ },
+ "vqdf3z": {
+  "archetype": "other",
+  "kpi_row": 0,
+  "fit": [
+   0,
+   0,
+   0
+  ],
+  "invalid": 1,
+  "note": "Marked does-not-parse in index.txt."
+ },
+ "vqdjbg": {
+  "archetype": "dashboard",
+  "kpi_row": 0,
+  "fit": [
+   1,
+   0,
+   1
+  ],
+  "invalid": 0,
+  "note": "Market index tiles, a movers table sorted by absolute change with a reason column, tabs for peer comparison and trade history, and risk metrics."
+ },
+ "vqtzi7": {
+  "archetype": "dashboard",
+  "kpi_row": 0,
+  "fit": [
+   1,
+   0,
+   0
+  ],
+  "invalid": 0,
+  "note": "Four area charts in the main region with metrics behind sidebar tabs and a positive-tone summary status."
+ },
+ "vqwyky": {
+  "archetype": "dashboard",
+  "kpi_row": 1,
+  "fit": [
+   1,
+   0,
+   0
+  ],
+  "invalid": 0,
+  "note": "Four metric cards with unqualified deltas and trends, then student and staff tables."
+ },
+ "vr91p0": {
+  "archetype": "dashboard",
+  "kpi_row": 0,
+  "fit": [
+   0,
+   1,
+   1
+  ],
+  "invalid": 0,
+  "note": "Two book figures, an unsorted movers table with basis and reason columns, a stale-data table, and a filter bar and bulk actions at the foot."
+ },
+ "vrgeid": {
+  "archetype": "inspector",
+  "kpi_row": 0,
+  "fit": [
+   0,
+   1,
+   1
+  ],
+  "invalid": 0,
+  "note": "One student's snapshot metrics without a basis, concerns and goals cards, and a timeline of recent events."
+ },
+ "vrtgv9": {
+  "archetype": "dashboard",
+  "kpi_row": 1,
+  "fit": [
+   1,
+   1,
+   0
+  ],
+  "invalid": 0,
+  "note": "Three cards each showing current and previous term values, trend charts, and breakdown tables."
+ },
+ "vs0zpg": {
+  "archetype": "dashboard",
+  "kpi_row": 1,
+  "fit": [
+   1,
+   0,
+   1
+  ],
+  "invalid": 0,
+  "note": "Three key metrics with unqualified deltas, a cash-flow chart, a department spend-vs-budget table with over-budget flag, and an audit log."
+ },
+ "vs4u9z": {
+  "archetype": "comparison",
+  "kpi_row": 0,
+  "fit": [
+   0,
+   0,
+   0
+  ],
+  "invalid": 0,
+  "note": "Comparison of two funds with metric labels but no values supplied, and two recommend buttons."
+ },
+ "vultv6": {
+  "archetype": "dashboard",
+  "kpi_row": 1,
+  "fit": [
+   1,
+   0,
+   0
+  ],
+  "invalid": 0,
+  "note": "Four enrollment and attendance metrics in two cards, trend sparklines and detail tables; deltas carry no basis."
+ },
+ "vwqrzu": {
+  "archetype": "dashboard",
+  "kpi_row": 0,
+  "fit": [
+   0,
+   0,
+   1
+  ],
+  "invalid": 0,
+  "note": "A Comparison grid of four assets with change, delta and reason, then a change timeline and a portfolio status card; the drawer is always closed."
+ },
+ "vwqsbv": {
+  "archetype": "inspector",
+  "kpi_row": 0,
+  "fit": [
+   0,
+   0,
+   0
+  ],
+  "invalid": 0,
+  "note": "One hardcoded failed payout card (id, recipient, reason) with placeholder context and history sections and a resolve button; no list or progress."
+ },
+ "vx9q8c": {
+  "archetype": "comparison",
+  "kpi_row": 0,
+  "fit": [
+   0,
+   0,
+   1
+  ],
+  "invalid": 0,
+  "note": "Comparison of Fund A and Fund B whose metrics carry one value and delta each (not per fund), a two-fund performance chart and a recommendation card."
+ },
+ "vxsyqv": {
+  "archetype": "dashboard",
+  "kpi_row": 0,
+  "fit": [
+   1,
+   1,
+   1
+  ],
+  "invalid": 0,
+  "note": "A critical alerts table leads, then a metrics comparison with target or last-term basis, an operational status card, an events table and a data notice."
+ },
+ "vz6hvh": {
+  "archetype": "dashboard",
+  "kpi_row": 0,
+  "fit": [
+   1,
+   0,
+   0
+  ],
+  "invalid": 0,
+  "note": "Four stacked sections, each one metric with an unqualified delta and a two-point chart, then a detail table and an empty-data section."
+ }
+}

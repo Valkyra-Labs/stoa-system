@@ -1,0 +1,73 @@
+import { Page, Header, Section, Card, Comparison, Metric, Delta, Trend, DataTable, FilterBar, SavedViews, Button, BulkActions } from "@stoa/react";
+
+export default function PortfolioOverview() {
+  return (
+    <Page title="Portfolio Overview">
+      <Header title="Portfolio Overview" subtitle="Changes since yesterday" />
+      <Section title="Top Changes">
+        <Comparison
+          entities={[
+            { id: "AAPL", label: "Apple Inc." },
+            { id: "MSFT", label: "Microsoft Corp." },
+            { id: "GOOGL", label: "Alphabet Inc." },
+            { id: "AMZN", label: "Amazon.com Inc." },
+          ]}
+          metrics={[
+            { id: "price", label: "Price", series: [{ x: "2023-10-10", y: 150 }, { x: "2023-10-11", y: 160 }] },
+            { id: "volume", label: "Volume", series: [{ x: "2023-10-10", y: 10000 }, { x: "2023-10-11", y: 15000 }] },
+            { id: "marketCap", label: "Market Cap", series: [{ x: "2023-10-10", y: 2000000 }, { x: "2023-10-11", y: 2200000 }] },
+          ]}
+        />
+      </Section>
+      <Section title="Detailed Metrics">
+        <Card title="Apple Inc.">
+          <Metric label="Price" value={160} delta={<Delta value={10} basis={150} />} unit="USD" />
+          <Metric label="Volume" value={15000} delta={<Delta value={5000} basis={10000} />} unit="Shares" />
+          <Metric label="Market Cap" value={2200000} delta={<Delta value={200000} basis={2000000} />} unit="USD" />
+        </Card>
+        <Card title="Microsoft Corp.">
+          <Metric label="Price" value={250} delta={<Delta value={5} basis={245} />} unit="USD" />
+          <Metric label="Volume" value={12000} delta={<Delta value={2000} basis={10000} />} unit="Shares" />
+          <Metric label="Market Cap" value={2500000} delta={<Delta value={100000} basis={2400000} />} unit="USD" />
+        </Card>
+      </Section>
+      <Section title="Portfolio Trends">
+        <Trend series={[{ x: "2023-10-07", y: 200000 }, { x: "2023-10-08", y: 210000 }, { x: "2023-10-09", y: 220000 }, { x: "2023-10-10", y: 230000 }, { x: "2023-10-11", y: 240000 }]} />
+      </Section>
+      <Section title="Filter and View Options">
+        <FilterBar filters={[
+          { id: "sector", label: "Sector", options: ["Technology", "Healthcare", "Finance"] },
+          { id: "type", label: "Type", options: ["Stock", "ETF", "Bond"] },
+        ]} />
+        <SavedViews views={[
+          { id: "Tech", label: "Technology Stocks" },
+          { id: "Health", label: "Healthcare ETFs" },
+        ]} />
+      </Section>
+      <Section title="Portfolio Holdings">
+        <DataTable
+          columns={[
+            { id: "symbol", label: "Symbol" },
+            { id: "name", label: "Name" },
+            { id: "price", label: "Price" },
+            { id: "volume", label: "Volume" },
+            { id: "marketCap", label: "Market Cap" },
+          ]}
+          rows={[
+            { symbol: "AAPL", name: "Apple Inc.", price: 160, volume: 15000, marketCap: 2200000 },
+            { symbol: "MSFT", name: "Microsoft Corp.", price: 250, volume: 12000, marketCap: 2500000 },
+            { symbol: "GOOGL", name: "Alphabet Inc.", price: 200, volume: 11000, marketCap: 2300000 },
+            { symbol: "AMZN", name: "Amazon.com Inc.", price: 180, volume: 13000, marketCap: 2100000 },
+          ]}
+          selectable={true}
+          stickyFirstColumn={true}
+          onRowSelect={() => {}}
+        />
+        <BulkActions actions={[
+          { id: "sell", label: "Sell Selected" },
+          { id: "buy", label: "Buy More" },
+        ]} />
+      </Section>
+    </Page>
+  );
+}
