@@ -1,0 +1,137 @@
+```tsx
+import { Page, Header, Section, Card, Metric, Delta, Chart, DataTable, FilterBar, Button, BulkActions, Status, EmptyData, StaleData, ErrorData } from "@stoa/react";
+
+const teacher = {
+  name: "Ms. Johnson",
+  class: "Grade 10 Science",
+  students: 28,
+  averageScore: 72,
+  medianScore: 74,
+  highestScore: 98,
+  lowestScore: 35,
+  passRate: 0.75,
+  failingRate: 0.25,
+  lastUpdated: "2023-10-05T14:30:00Z",
+};
+
+const metrics = [
+  { label: "Average Score", value: 72, unit: "out of 100", delta: 5, basis: 67 },
+  { label: "Median Score", value: 74, unit: "out of 100", delta: -3, basis: 77 },
+  { label: "Highest Score", value: 98, unit: "out of 100" },
+  { label: "Lowest Score", value: 35, unit: "out of 100" },
+  { label: "Pass Rate", value: 75, unit: "%", delta: 5, basis: 70 },
+  { label: "Failing Rate", value: 25, unit: "%", delta: -3, basis: 28 },
+];
+
+const students = [
+  {
+    id: 1,
+    name: "Alice Smith",
+    score: 85,
+    status: "Pass",
+    comments: "Good performance, but could improve in practical application.",
+  },
+  {
+    id: 2,
+    name: "Bob Johnson",
+    score: 68,
+    status: "Failing",
+    comments: "Needs additional support in understanding basic concepts.",
+  },
+  {
+    id: 3,
+    name: "Charlie Brown",
+    score: 92,
+    status: "Pass",
+    comments: "Excellent performance; consider advanced topics.",
+  },
+  {
+    id: 4,
+    name: "Diana Prince",
+    score: 78,
+    status: "Pass",
+    comments: "Solid performance; could benefit from revision.",
+  },
+  {
+    id: 5,
+    name: "Edward Norton",
+    score: 55,
+    status: "Failing",
+    comments: "Struggles with key concepts; requires one-on-one support.",
+  },
+  {
+    id: 6,
+    name: "Frank Langella",
+    score: 89,
+    status: "Pass",
+    comments: "Strong grasp of material; ready for more complex problems.",
+  },
+];
+
+const columns = [
+  { key: "name", label: "Student Name" },
+  { key: "score", label: "Score", numeric: true },
+  { key: "status", label: "Status" },
+  { key: "comments", label: "Comments" },
+];
+
+const actions = [
+  { label: "Review Comments", action: "reviewComments" },
+  { label: "Send Support Materials", action: "sendSupport" },
+  { label: "Schedule One-on-One", action: "scheduleMeeting" },
+];
+
+const FilterBarComponent = () => (
+  <FilterBar>
+    <div>
+      <label>Filter by Status:</label>
+      <select>
+        <option value="all">All</option>
+        <option value="pass">Pass</option>
+        <option value="fail">Failing</option>
+      </select>
+    </div>
+    <div>
+      <label>Search Student Name:</label>
+      <input type="text" placeholder="Search..." />
+    </div>
+  </FilterBar>
+);
+
+const Dashboard = () => (
+  <Page title={`Class Review: ${teacher.class} - ${teacher.name}`}>
+    <Header title={`Class Review: ${teacher.class} - ${teacher.name}`} subtitle={`Last Updated: ${teacher.lastUpdated}`} actions={<Button label="Save Changes" variant="primary" />} />
+    <Section title="Class Overview">
+      <div style={{ display: "flex", gap: "20px", flexWrap: "wrap" }}>
+        {metrics.map((metric, index) => (
+          <Card key={index} title={metric.label}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+              <div>
+                <p>{metric.value}{metric.unit}</p>
+                {metric.delta && (
+                  <Delta value={metric.delta} basis={metric.basis} />
+                )}
+              </div>
+              <Status tone={metric.delta > 0 ? "positive" : "negative"} label={metric.delta ? "Change" : "No Change"} />
+            </div>
+          </Card>
+        ))}
+      </div>
+    </Section>
+    <Section title="Student Performance">
+      <DataTable
+        columns={columns}
+        rows={students}
+        selectable
+        stickyFirstColumn
+        onRowSelect={(selected) => console.log("Selected:", selected)}
+      />
+    </Section>
+    <Section title="Next Steps">
+      <BulkActions actions={actions} />
+    </Section>
+  </Page>
+);
+
+export default Dashboard;
+```

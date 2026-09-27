@@ -1,0 +1,17 @@
+{
+  "purpose": "Calibration only: checks plumbing (context, truncation, fencing, output length by condition, parse rate). Not evidence; not part of any pre-registered analysis.",
+  "tasks": {
+    "T1": "A teacher has just marked a unit test for a class of 28 students. Build the screen they use to review how the class did and decide what to do next."
+  },
+  "options": { "temperature": 0.7, "top_p": 0.8, "num_ctx": 8192, "num_predict": 4096 },
+  "runs": [
+    { "id": "c1", "model": "qwen3:8b", "think": false, "condition": "components", "task": "T1", "seed": 1 },
+    { "id": "c2", "model": "qwen3:8b", "think": false, "condition": "generic", "task": "T1", "seed": 1 },
+    { "id": "c3", "model": "qwen3:8b", "think": false, "condition": "rules", "task": "T1", "seed": 1 },
+    { "id": "c4", "model": "qwen3:8b", "think": false, "condition": "reasoning", "task": "T1", "seed": 1 },
+    { "id": "c5", "model": "qwen3:8b", "think": false, "condition": "components", "task": "T1", "seed": 2 },
+    { "id": "c6", "model": "qwen3:8b", "think": false, "condition": "generic", "task": "T1", "seed": 2 },
+    { "id": "c7", "model": "qwen3:8b", "think": false, "condition": "rules", "task": "T1", "seed": 2 },
+    { "id": "c8", "model": "qwen3:8b", "think": false, "condition": "reasoning", "task": "T1", "seed": 2 }
+  ]
+}
