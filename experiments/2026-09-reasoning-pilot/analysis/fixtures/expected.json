@@ -1,0 +1,6 @@
+{
+  "generic.tsx": {"F1":1,"F2":0,"F3":1,"F9":"none","F10":["header","header","metrics","chart","table"]},
+  "explorer.tsx": {"F1":0,"F3":0,"F5":"filter_bar","F6":1,"F7":"baseline","F9":"Explorer","F10":["header","filters","table","detail"]},
+  "dashboard-pattern.tsx": {"F1":1,"F3":1,"F9":"Dashboard","F10":["header","metrics","chart","table"]},
+  "queue.tsx": {"F1":0,"F3":0,"F5":"saved_views","F6":1,"F9":"ReviewQueue","F10":["header","filters","table","detail","actions"]}
+}

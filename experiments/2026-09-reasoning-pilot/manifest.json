@@ -1,0 +1,290 @@
+[
+ {
+  "order": 0,
+  "task": "T1",
+  "condition": "A",
+  "model": "sonnet",
+  "sample": 2,
+  "id": "gzphq"
+ },
+ {
+  "order": 1,
+  "task": "T2",
+  "condition": "C",
+  "model": "sonnet",
+  "sample": 1,
+  "id": "g1pab"
+ },
+ {
+  "order": 2,
+  "task": "T1",
+  "condition": "C",
+  "model": "haiku",
+  "sample": 2,
+  "id": "g637k"
+ },
+ {
+  "order": 3,
+  "task": "T3",
+  "condition": "C",
+  "model": "haiku",
+  "sample": 1,
+  "id": "gs99a"
+ },
+ {
+  "order": 4,
+  "task": "T1",
+  "condition": "B",
+  "model": "sonnet",
+  "sample": 1,
+  "id": "gnen4"
+ },
+ {
+  "order": 5,
+  "task": "T2",
+  "condition": "C",
+  "model": "sonnet",
+  "sample": 2,
+  "id": "gu9m6"
+ },
+ {
+  "order": 6,
+  "task": "T1",
+  "condition": "B",
+  "model": "haiku",
+  "sample": 2,
+  "id": "ggkxo"
+ },
+ {
+  "order": 7,
+  "task": "T1",
+  "condition": "A",
+  "model": "haiku",
+  "sample": 2,
+  "id": "g7z2b"
+ },
+ {
+  "order": 8,
+  "task": "T1",
+  "condition": "B",
+  "model": "sonnet",
+  "sample": 2,
+  "id": "ggqjy"
+ },
+ {
+  "order": 9,
+  "task": "T1",
+  "condition": "C",
+  "model": "haiku",
+  "sample": 1,
+  "id": "gwfbm"
+ },
+ {
+  "order": 10,
+  "task": "T3",
+  "condition": "C",
+  "model": "sonnet",
+  "sample": 2,
+  "id": "gip3g"
+ },
+ {
+  "order": 11,
+  "task": "T1",
+  "condition": "A",
+  "model": "haiku",
+  "sample": 1,
+  "id": "g06zr"
+ },
+ {
+  "order": 12,
+  "task": "T3",
+  "condition": "B",
+  "model": "haiku",
+  "sample": 1,
+  "id": "gmrrx"
+ },
+ {
+  "order": 13,
+  "task": "T2",
+  "condition": "B",
+  "model": "haiku",
+  "sample": 2,
+  "id": "gyemq"
+ },
+ {
+  "order": 14,
+  "task": "T1",
+  "condition": "C",
+  "model": "sonnet",
+  "sample": 1,
+  "id": "gtqbs"
+ },
+ {
+  "order": 15,
+  "task": "T2",
+  "condition": "A",
+  "model": "sonnet",
+  "sample": 1,
+  "id": "gurfy"
+ },
+ {
+  "order": 16,
+  "task": "T2",
+  "condition": "C",
+  "model": "haiku",
+  "sample": 1,
+  "id": "gw0os"
+ },
+ {
+  "order": 17,
+  "task": "T3",
+  "condition": "A",
+  "model": "haiku",
+  "sample": 1,
+  "id": "gmf3s"
+ },
+ {
+  "order": 18,
+  "task": "T2",
+  "condition": "B",
+  "model": "haiku",
+  "sample": 1,
+  "id": "gkyim"
+ },
+ {
+  "order": 19,
+  "task": "T2",
+  "condition": "A",
+  "model": "sonnet",
+  "sample": 2,
+  "id": "g7zpf"
+ },
+ {
+  "order": 20,
+  "task": "T3",
+  "condition": "B",
+  "model": "sonnet",
+  "sample": 1,
+  "id": "goasc"
+ },
+ {
+  "order": 21,
+  "task": "T2",
+  "condition": "C",
+  "model": "haiku",
+  "sample": 2,
+  "id": "g5gu0"
+ },
+ {
+  "order": 22,
+  "task": "T3",
+  "condition": "B",
+  "model": "haiku",
+  "sample": 2,
+  "id": "g2buu"
+ },
+ {
+  "order": 23,
+  "task": "T3",
+  "condition": "B",
+  "model": "sonnet",
+  "sample": 2,
+  "id": "grqh0"
+ },
+ {
+  "order": 24,
+  "task": "T2",
+  "condition": "A",
+  "model": "haiku",
+  "sample": 2,
+  "id": "g7hve"
+ },
+ {
+  "order": 25,
+  "task": "T1",
+  "condition": "B",
+  "model": "haiku",
+  "sample": 1,
+  "id": "g2tk0"
+ },
+ {
+  "order": 26,
+  "task": "T3",
+  "condition": "C",
+  "model": "sonnet",
+  "sample": 1,
+  "id": "gut2z"
+ },
+ {
+  "order": 27,
+  "task": "T2",
+  "condition": "A",
+  "model": "haiku",
+  "sample": 1,
+  "id": "ghzxb"
+ },
+ {
+  "order": 28,
+  "task": "T2",
+  "condition": "B",
+  "model": "sonnet",
+  "sample": 1,
+  "id": "gun55"
+ },
+ {
+  "order": 29,
+  "task": "T2",
+  "condition": "B",
+  "model": "sonnet",
+  "sample": 2,
+  "id": "g3pih"
+ },
+ {
+  "order": 30,
+  "task": "T3",
+  "condition": "A",
+  "model": "sonnet",
+  "sample": 2,
+  "id": "gbrjo"
+ },
+ {
+  "order": 31,
+  "task": "T1",
+  "condition": "C",
+  "model": "sonnet",
+  "sample": 2,
+  "id": "ginyt"
+ },
+ {
+  "order": 32,
+  "task": "T3",
+  "condition": "A",
+  "model": "haiku",
+  "sample": 2,
+  "id": "g1tqh"
+ },
+ {
+  "order": 33,
+  "task": "T3",
+  "condition": "C",
+  "model": "haiku",
+  "sample": 2,
+  "id": "gjr83"
+ },
+ {
+  "order": 34,
+  "task": "T1",
+  "condition": "A",
+  "model": "sonnet",
+  "sample": 1,
+  "id": "g85pw"
+ },
+ {
+  "order": 35,
+  "task": "T3",
+  "condition": "A",
+  "model": "sonnet",
+  "sample": 1,
+  "id": "gqyqb"
+ }
+]
