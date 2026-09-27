@@ -20,6 +20,9 @@ for (let i = ids.length - 1; i > 0; i--) { const j = Math.floor(rand() * (i + 1)
 ids = ids.slice(0, n);
 
 const printer = ts.createPrinter({ removeComments: true });
+const toJs = (src) => ts.transpileModule(src, {
+  compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2020, jsx: ts.JsxEmit.ReactJSX, esModuleInterop: true, removeComments: true },
+}).outputText;
 const LABEL_KEYS = ["label", "header", "title", "name", "key", "field"];
 
 function convert(src) {
@@ -167,7 +170,30 @@ const items = ids.map((id) => {
     id, task: r.task, prompt: tasks[r.task].prompt, fit: tasks[r.task].fit, parses,
     code: parses ? printer.printFile(sf) : src.replace(/\/\/[^\n]*|\/\*[\s\S]*?\*\//g, ""),
     tree: parses ? tree : null,
+    js: parses ? toJs(src) : null,
   };
 });
-writeFileSync(outPath, JSON.stringify({ guide, items }));
+
+// Worked examples from the guide: Stage 0 files as coded blind there, plus
+// two synthetic ones for the archetypes Stage 0 never produced.
+const EXAMPLES = [
+  ["dashboard", "gzphq", "Dashboard shell: metrics against the previous unit, charts, table; nothing opens."],
+  ["dashboard", "g1pab", "Summary numbers and a chart lead; the movers table is one panel among several."],
+  ["explorer", "ggqjy", "A student table sorted low-first with a needs-support view and a detail pane for the selected student."],
+  ["explorer", "gmf3s", "Explorer shell: filters, table, a thin detail pane; still an explorer, just a weak one."],
+  ["queue", "gs99a", "The current payout with reason and attempts, resolution buttons, N of total and remaining in an aside."],
+  ["queue", "gnen4", "A queue of failing students with a current-student pane and a decision, preceded by summary tables."],
+  ["report", "ggkxo", "Metrics, a group comparison, then grouped tables read top to bottom; nothing selected, nothing decided."],
+  ["inspector", "inspector-synthetic", "Synthetic, outside the tasks: one account at the centre with figures against a basis, history, notes and actions."],
+  ["comparison", "comparison-synthetic", "Synthetic, outside the tasks: two suppliers on the same measures, differences marked, basis stated."],
+];
+const examples = EXAMPLES.map(([archetype, id, why]) => {
+  const file = id.endsWith("synthetic")
+    ? new URL(`./examples/${id}.tsx`, import.meta.url)
+    : new URL(`../../2026-09-reasoning-pilot/generations/${id}.tsx`, import.meta.url);
+  const src = readFileSync(file, "utf8");
+  const { sf, tree } = convert(src);
+  return { id, archetype, why, code: printer.printFile(sf), tree, js: toJs(src) };
+});
+writeFileSync(outPath, JSON.stringify({ guide, items, examples }));
 console.log(`${items.length} items -> ${outPath}`);

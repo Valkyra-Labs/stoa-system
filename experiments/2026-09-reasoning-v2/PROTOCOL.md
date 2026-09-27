@@ -158,3 +158,17 @@ blind coder on the timing files.
   model and task. 24 files (3 per coder) are also given to a second coder;
   agreement between Claude coders on those is reported, and the first
   coder's answer is the one analysed.
+- 2026-09-27, before the owner's coding: the owner found the wireframe
+  view too abstract to tell screens apart (placeholders instead of data,
+  every wrapper drawn as a frame). The owner now codes from the rendered
+  screen: each generation runs in a sandboxed frame against plain
+  implementations of the vocabulary (`owner-coding/render/`), identical
+  for every condition, with the wireframe and the code one key away. A
+  file that fails at runtime or renders itself without end is shown as
+  its wireframe. The worked examples of the guide are shown in the same
+  renderer, with two synthetic examples (inspector, comparison) from
+  outside the tasks, marked as such. The Claude coders coded from code;
+  the owner codes from what the screen shows, so kappa also measures
+  whether the two readings agree. The sample (72 files, seed 20260929)
+  is unchanged.
+
