@@ -6,6 +6,8 @@ import { execFileSync } from "node:child_process";
 import { readFileSync } from "node:fs";
 
 const git = (...a) => execFileSync("git", a, { encoding: "utf8", maxBuffer: 1 << 26 });
+// Paths below are repository-relative, whatever directory this runs from.
+process.chdir(git("rev-parse", "--show-toplevel").trim());
 const BINARY = /\.(png|jpe?g|gif|webp|ico|woff2?|ttf|otf|gz|tycz|wasm|pdf)$/i;
 // Raw model output is experiment data and is kept verbatim, emoji included.
 const RAW = /^experiments\/[^/]+\/(generations\/|calibration\/(.*\/)?out\/|[^/]*-run\.log$)/;
