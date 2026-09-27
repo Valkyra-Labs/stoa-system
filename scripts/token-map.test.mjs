@@ -5,16 +5,44 @@ import { buildTokenMap } from "./token-map/lib.mjs";
 // A small fixture tree covering: a CSS var read, an inline style var read,
 // a canvas read (through readCanvasTokens's getPropertyValue alias, one hop
 // of call-graph propagation to its caller), a semantic alias to a primitive,
-// and a token that nothing reads.
+// a token that nothing reads, a dark-only alias, a var() fallback (with a
+// nested var()), a combinator selector, a named colour and keyword easing,
+// a declaration with no trailing semicolon, and per-density values.
 const tokensCssText = `
 :root {
   --stoa-color-neutral-500: #888888;
+  --stoa-color-neutral-900: #111111;
   --stoa-color-text: var(--stoa-color-neutral-500);
+  --stoa-color-focus: #4477ff;
+  --stoa-color-accent: #224499;
+  --stoa-color-warning: #ffaa00;
   --stoa-space-2: 8px;
   --stoa-space-unused: 99px;
   --stoa-motion-easing-standard: cubic-bezier(0.2, 0, 0, 1);
 }
+
+[data-theme="dark"] {
+  --stoa-color-text: #111111;
+}
+
+[data-density="compact"] {
+  --stoa-density-row-height: 22px;
+}
+
+:root, [data-density="regular"] {
+  --stoa-density-row-height: 28px
+}
+
+[data-density="comfortable"] {
+  --stoa-density-row-height: 36px;
+}
 `;
+
+// The DTCG sources: `text` aliases a different primitive per theme, which
+// tokens.css alone cannot say (the dark build inlines a literal, not a
+// `var()`, since it never had the primitives in scope to reference).
+const semanticLightJson = { color: { text: { $value: "{color.neutral.500}" } } };
+const semanticDarkJson = { color: { text: { $value: "{color.neutral.900}" } } };
 
 const cssFiles = [
   {
@@ -23,8 +51,11 @@ const cssFiles = [
 .fx-panel {
   color: var(--stoa-color-text);
   padding: var(--stoa-space-2);
+  outline-color: var(--stoa-color-focus, var(--stoa-color-accent, blue));
   transition: color 200ms cubic-bezier(0.2, 0, 0, 1);
+  background: green
 }
+.fx-badge--warning > span:first-child { color: var(--stoa-color-warning) }
 `,
   },
 ];
@@ -41,8 +72,16 @@ export function Panel({ children }) {
   {
     path: "packages/react/src/Badge.tsx",
     content: `
-export function Badge() {
-  return <span style={{ color: "var(--stoa-color-text)" }}>x</span>;
+export function Badge({ children }) {
+  return <span style={{ color: "var(--stoa-color-text)" }}>{children}</span>;
+}
+`,
+  },
+  {
+    path: "packages/react/src/StatusBadge.tsx",
+    content: `
+export function StatusBadge({ tone, children }) {
+  return <span className={\`fx-badge fx-badge--\${tone}\`} style={{ color: "#888888" }}>{children}</span>;
 }
 `,
   },
@@ -68,10 +107,10 @@ export function Ladder() {
   },
 ];
 
-const knownComponents = new Set(["Panel", "Badge", "Ladder"]);
+const knownComponents = new Set(["Panel", "Badge", "StatusBadge", "Ladder"]);
 
 function map() {
-  return buildTokenMap({ tokensCssText, cssFiles, sourceFiles, storyFiles: [], knownComponents });
+  return buildTokenMap({ tokensCssText, cssFiles, sourceFiles, storyFiles: [], knownComponents, semanticLightJson, semanticDarkJson });
 }
 
 function tokenNamed(m, name) {
@@ -109,14 +148,14 @@ describe("token-map", () => {
     const m = map();
     // --stoa-motion-easing-standard is unused too: styles.css hard-codes its
     // value (see the next test) instead of reading it with var().
-    assert.deepEqual(m.unusedTokens, ["--stoa-motion-easing-standard", "--stoa-space-unused"]);
+    assert.deepEqual(m.unusedTokens, ["--stoa-density-row-height", "--stoa-motion-easing-standard", "--stoa-space-unused"]);
     assert.equal(tokenNamed(m, "--stoa-color-neutral-500").unused, false);
     assert.equal(tokenNamed(m, "--stoa-color-text").unused, false);
   });
 
   it("flags a hard-coded easing literal that matches a token", () => {
     const m = map();
-    const easing = m.hardcodedLiterals.find((l) => l.category === "easing");
+    const easing = m.hardcodedLiterals.find((l) => l.category === "easing" && l.file.endsWith("styles.css"));
     assert.ok(easing);
     assert.equal(easing.matchingToken, "--stoa-motion-easing-standard");
     const duration = m.hardcodedLiterals.find((l) => l.category === "duration");
@@ -124,14 +163,100 @@ describe("token-map", () => {
     assert.equal(duration.matchingToken, null);
   });
 
-  it("reports a var() reference to an undefined custom property", () => {
+  it("reports a var() reference to an undefined custom property, of any prefix", () => {
     const m = buildTokenMap({
       tokensCssText,
-      cssFiles: [{ path: "packages/react/src/styles.css", content: `.fx-panel { color: var(--stoa-color-missing); }` }],
+      cssFiles: [{ path: "packages/react/src/styles.css", content: `.fx-panel { color: var(--stoa-color-missing); border-color: var(--rac-focus-ring); }` }],
       sourceFiles: [],
       storyFiles: [],
       knownComponents,
+      semanticLightJson,
+      semanticDarkJson,
     });
     assert.ok(m.undefinedCustomProperties.some((u) => u.name === "--stoa-color-missing"));
+    assert.ok(m.undefinedCustomProperties.some((u) => u.name === "--rac-focus-ring"));
+  });
+
+  // Finding 1: dark-theme aliases are resolved from the DTCG sources, not
+  // by looking for `var()` in the built CSS (the dark build inlines a
+  // literal instead).
+  describe("per-theme alias resolution (dark theme)", () => {
+    it("reaches a primitive that only the dark theme aliases", () => {
+      const m = map();
+      assert.equal(tokenNamed(m, "--stoa-color-neutral-900").unused, false);
+    });
+
+    it("reports the dark alias and resolved value on the semantic token", () => {
+      const text = tokenNamed(map(), "--stoa-color-text");
+      assert.equal(text.theme.dark.aliasOf, "--stoa-color-neutral-900");
+      assert.equal(text.theme.dark.resolvedValue, "#111111");
+    });
+  });
+
+  // Finding 2: `var()` fallbacks, including a nested `var()` inside the
+  // fallback, are recognised and reported.
+  describe("var() fallbacks", () => {
+    it("reads the primary token and reports its fallback literal", () => {
+      const focus = tokenNamed(map(), "--stoa-color-focus");
+      assert.equal(focus.unused, false);
+      const read = focus.readBy.components.find((c) => c.component === "Panel");
+      assert.ok(read);
+      assert.equal(read.fallback, "var(--stoa-color-accent, blue)");
+    });
+
+    it("also reads a nested var() inside the fallback", () => {
+      const accent = tokenNamed(map(), "--stoa-color-accent");
+      assert.equal(accent.unused, false);
+      const read = accent.readBy.components.find((c) => c.component === "Panel");
+      assert.ok(read);
+      assert.equal(read.fallback, "blue");
+    });
+  });
+
+  // Finding 3: a rule is attributed to the component class appearing
+  // anywhere in the selector, not just its last compound.
+  it("attributes a combinator selector to the component owning the ancestor class", () => {
+    const warning = tokenNamed(map(), "--stoa-color-warning");
+    assert.ok(warning.readBy.components.some((c) => c.component === "StatusBadge"));
+    assert.ok(!warning.readBy.components.some((c) => c.component === "(css) .fx-badge--warning > span:first-child"));
+  });
+
+  // Finding 4: a primitive reached only through an alias still shows who
+  // reads it, via the semantic token that aliases it.
+  it("propagates readBy from a semantic token to the primitive it aliases", () => {
+    const primitive = tokenNamed(map(), "--stoa-color-neutral-500");
+    const propagated = primitive.readBy.components.find((c) => c.component === "Badge" && c.via === "--stoa-color-text");
+    assert.ok(propagated, "expected neutral-500's readers to include Badge via --stoa-color-text");
+  });
+
+  // Finding 5: detection gaps.
+  describe("detection gaps", () => {
+    it("scans inline TSX styles for hard-coded literals", () => {
+      const m = map();
+      const literal = m.hardcodedLiterals.find((l) => l.file === "packages/react/src/StatusBadge.tsx");
+      assert.ok(literal, "expected a hard-coded literal reported from an inline style");
+      assert.equal(literal.category, "color");
+      assert.equal(literal.matchingToken, "--stoa-color-neutral-500");
+    });
+
+    it("flags a named colour and a keyword easing", () => {
+      const m = map();
+      const named = m.hardcodedLiterals.find((l) => l.value === "green");
+      assert.ok(named, "expected the named colour `green` to be flagged");
+      assert.equal(named.category, "color");
+    });
+
+    it("parses the last declaration of a block with no trailing semicolon", () => {
+      const m = map();
+      const density = tokenNamed(m, "--stoa-density-row-height");
+      assert.equal(density.density.regular, "28px");
+    });
+
+    it("shows a density token's value for every density mode", () => {
+      const m = map();
+      const density = tokenNamed(m, "--stoa-density-row-height");
+      assert.deepEqual(density.density, { regular: "28px", compact: "22px", comfortable: "36px" });
+      assert.equal(density.value, "28px");
+    });
   });
 });

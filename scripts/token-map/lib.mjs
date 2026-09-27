@@ -3,44 +3,194 @@
 // CLI) and scripts/token-map.test.mjs (fixtures) can share the same engine.
 import ts from "typescript";
 
-const VAR_NAME = /--stoa-[\w-]+/g;
-const VAR_CALL = /var\(\s*(--stoa-[\w-]+)\s*\)/g;
+// Matches any custom property, not just `--stoa-*`: a `var()` read of an
+// unprefixed name still needs to resolve or be reported as undefined
+// (finding 5, "any prefix").
+const CUSTOM_PROP_NAME = /^(--[\w-]+)$/;
+
+/** All `var(...)` calls in `text`, including a fallback and nested `var()`
+ * calls within that fallback (`var(--stoa-x, var(--stoa-y, black))` reads
+ * both `--stoa-x` and `--stoa-y`). Handles arbitrarily nested parentheses,
+ * so a fallback like `cubic-bezier(...)` does not break the split between
+ * the property name and its fallback. `baseOffset` shifts reported indices
+ * to be relative to the outermost caller's text. */
+function findVarCalls(text, baseOffset = 0) {
+  const results = [];
+  let i = 0;
+  while ((i = text.indexOf("var(", i)) !== -1) {
+    const start = i;
+    const argsStart = i + 4;
+    let depth = 1;
+    let j = argsStart;
+    while (j < text.length && depth > 0) {
+      if (text[j] === "(") depth++;
+      else if (text[j] === ")") depth--;
+      j++;
+    }
+    const argsEnd = j - 1;
+    const argsText = text.slice(argsStart, Math.max(argsEnd, argsStart));
+    let commaIndex = -1;
+    let parenDepth = 0;
+    for (let k = 0; k < argsText.length; k++) {
+      if (argsText[k] === "(") parenDepth++;
+      else if (argsText[k] === ")") parenDepth--;
+      else if (argsText[k] === "," && parenDepth === 0) {
+        commaIndex = k;
+        break;
+      }
+    }
+    const nameRaw = commaIndex === -1 ? argsText : argsText.slice(0, commaIndex);
+    const fallbackRaw = commaIndex === -1 ? null : argsText.slice(commaIndex + 1);
+    const nameMatch = nameRaw.trim().match(CUSTOM_PROP_NAME);
+    if (nameMatch) {
+      results.push({ token: nameMatch[1], fallback: fallbackRaw ? fallbackRaw.trim() : null, index: baseOffset + start });
+    }
+    if (fallbackRaw) {
+      results.push(...findVarCalls(fallbackRaw, baseOffset + argsStart + commaIndex + 1));
+    }
+    i = argsEnd + 1;
+  }
+  return results;
+}
 
 // ---------------------------------------------------------------------------
 // Token list: parsed from the built tokens.css (light theme + density, the
 // canonical default values), keyed by CSS custom property name.
 
-/** @returns {Map<string, {name: string, rawValue: string}>} first definition of each `--stoa-*` custom property, in file order. */
-function parseDeclarations(cssText) {
+/** Every `{ selector { ...declarations... } }` block in a CSS text, in
+ * file order (a flat scan; none of these files nest rule blocks). Comments
+ * are stripped first: Style Dictionary's generated banners precede
+ * `:root`, and left in place they would be captured as part of its
+ * selector text, breaking an exact match against `":root"`. */
+function parseCssBlocks(cssText) {
+  const withoutComments = cssText.replace(/\/\*[\s\S]*?\*\//g, "");
+  const blocks = [];
+  for (const m of withoutComments.matchAll(/([^{}]+)\{([^{}]*)\}/g)) {
+    blocks.push({ selector: m[1].trim(), body: m[2] });
+  }
+  return blocks;
+}
+
+/** `--stoa-*` declarations of one block, first definition wins (a block can
+ * repeat a name, as `:root`'s reduced-motion override does). Tolerates a
+ * final declaration with no trailing semicolon. */
+function parseDeclBlock(body) {
   const declarations = new Map();
-  const re = /(--stoa-[\w-]+)\s*:\s*([^;]+);/g;
+  const re = /(--stoa-[\w-]+)\s*:\s*([^;]+?)\s*(?:;|$)/g;
   let m;
-  while ((m = re.exec(cssText))) {
-    if (!declarations.has(m[1])) declarations.set(m[1], { name: m[1], rawValue: m[2].trim() });
+  while ((m = re.exec(body))) {
+    if (!declarations.has(m[1])) declarations.set(m[1], m[2].trim());
   }
   return declarations;
 }
 
-/** Token descriptors from the built tokens.css: group, alias info and the
- * value resolved through one level of aliasing (semantic tokens alias
- * primitives directly in this system; there is no multi-level chain). */
-export function parseTokenList(tokensCssText) {
-  const declarations = parseDeclarations(tokensCssText);
-  const aliasRe = /^var\(\s*(--stoa-[\w-]+)\s*\)$/;
+/** A DTCG source's `$value`s, keyed by their dash-joined path
+ * (`color.neutral.100` -> `color-neutral-100`), matching the `--stoa-`
+ * suffix Style Dictionary's css transform produces. */
+function flattenDtcgValues(node, path, out) {
+  if (node == null || typeof node !== "object") return;
+  if (Object.prototype.hasOwnProperty.call(node, "$value")) {
+    out.set(path.join("-"), node.$value);
+    return;
+  }
+  for (const [key, child] of Object.entries(node)) {
+    if (key.startsWith("$")) continue;
+    flattenDtcgValues(child, [...path, key], out);
+  }
+}
+
+function dtcgAliasTarget(rawValue) {
+  if (typeof rawValue !== "string") return null;
+  const m = rawValue.match(/^\{([\w.-]+)\}$/);
+  return m ? `--stoa-${m[1].split(".").join("-")}` : null;
+}
+
+/** Per-theme alias target for each semantic token, resolved directly from
+ * the DTCG sources rather than the built CSS: the light build emits an
+ * aliasing token as `var(--stoa-x)`, but the dark build (semantic tokens
+ * only, no primitives to reference) inlines the resolved literal, so a
+ * dark alias is invisible in tokens.css and must come from
+ * `semantic.dark.json` itself. */
+export function resolveSemanticAliases({ semanticLightJson, semanticDarkJson }) {
+  const light = new Map();
+  flattenDtcgValues(semanticLightJson, [], light);
+  const dark = new Map();
+  flattenDtcgValues(semanticDarkJson, [], dark);
+  const aliasOf = new Map();
+  for (const path of new Set([...light.keys(), ...dark.keys()])) aliasOf.set(`--stoa-${path}`, { light: null, dark: null });
+  for (const [path, raw] of light) aliasOf.get(`--stoa-${path}`).light = dtcgAliasTarget(raw);
+  for (const [path, raw] of dark) aliasOf.get(`--stoa-${path}`).dark = dtcgAliasTarget(raw);
+  return aliasOf;
+}
+
+/** Token descriptors from the built tokens.css, plus (for color) each
+ * token's per-theme alias target resolved from the DTCG sources (see
+ * `resolveSemanticAliases`) since the theme's inlined value alone doesn't
+ * say which primitive it came from. `semanticAliases` defaults to empty so
+ * callers that only care about the light theme (most tests) can omit it. */
+export function parseTokenList(tokensCssText, semanticAliases = new Map()) {
+  const blocks = parseCssBlocks(tokensCssText);
+  let lightBlock = null;
+  let darkBlock = null;
+  const densityBlocks = {};
+  for (const { selector, body } of blocks) {
+    if (selector === ":root" && !lightBlock) lightBlock = parseDeclBlock(body);
+    else if (selector.includes('[data-theme="dark"]') && !darkBlock) darkBlock = parseDeclBlock(body);
+    else if (selector.includes('[data-density="compact"]')) densityBlocks.compact = parseDeclBlock(body);
+    else if (selector.includes('[data-density="regular"]')) densityBlocks.regular = parseDeclBlock(body);
+    else if (selector.includes('[data-density="comfortable"]')) densityBlocks.comfortable = parseDeclBlock(body);
+  }
+  lightBlock ??= new Map();
+  darkBlock ??= new Map();
+
+  const lightAliasRe = /^var\(\s*(--stoa-[\w-]+)\s*\)$/;
   const tokens = new Map();
-  for (const { name, rawValue } of declarations.values()) {
-    const aliasMatch = rawValue.match(aliasRe);
-    const aliasOf = aliasMatch ? aliasMatch[1] : null;
+
+  for (const [name, rawValue] of lightBlock) {
+    if (name.startsWith("--stoa-density-")) continue; // handled below, per density mode
+    const lightAliasMatch = rawValue.match(lightAliasRe);
+    const lightAliasOf = lightAliasMatch ? lightAliasMatch[1] : null;
+    const darkAliasOf = semanticAliases.get(name)?.dark ?? null;
+    const darkValue = darkBlock.has(name) ? darkBlock.get(name) : null;
     tokens.set(name, {
       name,
       group: name.slice("--stoa-".length).split("-")[0],
       value: rawValue,
-      aliasOf,
-      kind: aliasOf ? "semantic" : name.startsWith("--stoa-density-") ? "density" : "primitive",
+      aliasOf: lightAliasOf,
+      themeAliasOf: { light: lightAliasOf, dark: darkAliasOf },
+      themeValue: { light: rawValue, dark: darkValue },
+      kind: lightAliasOf || darkAliasOf ? "semantic" : "primitive",
     });
   }
+
+  for (const [mode, decls] of Object.entries(densityBlocks)) {
+    for (const [name, rawValue] of decls) {
+      if (!tokens.has(name)) {
+        tokens.set(name, {
+          name,
+          group: "density",
+          value: rawValue,
+          aliasOf: null,
+          themeAliasOf: { light: null, dark: null },
+          themeValue: { light: null, dark: null },
+          kind: "density",
+          density: {},
+        });
+      }
+      const token = tokens.get(name);
+      token.density[mode] = rawValue;
+      if (mode === "regular") token.value = rawValue; // regular is the default mode
+    }
+  }
+
   for (const token of tokens.values()) {
-    token.resolvedValue = token.aliasOf ? (tokens.get(token.aliasOf)?.resolvedValue ?? tokens.get(token.aliasOf)?.value ?? token.value) : token.value;
+    const resolve = (aliasOf, ownValue) => (aliasOf ? (tokens.get(aliasOf)?.value ?? ownValue) : ownValue);
+    token.resolvedValue = resolve(token.themeAliasOf.light, token.value);
+    const hasDarkOverride = token.themeAliasOf.dark != null || token.themeValue.dark != null;
+    token.themeResolvedValue = {
+      light: resolve(token.themeAliasOf.light, token.themeValue.light),
+      dark: hasDarkOverride ? resolve(token.themeAliasOf.dark, token.themeValue.dark) : null,
+    };
   }
   return tokens;
 }
@@ -71,13 +221,8 @@ function splitCssValue(value) {
   return parts;
 }
 
-function lastCompoundSelector(selector) {
-  const compounds = selector.trim().split(/\s+/).filter(Boolean);
-  return compounds[compounds.length - 1] ?? "";
-}
-
-function classesOf(compound) {
-  return [...compound.matchAll(/\.([\w-]+)/g)].map((m) => m[1]);
+function classesOf(selector) {
+  return [...selector.matchAll(/\.([\w-]+)/g)].map((m) => m[1]);
 }
 
 // ---------------------------------------------------------------------------
@@ -85,10 +230,34 @@ function classesOf(compound) {
 // styles.css has no nesting, so a flat `selector { body }` scan is enough.
 
 const DURATION_PROPS = /^(transition|transition-duration|animation|animation-duration)$/;
+const EASING_PROPS = /^(transition|transition-timing-function|animation|animation-timing-function)$/;
 const SIZE_PROPS = /(radius|padding|margin|gap|inset|^top$|^right$|^bottom$|^left$|^font-size$)/;
 const COLOR_LITERAL = /^(#[0-9a-fA-F]{3,8}|rgba?\(|hsla?\(|oklch\(|oklab\(|lab\(|lch\()/;
 const DURATION_LITERAL = /^-?\d*\.?\d+m?s$/;
 const SIZE_LITERAL = /^-?\d*\.?\d+(px|rem|em|ch|%)$/;
+const EASING_KEYWORDS = new Set(["ease", "ease-in", "ease-out", "ease-in-out", "linear", "step-start", "step-end"]);
+// CSS Level 3 extended named colours (`transparent`/`currentcolor`/etc are
+// CSS-wide keywords, not colour choices, so they are excluded).
+const NAMED_COLORS = new Set([
+  "aliceblue", "antiquewhite", "aqua", "aquamarine", "azure", "beige", "bisque", "black", "blanchedalmond", "blue",
+  "blueviolet", "brown", "burlywood", "cadetblue", "chartreuse", "chocolate", "coral", "cornflowerblue", "cornsilk",
+  "crimson", "cyan", "darkblue", "darkcyan", "darkgoldenrod", "darkgray", "darkgreen", "darkgrey", "darkkhaki",
+  "darkmagenta", "darkolivegreen", "darkorange", "darkorchid", "darkred", "darksalmon", "darkseagreen",
+  "darkslateblue", "darkslategray", "darkslategrey", "darkturquoise", "darkviolet", "deeppink", "deepskyblue",
+  "dimgray", "dimgrey", "dodgerblue", "firebrick", "floralwhite", "forestgreen", "fuchsia", "gainsboro",
+  "ghostwhite", "gold", "goldenrod", "gray", "green", "greenyellow", "grey", "honeydew", "hotpink", "indianred",
+  "indigo", "ivory", "khaki", "lavender", "lavenderblush", "lawngreen", "lemonchiffon", "lightblue", "lightcoral",
+  "lightcyan", "lightgoldenrodyellow", "lightgray", "lightgreen", "lightgrey", "lightpink", "lightsalmon",
+  "lightseagreen", "lightskyblue", "lightslategray", "lightslategrey", "lightsteelblue", "lightyellow", "lime",
+  "limegreen", "linen", "magenta", "maroon", "mediumaquamarine", "mediumblue", "mediumorchid", "mediumpurple",
+  "mediumseagreen", "mediumslateblue", "mediumspringgreen", "mediumturquoise", "mediumvioletred", "midnightblue",
+  "mintcream", "mistyrose", "moccasin", "navajowhite", "navy", "oldlace", "olive", "olivedrab", "orange",
+  "orangered", "orchid", "palegoldenrod", "palegreen", "paleturquoise", "palevioletred", "papayawhip", "peachpuff",
+  "peru", "pink", "plum", "powderblue", "purple", "rebeccapurple", "red", "rosybrown", "royalblue", "saddlebrown",
+  "salmon", "sandybrown", "seagreen", "seashell", "sienna", "silver", "skyblue", "slateblue", "slategray",
+  "slategrey", "snow", "springgreen", "steelblue", "tan", "teal", "thistle", "tomato", "turquoise", "violet",
+  "wheat", "white", "whitesmoke", "yellow", "yellowgreen",
+]);
 const norm = (s) => s.replace(/\s+/g, "");
 
 /** @param {{path:string, content:string}[]} cssFiles */
@@ -103,27 +272,31 @@ export function scanCss(cssFiles, tokens) {
       const body = block[2];
       const bodyOffset = block.index + block[1].length + 1;
       const selectors = selectorText.split(",").map((s) => s.trim()).filter(Boolean);
-      const classes = [...new Set(selectors.flatMap((s) => classesOf(lastCompoundSelector(s))))];
+      // A class anywhere in the selector, not just its last compound: a
+      // combinator like `.stoa-badge--warning > span:first-child` still
+      // belongs to the component that owns `.stoa-badge--warning`.
+      const classes = [...new Set(selectors.flatMap((s) => classesOf(s)))];
 
-      for (const varMatch of body.matchAll(VAR_CALL)) {
+      for (const varCall of findVarCalls(body)) {
         reads.push({
-          token: varMatch[1],
+          token: varCall.token,
+          fallback: varCall.fallback,
           file: path,
-          line: lineOf(content, bodyOffset + varMatch.index),
+          line: lineOf(content, bodyOffset + varCall.index),
           selectors,
           classes,
         });
       }
 
-      for (const decl of body.matchAll(/([a-zA-Z-]+)\s*:\s*([^;]+);/g)) {
+      for (const decl of body.matchAll(/([a-zA-Z-]+)\s*:\s*([^;]+?)\s*(?:;|$)/g)) {
         const property = decl[1].trim();
         const declOffset = bodyOffset + decl.index;
         for (const value of splitCssValue(decl[2])) {
           if (value.includes("var(")) continue;
           let category = null;
-          if (COLOR_LITERAL.test(value)) category = "color";
+          if (COLOR_LITERAL.test(value) || NAMED_COLORS.has(value.toLowerCase())) category = "color";
           else if (DURATION_LITERAL.test(value) && DURATION_PROPS.test(property)) category = "duration";
-          else if (value.startsWith("cubic-bezier(")) category = "easing";
+          else if (value.startsWith("cubic-bezier(") || (EASING_KEYWORDS.has(value) && EASING_PROPS.test(property))) category = "easing";
           else if (SIZE_LITERAL.test(value) && SIZE_PROPS.test(property)) category = "size";
           if (!category) continue;
           const match = resolvedValues.find((t) => t.value === norm(value));
@@ -319,17 +492,53 @@ function scanGetPropertyValueReads(sourceFile) {
   return reads;
 }
 
-/** `var(--stoa-x)` occurrences in string/template literals outside CSS
- * files (inline styles), attributed to the nearest enclosing component. */
+/** `var(--stoa-x)` occurrences (with fallbacks) in string/template literals
+ * outside CSS files (inline styles), attributed to the nearest enclosing
+ * component. */
 function scanInlineVarReads(sourceFile) {
   const reads = [];
   forEachDescendant(sourceFile, (node) => {
     if (!ts.isStringLiteral(node) && !ts.isNoSubstitutionTemplateLiteral(node)) return;
-    for (const m of node.text.matchAll(VAR_CALL)) {
-      reads.push({ token: m[1], line: lineOfNode(sourceFile, node), enclosing: enclosingName(node) });
+    for (const call of findVarCalls(node.text)) {
+      reads.push({ token: call.token, fallback: call.fallback, line: lineOfNode(sourceFile, node), enclosing: enclosingName(node) });
     }
   });
   return reads;
+}
+
+const KEBAB_BOUNDARY = /([a-z0-9])([A-Z])/g;
+const kebabCase = (name) => name.replace(KEBAB_BOUNDARY, "$1-$2").toLowerCase();
+
+/** Hard-coded colour/duration/easing/size literals in a JSX `style={{...}}`
+ * object (the inline counterpart of `scanCss`'s literal detection; a `var()`
+ * value is a read, handled by `scanInlineVarReads`, not a literal here). */
+function scanInlineStyleLiterals(sourceFile) {
+  const literals = [];
+  forEachDescendant(sourceFile, (node) => {
+    if (!ts.isJsxAttribute(node) || node.name.getText(sourceFile) !== "style" || !node.initializer) return;
+    if (!ts.isJsxExpression(node.initializer) || !node.initializer.expression) return;
+    const obj = node.initializer.expression;
+    if (!ts.isObjectLiteralExpression(obj)) return;
+    for (const prop of obj.properties) {
+      if (!ts.isPropertyAssignment(prop)) continue;
+      const nameNode = prop.name;
+      const propName = ts.isIdentifier(nameNode) || ts.isStringLiteral(nameNode) ? nameNode.text : null;
+      if (!propName) continue;
+      const valueNode = prop.initializer;
+      if (!ts.isStringLiteral(valueNode) && !ts.isNoSubstitutionTemplateLiteral(valueNode)) continue;
+      const value = valueNode.text.trim();
+      if (value.includes("var(")) continue;
+      const property = kebabCase(propName);
+      let category = null;
+      if (COLOR_LITERAL.test(value) || NAMED_COLORS.has(value.toLowerCase())) category = "color";
+      else if (DURATION_LITERAL.test(value) && DURATION_PROPS.test(property)) category = "duration";
+      else if (value.startsWith("cubic-bezier(") || (EASING_KEYWORDS.has(value) && EASING_PROPS.test(property))) category = "easing";
+      else if (SIZE_LITERAL.test(value) && SIZE_PROPS.test(property)) category = "size";
+      if (!category) continue;
+      literals.push({ line: lineOfNode(sourceFile, valueNode), property, value, category });
+    }
+  });
+  return literals;
 }
 
 /** className literal pieces (exact and dynamic-prefix), each attributed to
@@ -366,11 +575,13 @@ export function scanSource(sourceFiles) {
   const classToOwners = new Map();
   const classPrefixToOwners = new Map();
   const callSitesByFn = new Map(); // helper fn name -> [{component, file}]
+  const inlineLiterals = [];
 
   for (const { path, content } of sourceFiles) {
     const sourceFile = makeSourceFile(path, content);
     for (const r of scanGetPropertyValueReads(sourceFile)) rawReads.push({ ...r, file: path });
     for (const r of scanInlineVarReads(sourceFile)) rawReads.push({ ...r, file: path });
+    for (const l of scanInlineStyleLiterals(sourceFile)) inlineLiterals.push({ ...l, file: path });
 
     const { exact, prefixes } = scanClassNames(sourceFile);
     for (const e of exact) {
@@ -405,7 +616,7 @@ export function scanSource(sourceFiles) {
     }
   }
 
-  return { reads: [...rawReads, ...propagated], classToOwners, classPrefixToOwners };
+  return { reads: [...rawReads, ...propagated], classToOwners, classPrefixToOwners, inlineLiterals };
 }
 
 function matchClass(cls, classToOwners, classPrefixToOwners) {
@@ -468,23 +679,26 @@ export function scanStories(storyFiles) {
 // ---------------------------------------------------------------------------
 // Assembly.
 
-export function buildTokenMap({ tokensCssText, cssFiles, sourceFiles, storyFiles, knownComponents }) {
-  const tokens = parseTokenList(tokensCssText);
-  const { reads: cssReads, literals } = scanCss(cssFiles, tokens);
-  const { reads: sourceReads, classToOwners, classPrefixToOwners } = scanSource(sourceFiles);
+export function buildTokenMap({ tokensCssText, cssFiles, sourceFiles, storyFiles, knownComponents, semanticLightJson, semanticDarkJson }) {
+  const semanticAliases =
+    semanticLightJson && semanticDarkJson ? resolveSemanticAliases({ semanticLightJson, semanticDarkJson }) : new Map();
+  const tokens = parseTokenList(tokensCssText, semanticAliases);
+  const { reads: cssReads, literals: cssLiterals } = scanCss(cssFiles, tokens);
+  const { reads: sourceReads, classToOwners, classPrefixToOwners, inlineLiterals } = scanSource(sourceFiles);
   const { componentToStories, directReads } = scanStories(storyFiles ?? []);
 
   const byToken = new Map([...tokens.keys()].map((name) => [name, { components: new Map(), stories: new Set() }]));
   const reached = new Set();
   const undefinedRefs = [];
 
+  // A primitive is reached whenever a semantic token that aliases it (in
+  // either theme) is read: an alias only ever resolves one level deep in
+  // this system, so a single lookup per theme is enough.
   const noteReach = (name) => {
     reached.add(name);
-    let t = tokens.get(name);
-    while (t?.aliasOf) {
-      reached.add(t.aliasOf);
-      t = tokens.get(t.aliasOf);
-    }
+    const t = tokens.get(name);
+    if (t?.themeAliasOf?.light) reached.add(t.themeAliasOf.light);
+    if (t?.themeAliasOf?.dark) reached.add(t.themeAliasOf.dark);
   };
 
   for (const read of cssReads) {
@@ -498,14 +712,24 @@ export function buildTokenMap({ tokensCssText, cssFiles, sourceFiles, storyFiles
     for (const cls of read.classes) {
       for (const owner of matchClass(cls, classToOwners, classPrefixToOwners)) {
         if (owner.component && (!knownComponents || knownComponents.has(owner.component))) {
-          entry.components.set(`${owner.component}|${read.file}|${read.line}`, { component: owner.component, file: read.file, line: read.line });
+          entry.components.set(`${owner.component}|${read.file}|${read.line}`, {
+            component: owner.component,
+            file: read.file,
+            line: read.line,
+            fallback: read.fallback ?? undefined,
+          });
           matched = true;
         }
       }
     }
     if (!matched) {
       const label = read.selectors.join(", ");
-      entry.components.set(`css:${label}|${read.file}|${read.line}`, { component: `(css) ${label}`, file: read.file, line: read.line });
+      entry.components.set(`css:${label}|${read.file}|${read.line}`, {
+        component: `(css) ${label}`,
+        file: read.file,
+        line: read.line,
+        fallback: read.fallback ?? undefined,
+      });
     }
   }
 
@@ -518,7 +742,7 @@ export function buildTokenMap({ tokensCssText, cssFiles, sourceFiles, storyFiles
     const entry = byToken.get(read.token);
     if (read.enclosing && (!knownComponents || knownComponents.has(read.enclosing))) {
       const key = `${read.enclosing}|${read.file}|${read.line}`;
-      entry.components.set(key, { component: read.enclosing, file: read.file, line: read.line, via: read.via });
+      entry.components.set(key, { component: read.enclosing, file: read.file, line: read.line, via: read.via, fallback: read.fallback ?? undefined });
     }
   }
 
@@ -536,6 +760,32 @@ export function buildTokenMap({ tokensCssText, cssFiles, sourceFiles, storyFiles
     }
   }
 
+  // A primitive reached only through an alias otherwise shows no readers:
+  // propagate readBy from each semantic token (light and dark) that aliases
+  // it, so the primitive's own entry lists who reads it, and through which
+  // semantic name.
+  for (const semanticToken of tokens.values()) {
+    const semanticEntry = byToken.get(semanticToken.name);
+    if (!semanticEntry || (semanticEntry.components.size === 0 && semanticEntry.stories.size === 0)) continue;
+    const targets = new Set([semanticToken.themeAliasOf.light, semanticToken.themeAliasOf.dark].filter(Boolean));
+    for (const targetName of targets) {
+      const targetEntry = byToken.get(targetName);
+      if (!targetEntry) continue;
+      for (const [key, comp] of semanticEntry.components) {
+        targetEntry.components.set(`via:${semanticToken.name}|${key}`, { ...comp, via: semanticToken.name });
+      }
+      for (const s of semanticEntry.stories) targetEntry.stories.add(s);
+    }
+  }
+
+  const literals = [...cssLiterals];
+  const resolvedValues = [...tokens.values()].map((t) => ({ name: t.name, value: norm(t.resolvedValue) }));
+  for (const l of inlineLiterals) {
+    const match = resolvedValues.find((t) => t.value === norm(l.value));
+    if (l.category === "size" && !match) continue;
+    literals.push({ file: l.file, line: l.line, property: l.property, value: l.value, category: l.category, matchingToken: match?.name ?? null });
+  }
+
   const tokenList = [...tokens.values()]
     .map((t) => {
       const entry = byToken.get(t.name);
@@ -546,6 +796,11 @@ export function buildTokenMap({ tokensCssText, cssFiles, sourceFiles, storyFiles
         value: t.value,
         resolvedValue: t.resolvedValue,
         aliasOf: t.aliasOf,
+        theme:
+          t.kind === "semantic"
+            ? { dark: { value: t.themeValue.dark, aliasOf: t.themeAliasOf.dark, resolvedValue: t.themeResolvedValue.dark } }
+            : undefined,
+        density: t.kind === "density" ? t.density : undefined,
         readBy: {
           components: [...entry.components.values()].sort((a, b) => a.component.localeCompare(b.component) || a.file.localeCompare(b.file) || a.line - b.line),
           stories: [...entry.stories].sort(),
@@ -559,7 +814,9 @@ export function buildTokenMap({ tokensCssText, cssFiles, sourceFiles, storyFiles
   const dedupedUndefined = [...new Map(undefinedRefs.map((r) => [`${r.name}|${r.file}|${r.line}`, r])).values()].sort(
     (a, b) => a.name.localeCompare(b.name) || a.file.localeCompare(b.file) || a.line - b.line,
   );
-  const dedupedLiterals = literals.sort((a, b) => a.file.localeCompare(b.file) || a.line - b.line);
+  const dedupedLiterals = [...new Map(literals.map((l) => [`${l.file}|${l.line}|${l.property}|${l.value}`, l])).values()].sort(
+    (a, b) => a.file.localeCompare(b.file) || a.line - b.line,
+  );
 
   return {
     tokens: tokenList,
@@ -595,7 +852,15 @@ export function renderMarkdown(map) {
         ? "_unused_"
         : "_(not attributed to a component)_";
     const stories = t.readBy.stories.length ? t.readBy.stories.join("<br>") : "";
-    lines.push(`| \`${t.name}\` | ${t.group} | ${t.kind} | \`${t.value}\` | ${t.aliasOf ? `\`${t.resolvedValue}\`` : "-"} | ${readBy} | ${stories} |`);
+    const dark = t.theme?.dark;
+    // Only worth a second line when the theme actually resolves to a
+    // different colour; light's `var()` and dark's inlined literal always
+    // read as different text even when they name the same primitive.
+    const darkDiffers = dark && dark.value != null && dark.resolvedValue !== t.resolvedValue;
+    const value = t.kind === "density" ? `compact \`${t.density.compact}\`, regular \`${t.density.regular}\`, comfortable \`${t.density.comfortable}\`` : `\`${t.value}\``;
+    const valueCell = darkDiffers ? `${value}<br>dark: \`${dark.value}\`` : value;
+    const resolvesCell = t.aliasOf ? `\`${t.resolvedValue}\`${darkDiffers ? `<br>dark: \`${dark.resolvedValue}\`` : ""}` : "-";
+    lines.push(`| \`${t.name}\` | ${t.group} | ${t.kind} | ${valueCell} | ${resolvesCell} | ${readBy} | ${stories} |`);
   }
 
   lines.push("", "## Unused tokens", "");

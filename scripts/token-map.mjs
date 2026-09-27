@@ -6,9 +6,11 @@
 //   node scripts/token-map.mjs --check  fail if the committed output is stale
 import { readFileSync, writeFileSync, readdirSync, existsSync, mkdirSync } from "node:fs";
 import { join, relative, extname } from "node:path";
+import { fileURLToPath } from "node:url";
+import ts from "typescript";
 import { buildTokenMap, renderMarkdown } from "./token-map/lib.mjs";
 
-const root = new URL("..", import.meta.url).pathname;
+const root = fileURLToPath(new URL("..", import.meta.url));
 const rel = (p) => relative(root, p).split("\\").join("/");
 
 function walk(dir, filter) {
@@ -30,12 +32,23 @@ function readAll(paths) {
   return paths.map((path) => ({ path: rel(path), content: readFileSync(path, "utf8") }));
 }
 
-function parseKnownComponents(indexTs) {
+/** Component names exported from `index.ts`: a named re-export whose local
+ * name is capitalised, matching this codebase's convention that a React
+ * component's name starts with an uppercase letter and a helper's does not
+ * (`Ladder` vs. `readCanvasTokens`, `fitCanvas`). A helper that happens to
+ * read tokens still reaches the map, through call-graph propagation to the
+ * component that calls it (see `scanSource`); it is just not itself listed
+ * as a reader. */
+function parseKnownComponents(indexTsPath, indexTsText) {
   const names = new Set();
-  for (const block of indexTs.matchAll(/export\s*\{([^}]+)\}\s*from/g)) {
-    for (const part of block[1].split(",")) {
-      const name = part.trim().split(/\s+as\s+/)[0].trim();
-      if (name && !name.startsWith("type ")) names.add(name);
+  const sourceFile = ts.createSourceFile(indexTsPath, indexTsText, ts.ScriptTarget.Latest, true, ts.ScriptKind.TS);
+  for (const statement of sourceFile.statements) {
+    if (!ts.isExportDeclaration(statement) || !statement.moduleSpecifier) continue;
+    if (statement.isTypeOnly || !statement.exportClause || !ts.isNamedExports(statement.exportClause)) continue;
+    for (const element of statement.exportClause.elements) {
+      if (element.isTypeOnly) continue;
+      const name = element.name.text;
+      if (/^[A-Z]/.test(name)) names.add(name);
     }
   }
   return names;
@@ -47,16 +60,20 @@ if (!existsSync(tokensCssPath)) {
   process.exit(1);
 }
 const tokensCssText = readFileSync(tokensCssPath, "utf8");
+const semanticLightJson = JSON.parse(readFileSync(join(root, "packages/tokens/tokens/semantic.light.json"), "utf8"));
+const semanticDarkJson = JSON.parse(readFileSync(join(root, "packages/tokens/tokens/semantic.dark.json"), "utf8"));
 
 const reactSrc = join(root, "packages/react/src");
+const storybookDir = join(root, ".storybook");
 const isTestOrStory = (name) => /\.(test|stories)\.tsx?$/.test(name);
 
-const cssFiles = readAll(walk(reactSrc, (name) => extname(name) === ".css"));
+const cssFiles = readAll([...walk(reactSrc, (name) => extname(name) === ".css"), ...walk(storybookDir, (name) => extname(name) === ".css")]);
 const sourceFiles = readAll(walk(reactSrc, (name) => /\.tsx?$/.test(name) && !isTestOrStory(name)));
 const storyFiles = readAll([...walk(reactSrc, (name) => name.endsWith(".stories.tsx")), ...walk(join(root, "stories"), (name) => name.endsWith(".stories.tsx"))]);
-const knownComponents = parseKnownComponents(readFileSync(join(reactSrc, "index.ts"), "utf8"));
+const indexTsPath = join(reactSrc, "index.ts");
+const knownComponents = parseKnownComponents(rel(indexTsPath), readFileSync(indexTsPath, "utf8"));
 
-const map = buildTokenMap({ tokensCssText, cssFiles, sourceFiles, storyFiles, knownComponents });
+const map = buildTokenMap({ tokensCssText, cssFiles, sourceFiles, storyFiles, knownComponents, semanticLightJson, semanticDarkJson });
 const json = `${JSON.stringify(map, null, 2)}\n`;
 const md = renderMarkdown(map);
 
