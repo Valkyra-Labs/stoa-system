@@ -1,6 +1,6 @@
 import { useEffect, useImperativeHandle, useRef, useState, type Ref } from "react";
 import { describeBook, ladderRows, parseBook, type Book } from "./book";
-import { fitCanvas, readCanvasTokens, type CanvasTokens } from "./tokens";
+import { fitCanvas, readCanvasTokens, useInvalidateOnTokensVersion, useTokenSignal, type CanvasTokens } from "./tokens";
 
 export type LadderHandle = {
   /** Draw a book in the flat engine form, without a React render. */
@@ -14,6 +14,9 @@ export type LadderProps = {
   data?: ArrayLike<number> | null;
   label: string;
   formatPrice?: (p: number) => string;
+  /** Bumped to force a token re-read and redraw, as an alternative to
+   * dispatching `stoa:tokens` on an ancestor (see `useTokenSignal`). */
+  tokensVersion?: number;
   ref?: Ref<LadderHandle>;
 };
 
@@ -49,17 +52,25 @@ function draw(canvas: HTMLCanvasElement, t: CanvasTokens, book: Book, depth: num
 /** An order-book ladder on a canvas: asks above, bids below, a size bar
  * per level. Screen readers get the top of the book as text, updated at
  * most once a second. */
-export function Ladder({ depth = 12, data, label, formatPrice = (p) => p.toFixed(2), ref }: LadderProps) {
+export function Ladder({ depth = 12, data, label, formatPrice = (p) => p.toFixed(2), tokensVersion, ref }: LadderProps) {
   const canvas = useRef<HTMLCanvasElement>(null);
   const tokens = useRef<CanvasTokens | null>(null);
   const [summary, setSummary] = useState("The book is empty.");
   const lastSummary = useRef(0);
   const latest = useRef<Book>({ bids: [], asks: [] });
+  // Holds a reference to the caller's buffer, not a copy: a token-triggered
+  // redraw draws whatever `lastFlat.current` points to right now. A caller
+  // that reuses one buffer across frames (the zero-allocation pattern the
+  // `Live` story uses) must not mutate it in place between an animation
+  // frame and a later signal, or the redraw will show newer data than what
+  // was last drawn through React.
+  const lastFlat = useRef<ArrayLike<number> | null>(null);
   const trailing = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const render = (flat: ArrayLike<number> | null) => {
     const c = canvas.current;
     if (!c) return;
+    lastFlat.current = flat;
     tokens.current ??= readCanvasTokens(c);
     const book = parseBook(flat);
     draw(c, tokens.current, book, depth, formatPrice);
@@ -81,21 +92,26 @@ export function Ladder({ depth = 12, data, label, formatPrice = (p) => p.toFixed
   }, []);
 
   useImperativeHandle(ref, () => ({ draw: render }));
+
+  // Drop the cached tokens when `tokensVersion` changes, from an effect
+  // that runs before the one below (which draws on every render whenever
+  // `data` is set), so that draw reads fresh tokens. Without this, a
+  // `tokensVersion` bump with `data` also set drew twice: once with the
+  // still-cached, stale tokens from that effect, then again from
+  // `useTokenSignal`'s own redraw.
+  useInvalidateOnTokensVersion(tokensVersion, () => {
+    tokens.current = null;
+  });
+
   useEffect(() => {
     if (data !== undefined) render(data);
   });
-  useEffect(() => {
-    // Re-read tokens when the theme or density changes.
-    const reset = () => (tokens.current = null);
-    const mq = matchMedia("(prefers-color-scheme: dark)");
-    mq.addEventListener("change", reset);
-    const mo = new MutationObserver(reset);
-    mo.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme", "data-density"] });
-    return () => {
-      mq.removeEventListener("change", reset);
-      mo.disconnect();
-    };
-  }, []);
+  // The data effect above already redrew with fresh tokens when `data` is
+  // set, so the hook only owns the version path when it is not.
+  useTokenSignal(canvas, data === undefined ? tokensVersion : undefined, () => {
+    tokens.current = null;
+    render(lastFlat.current);
+  });
 
   return (
     <figure className="stoa-ladder" aria-label={label}>

@@ -1,6 +1,6 @@
 import { useEffect, useImperativeHandle, useRef, type Ref } from "react";
 import { cellAlpha, maxAbs } from "./heatmapScale";
-import { fitCanvas, readCanvasTokens, type CanvasTokens } from "./tokens";
+import { fitCanvas, readCanvasTokens, useInvalidateOnTokensVersion, useTokenSignal, type CanvasTokens } from "./tokens";
 
 export type HeatmapData = {
   /** Column-major cells: `columns` slices of `rows` prices, top row first;
@@ -21,6 +21,9 @@ export type HeatmapProps = {
   /** Plain-language description of what the chart shows now. */
   description?: string;
   data?: HeatmapData | null;
+  /** Bumped to force a token re-read and redraw, as an alternative to
+   * dispatching `stoa:tokens` on an ancestor (see `useTokenSignal`). */
+  tokensVersion?: number;
   ref?: Ref<HeatmapHandle>;
 };
 
@@ -55,18 +58,35 @@ function draw(canvas: HTMLCanvasElement, t: CanvasTokens, d: HeatmapData | null,
 /** Displayed liquidity over time on a canvas: time left to right, price
  * top to bottom, bids in the bid colour and asks in the ask colour,
  * opacity by size on a log scale. */
-export function Heatmap({ height = 240, label, description, data, ref }: HeatmapProps) {
+export function Heatmap({ height = 240, label, description, data, tokensVersion, ref }: HeatmapProps) {
   const canvas = useRef<HTMLCanvasElement>(null);
   const tokens = useRef<CanvasTokens | null>(null);
+  const lastData = useRef<HeatmapData | null>(null);
   const render = (d: HeatmapData | null) => {
     const c = canvas.current;
     if (!c) return;
+    lastData.current = d;
     tokens.current ??= readCanvasTokens(c);
     draw(c, tokens.current, d, height);
   };
   useImperativeHandle(ref, () => ({ draw: render }));
+  // Drop the cached tokens when `tokensVersion` changes, from an effect
+  // that runs before the one below (which draws on every render whenever
+  // `data` is set), so that draw reads fresh tokens. Without this, a
+  // `tokensVersion` bump with `data` also set drew twice: once with the
+  // still-cached, stale tokens from that effect, then again from
+  // `useTokenSignal`'s own redraw.
+  useInvalidateOnTokensVersion(tokensVersion, () => {
+    tokens.current = null;
+  });
   useEffect(() => {
     if (data !== undefined) render(data);
+  });
+  // The data effect above already redrew with fresh tokens when `data` is
+  // set, so the hook only owns the version path when it is not.
+  useTokenSignal(canvas, data === undefined ? tokensVersion : undefined, () => {
+    tokens.current = null;
+    render(lastData.current);
   });
   return (
     <figure className="stoa-heatmap" aria-label={label}>
