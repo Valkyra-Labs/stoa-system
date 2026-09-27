@@ -1,6 +1,7 @@
 // @vitest-environment jsdom
 import { act, render } from "@testing-library/react";
 import { createRef, StrictMode, type ReactNode } from "react";
+import { createRoot } from "react-dom/client";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { Heatmap, type HeatmapHandle, Ladder, type LadderHandle, signalTokensChanged, TOKENS_EVENT } from "./index";
 import { sampleBook, sampleHeatmap } from "./fixtures";
@@ -44,11 +45,15 @@ function fakeContext(): FakeCtx & Record<string, unknown> {
   return ctx;
 }
 
-function installFakeCanvas() {
-  const original = HTMLCanvasElement.prototype.getContext;
+// `win` selects the realm to patch: an iframe has its own
+// `HTMLCanvasElement`, so a component rendered inside one needs the stub
+// installed on that window's prototype rather than on this one's.
+function installFakeCanvas(win: Window & typeof globalThis = window) {
+  const proto = win.HTMLCanvasElement.prototype;
+  const original = proto.getContext;
   const contexts = new WeakMap<HTMLCanvasElement, FakeCtx>();
   // @ts-expect-error -- test stub, narrower than the real overload set.
-  HTMLCanvasElement.prototype.getContext = function (this: HTMLCanvasElement, id: string) {
+  proto.getContext = function (this: HTMLCanvasElement, id: string) {
     if (id !== "2d") return null;
     let ctx = contexts.get(this);
     if (!ctx) {
@@ -57,7 +62,7 @@ function installFakeCanvas() {
     }
     return ctx;
   };
-  return { contexts, restore: () => (HTMLCanvasElement.prototype.getContext = original) };
+  return { contexts, restore: () => (proto.getContext = original) };
 }
 
 function Themed({ surface, children }: { surface: string; children: ReactNode }) {
@@ -283,6 +288,75 @@ describe("token change signal", () => {
     expect(ctx.surfaceFills.at(-1)).toBe("rgb(7, 7, 7)");
   });
 
+  it("still arrives when an ancestor stops the event's propagation", () => {
+    canvasStub = installFakeCanvas();
+    const ref = createRef<LadderHandle>();
+    const { container } = render(
+      <div>
+        <Themed surface="rgb(1, 1, 1)">
+          <Ladder ref={ref} label="Book" />
+        </Themed>
+      </div>,
+    );
+    const outer = container.firstElementChild as HTMLElement;
+    const wrapper = outer.firstElementChild as HTMLElement;
+    const canvas = container.querySelector("canvas")!;
+    act(() => ref.current!.draw(sampleBook()));
+    const ctx = canvasStub.contexts.get(canvas)!;
+
+    // First round: an ancestor stops the event on its way back up, after
+    // the capture-phase listener has run. Second round: the ancestor stops
+    // it in the capture phase, which still runs after the document's own,
+    // the document being further out.
+    for (const [round, capture] of [[8, false], [9, true]] as const) {
+      const stop = (e: Event) => e.stopPropagation();
+      outer.addEventListener(TOKENS_EVENT, stop, capture);
+      const before = ctx.draws;
+      const surface = `rgb(${round}, ${round}, ${round})`;
+      wrapper.style.setProperty("--stoa-color-surface", surface);
+      act(() => signalTokensChanged(wrapper));
+      outer.removeEventListener(TOKENS_EVENT, stop, capture);
+
+      expect(ctx.draws).toBe(before + 1);
+      expect(ctx.surfaceFills.at(-1)).toBe(surface);
+    }
+  });
+
+  it("redraws a component rendered into an iframe's own document", async () => {
+    const frame = document.createElement("iframe");
+    document.body.append(frame);
+    const frameWindow = frame.contentWindow as unknown as Window & typeof globalThis;
+    const frameDoc = frame.contentDocument!;
+    canvasStub = installFakeCanvas(frameWindow);
+    const mount = frameDoc.createElement("div");
+    mount.style.setProperty("--stoa-color-surface", "rgb(31, 31, 31)");
+    frameDoc.body.append(mount);
+    // The iframe is another realm, so its nodes fail `instanceof Node`
+    // against this realm's constructor: the check that decides whether a
+    // signal's target is an ancestor cannot use `instanceof`.
+    expect(mount instanceof Node).toBe(false);
+
+    const ref = createRef<LadderHandle>();
+    const root = createRoot(mount);
+    try {
+      await act(async () => root.render(<Ladder ref={ref} label="Book" />));
+      const canvas = frameDoc.querySelector("canvas")!;
+      act(() => ref.current!.draw(sampleBook()));
+      const ctx = canvasStub.contexts.get(canvas)!;
+      expect(ctx.surfaceFills.at(-1)).toBe("rgb(31, 31, 31)");
+      const before = ctx.draws;
+
+      mount.style.setProperty("--stoa-color-surface", "rgb(32, 32, 32)");
+      act(() => signalTokensChanged(mount));
+
+      expect(ctx.draws).toBe(before + 1);
+      expect(ctx.surfaceFills.at(-1)).toBe("rgb(32, 32, 32)");
+    } finally {
+      await act(async () => root.unmount());
+      frame.remove();
+    }
+  });
+
   it("keeps the tokensVersion prop working as an alternative to the event", () => {
     canvasStub = installFakeCanvas();
     const ref = createRef<LadderHandle>();
@@ -304,5 +378,58 @@ describe("token change signal", () => {
     ));
 
     expect(ctx.surfaceFills.at(-1)).toBe("rgb(6, 6, 6)");
+  });
+
+  it("draws a Ladder once, with fresh tokens, when tokensVersion changes with data set", () => {
+    canvasStub = installFakeCanvas();
+    const book = sampleBook();
+    const { container, rerender } = render(
+      <Themed surface="rgb(41, 41, 41)">
+        <Ladder label="Book" data={book} tokensVersion={0} />
+      </Themed>,
+    );
+    const wrapper = container.firstElementChild as HTMLElement;
+    const canvas = container.querySelector("canvas")!;
+    const ctx = canvasStub.contexts.get(canvas)!;
+    expect(ctx.surfaceFills.at(-1)).toBe("rgb(41, 41, 41)");
+    const draws = ctx.draws;
+    const fills = ctx.surfaceFills.length;
+
+    wrapper.style.setProperty("--stoa-color-surface", "rgb(42, 42, 42)");
+    act(() => rerender(
+      <Themed surface="rgb(42, 42, 42)">
+        <Ladder label="Book" data={book} tokensVersion={1} />
+      </Themed>,
+    ));
+
+    // One draw, with the new value: not a stale draw followed by a fresh one.
+    expect(ctx.draws).toBe(draws + 1);
+    expect(ctx.surfaceFills.slice(fills)).toEqual(["rgb(42, 42, 42)"]);
+  });
+
+  it("draws a Heatmap once, with fresh tokens, when tokensVersion changes with data set", () => {
+    canvasStub = installFakeCanvas();
+    const cells = sampleHeatmap(4, 4);
+    const { container, rerender } = render(
+      <Themed surface="rgb(51, 51, 51)">
+        <Heatmap label="Liquidity" height={80} data={cells} tokensVersion={0} />
+      </Themed>,
+    );
+    const wrapper = container.firstElementChild as HTMLElement;
+    const canvas = container.querySelector("canvas")!;
+    const ctx = canvasStub.contexts.get(canvas)!;
+    expect(ctx.surfaceFills.at(-1)).toBe("rgb(51, 51, 51)");
+    const draws = ctx.draws;
+    const fills = ctx.surfaceFills.length;
+
+    wrapper.style.setProperty("--stoa-color-surface", "rgb(52, 52, 52)");
+    act(() => rerender(
+      <Themed surface="rgb(52, 52, 52)">
+        <Heatmap label="Liquidity" height={80} data={cells} tokensVersion={1} />
+      </Themed>,
+    ));
+
+    expect(ctx.draws).toBe(draws + 1);
+    expect(ctx.surfaceFills.slice(fills)).toEqual(["rgb(52, 52, 52)"]);
   });
 });

@@ -1,6 +1,6 @@
 import { useEffect, useImperativeHandle, useRef, type Ref } from "react";
 import { cellAlpha, maxAbs } from "./heatmapScale";
-import { fitCanvas, readCanvasTokens, useTokenSignal, type CanvasTokens } from "./tokens";
+import { fitCanvas, readCanvasTokens, useInvalidateOnTokensVersion, useTokenSignal, type CanvasTokens } from "./tokens";
 
 export type HeatmapData = {
   /** Column-major cells: `columns` slices of `rows` prices, top row first;
@@ -70,10 +70,21 @@ export function Heatmap({ height = 240, label, description, data, tokensVersion,
     draw(c, tokens.current, d, height);
   };
   useImperativeHandle(ref, () => ({ draw: render }));
+  // Drop the cached tokens when `tokensVersion` changes, from an effect
+  // that runs before the one below (which draws on every render whenever
+  // `data` is set), so that draw reads fresh tokens. Without this, a
+  // `tokensVersion` bump with `data` also set drew twice: once with the
+  // still-cached, stale tokens from that effect, then again from
+  // `useTokenSignal`'s own redraw.
+  useInvalidateOnTokensVersion(tokensVersion, () => {
+    tokens.current = null;
+  });
   useEffect(() => {
     if (data !== undefined) render(data);
   });
-  useTokenSignal(canvas, tokensVersion, () => {
+  // The data effect above already redrew with fresh tokens when `data` is
+  // set, so the hook only owns the version path when it is not.
+  useTokenSignal(canvas, data === undefined ? tokensVersion : undefined, () => {
     tokens.current = null;
     render(lastData.current);
   });

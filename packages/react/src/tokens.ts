@@ -18,7 +18,10 @@ export type CanvasTokens = {
 };
 
 export function readCanvasTokens(el: Element): CanvasTokens {
-  const s = getComputedStyle(el);
+  // Resolve through the element's own window: a preview portalled into an
+  // iframe lives in another realm, whose styles the top-level
+  // `getComputedStyle` is not guaranteed to resolve.
+  const s = (el.ownerDocument.defaultView ?? window).getComputedStyle(el);
   const v = (n: string) => s.getPropertyValue(n).trim();
   return {
     surface: v("--stoa-color-surface"),
@@ -51,6 +54,15 @@ export const TOKENS_EVENT = "stoa:tokens";
  * caller also wants a bubble-phase listener of its own. */
 export function signalTokensChanged(root: Element): void {
   root.dispatchEvent(new CustomEvent(TOKENS_EVENT, { bubbles: true }));
+}
+
+/** Whether `target` is a node that has `node` inside it. `target instanceof
+ * Node` would be false for an event target from another realm (a preview
+ * portalled into an iframe brings its own `Node` constructor), so this
+ * tests for the method rather than for the constructor. */
+function containsNode(target: EventTarget | null, node: Node): boolean {
+  const candidate = target as Node | null;
+  return candidate !== null && typeof candidate.contains === "function" && candidate.contains(node);
 }
 
 /**
@@ -86,13 +98,16 @@ export function useTokenSignal(el: RefObject<Element | null>, tokensVersion: num
   useEffect(() => {
     const doc = el.current?.ownerDocument ?? document;
     const onEvent = (e: Event) => {
-      const root = e.target;
-      if (root instanceof Node && el.current && root.contains(el.current)) redrawRef.current();
+      const child = el.current;
+      if (child && containsNode(e.target, child)) redrawRef.current();
     };
     const onChange = () => redrawRef.current();
     doc.addEventListener(TOKENS_EVENT, onEvent, true);
-    // jsdom (used in tests) has no matchMedia; skip the OS listener there.
-    const mq = typeof matchMedia === "function" ? matchMedia("(prefers-color-scheme: dark)") : null;
+    // Read `matchMedia` from the element's own window, not the top-level
+    // one, so a preview inside an iframe listens in its own realm. jsdom
+    // (used in tests) has no matchMedia; skip the OS listener there.
+    const view = doc.defaultView;
+    const mq = typeof view?.matchMedia === "function" ? view.matchMedia("(prefers-color-scheme: dark)") : null;
     mq?.addEventListener("change", onChange);
     const mo = new MutationObserver(onChange);
     mo.observe(doc.documentElement, { attributes: true, attributeFilter: ["data-theme", "data-density"] });
@@ -106,6 +121,30 @@ export function useTokenSignal(el: RefObject<Element | null>, tokensVersion: num
   useEffect(() => {
     if (tokensVersion !== undefined) redrawRef.current();
   }, [tokensVersion]);
+}
+
+/**
+ * Calls `invalidate` once whenever `tokensVersion` changes, from an effect
+ * that runs before the ones declared after it. A component declares this
+ * above the effect that draws from its data prop, so that a version bump
+ * arriving together with a data prop drops the cached tokens first and the
+ * data draw reads fresh ones. Without it, such a render drew twice: once
+ * with the stale cached tokens from the data effect, then again from
+ * {@link useTokenSignal}'s own redraw.
+ *
+ * The comparison is kept in a ref written from the effect, not during
+ * render, so a render that React throws away leaves nothing behind.
+ */
+export function useInvalidateOnTokensVersion(tokensVersion: number | undefined, invalidate: () => void): void {
+  const seen = useRef(tokensVersion);
+  // No dependency array: the effect runs after every render with that
+  // render's own `invalidate`, so the callback is never a stale closure.
+  useEffect(() => {
+    if (tokensVersion !== seen.current) {
+      seen.current = tokensVersion;
+      invalidate();
+    }
+  });
 }
 
 /** Size a canvas for its CSS box and the device pixel ratio; returns the
