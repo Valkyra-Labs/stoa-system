@@ -11,6 +11,10 @@ import { editableTabs } from "./editable";
 import { canRedo, canUndo, clearAll, clearOverride, emptyHistory, endEdit, redo, setOverride, undo } from "./history";
 import { createStream } from "./stream";
 import { ApiError, saveSnapshot } from "./api";
+import { MotionPanel } from "./motion/MotionPanel";
+import { easingPointsByName, motionTokens } from "./motion/motionTokens";
+import { springExtension } from "./motion/motionExtension";
+import type { SpringParams } from "./motion/springSampler";
 import {
   DENSITY_MODES,
   baseTokens,
@@ -45,10 +49,13 @@ export function App() {
    * user ask for it to be written over. */
   const [taken, setTaken] = useState(false);
   const [renderMs, setRenderMs] = useState(0);
+  const [spring, setSpring] = useState<SpringParams>({ damping: 26, stiffness: 210, mass: 1 });
 
   const overrides = history.present;
   const stream = useMemo(() => createStream(7), []);
   const tabs = useMemo(() => editableTabs(baseTokens), []);
+  const motion = useMemo(() => motionTokens(baseTokens), []);
+  const easingPoints = useMemo(() => easingPointsByName(motion.easings, overrides), [motion, overrides]);
 
   const tokens = useMemo<Record<Theme, ResolvedTokens>>(
     () => ({
@@ -74,7 +81,11 @@ export function App() {
   const save = async (overwrite = false) => {
     setSaveError(null);
     try {
-      const result = await saveSnapshot({ name, files, overrides, overwrite });
+      // Springs are not a DTCG token (no `cubicBezier`-like type exists for
+      // them yet), so they ride alongside the token overrides rather than
+      // through them: see docs/stage-1/wave-2/08-motion.md.
+      const motionPayload = { springs: { "price-flash": springExtension(spring, easingPoints) } };
+      const result = await saveSnapshot({ name, files, overrides, motion: motionPayload, overwrite });
       setTaken(false);
       setSaved(`${result.path} on ${result.commit.slice(0, 7)}${result.dirty ? " (working tree dirty)" : ""}`);
     } catch (cause) {
@@ -84,6 +95,35 @@ export function App() {
       setSaveError(cause instanceof Error ? cause.message : String(cause));
     }
   };
+
+  // The playground's panel list: each wave-2 brief that adds its own panel
+  // (05 parameters, 07 type, 08 motion) appends one entry here, so parallel
+  // branches touch this file as a list of small additions rather than each
+  // editing the sidebar's JSX. See docs/stage-1/wave-2/README.md.
+  const panels = [
+    {
+      id: "motion",
+      title: "Motion",
+      content: (
+        <MotionPanel
+          files={baseTokens}
+          overrides={overrides}
+          values={values}
+          onEdit={(id, value, held) => {
+            const at = Date.now();
+            setHistory((h) => setOverride(h, id, value, { at, held }));
+          }}
+          onEditEnd={() => {
+            const at = Date.now();
+            setHistory((h) => endEdit(h, at));
+          }}
+          onReset={(id) => setHistory((h) => clearOverride(h, id))}
+          spring={spring}
+          onSpringChange={setSpring}
+        />
+      ),
+    },
+  ];
 
   return (
     <div className="pg-app">
@@ -161,6 +201,12 @@ export function App() {
         <Panel title="Verification">
           <Verification tokens={tokens} density={density} files={files} />
         </Panel>
+
+        {panels.map((p) => (
+          <Panel key={p.id} title={p.title}>
+            {p.content}
+          </Panel>
+        ))}
 
         <Panel title="Snapshot">
           <div className="pg-stack">
