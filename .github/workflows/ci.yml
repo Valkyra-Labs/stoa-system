@@ -24,6 +24,7 @@ jobs:
       - run: pnpm build
       - run: pnpm -r typecheck
       - run: pnpm test
+      - run: node scripts/token-map.mjs --check
       - name: Chromium for the playground smoke test
         run: pnpm --filter playground exec playwright install --with-deps chromium
       - name: Browser tests

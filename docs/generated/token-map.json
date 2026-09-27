@@ -1,0 +1,3923 @@
+{
+  "tokens": [
+    {
+      "name": "--stoa-color-accent",
+      "group": "color",
+      "kind": "semantic",
+      "value": "var(--stoa-color-blue-600)",
+      "resolvedValue": "oklch(0.52 0.17 255)",
+      "aliasOf": "--stoa-color-blue-600",
+      "theme": {
+        "dark": {
+          "value": "oklch(0.7 0.13 255)",
+          "aliasOf": "--stoa-color-blue-400",
+          "resolvedValue": "oklch(0.7 0.13 255)"
+        }
+      },
+      "readBy": {
+        "components": [
+          {
+            "component": "Button",
+            "file": "packages/react/src/styles.css",
+            "line": 52
+          },
+          {
+            "component": "ChoiceGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 52
+          },
+          {
+            "component": "Heatmap",
+            "file": "packages/react/src/Heatmap.tsx",
+            "line": 35,
+            "via": "readCanvasTokens"
+          },
+          {
+            "component": "Ladder",
+            "file": "packages/react/src/Ladder.tsx",
+            "line": 35,
+            "via": "readCanvasTokens"
+          },
+          {
+            "component": "Tabs",
+            "file": "packages/react/src/styles.css",
+            "line": 99
+          },
+          {
+            "component": "TimeSlider",
+            "file": "packages/react/src/styles.css",
+            "line": 69
+          }
+        ],
+        "stories": [
+          "Controls/Playback > Counters",
+          "Controls/Playback > Trades",
+          "Controls/Playback > Transport",
+          "Data/Heatmap > Liquidity",
+          "Data/Heatmap > Sparse",
+          "Data/Ladder > Empty",
+          "Data/Ladder > Live",
+          "Data/Ladder > Static",
+          "Data/Ladder > TwoThemes",
+          "Foundations/Colour > SemanticColours"
+        ]
+      },
+      "reachedByTheme": {
+        "light": {
+          "direct": true,
+          "via": []
+        },
+        "dark": {
+          "direct": true,
+          "via": []
+        }
+      },
+      "unused": false
+    },
+    {
+      "name": "--stoa-color-amber-500",
+      "group": "color",
+      "kind": "primitive",
+      "value": "oklch(0.78 0.15 80)",
+      "resolvedValue": "oklch(0.78 0.15 80)",
+      "aliasOf": null,
+      "readBy": {
+        "components": [
+          {
+            "component": "StatusBadge",
+            "file": "packages/react/src/styles.css",
+            "line": 91,
+            "via": "--stoa-color-warning"
+          }
+        ],
+        "stories": []
+      },
+      "reachedByTheme": {
+        "light": {
+          "direct": false,
+          "via": [
+            "--stoa-color-warning"
+          ]
+        },
+        "dark": {
+          "direct": false,
+          "via": [
+            "--stoa-color-warning"
+          ]
+        }
+      },
+      "unused": false
+    },
+    {
+      "name": "--stoa-color-ask",
+      "group": "color",
+      "kind": "semantic",
+      "value": "var(--stoa-color-red-600)",
+      "resolvedValue": "oklch(0.56 0.18 30)",
+      "aliasOf": "--stoa-color-red-600",
+      "theme": {
+        "dark": {
+          "value": "oklch(0.72 0.15 32)",
+          "aliasOf": "--stoa-color-red-400",
+          "resolvedValue": "oklch(0.72 0.15 32)"
+        }
+      },
+      "readBy": {
+        "components": [
+          {
+            "component": "Heatmap",
+            "file": "packages/react/src/Heatmap.tsx",
+            "line": 32,
+            "via": "readCanvasTokens"
+          },
+          {
+            "component": "Ladder",
+            "file": "packages/react/src/Ladder.tsx",
+            "line": 32,
+            "via": "readCanvasTokens"
+          }
+        ],
+        "stories": [
+          "Data/Heatmap > Liquidity",
+          "Data/Heatmap > Sparse",
+          "Data/Ladder > Empty",
+          "Data/Ladder > Live",
+          "Data/Ladder > Static",
+          "Data/Ladder > TwoThemes",
+          "Foundations/Colour > SemanticColours"
+        ]
+      },
+      "reachedByTheme": {
+        "light": {
+          "direct": true,
+          "via": []
+        },
+        "dark": {
+          "direct": true,
+          "via": []
+        }
+      },
+      "unused": false
+    },
+    {
+      "name": "--stoa-color-bg",
+      "group": "color",
+      "kind": "semantic",
+      "value": "var(--stoa-color-neutral-50)",
+      "resolvedValue": "oklch(0.985 0.002 250)",
+      "aliasOf": "--stoa-color-neutral-50",
+      "theme": {
+        "dark": {
+          "value": "oklch(0.13 0.006 250)",
+          "aliasOf": "--stoa-color-neutral-1000",
+          "resolvedValue": "oklch(0.13 0.006 250)"
+        }
+      },
+      "readBy": {
+        "components": [
+          {
+            "component": "(css) body",
+            "file": ".storybook/preview.css",
+            "line": 2
+          }
+        ],
+        "stories": []
+      },
+      "reachedByTheme": {
+        "light": {
+          "direct": true,
+          "via": []
+        },
+        "dark": {
+          "direct": true,
+          "via": []
+        }
+      },
+      "unused": false
+    },
+    {
+      "name": "--stoa-color-bid",
+      "group": "color",
+      "kind": "semantic",
+      "value": "var(--stoa-color-teal-600)",
+      "resolvedValue": "oklch(0.53 0.11 170)",
+      "aliasOf": "--stoa-color-teal-600",
+      "theme": {
+        "dark": {
+          "value": "oklch(0.74 0.12 170)",
+          "aliasOf": "--stoa-color-teal-400",
+          "resolvedValue": "oklch(0.74 0.12 170)"
+        }
+      },
+      "readBy": {
+        "components": [
+          {
+            "component": "Heatmap",
+            "file": "packages/react/src/Heatmap.tsx",
+            "line": 31,
+            "via": "readCanvasTokens"
+          },
+          {
+            "component": "Ladder",
+            "file": "packages/react/src/Ladder.tsx",
+            "line": 31,
+            "via": "readCanvasTokens"
+          }
+        ],
+        "stories": [
+          "Data/Heatmap > Liquidity",
+          "Data/Heatmap > Sparse",
+          "Data/Ladder > Empty",
+          "Data/Ladder > Live",
+          "Data/Ladder > Static",
+          "Data/Ladder > TwoThemes",
+          "Foundations/Colour > SemanticColours"
+        ]
+      },
+      "reachedByTheme": {
+        "light": {
+          "direct": true,
+          "via": []
+        },
+        "dark": {
+          "direct": true,
+          "via": []
+        }
+      },
+      "unused": false
+    },
+    {
+      "name": "--stoa-color-blue-400",
+      "group": "color",
+      "kind": "primitive",
+      "value": "oklch(0.7 0.13 255)",
+      "resolvedValue": "oklch(0.7 0.13 255)",
+      "aliasOf": null,
+      "readBy": {
+        "components": [
+          {
+            "component": "Button",
+            "file": "packages/react/src/styles.css",
+            "line": 52,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "Button",
+            "file": "packages/react/src/styles.css",
+            "line": 55,
+            "via": "--stoa-color-focus"
+          },
+          {
+            "component": "ChoiceGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 52,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "ChoiceGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 55,
+            "via": "--stoa-color-focus"
+          },
+          {
+            "component": "Heatmap",
+            "file": "packages/react/src/Heatmap.tsx",
+            "line": 35,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "Ladder",
+            "file": "packages/react/src/Ladder.tsx",
+            "line": 35,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "Tabs",
+            "file": "packages/react/src/styles.css",
+            "line": 99,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "Tabs",
+            "file": "packages/react/src/styles.css",
+            "line": 100,
+            "via": "--stoa-color-focus"
+          },
+          {
+            "component": "TextField",
+            "file": "packages/react/src/styles.css",
+            "line": 84,
+            "via": "--stoa-color-focus"
+          },
+          {
+            "component": "TimeSlider",
+            "file": "packages/react/src/styles.css",
+            "line": 55,
+            "via": "--stoa-color-focus"
+          },
+          {
+            "component": "TimeSlider",
+            "file": "packages/react/src/styles.css",
+            "line": 69,
+            "via": "--stoa-color-accent"
+          }
+        ],
+        "stories": [
+          "Controls/Playback > Counters",
+          "Controls/Playback > Trades",
+          "Controls/Playback > Transport",
+          "Data/Heatmap > Liquidity",
+          "Data/Heatmap > Sparse",
+          "Data/Ladder > Empty",
+          "Data/Ladder > Live",
+          "Data/Ladder > Static",
+          "Data/Ladder > TwoThemes",
+          "Foundations/Colour > SemanticColours"
+        ]
+      },
+      "reachedByTheme": {
+        "light": {
+          "direct": false,
+          "via": []
+        },
+        "dark": {
+          "direct": false,
+          "via": [
+            "--stoa-color-accent",
+            "--stoa-color-focus"
+          ]
+        }
+      },
+      "unused": false
+    },
+    {
+      "name": "--stoa-color-blue-500",
+      "group": "color",
+      "kind": "primitive",
+      "value": "oklch(0.6 0.17 255)",
+      "resolvedValue": "oklch(0.6 0.17 255)",
+      "aliasOf": null,
+      "readBy": {
+        "components": [
+          {
+            "component": "Button",
+            "file": "packages/react/src/styles.css",
+            "line": 55,
+            "via": "--stoa-color-focus"
+          },
+          {
+            "component": "ChoiceGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 55,
+            "via": "--stoa-color-focus"
+          },
+          {
+            "component": "Tabs",
+            "file": "packages/react/src/styles.css",
+            "line": 100,
+            "via": "--stoa-color-focus"
+          },
+          {
+            "component": "TextField",
+            "file": "packages/react/src/styles.css",
+            "line": 84,
+            "via": "--stoa-color-focus"
+          },
+          {
+            "component": "TimeSlider",
+            "file": "packages/react/src/styles.css",
+            "line": 55,
+            "via": "--stoa-color-focus"
+          }
+        ],
+        "stories": [
+          "Controls/Playback > Counters",
+          "Controls/Playback > Trades",
+          "Controls/Playback > Transport",
+          "Foundations/Colour > SemanticColours"
+        ]
+      },
+      "reachedByTheme": {
+        "light": {
+          "direct": false,
+          "via": [
+            "--stoa-color-focus"
+          ]
+        },
+        "dark": {
+          "direct": false,
+          "via": []
+        }
+      },
+      "unused": false
+    },
+    {
+      "name": "--stoa-color-blue-600",
+      "group": "color",
+      "kind": "primitive",
+      "value": "oklch(0.52 0.17 255)",
+      "resolvedValue": "oklch(0.52 0.17 255)",
+      "aliasOf": null,
+      "readBy": {
+        "components": [
+          {
+            "component": "Button",
+            "file": "packages/react/src/styles.css",
+            "line": 52,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "ChoiceGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 52,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "Heatmap",
+            "file": "packages/react/src/Heatmap.tsx",
+            "line": 35,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "Ladder",
+            "file": "packages/react/src/Ladder.tsx",
+            "line": 35,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "Tabs",
+            "file": "packages/react/src/styles.css",
+            "line": 99,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "TimeSlider",
+            "file": "packages/react/src/styles.css",
+            "line": 69,
+            "via": "--stoa-color-accent"
+          }
+        ],
+        "stories": [
+          "Controls/Playback > Counters",
+          "Controls/Playback > Trades",
+          "Controls/Playback > Transport",
+          "Data/Heatmap > Liquidity",
+          "Data/Heatmap > Sparse",
+          "Data/Ladder > Empty",
+          "Data/Ladder > Live",
+          "Data/Ladder > Static",
+          "Data/Ladder > TwoThemes",
+          "Foundations/Colour > SemanticColours"
+        ]
+      },
+      "reachedByTheme": {
+        "light": {
+          "direct": false,
+          "via": [
+            "--stoa-color-accent"
+          ]
+        },
+        "dark": {
+          "direct": false,
+          "via": []
+        }
+      },
+      "unused": false
+    },
+    {
+      "name": "--stoa-color-border",
+      "group": "color",
+      "kind": "semantic",
+      "value": "var(--stoa-color-neutral-200)",
+      "resolvedValue": "oklch(0.92 0.005 250)",
+      "aliasOf": "--stoa-color-neutral-200",
+      "theme": {
+        "dark": {
+          "value": "oklch(0.235 0.009 250)",
+          "aliasOf": "--stoa-color-neutral-850",
+          "resolvedValue": "oklch(0.235 0.009 250)"
+        }
+      },
+      "readBy": {
+        "components": [
+          {
+            "component": "Heatmap",
+            "file": "packages/react/src/Heatmap.tsx",
+            "line": 30,
+            "via": "readCanvasTokens"
+          },
+          {
+            "component": "Ladder",
+            "file": "packages/react/src/Ladder.tsx",
+            "line": 30,
+            "via": "readCanvasTokens"
+          },
+          {
+            "component": "Panel",
+            "file": "packages/react/src/styles.css",
+            "line": 11
+          },
+          {
+            "component": "Tabs",
+            "file": "packages/react/src/styles.css",
+            "line": 94
+          },
+          {
+            "component": "TradeTable",
+            "file": "packages/react/src/styles.css",
+            "line": 32
+          }
+        ],
+        "stories": [
+          "Controls/Playback > Counters",
+          "Controls/Playback > Trades",
+          "Controls/Playback > Transport",
+          "Data/Heatmap > Liquidity",
+          "Data/Heatmap > Sparse",
+          "Data/Ladder > Empty",
+          "Data/Ladder > Live",
+          "Data/Ladder > Static",
+          "Data/Ladder > TwoThemes"
+        ]
+      },
+      "reachedByTheme": {
+        "light": {
+          "direct": true,
+          "via": []
+        },
+        "dark": {
+          "direct": true,
+          "via": []
+        }
+      },
+      "unused": false
+    },
+    {
+      "name": "--stoa-color-border-strong",
+      "group": "color",
+      "kind": "semantic",
+      "value": "var(--stoa-color-neutral-300)",
+      "resolvedValue": "oklch(0.87 0.007 250)",
+      "aliasOf": "--stoa-color-neutral-300",
+      "theme": {
+        "dark": {
+          "value": "oklch(0.28 0.01 250)",
+          "aliasOf": "--stoa-color-neutral-800",
+          "resolvedValue": "oklch(0.28 0.01 250)"
+        }
+      },
+      "readBy": {
+        "components": [
+          {
+            "component": "Button",
+            "file": "packages/react/src/styles.css",
+            "line": 43
+          },
+          {
+            "component": "ChoiceGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 43
+          },
+          {
+            "component": "TextField",
+            "file": "packages/react/src/styles.css",
+            "line": 81
+          },
+          {
+            "component": "TimeSlider",
+            "file": "packages/react/src/styles.css",
+            "line": 65
+          }
+        ],
+        "stories": [
+          "Controls/Playback > Counters",
+          "Controls/Playback > Trades",
+          "Controls/Playback > Transport"
+        ]
+      },
+      "reachedByTheme": {
+        "light": {
+          "direct": true,
+          "via": []
+        },
+        "dark": {
+          "direct": true,
+          "via": []
+        }
+      },
+      "unused": false
+    },
+    {
+      "name": "--stoa-color-down",
+      "group": "color",
+      "kind": "semantic",
+      "value": "var(--stoa-color-red-600)",
+      "resolvedValue": "oklch(0.56 0.18 30)",
+      "aliasOf": "--stoa-color-red-600",
+      "theme": {
+        "dark": {
+          "value": "oklch(0.72 0.15 32)",
+          "aliasOf": "--stoa-color-red-400",
+          "resolvedValue": "oklch(0.72 0.15 32)"
+        }
+      },
+      "readBy": {
+        "components": [
+          {
+            "component": "StatusBadge",
+            "file": "packages/react/src/styles.css",
+            "line": 89
+          },
+          {
+            "component": "TradeTable",
+            "file": "packages/react/src/styles.css",
+            "line": 38
+          }
+        ],
+        "stories": [
+          "Controls/Playback > Counters",
+          "Controls/Playback > Trades",
+          "Controls/Playback > Transport",
+          "Foundations/Colour > SemanticColours"
+        ]
+      },
+      "reachedByTheme": {
+        "light": {
+          "direct": true,
+          "via": []
+        },
+        "dark": {
+          "direct": true,
+          "via": []
+        }
+      },
+      "unused": false
+    },
+    {
+      "name": "--stoa-color-down-wash",
+      "group": "color",
+      "kind": "semantic",
+      "value": "var(--stoa-color-red-wash)",
+      "resolvedValue": "oklch(0.6 0.18 30 / 0.18)",
+      "aliasOf": "--stoa-color-red-wash",
+      "theme": {
+        "dark": {
+          "value": "oklch(0.6 0.18 30 / 0.18)",
+          "aliasOf": "--stoa-color-red-wash",
+          "resolvedValue": "oklch(0.6 0.18 30 / 0.18)"
+        }
+      },
+      "readBy": {
+        "components": [
+          {
+            "component": "Heatmap",
+            "file": "packages/react/src/Heatmap.tsx",
+            "line": 34,
+            "via": "readCanvasTokens"
+          },
+          {
+            "component": "Ladder",
+            "file": "packages/react/src/Ladder.tsx",
+            "line": 34,
+            "via": "readCanvasTokens"
+          }
+        ],
+        "stories": [
+          "Data/Heatmap > Liquidity",
+          "Data/Heatmap > Sparse",
+          "Data/Ladder > Empty",
+          "Data/Ladder > Live",
+          "Data/Ladder > Static",
+          "Data/Ladder > TwoThemes"
+        ]
+      },
+      "reachedByTheme": {
+        "light": {
+          "direct": true,
+          "via": []
+        },
+        "dark": {
+          "direct": true,
+          "via": []
+        }
+      },
+      "unused": false
+    },
+    {
+      "name": "--stoa-color-focus",
+      "group": "color",
+      "kind": "semantic",
+      "value": "var(--stoa-color-blue-500)",
+      "resolvedValue": "oklch(0.6 0.17 255)",
+      "aliasOf": "--stoa-color-blue-500",
+      "theme": {
+        "dark": {
+          "value": "oklch(0.7 0.13 255)",
+          "aliasOf": "--stoa-color-blue-400",
+          "resolvedValue": "oklch(0.7 0.13 255)"
+        }
+      },
+      "readBy": {
+        "components": [
+          {
+            "component": "Button",
+            "file": "packages/react/src/styles.css",
+            "line": 55
+          },
+          {
+            "component": "ChoiceGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 55
+          },
+          {
+            "component": "Tabs",
+            "file": "packages/react/src/styles.css",
+            "line": 100
+          },
+          {
+            "component": "TextField",
+            "file": "packages/react/src/styles.css",
+            "line": 84
+          },
+          {
+            "component": "TimeSlider",
+            "file": "packages/react/src/styles.css",
+            "line": 55
+          }
+        ],
+        "stories": [
+          "Controls/Playback > Counters",
+          "Controls/Playback > Trades",
+          "Controls/Playback > Transport",
+          "Foundations/Colour > SemanticColours"
+        ]
+      },
+      "reachedByTheme": {
+        "light": {
+          "direct": true,
+          "via": []
+        },
+        "dark": {
+          "direct": true,
+          "via": []
+        }
+      },
+      "unused": false
+    },
+    {
+      "name": "--stoa-color-neutral-0",
+      "group": "color",
+      "kind": "primitive",
+      "value": "oklch(1 0 0)",
+      "resolvedValue": "oklch(1 0 0)",
+      "aliasOf": null,
+      "readBy": {
+        "components": [
+          {
+            "component": "Button",
+            "file": "packages/react/src/styles.css",
+            "line": 45,
+            "via": "--stoa-color-surface"
+          },
+          {
+            "component": "Button",
+            "file": "packages/react/src/styles.css",
+            "line": 52,
+            "via": "--stoa-color-surface"
+          },
+          {
+            "component": "ChoiceGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 45,
+            "via": "--stoa-color-surface"
+          },
+          {
+            "component": "ChoiceGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 52,
+            "via": "--stoa-color-surface"
+          },
+          {
+            "component": "Heatmap",
+            "file": "packages/react/src/Heatmap.tsx",
+            "line": 27,
+            "via": "--stoa-color-surface"
+          },
+          {
+            "component": "Ladder",
+            "file": "packages/react/src/Ladder.tsx",
+            "line": 27,
+            "via": "--stoa-color-surface"
+          },
+          {
+            "component": "Panel",
+            "file": "packages/react/src/styles.css",
+            "line": 10,
+            "via": "--stoa-color-surface"
+          },
+          {
+            "component": "TextField",
+            "file": "packages/react/src/styles.css",
+            "line": 82,
+            "via": "--stoa-color-surface"
+          }
+        ],
+        "stories": [
+          "Controls/Playback > Counters",
+          "Controls/Playback > Trades",
+          "Controls/Playback > Transport",
+          "Data/Heatmap > Liquidity",
+          "Data/Heatmap > Sparse",
+          "Data/Ladder > Empty",
+          "Data/Ladder > Live",
+          "Data/Ladder > Static",
+          "Data/Ladder > TwoThemes",
+          "Foundations/Colour > SemanticColours"
+        ]
+      },
+      "reachedByTheme": {
+        "light": {
+          "direct": false,
+          "via": [
+            "--stoa-color-surface"
+          ]
+        },
+        "dark": {
+          "direct": false,
+          "via": []
+        }
+      },
+      "unused": false
+    },
+    {
+      "name": "--stoa-color-neutral-100",
+      "group": "color",
+      "kind": "primitive",
+      "value": "oklch(0.967 0.003 250)",
+      "resolvedValue": "oklch(0.967 0.003 250)",
+      "aliasOf": null,
+      "readBy": {
+        "components": [
+          {
+            "component": "(css) body",
+            "file": ".storybook/preview.css",
+            "line": 3,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "Button",
+            "file": "packages/react/src/styles.css",
+            "line": 46,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "ChoiceGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 46,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "Heatmap",
+            "file": "packages/react/src/Heatmap.tsx",
+            "line": 28,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "Ladder",
+            "file": "packages/react/src/Ladder.tsx",
+            "line": 28,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "StatusBadge",
+            "file": "packages/react/src/styles.css",
+            "line": 90,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "Tabs",
+            "file": "packages/react/src/styles.css",
+            "line": 99,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "TextField",
+            "file": "packages/react/src/styles.css",
+            "line": 82,
+            "via": "--stoa-color-text"
+          }
+        ],
+        "stories": [
+          "Controls/Playback > Counters",
+          "Controls/Playback > Trades",
+          "Controls/Playback > Transport",
+          "Data/Heatmap > Liquidity",
+          "Data/Heatmap > Sparse",
+          "Data/Ladder > Empty",
+          "Data/Ladder > Live",
+          "Data/Ladder > Static",
+          "Data/Ladder > TwoThemes",
+          "Foundations/Colour > SemanticColours"
+        ]
+      },
+      "reachedByTheme": {
+        "light": {
+          "direct": false,
+          "via": []
+        },
+        "dark": {
+          "direct": false,
+          "via": [
+            "--stoa-color-text"
+          ]
+        }
+      },
+      "unused": false
+    },
+    {
+      "name": "--stoa-color-neutral-1000",
+      "group": "color",
+      "kind": "primitive",
+      "value": "oklch(0.13 0.006 250)",
+      "resolvedValue": "oklch(0.13 0.006 250)",
+      "aliasOf": null,
+      "readBy": {
+        "components": [
+          {
+            "component": "(css) body",
+            "file": ".storybook/preview.css",
+            "line": 2,
+            "via": "--stoa-color-bg"
+          }
+        ],
+        "stories": []
+      },
+      "reachedByTheme": {
+        "light": {
+          "direct": false,
+          "via": []
+        },
+        "dark": {
+          "direct": false,
+          "via": [
+            "--stoa-color-bg"
+          ]
+        }
+      },
+      "unused": false
+    },
+    {
+      "name": "--stoa-color-neutral-150",
+      "group": "color",
+      "kind": "primitive",
+      "value": "oklch(0.94 0.004 250)",
+      "resolvedValue": "oklch(0.94 0.004 250)",
+      "aliasOf": null,
+      "readBy": {
+        "components": [
+          {
+            "component": "Button",
+            "file": "packages/react/src/styles.css",
+            "line": 50,
+            "via": "--stoa-color-surface-hover"
+          },
+          {
+            "component": "ChoiceGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 50,
+            "via": "--stoa-color-surface-hover"
+          }
+        ],
+        "stories": [
+          "Controls/Playback > Counters",
+          "Controls/Playback > Trades",
+          "Controls/Playback > Transport"
+        ]
+      },
+      "reachedByTheme": {
+        "light": {
+          "direct": false,
+          "via": [
+            "--stoa-color-surface-hover"
+          ]
+        },
+        "dark": {
+          "direct": false,
+          "via": []
+        }
+      },
+      "unused": false
+    },
+    {
+      "name": "--stoa-color-neutral-200",
+      "group": "color",
+      "kind": "primitive",
+      "value": "oklch(0.92 0.005 250)",
+      "resolvedValue": "oklch(0.92 0.005 250)",
+      "aliasOf": null,
+      "readBy": {
+        "components": [
+          {
+            "component": "Heatmap",
+            "file": "packages/react/src/Heatmap.tsx",
+            "line": 30,
+            "via": "--stoa-color-border"
+          },
+          {
+            "component": "Ladder",
+            "file": "packages/react/src/Ladder.tsx",
+            "line": 30,
+            "via": "--stoa-color-border"
+          },
+          {
+            "component": "Panel",
+            "file": "packages/react/src/styles.css",
+            "line": 11,
+            "via": "--stoa-color-border"
+          },
+          {
+            "component": "Tabs",
+            "file": "packages/react/src/styles.css",
+            "line": 94,
+            "via": "--stoa-color-border"
+          },
+          {
+            "component": "TradeTable",
+            "file": "packages/react/src/styles.css",
+            "line": 32,
+            "via": "--stoa-color-border"
+          }
+        ],
+        "stories": [
+          "Controls/Playback > Counters",
+          "Controls/Playback > Trades",
+          "Controls/Playback > Transport",
+          "Data/Heatmap > Liquidity",
+          "Data/Heatmap > Sparse",
+          "Data/Ladder > Empty",
+          "Data/Ladder > Live",
+          "Data/Ladder > Static",
+          "Data/Ladder > TwoThemes"
+        ]
+      },
+      "reachedByTheme": {
+        "light": {
+          "direct": false,
+          "via": [
+            "--stoa-color-border"
+          ]
+        },
+        "dark": {
+          "direct": false,
+          "via": []
+        }
+      },
+      "unused": false
+    },
+    {
+      "name": "--stoa-color-neutral-300",
+      "group": "color",
+      "kind": "primitive",
+      "value": "oklch(0.87 0.007 250)",
+      "resolvedValue": "oklch(0.87 0.007 250)",
+      "aliasOf": null,
+      "readBy": {
+        "components": [
+          {
+            "component": "Button",
+            "file": "packages/react/src/styles.css",
+            "line": 43,
+            "via": "--stoa-color-border-strong"
+          },
+          {
+            "component": "ChoiceGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 43,
+            "via": "--stoa-color-border-strong"
+          },
+          {
+            "component": "TextField",
+            "file": "packages/react/src/styles.css",
+            "line": 81,
+            "via": "--stoa-color-border-strong"
+          },
+          {
+            "component": "TimeSlider",
+            "file": "packages/react/src/styles.css",
+            "line": 65,
+            "via": "--stoa-color-border-strong"
+          }
+        ],
+        "stories": [
+          "Controls/Playback > Counters",
+          "Controls/Playback > Trades",
+          "Controls/Playback > Transport"
+        ]
+      },
+      "reachedByTheme": {
+        "light": {
+          "direct": false,
+          "via": [
+            "--stoa-color-border-strong"
+          ]
+        },
+        "dark": {
+          "direct": false,
+          "via": []
+        }
+      },
+      "unused": false
+    },
+    {
+      "name": "--stoa-color-neutral-400",
+      "group": "color",
+      "kind": "primitive",
+      "value": "oklch(0.71 0.01 250)",
+      "resolvedValue": "oklch(0.71 0.01 250)",
+      "aliasOf": null,
+      "readBy": {
+        "components": [
+          {
+            "component": "Heatmap",
+            "file": "packages/react/src/Heatmap.tsx",
+            "line": 29,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "Ladder",
+            "file": "packages/react/src/Ladder.tsx",
+            "line": 29,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "Panel",
+            "file": "packages/react/src/styles.css",
+            "line": 22,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "StatBar",
+            "file": "packages/react/src/styles.css",
+            "line": 74,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "StatusBadge",
+            "file": "packages/react/src/styles.css",
+            "line": 92,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "Tabs",
+            "file": "packages/react/src/styles.css",
+            "line": 96,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "TextField",
+            "file": "packages/react/src/styles.css",
+            "line": 78,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "TextField",
+            "file": "packages/react/src/styles.css",
+            "line": 85,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "TradeTable",
+            "file": "packages/react/src/styles.css",
+            "line": 32,
+            "via": "--stoa-color-text-muted"
+          }
+        ],
+        "stories": [
+          "Controls/Playback > Counters",
+          "Controls/Playback > Trades",
+          "Controls/Playback > Transport",
+          "Data/Heatmap > Liquidity",
+          "Data/Heatmap > Sparse",
+          "Data/Ladder > Empty",
+          "Data/Ladder > Live",
+          "Data/Ladder > Static",
+          "Data/Ladder > TwoThemes",
+          "Foundations/Colour > SemanticColours"
+        ]
+      },
+      "reachedByTheme": {
+        "light": {
+          "direct": false,
+          "via": []
+        },
+        "dark": {
+          "direct": false,
+          "via": [
+            "--stoa-color-text-muted"
+          ]
+        }
+      },
+      "unused": false
+    },
+    {
+      "name": "--stoa-color-neutral-50",
+      "group": "color",
+      "kind": "primitive",
+      "value": "oklch(0.985 0.002 250)",
+      "resolvedValue": "oklch(0.985 0.002 250)",
+      "aliasOf": null,
+      "readBy": {
+        "components": [
+          {
+            "component": "(css) body",
+            "file": ".storybook/preview.css",
+            "line": 2,
+            "via": "--stoa-color-bg"
+          }
+        ],
+        "stories": []
+      },
+      "reachedByTheme": {
+        "light": {
+          "direct": false,
+          "via": [
+            "--stoa-color-bg"
+          ]
+        },
+        "dark": {
+          "direct": false,
+          "via": []
+        }
+      },
+      "unused": false
+    },
+    {
+      "name": "--stoa-color-neutral-500",
+      "group": "color",
+      "kind": "primitive",
+      "value": "oklch(0.55 0.012 250)",
+      "resolvedValue": "oklch(0.55 0.012 250)",
+      "aliasOf": null,
+      "readBy": {
+        "components": [],
+        "stories": []
+      },
+      "reachedByTheme": {
+        "light": {
+          "direct": false,
+          "via": []
+        },
+        "dark": {
+          "direct": false,
+          "via": []
+        }
+      },
+      "unused": true
+    },
+    {
+      "name": "--stoa-color-neutral-600",
+      "group": "color",
+      "kind": "primitive",
+      "value": "oklch(0.45 0.012 250)",
+      "resolvedValue": "oklch(0.45 0.012 250)",
+      "aliasOf": null,
+      "readBy": {
+        "components": [
+          {
+            "component": "Heatmap",
+            "file": "packages/react/src/Heatmap.tsx",
+            "line": 29,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "Ladder",
+            "file": "packages/react/src/Ladder.tsx",
+            "line": 29,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "Panel",
+            "file": "packages/react/src/styles.css",
+            "line": 22,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "StatBar",
+            "file": "packages/react/src/styles.css",
+            "line": 74,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "StatusBadge",
+            "file": "packages/react/src/styles.css",
+            "line": 92,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "Tabs",
+            "file": "packages/react/src/styles.css",
+            "line": 96,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "TextField",
+            "file": "packages/react/src/styles.css",
+            "line": 78,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "TextField",
+            "file": "packages/react/src/styles.css",
+            "line": 85,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "TradeTable",
+            "file": "packages/react/src/styles.css",
+            "line": 32,
+            "via": "--stoa-color-text-muted"
+          }
+        ],
+        "stories": [
+          "Controls/Playback > Counters",
+          "Controls/Playback > Trades",
+          "Controls/Playback > Transport",
+          "Data/Heatmap > Liquidity",
+          "Data/Heatmap > Sparse",
+          "Data/Ladder > Empty",
+          "Data/Ladder > Live",
+          "Data/Ladder > Static",
+          "Data/Ladder > TwoThemes",
+          "Foundations/Colour > SemanticColours"
+        ]
+      },
+      "reachedByTheme": {
+        "light": {
+          "direct": false,
+          "via": [
+            "--stoa-color-text-muted"
+          ]
+        },
+        "dark": {
+          "direct": false,
+          "via": []
+        }
+      },
+      "unused": false
+    },
+    {
+      "name": "--stoa-color-neutral-700",
+      "group": "color",
+      "kind": "primitive",
+      "value": "oklch(0.37 0.012 250)",
+      "resolvedValue": "oklch(0.37 0.012 250)",
+      "aliasOf": null,
+      "readBy": {
+        "components": [],
+        "stories": []
+      },
+      "reachedByTheme": {
+        "light": {
+          "direct": false,
+          "via": []
+        },
+        "dark": {
+          "direct": false,
+          "via": []
+        }
+      },
+      "unused": true
+    },
+    {
+      "name": "--stoa-color-neutral-800",
+      "group": "color",
+      "kind": "primitive",
+      "value": "oklch(0.28 0.01 250)",
+      "resolvedValue": "oklch(0.28 0.01 250)",
+      "aliasOf": null,
+      "readBy": {
+        "components": [
+          {
+            "component": "Button",
+            "file": "packages/react/src/styles.css",
+            "line": 43,
+            "via": "--stoa-color-border-strong"
+          },
+          {
+            "component": "ChoiceGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 43,
+            "via": "--stoa-color-border-strong"
+          },
+          {
+            "component": "TextField",
+            "file": "packages/react/src/styles.css",
+            "line": 81,
+            "via": "--stoa-color-border-strong"
+          },
+          {
+            "component": "TimeSlider",
+            "file": "packages/react/src/styles.css",
+            "line": 65,
+            "via": "--stoa-color-border-strong"
+          }
+        ],
+        "stories": [
+          "Controls/Playback > Counters",
+          "Controls/Playback > Trades",
+          "Controls/Playback > Transport"
+        ]
+      },
+      "reachedByTheme": {
+        "light": {
+          "direct": false,
+          "via": []
+        },
+        "dark": {
+          "direct": false,
+          "via": [
+            "--stoa-color-border-strong"
+          ]
+        }
+      },
+      "unused": false
+    },
+    {
+      "name": "--stoa-color-neutral-850",
+      "group": "color",
+      "kind": "primitive",
+      "value": "oklch(0.235 0.009 250)",
+      "resolvedValue": "oklch(0.235 0.009 250)",
+      "aliasOf": null,
+      "readBy": {
+        "components": [
+          {
+            "component": "Heatmap",
+            "file": "packages/react/src/Heatmap.tsx",
+            "line": 30,
+            "via": "--stoa-color-border"
+          },
+          {
+            "component": "Ladder",
+            "file": "packages/react/src/Ladder.tsx",
+            "line": 30,
+            "via": "--stoa-color-border"
+          },
+          {
+            "component": "Panel",
+            "file": "packages/react/src/styles.css",
+            "line": 11,
+            "via": "--stoa-color-border"
+          },
+          {
+            "component": "Tabs",
+            "file": "packages/react/src/styles.css",
+            "line": 94,
+            "via": "--stoa-color-border"
+          },
+          {
+            "component": "TradeTable",
+            "file": "packages/react/src/styles.css",
+            "line": 32,
+            "via": "--stoa-color-border"
+          }
+        ],
+        "stories": [
+          "Controls/Playback > Counters",
+          "Controls/Playback > Trades",
+          "Controls/Playback > Transport",
+          "Data/Heatmap > Liquidity",
+          "Data/Heatmap > Sparse",
+          "Data/Ladder > Empty",
+          "Data/Ladder > Live",
+          "Data/Ladder > Static",
+          "Data/Ladder > TwoThemes"
+        ]
+      },
+      "reachedByTheme": {
+        "light": {
+          "direct": false,
+          "via": []
+        },
+        "dark": {
+          "direct": false,
+          "via": [
+            "--stoa-color-border"
+          ]
+        }
+      },
+      "unused": false
+    },
+    {
+      "name": "--stoa-color-neutral-900",
+      "group": "color",
+      "kind": "primitive",
+      "value": "oklch(0.205 0.008 250)",
+      "resolvedValue": "oklch(0.205 0.008 250)",
+      "aliasOf": null,
+      "readBy": {
+        "components": [
+          {
+            "component": "Button",
+            "file": "packages/react/src/styles.css",
+            "line": 50,
+            "via": "--stoa-color-surface-hover"
+          },
+          {
+            "component": "ChoiceGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 50,
+            "via": "--stoa-color-surface-hover"
+          }
+        ],
+        "stories": [
+          "Controls/Playback > Counters",
+          "Controls/Playback > Trades",
+          "Controls/Playback > Transport"
+        ]
+      },
+      "reachedByTheme": {
+        "light": {
+          "direct": false,
+          "via": []
+        },
+        "dark": {
+          "direct": false,
+          "via": [
+            "--stoa-color-surface-hover"
+          ]
+        }
+      },
+      "unused": false
+    },
+    {
+      "name": "--stoa-color-neutral-950",
+      "group": "color",
+      "kind": "primitive",
+      "value": "oklch(0.16 0.007 250)",
+      "resolvedValue": "oklch(0.16 0.007 250)",
+      "aliasOf": null,
+      "readBy": {
+        "components": [
+          {
+            "component": "(css) body",
+            "file": ".storybook/preview.css",
+            "line": 3,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "Button",
+            "file": "packages/react/src/styles.css",
+            "line": 45,
+            "via": "--stoa-color-surface"
+          },
+          {
+            "component": "Button",
+            "file": "packages/react/src/styles.css",
+            "line": 46,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "Button",
+            "file": "packages/react/src/styles.css",
+            "line": 52,
+            "via": "--stoa-color-surface"
+          },
+          {
+            "component": "ChoiceGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 45,
+            "via": "--stoa-color-surface"
+          },
+          {
+            "component": "ChoiceGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 46,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "ChoiceGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 52,
+            "via": "--stoa-color-surface"
+          },
+          {
+            "component": "Heatmap",
+            "file": "packages/react/src/Heatmap.tsx",
+            "line": 27,
+            "via": "--stoa-color-surface"
+          },
+          {
+            "component": "Heatmap",
+            "file": "packages/react/src/Heatmap.tsx",
+            "line": 28,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "Ladder",
+            "file": "packages/react/src/Ladder.tsx",
+            "line": 27,
+            "via": "--stoa-color-surface"
+          },
+          {
+            "component": "Ladder",
+            "file": "packages/react/src/Ladder.tsx",
+            "line": 28,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "Panel",
+            "file": "packages/react/src/styles.css",
+            "line": 10,
+            "via": "--stoa-color-surface"
+          },
+          {
+            "component": "StatusBadge",
+            "file": "packages/react/src/styles.css",
+            "line": 90,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "Tabs",
+            "file": "packages/react/src/styles.css",
+            "line": 99,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "TextField",
+            "file": "packages/react/src/styles.css",
+            "line": 82,
+            "via": "--stoa-color-surface"
+          },
+          {
+            "component": "TextField",
+            "file": "packages/react/src/styles.css",
+            "line": 82,
+            "via": "--stoa-color-text"
+          }
+        ],
+        "stories": [
+          "Controls/Playback > Counters",
+          "Controls/Playback > Trades",
+          "Controls/Playback > Transport",
+          "Data/Heatmap > Liquidity",
+          "Data/Heatmap > Sparse",
+          "Data/Ladder > Empty",
+          "Data/Ladder > Live",
+          "Data/Ladder > Static",
+          "Data/Ladder > TwoThemes",
+          "Foundations/Colour > SemanticColours"
+        ]
+      },
+      "reachedByTheme": {
+        "light": {
+          "direct": false,
+          "via": [
+            "--stoa-color-text"
+          ]
+        },
+        "dark": {
+          "direct": false,
+          "via": [
+            "--stoa-color-surface"
+          ]
+        }
+      },
+      "unused": false
+    },
+    {
+      "name": "--stoa-color-red-400",
+      "group": "color",
+      "kind": "primitive",
+      "value": "oklch(0.72 0.15 32)",
+      "resolvedValue": "oklch(0.72 0.15 32)",
+      "aliasOf": null,
+      "readBy": {
+        "components": [
+          {
+            "component": "Heatmap",
+            "file": "packages/react/src/Heatmap.tsx",
+            "line": 32,
+            "via": "--stoa-color-ask"
+          },
+          {
+            "component": "Ladder",
+            "file": "packages/react/src/Ladder.tsx",
+            "line": 32,
+            "via": "--stoa-color-ask"
+          },
+          {
+            "component": "StatusBadge",
+            "file": "packages/react/src/styles.css",
+            "line": 89,
+            "via": "--stoa-color-down"
+          },
+          {
+            "component": "TradeTable",
+            "file": "packages/react/src/styles.css",
+            "line": 38,
+            "via": "--stoa-color-down"
+          }
+        ],
+        "stories": [
+          "Controls/Playback > Counters",
+          "Controls/Playback > Trades",
+          "Controls/Playback > Transport",
+          "Data/Heatmap > Liquidity",
+          "Data/Heatmap > Sparse",
+          "Data/Ladder > Empty",
+          "Data/Ladder > Live",
+          "Data/Ladder > Static",
+          "Data/Ladder > TwoThemes",
+          "Foundations/Colour > SemanticColours"
+        ]
+      },
+      "reachedByTheme": {
+        "light": {
+          "direct": false,
+          "via": []
+        },
+        "dark": {
+          "direct": false,
+          "via": [
+            "--stoa-color-ask",
+            "--stoa-color-down"
+          ]
+        }
+      },
+      "unused": false
+    },
+    {
+      "name": "--stoa-color-red-600",
+      "group": "color",
+      "kind": "primitive",
+      "value": "oklch(0.56 0.18 30)",
+      "resolvedValue": "oklch(0.56 0.18 30)",
+      "aliasOf": null,
+      "readBy": {
+        "components": [
+          {
+            "component": "Heatmap",
+            "file": "packages/react/src/Heatmap.tsx",
+            "line": 32,
+            "via": "--stoa-color-ask"
+          },
+          {
+            "component": "Ladder",
+            "file": "packages/react/src/Ladder.tsx",
+            "line": 32,
+            "via": "--stoa-color-ask"
+          },
+          {
+            "component": "StatusBadge",
+            "file": "packages/react/src/styles.css",
+            "line": 89,
+            "via": "--stoa-color-down"
+          },
+          {
+            "component": "TradeTable",
+            "file": "packages/react/src/styles.css",
+            "line": 38,
+            "via": "--stoa-color-down"
+          }
+        ],
+        "stories": [
+          "Controls/Playback > Counters",
+          "Controls/Playback > Trades",
+          "Controls/Playback > Transport",
+          "Data/Heatmap > Liquidity",
+          "Data/Heatmap > Sparse",
+          "Data/Ladder > Empty",
+          "Data/Ladder > Live",
+          "Data/Ladder > Static",
+          "Data/Ladder > TwoThemes",
+          "Foundations/Colour > SemanticColours"
+        ]
+      },
+      "reachedByTheme": {
+        "light": {
+          "direct": false,
+          "via": [
+            "--stoa-color-ask",
+            "--stoa-color-down"
+          ]
+        },
+        "dark": {
+          "direct": false,
+          "via": []
+        }
+      },
+      "unused": false
+    },
+    {
+      "name": "--stoa-color-red-wash",
+      "group": "color",
+      "kind": "primitive",
+      "value": "oklch(0.6 0.18 30 / 0.18)",
+      "resolvedValue": "oklch(0.6 0.18 30 / 0.18)",
+      "aliasOf": null,
+      "readBy": {
+        "components": [
+          {
+            "component": "Heatmap",
+            "file": "packages/react/src/Heatmap.tsx",
+            "line": 34,
+            "via": "--stoa-color-down-wash"
+          },
+          {
+            "component": "Ladder",
+            "file": "packages/react/src/Ladder.tsx",
+            "line": 34,
+            "via": "--stoa-color-down-wash"
+          }
+        ],
+        "stories": [
+          "Data/Heatmap > Liquidity",
+          "Data/Heatmap > Sparse",
+          "Data/Ladder > Empty",
+          "Data/Ladder > Live",
+          "Data/Ladder > Static",
+          "Data/Ladder > TwoThemes"
+        ]
+      },
+      "reachedByTheme": {
+        "light": {
+          "direct": false,
+          "via": [
+            "--stoa-color-down-wash"
+          ]
+        },
+        "dark": {
+          "direct": false,
+          "via": [
+            "--stoa-color-down-wash"
+          ]
+        }
+      },
+      "unused": false
+    },
+    {
+      "name": "--stoa-color-surface",
+      "group": "color",
+      "kind": "semantic",
+      "value": "var(--stoa-color-neutral-0)",
+      "resolvedValue": "oklch(1 0 0)",
+      "aliasOf": "--stoa-color-neutral-0",
+      "theme": {
+        "dark": {
+          "value": "oklch(0.16 0.007 250)",
+          "aliasOf": "--stoa-color-neutral-950",
+          "resolvedValue": "oklch(0.16 0.007 250)"
+        }
+      },
+      "readBy": {
+        "components": [
+          {
+            "component": "Button",
+            "file": "packages/react/src/styles.css",
+            "line": 45
+          },
+          {
+            "component": "Button",
+            "file": "packages/react/src/styles.css",
+            "line": 52
+          },
+          {
+            "component": "ChoiceGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 45
+          },
+          {
+            "component": "ChoiceGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 52
+          },
+          {
+            "component": "Heatmap",
+            "file": "packages/react/src/Heatmap.tsx",
+            "line": 27,
+            "via": "readCanvasTokens"
+          },
+          {
+            "component": "Ladder",
+            "file": "packages/react/src/Ladder.tsx",
+            "line": 27,
+            "via": "readCanvasTokens"
+          },
+          {
+            "component": "Panel",
+            "file": "packages/react/src/styles.css",
+            "line": 10
+          },
+          {
+            "component": "TextField",
+            "file": "packages/react/src/styles.css",
+            "line": 82
+          }
+        ],
+        "stories": [
+          "Controls/Playback > Counters",
+          "Controls/Playback > Trades",
+          "Controls/Playback > Transport",
+          "Data/Heatmap > Liquidity",
+          "Data/Heatmap > Sparse",
+          "Data/Ladder > Empty",
+          "Data/Ladder > Live",
+          "Data/Ladder > Static",
+          "Data/Ladder > TwoThemes",
+          "Foundations/Colour > SemanticColours"
+        ]
+      },
+      "reachedByTheme": {
+        "light": {
+          "direct": true,
+          "via": []
+        },
+        "dark": {
+          "direct": true,
+          "via": []
+        }
+      },
+      "unused": false
+    },
+    {
+      "name": "--stoa-color-surface-hover",
+      "group": "color",
+      "kind": "semantic",
+      "value": "var(--stoa-color-neutral-150)",
+      "resolvedValue": "oklch(0.94 0.004 250)",
+      "aliasOf": "--stoa-color-neutral-150",
+      "theme": {
+        "dark": {
+          "value": "oklch(0.205 0.008 250)",
+          "aliasOf": "--stoa-color-neutral-900",
+          "resolvedValue": "oklch(0.205 0.008 250)"
+        }
+      },
+      "readBy": {
+        "components": [
+          {
+            "component": "Button",
+            "file": "packages/react/src/styles.css",
+            "line": 50
+          },
+          {
+            "component": "ChoiceGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 50
+          }
+        ],
+        "stories": [
+          "Controls/Playback > Counters",
+          "Controls/Playback > Trades",
+          "Controls/Playback > Transport"
+        ]
+      },
+      "reachedByTheme": {
+        "light": {
+          "direct": true,
+          "via": []
+        },
+        "dark": {
+          "direct": true,
+          "via": []
+        }
+      },
+      "unused": false
+    },
+    {
+      "name": "--stoa-color-surface-sunken",
+      "group": "color",
+      "kind": "semantic",
+      "value": "var(--stoa-color-neutral-100)",
+      "resolvedValue": "oklch(0.967 0.003 250)",
+      "aliasOf": "--stoa-color-neutral-100",
+      "theme": {
+        "dark": {
+          "value": "oklch(0.11 0.005 250)",
+          "aliasOf": null,
+          "resolvedValue": "oklch(0.11 0.005 250)"
+        }
+      },
+      "readBy": {
+        "components": [],
+        "stories": []
+      },
+      "reachedByTheme": {
+        "light": {
+          "direct": false,
+          "via": []
+        },
+        "dark": {
+          "direct": false,
+          "via": []
+        }
+      },
+      "unused": true
+    },
+    {
+      "name": "--stoa-color-teal-400",
+      "group": "color",
+      "kind": "primitive",
+      "value": "oklch(0.74 0.12 170)",
+      "resolvedValue": "oklch(0.74 0.12 170)",
+      "aliasOf": null,
+      "readBy": {
+        "components": [
+          {
+            "component": "Heatmap",
+            "file": "packages/react/src/Heatmap.tsx",
+            "line": 31,
+            "via": "--stoa-color-bid"
+          },
+          {
+            "component": "Ladder",
+            "file": "packages/react/src/Ladder.tsx",
+            "line": 31,
+            "via": "--stoa-color-bid"
+          },
+          {
+            "component": "StatusBadge",
+            "file": "packages/react/src/styles.css",
+            "line": 88,
+            "via": "--stoa-color-up"
+          },
+          {
+            "component": "TradeTable",
+            "file": "packages/react/src/styles.css",
+            "line": 37,
+            "via": "--stoa-color-up"
+          }
+        ],
+        "stories": [
+          "Controls/Playback > Counters",
+          "Controls/Playback > Trades",
+          "Controls/Playback > Transport",
+          "Data/Heatmap > Liquidity",
+          "Data/Heatmap > Sparse",
+          "Data/Ladder > Empty",
+          "Data/Ladder > Live",
+          "Data/Ladder > Static",
+          "Data/Ladder > TwoThemes",
+          "Foundations/Colour > SemanticColours"
+        ]
+      },
+      "reachedByTheme": {
+        "light": {
+          "direct": false,
+          "via": []
+        },
+        "dark": {
+          "direct": false,
+          "via": [
+            "--stoa-color-bid",
+            "--stoa-color-up"
+          ]
+        }
+      },
+      "unused": false
+    },
+    {
+      "name": "--stoa-color-teal-600",
+      "group": "color",
+      "kind": "primitive",
+      "value": "oklch(0.53 0.11 170)",
+      "resolvedValue": "oklch(0.53 0.11 170)",
+      "aliasOf": null,
+      "readBy": {
+        "components": [
+          {
+            "component": "Heatmap",
+            "file": "packages/react/src/Heatmap.tsx",
+            "line": 31,
+            "via": "--stoa-color-bid"
+          },
+          {
+            "component": "Ladder",
+            "file": "packages/react/src/Ladder.tsx",
+            "line": 31,
+            "via": "--stoa-color-bid"
+          },
+          {
+            "component": "StatusBadge",
+            "file": "packages/react/src/styles.css",
+            "line": 88,
+            "via": "--stoa-color-up"
+          },
+          {
+            "component": "TradeTable",
+            "file": "packages/react/src/styles.css",
+            "line": 37,
+            "via": "--stoa-color-up"
+          }
+        ],
+        "stories": [
+          "Controls/Playback > Counters",
+          "Controls/Playback > Trades",
+          "Controls/Playback > Transport",
+          "Data/Heatmap > Liquidity",
+          "Data/Heatmap > Sparse",
+          "Data/Ladder > Empty",
+          "Data/Ladder > Live",
+          "Data/Ladder > Static",
+          "Data/Ladder > TwoThemes",
+          "Foundations/Colour > SemanticColours"
+        ]
+      },
+      "reachedByTheme": {
+        "light": {
+          "direct": false,
+          "via": [
+            "--stoa-color-bid",
+            "--stoa-color-up"
+          ]
+        },
+        "dark": {
+          "direct": false,
+          "via": []
+        }
+      },
+      "unused": false
+    },
+    {
+      "name": "--stoa-color-teal-wash",
+      "group": "color",
+      "kind": "primitive",
+      "value": "oklch(0.62 0.13 170 / 0.18)",
+      "resolvedValue": "oklch(0.62 0.13 170 / 0.18)",
+      "aliasOf": null,
+      "readBy": {
+        "components": [
+          {
+            "component": "Heatmap",
+            "file": "packages/react/src/Heatmap.tsx",
+            "line": 33,
+            "via": "--stoa-color-up-wash"
+          },
+          {
+            "component": "Ladder",
+            "file": "packages/react/src/Ladder.tsx",
+            "line": 33,
+            "via": "--stoa-color-up-wash"
+          }
+        ],
+        "stories": [
+          "Data/Heatmap > Liquidity",
+          "Data/Heatmap > Sparse",
+          "Data/Ladder > Empty",
+          "Data/Ladder > Live",
+          "Data/Ladder > Static",
+          "Data/Ladder > TwoThemes"
+        ]
+      },
+      "reachedByTheme": {
+        "light": {
+          "direct": false,
+          "via": [
+            "--stoa-color-up-wash"
+          ]
+        },
+        "dark": {
+          "direct": false,
+          "via": [
+            "--stoa-color-up-wash"
+          ]
+        }
+      },
+      "unused": false
+    },
+    {
+      "name": "--stoa-color-text",
+      "group": "color",
+      "kind": "semantic",
+      "value": "var(--stoa-color-neutral-950)",
+      "resolvedValue": "oklch(0.16 0.007 250)",
+      "aliasOf": "--stoa-color-neutral-950",
+      "theme": {
+        "dark": {
+          "value": "oklch(0.967 0.003 250)",
+          "aliasOf": "--stoa-color-neutral-100",
+          "resolvedValue": "oklch(0.967 0.003 250)"
+        }
+      },
+      "readBy": {
+        "components": [
+          {
+            "component": "(css) body",
+            "file": ".storybook/preview.css",
+            "line": 3
+          },
+          {
+            "component": "Button",
+            "file": "packages/react/src/styles.css",
+            "line": 46
+          },
+          {
+            "component": "ChoiceGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 46
+          },
+          {
+            "component": "Heatmap",
+            "file": "packages/react/src/Heatmap.tsx",
+            "line": 28,
+            "via": "readCanvasTokens"
+          },
+          {
+            "component": "Ladder",
+            "file": "packages/react/src/Ladder.tsx",
+            "line": 28,
+            "via": "readCanvasTokens"
+          },
+          {
+            "component": "StatusBadge",
+            "file": "packages/react/src/styles.css",
+            "line": 90
+          },
+          {
+            "component": "Tabs",
+            "file": "packages/react/src/styles.css",
+            "line": 99
+          },
+          {
+            "component": "TextField",
+            "file": "packages/react/src/styles.css",
+            "line": 82
+          }
+        ],
+        "stories": [
+          "Controls/Playback > Counters",
+          "Controls/Playback > Trades",
+          "Controls/Playback > Transport",
+          "Data/Heatmap > Liquidity",
+          "Data/Heatmap > Sparse",
+          "Data/Ladder > Empty",
+          "Data/Ladder > Live",
+          "Data/Ladder > Static",
+          "Data/Ladder > TwoThemes",
+          "Foundations/Colour > SemanticColours"
+        ]
+      },
+      "reachedByTheme": {
+        "light": {
+          "direct": true,
+          "via": []
+        },
+        "dark": {
+          "direct": true,
+          "via": []
+        }
+      },
+      "unused": false
+    },
+    {
+      "name": "--stoa-color-text-muted",
+      "group": "color",
+      "kind": "semantic",
+      "value": "var(--stoa-color-neutral-600)",
+      "resolvedValue": "oklch(0.45 0.012 250)",
+      "aliasOf": "--stoa-color-neutral-600",
+      "theme": {
+        "dark": {
+          "value": "oklch(0.71 0.01 250)",
+          "aliasOf": "--stoa-color-neutral-400",
+          "resolvedValue": "oklch(0.71 0.01 250)"
+        }
+      },
+      "readBy": {
+        "components": [
+          {
+            "component": "Heatmap",
+            "file": "packages/react/src/Heatmap.tsx",
+            "line": 29,
+            "via": "readCanvasTokens"
+          },
+          {
+            "component": "Ladder",
+            "file": "packages/react/src/Ladder.tsx",
+            "line": 29,
+            "via": "readCanvasTokens"
+          },
+          {
+            "component": "Panel",
+            "file": "packages/react/src/styles.css",
+            "line": 22
+          },
+          {
+            "component": "StatBar",
+            "file": "packages/react/src/styles.css",
+            "line": 74
+          },
+          {
+            "component": "StatusBadge",
+            "file": "packages/react/src/styles.css",
+            "line": 92
+          },
+          {
+            "component": "Tabs",
+            "file": "packages/react/src/styles.css",
+            "line": 96
+          },
+          {
+            "component": "TextField",
+            "file": "packages/react/src/styles.css",
+            "line": 78
+          },
+          {
+            "component": "TextField",
+            "file": "packages/react/src/styles.css",
+            "line": 85
+          },
+          {
+            "component": "TradeTable",
+            "file": "packages/react/src/styles.css",
+            "line": 32
+          }
+        ],
+        "stories": [
+          "Controls/Playback > Counters",
+          "Controls/Playback > Trades",
+          "Controls/Playback > Transport",
+          "Data/Heatmap > Liquidity",
+          "Data/Heatmap > Sparse",
+          "Data/Ladder > Empty",
+          "Data/Ladder > Live",
+          "Data/Ladder > Static",
+          "Data/Ladder > TwoThemes",
+          "Foundations/Colour > SemanticColours"
+        ]
+      },
+      "reachedByTheme": {
+        "light": {
+          "direct": true,
+          "via": []
+        },
+        "dark": {
+          "direct": true,
+          "via": []
+        }
+      },
+      "unused": false
+    },
+    {
+      "name": "--stoa-color-text-subtle",
+      "group": "color",
+      "kind": "semantic",
+      "value": "var(--stoa-color-neutral-500)",
+      "resolvedValue": "oklch(0.55 0.012 250)",
+      "aliasOf": "--stoa-color-neutral-500",
+      "theme": {
+        "dark": {
+          "value": "oklch(0.55 0.012 250)",
+          "aliasOf": "--stoa-color-neutral-500",
+          "resolvedValue": "oklch(0.55 0.012 250)"
+        }
+      },
+      "readBy": {
+        "components": [],
+        "stories": []
+      },
+      "reachedByTheme": {
+        "light": {
+          "direct": false,
+          "via": []
+        },
+        "dark": {
+          "direct": false,
+          "via": []
+        }
+      },
+      "unused": true
+    },
+    {
+      "name": "--stoa-color-up",
+      "group": "color",
+      "kind": "semantic",
+      "value": "var(--stoa-color-teal-600)",
+      "resolvedValue": "oklch(0.53 0.11 170)",
+      "aliasOf": "--stoa-color-teal-600",
+      "theme": {
+        "dark": {
+          "value": "oklch(0.74 0.12 170)",
+          "aliasOf": "--stoa-color-teal-400",
+          "resolvedValue": "oklch(0.74 0.12 170)"
+        }
+      },
+      "readBy": {
+        "components": [
+          {
+            "component": "StatusBadge",
+            "file": "packages/react/src/styles.css",
+            "line": 88
+          },
+          {
+            "component": "TradeTable",
+            "file": "packages/react/src/styles.css",
+            "line": 37
+          }
+        ],
+        "stories": [
+          "Controls/Playback > Counters",
+          "Controls/Playback > Trades",
+          "Controls/Playback > Transport",
+          "Foundations/Colour > SemanticColours"
+        ]
+      },
+      "reachedByTheme": {
+        "light": {
+          "direct": true,
+          "via": []
+        },
+        "dark": {
+          "direct": true,
+          "via": []
+        }
+      },
+      "unused": false
+    },
+    {
+      "name": "--stoa-color-up-wash",
+      "group": "color",
+      "kind": "semantic",
+      "value": "var(--stoa-color-teal-wash)",
+      "resolvedValue": "oklch(0.62 0.13 170 / 0.18)",
+      "aliasOf": "--stoa-color-teal-wash",
+      "theme": {
+        "dark": {
+          "value": "oklch(0.62 0.13 170 / 0.18)",
+          "aliasOf": "--stoa-color-teal-wash",
+          "resolvedValue": "oklch(0.62 0.13 170 / 0.18)"
+        }
+      },
+      "readBy": {
+        "components": [
+          {
+            "component": "Heatmap",
+            "file": "packages/react/src/Heatmap.tsx",
+            "line": 33,
+            "via": "readCanvasTokens"
+          },
+          {
+            "component": "Ladder",
+            "file": "packages/react/src/Ladder.tsx",
+            "line": 33,
+            "via": "readCanvasTokens"
+          }
+        ],
+        "stories": [
+          "Data/Heatmap > Liquidity",
+          "Data/Heatmap > Sparse",
+          "Data/Ladder > Empty",
+          "Data/Ladder > Live",
+          "Data/Ladder > Static",
+          "Data/Ladder > TwoThemes"
+        ]
+      },
+      "reachedByTheme": {
+        "light": {
+          "direct": true,
+          "via": []
+        },
+        "dark": {
+          "direct": true,
+          "via": []
+        }
+      },
+      "unused": false
+    },
+    {
+      "name": "--stoa-color-warning",
+      "group": "color",
+      "kind": "semantic",
+      "value": "var(--stoa-color-amber-500)",
+      "resolvedValue": "oklch(0.78 0.15 80)",
+      "aliasOf": "--stoa-color-amber-500",
+      "theme": {
+        "dark": {
+          "value": "oklch(0.78 0.15 80)",
+          "aliasOf": "--stoa-color-amber-500",
+          "resolvedValue": "oklch(0.78 0.15 80)"
+        }
+      },
+      "readBy": {
+        "components": [
+          {
+            "component": "StatusBadge",
+            "file": "packages/react/src/styles.css",
+            "line": 91
+          }
+        ],
+        "stories": []
+      },
+      "reachedByTheme": {
+        "light": {
+          "direct": true,
+          "via": []
+        },
+        "dark": {
+          "direct": true,
+          "via": []
+        }
+      },
+      "unused": false
+    },
+    {
+      "name": "--stoa-density-cell-padding-x",
+      "group": "density",
+      "kind": "density",
+      "value": "8px",
+      "resolvedValue": "8px",
+      "aliasOf": null,
+      "density": {
+        "compact": "6px",
+        "regular": "8px",
+        "comfortable": "12px"
+      },
+      "readBy": {
+        "components": [
+          {
+            "component": "TradeTable",
+            "file": "packages/react/src/styles.css",
+            "line": 34
+          }
+        ],
+        "stories": [
+          "Controls/Playback > Counters",
+          "Controls/Playback > Trades",
+          "Controls/Playback > Transport"
+        ]
+      },
+      "reachedByTheme": {
+        "light": {
+          "direct": true,
+          "via": []
+        },
+        "dark": {
+          "direct": true,
+          "via": []
+        }
+      },
+      "unused": false
+    },
+    {
+      "name": "--stoa-density-font-size",
+      "group": "density",
+      "kind": "density",
+      "value": "13px",
+      "resolvedValue": "13px",
+      "aliasOf": null,
+      "density": {
+        "compact": "12px",
+        "regular": "13px",
+        "comfortable": "14px"
+      },
+      "readBy": {
+        "components": [
+          {
+            "component": "(css) body",
+            "file": ".storybook/preview.css",
+            "line": 5
+          },
+          {
+            "component": "Heatmap",
+            "file": "packages/react/src/Heatmap.tsx",
+            "line": 37,
+            "via": "readCanvasTokens"
+          },
+          {
+            "component": "Ladder",
+            "file": "packages/react/src/Ladder.tsx",
+            "line": 37,
+            "via": "readCanvasTokens"
+          },
+          {
+            "component": "TradeTable",
+            "file": "packages/react/src/styles.css",
+            "line": 28
+          }
+        ],
+        "stories": [
+          "Controls/Playback > Counters",
+          "Controls/Playback > Trades",
+          "Controls/Playback > Transport",
+          "Data/Heatmap > Liquidity",
+          "Data/Heatmap > Sparse",
+          "Data/Ladder > Empty",
+          "Data/Ladder > Live",
+          "Data/Ladder > Static",
+          "Data/Ladder > TwoThemes"
+        ]
+      },
+      "reachedByTheme": {
+        "light": {
+          "direct": true,
+          "via": []
+        },
+        "dark": {
+          "direct": true,
+          "via": []
+        }
+      },
+      "unused": false
+    },
+    {
+      "name": "--stoa-density-row-height",
+      "group": "density",
+      "kind": "density",
+      "value": "28px",
+      "resolvedValue": "28px",
+      "aliasOf": null,
+      "density": {
+        "compact": "22px",
+        "regular": "28px",
+        "comfortable": "36px"
+      },
+      "readBy": {
+        "components": [
+          {
+            "component": "Heatmap",
+            "file": "packages/react/src/Heatmap.tsx",
+            "line": 36,
+            "via": "readCanvasTokens"
+          },
+          {
+            "component": "Ladder",
+            "file": "packages/react/src/Ladder.tsx",
+            "line": 36,
+            "via": "readCanvasTokens"
+          },
+          {
+            "component": "TradeTable",
+            "file": "packages/react/src/styles.css",
+            "line": 34
+          }
+        ],
+        "stories": [
+          "Controls/Playback > Counters",
+          "Controls/Playback > Trades",
+          "Controls/Playback > Transport",
+          "Data/Heatmap > Liquidity",
+          "Data/Heatmap > Sparse",
+          "Data/Ladder > Empty",
+          "Data/Ladder > Live",
+          "Data/Ladder > Static",
+          "Data/Ladder > TwoThemes"
+        ]
+      },
+      "reachedByTheme": {
+        "light": {
+          "direct": true,
+          "via": []
+        },
+        "dark": {
+          "direct": true,
+          "via": []
+        }
+      },
+      "unused": false
+    },
+    {
+      "name": "--stoa-focus-offset",
+      "group": "focus",
+      "kind": "primitive",
+      "value": "2px",
+      "resolvedValue": "2px",
+      "aliasOf": null,
+      "readBy": {
+        "components": [
+          {
+            "component": "Button",
+            "file": "packages/react/src/styles.css",
+            "line": 56
+          },
+          {
+            "component": "ChoiceGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 56
+          },
+          {
+            "component": "TimeSlider",
+            "file": "packages/react/src/styles.css",
+            "line": 56
+          }
+        ],
+        "stories": [
+          "Controls/Playback > Counters",
+          "Controls/Playback > Trades",
+          "Controls/Playback > Transport"
+        ]
+      },
+      "reachedByTheme": {
+        "light": {
+          "direct": true,
+          "via": []
+        },
+        "dark": {
+          "direct": true,
+          "via": []
+        }
+      },
+      "unused": false
+    },
+    {
+      "name": "--stoa-focus-width",
+      "group": "focus",
+      "kind": "primitive",
+      "value": "2px",
+      "resolvedValue": "2px",
+      "aliasOf": null,
+      "readBy": {
+        "components": [
+          {
+            "component": "Button",
+            "file": "packages/react/src/styles.css",
+            "line": 55
+          },
+          {
+            "component": "ChoiceGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 55
+          },
+          {
+            "component": "Tabs",
+            "file": "packages/react/src/styles.css",
+            "line": 100
+          },
+          {
+            "component": "TextField",
+            "file": "packages/react/src/styles.css",
+            "line": 84
+          },
+          {
+            "component": "TimeSlider",
+            "file": "packages/react/src/styles.css",
+            "line": 55
+          }
+        ],
+        "stories": [
+          "Controls/Playback > Counters",
+          "Controls/Playback > Trades",
+          "Controls/Playback > Transport"
+        ]
+      },
+      "reachedByTheme": {
+        "light": {
+          "direct": true,
+          "via": []
+        },
+        "dark": {
+          "direct": true,
+          "via": []
+        }
+      },
+      "unused": false
+    },
+    {
+      "name": "--stoa-font-family-mono",
+      "group": "font",
+      "kind": "primitive",
+      "value": "'IBM Plex Mono', ui-monospace, monospace",
+      "resolvedValue": "'IBM Plex Mono', ui-monospace, monospace",
+      "aliasOf": null,
+      "readBy": {
+        "components": [
+          {
+            "component": "Heatmap",
+            "file": "packages/react/src/Heatmap.tsx",
+            "line": 37,
+            "via": "readCanvasTokens"
+          },
+          {
+            "component": "Ladder",
+            "file": "packages/react/src/Ladder.tsx",
+            "line": 37,
+            "via": "readCanvasTokens"
+          },
+          {
+            "component": "StatBar",
+            "file": "packages/react/src/styles.css",
+            "line": 72
+          },
+          {
+            "component": "TextField",
+            "file": "packages/react/src/styles.css",
+            "line": 80
+          },
+          {
+            "component": "TimeSlider",
+            "file": "packages/react/src/styles.css",
+            "line": 61
+          },
+          {
+            "component": "TradeTable",
+            "file": "packages/react/src/styles.css",
+            "line": 29
+          }
+        ],
+        "stories": [
+          "Controls/Playback > Counters",
+          "Controls/Playback > Trades",
+          "Controls/Playback > Transport",
+          "Data/Heatmap > Liquidity",
+          "Data/Heatmap > Sparse",
+          "Data/Ladder > Empty",
+          "Data/Ladder > Live",
+          "Data/Ladder > Static",
+          "Data/Ladder > TwoThemes"
+        ]
+      },
+      "reachedByTheme": {
+        "light": {
+          "direct": true,
+          "via": []
+        },
+        "dark": {
+          "direct": true,
+          "via": []
+        }
+      },
+      "unused": false
+    },
+    {
+      "name": "--stoa-font-family-sans",
+      "group": "font",
+      "kind": "primitive",
+      "value": "'IBM Plex Sans', 'IBM Plex Sans Arabic', system-ui, sans-serif",
+      "resolvedValue": "'IBM Plex Sans', 'IBM Plex Sans Arabic', system-ui, sans-serif",
+      "aliasOf": null,
+      "readBy": {
+        "components": [
+          {
+            "component": "(css) body",
+            "file": ".storybook/preview.css",
+            "line": 4
+          }
+        ],
+        "stories": []
+      },
+      "reachedByTheme": {
+        "light": {
+          "direct": true,
+          "via": []
+        },
+        "dark": {
+          "direct": true,
+          "via": []
+        }
+      },
+      "unused": false
+    },
+    {
+      "name": "--stoa-font-line-height-normal",
+      "group": "font",
+      "kind": "primitive",
+      "value": "1.45",
+      "resolvedValue": "1.45",
+      "aliasOf": null,
+      "readBy": {
+        "components": [],
+        "stories": []
+      },
+      "reachedByTheme": {
+        "light": {
+          "direct": false,
+          "via": []
+        },
+        "dark": {
+          "direct": false,
+          "via": []
+        }
+      },
+      "unused": true
+    },
+    {
+      "name": "--stoa-font-line-height-tight",
+      "group": "font",
+      "kind": "primitive",
+      "value": "1.25",
+      "resolvedValue": "1.25",
+      "aliasOf": null,
+      "readBy": {
+        "components": [],
+        "stories": []
+      },
+      "reachedByTheme": {
+        "light": {
+          "direct": false,
+          "via": []
+        },
+        "dark": {
+          "direct": false,
+          "via": []
+        }
+      },
+      "unused": true
+    },
+    {
+      "name": "--stoa-font-size-2xl",
+      "group": "font",
+      "kind": "primitive",
+      "value": "24px",
+      "resolvedValue": "24px",
+      "aliasOf": null,
+      "readBy": {
+        "components": [],
+        "stories": []
+      },
+      "reachedByTheme": {
+        "light": {
+          "direct": false,
+          "via": []
+        },
+        "dark": {
+          "direct": false,
+          "via": []
+        }
+      },
+      "unused": true
+    },
+    {
+      "name": "--stoa-font-size-2xs",
+      "group": "font",
+      "kind": "primitive",
+      "value": "11px",
+      "resolvedValue": "11px",
+      "aliasOf": null,
+      "readBy": {
+        "components": [
+          {
+            "component": "StatBar",
+            "file": "packages/react/src/styles.css",
+            "line": 72
+          },
+          {
+            "component": "TextField",
+            "file": "packages/react/src/styles.css",
+            "line": 85
+          }
+        ],
+        "stories": [
+          "Controls/Playback > Counters",
+          "Controls/Playback > Trades",
+          "Controls/Playback > Transport"
+        ]
+      },
+      "reachedByTheme": {
+        "light": {
+          "direct": true,
+          "via": []
+        },
+        "dark": {
+          "direct": true,
+          "via": []
+        }
+      },
+      "unused": false
+    },
+    {
+      "name": "--stoa-font-size-lg",
+      "group": "font",
+      "kind": "primitive",
+      "value": "16px",
+      "resolvedValue": "16px",
+      "aliasOf": null,
+      "readBy": {
+        "components": [],
+        "stories": []
+      },
+      "reachedByTheme": {
+        "light": {
+          "direct": false,
+          "via": []
+        },
+        "dark": {
+          "direct": false,
+          "via": []
+        }
+      },
+      "unused": true
+    },
+    {
+      "name": "--stoa-font-size-md",
+      "group": "font",
+      "kind": "primitive",
+      "value": "14px",
+      "resolvedValue": "14px",
+      "aliasOf": null,
+      "readBy": {
+        "components": [],
+        "stories": []
+      },
+      "reachedByTheme": {
+        "light": {
+          "direct": false,
+          "via": []
+        },
+        "dark": {
+          "direct": false,
+          "via": []
+        }
+      },
+      "unused": true
+    },
+    {
+      "name": "--stoa-font-size-sm",
+      "group": "font",
+      "kind": "primitive",
+      "value": "13px",
+      "resolvedValue": "13px",
+      "aliasOf": null,
+      "readBy": {
+        "components": [],
+        "stories": []
+      },
+      "reachedByTheme": {
+        "light": {
+          "direct": false,
+          "via": []
+        },
+        "dark": {
+          "direct": false,
+          "via": []
+        }
+      },
+      "unused": true
+    },
+    {
+      "name": "--stoa-font-size-xl",
+      "group": "font",
+      "kind": "primitive",
+      "value": "20px",
+      "resolvedValue": "20px",
+      "aliasOf": null,
+      "readBy": {
+        "components": [],
+        "stories": []
+      },
+      "reachedByTheme": {
+        "light": {
+          "direct": false,
+          "via": []
+        },
+        "dark": {
+          "direct": false,
+          "via": []
+        }
+      },
+      "unused": true
+    },
+    {
+      "name": "--stoa-font-size-xs",
+      "group": "font",
+      "kind": "primitive",
+      "value": "12px",
+      "resolvedValue": "12px",
+      "aliasOf": null,
+      "readBy": {
+        "components": [
+          {
+            "component": "Panel",
+            "file": "packages/react/src/styles.css",
+            "line": 18
+          },
+          {
+            "component": "StatusBadge",
+            "file": "packages/react/src/styles.css",
+            "line": 87
+          },
+          {
+            "component": "TextField",
+            "file": "packages/react/src/styles.css",
+            "line": 78
+          }
+        ],
+        "stories": [
+          "Controls/Playback > Counters",
+          "Controls/Playback > Trades",
+          "Controls/Playback > Transport"
+        ]
+      },
+      "reachedByTheme": {
+        "light": {
+          "direct": true,
+          "via": []
+        },
+        "dark": {
+          "direct": true,
+          "via": []
+        }
+      },
+      "unused": false
+    },
+    {
+      "name": "--stoa-font-weight-medium",
+      "group": "font",
+      "kind": "primitive",
+      "value": "500",
+      "resolvedValue": "500",
+      "aliasOf": null,
+      "readBy": {
+        "components": [
+          {
+            "component": "Panel",
+            "file": "packages/react/src/styles.css",
+            "line": 19
+          },
+          {
+            "component": "StatusBadge",
+            "file": "packages/react/src/styles.css",
+            "line": 87
+          }
+        ],
+        "stories": [
+          "Controls/Playback > Counters",
+          "Controls/Playback > Trades",
+          "Controls/Playback > Transport"
+        ]
+      },
+      "reachedByTheme": {
+        "light": {
+          "direct": true,
+          "via": []
+        },
+        "dark": {
+          "direct": true,
+          "via": []
+        }
+      },
+      "unused": false
+    },
+    {
+      "name": "--stoa-font-weight-regular",
+      "group": "font",
+      "kind": "primitive",
+      "value": "400",
+      "resolvedValue": "400",
+      "aliasOf": null,
+      "readBy": {
+        "components": [
+          {
+            "component": "TradeTable",
+            "file": "packages/react/src/styles.css",
+            "line": 31
+          }
+        ],
+        "stories": [
+          "Controls/Playback > Counters",
+          "Controls/Playback > Trades",
+          "Controls/Playback > Transport"
+        ]
+      },
+      "reachedByTheme": {
+        "light": {
+          "direct": true,
+          "via": []
+        },
+        "dark": {
+          "direct": true,
+          "via": []
+        }
+      },
+      "unused": false
+    },
+    {
+      "name": "--stoa-font-weight-semibold",
+      "group": "font",
+      "kind": "primitive",
+      "value": "600",
+      "resolvedValue": "600",
+      "aliasOf": null,
+      "readBy": {
+        "components": [],
+        "stories": []
+      },
+      "reachedByTheme": {
+        "light": {
+          "direct": false,
+          "via": []
+        },
+        "dark": {
+          "direct": false,
+          "via": []
+        }
+      },
+      "unused": true
+    },
+    {
+      "name": "--stoa-motion-duration-base",
+      "group": "motion",
+      "kind": "primitive",
+      "value": "160ms",
+      "resolvedValue": "160ms",
+      "aliasOf": null,
+      "readBy": {
+        "components": [],
+        "stories": []
+      },
+      "reachedByTheme": {
+        "light": {
+          "direct": false,
+          "via": []
+        },
+        "dark": {
+          "direct": false,
+          "via": []
+        }
+      },
+      "unused": true
+    },
+    {
+      "name": "--stoa-motion-duration-fast",
+      "group": "motion",
+      "kind": "primitive",
+      "value": "80ms",
+      "resolvedValue": "80ms",
+      "aliasOf": null,
+      "readBy": {
+        "components": [
+          {
+            "component": "Button",
+            "file": "packages/react/src/styles.css",
+            "line": 48
+          },
+          {
+            "component": "ChoiceGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 48
+          }
+        ],
+        "stories": [
+          "Controls/Playback > Counters",
+          "Controls/Playback > Trades",
+          "Controls/Playback > Transport"
+        ]
+      },
+      "reachedByTheme": {
+        "light": {
+          "direct": true,
+          "via": []
+        },
+        "dark": {
+          "direct": true,
+          "via": []
+        }
+      },
+      "unused": false
+    },
+    {
+      "name": "--stoa-motion-duration-flash",
+      "group": "motion",
+      "kind": "primitive",
+      "value": "600ms",
+      "resolvedValue": "600ms",
+      "aliasOf": null,
+      "readBy": {
+        "components": [],
+        "stories": []
+      },
+      "reachedByTheme": {
+        "light": {
+          "direct": false,
+          "via": []
+        },
+        "dark": {
+          "direct": false,
+          "via": []
+        }
+      },
+      "unused": true
+    },
+    {
+      "name": "--stoa-motion-duration-instant",
+      "group": "motion",
+      "kind": "primitive",
+      "value": "0ms",
+      "resolvedValue": "0ms",
+      "aliasOf": null,
+      "readBy": {
+        "components": [],
+        "stories": []
+      },
+      "reachedByTheme": {
+        "light": {
+          "direct": false,
+          "via": []
+        },
+        "dark": {
+          "direct": false,
+          "via": []
+        }
+      },
+      "unused": true
+    },
+    {
+      "name": "--stoa-motion-duration-slow",
+      "group": "motion",
+      "kind": "primitive",
+      "value": "240ms",
+      "resolvedValue": "240ms",
+      "aliasOf": null,
+      "readBy": {
+        "components": [],
+        "stories": []
+      },
+      "reachedByTheme": {
+        "light": {
+          "direct": false,
+          "via": []
+        },
+        "dark": {
+          "direct": false,
+          "via": []
+        }
+      },
+      "unused": true
+    },
+    {
+      "name": "--stoa-motion-easing-enter",
+      "group": "motion",
+      "kind": "primitive",
+      "value": "cubic-bezier(0, 0, 0, 1)",
+      "resolvedValue": "cubic-bezier(0, 0, 0, 1)",
+      "aliasOf": null,
+      "readBy": {
+        "components": [],
+        "stories": []
+      },
+      "reachedByTheme": {
+        "light": {
+          "direct": false,
+          "via": []
+        },
+        "dark": {
+          "direct": false,
+          "via": []
+        }
+      },
+      "unused": true
+    },
+    {
+      "name": "--stoa-motion-easing-exit",
+      "group": "motion",
+      "kind": "primitive",
+      "value": "cubic-bezier(0.3, 0, 1, 1)",
+      "resolvedValue": "cubic-bezier(0.3, 0, 1, 1)",
+      "aliasOf": null,
+      "readBy": {
+        "components": [],
+        "stories": []
+      },
+      "reachedByTheme": {
+        "light": {
+          "direct": false,
+          "via": []
+        },
+        "dark": {
+          "direct": false,
+          "via": []
+        }
+      },
+      "unused": true
+    },
+    {
+      "name": "--stoa-motion-easing-standard",
+      "group": "motion",
+      "kind": "primitive",
+      "value": "cubic-bezier(0.2, 0, 0, 1)",
+      "resolvedValue": "cubic-bezier(0.2, 0, 0, 1)",
+      "aliasOf": null,
+      "readBy": {
+        "components": [],
+        "stories": []
+      },
+      "reachedByTheme": {
+        "light": {
+          "direct": false,
+          "via": []
+        },
+        "dark": {
+          "direct": false,
+          "via": []
+        }
+      },
+      "unused": true
+    },
+    {
+      "name": "--stoa-radius-full",
+      "group": "radius",
+      "kind": "primitive",
+      "value": "9999px",
+      "resolvedValue": "9999px",
+      "aliasOf": null,
+      "readBy": {
+        "components": [
+          {
+            "component": "TimeSlider",
+            "file": "packages/react/src/styles.css",
+            "line": 65
+          },
+          {
+            "component": "TimeSlider",
+            "file": "packages/react/src/styles.css",
+            "line": 69
+          }
+        ],
+        "stories": [
+          "Controls/Playback > Counters",
+          "Controls/Playback > Trades",
+          "Controls/Playback > Transport"
+        ]
+      },
+      "reachedByTheme": {
+        "light": {
+          "direct": true,
+          "via": []
+        },
+        "dark": {
+          "direct": true,
+          "via": []
+        }
+      },
+      "unused": false
+    },
+    {
+      "name": "--stoa-radius-lg",
+      "group": "radius",
+      "kind": "primitive",
+      "value": "8px",
+      "resolvedValue": "8px",
+      "aliasOf": null,
+      "readBy": {
+        "components": [],
+        "stories": []
+      },
+      "reachedByTheme": {
+        "light": {
+          "direct": false,
+          "via": []
+        },
+        "dark": {
+          "direct": false,
+          "via": []
+        }
+      },
+      "unused": true
+    },
+    {
+      "name": "--stoa-radius-md",
+      "group": "radius",
+      "kind": "primitive",
+      "value": "4px",
+      "resolvedValue": "4px",
+      "aliasOf": null,
+      "readBy": {
+        "components": [
+          {
+            "component": "Panel",
+            "file": "packages/react/src/styles.css",
+            "line": 12
+          }
+        ],
+        "stories": [
+          "Controls/Playback > Counters",
+          "Controls/Playback > Trades",
+          "Controls/Playback > Transport"
+        ]
+      },
+      "reachedByTheme": {
+        "light": {
+          "direct": true,
+          "via": []
+        },
+        "dark": {
+          "direct": true,
+          "via": []
+        }
+      },
+      "unused": false
+    },
+    {
+      "name": "--stoa-radius-none",
+      "group": "radius",
+      "kind": "primitive",
+      "value": "0px",
+      "resolvedValue": "0px",
+      "aliasOf": null,
+      "readBy": {
+        "components": [],
+        "stories": []
+      },
+      "reachedByTheme": {
+        "light": {
+          "direct": false,
+          "via": []
+        },
+        "dark": {
+          "direct": false,
+          "via": []
+        }
+      },
+      "unused": true
+    },
+    {
+      "name": "--stoa-radius-sm",
+      "group": "radius",
+      "kind": "primitive",
+      "value": "2px",
+      "resolvedValue": "2px",
+      "aliasOf": null,
+      "readBy": {
+        "components": [
+          {
+            "component": "Button",
+            "file": "packages/react/src/styles.css",
+            "line": 44
+          },
+          {
+            "component": "ChoiceGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 44
+          },
+          {
+            "component": "TextField",
+            "file": "packages/react/src/styles.css",
+            "line": 82
+          }
+        ],
+        "stories": [
+          "Controls/Playback > Counters",
+          "Controls/Playback > Trades",
+          "Controls/Playback > Transport"
+        ]
+      },
+      "reachedByTheme": {
+        "light": {
+          "direct": true,
+          "via": []
+        },
+        "dark": {
+          "direct": true,
+          "via": []
+        }
+      },
+      "unused": false
+    },
+    {
+      "name": "--stoa-space-0",
+      "group": "space",
+      "kind": "primitive",
+      "value": "0px",
+      "resolvedValue": "0px",
+      "aliasOf": null,
+      "readBy": {
+        "components": [],
+        "stories": []
+      },
+      "reachedByTheme": {
+        "light": {
+          "direct": false,
+          "via": []
+        },
+        "dark": {
+          "direct": false,
+          "via": []
+        }
+      },
+      "unused": true
+    },
+    {
+      "name": "--stoa-space-0-5",
+      "group": "space",
+      "kind": "primitive",
+      "value": "2px",
+      "resolvedValue": "2px",
+      "aliasOf": null,
+      "readBy": {
+        "components": [],
+        "stories": []
+      },
+      "reachedByTheme": {
+        "light": {
+          "direct": false,
+          "via": []
+        },
+        "dark": {
+          "direct": false,
+          "via": []
+        }
+      },
+      "unused": true
+    },
+    {
+      "name": "--stoa-space-1",
+      "group": "space",
+      "kind": "primitive",
+      "value": "4px",
+      "resolvedValue": "4px",
+      "aliasOf": null,
+      "readBy": {
+        "components": [
+          {
+            "component": "Button",
+            "file": "packages/react/src/styles.css",
+            "line": 42
+          },
+          {
+            "component": "ChoiceGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 42
+          },
+          {
+            "component": "ChoiceGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 58
+          },
+          {
+            "component": "StatBar",
+            "file": "packages/react/src/styles.css",
+            "line": 73
+          },
+          {
+            "component": "StatusBadge",
+            "file": "packages/react/src/styles.css",
+            "line": 87
+          },
+          {
+            "component": "Tabs",
+            "file": "packages/react/src/styles.css",
+            "line": 94
+          },
+          {
+            "component": "TextField",
+            "file": "packages/react/src/styles.css",
+            "line": 77
+          }
+        ],
+        "stories": [
+          "Controls/Playback > Counters",
+          "Controls/Playback > Trades",
+          "Controls/Playback > Transport"
+        ]
+      },
+      "reachedByTheme": {
+        "light": {
+          "direct": true,
+          "via": []
+        },
+        "dark": {
+          "direct": true,
+          "via": []
+        }
+      },
+      "unused": false
+    },
+    {
+      "name": "--stoa-space-12",
+      "group": "space",
+      "kind": "primitive",
+      "value": "48px",
+      "resolvedValue": "48px",
+      "aliasOf": null,
+      "readBy": {
+        "components": [],
+        "stories": []
+      },
+      "reachedByTheme": {
+        "light": {
+          "direct": false,
+          "via": []
+        },
+        "dark": {
+          "direct": false,
+          "via": []
+        }
+      },
+      "unused": true
+    },
+    {
+      "name": "--stoa-space-2",
+      "group": "space",
+      "kind": "primitive",
+      "value": "8px",
+      "resolvedValue": "8px",
+      "aliasOf": null,
+      "readBy": {
+        "components": [
+          {
+            "component": "Button",
+            "file": "packages/react/src/styles.css",
+            "line": 42
+          },
+          {
+            "component": "ChoiceGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 42
+          },
+          {
+            "component": "Panel",
+            "file": "packages/react/src/styles.css",
+            "line": 17
+          },
+          {
+            "component": "Tabs",
+            "file": "packages/react/src/styles.css",
+            "line": 96
+          },
+          {
+            "component": "TextField",
+            "file": "packages/react/src/styles.css",
+            "line": 81
+          }
+        ],
+        "stories": [
+          "Controls/Playback > Counters",
+          "Controls/Playback > Trades",
+          "Controls/Playback > Transport"
+        ]
+      },
+      "reachedByTheme": {
+        "light": {
+          "direct": true,
+          "via": []
+        },
+        "dark": {
+          "direct": true,
+          "via": []
+        }
+      },
+      "unused": false
+    },
+    {
+      "name": "--stoa-space-3",
+      "group": "space",
+      "kind": "primitive",
+      "value": "12px",
+      "resolvedValue": "12px",
+      "aliasOf": null,
+      "readBy": {
+        "components": [
+          {
+            "component": "Panel",
+            "file": "packages/react/src/styles.css",
+            "line": 13
+          },
+          {
+            "component": "Tabs",
+            "file": "packages/react/src/styles.css",
+            "line": 96
+          },
+          {
+            "component": "TimeSlider",
+            "file": "packages/react/src/styles.css",
+            "line": 60
+          }
+        ],
+        "stories": [
+          "Controls/Playback > Counters",
+          "Controls/Playback > Trades",
+          "Controls/Playback > Transport"
+        ]
+      },
+      "reachedByTheme": {
+        "light": {
+          "direct": true,
+          "via": []
+        },
+        "dark": {
+          "direct": true,
+          "via": []
+        }
+      },
+      "unused": false
+    },
+    {
+      "name": "--stoa-space-4",
+      "group": "space",
+      "kind": "primitive",
+      "value": "16px",
+      "resolvedValue": "16px",
+      "aliasOf": null,
+      "readBy": {
+        "components": [
+          {
+            "component": "StatBar",
+            "file": "packages/react/src/styles.css",
+            "line": 72
+          },
+          {
+            "component": "Tabs",
+            "file": "packages/react/src/styles.css",
+            "line": 101
+          }
+        ],
+        "stories": [
+          "Controls/Playback > Counters",
+          "Controls/Playback > Trades",
+          "Controls/Playback > Transport"
+        ]
+      },
+      "reachedByTheme": {
+        "light": {
+          "direct": true,
+          "via": []
+        },
+        "dark": {
+          "direct": true,
+          "via": []
+        }
+      },
+      "unused": false
+    },
+    {
+      "name": "--stoa-space-6",
+      "group": "space",
+      "kind": "primitive",
+      "value": "24px",
+      "resolvedValue": "24px",
+      "aliasOf": null,
+      "readBy": {
+        "components": [],
+        "stories": []
+      },
+      "reachedByTheme": {
+        "light": {
+          "direct": false,
+          "via": []
+        },
+        "dark": {
+          "direct": false,
+          "via": []
+        }
+      },
+      "unused": true
+    },
+    {
+      "name": "--stoa-space-8",
+      "group": "space",
+      "kind": "primitive",
+      "value": "32px",
+      "resolvedValue": "32px",
+      "aliasOf": null,
+      "readBy": {
+        "components": [],
+        "stories": []
+      },
+      "reachedByTheme": {
+        "light": {
+          "direct": false,
+          "via": []
+        },
+        "dark": {
+          "direct": false,
+          "via": []
+        }
+      },
+      "unused": true
+    }
+  ],
+  "unusedTokens": [
+    "--stoa-color-neutral-500",
+    "--stoa-color-neutral-700",
+    "--stoa-color-surface-sunken",
+    "--stoa-color-text-subtle",
+    "--stoa-font-line-height-normal",
+    "--stoa-font-line-height-tight",
+    "--stoa-font-size-2xl",
+    "--stoa-font-size-lg",
+    "--stoa-font-size-md",
+    "--stoa-font-size-sm",
+    "--stoa-font-size-xl",
+    "--stoa-font-weight-semibold",
+    "--stoa-motion-duration-base",
+    "--stoa-motion-duration-flash",
+    "--stoa-motion-duration-instant",
+    "--stoa-motion-duration-slow",
+    "--stoa-motion-easing-enter",
+    "--stoa-motion-easing-exit",
+    "--stoa-motion-easing-standard",
+    "--stoa-radius-lg",
+    "--stoa-radius-none",
+    "--stoa-space-0",
+    "--stoa-space-0-5",
+    "--stoa-space-12",
+    "--stoa-space-6",
+    "--stoa-space-8"
+  ],
+  "hardcodedLiterals": [
+    {
+      "file": "packages/react/src/styles.css",
+      "line": 48,
+      "property": "transition",
+      "value": "cubic-bezier(0.2, 0, 0, 1)",
+      "category": "easing",
+      "matchingToken": "--stoa-motion-easing-standard"
+    }
+  ],
+  "undefinedCustomProperties": [],
+  "summary": {
+    "tokenCount": 84,
+    "unusedCount": 26,
+    "hardcodedLiteralCount": 1,
+    "undefinedCount": 0
+  }
+}
