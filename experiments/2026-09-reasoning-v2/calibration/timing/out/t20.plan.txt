@@ -1,0 +1,9 @@
+1. **The person and the session**: A portfolio manager checking their book in the morning, triggered by the need to identify overnight market shifts and make trading decisions for the day. It is a routine but critical check requiring quick comprehension of volatility and rationale.
+
+2. **The shape of the work**: Scanning a large collection of assets to find those that deviated significantly from yesterday's levels, then understanding the "why" behind those moves. The manager acts here by filtering, investigating, and ultimately deciding on positions.
+
+3. **The information**: Entities are the portfolio's assets (stocks, bonds, crypto). Measures are price change % and volume. Values are judged against yesterday's close and a volatility threshold. Freshness is paramount; background info includes sector context.
+
+4. **The decision and its evidence**: The manager decides whether to trade or hold. They need evidence of *why* a move happened (e.g., news, earnings) and how certain the data is (e.g., stale vs. real-time). A wrong decision risks capital loss; corrections are slow.
+
+5. **The structure**: A top bar for global portfolio health. A main section listing assets with clear visual indicators of movement. Clicking an item reveals a detail view with the "why" (news/events) and historical context. Progress is shown via a summary of top movers at the top.
