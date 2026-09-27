@@ -14,6 +14,11 @@
 // - Alpha compositing happens in gamma-encoded sRGB, which is what
 //   browsers do for an sRGB destination (CSS `rgba()`, canvas
 //   `globalAlpha`), so a composited measurement matches what is drawn.
+// - Every function that measures or simulates a colour clips its inputs
+//   channelwise into sRGB first: `contrast`, `deltaE2000Srgb`, `simulateCvd`
+//   and `simulateCvdInGammaSpace`. A reported number therefore always
+//   describes a colour a display can show, and the clipping happens once, in
+//   the same place, whichever rule asks for it.
 
 /** @typedef {{ r: number, g: number, b: number, alpha: number }} Srgb */
 /** @typedef {"normal" | "protanopia" | "deuteranopia" | "tritanopia"} CvdModel */
@@ -24,9 +29,10 @@ export const CVD_MODELS = /** @type {CvdModel[]} */ (["normal", "protanopia", "d
 // Machado, Oliveira and Fernandes 2009, "A Physiologically-based Model
 // for Simulation of Color Vision Deficiency", IEEE TVCG 15(6). Severity
 // 1.0 rows of the published tables, row-major. The paper defines the
-// matrices on linear RGB, so `simulateCvd` linearises first; culori 4.0.2
-// applies the same numbers to gamma-encoded sRGB, which is why this
-// module does not use it.
+// matrices on linear RGB, so `simulateCvd` clips into sRGB and linearises
+// first; culori 4.0.2 applies the same numbers to gamma-encoded sRGB, which
+// is why this module does not use it. scripts/color.test.mjs reads culori's
+// own copy of these rows back and checks them against these constants.
 const MACHADO_SEVERITY_1 = {
   protanopia: [
     0.152286, 1.052583, -0.204868,
@@ -106,32 +112,39 @@ export function contrast(fg, bg) {
 
 /** Simulate dichromatic vision with the Machado 2009 matrices at severity
  * 1.0, applied in linear light as the paper defines them, then clipped
- * back into the sRGB gamut. `normal` returns the colour unchanged. */
+ * back into the sRGB gamut. The input is clipped into sRGB first, the same
+ * way `contrast` and `deltaE2000Srgb` do it, so every measurement in this
+ * module starts from a colour a display can show. `normal` returns the
+ * clipped colour. */
 export function simulateCvd(c, model) {
-  if (model === "normal") return { ...c };
+  const input = clipToGamut(c);
+  if (model === "normal") return input;
   const m = MACHADO_SEVERITY_1[model];
   if (!m) throw new Error(`unknown colour-vision model: ${model}`);
-  const [r, g, b] = [c.r, c.g, c.b].map(decodeSrgb);
+  const [r, g, b] = [input.r, input.g, input.b].map(decodeSrgb);
   const lin = [
     m[0] * r + m[1] * g + m[2] * b,
     m[3] * r + m[4] * g + m[5] * b,
     m[6] * r + m[7] * g + m[8] * b,
   ].map(clamp01);
-  return { r: encodeSrgb(lin[0]), g: encodeSrgb(lin[1]), b: encodeSrgb(lin[2]), alpha: c.alpha };
+  return { r: encodeSrgb(lin[0]), g: encodeSrgb(lin[1]), b: encodeSrgb(lin[2]), alpha: input.alpha };
 }
 
 /** The same matrix applied to the gamma-encoded channels, as culori 4.0.2
- * does. Exported only so a test can show the two differ. */
+ * does. The input is clipped into sRGB first, as in `simulateCvd`, so the
+ * two differ only in the space the matrix is applied in. Exported only so a
+ * test can show that difference. */
 export function simulateCvdInGammaSpace(c, model) {
-  if (model === "normal") return { ...c };
+  const input = clipToGamut(c);
+  if (model === "normal") return input;
   const m = MACHADO_SEVERITY_1[model];
   if (!m) throw new Error(`unknown colour-vision model: ${model}`);
-  const { r, g, b } = c;
+  const { r, g, b } = input;
   return {
     r: clamp01(m[0] * r + m[1] * g + m[2] * b),
     g: clamp01(m[3] * r + m[4] * g + m[5] * b),
     b: clamp01(m[6] * r + m[7] * g + m[8] * b),
-    alpha: c.alpha,
+    alpha: input.alpha,
   };
 }
 

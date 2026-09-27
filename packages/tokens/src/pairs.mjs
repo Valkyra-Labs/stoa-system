@@ -11,7 +11,9 @@
 // threshold is a project decision rather than a standard. Nothing in
 // `docs` or a test may describe a reported-only entry as a WCAG failure.
 //
-// Colour names are semantic token names without the `color-` prefix.
+// Colour names are semantic token names without the `color-` prefix. A
+// `bgOver` names the opaque colour a translucent `bg` is composited over
+// before the measurement, for the case of text drawn on top of a wash.
 
 /** WCAG 2.2 contrast minimum for normal-size text (1.4.3, AA). */
 export const TEXT_AA = 4.5;
@@ -58,6 +60,32 @@ export const TEXT_PAIRS = [
   { fg: "ask", bg: "surface", min: TEXT_AA, reason: "Ask prices and the A marker the ladder draws over its own surface fill." },
   { fg: "warning", bg: "surface", min: TEXT_AA, reason: "The warning glyph of a status badge; the badge draws it as a character, so it is text." },
   { fg: "warning", bg: "bg", min: TEXT_AA, reason: "The same glyph on the page background." },
+  {
+    fg: "text-muted",
+    bg: "bid",
+    min: TEXT_AA,
+    reason: "Top and bottom price label of the heatmap, drawn in text-muted over whatever cell is behind it. A bid cell reaches full opacity at the largest size in view, so the opaque bid colour is the worst case and the one measured.",
+  },
+  {
+    fg: "text-muted",
+    bg: "ask",
+    min: TEXT_AA,
+    reason: "The same labels over an ask cell at full opacity.",
+  },
+  {
+    fg: "text",
+    bg: "up-wash",
+    bgOver: "surface",
+    min: TEXT_AA,
+    reason: "Size at the right of a ladder row, drawn in text over the bid depth bar: the wash composited over the ladder surface at its own alpha.",
+  },
+  {
+    fg: "text",
+    bg: "down-wash",
+    bgOver: "surface",
+    min: TEXT_AA,
+    reason: "The same size over the ask depth bar.",
+  },
 ];
 
 /** Borders, focus and non-text marks against the surfaces behind them.
@@ -66,7 +94,7 @@ export const TEXT_PAIRS = [
  * pairs the text rule already measures at 4.5:1, which is the stricter of
  * the two, so they are not repeated here. What is listed is the part of
  * those marks the text rule cannot see: the translucent washes. The accent
- * pair is repeated, because the selected tab is a different promise from
+ * pairs are repeated, because the selected tab is a different promise from
  * accent used as text and Stage 2 may want to move only one of them. */
 export const NON_TEXT_PAIRS = [
   { fg: "border-strong", bg: "surface", min: NON_TEXT, reason: "Boundary of a text field, a button and the slider track inside a panel: it is what identifies the control, so 1.4.11 applies." },
@@ -74,6 +102,7 @@ export const NON_TEXT_PAIRS = [
   { fg: "focus", bg: "surface", min: NON_TEXT, reason: "Focus ring around a control inside a panel." },
   { fg: "focus", bg: "bg", min: NON_TEXT, reason: "Focus ring around a control on the page background." },
   { fg: "accent", bg: "surface", min: NON_TEXT, reason: "Underline of the selected tab, which is how the selected state is shown." },
+  { fg: "accent", bg: "bg", min: NON_TEXT, reason: "The same tab indicator when the tab list sits straight on the page background." },
   {
     fg: "up-wash",
     bg: "surface",
@@ -115,11 +144,18 @@ export const UP_DOWN = {
   contrastReason: "Rising against falling with hue removed: how far apart the two are in luminance alone.",
 };
 
-/** Size tokens that set the height of a pointer target, per density mode. */
+/** Size tokens measured against the target-size minimum, per density mode.
+ *
+ * Only row height is listed. Ladder and TradeTable have no pointer handlers
+ * today, so no row is a pointer target yet and 2.5.8 does not apply to them
+ * as drawn; the token is measured because row height is what the target will
+ * be as soon as a row becomes interactive, and a mode that starts under the
+ * minimum stays under it. Control sizes are not checked at all: there are no
+ * control size tokens yet, so there is nothing for the rule to read. */
 export const TARGETS = [
   {
     token: "density-row-height",
     min: TARGET_SIZE_PX,
-    reason: "Height of a table and ladder row, which is the pointer target for picking a level.",
+    reason: "Height of a table and ladder row. It becomes the pointer target the moment a row is made interactive, so it is measured against 2.5.8 now rather than after the handler is added.",
   },
 ];

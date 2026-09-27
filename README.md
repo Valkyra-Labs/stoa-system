@@ -29,8 +29,9 @@ them.
   the current numbers, and the failures that exist today are recorded in
   `packages/tokens/known-violations.json`. Body text meets 7:1 on both
   surfaces and most text roles meet AA; the warning colour used as text,
-  `text-subtle` in the dark theme, and the boundary of a text field or
-  button are below their thresholds and are Stage 2 work.
+  `text-subtle` in the dark theme, the heatmap's price labels over a
+  full-opacity cell, and the boundary of a text field or button are below
+  their thresholds and are Stage 2 work.
 - **Motion explains a change of state** and follows the user's
   reduced-motion setting: every duration token goes to zero.
 - **Right-to-left from the start**: logical properties only, and a type

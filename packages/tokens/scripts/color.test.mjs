@@ -1,11 +1,19 @@
 // The colour maths behind the verification rules, checked against sources
-// outside this repository: culori for the Oklch conversion and for WCAG
-// contrast, the CIE's own CIEDE2000 test data for the colour difference,
-// and hand arithmetic for the colour-vision simulation.
+// outside this repository: culori for the Oklch conversion, for WCAG
+// contrast and for its own copy of the Machado 2009 matrices, the CIE's own
+// CIEDE2000 test data for the colour difference, and hand arithmetic for the
+// colour-vision simulation.
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
-import { converter, parse, wcagContrast } from "culori";
+import {
+  converter,
+  filterDeficiencyDeuter,
+  filterDeficiencyProt,
+  filterDeficiencyTrit,
+  parse,
+  wcagContrast,
+} from "culori";
 import {
   clipToGamut,
   contrast,
@@ -90,7 +98,7 @@ test("WCAG contrast matches culori on the same clipped colours", () => {
   }
 });
 
-test("two token colours fall outside the sRGB gamut and are clipped before measuring", () => {
+test("eight token colours fall outside the sRGB gamut and are clipped before measuring", () => {
   // Recorded so that a docs claim about these two never reads as exact:
   // a browser gamut-maps by reducing chroma instead of clipping channels.
   const outside = [];
@@ -178,6 +186,108 @@ test("the CVD simulation matches arithmetic done by hand in linear light", () =>
   assert.equal(protBlue.r, 0);
   assert.ok(Math.abs(protBlue.g - 0.3479) < 2e-4, `g = ${protBlue.g}`);
   assert.ok(Math.abs(protBlue.b - 1) < 1e-15, `b = ${protBlue.b}`);
+});
+
+test("the matrix constants match a transcription made outside this repository", () => {
+  // The two hand-computed cases above prove the arithmetic, but they take
+  // their matrix numbers from the module under test, so a mistyped constant
+  // would pass both. culori 4.0.2 carries the same severity 1.0 rows,
+  // transcribed by its authors from the Machado 2009 supplementary tables
+  // (https://www.inf.ufrgs.br/~oliveira/pubs_files/CVD_Simulation/CVD_Simulation.html,
+  // for Machado, Oliveira and Fernandes 2009, IEEE TVCG 15(6), 1291-1298)
+  // by way of the colorspace R package. culori applies them to
+  // gamma-encoded channels, so feeding its filter the three basis colours
+  // reads its matrix back one column at a time. Applying that matrix in
+  // linear light has to reproduce `simulateCvd` exactly, which puts all 27
+  // constants under a source this repository did not type.
+  const filters = {
+    protanopia: filterDeficiencyProt(1),
+    deuteranopia: filterDeficiencyDeuter(1),
+    tritanopia: filterDeficiencyTrit(1),
+  };
+  const basis = [
+    { r: 1, g: 0, b: 0 },
+    { r: 0, g: 1, b: 0 },
+    { r: 0, g: 0, b: 1 },
+  ];
+  const clamp01 = (x) => (x < 0 ? 0 : x > 1 ? 1 : x);
+  const inLinearLight = (m, c) => {
+    const [r, g, b] = [c.r, c.g, c.b].map(decodeSrgb);
+    const lin = [
+      m[0] * r + m[1] * g + m[2] * b,
+      m[3] * r + m[4] * g + m[5] * b,
+      m[6] * r + m[7] * g + m[8] * b,
+    ].map(clamp01);
+    return { r: encodeSrgb(lin[0]), g: encodeSrgb(lin[1]), b: encodeSrgb(lin[2]) };
+  };
+
+  const samples = [
+    { r: 1, g: 0, b: 0, alpha: 1 },
+    { r: 0, g: 1, b: 0, alpha: 1 },
+    { r: 0, g: 0, b: 1, alpha: 1 },
+    { r: 0.2, g: 0.5, b: 0.8, alpha: 1 },
+    ...["up", "down", "bid", "ask"].flatMap((name) =>
+      Object.values(themes).map((tokens) => parseColor(tokens[`color-${name}`])),
+    ),
+  ];
+  for (const [model, filter] of Object.entries(filters)) {
+    const columns = basis.map((b) => filter({ mode: "rgb", ...b }));
+    const theirs = [
+      columns[0].r, columns[1].r, columns[2].r,
+      columns[0].g, columns[1].g, columns[2].g,
+      columns[0].b, columns[1].b, columns[2].b,
+    ];
+    for (const s of samples) {
+      const expected = inLinearLight(theirs, clipToGamut(s));
+      const got = simulateCvd(s, model);
+      for (const ch of ["r", "g", "b"]) {
+        assert.ok(Math.abs(got[ch] - expected[ch]) < 1e-12, `${model}.${ch}: ${got[ch]} vs ${expected[ch]}`);
+      }
+    }
+  }
+
+  // One reference value written out from the same published table, so the
+  // expected number is in the test rather than only in the comparison.
+  // Tritanomaly at severity 1.0, second column (0.930809 is the green row's
+  // green term, 0.691367 the blue row's): pure green is linear (0, 1, 0), so
+  // the result is (-0.076749, 0.930809, 0.691367). Red clips to 0; encoding
+  // the other two with 1.055 * c^(1/2.4) - 0.055,
+  //   0.930809^(1/2.4) = exp(-0.071701 / 2.4) = exp(-0.029875) = 0.970566
+  //                    -> 1.055 * 0.970566 - 0.055 = 0.968947
+  //   0.691367^(1/2.4) = exp(-0.369085 / 2.4) = exp(-0.153786) = 0.857456
+  //                    -> 1.055 * 0.857456 - 0.055 = 0.849616
+  // so green is seen as roughly rgb(0, 247, 217), a cyan.
+  const tritGreen = simulateCvd({ r: 0, g: 1, b: 0, alpha: 1 }, "tritanopia");
+  assert.equal(tritGreen.r, 0);
+  assert.ok(Math.abs(tritGreen.g - 0.968947) < 2e-6, `g = ${tritGreen.g}`);
+  assert.ok(Math.abs(tritGreen.b - 0.849616) < 2e-6, `b = ${tritGreen.b}`);
+});
+
+test("a colour outside the sRGB gamut is clipped before the matrix, not after", () => {
+  // The light theme's `up` colour is outside sRGB, so the order matters: the
+  // rule statement is that every measurement starts from a clipped colour.
+  // Simulating the raw colour and simulating its clipped form must agree.
+  const raw = parseColor(themes.light["color-up"]);
+  assert.ok(outOfGamut(raw), "the light theme's up colour is expected to be out of gamut");
+  for (const model of ["normal", "protanopia", "deuteranopia", "tritanopia"]) {
+    const fromRaw = simulateCvd(raw, model);
+    const fromClipped = simulateCvd(clipToGamut(raw), model);
+    assert.deepEqual(fromRaw, fromClipped, model);
+  }
+  // Clipping only after the matrix would feed a negative red channel into
+  // every row instead, because this colour is out of gamut on red rather
+  // than above 1. The size of the difference is recorded here rather than
+  // assumed: it is what moved the reported light-theme numbers.
+  const rowValue = (c, row) => {
+    const [r, g, b] = [c.r, c.g, c.b].map(decodeSrgb);
+    return row[0] * r + row[1] * g + row[2] * b;
+  };
+  const deuterRedRow = [0.367322, 0.860646, -0.227968];
+  assert.ok(raw.r < 0, `red channel is ${raw.r}`);
+  assert.ok(
+    rowValue(clipToGamut(raw), deuterRedRow) - rowValue(raw, deuterRedRow) > 1e-3,
+    "clipping the negative red channel first is expected to raise the deuteranopia red row",
+  );
 });
 
 test("applying the matrix in linear light differs from applying it to gamma-encoded channels", () => {

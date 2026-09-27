@@ -23,7 +23,7 @@
 // `enforced: false` means reported only. See pairs.mjs for why an entry
 // carries it.
 
-import { CVD_MODELS, contrast, deltaE2000Srgb, parseColor, simulateCvd } from "./color.mjs";
+import { CVD_MODELS, clipToGamut, compositeOver, contrast, deltaE2000Srgb, parseColor, simulateCvd } from "./color.mjs";
 import {
   NON_TEXT_PAIRS,
   TARGETS,
@@ -56,15 +56,32 @@ function pixelsOf(tokens, name, where) {
   return Number.parseFloat(m[1]);
 }
 
+/** The background a pair is measured against. A `bgOver` names the opaque
+ * colour behind a translucent `bg`, so the measurement sees the composite a
+ * browser or a canvas draws rather than the wash on its own. */
+function backgroundOf(tokens, pair, where) {
+  const bg = colorOf(tokens, pair.bg, where);
+  if (pair.bgOver === undefined) return bg;
+  return compositeOver(clipToGamut(bg), clipToGamut(colorOf(tokens, pair.bgOver, where)));
+}
+
+/** What a pair is called in a result id and subject: `fg-on-bg`, or
+ * `fg-on-bg-over-base` when the background is a wash over an opaque colour.
+ * Exported so a test can name a pair without rebuilding this string. */
+export function pairName(pair) {
+  return pair.bgOver === undefined ? `${pair.fg}-on-${pair.bg}` : `${pair.fg}-on-${pair.bg}-over-${pair.bgOver}`;
+}
+
 function contrastResults(rule, pairs, theme, tokens) {
   return pairs.map((pair) => {
     const where = `${rule}/${theme}`;
-    const value = contrast(colorOf(tokens, pair.fg, where), colorOf(tokens, pair.bg, where));
+    const name = pairName(pair);
+    const value = contrast(colorOf(tokens, pair.fg, where), backgroundOf(tokens, pair, where));
     return {
-      id: `${rule}/${theme}/${pair.fg}-on-${pair.bg}`,
+      id: `${rule}/${theme}/${name}`,
       rule,
       theme,
-      subject: `${pair.fg} on ${pair.bg}`,
+      subject: pair.bgOver === undefined ? `${pair.fg} on ${pair.bg}` : `${pair.fg} on ${pair.bg} over ${pair.bgOver}`,
       reason: pair.reason,
       value,
       unit: "ratio",
@@ -75,7 +92,8 @@ function contrastResults(rule, pairs, theme, tokens) {
   });
 }
 
-/** WCAG 2 text contrast for one theme. */
+/** WCAG 2 text contrast for one theme. A translucent foreground, or a
+ * background given as a wash with a `bgOver`, is composited first. */
 export function checkTextContrast(theme, tokens) {
   return contrastResults(RULES.textContrast, TEXT_PAIRS, theme, tokens);
 }

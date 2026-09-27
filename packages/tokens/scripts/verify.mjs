@@ -24,6 +24,13 @@ await writeFile(new URL("../dist/verify.json", import.meta.url), `${JSON.stringi
 const pad = (s, n) => String(s).padEnd(n);
 const num = (s, n) => String(s).padStart(n);
 const W = Math.max(8, ...Object.keys(byRule).map((r) => r.length)) + 2;
+
+// The colour-vision models belong in the header rather than only in the
+// failure lines: a reader needs to know which simulation produced the
+// distinguishability numbers even when every one of those rows passes.
+const models = [...new Set(results.map((r) => r.model).filter(Boolean))];
+if (models.length) console.log(`colour-vision models: ${models.join("; ")}\n`);
+
 console.log(`${pad("rule", W)}${num("checks", 7)}${num("failures", 10)}${num("reported", 10)}`);
 for (const [rule, s] of Object.entries(byRule)) {
   console.log(`${pad(rule, W)}${num(s.checks, 7)}${num(s.failures, 10)}${num(s.reportedFailures, 10)}`);

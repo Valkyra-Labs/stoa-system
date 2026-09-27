@@ -26,6 +26,20 @@
       "note": "Same colour, one step lighter background."
     },
     {
+      "id": "text-contrast/light/text-muted-on-bid",
+      "value": 1.5014,
+      "threshold": 4.5,
+      "unit": "ratio",
+      "note": "The heatmap draws its price labels in text-muted over its own cells; a bid cell at full opacity leaves the label almost unreadable. Needs a label with its own backing or a colour chosen against the cell fills."
+    },
+    {
+      "id": "text-contrast/light/text-muted-on-ask",
+      "value": 1.4618,
+      "threshold": 4.5,
+      "unit": "ratio",
+      "note": "The same labels over an ask cell at full opacity."
+    },
+    {
       "id": "text-contrast/dark/text-subtle-on-surface",
       "value": 4.0046,
       "threshold": 4.5,
@@ -38,6 +52,20 @@
       "threshold": 4.5,
       "unit": "ratio",
       "note": "Same colour on the darker page background."
+    },
+    {
+      "id": "text-contrast/dark/text-muted-on-bid",
+      "value": 1.1765,
+      "threshold": 4.5,
+      "unit": "ratio",
+      "note": "The same heatmap labels in the dark theme, where the cell fills are lighter than the label."
+    },
+    {
+      "id": "text-contrast/dark/text-muted-on-ask",
+      "value": 1.0256,
+      "threshold": 4.5,
+      "unit": "ratio",
+      "note": "The worst of the four: the label and a full-opacity ask cell are almost the same luminance."
     },
     {
       "id": "non-text-contrast/light/border-strong-on-surface",

@@ -3,9 +3,9 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
-import { RULES, runAllChecks, summarize } from "../src/checks.mjs";
+import { RULES, pairName, runAllChecks, summarize } from "../src/checks.mjs";
 import { resolveTokens } from "../src/resolve.mjs";
-import { NON_TEXT_PAIRS, TARGETS, TEXT_PAIRS } from "../src/pairs.mjs";
+import { NON_TEXT_PAIRS, TARGETS, TEXT_AA, TEXT_PAIRS } from "../src/pairs.mjs";
 import { CVD_MODELS } from "../src/color.mjs";
 
 const css = await readFile(new URL("../dist/tokens.css", import.meta.url), "utf8");
@@ -68,7 +68,22 @@ test("the rule set covers the pair lists in both themes and every density", () =
   // One luminance ratio plus one CIEDE2000 per colour-vision model, per theme.
   assert.equal(perRule(RULES.upDown).length, (1 + CVD_MODELS.length) * 2);
   assert.equal(perRule(RULES.targetSize).length, TARGETS.length * 3);
-  assert.equal(results.length, 71);
+  assert.equal(results.length, 81);
+});
+
+test("a pair whose background is a wash is measured over the colour behind it", () => {
+  // The ladder draws the size in `text` on top of the depth bar, so the
+  // background is the wash composited over the ladder surface, not the wash
+  // on its own. Measuring the wash alone would ignore its alpha and report
+  // the ratio for an opaque teal.
+  const overSurface = byId.get(`${RULES.textContrast}/light/text-on-up-wash-over-surface`);
+  assert.ok(overSurface, "no result for text over the bid depth bar");
+  assert.equal(overSurface.subject, "text on up-wash over surface");
+  const onSurface = byId.get(`${RULES.textContrast}/light/text-on-surface`);
+  // The wash lightens the light theme's surface a little, so the ratio under
+  // the bar is lower than on the bare surface but still well over AA.
+  assert.ok(overSurface.value < onSurface.value, `${overSurface.value} vs ${onSurface.value}`);
+  assert.ok(overSurface.value > TEXT_AA, `${overSurface.value}`);
 });
 
 test("every pair in the data files carries a reason", () => {
@@ -93,8 +108,8 @@ test("only the up/down rule and the pairs marked reported-only are unenforced", 
   const unenforced = results.filter((r) => !r.enforced).map((r) => r.id);
   const expected = [
     ...NON_TEXT_PAIRS.filter((p) => p.enforced === false).flatMap((p) => [
-      `${RULES.nonTextContrast}/light/${p.fg}-on-${p.bg}`,
-      `${RULES.nonTextContrast}/dark/${p.fg}-on-${p.bg}`,
+      `${RULES.nonTextContrast}/light/${pairName(p)}`,
+      `${RULES.nonTextContrast}/dark/${pairName(p)}`,
     ]),
     ...["light", "dark"].flatMap((t) => [
       `${RULES.upDown}/${t}/contrast`,
@@ -135,6 +150,26 @@ test("the check modules stay importable in a browser", async () => {
 // The gate. Four ways for known-violations.json to be wrong, all of them
 // a test failure, so the file cannot go stale in either direction.
 
+/** The result an entry names, or an assertion that says which entry is
+ * wrong. Reading the map without this guard turned an id no rule produces
+ * into a TypeError on `undefined`, which named neither the file nor the
+ * entry. */
+function resultFor(entry) {
+  const r = byId.get(entry.id);
+  assert.ok(
+    r,
+    `known-violations.json: ${entry.id} is not produced by any rule; remove the entry or correct the id`,
+  );
+  return r;
+}
+
+test("an entry naming no rule fails with a message rather than a TypeError", () => {
+  assert.throws(() => resultFor({ id: "text-contrast/light/no-such-pair" }), {
+    name: "AssertionError",
+    message: /known-violations\.json: text-contrast\/light\/no-such-pair is not produced by any rule/,
+  });
+});
+
 test("no enforced check fails outside known-violations.json", () => {
   const listed = new Set(known.violations.map((v) => v.id));
   const unlisted = summarize(results)
@@ -145,19 +180,18 @@ test("no enforced check fails outside known-violations.json", () => {
 
 test("every entry in known-violations.json still names a real check", () => {
   for (const v of known.violations) {
-    assert.ok(byId.has(v.id), `${v.id} is not produced by any rule any more`);
-    assert.equal(byId.get(v.id).enforced, true, `${v.id} is reported only, so it does not belong here`);
+    assert.equal(resultFor(v).enforced, true, `${v.id} is reported only, so it does not belong here`);
   }
 });
 
 test("every entry in known-violations.json still fails", () => {
-  const fixed = known.violations.filter((v) => byId.get(v.id)?.pass).map((v) => v.id);
+  const fixed = known.violations.filter((v) => resultFor(v).pass).map((v) => v.id);
   assert.deepEqual(fixed, [], `these now pass and must be removed from known-violations.json:\n${fixed.join("\n")}`);
 });
 
 test("every entry in known-violations.json still records the measured value", () => {
   for (const v of known.violations) {
-    const r = byId.get(v.id);
+    const r = resultFor(v);
     assert.equal(r.threshold, v.threshold, `${v.id}: threshold moved`);
     assert.equal(r.unit, v.unit, `${v.id}: unit moved`);
     const drift = Math.abs(r.value - v.value);
