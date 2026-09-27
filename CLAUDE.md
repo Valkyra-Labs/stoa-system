@@ -1,0 +1,84 @@
+# Stoa: working rules for Claude Code
+
+These rules apply to every session in this repository, local or cloud.
+Cloud sessions do not see the owner's personal instructions, so
+everything that must hold here is written here.
+
+## What this repository is
+
+Stoa is a design system for decision-dense interfaces (finance and
+education are the proving grounds). Packages: `packages/tokens` (DTCG
+tokens, Style Dictionary build, contrast tests) and `packages/react`
+(React Aria based components). Storybook at the root. Experiments on how
+AI models use the system live in `experiments/`.
+
+## Output conventions
+
+- No emojis anywhere: code, comments, docs, commit messages, PR text.
+  `scripts/check-text.mjs` enforces this and runs on Stop and in CI.
+- No AI attribution: no `Co-Authored-By` trailers, no "Generated with"
+  lines. Project settings already turn attribution off.
+- No redundant em dashes. Plain, specific sentences.
+- Code comments and repository docs in English.
+- Match the surrounding code: naming, comment density, idiom.
+
+## Acceptance, not compilation
+
+Before saying anything is finished, run and pass:
+
+```
+pnpm install --frozen-lockfile
+pnpm build
+pnpm -r typecheck
+pnpm test
+node scripts/check-text.mjs origin/main
+```
+
+Tests are the acceptance gate. A failed check is not flaky until the
+exact same command passes on rerun. When a check fails and the fix is
+not obvious, report it; do not route around it (no skipped tests, no
+loosened thresholds, no `any` to silence the type checker).
+
+## Measurement discipline
+
+- A number from a vendor, blog or model card is a hypothesis, not an
+  input; check it on this project before relying on it.
+- A metric's name says what is actually measured and how it aggregates.
+- Every reported measurement names the commit it was taken on.
+- Accessibility claims are only as wide as the test behind them: if a
+  test checks a list of colour pairs, the docs claim that list, nothing
+  more. Contrast is WCAG 2 with deterministic checks; APCA is out.
+
+## Scope discipline
+
+- Do the task that was asked. No unrequested refactors, renames or
+  dependency upgrades; list them as suggestions instead.
+- Dead code found during work is reported, not deleted.
+- One change at a time when validating; two changes in one measurement
+  cannot be attributed.
+
+## Experiments
+
+- A committed `PROTOCOL.md` is pre-registered: never edit it except by
+  adding a dated entry under "Deviations".
+- Never edit, regenerate or delete anything under `generations/`,
+  `calibration/out/` or raw results. Analysis code may be added.
+- Never read experiment generations or conditions when building
+  product code, and never put product code into experiment folders.
+
+## Internal material
+
+`docs/inside/` is internal and ignored by git; it does not exist in a
+cloud clone. Public files (README, docs, stories, commit messages, PR
+text) must not mention internal plans, pricing, hiring, people, or
+anything about the owner beyond what is already public.
+
+## Commits and branches
+
+```
+<type>(<package>): <short description>
+```
+
+Types: feat, fix, refactor, test, docs, chore. Package: tokens, react,
+storybook, stoa (repository-wide), or the experiment folder name. Work
+on a branch; `main` changes only through a pull request with green CI.
