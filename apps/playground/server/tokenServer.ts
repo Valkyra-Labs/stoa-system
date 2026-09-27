@@ -255,9 +255,10 @@ export function tokenServer(): Plugin {
             }
 
             // A save is refused before anything is read or run.
-            const { name, overrides, overwrite } = body as {
+            const { name, overrides, motion, overwrite } = body as {
               name?: unknown;
               overrides?: unknown;
+              motion?: unknown;
               overwrite?: unknown;
             };
             const savedAt = new Date();
@@ -285,6 +286,9 @@ export function tokenServer(): Plugin {
               base: "Stoa today: the token files of packages/tokens at this commit",
               overrides: (overrides ?? {}) as Record<string, string>,
               tokens: Object.fromEntries(Object.entries(files).map(([file, text]) => [file, JSON.parse(text)])),
+              // Values that are not DTCG tokens (a spring; see
+              // docs/stage-1/wave-2/08-motion.md), written through as given.
+              motion: (motion ?? {}) as Record<string, unknown>,
             };
             await mkdir(path.dirname(file), { recursive: true });
             await writeFile(file, `${JSON.stringify(snapshot, null, 2)}\n`);

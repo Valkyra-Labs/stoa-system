@@ -70,6 +70,16 @@ const reducedMotion = `@media (prefers-reduced-motion: reduce) {
   }
 }`;
 
+// Same values as the media query, gated on an attribute instead: a preview
+// cannot force `prefers-reduced-motion` from page JavaScript, so this lets
+// it opt in per frame.
+const reducedMotionAttr = `[data-motion="reduce"] {
+  --stoa-motion-duration-fast: 0ms;
+  --stoa-motion-duration-base: 0ms;
+  --stoa-motion-duration-slow: 0ms;
+  --stoa-motion-duration-flash: 0ms;
+}`;
+
 const light = await readFile(`${out}light.css`, "utf8");
 const darkCss = await readFile(`${out}dark.css`, "utf8");
 const darkAuto = await readFile(`${out}dark-auto.css`, "utf8");
@@ -80,6 +90,7 @@ const css = [
   `@media (prefers-color-scheme: dark) {\n${darkAuto}\n}`,
   densityCss,
   reducedMotion,
+  reducedMotionAttr,
   "",
 ].join("\n");
 await writeFile(`${out}tokens.css`, css);

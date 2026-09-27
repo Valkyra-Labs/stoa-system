@@ -263,3 +263,98 @@ code {
   margin: 0;
   font-variant-numeric: tabular-nums;
 }
+
+/* Motion (brief 08): the bezier and spring editors, and the live-data
+   previews (flash, stagger, the canvas cost bench). */
+.pg-motion-bezier,
+.pg-motion-spring,
+.pg-motion-flash,
+.pg-motion-stagger {
+  display: grid;
+  gap: var(--stoa-space-3);
+  padding-block-start: var(--stoa-space-2);
+}
+
+.pg-motion-bezier__plot {
+  background: var(--stoa-color-surface-sunken);
+  border: 1px solid var(--stoa-color-border);
+  border-radius: var(--stoa-radius-sm);
+}
+
+.pg-motion-bezier__bg {
+  fill: transparent;
+}
+
+.pg-motion-bezier__diagonal {
+  stroke: var(--stoa-color-border);
+  stroke-dasharray: 2 2;
+}
+
+.pg-motion-bezier__handles {
+  display: grid;
+  gap: var(--stoa-space-2);
+}
+
+.pg-motion-spring__fields {
+  display: grid;
+  gap: var(--stoa-space-2);
+}
+
+.pg-motion-flash__rows {
+  display: grid;
+  gap: var(--stoa-space-1);
+}
+
+.pg-flash-row {
+  display: flex;
+  gap: var(--stoa-space-1);
+  padding: var(--stoa-space-1);
+  border: 1px solid var(--stoa-color-border);
+  border-radius: var(--stoa-radius-sm);
+}
+
+.pg-flash-cell {
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  gap: var(--stoa-space-2);
+  padding: var(--stoa-space-1) var(--stoa-space-2);
+  border-radius: var(--stoa-radius-sm);
+  font-family: var(--stoa-font-family-mono);
+  font-size: var(--stoa-font-size-xs);
+}
+
+.pg-flash-cell__label {
+  color: var(--stoa-color-text-muted);
+}
+
+.pg-flash-cell__value {
+  font-variant-numeric: tabular-nums;
+}
+
+.pg-motion-stagger__list {
+  display: grid;
+  gap: var(--stoa-space-1);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pg-motion-stagger__item {
+  padding: var(--stoa-space-1) var(--stoa-space-2);
+  background: var(--stoa-color-surface-sunken);
+  border-radius: var(--stoa-radius-sm);
+}
+
+.pg-motion-canvas-bench {
+  display: grid;
+  gap: var(--stoa-space-2);
+  padding-block-start: var(--stoa-space-2);
+}
+
+.pg-motion-canvas-bench__canvas {
+  inline-size: 100%;
+  block-size: 160px;
+  border: 1px solid var(--stoa-color-border);
+  border-radius: var(--stoa-radius-sm);
+}

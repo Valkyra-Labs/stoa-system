@@ -92,6 +92,25 @@ describe("the override layer", () => {
     const files = filesWithOverrides(baseTokens, { "primitive:color.teal.999": "red", "nonsense": "red" });
     expect(serializeFiles(files)).toEqual(serializeFiles(baseTokens));
   });
+
+  it("reconstitutes a numeric-array override (a cubicBezier easing) as an array", () => {
+    const overrides = { "primitive:motion.easing.standard": "0.4, 0, 0.2, 1" };
+    const values = resolveAllValues(baseTokens, overrides);
+    expect(values["primitive:motion.easing.standard"]?.effective).toBe("cubic-bezier(0.4, 0, 0.2, 1)");
+
+    const files = filesWithOverrides(baseTokens, overrides);
+    const primitive = JSON.parse(serializeFiles(files)["primitive.json"] ?? "{}");
+    expect(primitive.motion.easing.standard.$value).toEqual([0.4, 0, 0.2, 1]);
+  });
+
+  it("falls back to the derived value when a numeric-array override does not parse", () => {
+    const overrides = { "primitive:motion.easing.standard": "not, a, curve" };
+    const values = resolveAllValues(baseTokens, overrides);
+    expect(values["primitive:motion.easing.standard"]?.effective).toBe(values["primitive:motion.easing.standard"]?.derived);
+
+    const files = filesWithOverrides(baseTokens, overrides);
+    expect(serializeFiles(files)["primitive.json"]).toBe(serializeFiles(baseTokens)["primitive.json"]);
+  });
 });
 
 describe("token naming", () => {

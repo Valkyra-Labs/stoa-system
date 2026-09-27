@@ -148,7 +148,7 @@ export function resolveTokens(files: TokenFiles, overrides: Overrides, theme: Th
     if (entry.file !== "density") byPath.set(entry.path.join("."), entry);
   }
 
-  const overridden: Effective = (entry) => overrides[entry.id] ?? entry.value;
+  const overridden: Effective = (entry) => overriddenValue(entry, overrides);
   const derived: Effective = (entry) => entry.value;
 
   const variables: Record<string, string> = {};
@@ -159,6 +159,28 @@ export function resolveTokens(files: TokenFiles, overrides: Overrides, theme: Th
     values[entry.id] = { derived: formatValue(entry.type, derived(entry), byPath, derived, [entry.id]), effective };
   }
   return { variables, values };
+}
+
+/** `text` as `length` comma-separated numbers, or null when it does not
+ * parse that way (a bezier curve editor edits four; anything else here is
+ * left to the caller to fall back on). */
+function parseNumberList(text: string, length: number): number[] | null {
+  const parts = text.split(",").map((p) => Number(p.trim()));
+  return parts.length === length && parts.every(Number.isFinite) ? parts : null;
+}
+
+/** One token's effective value, an override reconstituted to the source's
+ * shape. A numeric-array token (`cubicBezier`) is edited as the comma list
+ * `sourceText` already shows for one; an override that does not parse back
+ * to the same length falls back to the derived value, so a bad edit does
+ * not silently corrupt the token tree. */
+function overriddenValue(entry: TokenEntry, overrides: Overrides): TokenValue {
+  const override = overrides[entry.id];
+  if (override === undefined) return entry.value;
+  if (Array.isArray(entry.value) && entry.value.every((v) => typeof v === "number")) {
+    return parseNumberList(override, entry.value.length) ?? entry.value;
+  }
+  return override;
 }
 
 /** Derived and effective values for every token in every file, which is
@@ -174,7 +196,7 @@ export function resolveAllValues(files: TokenFiles, overrides: Overrides): Resol
   for (const entry of entries) {
     if (entry.file === "primitive") byPath.set(entry.path.join("."), entry);
   }
-  const overridden: Effective = (entry) => overrides[entry.id] ?? entry.value;
+  const overridden: Effective = (entry) => overriddenValue(entry, overrides);
   const derived: Effective = (entry) => entry.value;
   const values: ResolvedTokens["values"] = {};
   for (const entry of entries) {
@@ -206,6 +228,13 @@ export function filesWithOverrides(files: TokenFiles, overrides: Overrides): Tok
     if (at < 0 || !(file in TOKEN_FILE_NAMES)) continue;
     const node = nodeAt(out[file], id.slice(at + 1).split("."));
     if (!node || node.$value === undefined) continue;
+    // A numeric-array token (`cubicBezier`) is edited as a comma list; keep
+    // the array unless the edit does not parse back to the same length.
+    if (Array.isArray(node.$value) && node.$value.every((v) => typeof v === "number")) {
+      const parsed = parseNumberList(value, node.$value.length);
+      if (parsed) node.$value = parsed;
+      continue;
+    }
     // Keep the source's type: a numeric token stays a number in JSON.
     const numeric = typeof node.$value === "number" && value.trim() !== "" && Number.isFinite(Number(value));
     node.$value = numeric ? Number(value) : value;

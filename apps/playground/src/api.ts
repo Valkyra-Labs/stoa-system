@@ -61,11 +61,16 @@ export function requestBuild(files: Record<string, string>): Promise<BuildResult
 /** Write a snapshot of the current token files and overrides. An unnamed
  * save is stamped with the time it was written. Without `overwrite` the
  * server refuses a name that is already on disk, and it refuses the
- * committed baseline whatever this says. */
+ * committed baseline whatever this says.
+ *
+ * `motion` carries values that are not DTCG tokens, such as a spring (see
+ * docs/stage-1/wave-2/08-motion.md); the server writes it through as
+ * given, under its own key, alongside `tokens` and `overrides`. */
 export function saveSnapshot(payload: {
   name: string;
   files: Record<string, string>;
   overrides: Record<string, string>;
+  motion?: Record<string, unknown>;
   overwrite?: boolean;
 }): Promise<SaveResult> {
   return post<SaveResult>("/api/save", payload);

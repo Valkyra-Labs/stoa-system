@@ -19,3 +19,11 @@ test("density modes and reduced motion are present", () => {
   assert.match(css, /--stoa-density-row-height: 28px/);
   assert.match(css, /prefers-reduced-motion: reduce[\s\S]*--stoa-motion-duration-flash: 0ms/);
 });
+
+test("reduced motion is also available as an attribute, for a preview that cannot force the media query", () => {
+  const block = css.slice(css.indexOf('[data-motion="reduce"]'));
+  assert.match(block, /--stoa-motion-duration-fast: 0ms/);
+  assert.match(block, /--stoa-motion-duration-base: 0ms/);
+  assert.match(block, /--stoa-motion-duration-slow: 0ms/);
+  assert.match(block, /--stoa-motion-duration-flash: 0ms/);
+});
