@@ -171,4 +171,14 @@ blind coder on the timing files.
   the owner codes from what the screen shows, so kappa also measures
   whether the two readings agree. The sample (72 files, seed 20260929)
   is unchanged.
+- 2026-09-27, instead of the owner's coding: the owner stopped after 4
+  of the 72 files (kept in `analysis/owner-coding.json`, not analysed).
+  Working through the sample with the rendered screens and the worked
+  examples, the owner found that many screens fit several
+  archetypes at once and could not choose between them with confidence.
+  Human archetype coding is therefore not used as the adjudicating check:
+  the variable itself is not defined sharply enough for a human expert
+  to apply it. The verdict below is final under the Claude coding, and
+  is labelled as not validated by a human coder. The owner's coding page
+  and renderer are kept for the calibration of the next measurement.
 
