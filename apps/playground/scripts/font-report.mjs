@@ -81,7 +81,7 @@ for (const { label, report } of reports) {
         digits.feature === "tnum" ? "tnum 1" : "as shaped",
         digits.verdict,
         digits.present ? String(digits.distinct) : "n/a",
-        digits.present ? digits.advances.join(", ") : "not in this file (every digit shaped to glyph 0)",
+        digits.present ? digits.advances.join(", ") : "not in this file (at least one digit shaped to glyph 0)",
       ]),
     );
   }

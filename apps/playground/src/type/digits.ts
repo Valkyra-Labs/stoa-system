@@ -47,11 +47,12 @@ export type DigitRow = {
   glyphIds: number[];
   /** One advance per digit, each digit shaped on its own, in font units. */
   advances: number[];
-  /** The same ten digits shaped as one run, which is not always the same
-   * thing. Pair kerning lands here and not in `advances` (in Inter 4.001
-   * the seven before the eight is kerned by -29 units), and so do
-   * contextual alternates (IBM Plex Sans Arabic gives U+0662 a 481-unit
-   * form among other digits and a 531-unit form on its own). */
+  /** The same ten digits shaped as one run, in logical order (zero first,
+   * whatever the direction), which is not always the same thing. Pair
+   * kerning lands here and not in `advances` (in Inter 4.001 the seven
+   * before the eight is kerned by -29 units), and so do contextual
+   * alternates (IBM Plex Sans Arabic gives U+0667 a 481-unit form among
+   * other digits and a 531-unit form on its own). */
   runAdvances: number[];
   distinct: number;
   /** Distinct advances in that run. */
@@ -97,7 +98,7 @@ export function digitSummary(row: DigitRow, upem: number): string {
   const label = DIGIT_SETS.find((set) => set.id === row.set)?.label ?? row.set;
   const asked = row.feature === "tnum" ? "with tnum" : "as shaped";
   if (!row.present) {
-    return `${label} ${asked}: not in this file (every digit shaped to glyph 0), so there is nothing to measure`;
+    return `${label} ${asked}: not in this file (at least one digit shaped to glyph 0), so there is nothing to measure`;
   }
   const perEm = (value: number) => `${Math.round((value / upem) * 1000) / 1000} em`;
   const verdict =

@@ -2,6 +2,7 @@
 // numbers are the ones this font engine reports for those exact files, so a
 // change in how a font is read shows up here rather than in a panel.
 import { readFileSync } from "node:fs";
+import { createRequire } from "node:module";
 import { describe, expect, it } from "vitest";
 import { inspectFont } from "./engine.ts";
 import { featureCountSentence } from "./report.ts";
@@ -184,6 +185,31 @@ describe("inspectFont, Noto Sans Arabic digits subset (WOFF2)", () => {
   });
 });
 
+describe("inspectFont, IBM Plex Sans Arabic Fontsource subset (WOFF2)", () => {
+  // Not committed here: the file is the one the pinned devDependency
+  // @fontsource/ibm-plex-sans-arabic ships, and the only proportional
+  // right-to-left digit set this project has at hand.
+  const PLEX_ARABIC = new Uint8Array(
+    readFileSync(
+      createRequire(import.meta.url).resolve(
+        "@fontsource/ibm-plex-sans-arabic/files/ibm-plex-sans-arabic-arabic-400-normal.woff2",
+      ),
+    ),
+  );
+
+  it("records a right-to-left run in logical order, zero first", async () => {
+    const report = await inspectFont(PLEX_ARABIC);
+    for (const feature of ["none", "tnum"] as const) {
+      const arabic = row(report, "arabic-indic", feature);
+      expect(arabic.advances).toEqual([282, 263, 485, 630, 486, 526, 503, 531, 531, 508]);
+      // HarfBuzz hands the run back in visual order, 508 first. Only U+0667
+      // changes in a run, 531 on its own and 481 among other digits.
+      expect(arabic.runAdvances).toEqual([282, 263, 485, 630, 486, 526, 503, 481, 531, 508]);
+      expect(runAgrees(arabic)).toBe(false);
+    }
+  });
+});
+
 describe("digitSummary", () => {
   it("says so when a run does not agree with the glyphs' own advances", () => {
     // The shape of the IBM Plex Sans Arabic reading: ten real glyphs whose
@@ -196,7 +222,7 @@ describe("digitSummary", () => {
         present: true,
         glyphIds: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
         advances: [282, 263, 485, 630, 486, 526, 503, 531, 531, 508],
-        runAdvances: [508, 531, 481, 503, 526, 486, 630, 485, 263, 282],
+        runAdvances: [282, 263, 485, 630, 486, 526, 503, 481, 531, 508],
         distinct: 9,
         runDistinct: 10,
         min: 263,
