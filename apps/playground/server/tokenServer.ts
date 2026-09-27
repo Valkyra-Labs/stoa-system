@@ -228,6 +228,43 @@ export function snapshotSlug(name: string, now: Date): string {
   return `snapshot-${stamp}`;
 }
 
+/** The names a read may ask for: exactly what `snapshotSlug` writes. A
+ * name is a file name here, so anything else is refused rather than
+ * cleaned up. */
+export function isSnapshotSlug(name: string): boolean {
+  return /^[a-z0-9][a-z0-9-]*$/.test(name) && name === slugify(name);
+}
+
+/** What a save writes. Parameters and overrides are the two layers the app
+ * restores from; `panels` is what each area panel records (`panelStateFrom`
+ * refuses anything else); `tokens` is the token sources the overrides are
+ * stated against, as text the real build would read. */
+export function snapshotBody(input: {
+  name: string;
+  savedAt: Date;
+  slug: string;
+  state: { commit: string; dirty: boolean };
+  parameters: unknown;
+  overrides: unknown;
+  panels?: unknown;
+  files: Record<string, string>;
+}) {
+  const named = input.name.trim();
+  return {
+    name: named === "" ? input.slug : named,
+    savedAt: input.savedAt.toISOString(),
+    commit: input.state.commit,
+    dirty: input.state.dirty,
+    base: "Stoa today: the token files of packages/tokens at this commit",
+    // null means no derived layer: the token sources are the base, which is
+    // what the app calls Stoa today.
+    parameters: typeof input.parameters === "object" && input.parameters !== null ? input.parameters : null,
+    overrides: (input.overrides ?? {}) as Record<string, string>,
+    panels: panelStateFrom(input.panels),
+    tokens: Object.fromEntries(Object.entries(input.files).map(([file, text]) => [file, JSON.parse(text)])),
+  };
+}
+
 export function tokenServer(): Plugin {
   let repoRoot = "";
   let appRoot = "";
@@ -241,8 +278,9 @@ export function tokenServer(): Plugin {
     },
     configureServer(server) {
       server.middlewares.use((request: IncomingMessage, response: ServerResponse, next: () => void) => {
-        const url = (request.url ?? "").split("?")[0];
-        if (url !== "/api/build" && url !== "/api/save" && url !== "/api/commit") {
+        const target = new URL(request.url ?? "/", "http://playground.invalid");
+        const url = target.pathname;
+        if (url !== "/api/build" && url !== "/api/save" && url !== "/api/commit" && url !== "/api/snapshots") {
           next();
           return;
         }
@@ -256,6 +294,38 @@ export function tokenServer(): Plugin {
                 return;
               }
               send(response, 200, await repositoryState(repoRoot));
+              return;
+            }
+
+            // Reading snapshots back: the list, or one of them by the slug
+            // the list gives. It touches nothing outside snapshots/.
+            if (url === "/api/snapshots") {
+              const reason = crossSiteReason(request, false);
+              if (reason) {
+                send(response, 403, { error: reason });
+                return;
+              }
+              if (request.method !== "GET") {
+                send(response, 405, { error: "GET only" });
+                return;
+              }
+              const dir = path.join(appRoot, "snapshots");
+              const asked = target.searchParams.get("name");
+              if (asked === null) {
+                const files = await readdir(dir).catch(() => []);
+                send(response, 200, { names: files.filter((f) => f.endsWith(".json")).map((f) => f.slice(0, -5)).sort() });
+                return;
+              }
+              if (!isSnapshotSlug(asked)) {
+                send(response, 400, { error: `${asked} is not a snapshot name` });
+                return;
+              }
+              const text = await readFile(path.join(dir, `${asked}.json`), "utf8").catch(() => null);
+              if (text === null) {
+                send(response, 404, { error: `no snapshot named ${asked}` });
+                return;
+              }
+              send(response, 200, JSON.parse(text));
               return;
             }
             if (request.method !== "POST") {
@@ -278,11 +348,12 @@ export function tokenServer(): Plugin {
             }
 
             // A save is refused before anything is read or run.
-            const { name, overrides, panels, overwrite } = body as {
+            const { name, overrides, panels, overwrite, parameters } = body as {
               name?: unknown;
               overrides?: unknown;
               panels?: unknown;
               overwrite?: unknown;
+              parameters?: unknown;
             };
             const savedAt = new Date();
             const slug = snapshotSlug(typeof name === "string" ? name : "", savedAt);
@@ -301,16 +372,16 @@ export function tokenServer(): Plugin {
               return;
             }
             const state = await repositoryState(repoRoot);
-            const snapshot = {
-              name: typeof name === "string" && name.trim() !== "" ? name.trim() : slug,
-              savedAt: savedAt.toISOString(),
-              commit: state.commit,
-              dirty: state.dirty,
-              base: "Stoa today: the token files of packages/tokens at this commit",
-              overrides: (overrides ?? {}) as Record<string, string>,
-              panels: panelStateFrom(panels),
-              tokens: Object.fromEntries(Object.entries(files).map(([file, text]) => [file, JSON.parse(text)])),
-            };
+            const snapshot = snapshotBody({
+              name: typeof name === "string" ? name : "",
+              savedAt,
+              slug,
+              state,
+              parameters,
+              overrides,
+              panels,
+              files,
+            });
             await mkdir(path.dirname(file), { recursive: true });
             await writeFile(file, `${JSON.stringify(snapshot, null, 2)}\n`);
             send(response, 200, { path: path.relative(repoRoot, file), commit: state.commit, dirty: state.dirty });

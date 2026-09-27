@@ -23,6 +23,7 @@
     "./tokens.css": "./dist/tokens.css",
     "./tokens.json": "./dist/tokens.json",
     "./checks": "./src/checks.mjs",
+    "./model": { "types": "./src/model.d.mts", "default": "./src/model.mjs" },
     "./resolve": "./src/resolve.mjs",
     "./pairs": "./src/pairs.mjs",
     "./color": "./src/color.mjs"

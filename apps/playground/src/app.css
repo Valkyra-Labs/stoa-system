@@ -151,6 +151,28 @@ code {
   border-radius: var(--stoa-radius-sm);
 }
 
+/* Parameters. The intent paragraph of a preset reads as prose, so it keeps
+   the body colour; a chromatic role puts its swatch beside the two sliders
+   that set it. */
+.pg-params__intent {
+  margin: 0;
+  font-size: var(--stoa-font-size-xs);
+  line-height: var(--stoa-font-line-height-normal);
+}
+
+.pg-params__role {
+  display: grid;
+  grid-template-columns: 20px minmax(0, 1fr);
+  align-items: center;
+  gap: var(--stoa-space-1) var(--stoa-space-2);
+  padding-block-end: var(--stoa-space-2);
+  border-block-end: 1px solid var(--stoa-color-border);
+}
+
+.pg-params__role > .pg-swatch {
+  grid-row: span 2;
+}
+
 .pg-overrides,
 .pg-verify {
   display: grid;
