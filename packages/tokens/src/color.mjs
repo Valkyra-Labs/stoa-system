@@ -33,7 +33,11 @@ export const CVD_MODELS = /** @type {CvdModel[]} */ (["normal", "protanopia", "d
 // first; culori 4.0.2 applies the same numbers to gamma-encoded sRGB, which
 // is why this module does not use it. scripts/color.test.mjs reads culori's
 // own copy of these rows back and checks them against these constants.
-const MACHADO_SEVERITY_1 = {
+//
+// Exported so the playground's colour-vision preview (an SVG `feColorMatrix`
+// filter, which operates in linear light by default) draws from the same
+// numbers `simulateCvd` measures with, rather than a second transcription.
+export const MACHADO_SEVERITY_1 = {
   protanopia: [
     0.152286, 1.052583, -0.204868,
     0.114503, 0.786281, 0.099216,

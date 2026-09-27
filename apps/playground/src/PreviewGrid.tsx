@@ -15,6 +15,7 @@ import {
   TimeSlider,
   TradeTable,
 } from "@valkyra-labs/stoa-react";
+import { CVD_CHOICES, CvdFilterDefs, cvdFilterStyle, type CvdMode } from "./cvdPreview";
 import type { ResolvedTokens, Theme } from "./tokenModel";
 import type { Stream, StreamFrame } from "./stream";
 
@@ -53,6 +54,7 @@ export function PreviewGrid({ stream, tokens, revision, onRenderTime }: PreviewG
 
   return (
     <div className="pg-frames">
+      <CvdFilterDefs />
       {FRAMES.map((spec) => (
         <PreviewFrame key={spec.id} spec={spec} tokens={tokens[spec.theme]} revision={revision} frame={frame} />
       ))}
@@ -71,18 +73,26 @@ function PreviewFrame({
   revision: string;
   frame: StreamFrame;
 }) {
+  // Local, visual-only, and irrelevant to what the checks measure: a
+  // preview is one person looking at one frame, not a value that follows
+  // the tokens into history or a snapshot.
+  const [cvd, setCvd] = useState<CvdMode>("none");
   return (
     <section className="pg-frame" aria-label={spec.label}>
       <header className="pg-frame__header">
         <h2>{spec.label}</h2>
-        <code>{spec.theme}</code>
+        <div className="pg-row">
+          <ChoiceGroup label={`${spec.label}: colour-vision preview`} choices={CVD_CHOICES} value={cvd} onChange={setCvd} />
+          <code>{spec.theme}</code>
+        </div>
       </header>
       <div
         className="pg-frame__body"
         data-frame={spec.id}
         data-theme={spec.theme}
+        data-cvd={cvd}
         dir={spec.dir}
-        style={tokens.variables as CSSProperties}
+        style={{ ...(tokens.variables as CSSProperties), ...cvdFilterStyle(cvd) }}
       >
         <Screen frame={frame} revision={revision} />
       </div>

@@ -1,8 +1,9 @@
 // The editing side of the playground. Every control is a Stoa component:
 // the system's own slider, choice group and text field, so tuning the
 // tokens exercises the components the tokens are for.
-import { useState } from "react";
+import { useEffect, useRef } from "react";
 import { Button, StatusBadge, Tabs, TextField, TimeSlider } from "@valkyra-labs/stoa-react";
+import { rulesForToken } from "./browserChecks";
 import type { EditableItem, EditableTab } from "./editable";
 import type { Overrides, ResolvedTokens } from "./tokenModel";
 
@@ -16,6 +17,12 @@ export type ControlPanelProps = {
   /** The gesture ended: the slider was released. */
   onEditEnd: () => void;
   onReset: (id: string) => void;
+  /** Which tab is open. Controlled by the app shell, so selecting a
+   * verification failure can switch to the tab that holds its token. */
+  selected: string | undefined;
+  onSelectTab: (id: string) => void;
+  /** Token ids to mark and scroll to: the tokens a selected failure reads. */
+  highlighted: string[];
 };
 
 /** Whether the browser would accept this text as a colour. Guarded because
@@ -28,13 +35,22 @@ function isColor(value: string): boolean {
 const sourceText = (value: string | number | (string | number)[]) =>
   Array.isArray(value) ? value.join(", ") : String(value);
 
-export function ControlPanel({ tabs, overrides, values, onEdit, onEditEnd, onReset }: ControlPanelProps) {
-  const [selected, setSelected] = useState(tabs[0]?.id);
+export function ControlPanel({
+  tabs,
+  overrides,
+  values,
+  onEdit,
+  onEditEnd,
+  onReset,
+  selected,
+  onSelectTab,
+  highlighted,
+}: ControlPanelProps) {
   return (
     <Tabs
       label="Token groups"
-      selected={selected}
-      onChange={setSelected}
+      selected={selected ?? tabs[0]?.id}
+      onChange={onSelectTab}
       items={tabs.map((tab) => ({
         id: tab.id,
         label: tab.label,
@@ -52,6 +68,7 @@ export function ControlPanel({ tabs, overrides, values, onEdit, onEditEnd, onRes
                     onEdit={onEdit}
                     onEditEnd={onEditEnd}
                     onReset={onReset}
+                    highlighted={highlighted.includes(item.entry.id)}
                   />
                 ))}
               </section>
@@ -70,6 +87,7 @@ function TokenControl({
   onEdit,
   onEditEnd,
   onReset,
+  highlighted,
 }: {
   item: EditableItem;
   override: string | undefined;
@@ -77,6 +95,7 @@ function TokenControl({
   onEdit: (id: string, value: string, held?: boolean) => void;
   onEditEnd: () => void;
   onReset: (id: string) => void;
+  highlighted: boolean;
 }) {
   const id = item.entry.id;
   const derived = resolved?.derived ?? sourceText(item.entry.value);
@@ -84,9 +103,31 @@ function TokenControl({
   const text = override ?? sourceText(item.entry.value);
   const control = item.control;
   const number = Number.parseFloat(effective);
+  const rules = rulesForToken(id);
+
+  const container = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (highlighted) container.current?.scrollIntoView({ block: "center", behavior: "smooth" });
+  }, [highlighted]);
 
   return (
-    <div className="pg-token" data-token={id} data-overridden={override !== undefined ? "true" : undefined}>
+    <div
+      ref={container}
+      className="pg-token"
+      data-token={id}
+      data-overridden={override !== undefined ? "true" : undefined}
+      data-highlighted={highlighted ? "true" : undefined}
+    >
+      {rules.length > 0 && (
+        <ul className="pg-token__rules" aria-hidden="true">
+          {rules.map((rule, index) => (
+            <li key={index}>
+              {rule.rule}
+              {rule.theme ? ` (${rule.theme})` : ""}: {rule.subject}
+            </li>
+          ))}
+        </ul>
+      )}
       {control.kind === "length" && Number.isFinite(number) ? (
         <div className="pg-token__slider">
           <span className="pg-token__label">{item.label}</span>
