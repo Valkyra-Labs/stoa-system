@@ -92,6 +92,27 @@ code {
   padding-inline-start: var(--stoa-space-2);
 }
 
+.pg-token[data-highlighted="true"] {
+  outline: 2px solid var(--stoa-color-focus);
+  outline-offset: 2px;
+  border-radius: var(--stoa-radius-sm);
+}
+
+/* The rules a token feeds, shown only while a pointer or focus is over its
+   control: a hover affordance, not information every row needs open. */
+.pg-token__rules {
+  display: none;
+  margin: 0 0 var(--stoa-space-1);
+  padding-inline-start: var(--stoa-space-4);
+  font-size: var(--stoa-font-size-2xs);
+  color: var(--stoa-color-text-muted);
+}
+
+.pg-token:hover .pg-token__rules,
+.pg-token:focus-within .pg-token__rules {
+  display: block;
+}
+
 .pg-token__field {
   display: grid;
   align-items: center;
@@ -140,6 +161,11 @@ code {
   overflow-wrap: anywhere;
 }
 
+.pg-overrides__table tr[data-highlighted="true"] {
+  outline: 2px solid var(--stoa-color-focus);
+  outline-offset: -2px;
+}
+
 .pg-verify__results {
   display: grid;
   grid-template-columns: auto minmax(0, 1fr);
@@ -183,9 +209,32 @@ code {
 }
 
 .pg-checks {
-  margin: 0;
-  padding-inline-start: var(--stoa-space-4);
+  display: grid;
+  gap: var(--stoa-space-2);
   font-size: var(--stoa-font-size-2xs);
+}
+
+.pg-check-group summary {
+  cursor: pointer;
+  padding-block: var(--stoa-space-1);
+  font-weight: var(--stoa-font-weight-medium);
+}
+
+.pg-check-group table tr[data-status="new"] {
+  background: color-mix(in oklch, var(--stoa-color-down) 12%, transparent);
+}
+
+.pg-check-group table tr[data-status="fixed"] {
+  background: color-mix(in oklch, var(--stoa-color-up) 12%, transparent);
+}
+
+/* Kept out of layout: only its filter defs are read, by the frames'
+   `filter: url(#...)`. */
+.pg-cvd-defs {
+  position: absolute;
+  inline-size: 0;
+  block-size: 0;
+  overflow: hidden;
 }
 
 /* Previews. The grid holds four frames at a size a real screen would use,

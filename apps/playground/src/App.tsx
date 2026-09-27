@@ -45,6 +45,10 @@ export function App() {
    * user ask for it to be written over. */
   const [taken, setTaken] = useState(false);
   const [renderMs, setRenderMs] = useState(0);
+  const [controlTab, setControlTab] = useState<string>();
+  /** The tokens a selected verification failure reads, so the control panel
+   * and the override list can mark and scroll to them. */
+  const [highlighted, setHighlighted] = useState<string[]>([]);
 
   const overrides = history.present;
   const stream = useMemo(() => createStream(7), []);
@@ -60,6 +64,17 @@ export function App() {
   const values = useMemo(() => resolveAllValues(baseTokens, overrides), [overrides]);
   const files = useMemo(() => serializeFiles(filesWithOverrides(baseTokens, overrides)), [overrides]);
   const revision = useMemo(() => digest(JSON.stringify([tokens.light.variables, tokens.dark.variables])), [tokens]);
+  // Target size is measured in every density mode, not only the one the
+  // previews show, the same way scripts/checks.test.mjs measures it; theme
+  // does not change a density token, so "light" is picked arbitrarily.
+  const densityTokens = useMemo<Record<DensityMode, ResolvedTokens>>(
+    () =>
+      Object.fromEntries(DENSITY_MODES.map((mode) => [mode, resolveTokens(baseTokens, overrides, "light", mode)])) as Record<
+        DensityMode,
+        ResolvedTokens
+      >,
+    [overrides],
+  );
 
   const interval = SPEEDS.find((s) => s.id === speed)?.interval ?? 250;
   useEffect(() => {
@@ -135,6 +150,9 @@ export function App() {
             tabs={tabs}
             overrides={overrides}
             values={values}
+            selected={controlTab}
+            onSelectTab={setControlTab}
+            highlighted={highlighted}
             onEdit={(id, value, held) => {
               // The moment is read here, not in the updater, which has to
               // stay pure: React may run it more than once.
@@ -153,13 +171,23 @@ export function App() {
           <OverrideList
             overrides={overrides}
             values={values}
+            highlighted={highlighted}
             onReset={(id) => setHistory((h) => clearOverride(h, id))}
             onResetAll={() => setHistory(clearAll)}
           />
         </Panel>
 
         <Panel title="Verification">
-          <Verification tokens={tokens} density={density} files={files} />
+          <Verification
+            tokens={tokens}
+            densityTokens={densityTokens}
+            density={density}
+            files={files}
+            onSelectCheck={(tab, checkTokens) => {
+              setControlTab(tab);
+              setHighlighted(checkTokens);
+            }}
+          />
         </Panel>
 
         <Panel title="Snapshot">

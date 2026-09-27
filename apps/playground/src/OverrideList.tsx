@@ -9,9 +9,11 @@ export type OverrideListProps = {
   values: ResolvedTokens["values"];
   onReset: (id: string) => void;
   onResetAll: () => void;
+  /** Token ids to mark: the tokens a selected verification failure reads. */
+  highlighted: string[];
 };
 
-export function OverrideList({ overrides, values, onReset, onResetAll }: OverrideListProps) {
+export function OverrideList({ overrides, values, onReset, onResetAll, highlighted }: OverrideListProps) {
   const ids = Object.keys(overrides).sort();
   return (
     <div className="pg-overrides" data-override-count={ids.length}>
@@ -38,7 +40,7 @@ export function OverrideList({ overrides, values, onReset, onResetAll }: Overrid
           </thead>
           <tbody>
             {ids.map((id) => (
-              <tr key={id} data-override={id}>
+              <tr key={id} data-override={id} data-highlighted={highlighted.includes(id) ? "true" : undefined}>
                 <td>
                   <code>{id}</code>
                 </td>
