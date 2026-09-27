@@ -1,0 +1,186 @@
+{
+ "tasks": {
+  "P1": "A payments operations analyst has a list of failed payouts to work through. Build the screen they use to resolve them.",
+  "P2": "A portfolio manager opens their book in the morning. Build the screen they use to see what moved since yesterday and understand why.",
+  "P3": "A teacher meets a parent tomorrow about one student. Build the screen the teacher uses to prepare.",
+  "P4": "A financial adviser must recommend one of two funds to a client. Build the screen they use to choose.",
+  "P5": "A head of school presents the term to the board next week and will not change anything on the screen. Build the screen they use to show how the school is doing.",
+  "P6": "A finance director glances at the company's weekly numbers every Monday before meetings. Build the screen they use."
+ },
+ "options": {
+  "temperature": 0.7,
+  "top_p": 0.8,
+  "max_tokens": 4096
+ },
+ "ctx": 8192,
+ "gguf": {
+  "qwen3.5:4b": "/Users/tim/models/gguf/Qwen_Qwen3.5-4B-Q4_K_M.gguf"
+ },
+ "modelOrder": [
+  "qwen3:8b",
+  "qwen2.5:14b",
+  "qwen3.5:4b"
+ ],
+ "runs": [
+  {
+   "id": "viqueo",
+   "model": "qwen3.5:4b",
+   "condition": "components",
+   "task": "P1",
+   "seed": 4,
+   "think": false
+  },
+  {
+   "id": "vzqskl",
+   "model": "qwen2.5:14b",
+   "condition": "rules",
+   "task": "P1",
+   "seed": 4,
+   "think": false
+  },
+  {
+   "id": "vga71u",
+   "model": "qwen3:8b",
+   "condition": "reasoning",
+   "task": "P1",
+   "seed": 4,
+   "think": false
+  },
+  {
+   "id": "vw5bih",
+   "model": "qwen3.5:4b",
+   "condition": "generic",
+   "task": "P1",
+   "seed": 5,
+   "think": false
+  },
+  {
+   "id": "vy67xu",
+   "model": "qwen2.5:14b",
+   "condition": "generic",
+   "task": "P2",
+   "seed": 5,
+   "think": false
+  },
+  {
+   "id": "vytvta",
+   "model": "qwen3.5:4b",
+   "condition": "components",
+   "task": "P2",
+   "seed": 4,
+   "think": false
+  },
+  {
+   "id": "v5tfi4",
+   "model": "qwen3:8b",
+   "condition": "reasoning",
+   "task": "P2",
+   "seed": 1,
+   "think": false
+  },
+  {
+   "id": "veou7g",
+   "model": "qwen2.5:14b",
+   "condition": "components",
+   "task": "P2",
+   "seed": 5,
+   "think": false
+  },
+  {
+   "id": "vob1i9",
+   "model": "qwen2.5:14b",
+   "condition": "rules",
+   "task": "P3",
+   "seed": 5,
+   "think": false
+  },
+  {
+   "id": "vyxvi9",
+   "model": "qwen3:8b",
+   "condition": "reasoning",
+   "task": "P3",
+   "seed": 3,
+   "think": false
+  },
+  {
+   "id": "var2dd",
+   "model": "qwen3.5:4b",
+   "condition": "rules",
+   "task": "P3",
+   "seed": 3,
+   "think": false
+  },
+  {
+   "id": "vsns66",
+   "model": "qwen3.5:4b",
+   "condition": "reasoning",
+   "task": "P4",
+   "seed": 2,
+   "think": false
+  },
+  {
+   "id": "vx9q8c",
+   "model": "qwen3:8b",
+   "condition": "components",
+   "task": "P4",
+   "seed": 3,
+   "think": false
+  },
+  {
+   "id": "v0xirl",
+   "model": "qwen2.5:14b",
+   "condition": "generic",
+   "task": "P4",
+   "seed": 4,
+   "think": false
+  },
+  {
+   "id": "vfjm6t",
+   "model": "qwen3:8b",
+   "condition": "reasoning",
+   "task": "P5",
+   "seed": 3,
+   "think": false
+  },
+  {
+   "id": "vl99e7",
+   "model": "qwen3.5:4b",
+   "condition": "components",
+   "task": "P5",
+   "seed": 5,
+   "think": false
+  },
+  {
+   "id": "v0aqah",
+   "model": "qwen2.5:14b",
+   "condition": "components",
+   "task": "P5",
+   "seed": 1,
+   "think": false
+  },
+  {
+   "id": "vcng8z",
+   "model": "qwen2.5:14b",
+   "condition": "components",
+   "task": "P6",
+   "seed": 5,
+   "think": false
+  },
+  {
+   "id": "vdfr0p",
+   "model": "qwen3:8b",
+   "condition": "components",
+   "task": "P6",
+   "seed": 2,
+   "think": false
+  },
+  {
+   "id": "vgeehn",
+   "model": "qwen3.5:4b",
+   "condition": "rules",
+   "task": "P6",
+   "seed": 1,
+   "think": false
+  }
+ ]
+}
