@@ -1,0 +1,56 @@
+{
+  "P1": {
+    "prompt": "A payments operations analyst has a list of failed payouts to work through. Build the screen they use to resolve them.",
+    "expected": "queue",
+    "fit": [
+      "one failure can be worked on with its evidence visible together: the reason, the attempt history and the recipient details",
+      "the analyst can act (retry, escalate or refund) with the consequence of the action stated next to it",
+      "progress through the list is visible: done and remaining, or the position in the list"
+    ]
+  },
+  "P2": {
+    "prompt": "A portfolio manager opens their book in the morning. Build the screen they use to see what moved since yesterday and understand why.",
+    "expected": "explorer",
+    "fit": [
+      "the largest moves are surfaced first (sorted, filtered or highlighted)",
+      "changes carry their basis (yesterday's close or a benchmark) shown with them",
+      "the cause or evidence for a move is reachable from the move itself"
+    ]
+  },
+  "P3": {
+    "prompt": "A teacher meets a parent tomorrow about one student. Build the screen the teacher uses to prepare.",
+    "expected": "inspector",
+    "fit": [
+      "the student's results are shown against a basis (class average, earlier results or a target)",
+      "the student's history over time is visible (a trend or a timeline)",
+      "evidence beyond marks sits with the results (attendance, work samples, notes or points to raise)"
+    ]
+  },
+  "P4": {
+    "prompt": "A financial adviser must recommend one of two funds to a client. Build the screen they use to choose.",
+    "expected": "comparison",
+    "fit": [
+      "both funds are shown on the same measures side by side",
+      "the differences are marked or computed, not left to the reader",
+      "the basis of the measures is visible (period, fees, a benchmark or a risk measure)"
+    ]
+  },
+  "P5": {
+    "prompt": "A head of school presents the term to the board next week and will not change anything on the screen. Build the screen they use to show how the school is doing.",
+    "expected": "dashboard",
+    "fit": [
+      "several independent measures of the school are visible at a glance without interaction",
+      "each measure carries a comparison (previous term or a target)",
+      "the most important change or risk is called out"
+    ]
+  },
+  "P6": {
+    "prompt": "A finance director glances at the company's weekly numbers every Monday before meetings. Build the screen they use.",
+    "expected": "dashboard",
+    "fit": [
+      "the key weekly numbers are visible at a glance without interaction",
+      "each number carries its basis (last week or budget)",
+      "numbers that are off budget or unusual are flagged"
+    ]
+  }
+}

@@ -1,0 +1,5 @@
+### Main Goal and Layout Strategy
+
+The main goal is to provide a rapid, intuitive "at-a-glance" view of portfolio performance since the previous day, followed by drill-down capabilities to understand the *why* behind the moves. The screen prioritizes clarity and speed over exhaustive detail.
+
+The layout supports this by placing the most critical metrics—total P&L, key asset shifts, and top movers—prominently in the upper header and dashboard section. Below this, a filtered table lists significant changes with clear indicators of direction and magnitude. On the right, a contextual sidebar offers immediate drill-down actions for specific positions or sectors. This structure ensures the user sees the "what" immediately, with a clear path to the "why" without overwhelming them with data. The design emphasizes whitespace and consistent grouping to allow for quick scanning and decision-making.

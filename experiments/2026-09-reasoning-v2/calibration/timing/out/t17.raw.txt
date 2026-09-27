@@ -1,0 +1,105 @@
+```tsx
+import {
+  Page,
+  Header,
+  Sidebar,
+  Section,
+  Card,
+  Metric,
+  DataTable,
+  Status,
+  Button,
+  FilterBar,
+  EmptyData,
+} from "@stoa/react";
+
+export default function PortfolioMorningBook() {
+  const metrics = [
+    { label: "Total P&L", value: "1.2M", delta: 0.15, unit: "USD" },
+    { label: "Unrealized Gain", value: "450K", delta: 0.08, unit: "USD" },
+    { label: "Cash Balance", value: "8.2M", delta: -0.02, unit: "USD" },
+    { label: "Sharpe Ratio", value: "1.8", delta: 0.1, unit: "" },
+  ];
+
+  const movers = [
+    { id: 1, ticker: "NVDA", name: "NVIDIA Corp", change: 4.2, direction: "up", type: "Equity" },
+    { id: 2, ticker: "BTC", name: "Bitcoin", change: -1.8, direction: "down", type: "Crypto" },
+    { id: 3, ticker: "MSFT", name: "Microsoft", change: 0.5, direction: "up", type: "Equity" },
+    { id: 4, ticker: "EUR/USD", name: "Euro", change: 0.02, direction: "up", type: "Forex" },
+    { id: 5, ticker: "GLD", name: "Gold ETF", change: -0.3, direction: "down", type: "Commodity" },
+  ];
+
+  const topLosses = [
+    { id: 10, ticker: "TSLA", name: "Tesla", reason: "Sector rotation out of EVs", change: -3.5, type: "Equity" },
+    { id: 11, ticker: "ETH", name: "Ethereum", reason: "Regulatory news", change: -2.1, type: "Crypto" },
+    { id: 12, ticker: "BTC", name: "Bitcoin", reason: "Macro liquidity concerns", change: -1.8, type: "Crypto" },
+  ];
+
+  return (
+    <Page title="Portfolio Morning Book">
+      <Header
+        title="Portfolio Overview"
+        subtitle="Daily performance and key drivers"
+        actions={
+          <>
+            <Button label="Download Report" variant="secondary" />
+            <Button label="New Trade" variant="primary" />
+          </>
+        }
+      />
+
+      <Section title="Key Metrics">
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "16px" }}>
+          {metrics.map((m) => (
+            <Card key={m.label} title={m.label}>
+              <Metric label={m.label} value={m.value} delta={m.delta} unit={m.unit} />
+            </Card>
+          ))}
+        </div>
+      </Section>
+
+      <main style={{ display: "grid", gridTemplateColumns: "2fr 1fr", gap: "24px" }}>
+        <Section title="Top Movers (Last 24h)">
+          <Card>
+            <FilterBar filters={[{ label: "Timeframe", value: "24h" }]} />
+            <DataTable
+              columns={[
+                { key: "ticker", label: "Ticker", sortable: true },
+                { key: "name", label: "Name", sortable: true },
+                { key: "change", label: "Change", sortable: true },
+                { key: "type", label: "Type" },
+              ]}
+              rows={movers}
+              onRowSelect={(row) => console.log("Selected:", row)}
+            />
+          </Card>
+        </Section>
+
+        <Section title="Portfolio Impact Analysis">
+          <Card>
+            <div style={{ marginBottom: "16px" }}>
+              <Metric
+                label="Net Impact"
+                value="-0.4%"
+                delta={-0.04}
+                unit="%"
+                tone="neutral"
+              />
+            </div>
+            <DataTable
+              columns={[
+                { key: "ticker", label: "Ticker", sortable: true },
+                { key: "name", label: "Name", sortable: true },
+                { key: "reason", label: "Driver", sortable: true },
+                { key: "change", label: "Impact", sortable: true },
+              ]}
+              rows={topLosses}
+              selectable
+            />
+          </Card>
+        </Section>
+      </main>
+    </Page>
+  );
+}
+```
