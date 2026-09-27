@@ -1,0 +1,5 @@
+1. **Person & Session**: A portfolio manager opens the screen daily (morning routine) to assess overnight market movements and react to unusual changes before trading.
+2. **Shape of Work**: Scanning a large collection of assets to find those that deviate significantly from yesterday's values, then drilling into the specific reasons for those moves.
+3. **Information**: Entities are assets (stocks, funds). Measures are price, volume, and volatility changes. Values are judged against yesterday's close and pre-defined volatility thresholds.
+4. **Decision & Evidence**: The manager decides whether to adjust positions. Evidence required includes the magnitude of change, the source of the move (news vs. algorithm), and confirmation that the move isn't a transient glitch.
+5. **Structure**: A top-level dashboard listing all assets with visual indicators for changes. Clicking an asset opens a detailed view showing the time-series of the move, news feed, and technical indicators to explain the cause.

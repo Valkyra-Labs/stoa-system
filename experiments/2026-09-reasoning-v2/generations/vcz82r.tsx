@@ -1,0 +1,91 @@
+import { Page, Header, Section, Card, Metric, Chart, DataTable, Status, Button } from "@stoa/react";
+
+const TermOverview: React.FC = () => {
+  // High-level performance metrics
+  const metrics = [
+    { label: "Student Enrollment", value: 1245, unit: "students", delta: 5.2 },
+    { label: "Academic Achievement", value: 88.5, unit: "%", delta: 1.4 },
+    { label: "Retention Rate", value: 94.1, unit: "%", delta: -0.3 },
+    { label: "Extracurricular Participation", value: 98.2, unit: "%", delta: 2.1 },
+  ];
+
+  // Academic trend data
+  const academicSeries = [
+    { label: "Math", value: 85, delta: 2 },
+    { label: "Science", value: 82, delta: 1.5 },
+    { label: "Literature", value: 88, delta: 0.5 },
+  ];
+
+  // Financial summary
+  const financialMetrics = [
+    { label: "Operating Budget", value: 4500000, unit: "USD", delta: null },
+    { label: "Endowment Growth", value: 125000, unit: "USD", delta: 1.2 },
+  ];
+
+  // Recent notable events for the narrative
+  const recentEvents = [
+    { date: "2023-10-15", title: "Board Approval: New STEM Wing", status: "success" },
+    { date: "2023-11-02", title: "Academic Excellence Award Winner Announced", status: "neutral" },
+    { date: "2023-11-10", title: "Community Service Day Completion", status: "success" },
+  ];
+
+  return (
+    <Page title="Annual Term Overview">
+      <Header title="Annual Term Report" subtitle="Term 2023-2024" />
+
+      <Section title="Executive Summary">
+        <Card title="Key Performance Indicators">
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "1rem" }}>
+            {metrics.map((m) => (
+              <Metric key={m.label} label={m.label} value={m.value} unit={m.unit} delta={m.delta} />
+            ))}
+          </div>
+        </Card>
+      </Section>
+
+      <Section title="Academic Performance Trends">
+        <Card title="Subject Performance vs. Targets">
+          <Chart type="line" series={academicSeries} x={["Q1", "Q2", "Q3", "Q4"]} y={academicSeries.map(s => s.value)} />
+          <p style={{ marginTop: "1rem" }}>Trends indicate consistent growth across core subjects, with Math showing the strongest upward trajectory.</p>
+        </Card>
+      </Section>
+
+      <Section title="Financial Health & Resources">
+        <Card title="Budgetary Overview">
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "1rem" }}>
+            {financialMetrics.map((m) => (
+              <Metric key={m.label} label={m.label} value={m.value} unit={m.unit} delta={m.delta} />
+            ))}
+          </div>
+          <Status tone="success" label="Financial projections remain on track for the fiscal year." />
+        </Card>
+      </Section>
+
+      <Section title="Operational Highlights">
+        <Card title="Recent Milestones">
+          <DataTable columns={[
+            { key: "date", label: "Date" },
+            { key: "title", label: "Event" },
+            { key: "status", label: "Status" }
+          ]} rows={recentEvents.map(e => ({ date: e.date, title: e.title, status: e.status }))} />
+        </Card>
+      </Section>
+
+      <Section title="Action Items">
+        <Card title="Next Steps for Board Review">
+          <ul>
+            <li>Review Q3 enrollment projections for the upcoming budget cycle.</li>
+            <li>Discuss expansion plans for the new STEM wing based on community feedback.</li>
+            <li>Finalize the academic scholarship allocation for the remaining term.</li>
+          </ul>
+          <div style={{ marginTop: "1rem" }}>
+            <Button label="Download Full Presentation" variant="primary" onPress={() => alert("Presentation downloaded.")} />
+            <Button label="Export Data" variant="secondary" onPress={() => alert("Data exported.")} />
+          </div>
+        </Card>
+      </Section>
+    </Page>
+  );
+};
+
+export default TermOverview;

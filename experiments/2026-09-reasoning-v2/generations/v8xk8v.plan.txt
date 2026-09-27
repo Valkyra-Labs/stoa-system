@@ -1,0 +1,5 @@
+1. The adviser is a professional who regularly advises clients. They need to make a recommendation quickly based on clear, comparative data.  
+2. The shape of the work is setting two objects against each other to decide which is better. Only two funds are in play, and the decision is made on this screen.  
+3. The entities are the two funds. The measures include returns, risk, fees, and performance over time. Each value is judged against the other fund and industry benchmarks.  
+4. The adviser decides which fund to recommend. They need to see performance trends, risk metrics, and fees alongside the fund’s historical data and how it compares to the other fund.  
+5. The structure shows both funds side by side in a comparison view, with metrics and trends displayed clearly. A summary of key differences and a recommendation section appear at the end.

@@ -1,0 +1,106 @@
+```tsx
+import {
+  Page,
+  Header,
+  Section,
+  Card,
+  Metric,
+  Delta,
+  Chart,
+  DataTable,
+  Status,
+  Timeline,
+  EmptyData,
+  AuditLog,
+} from "@stoa/react";
+
+const Dashboard: React.FC = () => {
+  return (
+    <Page title="Term 2023-24 Annual Report">
+      <Header
+        title="Annual Term Report"
+        subtitle="Academic Year 2023-2024"
+        actions={[
+          <button key="print" label="Print Report" onPress={() => alert("Printing...")} />,
+        ]}
+      />
+
+      <Section title="Executive Summary">
+        <Card title="Key Performance Indicators">
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "16px" }}>
+            <Metric label="Total Enrollment" value="1,245" delta={2.3} unit="students" />
+            <Metric label="Average Test Score" value="84.2" delta={1.5} unit="points" />
+            <Metric label="Budget Variance" value="125k" delta={-0.8} unit="USD" />
+          </div>
+        </Card>
+      </Section>
+
+      <Section title="Visual Analytics">
+        <div style={{ display: "flex", gap: "16px", flexWrap: "wrap" }}>
+          <Card title="Enrollment Trends">
+            <Chart type="line" series={[1100, 1120, 1150, 1180, 1210, 1245]} x={["Sep", "Oct", "Nov", "Dec", "Jan", "Feb"]} y={["Sep", "Oct", "Nov", "Dec", "Jan", "Feb"]} />
+          </Card>
+          <Card title="Budget Allocation">
+            <Chart type="bar" series={[45, 30, 15, 10]} x={["Academic", "Staff", "Facilities", "Admin"]} y={["Academic", "Staff", "Facilities", "Admin"]} />
+          </Card>
+        </div>
+      </Section>
+
+      <Section title="Departmental Highlights">
+        <Card title="Performance by Department">
+          <DataTable
+            columns={[
+              { key: "dept", label: "Department" },
+              { key: "score", label: "Q3 Score" },
+              { key: "target", label: "Target" },
+              { key: "status", label: "Status" },
+            ]}
+            rows={[
+              { dept: "Mathematics", score: 88, target: 85, status: "On Track" },
+              { dept: "Science", score: 82, target: 80, status: "On Track" },
+              { dept: "Literature", score: 79, target: 82, status: "At Risk" },
+              { dept: "Arts", score: 91, target: 88, status: "Exceeding" },
+            ]}
+          />
+        </Card>
+      </Section>
+
+      <Section title="Compliance & Updates">
+        <Card title="Recent Audit Log">
+          <AuditLog
+            entries={[
+              { action: "Budget Review", user: "Dr. A. Smith", date: "2023-11-15" },
+              { action: "Safety Inspection", user: "J. Doe", date: "2023-11-20" },
+              { action: "Curriculum Update", user: "Prof. M. Lee", date: "2023-11-25" },
+            ]}
+          />
+        </Card>
+        <Card title="Accreditation Status">
+          <Status tone="success" label="Fully Accredited" />
+          <Status tone="warning" label="Pending Renewal" />
+        </Card>
+      </Section>
+
+      <Section title="Historical Context">
+        <Card title="Long-term Trends">
+          <Timeline
+            events={[
+              { date: "Sep 2020", title: "Pandemic Impact Assessment", desc: "Initial enrollment drop of 15%" },
+              { date: "Jan 2022", title: "Recovery Program Launch", desc: "Introduced new tutoring initiatives" },
+              { date: "Jun 2023", title: "Full Capacity Restored", desc: "Enrollment returned to 2019 levels" },
+            ]}
+          />
+        </Card>
+      </Section>
+
+      <Section title="Data Integrity">
+        <Card title="Data Sources">
+          <EmptyData message="All data is verified and up to date." />
+        </Card>
+      </Section>
+    </Page>
+  );
+};
+
+export default Dashboard;
+```

@@ -1,0 +1,11 @@
+**Step 1:** The teacher will open this screen shortly before a meeting with a parent to discuss one student's performance. The purpose is to review the student's recent academic progress and behavior to prepare for a constructive conversation.
+
+**Step 2:** The session is about understanding one object (the student) in depth before acting on it (discussing it with the parent). The teacher needs to review the student’s records comprehensively.
+
+**Step 3:** The information required includes the student's academic performance metrics (grades, attendance), behavior reports, and any notes or comments from teachers. The time frame is recent weeks or months, with a focus on changes and trends.
+
+**Step 4:** The decision involves preparing talking points for the meeting. The evidence needed includes recent grades, behavior incidents, and teacher comments to contextualize the student's performance.
+
+**Step 5:** The structure should include a header with the student's name and a summary, followed by detailed sections for academic performance and behavior. Each section should have metrics, trends, and recent comments or notes. A final section could include the teacher's preparation notes for the meeting.
+
+**Components:** Use an **Inspector** pattern with sections for "Academic Performance," "Behavior," and "Preparation Notes."

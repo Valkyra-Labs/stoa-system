@@ -1,0 +1,85 @@
+import { Page, Header, Section, DataTable, FilterBar, Button, BulkActions, Card, Tabs, Sidebar, Metric, Delta, Status, EmptyData } from "@stoa/react";
+
+const failedPayouts = [
+  {
+    id: "P-1001",
+    amount: "$120.00",
+    recipient: "john.doe@example.com",
+    reason: "Bank account not found",
+    status: "Failed",
+    timestamp: "2023-10-05T14:23:00Z",
+  },
+  {
+    id: "P-1002",
+    amount: "$85.50",
+    recipient: "jane.smith@example.com",
+    reason: "Insufficient funds",
+    status: "Failed",
+    timestamp: "2023-10-05T14:15:00Z",
+  },
+  {
+    id: "P-1003",
+    amount: "$300.00",
+    recipient: "mike.jones@example.com",
+    reason: "Transaction declined",
+    status: "Failed",
+    timestamp: "2023-10-05T13:55:00Z",
+  },
+];
+
+const filters = [
+  { id: "all", label: "All" },
+  { id: "failed", label: "Failed" },
+  { id: "pending", label: "Pending" },
+];
+
+const columns = [
+  { key: "id", label: "Payout ID" },
+  { key: "amount", label: "Amount" },
+  { key: "recipient", label: "Recipient" },
+  { key: "reason", label: "Reason" },
+  { key: "status", label: "Status" },
+  { key: "timestamp", label: "Timestamp" },
+];
+
+export default function FailedPayoutsPage() {
+  return (
+    <Page title="Failed Payouts">
+      <Header title="Failed Payouts" subtitle="Review and resolve failed transactions" actions={<Button label="New Payout" />} />
+      <FilterBar filters={filters} />
+      <Section title="Failed Payouts Overview">
+        <Card>
+          <Metric label="Total Failed Payouts" value={failedPayouts.length} />
+          <Delta value={failedPayouts.length} basis={failedPayouts.length - 1} />
+          <Status tone="warning" label="High priority" />
+        </Card>
+      </Section>
+      <Section title="Failed Payouts List">
+        <DataTable
+          columns={columns}
+          rows={failedPayouts}
+          selectable
+          stickyFirstColumn
+          onRowSelect={(selected) => console.log("Selected:", selected)}
+        />
+      </Section>
+      <Sidebar>
+        <Section title="Bulk Actions">
+          <BulkActions>
+            <Button label="Retry Selected" />
+            <Button label="Mark as Resolved" />
+            <Button label="Delete" />
+          </BulkActions>
+        </Section>
+        <Section title="Payout Details">
+          <Tabs
+            items={[
+              { id: "overview", label: "Overview", content: <Card>Overview content goes here.</Card> },
+              { id: "logs", label: "Logs", content: <Card>Log content goes here.</Card> },
+            ]}
+          />
+        </Section>
+      </Sidebar>
+    </Page>
+  );
+}

@@ -1,0 +1,11 @@
+**Step 1:** The head of school reviews the screen periodically to prepare for the board presentation and to monitor the school's performance throughout the term. No immediate action is expected on this screen.
+
+**Step 2:** The work involves getting a general picture of the school's performance across various metrics, without the need to interact with individual data points.
+
+**Step 3:** Key entities include the school as a whole, and measures such as student attendance, academic performance, and staff engagement. The time frame covers the current term. Values are judged against targets and previous periods.
+
+**Step 4:** No specific decision is made on this screen. The focus is on presenting an overview of the school's performance.
+
+**Step 5:** The structure should feature a dashboard layout with key metrics and charts. The screen should display an overview of the school's performance, including overall metrics and trends, with no need for detailed interaction. The regions would include a section for high-level metrics and another for visualizing trends and comparisons over time.
+
+Components: Use `Dashboard` with `Metrics` and `Charts` to display the overview and trends.

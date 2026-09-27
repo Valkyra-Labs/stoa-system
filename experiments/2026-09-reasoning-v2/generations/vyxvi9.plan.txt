@@ -1,0 +1,5 @@
+1. The teacher is preparing for a one-on-one meeting with a parent about a specific student. This is a routine but important task, likely done once per student.  
+2. The shape of the work is understanding one object (the student) fully before acting (the meeting).  
+3. The entities are the student, parent, and teacher. Measures include academic performance, behavior, attendance, and progress. The student's performance is judged against class averages and personal growth.  
+4. The teacher decides on the best way to explain the student's progress and address concerns. Evidence includes recent assessments, behavior logs, and attendance records. A wrong decision could misrepresent the student's progress.  
+5. The structure starts with student details, followed by academic and behavioral metrics, then parent and teacher notes. The meeting action and preparation steps are at the end.

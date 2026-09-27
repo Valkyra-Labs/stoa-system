@@ -1,0 +1,42 @@
+import { Page, Header, Section, Card, Metric, Delta, DataTable, Button, FilterBar, Status, EmptyData } from "@stoa/react";
+
+const portfolioHoldings = [
+  { id: "1", name: "Tech Co.", change: 4.2, reason: "Positive earnings report", status: "stable" },
+  { id: "2", name: "Energy Inc.", change: -3.8, reason: "Market volatility", status: "atRisk" },
+  { id: "3", name: "Healthcare Ltd.", change: 1.5, reason: "New drug approval", status: "stable" },
+  { id: "4", name: "Finance Corp.", change: -5.1, reason: "Regulatory changes", status: "atRisk" },
+  { id: "5", name: "Retail Group.", change: 2.7, reason: "Seasonal demand", status: "stable" },
+];
+
+const PortfolioOverview = () => {
+  return (
+    <Page title="Portfolio Overview">
+      <Header title="Portfolio Changes Since Yesterday" subtitle="Review what moved and understand why" />
+      <Section title="Summary">
+        <Card>
+          <Metric label="Total Value" value="$12.4M" unit="USD" />
+          <Metric label="Change" value="2.1%" delta={2.1} />
+          <Metric label="High Risk" value="2" />
+        </Card>
+      </Section>
+      <Section title="Portfolio Holdings with Changes">
+        <DataTable
+          columns={[
+            { key: "name", label: "Name" },
+            { key: "change", label: "Change (%)" },
+            { key: "reason", label: "Reason" },
+            { key: "status", label: "Status" },
+          ]}
+          rows={portfolioHoldings}
+          selectable
+        />
+      </Section>
+      <Section title="Actions">
+        <Button variant="primary">Investigate Changes</Button>
+        <Button variant="secondary">View Full Report</Button>
+      </Section>
+    </Page>
+  );
+};
+
+export default PortfolioOverview;

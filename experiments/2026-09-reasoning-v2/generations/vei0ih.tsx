@@ -1,0 +1,57 @@
+import { Page, Header, Section, Card, Metric, Delta, Status, EmptyData, Button, FilterBar, BulkActions, DataTable, Timeline, AuditLog, Tabs, Tab, Drawer } from "@stoa/react";
+
+const StudentProfile = () => {
+  return (
+    <Page title="Prepare for Parent Meeting">
+      <Header title="Student: Emily Johnson" subtitle="Grade 3, Class B" actions={<Button label="Save Notes" />} />
+      <Section title="Student Overview">
+        <Card>
+          <Metric label="Overall Progress" value="On Track" tone="neutral" />
+          <Metric label="Attendance" value="98%" delta={-2} unit="%" />
+          <Metric label="Behavior" value="Good" />
+          <Metric label="Last Assessment" value="Math: 85/100" />
+        </Card>
+      </Section>
+      <Section title="Recent Performance">
+        <DataTable
+          columns={[{ key: "date", label: "Date" }, { key: "subject", label: "Subject" }, { key: "score", label: "Score" }]}
+          rows={[
+            { date: "2023-10-05", subject: "Math", score: "88" },
+            { date: "2023-10-05", subject: "Reading", score: "92" },
+            { date: "2023-10-05", subject: "Science", score: "78" },
+          ]}
+          selectable
+        />
+      </Section>
+      <Section title="Behavior Log">
+        <Timeline events={[
+          { date: "2023-10-02", description: "Helped a peer with math problem." },
+          { date: "2023-10-04", description: "Fought with a classmate during recess." },
+          { date: "2023-10-05", description: "Completed all homework independently." },
+        ]} />
+      </Section>
+      <Section title="Notes and Recommendations">
+        <Card>
+          <p>Emily has shown improvement in math but needs more support in science. She is generally cooperative but has had a few behavioral incidents recently.</p>
+          <BulkActions>
+            <Button label="Add Note" />
+            <Button label="Schedule Follow-up" />
+          </BulkActions>
+        </Card>
+      </Section>
+      <Section title="Meeting Preparation">
+        <Card>
+          <h3>Key Points to Discuss</h3>
+          <ul>
+            <li>Emily's recent progress in math and areas needing improvement.</li>
+            <li>Behavioral concerns and strategies to address them.</li>
+            <li>Opportunities for extra support or enrichment.</li>
+          </ul>
+          <Button label="Generate Summary" />
+        </Card>
+      </Section>
+    </Page>
+  );
+};
+
+export default StudentProfile;

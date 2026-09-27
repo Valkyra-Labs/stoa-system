@@ -1,0 +1,9 @@
+1. **Person & Session**: A head of school preparing for a board meeting. This is a high-stakes, infrequent event driven by an upcoming deadline. The user needs a definitive, consolidated view, not an interactive exploration tool.
+
+2. **Shape of the Work**: Getting a general picture of many unrelated numbers with no action expected on this screen. The screen is a "read-only" presentation artifact. The focus is on the aggregate state of the school, not individual records.
+
+3. **The Information**: Entities are academic domains (e.g., Science, Arts) and operational areas (e.g., Budget, Staffing). Measures include key performance indicators like pass rates, budget variance, and attendance. Values are judged against targets and year-over-year trends. Freshness and source certainty are background context.
+
+4. **Decision & Evidence**: The decision is to present a coherent narrative of the school's health. The head of school must see clear, comparative metrics with trend lines and status indicators to justify the term's performance. Wrong decisions (misleading the board) are costly, but the action itself is static presentation, not live editing.
+
+5. **The Structure**: A top-level dashboard layout. A header with the term title and board presentation flag. A main region divided into two columns: left for high-level summary metrics (cards) and right for visual trends and a summary table. A footer with a timestamp and "Last Updated" indicator to establish data freshness.

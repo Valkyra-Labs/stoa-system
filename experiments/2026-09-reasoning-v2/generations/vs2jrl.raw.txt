@@ -1,0 +1,182 @@
+```tsx
+import {
+  Page,
+  Header,
+  Section,
+  Card,
+  Metric,
+  Delta,
+  Trend,
+  DataTable,
+  Status,
+  Button,
+  EmptyData,
+  Drawer,
+  Tabs,
+} from "@stoa/react";
+
+const FundA = {
+  name: "Horizon Growth Fund",
+  ticker: "HGF",
+  rating: 4,
+  recommended: true,
+  metrics: {
+    expectedReturn: "12.5%",
+    riskLevel: "Medium",
+    maxDrawdown: "-8.2%",
+    fees: "0.75%",
+  },
+  history: [10, 12, 11, 14, 13, 15, 16, 17, 18, 19],
+};
+
+const FundB = {
+  name: "Stellar Value Fund",
+  ticker: "SVF",
+  rating: 3,
+  recommended: false,
+  metrics: {
+    expectedReturn: "9.8%",
+    riskLevel: "Low",
+    maxDrawdown: "-3.5%",
+    fees: "0.50%",
+  },
+  history: [8, 9, 8, 9, 10, 10, 11, 11, 12, 12],
+};
+
+const clientProfile = {
+  goal: "Capital Growth",
+  timeHorizon: "5 Years",
+  riskTolerance: "Medium",
+};
+
+export default function FundComparisonScreen() {
+  return (
+    <Page title="Fund Selection">
+      <Header
+        title="Client Fund Recommendation"
+        subtitle={clientProfile.goal}
+        actions={
+          <>
+            <Button label="Print Report" />
+            <Button label="Save Draft" />
+          </>
+        }
+      />
+
+      <Section title="Client Profile & Context">
+        <div style={{ display: "flex", gap: "1rem", alignItems: "center" }}>
+          <Metric label="Goal" value={clientProfile.goal} />
+          <Metric label="Time Horizon" value={clientProfile.timeHorizon} />
+          <Metric label="Risk Tolerance" value={clientProfile.riskTolerance} />
+        </div>
+      </Section>
+
+      <Section title="Fund Comparison">
+        <Tabs
+          items={[
+            {
+              id: "summary",
+              label: "Summary",
+              content: (
+                <div style={{ display: "flex", gap: "2rem" }}>
+                  <Card title="Fund A: {FundA.name}">
+                    <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+                      <Metric label="Expected Return" value={FundA.metrics.expectedReturn} delta="2.1%" basis="vs Market" />
+                      <Metric label="Risk Level" value={FundA.metrics.riskLevel} />
+                      <Metric label="Max Drawdown" value={FundA.metrics.maxDrawdown} delta="1.5%" basis="vs Market" />
+                      <Metric label="Fees" value={FundA.metrics.fees} />
+                    </div>
+                    <div style={{ marginTop: "1rem" }}>
+                      <Trend series={FundA.history} x={["M1", "M2", "M3", "M4", "M5", "M6", "M7", "M8", "M9", "M10"]} y={FundA.history} />
+                    </div>
+                    <div style={{ marginTop: "1rem", display: "flex", alignItems: "center", gap: "0.5rem" }}>
+                      <Status tone="success" label="Recommended for Client" />
+                    </div>
+                  </Card>
+
+                  <Card title="Fund B: {FundB.name}">
+                    <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+                      <Metric label="Expected Return" value={FundB.metrics.expectedReturn} delta="-2.7%" basis="vs Market" />
+                      <Metric label="Risk Level" value={FundB.metrics.riskLevel} />
+                      <Metric label="Max Drawdown" value={FundB.metrics.maxDrawdown} delta="4.7%" basis="vs Market" />
+                      <Metric label="Fees" value={FundB.metrics.fees} />
+                    </div>
+                    <div style={{ marginTop: "1rem" }}>
+                      <Trend series={FundB.history} x={["M1", "M2", "M3", "M4", "M5", "M6", "M7", "M8", "M9", "M10"]} y={FundB.history} />
+                    </div>
+                    <div style={{ marginTop: "1rem", display: "flex", alignItems: "center", gap: "0.5rem" }}>
+                      <Status tone="neutral" label="Alternative Option" />
+                    </div>
+                  </Card>
+                </div>
+              ),
+            },
+            {
+              id: "details",
+              label: "Detailed Analysis",
+              content: (
+                <Card title="Detailed Metrics & History">
+                  <DataTable
+                    columns={[
+                      { key: "fund", label: "Fund" },
+                      { key: "return", label: "Expected Return" },
+                      { key: "risk", label: "Risk Level" },
+                      { key: "drawdown", label: "Max Drawdown" },
+                      { key: "fees", label: "Annual Fees" },
+                      { key: "action", label: "Action" },
+                    ]}
+                    rows={[
+                      {
+                        fund: FundA.name,
+                        return: FundA.metrics.expectedReturn,
+                        risk: FundA.metrics.riskLevel,
+                        drawdown: FundA.metrics.maxDrawdown,
+                        fees: FundA.metrics.fees,
+                        action: <Button label="Select Fund A" onPress={() => alert("Selected")} variant="primary" />,
+                      },
+                      {
+                        fund: FundB.name,
+                        return: FundB.metrics.expectedReturn,
+                        risk: FundB.metrics.riskLevel,
+                        drawdown: FundB.metrics.maxDrawdown,
+                        fees: FundB.metrics.fees,
+                        action: <Button label="Select Fund B" onPress={() => alert("Selected")} variant="secondary" />,
+                      },
+                    ]}
+                  />
+                </Card>
+              ),
+            },
+          ]}
+        />
+      </Section>
+
+      <Section title="Recommendation Notes">
+        <Card title="Add Notes">
+          <p>
+            Based on the client's {clientProfile.timeHorizon} horizon and {clientProfile.riskTolerance} tolerance,
+            Fund A is recommended due to its higher expected return while maintaining acceptable risk.
+          </p>
+          <Button label="Save Recommendation" onPress={() => alert("Recommendation saved")} variant="primary" />
+        </Card>
+      </Section>
+
+      <Drawer title="Audit Log" open={true}>
+        <AuditLog />
+      </Drawer>
+    </Page>
+  );
+}
+
+function AuditLog() {
+  return (
+    <div>
+      <p>Recent changes:</p>
+      <ul>
+        <li>Recommendation added at 10:30 AM by John Doe.</li>
+        <li>Client profile updated at 09:15 AM by Jane Smith.</li>
+      </ul>
+    </div>
+  );
+}
+```

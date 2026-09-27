@@ -1,0 +1,47 @@
+import { Page, Header, Section, Card, Metric, Chart, DataTable } from "@stoa/react";
+
+const SchoolOverview = () => {
+  return (
+    <Page title="School Overview">
+      <Header title="School Overview" subtitle="Term Performance" />
+      <Section title="Key Metrics">
+        <Card title="Enrollment">
+          <Metric label="Current Term" value={1200} unit="students" />
+          <Metric label="Previous Term" value={1150} unit="students" delta={-50} />
+        </Card>
+        <Card title="Attendance">
+          <Metric label="Current Term" value={95} unit="%" />
+          <Metric label="Previous Term" value={92} unit="%" delta={3} />
+        </Card>
+        <Card title="Performance">
+          <Metric label="Current Term" value={85} unit="%" />
+          <Metric label="Previous Term" value={80} unit="%" delta={5} />
+        </Card>
+      </Section>
+      <Section title="Performance Trends">
+        <Card title="Enrollment Trend">
+          <Chart type="line" series={[{ id: "enrollment", data: [{ x: "2022-09", y: 1100 }, { x: "2022-12", y: 1150 }, { x: "2023-03", y: 1200 }] }] } x="x" y="y" />
+        </Card>
+        <Card title="Attendance Trend">
+          <Chart type="line" series={[{ id: "attendance", data: [{ x: "2022-09", y: 90 }, { x: "2022-12", y: 92 }, { x: "2023-03", y: 95 }] }] } x="x" y="y" />
+        </Card>
+        <Card title="Performance Trend">
+          <Chart type="line" series={[{ id: "performance", data: [{ x: "2022-09", y: 78 }, { x: "2022-12", y: 80 }, { x: "2023-03", y: 85 }] }] } x="x" y="y" />
+        </Card>
+      </Section>
+      <Section title="Detailed Data">
+        <Card title="Enrollment by Department">
+          <DataTable columns={["Department", "Enrollment"]} rows={[{ Department: "Math", Enrollment: 400 }, { Department: "Science", Enrollment: 350 }, { Department: "English", Enrollment: 300 }, { Department: "Arts", Enrollment: 150 }]} />
+        </Card>
+        <Card title="Attendance by Grade">
+          <DataTable columns={["Grade", "Attendance"]} rows={[{ Grade: "9th", Attendance: 92 }, { Grade: "10th", Attendance: 94 }, { Grade: "11th", Attendance: 95 }, { Grade: "12th", Attendance: 96 }]} />
+        </Card>
+        <Card title="Performance by Subject">
+          <DataTable columns={["Subject", "Performance"]} rows={[{ Subject: "Math", Performance: 85 }, { Subject: "Science", Performance: 87 }, { Subject: "English", Performance: 83 }, { Subject: "Arts", Performance: 82 }]} />
+        </Card>
+      </Section>
+    </Page>
+  );
+};
+
+export default SchoolOverview;

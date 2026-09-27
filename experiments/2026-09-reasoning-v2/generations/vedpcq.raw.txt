@@ -1,0 +1,66 @@
+```tsx
+import { Page, Header, Sidebar, Section, Card, Metric, Comparison, Button } from "@stoa/react";
+
+export default function FundComparison() {
+  return (
+    <Page title="Fund Comparison">
+      <Header title="Fund Comparison" subtitle="Choose the best fund for your client" />
+      <main>
+        <Section title="Fund A">
+          <Card title="Performance">
+            <Metric label="1-Year Return" value={12.5} unit="%" />
+            <Metric label="3-Year Average Annual Return" value={8.9} unit="%" />
+          </Card>
+          <Card title="Risk">
+            <Metric label="Standard Deviation" value={10.2} unit="%" />
+            <Metric label="Beta" value={1.1} />
+          </Card>
+          <Card title="Costs">
+            <Metric label="Expense Ratio" value={0.5} unit="%" />
+            <Metric label="Minimum Investment" value={1000} unit="$" />
+          </Card>
+        </Section>
+        <Section title="Fund B">
+          <Card title="Performance">
+            <Metric label="1-Year Return" value={11.0} unit="%" />
+            <Metric label="3-Year Average Annual Return" value={9.2} unit="%" />
+          </Card>
+          <Card title="Risk">
+            <Metric label="Standard Deviation" value={9.8} unit="%" />
+            <Metric label="Beta" value={1.0} />
+          </Card>
+          <Card title="Costs">
+            <Metric label="Expense Ratio" value={0.6} unit="%" />
+            <Metric label="Minimum Investment" value={500} unit="$" />
+          </Card>
+        </Section>
+        <Section title="Comparison">
+          <Comparison
+            entities={[
+              { id: "fund-a", label: "Fund A" },
+              { id: "fund-b", label: "Fund B" },
+            ]}
+            metrics={[
+              { label: "1-Year Return", value: { "fund-a": 12.5, "fund-b": 11.0 }, unit: "%" },
+              { label: "3-Year Average Annual Return", value: { "fund-a": 8.9, "fund-b": 9.2 }, unit: "%" },
+              { label: "Standard Deviation", value: { "fund-a": 10.2, "fund-b": 9.8 }, unit: "%" },
+              { label: "Beta", value: { "fund-a": 1.1, "fund-b": 1.0 } },
+              { label: "Expense Ratio", value: { "fund-a": 0.5, "fund-b": 0.6 }, unit: "%" },
+              { label: "Minimum Investment", value: { "fund-a": 1000, "fund-b": 500 }, unit: "$" },
+            ]}
+          />
+        </Section>
+        <Section title="Recommendation">
+          <Card>
+            <p>Select the fund you recommend:</p>
+            <Button label="Recommend Fund A" />
+            <Button label="Recommend Fund B" />
+            <p>Provide a brief rationale:</p>
+            <textarea rows={4} placeholder="Enter rationale here..." />
+          </Card>
+        </Section>
+      </main>
+    </Page>
+  );
+}
+```

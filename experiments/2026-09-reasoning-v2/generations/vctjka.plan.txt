@@ -1,0 +1,5 @@
+The rules of **Evidence and actions** and **Order and emphasis** shape this screen most critically.
+
+**Evidence and actions** dictates that the recommendation cannot be a simple summary; the client must see the specific reason for choosing one fund over the other. The evidence (e.g., lower fees, better recent returns) must be presented immediately next to the choice, not hidden behind clicks. Furthermore, the potential consequence of the decision (e.g., "switching funds incurs a fee") must be stated clearly before the final "Recommend" action is taken.
+
+**Order and emphasis** ensures the screen presents the top recommendation first, likely followed by the alternative, rather than listing them in alphabetical order. The difference between the two funds (the delta) must be the most prominent metric, sorted by significance to help the adviser quickly identify the superior option. Finally, since the adviser acts on this data, numbers must carry their basis (e.g., compared to the benchmark or previous period) to ensure the recommendation is defensible.

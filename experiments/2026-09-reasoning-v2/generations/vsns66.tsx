@@ -1,0 +1,135 @@
+import { Page, Header, Card, Section, Tabs, Metric, Trend, Status, Button, DataTable } from "@stoa/react";
+
+// Placeholder Data
+const fundA = {
+  id: "fund-a",
+  name: "Growth Horizon Equity",
+  risk: "High",
+  return: 12.5,
+  expense: 0.75,
+  volatility: 18.2,
+  trend: [8.1, 9.3, 10.5, 11.2, 12.5]
+};
+
+const fundB = {
+  id: "fund-b",
+  name: "Steady Capital Mix",
+  risk: "Medium",
+  return: 7.8,
+  expense: 0.45,
+  volatility: 5.4,
+  trend: [6.2, 6.5, 7.0, 7.3, 7.8]
+};
+
+const clientProfile = {
+  name: "Sarah Jenkins",
+  riskTolerance: "Aggressive",
+  timeHorizon: "5 years",
+  goal: "Capital appreciation"
+};
+
+export default function FundSelectorPage() {
+  return (
+    <Page title="Fund Recommendation: Sarah Jenkins">
+      <Header title="Client Fund Selection" subtitle="Select the optimal fund based on profile analysis" />
+      
+      <Section title="Client Profile & Constraints">
+        <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap' }}>
+          <Card title="Client Profile">
+            <p><strong>Name:</strong> Sarah Jenkins</p>
+            <p><strong>Time Horizon:</strong> 5 years</p>
+            <p><strong>Goal:</strong> Capital appreciation</p>
+          </Card>
+          <Card title="Risk Tolerance">
+            <Metric label="Risk Appetite" value="Aggressive" tone="neutral" />
+            <p>Client seeks maximum return and accepts high volatility.</p>
+          </Card>
+        </div>
+      </Section>
+
+      <Section title="Fund Comparison: Growth Horizon vs. Steady Capital">
+        <Tabs items={[
+          { id: 'comparison', label: 'Side-by-Side Metrics', content: <ComparisonView /> },
+          { id: 'trends', label: 'Performance Trends', content: <TrendView /> },
+          { id: 'details', label: 'Full Details', content: <DetailView /> },
+        ]} />
+      </Section>
+
+      <Section title="Final Recommendation Decision">
+        <Card title="Select Recommendation">
+          <div style={{ display: 'flex', gap: '20px' }}>
+            <Button 
+              label="Recommend Fund A (Growth Horizon)" 
+              variant="primary" 
+              onPress={() => alert("Recommendation: Fund A")} 
+            />
+            <Button 
+              label="Recommend Fund B (Steady Capital)" 
+              variant="secondary" 
+              onPress={() => alert("Recommendation: Fund B")} 
+            />
+            <Button 
+              label="No Recommendation" 
+              variant="ghost" 
+              onPress={() => alert("No recommendation selected")} 
+            />
+          </div>
+          <p style={{ marginTop: '15px', color: '#666' }}>
+            *Selection is final for this consultation. A note will be added to the client file.
+          </p>
+        </Card>
+      </Section>
+    </Page>
+  );
+}
+
+// Sub-components for Tabs content
+function ComparisonView() {
+  return (
+    <DataTable 
+      columns={[
+        { key: 'metric', label: 'Metric', width: 150 },
+        { key: 'fundA', label: 'Growth Horizon', width: 120 },
+        { key: 'fundB', label: 'Steady Capital', width: 120 },
+      ]}
+      rows={[
+        { metric: '12-Month Return', fundA: 12.5, fundB: 7.8 },
+        { metric: 'Volatility (Std Dev)', fundA: 18.2, fundB: 5.4 },
+        { metric: 'Expense Ratio', fundA: 0.75, fundB: 0.45 },
+        { metric: 'Risk Rating', fundA: 'High', fundB: 'Medium' },
+      ]}
+    />
+  );
+}
+
+function TrendView() {
+  return (
+    <div style={{ display: 'flex', gap: '40px' }}>
+      <Card title="Growth Horizon Performance">
+        <Trend series={fundA.trend} x="Month" y="Return %" />
+      </Card>
+      <Card title="Steady Capital Performance">
+        <Trend series={fundB.trend} x="Month" y="Return %" />
+      </Card>
+    </div>
+  );
+}
+
+function DetailView() {
+  return (
+    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
+      <Card title="Fund A - Growth Horizon Equity">
+        <Metric label="1Y Return" value={fundA.return} unit="%" />
+        <Metric label="Volatility" value={fundA.volatility} unit="%" />
+        <Metric label="Expense Ratio" value={fundA.expense} unit="%" />
+        <Status label="Risk Profile" tone={fundA.risk === "High" ? "warning" : "neutral"} />
+      </Card>
+      <Card title="Fund B - Steady Capital Mix">
+        <Metric label="1Y Return" value={fundB.return} unit="%" />
+        <Metric label="Volatility" value={fundB.volatility} unit="%" />
+        <Metric label="Expense Ratio" value={fundB.expense} unit="%" />
+        <Status label="Risk Profile" tone={fundB.risk === "High" ? "warning" : "neutral"} />
+      </Card>
+    </div>
+  );
+}

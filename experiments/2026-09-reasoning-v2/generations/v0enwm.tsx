@@ -1,0 +1,89 @@
+import { Page, Header, Section, Card, Metric, Delta, Chart, DataTable, Status } from "@stoa/react";
+
+const Term = "2023-2024";
+const PreviousYear = "2022-2023";
+
+export default function SchoolTermDashboard() {
+  return (
+    <Page title={`School Performance Report: ${Term}`}>
+      <Header
+        title={`Board Presentation: ${Term}`}
+        subtitle="Read-only Executive Summary"
+        actions={
+          <>
+            <Status tone="success" label="Data Verified" />
+          </>
+        }
+      />
+
+      <Section title="Executive Summary">
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "16px" }}>
+          <Card title="Total Enrollment">
+            <Metric label="Students" value="1,248" />
+            <Delta value={8.2} basis={PreviousYear} />
+          </Card>
+          <Card title="Budget Variance">
+            <Metric label="Actual vs. Plan" value="94.5%" />
+            <Delta value={-1.2} basis={PreviousYear} />
+          </Card>
+          <Card title="Average Test Score">
+            <Metric label="Math & English" value="87" />
+            <Delta value={2.4} basis={PreviousYear} />
+          </Card>
+          <Card title="Incident Rate">
+            <Metric label="Per 1,000 Students" value="0.8" />
+            <Delta value={-0.1} basis={PreviousYear} />
+          </Card>
+        </div>
+      </Section>
+
+      <Section title="Key Trends">
+        <Card title="Enrollment Growth (5 Year)" description="Cumulative net increase in student headcount">
+          <Chart type="line" series={[1000, 1015, 1030, 1045, 1248]} x={[2019, 2020, 2021, 2022, 2024]} y={[1000, 1015, 1030, 1045, 1248]} />
+        </Card>
+        <Card title="Budget Utilization by Department" description="Percentage of allocated funds spent">
+          <Chart type="bar" series={[45, 30, 25, 20, 10, 30, 40, 25]} x={["Admin", "Academics", "Tech", "Facilities", "Arts", "Sports", "Food", "Maintenance"]} y={[45, 30, 25, 20, 10, 30, 40, 25]} />
+        </Card>
+      </Section>
+
+      <Section title="Detailed Performance Highlights">
+        <Card title="Academic Metrics by Year Group">
+          <DataTable
+            columns={[
+              { key: "group", label: "Year Group" },
+              { key: "avgScore", label: "Avg. Score" },
+              { key: "target", label: "Target" },
+              { key: "delta", label: "Change" },
+            ]}
+            rows={[
+              { group: "Year 7", avgScore: 82, target: 80, delta: 4.5 },
+              { group: "Year 8", avgScore: 85, target: 82, delta: 3.2 },
+              { group: "Year 9", avgScore: 89, target: 85, delta: 1.8 },
+              { group: "Year 10", avgScore: 88, target: 84, delta: 2.1 },
+              { group: "Year 11", avgScore: 91, target: 88, delta: 3.5 },
+              { group: "Year 12", avgScore: 93, target: 90, delta: 4.0 },
+            ]}
+          />
+        </Card>
+
+        <Card title="Financial Overview">
+          <DataTable
+            columns={[
+              { key: "category", label: "Category" },
+              { key: "spent", label: "Spent ($)" },
+              { key: "planned", label: "Planned ($)" },
+              { key: "variance", label: "Variance" },
+            ]}
+            rows={[
+              { category: "Staff", spent: 4500000, planned: 4600000, variance: -100000 },
+              { category: "Operations", spent: 1200000, planned: 1200000, variance: 0 },
+              { category: "Technology", spent: 800000, planned: 750000, variance: 50000 },
+              { category: "Facilities", spent: 600000, planned: 900000, variance: -300000 },
+              { category: "Student Activities", spent: 400000, planned: 400000, variance: 0 },
+            ]}
+          />
+        </Card>
+      </Section>
+    </Page>
+  );
+}

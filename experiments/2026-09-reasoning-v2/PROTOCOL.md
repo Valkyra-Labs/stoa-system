@@ -149,4 +149,12 @@ blind coder on the timing files.
 
 ## Deviations
 
-(none yet)
+- 2026-09-27, after generation, before any coding: the protocol names
+  one Claude subagent for all 360 files; 360 files (about 400,000 tokens
+  of code) do not fit one context reliably. Coding is split across 8
+  subagents with the same model (Opus), prompt (`analysis/coder-prompt.md`),
+  guide and examples, each given 45 files from a seeded random partition
+  (`analysis/coding-batches.mjs`), so batch is independent of condition,
+  model and task. 24 files (3 per coder) are also given to a second coder;
+  agreement between Claude coders on those is reported, and the first
+  coder's answer is the one analysed.

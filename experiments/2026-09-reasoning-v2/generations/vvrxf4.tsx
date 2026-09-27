@@ -1,0 +1,62 @@
+import { Page, Header, Section, Card, Metric, Chart, Comparison, Status, EmptyData } from "@stoa/react";
+
+export default function SchoolDashboard() {
+  const keyMetrics = [
+    { label: "Enrollment Growth", value: "12.4%", delta: "+3.1%", unit: "vs last term" },
+    { label: "Avg. Test Score", value: "84", delta: "+2.1", unit: "points" },
+    { label: "Budget Burn Rate", value: "42%", delta: "-1.2%", unit: "of annual" },
+    { label: "Incident Rate", value: "0.4", delta: "0.0", unit: "per 1000" },
+    { label: "Teacher Retention", value: "94%", delta: "+1.5%", unit: "of staff" },
+    { label: "Graduation Rate", value: "92.1%", delta: "+0.3%", unit: "vs target" },
+  ];
+
+  const trends = [
+    { label: "Math Proficiency", data: [65, 68, 70, 72, 74] },
+    { label: "Science Proficiency", data: [58, 60, 62, 64, 66] },
+    { label: "Reading Proficiency", data: [72, 74, 75, 76, 78] },
+  ];
+
+  const schools = [
+    { id: "a", name: "North Campus", metrics: [84, 78, 91, 0.3, 94] },
+    { id: "b", name: "South Campus", metrics: [88, 82, 95, 0.2, 96] },
+    { id: "c", name: "West Branch", metrics: [79, 74, 88, 0.5, 89] },
+  ];
+
+  return (
+    <Page title="Academic Term Overview">
+      <Header title="Term 4, 2023-2024" subtitle="Board Presentation Data" />
+
+      <Section title="Executive Summary">
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "16px" }}>
+          {keyMetrics.map((m) => (
+            <Card key={m.label} title={m.label}>
+              <Metric label={m.label} value={m.value} delta={m.delta} unit={m.unit} />
+            </Card>
+          ))}
+        </div>
+      </Section>
+
+      <Section title="Performance Trends">
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "16px" }}>
+          {trends.map((t) => (
+            <Card key={t.label} title={t.label}>
+              <Chart type="line" series={[t.data]} x={[1,2,3,4,5]} y={t.data} />
+            </Card>
+          ))}
+        </div>
+      </Section>
+
+      <Section title="Campus Comparison">
+        <Card title="Key Metrics by Campus">
+          <Comparison entities={schools} metrics={[
+            { label: "Avg Score", val: (m: any) => m.metrics[0] },
+            { label: "Retention", val: (m: any) => m.metrics[1] },
+            { label: "Safety", val: (m: any) => m.metrics[2] },
+            { label: "Budget", val: (m: any) => m.metrics[3] },
+            { label: "Grad Rate", val: (m: any) => m.metrics[4] },
+          ]} />
+        </Card>
+      </Section>
+    </Page>
+  );
+}

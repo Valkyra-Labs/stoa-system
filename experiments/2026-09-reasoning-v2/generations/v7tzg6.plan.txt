@@ -1,0 +1,9 @@
+1. The teacher is preparing for a parent-teacher meeting about one student. This is a routine but important task, likely done infrequently but with high stakes for the student's progress.
+
+2. The shape of the work is understanding one object (the student) fully before acting on it. The teacher needs to review the student's data and prepare for the conversation.
+
+3. The entities involved are the student, their academic performance, behavior, and attendance. The teacher needs to view these metrics against targets, previous performance, and class averages.
+
+4. The teacher decides on how to approach the parent, based on the student's performance and behavior. They need to see evidence like recent grades, behavior logs, and attendance records to make an informed decision.
+
+5. The structure should start with the student's profile, followed by academic and behavioral metrics, then a summary of recent performance, and finally preparation notes for the meeting.

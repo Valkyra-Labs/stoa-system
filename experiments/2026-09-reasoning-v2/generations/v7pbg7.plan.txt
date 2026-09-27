@@ -1,0 +1,9 @@
+The screen for the head of school to present the school's performance to the board should prioritize clarity, context, and completeness. Key rules include:
+
+1. **Order and Emphasis**: Prioritize showing exceptions and significant changes first, ensuring the most critical metrics are immediately apparent.
+2. **Numbers**: Include the basis for every number, such as previous period values or targets, to provide context for the metrics.
+3. **Working with Lists**: Ensure persistent filters and clear navigation for detailed views without losing context.
+4. **Evidence and Actions**: Present evidence directly next to metrics, ensuring transparency and supporting the narrative of the presentation.
+5. **States**: Design for completeness by including states for empty, partial, stale, and error data, ensuring the presentation is robust and reliable.
+
+These rules ensure the screen is informative, contextually rich, and reliable, aligning with the head of school’s need to present a comprehensive and clear overview of the school’s performance.

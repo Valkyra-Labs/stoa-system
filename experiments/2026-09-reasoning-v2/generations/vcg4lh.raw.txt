@@ -1,0 +1,62 @@
+```tsx
+import { Page, Header, Sidebar, Section, Card, DataTable, FilterBar, BulkActions, Button, Metric, Delta, Comparison, Timeline, EmptyData, Status } from "@stoa/react";
+
+const StudentMeetingPrep = () => {
+  return (
+    <Page title="Parent Meeting Prep - Emily Johnson">
+      <Header title="Emily Johnson" subtitle="Parent Meeting - Tomorrow, 3:00 PM" actions={<Button label="Save Notes" variant="primary" />} />
+      <Sidebar>
+        <Section title="Student Info">
+          <Card>
+            <p><strong>Name:</strong> Emily Johnson</p>
+            <p><strong>Grade:</strong> 5th</p>
+            <p><strong>Teacher:</strong> Mr. Thompson</p>
+            <p><strong>Last Attendance:</strong> 95% (Last Month)</p>
+            <p><strong>Behavior:</strong> <Status tone="success">Positive</Status></p>
+          </Card>
+        </Section>
+        <Section title="Recent Activity">
+          <Timeline events={[
+            { date: "2023-10-10", description: "Math test - 82/100" },
+            { date: "2023-10-05", description: "Behavior incident - redirected to counselor" },
+            { date: "2023-09-28", description: "Reading assessment - 90% proficiency" }
+          ]} />
+        </Section>
+      </Sidebar>
+      <main>
+        <Section title="Meeting Notes">
+          <Card>
+            <p>Discuss Emily's progress in math, address the recent behavior incident, and set goals for improving reading comprehension.</p>
+          </Card>
+        </Section>
+        <Section title="Academic Overview">
+          <Comparison entities={['Emily Johnson', 'Class Average']} metrics={[
+            { label: 'Math Score', value: 82, delta: 2, unit: '%' },
+            { label: 'Reading Score', value: 90, delta: -3, unit: '%' },
+            { label: 'Attendance', value: 95, delta: 0, unit: '%' }
+          ]} />
+        </Section>
+        <Section title="Behavior Log">
+          <DataTable
+            columns={['Date', 'Incident', 'Resolution']}
+            rows={[
+              ['2023-10-05', 'Disruptive behavior', 'Counseled and redirected'],
+              ['2023-09-20', 'Late to class', 'Reminded and tracked']
+            ]}
+            selectable
+            onRowSelect={(row) => console.log('Selected:', row)}
+          />
+        </Section>
+        <Section title="Follow-Up Tasks">
+          <BulkActions>
+            <Button label="Mark as Discussed" variant="secondary" />
+            <Button label="Add Follow-Up" variant="secondary" />
+          </BulkActions>
+        </Section>
+      </main>
+    </Page>
+  );
+};
+
+export default StudentMeetingPrep;
+```

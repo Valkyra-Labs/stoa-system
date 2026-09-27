@@ -1,0 +1,118 @@
+```tsx
+import { Page, Header, Section, Card, Tabs, Button, Metric, Delta, DataTable, Status, EmptyData, Comparison } from "@stoa/react";
+
+export default function FundRecommendationScreen() {
+  const fundA = {
+    id: "FUND-A",
+    name: "Aggressive Growth Fund",
+    avgReturn: 12.5,
+    volatility: 18.2,
+    fees: 0.85,
+    sharpeRatio: 0.69,
+    maxDrawdown: -22.4,
+    riskProfile: "High",
+    manager: "Sarah Connor",
+    history: [10, 12, 14, 13, 15, 12.5],
+  };
+
+  const fundB = {
+    id: "FUND-B",
+    name: "Balanced Income Fund",
+    avgReturn: 7.2,
+    volatility: 6.4,
+    fees: 0.5,
+    sharpeRatio: 1.13,
+    maxDrawdown: -8.1,
+    riskProfile: "Moderate",
+    manager: "John Wick",
+    history: [10, 10.5, 10.8, 10.6, 10.9, 7.2],
+  };
+
+  const benchmark = {
+    name: "Market Benchmark",
+    avgReturn: 9.0,
+    volatility: 12.0,
+    fees: 0.0,
+  };
+
+  return (
+    <Page title="Fund Selection">
+      <Header title="Fund Recommendation" subtitle="Select the optimal fund based on client risk profile and performance metrics" />
+
+      <Section title="Primary Recommendation" className="mb-6">
+        <Card title="Recommended Fund: { fundA.name }">
+          <div className="grid grid-cols-2 gap-4">
+            <Metric label="Avg Return (5Y)" value={fundA.avgReturn} unit="%" />
+            <Metric label="Sharpe Ratio" value={fundA.sharpeRatio} unit="" />
+            <Metric label="Max Drawdown" value={fundA.maxDrawdown} unit="%" />
+            <Metric label="Fees" value={fundA.fees} unit="%" />
+          </div>
+          <p className="mt-4 text-sm text-gray-600">
+            This fund offers the highest risk-adjusted returns for clients with a { fundA.riskProfile } risk tolerance.
+          </p>
+        </Card>
+      </Section>
+
+      <Section title="Comparison & Evidence" className="mb-6">
+        <Comparison
+          entities={[
+            { ...fundA, name: fundA.name },
+            { ...fundB, name: fundB.name },
+            { ...benchmark, name: benchmark.name },
+          ]}
+          metrics={[
+            { label: "Avg Return", value: (item: any) => item.avgReturn, unit: "%" },
+            { label: "Volatility", value: (item: any) => item.volatility, unit: "%" },
+            { label: "Sharpe Ratio", value: (item: any) => item.sharpeRatio, unit: "" },
+            { label: "Fees", value: (item: any) => item.fees, unit: "%" },
+            { label: "Max Drawdown", value: (item: any) => item.maxDrawdown, unit: "%" },
+          ]}
+        />
+        <div className="mt-6">
+          <h3 className="text-lg font-semibold mb-4">Detailed Evidence Table</h3>
+          <DataTable
+            columns={[
+              { key: "name", label: "Fund", sticky: true },
+              { key: "manager", label: "Manager" },
+              { key: "avgReturn", label: "Return (5Y)", align: "right" },
+              { key: "volatility", label: "Volatility", align: "right" },
+              { key: "sharpeRatio", label: "Sharpe Ratio", align: "right" },
+              { key: "fees", label: "Fees", align: "right" },
+              { key: "maxDrawdown", label: "Max Drawdown", align: "right" },
+              { key: "riskProfile", label: "Risk Profile" },
+            ]}
+            rows={[
+              { ...fundA },
+              { ...fundB },
+              { ...benchmark },
+            ]}
+            onRowSelect={(row) => console.log("Selected:", row)}
+          />
+        </div>
+      </Section>
+
+      <Section title="Action Required" className="mt-6">
+        <Card title="Client Review & Recommendation">
+          <div className="flex flex-col md:flex-row gap-4 items-start">
+            <div className="flex-1">
+              <p className="mb-4">
+                The adviser must confirm the client's risk profile matches { fundA.riskProfile } before proceeding.
+              </p>
+              <div className="space-y-2">
+                <Status tone="success" label="Recommended Fund Ready" />
+                <Status tone="neutral" label="Alternative Fund Available" />
+                <Status tone="warning" label="Switching Fee: 2.5% of assets" />
+              </div>
+            </div>
+            <div className="flex flex-col gap-3">
+              <Button label="Confirm Recommendation" variant="primary" onPress={() => alert("Recommendation saved")} />
+              <Button label="Switch to Alternative" variant="secondary" onPress={() => alert("Switching to alternative fund")} />
+              <Button label="Request Clarification" variant="outline" onPress={() => alert("Clarification requested")} />
+            </div>
+          </div>
+        </Card>
+      </Section>
+    </Page>
+  );
+}
+```

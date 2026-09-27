@@ -1,0 +1,46 @@
+```tsx
+import { Page, ReviewQueue, Card, Section, Button } from "@stoa/react";
+
+const failedPayouts = [
+  {
+    id: "1",
+    merchant: "Tech Innovators Inc",
+    amount: "$1000.00",
+    failureReason: "Insufficient funds",
+    comments: "Contacted merchant, awaiting response.",
+    resolved: false,
+  },
+  {
+    id: "2",
+    merchant: "Gadget Hub",
+    amount: "$500.00",
+    failureReason: "Duplicate transaction",
+    comments: "Marked as duplicate, no action required.",
+    resolved: true,
+  },
+  // Add more payouts as needed
+];
+
+const PayoutResolution = () => (
+  <Page title="Failed Payouts Resolution">
+    <ReviewQueue
+      items={failedPayouts}
+      current={(item) => (
+        <Card title="Payout Details">
+          <Section title="Merchant Information">
+            <p>Merchant: {item.merchant}</p>
+            <p>Amount: {item.amount}</p>
+            <p>Failure Reason: {item.failureReason}</p>
+            <p>Comments: {item.comments}</p>
+          </Section>
+        </Card>
+      )}
+      decision={(item) => (
+        <Button label={item.resolved ? "Mark as Unresolved" : "Mark as Resolved"} onPress={() => {}} />
+      )}
+    />
+  </Page>
+);
+
+export default PayoutResolution;
+```

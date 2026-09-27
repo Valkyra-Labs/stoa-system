@@ -1,0 +1,118 @@
+```tsx
+import { Page, Header, Sidebar, Section, Card, Tabs, Button, Metric, Delta, Status, EmptyData, FilterBar, BulkActions, DataTable } from "@stoa/react";
+
+// Placeholder data
+const failedPayouts = [
+  { id: "PAY-1023", entity: "Merchant A", amount: 1500.00, currency: "USD", reason: "Insufficient funds", status: "failed", timestamp: "2023-10-27T10:30:00Z", retryCount: 2, lastAttempt: "2023-10-26T14:00:00Z" },
+  { id: "PAY-1024", entity: "Merchant B", amount: 750.50, currency: "EUR", reason: "Invalid account number", status: "failed", timestamp: "2023-10-27T11:15:00Z", retryCount: 0, lastAttempt: "2023-10-27T11:15:00Z" },
+  { id: "PAY-1025", entity: "Merchant C", amount: 2500.00, currency: "USD", reason: "Fraud flag", status: "failed", timestamp: "2023-10-27T09:45:00Z", retryCount: 5, lastAttempt: "2023-10-25T08:00:00Z" },
+  { id: "PAY-1026", entity: "Merchant D", amount: 120.00, currency: "GBP", reason: "System timeout", status: "failed", timestamp: "2023-10-27T12:00:00Z", retryCount: 1, lastAttempt: "2023-10-27T12:00:00Z" },
+  { id: "PAY-1027", entity: "Merchant E", amount: 3200.00, currency: "USD", reason: "Duplicate transaction", status: "failed", timestamp: "2023-10-26T16:20:00Z", retryCount: 3, lastAttempt: "2023-10-26T16:20:00Z" },
+];
+
+const filters = {
+  status: "failed",
+  reason: "",
+  entity: "",
+};
+
+const savedViews = [
+  { id: "view-1", name: "Recent Failures", filters: { ...filters, status: "failed", lastN: 50 } },
+  { id: "view-2", name: "High Value Failed", filters: { ...filters, amount: { min: 1000 } } },
+];
+
+const actions = [
+  { id: "retry", label: "Retry Payout", icon: "refresh" },
+  { id: "escalate", label: "Escalate to Support", icon: "flag" },
+  { id: "discard", label: "Discard & Log", icon: "trash" },
+];
+
+export default function FailedPayoutsScreen() {
+  return (
+    <Page title="Failed Payouts Resolution">
+      <Header title="Failed Payouts" subtitle="Resolve and reprocess failed transactions" />
+      
+      <Sidebar>
+        <Section title="Filters">
+          <FilterBar filters={filters} />
+        </Section>
+        <Section title="Saved Views">
+          <SavedViews views={savedViews} />
+        </Section>
+      </Sidebar>
+
+      <main>
+        <Section title="Summary">
+          <Metric label="Total Failed" value={failedPayouts.length} />
+          <Metric label="Avg Amount" value={1124.10} unit="currency" />
+          <Metric label="Top Reason" value="Insufficient funds" />
+        </Section>
+
+        <Section title="Pending Resolution">
+          <Card title="Failed Transactions">
+            <DataTable
+              columns={[
+                { key: "id", label: "ID" },
+                { key: "entity", label: "Merchant", sticky: true },
+                { key: "amount", label: "Amount" },
+                { key: "reason", label: "Reason" },
+                { key: "timestamp", label: "Last Attempt" },
+                { key: "retryCount", label: "Retries" },
+              ]}
+              rows={failedPayouts}
+              selectable={true}
+              onRowSelect={(row) => {
+                // Drilling in detail beside the list
+                const detail = (
+                  <div style={{ marginTop: 16 }}>
+                    <Status tone="error" label={row.reason} />
+                    <p>Last attempt: {row.lastAttempt}</p>
+                    <p>History: {row.retryCount} previous attempts failed.</p>
+                    <BulkActions actions={actions} />
+                  </div>
+                );
+                // In a real app, this would be rendered in a side panel or modal
+                // Here we simulate the "context while drilling" by showing it in the table row content
+                return (
+                  <div key={row.id}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                      <div>
+                        <strong>{row.id}</strong>
+                        <div style={{ fontSize: 14, color: '#666' }}>{row.entity}</div>
+                        <div style={{ fontSize: 14, color: '#666' }}>{row.timestamp}</div>
+                      </div>
+                      <div style={{ textAlign: 'right' }}>
+                        <div style={{ fontWeight: 'bold' }}>{row.amount} {row.currency}</div>
+                        <div style={{ fontSize: 14, color: '#666' }}>{row.reason}</div>
+                        <div style={{ fontSize: 14, color: '#666' }}>{row.retryCount} retries</div>
+                      </div>
+                    </div>
+                    {/* Context/Evidence shown inline for this demo */}
+                    <div style={{ marginTop: 8, padding: 8, background: '#f5f5f5', borderRadius: 4 }}>
+                      <strong>Evidence:</strong> {row.reason}. {row.retryCount > 0 ? `Attempted ${row.retryCount} times.` : 'First attempt.'}
+                      <Button label="Resolve" onPress={() => alert(`Resolving ${row.id}`)} />
+                    </div>
+                  </div>
+                );
+              }}
+            />
+          </Card>
+        </Section>
+
+        <Section title="Recent History">
+          <Card title="Resolution History">
+            {/* Simplified history view */}
+            <div style={{ padding: 16 }}>
+              <p>Showing last 5 resolution actions.</p>
+              <div style={{ marginTop: 16 }}>
+                <Metric label="Retry Attempt" value={3} delta={2} basis="today" />
+                <Metric label="Successful Clear" value={1} delta={0} basis="today" />
+              </div>
+            </div>
+          </Card>
+        </Section>
+      </main>
+    </Page>
+  );
+}
+```

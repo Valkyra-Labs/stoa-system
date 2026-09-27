@@ -1,0 +1,68 @@
+import { Page, Header, Section, Card, Metric, Delta, Trend, DataTable, Status, EmptyData, StaleData } from "@stoa/react";
+
+const metrics = [
+  { label: "Enrollment", value: 1240, delta: 3.2, unit: "students" },
+  { label: "Academic Performance", value: 94, delta: 0.8, unit: "% of grade" },
+  { label: "Retention Rate", value: 98.5, delta: -0.2, unit: "%" },
+  { label: "Budget Utilization", value: 72, delta: 5.1, unit: "%" },
+];
+
+const chartData: { x: string; y: number }[] = [
+  { x: "Term 1", y: 1180 },
+  { x: "Term 2", y: 1210 },
+  { x: "Term 3", y: 1240 },
+];
+
+const tableData = [
+  { id: "1", program: "STEM", students: 320, avgScore: 88, budget: 45000, status: "On Track" },
+  { id: "2", program: "Arts", students: 180, avgScore: 92, budget: 22000, status: "On Track" },
+  { id: "3", program: "Humanities", students: 290, avgScore: 85, budget: 38000, status: "At Risk" },
+  { id: "4", program: "Athletics", students: 150, avgScore: 95, budget: 12000, status: "On Track" },
+];
+
+export default function SchoolDashboard() {
+  return (
+    <Page title="School Term Overview">
+      <Header title="Term Overview" subtitle="Board Presentation" />
+      <Section title="Executive Summary">
+        <Card title="Key Performance Indicators">
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "1rem" }}>
+            {metrics.map((m) => (
+              <Metric key={m.label} label={m.label} value={m.value} delta={m.delta} unit={m.unit} />
+            ))}
+          </div>
+        </Card>
+      </Section>
+
+      <Section title="Trend Analysis: Enrollment Growth">
+        <Card title="Year-over-Year Comparison">
+          <Trend series={chartData} />
+        </Card>
+      </Section>
+
+      <Section title="Program Performance & Budget">
+        <Card title="Detailed Breakdown">
+          <DataTable
+            columns={[
+              { key: "id", label: "Program ID" },
+              { key: "program", label: "Program Name" },
+              { key: "students", label: "Enrollment" },
+              { key: "avgScore", label: "Avg Score" },
+              { key: "budget", label: "Budget (k)" },
+              { key: "status", label: "Status" },
+            ]}
+            rows={tableData}
+            stickyFirstColumn
+          />
+        </Card>
+      </Section>
+
+      <Section title="Data Integrity">
+        <Card title="Data Freshness">
+          <Status tone="normal" label="Data updated 2 hours ago" />
+          <StaleData since="3 days ago" label="Historical projections" />
+        </Card>
+      </Section>
+    </Page>
+  );
+}

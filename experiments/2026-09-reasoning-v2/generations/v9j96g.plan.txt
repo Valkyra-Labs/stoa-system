@@ -1,0 +1,7 @@
+1. **Who and When:** The finance director reviews the screen weekly, typically every Monday morning, to prepare for meetings.
+2. **Shape of the Work:** The session is about getting a general picture of many unrelated numbers, with no immediate action required on this screen.
+3. **Information:** The screen needs to display key financial metrics (revenue, expenses, profit) for the company and its departments. The values should be compared against targets and the previous week.
+4. **Decision and Evidence:** No specific decision is made here, but the director needs to understand the overall financial health and trends. Key metrics should be fresh and reliable.
+5. **Structure:** The screen should start with an overview of the company’s key financial metrics. Below that, a section for departmental metrics with comparisons to targets and previous week. No detailed actions are needed, so the screen remains focused on providing a quick, high-level view.
+
+Given this structure, the **Dashboard** component from the vocabulary fits well, with a focus on metrics and charts to provide an overview of the company's financial health.

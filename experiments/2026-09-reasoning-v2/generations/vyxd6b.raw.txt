@@ -1,0 +1,33 @@
+```tsx
+import { Page, Header, Metric, Chart, Section, Trend } from "@stoa/react";
+
+const SchoolOverview = () => {
+  return (
+    <Page title="School Overview">
+      <Header title="School Overview" subtitle="Term Performance" />
+      <section>
+        <Metric label="Overall Academic Performance" value={92} delta={2} unit="%" />
+        <Metric label="Attendance Rate" value={95} delta={-1} unit="%" />
+        <Metric label="Student Well-being" value={88} delta={1} unit="%" />
+      </section>
+      <Section title="Academic Performance by Grade">
+        <Chart
+          type="line"
+          series={[
+            { id: "gradeA", label: "Grade A", data: [{ x: "Jan", y: 85 }, { x: "Feb", y: 87 }, { x: "Mar", y: 90 }] },
+            { id: "gradeB", label: "Grade B", data: [{ x: "Jan", y: 80 }, { x: "Feb", y: 82 }, { x: "Mar", y: 84 }] },
+            { id: "gradeC", label: "Grade C", data: [{ x: "Jan", y: 75 }, { x: "Feb", y: 77 }, { x: "Mar", y: 79 }] }
+          ]}
+          x="month"
+          y="performance"
+        />
+      </Section>
+      <Section title="Student Well-being Trends">
+        <Trend series={[{ x: "Jan", y: 85 }, { x: "Feb", y: 86 }, { x: "Mar", y: 88 }]} />
+      </Section>
+    </Page>
+  );
+};
+
+export default SchoolOverview;
+```

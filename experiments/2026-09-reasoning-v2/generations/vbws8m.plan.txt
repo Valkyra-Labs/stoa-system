@@ -1,0 +1,9 @@
+1. **Person & Session**: The Finance Director opens this screen every Monday morning, driven by the need to prepare for the upcoming weekly strategy meeting. It is a routine, high-stakes check-in where missing a trend could delay decisions.
+
+2. **Shape of Work**: This is "getting a general picture of many unrelated numbers, with no action expected on this screen." The Director scans for outliers and trends to understand the week's performance before diving into detail elsewhere.
+
+3. **Information**: The screen must display revenue, expenses, cash flow, and key KPIs across departments. Values are judged against monthly targets and last week's actuals. Only values exceeding thresholds or showing significant deltas trigger the next step.
+
+4. **Decision & Evidence**: The Director decides which topics to raise in the meeting and which departments need immediate attention. They need to see the current value, the period-over-period delta, and a quick visual trend to validate anomalies before acting.
+
+5. **Structure**: The layout prioritizes a high-level "at-a-glance" dashboard. A header highlights the week and critical alerts. The main area groups metrics by category (Income, Cost, Cash) using Cards and small Trend charts. A secondary, expandable table allows quick drilling into the top 3 anomalies without cluttering the initial view.

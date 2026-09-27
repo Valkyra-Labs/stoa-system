@@ -1,0 +1,34 @@
+import { Page, Header, Section, Metric, Delta, Trend, DataTable } from "@stoa/react";
+
+export default function FinanceOverview() {
+  return (
+    <Page title="Finance Overview">
+      <Header title="Finance Overview" subtitle="Weekly Metrics" />
+      <Section title="Key Metrics">
+        <Metric label="Revenue" value={123456789} delta={<Delta value={-10000} basis={123556789} />} unit="USD" />
+        <Metric label="Expenses" value={87654321} delta={<Delta value={5000} basis={87154321} />} unit="USD" />
+        <Metric label="Profit" value={35802468} delta={<Delta value={-15000} basis={35952468} />} unit="USD" />
+      </Section>
+      <Section title="Week-on-Week Comparison">
+        <Trend series={[{ date: "2023-09-01", value: 123556789 }, { date: "2023-09-08", value: 123456789 }, { date: "2023-09-15", value: 123356789 }]} />
+        <Trend series={[{ date: "2023-09-01", value: 87154321 }, { date: "2023-09-08", value: 87654321 }, { date: "2023-09-15", value: 87754321 }]} />
+        <Trend series={[{ date: "2023-09-01", value: 35952468 }, { date: "2023-09-08", value: 35802468 }, { date: "2023-09-15", value: 35602468 }]} />
+      </Section>
+      <Section title="Detailed Data">
+        <DataTable
+          columns={[
+            { label: "Date", key: "date" },
+            { label: "Revenue", key: "revenue", unit: "USD" },
+            { label: "Expenses", key: "expenses", unit: "USD" },
+            { label: "Profit", key: "profit", unit: "USD" },
+          ]}
+          rows={[
+            { date: "2023-09-01", revenue: 123556789, expenses: 87154321, profit: 35952468 },
+            { date: "2023-09-08", revenue: 123456789, expenses: 87654321, profit: 35802468 },
+            { date: "2023-09-15", revenue: 123356789, expenses: 87754321, profit: 35602468 },
+          ]}
+        />
+      </Section>
+    </Page>
+  );
+}

@@ -1,0 +1,9 @@
+1. **Person & Session**: A finance director opens this screen routinely on Monday mornings, driven by the need to prepare for an upcoming board meeting. The session is a high-stakes review requiring rapid, accurate assessment of weekly performance.
+
+2. **Shape of the Work**: The director needs a **general picture of many unrelated numbers** to establish the baseline, followed by **scanning a large collection** to identify anomalies or deviations from targets. The work is primarily observational here; decisions on specific items will likely happen after the meeting or in a drill-down, but the screen must highlight urgent exceptions immediately.
+
+3. **The Information**: The view requires aggregates (Revenue, EBITDA, Cash Flow) compared against monthly targets and year-over-year figures. Entities include departments, product lines, and regions. The primary filter is the "Weekly" time frame, but drill-downs allow viewing by month or quarter.
+
+4. **Decision & Evidence**: The decision is: "What is the financial health this week, and where is the risk?" Evidence needed includes trend arrows, variance against targets, and alerts on outliers (e.g., unexpected cost spikes). The cost of a wrong decision is reputational damage or strategic missteps, though immediate correction is rarely possible; the screen must minimize false alarms while highlighting real threats.
+
+5. **Structure**: The screen must present a **Dashboard** for the high-level metrics first, followed by a **Monitor** pattern to surface exceptions and trends. A **DataTable** with filtering and sorting allows the director to scan specific segments. Progress is shown via a summary of "Critical Alerts." The structure flows from the big picture to specific anomalies without requiring navigation away from the data.

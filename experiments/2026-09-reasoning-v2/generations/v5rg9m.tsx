@@ -1,0 +1,37 @@
+import { Page, Header, Section, Card, Status } from "@stoa/react";
+
+export default function StudentPreparation() {
+  return (
+    <Page title="Student Preparation">
+      <Header title="Student Overview" subtitle="John Doe" />
+      <Section title="Academic Performance">
+        <Card title="Grades">
+          <Metric label="Math" value={85} unit="%" />
+          <Metric label="English" value={90} unit="%" />
+          <Metric label="Science" value={75} unit="%" />
+        </Card>
+        <Card title="Attendance">
+          <Metric label="Days Present" value={90} unit="%" />
+          <Metric label="Tardies" value={5} />
+        </Card>
+      </Section>
+      <Section title="Behavior Records">
+        <Card title="Incidents">
+          <Metric label="Total Incidents" value={3} />
+          <Metric label="Incidents Resolved" value={2} />
+        </Card>
+        <Card title="Notes">
+          <p>Note 1: John was late for class on Monday.</p>
+          <p>Note 2: John has shown improvement in behavior this month.</p>
+        </Card>
+      </Section>
+      <Section title="Teacher Notes">
+        <Card title="Preparation Notes">
+          <p>Discuss John's improvement in English and areas for improvement in Science.</p>
+          <p>Highlight the need for better attendance and punctuality.</p>
+        </Card>
+      </Section>
+      <Status tone="info" label="Last Updated: 2023-10-10" />
+    </Page>
+  );
+}

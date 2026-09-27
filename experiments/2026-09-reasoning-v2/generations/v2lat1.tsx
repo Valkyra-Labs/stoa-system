@@ -1,0 +1,57 @@
+import { Page, Header, Section, Card, Metric, Delta, Status, StaleData, EmptyData, DataTable, FilterBar, Button, BulkActions } from "@stoa/react";
+
+const TermReport = () => {
+  const metrics = [
+    { label: "Attendance Rate", value: 92.5, delta: 1.2, unit: "%", basis: "Previous Term" },
+    { label: "Average Test Score", value: 84.3, delta: -1.8, unit: "points", basis: "School Average" },
+    { label: "Safety Incidents", value: 4, delta: -2, unit: "incidents", basis: "Last Year" },
+  ];
+
+  const data = [
+    { id: 1, subject: "Math", teacher: "Mr. Smith", class: "A", attendance: 93, scores: 85, incidents: 0 },
+    { id: 2, subject: "English", teacher: "Ms. Lee", class: "B", attendance: 91, scores: 83, incidents: 1 },
+    { id: 3, subject: "Science", teacher: "Dr. Patel", class: "C", attendance: 94, scores: 87, incidents: 0 },
+  ];
+
+  const filters = [
+    { label: "Subject", value: "All", options: ["All", "Math", "English", "Science"] },
+    { label: "Class", value: "All", options: ["All", "A", "B", "C"] },
+  ];
+
+  const actions = [
+    { label: "Export Data", variant: "secondary" },
+    { label: "Generate Report", variant: "primary" },
+  ];
+
+  return (
+    <Page title="Term Performance Overview">
+      <Header title="Term Performance Overview" subtitle="School Term Progress Report" actions={actions} />
+      <Section title="Key Performance Indicators">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {metrics.map((metric, index) => (
+            <Card key={index} title={metric.label}>
+              <div className="text-2xl font-bold text-right">{metric.value}{metric.unit}</div>
+              <Delta value={metric.delta} basis={metric.basis} />
+            </Card>
+          ))}
+        </div>
+      </Section>
+      <Section title="Class Performance">
+        <FilterBar filters={filters} />
+        <DataTable
+          columns={[{ name: "Subject", key: "subject" }, { name: "Teacher", key: "teacher" }, { name: "Class", key: "class" }, { name: "Attendance", key: "attendance" }, { name: "Scores", key: "scores" }, { name: "Incidents", key: "incidents" }]}
+          rows={data}
+          selectable
+          stickyFirstColumn
+        />
+        <BulkActions actions={actions} />
+      </Section>
+      <Section title="Data Status">
+        <Status tone="info" label="Last Updated: 2 hours ago" />
+        <StaleData since="2 hours ago" />
+      </Section>
+    </Page>
+  );
+};
+
+export default TermReport;

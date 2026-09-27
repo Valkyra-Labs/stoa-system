@@ -1,0 +1,119 @@
+```tsx
+import {
+  Page,
+  Header,
+  Sidebar,
+  Section,
+  Card,
+  Metric,
+  Delta,
+  Trend,
+  DataTable,
+  Status,
+  EmptyData,
+  FilterBar,
+  Button,
+} from "@stoa/react";
+
+export default function FinanceDashboard() {
+  const metrics = [
+    { label: "Total Revenue", value: 1250000, delta: 5.2, unit: "USD" },
+    { label: "Gross Profit", value: 480000, delta: -1.4, unit: "USD" },
+    { label: "Operating Expenses", value: 320000, delta: 2.1, unit: "USD" },
+    { label: "Net Profit", value: 160000, delta: 8.5, unit: "USD" },
+    { label: "Cash Flow", value: 185000, delta: 12.3, unit: "USD" },
+  ];
+
+  const revenueTrend = [
+    { x: "Mon", y: 1100 },
+    { x: "Tue", y: 1120 },
+    { x: "Wed", y: 1080 },
+    { x: "Thu", y: 1150 },
+    { x: "Fri", y: 1250 },
+  ];
+
+  const expensesTrend = [
+    { x: "Mon", y: 290 },
+    { x: "Tue", y: 310 },
+    { x: "Wed", y: 305 },
+    { x: "Thu", y: 320 },
+    { x: "Fri", y: 320 },
+  ];
+
+  const transactions = [
+    { id: "TRX-001", date: "2023-10-23", vendor: "Acme Corp", amount: 45000, type: "Expense", status: "Paid" },
+    { id: "TRX-002", date: "2023-10-22", vendor: "Client A", amount: 120000, type: "Revenue", status: "Pending" },
+    { id: "TRX-003", date: "2023-10-21", vendor: "Software Inc", amount: 8500, type: "Expense", status: "Paid" },
+    { id: "TRX-004", date: "2023-10-20", vendor: "Client B", amount: 65000, type: "Revenue", status: "Paid" },
+    { id: "TRX-005", date: "2023-10-19", vendor: "Office Supplies", amount: 1200, type: "Expense", status: "Paid" },
+  ];
+
+  const auditLog = [
+    { id: "LOG-1", user: "Sarah J.", action: "Approved Budget Q4", time: "2023-10-23T09:15:00" },
+    { id: "LOG-2", user: "Mike R.", action: "Updated Vendor List", time: "2023-10-22T14:30:00" },
+    { id: "LOG-3", user: "System", action: "Reconciled Accounts", time: "2023-10-21T08:00:00" },
+  ];
+
+  return (
+    <Page title="Weekly Financial Overview">
+      <Header title="Finance Dashboard" subtitle="Weekly Performance" />
+      
+      <main>
+        <Sidebar>
+          <nav>
+            <ul>
+              <li><a href="#">Dashboard</a></li>
+              <li><a href="#">Reports</a></li>
+              <li><a href="#">Transactions</a></li>
+              <li><a href="#">Settings</a></li>
+            </ul>
+          </nav>
+        </Sidebar>
+
+        <section className="dashboard-content">
+          <Section title="Key Performance Indicators">
+            <div className="metrics-grid">
+              {metrics.map((m) => (
+                <Card key={m.label} title={m.label}>
+                  <Metric value={m.value.toLocaleString()} delta={m.delta} unit={m.unit} />
+                  <div className="trend-visual">
+                    <Trend series={m.label === "Revenue" ? revenueTrend : expensesTrend} />
+                  </div>
+                </Card>
+              ))}
+            </div>
+          </Section>
+
+          <Section title="Recent Transactions">
+            <FilterBar filters={{ search: "Search transactions...", limit: 10 }} />
+            <DataTable
+              columns={[
+                { key: "id", label: "ID" },
+                { key: "date", label: "Date" },
+                { key: "vendor", label: "Vendor" },
+                { key: "amount", label: "Amount" },
+                { key: "type", label: "Type" },
+                { key: "status", label: "Status" },
+              ]}
+              rows={transactions}
+              onRowSelect={(row) => console.log("Selected:", row)}
+            />
+          </Section>
+
+          <Section title="Audit Log">
+            <DataTable
+              columns={[
+                { key: "id", label: "ID" },
+                { key: "user", label: "User" },
+                { key: "action", label: "Action" },
+                { key: "time", label: "Time" },
+              ]}
+              rows={auditLog}
+            />
+          </Section>
+        </section>
+      </main>
+    </Page>
+  );
+}
+```

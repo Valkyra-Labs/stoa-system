@@ -1,0 +1,114 @@
+```tsx
+import { Page, Header, Section, Card, Tabs, Metric, Comparison, DataTable, Button, Status, EmptyData, ErrorData } from "@stoa/react";
+
+const FundA = {
+  id: "fund-a",
+  name: "Liberty Growth Equity",
+  provider: "Global Asset Management",
+  risk: "High",
+  fees: 0.85,
+  returns: { ytd: 12.4, annual: 8.1 },
+  volatility: 18.2,
+  sharpe: 1.15,
+  holdings: [
+    { name: "Tech Giants", weight: 35 },
+    { name: "Mid Cap Growth", weight: 25 },
+    { name: "Emerging Markets", weight: 20 },
+  ],
+};
+
+const FundB = {
+  id: "fund-b",
+  name: "Steadfast Balanced",
+  provider: "Horizon Wealth",
+  risk: "Medium",
+  fees: 0.65,
+  returns: { ytd: 6.8, annual: 5.4 },
+  volatility: 8.5,
+  sharpe: 0.92,
+  holdings: [
+    { name: "Blue Chip Dividends", weight: 45 },
+    { name: "Fixed Income", weight: 30 },
+    { name: "Small Cap Value", weight: 25 },
+  ],
+};
+
+const ClientProfile = {
+  riskTolerance: "High",
+  horizon: "5 years",
+  targetReturn: 9,
+};
+
+function App() {
+  return (
+    <Page title="Fund Recommendation" >
+      <Header title="Client Selection" subtitle="Select the best fund for Alex M." actions={<Button label="Generate Proposal" onPress={() => alert("Proceeding to contract...")} />} />
+
+      <Section title="Client Profile" >
+        <Card title="Profile Details" >
+          <Metric label="Risk Tolerance" value={ClientProfile.riskTolerance} />
+          <Metric label="Investment Horizon" value={ClientProfile.horizon} />
+          <Metric label="Target Return" value={ClientProfile.targetReturn} unit="%" />
+        </Card>
+      </Section>
+
+      <Section title="Fund Comparison" >
+        <Comparison
+          entities={[FundA, FundB]}
+          metrics={[
+            { label: "YTD Return", values: [FundA.returns.ytd, FundB.returns.ytd] },
+            { label: "Annual Return", values: [FundA.returns.annual, FundB.returns.annual] },
+            { label: "Volatility", values: [FundA.volatility, FundB.volatility] },
+            { label: "Sharpe Ratio", values: [FundA.sharpe, FundB.sharpe] },
+            { label: "Management Fee", values: [FundA.fees, FundB.fees] },
+          ]}
+        />
+        <Section title="Evidence & Rationale" >
+          <div style={{ display: "flex", gap: "20px", flexWrap: "wrap" }}>
+            <Card title={FundA.name} >
+              <Metric label="Risk Profile" value={FundA.risk} />
+              <Metric label="Sharpe Ratio" value={FundA.sharpe} />
+              <div style={{ marginTop: "10px" }}>
+                <strong>Top Holdings:</strong>
+                {FundA.holdings.map((h) => (
+                  <p key={h.name} style={{ fontSize: "0.9rem" }}>
+                    {h.name}: {h.weight}%
+                  </p>
+                ))}
+              </div>
+            </Card>
+            <Card title={FundB.name} >
+              <Metric label="Risk Profile" value={FundB.risk} />
+              <Metric label="Sharpe Ratio" value={FundB.sharpe} />
+              <div style={{ marginTop: "10px" }}>
+                <strong>Top Holdings:</strong>
+                {FundB.holdings.map((h) => (
+                  <p key={h.name} style={{ fontSize: "0.9rem" }}>
+                    {h.name}: {h.weight}%
+                  </p>
+                ))}
+              </div>
+            </Card>
+          </div>
+        </Section>
+      </Section>
+
+      <Section title="Action Required" >
+        <Card title="Recommendation Decision" >
+          <p>
+            Based on Alex's high risk tolerance and 5-year horizon, <strong>Liberty Growth Equity</strong> aligns better with the target return of 9%.
+            However, <strong>Steadfast Balanced</strong> offers a more stable floor.
+          </p>
+          <div style={{ display: "flex", gap: "10px" }}>
+            <Button label="Recommend Liberty Growth" variant="primary" onPress={() => alert("Recommendation set to Fund A")} />
+            <Button label="Recommend Steadfast Balanced" variant="secondary" onPress={() => alert("Recommendation set to Fund B")} />
+            <Button label="Request More Info" onPress={() => alert("Opening information modal...")} />
+          </div>
+        </Card>
+      </Section>
+    </Page>
+  );
+}
+
+export default App;
+```

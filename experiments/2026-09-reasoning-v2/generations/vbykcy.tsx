@@ -1,0 +1,208 @@
+import {
+  Page,
+  Header,
+  Sidebar,
+  Section,
+  Card,
+  Tabs,
+  Drawer,
+  Metric,
+  Delta,
+  Trend,
+  DataTable,
+  FilterBar,
+  SavedViews,
+  Button,
+  Status,
+  EmptyData,
+  Timeline,
+  AuditLog,
+  ReviewQueue,
+  Comparison,
+} from "@stoa/react";
+
+const PORTFOLIO_ASSETS = [
+  {
+    id: "AAPL",
+    name: "Apple Inc.",
+    sector: "Technology",
+    price: 178.52,
+    prevPrice: 175.10,
+    change: 3.42,
+    changePercent: 1.95,
+    volume: 45200000,
+    newsCount: 12,
+    sentiment: "positive",
+    notes: "Q4 earnings beat expectations.",
+  },
+  {
+    id: "TSLA",
+    name: "Tesla, Inc.",
+    sector: "Auto",
+    price: 242.15,
+    prevPrice: 245.80,
+    change: -3.65,
+    changePercent: -1.49,
+    volume: 89100000,
+    newsCount: 8,
+    sentiment: "neutral",
+    notes: "Supply chain delays reported in Asia.",
+  },
+  {
+    id: "NVDA",
+    name: "NVIDIA Corp.",
+    sector: "Technology",
+    price: 890.00,
+    prevPrice: 860.20,
+    change: 29.80,
+    changePercent: 3.46,
+    volume: 32000000,
+    newsCount: 5,
+    sentiment: "positive",
+    notes: "New AI chip announcement.",
+  },
+  {
+    id: "BAC",
+    name: "Bank of America",
+    sector: "Finance",
+    price: 34.20,
+    prevPrice: 33.90,
+    change: 0.30,
+    changePercent: 0.89,
+    volume: 12000000,
+    newsCount: 2,
+    sentiment: "neutral",
+    notes: "Stable market conditions.",
+  },
+  {
+    id: "JPM",
+    name: "JPMorgan Chase",
+    sector: "Finance",
+    price: 198.45,
+    prevPrice: 195.10,
+    change: 3.35,
+    changePercent: 1.72,
+    volume: 8500000,
+    newsCount: 3,
+    sentiment: "positive",
+    notes: "Strong quarterly profit.",
+  },
+];
+
+const PORTFOLIO_SUMMARY = {
+  totalValue: 12450000,
+  totalChange: 125000,
+  totalChangePercent: 1.07,
+  volatilityIndex: 18.5,
+  topGainer: "NVDA",
+  topLoser: "TSLA",
+};
+
+export default function PortfolioMorningBook() {
+  const [selectedAssetId, setSelectedAssetId] = React.useState(PORTFOLIO_ASSETS[0].id);
+
+  return (
+    <Page title="Portfolio Morning Book">
+      <Header
+        title="Portfolio Overview"
+        subtitle="Market open: 09:30 AM"
+        actions={
+          <>
+            <SavedViews views={["LastWeek", "SectorView"] as const} />
+            <Button label="Export Report" variant="secondary" />
+          </>
+        }
+      />
+
+      <Section title="Portfolio Performance" className="mb-4">
+        <Card title="Key Metrics">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <Metric label="Total Value" value="$12,450,000" />
+            <Metric
+              label="Daily Change"
+              value={PORTFOLIO_SUMMARY.totalChange}
+              unit="USD"
+              delta={PORTFOLIO_SUMMARY.totalChangePercent}
+            />
+            <Metric label="Volatility Index" value={PORTFOLIO_SUMMARY.volatilityIndex} unit="%" />
+          </div>
+          <div className="mt-4">
+            <Comparison
+              entities={[
+                { id: "total", label: "Total", value: PORTFOLIO_SUMMARY.totalValue },
+                { id: "sector", label: "Tech", value: 4200000 },
+                { id: "finance", label: "Finance", value: 2100000 },
+                { id: "auto", label: "Auto", value: 1800000 },
+              ]}
+              metrics={[
+                { label: "Value", value: PORTFOLIO_SUMMARY.totalValue },
+                { label: "Daily Change", value: PORTFOLIO_SUMMARY.totalChange },
+                { label: "Volatility", value: PORTFOLIO_SUMMARY.volatilityIndex },
+              ]}
+            />
+          </div>
+        </Card>
+      </Section>
+
+      <Section title="Asset Movement & Context">
+        <Card title="Assets">
+          <FilterBar
+            filters={[
+              { type: "range", label: "Change %", min: -5, max: 5 },
+              { type: "select", label: "Sector", options: ["All", "Tech", "Finance", "Auto"] },
+            ]}
+          />
+          <DataTable
+            columns={[
+              { key: "name", label: "Asset" },
+              { key: "changePercent", label: "Change" },
+              { key: "volume", label: "Volume" },
+              { key: "newsCount", label: "News" },
+              { key: "notes", label: "Notes" },
+            ]}
+            rows={PORTFOLIO_ASSETS}
+            onRowSelect={(row) => setSelectedAssetId(row.id)}
+          />
+        </Card>
+
+        <Section title="Asset Detail" className="mt-6">
+          {selectedAssetId ? (
+            <Card title={PORTFOLIO_ASSETS.find((a) => a.id === selectedAssetId)?.name}>
+              <div className="flex flex-col md:flex-row gap-6">
+                <div className="flex-1">
+                  <Metric label="Price" value={PORTFOLIO_ASSETS.find((a) => a.id === selectedAssetId)?.price} />
+                  <Metric
+                    label="Daily Change"
+                    value={PORTFOLIO_ASSETS.find((a) => a.id === selectedAssetId)?.change}
+                    unit="USD"
+                    delta={PORTFOLIO_ASSETS.find((a) => a.id === selectedAssetId)?.changePercent}
+                  />
+                  <Metric label="Volume" value={PORTFOLIO_ASSETS.find((a) => a.id === selectedAssetId)?.volume} />
+                </div>
+                <div className="flex-1">
+                  <Timeline
+                    events={[
+                      { time: "09:30 AM", text: "Market Open" },
+                      { time: "10:15 AM", text: "Earnings beat expectations" },
+                      { time: "11:00 AM", text: "Supply chain delays reported" },
+                      { time: "12:30 PM", text: "New AI chip announcement" },
+                    ]}
+                  />
+                  <AuditLog
+                    entries={[
+                      { user: "System", action: "Price update", time: "09:30 AM" },
+                      { user: "John Doe", action: "Added note", time: "10:45 AM" },
+                      { user: "Jane Smith", action: "Updated price", time: "11:15 AM" },
+                    ]}
+                  />
+                </div>
+              </div>
+            </Card>
+          ) : (
+            <EmptyData message="Select an asset to view details" />
+          )}
+        </Section>
+      </Section>
+    </Page>
+  );
+}

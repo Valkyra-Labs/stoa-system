@@ -1,0 +1,84 @@
+import { Page, Header, Sidebar, Section, Card, Tabs, Metric, Delta, Timeline, DataTable, Status, EmptyData } from "@stoa/react";
+
+const portfolioValue = 15000000;
+const yesterdayValue = 14850000;
+const todayValue = 15120000;
+const benchmarkChange = 0.85;
+const portfolioChange = 1.20;
+
+const assets = [
+  { id: "ASSET-001", name: "Tech Equity Fund", change: 2.5, reason: "Strong earnings report" },
+  { id: "ASSET-002", name: "Energy Sector ETF", change: -1.3, reason: "Oil prices drop" },
+  { id: "ASSET-003", name: "Bond Portfolio", change: 0.4, reason: "Interest rates stable" },
+  { id: "ASSET-004", name: "Emerging Markets Fund", change: -3.1, reason: "Political instability" },
+];
+
+const events = [
+  { time: "08:15", description: "Tech Equity Fund reports strong Q2 earnings." },
+  { time: "10:45", description: "Oil prices fall due to increased supply." },
+  { time: "13:30", description: "Central bank signals stable interest rates for next quarter." },
+  { time: "15:20", description: "Emerging Markets Fund downgrades due to political unrest." },
+];
+
+export default function PortfolioPerformance() {
+  return (
+    <Page title="Portfolio Performance - Yesterday to Today">
+      <Header
+        title="What Moved Since Yesterday"
+        subtitle="Portfolio changes and key events from yesterday to today"
+        actions={
+          <div>
+            <Button label="Refresh" variant="primary" />
+            <Button label="Compare to Benchmark" variant="secondary" />
+          </div>
+        }
+      />
+      <Sidebar>
+        <Section title="Filters">
+          <FilterBar filters={[{ id: "timeframe", label: "Timeframe", options: ["Yesterday", "Last Week", "Last Month"] }]} />
+          <SavedViews views={["Daily", "Weekly", "Monthly"]} />
+        </Section>
+      </Sidebar>
+      <main>
+        <Section title="Overview">
+          <Card>
+            <Metric label="Total Value" value={portfolioValue} unit="USD" />
+            <Metric label="Performance Delta" value={portfolioChange} unit="%" delta={portfolioChange - benchmarkChange} />
+            <Metric label="Benchmark Change" value={benchmarkChange} unit="%" />
+            <Status tone={portfolioChange > 0 ? "positive" : "negative"} label={portfolioChange > 0 ? "Up" : "Down"} />
+          </Card>
+        </Section>
+        <Section title="Performance Comparison">
+          <Card>
+            <Tabs
+              items={[
+                { id: "portfolio", label: "Portfolio", content: <Comparison entities={["Portfolio"]} metrics={[{ name: "Value", value: portfolioValue }, { name: "Change", value: portfolioChange }]} /> },
+                { id: "benchmark", label: "Benchmark", content: <Comparison entities={["Benchmark"]} metrics={[{ name: "Value", value: portfolioValue * benchmarkChange }, { name: "Change", value: benchmarkChange }]} /> },
+              ]}
+            />
+          </Card>
+        </Section>
+        <Section title="Timeline of Events">
+          <Card>
+            <Timeline events={events} />
+          </Card>
+        </Section>
+        <Section title="Asset Changes">
+          <Card>
+            <DataTable
+              columns={[
+                { key: "id", label: "ID" },
+                { key: "name", label: "Asset" },
+                { key: "change", label: "Change", format: (v) => `${v}%` },
+                { key: "reason", label: "Reason" },
+              ]}
+              rows={assets}
+              selectable
+              stickyFirstColumn
+            />
+          </Card>
+        </Section>
+      </main>
+    </Page>
+  );
+}

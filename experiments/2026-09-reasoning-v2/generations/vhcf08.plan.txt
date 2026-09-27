@@ -1,0 +1,9 @@
+**1. The person and the session:** A portfolio manager opens their book daily in the morning to review changes since the previous day and understand the reasons behind any significant movements.
+
+**2. The shape of the work:** The session involves scanning a large collection of assets for items that have deviated significantly from the norm, focusing on understanding why certain assets moved.
+
+**3. The information:** The screen must display a list of assets, their values, and changes since yesterday. Key metrics include price changes, trading volume, and any unusual events or news impacting each asset.
+
+**4. The decision and its evidence:** The portfolio manager decides whether to take action on any assets based on the significance and reason for the change. Evidence includes recent events, trading activity, and news updates.
+
+**5. The structure:** The screen should have a list of assets at the top, sorted by the magnitude of change. Each asset should link to a detailed view showing changes, recent events, and relevant news. A summary of key metrics and overall portfolio performance should be visible first, with the detailed view accessible for deeper analysis.

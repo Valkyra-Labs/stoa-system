@@ -1,0 +1,5 @@
+1. The portfolio manager opens the screen daily to review market changes and performance since the previous day, as part of their routine morning check.  
+2. The shape of the work is scanning a large collection repeatedly for deviations, focusing on what has moved and why.  
+3. The information includes assets, their values, and changes compared to the previous day. Each value is judged against the previous day's value, with deltas indicating movement.  
+4. The decision is to understand the cause of changes, and the evidence includes delta values, time of change, and possibly external factors like news or market events.  
+5. The structure starts with a summary of key metrics, followed by a list of assets with deltas, and a section for detailed explanations or news related to significant changes.

@@ -1,0 +1,49 @@
+import { Page, Header, Section, Card, Metric, DataTable, Button } from "@stoa/react";
+
+export default function MeetingPreparation() {
+  return (
+    <Page title="Meeting Preparation">
+      <Header title="Student Profile" subtitle="John Doe" />
+      <Section title="Student Profile">
+        <Card title="Basic Information">
+          <p>Name: John Doe</p>
+          <p>Grade: 10</p>
+          <p>Age: 15</p>
+        </Card>
+      </Section>
+      <Section title="Performance Metrics">
+        <Card title="Recent Grades">
+          <Metric label="Math" value={85} delta={-5} unit="%" />
+          <Metric label="Science" value={90} delta={10} unit="%" />
+          <Metric label="English" value={88} delta={0} unit="%" />
+        </Card>
+        <Card title="Trends">
+          <Chart type="line" series={[{ name: "Math", data: [{ x: "2023-01-01", y: 80 }, { x: "2023-02-01", y: 85 }, { x: "2023-03-01", y: 85 }] }]} x="date" y="grade" />
+        </Card>
+      </Section>
+      <Section title="Behavior Reports">
+        <DataTable
+          columns={[
+            { label: "Date", key: "date" },
+            { label: "Incident", key: "incident" },
+            { label: "Outcome", key: "outcome" },
+          ]}
+          rows={[
+            { date: "2023-03-15", incident: "Late to class", outcome: "Warning" },
+            { date: "2023-03-22", incident: "Disruptive behavior", outcome: "Detention" },
+            { date: "2023-04-05", incident: "Late homework submission", outcome: "Late penalty" },
+          ]}
+        />
+      </Section>
+      <Section title="Communications">
+        <Card title="Notes and Emails">
+          <p>Parent email: Concerns about recent behavior.</p>
+          <p>Note: Scheduled meeting with parent on April 10th.</p>
+        </Card>
+      </Section>
+      <Section title="Actions">
+        <Button label="Prepare Meeting Notes" onPress={() => console.log("Preparing meeting notes")} />
+      </Section>
+    </Page>
+  );
+}

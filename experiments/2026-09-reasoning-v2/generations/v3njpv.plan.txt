@@ -1,0 +1,5 @@
+1. The finance director is a routine user, checking numbers weekly to prepare for meetings. This is a regular, predictable task.  
+2. The shape of the work is getting a general picture of many unrelated numbers with no action expected on this screen.  
+3. The information includes company-wide financial metrics (revenue, costs, profit) across departments, compared to previous weeks and targets.  
+4. The decision is to assess overall performance, and the evidence includes trends, variances, and context like departmental performance.  
+5. The structure starts with an overview of key metrics, followed by a breakdown by department, with trends and comparisons to guide the director’s preparation for meetings.

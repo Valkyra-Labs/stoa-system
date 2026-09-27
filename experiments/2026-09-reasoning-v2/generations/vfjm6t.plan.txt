@@ -1,0 +1,5 @@
+1. The head of school is preparing for a presentation, likely a routine check to showcase performance. They need a static, polished view of the school's status without any changes.  
+2. The work is to get a general picture of many unrelated numbers, with no action expected on this screen.  
+3. The entities are school metrics (e.g., attendance, test scores, staff performance), judged against targets and previous terms. Key values include performance trends and key indicators.  
+4. The decision is to present the school's status, with evidence from metrics, trends, and comparisons. Wrong decisions could mislead the board, but it's a one-time presentation.  
+5. The structure starts with an overview, then dives into key metrics, followed by comparisons and trends. The final section highlights achievements and areas for improvement, all in a clean, static layout.

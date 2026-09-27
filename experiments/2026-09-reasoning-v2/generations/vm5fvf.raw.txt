@@ -1,0 +1,78 @@
+```tsx
+import { Page, Header, Section, Card, DataTable, Button, FilterBar, BulkActions, EmptyData, Status } from "@stoa/react";
+
+const failedPayouts = [
+  {
+    id: "P-12345",
+    amount: "$150.00",
+    status: "Failed",
+    reason: "Bank account not found",
+    timestamp: "2023-10-05T14:32:00Z",
+    recipient: "Acme Corp",
+    paymentMethod: "Bank Transfer",
+  },
+  {
+    id: "P-67890",
+    amount: "$250.00",
+    status: "Failed",
+    reason: "Insufficient funds",
+    timestamp: "2023-10-05T10:15:00Z",
+    recipient: "Beta Inc",
+    paymentMethod: "Card Payment",
+  },
+  {
+    id: "P-11223",
+    amount: "$300.00",
+    status: "Failed",
+    reason: "Transaction declined",
+    timestamp: "2023-10-04T18:45:00Z",
+    recipient: "Gamma Ltd",
+    paymentMethod: "Card Payment",
+  },
+];
+
+const columns = [
+  { key: "id", label: "Payout ID" },
+  { key: "amount", label: "Amount" },
+  { key: "status", label: "Status" },
+  { key: "reason", label: "Reason" },
+  { key: "timestamp", label: "Timestamp" },
+  { key: "recipient", label: "Recipient" },
+  { key: "paymentMethod", label: "Payment Method" },
+];
+
+export default function FailedPayoutsPage() {
+  return (
+    <Page title="Failed Payouts">
+      <Header
+        title="Failed Payouts"
+        subtitle="Review and resolve failed payouts"
+        actions={
+          <Button variant="primary">Retry Selected</Button>
+        }
+      />
+      <FilterBar filters={[{ label: "Status", value: "Failed" }]} />
+      <Section title="Failed Payouts List">
+        <Card>
+          <DataTable
+            columns={columns}
+            rows={failedPayouts}
+            selectable
+            stickyFirstColumn
+            onRowSelect={(selected) => console.log("Selected:", selected)}
+          />
+        </Card>
+      </Section>
+      <Section title="Actions">
+        <Card>
+          <BulkActions>
+            <Button variant="secondary">Retry</Button>
+            <Button variant="secondary">Refund</Button>
+            <Button variant="secondary">Escalate</Button>
+          </BulkActions>
+        </Card>
+      </Section>
+    </Page>
+  );
+}
+```

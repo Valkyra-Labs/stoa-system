@@ -1,0 +1,11 @@
+**Step 1:** The portfolio manager opens their book daily in the morning to review changes from the previous day and understand the reasons behind significant movements in asset values.
+
+**Step 2:** The shape of the work involves scanning a large collection of assets for significant deviations from the previous day, focusing on a few items that require deeper analysis.
+
+**Step 3:** The information needed includes the list of assets, their values, and the changes since yesterday. Key metrics are the percentage change in value and any significant events or news impacting each asset.
+
+**Step 4:** The decision involves understanding the reasons behind significant movements to inform trading decisions. Evidence includes recent news, events, and market data.
+
+**Step 5:** The structure should prioritize a list of assets with their changes, with a detailed view of selected assets for deeper analysis. The screen should show the list of assets first, with the ability to dive into detailed analysis for each asset. A summary of key metrics and events should be visible at the top.
+
+This structure aligns with the **Explorer** pattern, where the manager can browse and filter through assets, with detailed information available upon selection.

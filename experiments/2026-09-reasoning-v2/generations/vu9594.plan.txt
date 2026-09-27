@@ -1,0 +1,9 @@
+**Step 1:** The portfolio manager reviews their book daily, focusing on changes from the previous day to assess performance and make informed decisions.
+
+**Step 2:** The work involves scanning a large collection of assets for significant deviations. The manager needs to understand the performance of multiple assets in comparison to their previous day's values.
+
+**Step 3:** Key information includes asset performance metrics (e.g., returns, volatility) for the most recent day compared to the previous day. Time frame: daily. Values are judged against previous day's performance and targets.
+
+**Step 4:** The decision involves understanding the reasons behind significant changes in asset performance. Evidence needed includes historical performance data, recent news, and market events affecting each asset.
+
+**Step 5:** Structure: Top-level summary of overall portfolio performance, detailed view of individual assets with performance changes, and supporting context (news, events). The screen should highlight significant changes and provide easy access to detailed information for each asset.

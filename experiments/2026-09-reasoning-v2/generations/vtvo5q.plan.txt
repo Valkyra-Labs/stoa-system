@@ -1,0 +1,7 @@
+The morning dashboard screen helps a portfolio manager quickly assess the performance of their investment portfolio since the last trading day. It highlights significant changes in the portfolio's value and attributes those changes to specific securities or market factors. The layout is divided into three main sections:
+
+1. **Overview**: Displays key performance metrics such as total portfolio value, gains/losses, and a brief summary of the day's performance.
+2. **Top Movers**: Lists the securities that contributed most to the portfolio's performance, showing their individual impact.
+3. **Market Insights**: Provides contextual information about market conditions and events that may have influenced portfolio performance.
+
+This layout allows the manager to efficiently identify and understand the drivers of portfolio performance and make informed decisions for the day.

@@ -1,0 +1,9 @@
+1. The portfolio manager opens the screen daily to review market movements and understand the impact on their portfolio. This is a routine check to assess performance and make informed decisions.
+
+2. The shape of the work is scanning a large collection for deviations. The manager reviews all assets but focuses on those that have moved significantly since yesterday.
+
+3. The information includes all portfolio assets, their current value, change from yesterday, and reasons for the change. Values are judged against yesterday's performance and benchmarks.
+
+4. The manager decides whether to rebalance or investigate unusual movements. Evidence includes change magnitude, reason for change, and historical performance.
+
+5. The screen is structured with a header showing the date and purpose, a section listing all assets with their changes, and a section for detailed analysis of significant movements. The structure follows the scanning and decision-making process.

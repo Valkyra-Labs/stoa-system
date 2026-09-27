@@ -1,0 +1,9 @@
+1. **Person & Session:** A payments operations analyst is responding to an urgent queue of failed payouts generated during a high-volume transaction window. The session is reactive but routine; they must clear the backlog to restore service, with decisions made here.
+
+2. **Shape of the Work:** Scanning a large collection again and again for items that deviate from success. The analyst selects specific failed transactions to investigate and resolve, then marks them complete. The action (resolution) happens on this screen before moving to the next item.
+
+3. **The Information:** The core entities are "Failed Payouts." Key measures include failure reason (e.g., "insufficient funds," "bank timeout"), transaction amount, customer ID, and timestamp. Values are judged against targets (e.g., retryable vs. permanently failed) and historical patterns. Freshness is critical to know if the customer still has funds.
+
+4. **Decision & Evidence:** The decision is whether to "Retry," "Escalate," or "Mark Permanent Failure." Evidence required includes the specific error code, recent customer activity (e.g., a new deposit since the failure), and system logs. A wrong decision (retiring a recoverable failure) costs customer trust and revenue; the process allows undoing or logging the error.
+
+5. **Structure:** A top-down flow: a header with queue stats and actions, a central filtered list of failures with bulk actions, and a detail modal for deep inspection of each failure. Progress is shown via a "Remaining" counter and "Resolved" count.

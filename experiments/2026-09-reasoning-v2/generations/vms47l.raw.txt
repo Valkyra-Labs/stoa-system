@@ -1,0 +1,37 @@
+```tsx
+import { Page, Header, Sidebar, Section, Card, Tabs, Metric, Delta, Chart, DataTable, Comparison, Timeline, AuditLog, Status, Explorer } from "@stoa/react";
+
+const assets = [
+  { id: "1", name: "Tech Inc", value: 120.5, change: 5.2, events: [{ date: "2023-11-03", description: "Earnings report released" }] },
+  { id: "2", name: "Energy Corp", value: 85.3, change: -3.4, events: [{ date: "2023-11-03", description: "Oil price drop" }] },
+  { id: "3", name: "Finance Group", value: 150.1, change: 2.8, events: [{ date: "2023-11-03", description: "Interest rate hike" }] },
+];
+
+const PortfolioPage = () => (
+  <Page title="Portfolio Manager">
+    <Header title="Portfolio Overview" subtitle="Changes since yesterday" actions={<Button label="Refresh" onPress={() => console.log("Refresh")} />} />
+    <Sidebar>
+      <Section title="Filters">
+        <FilterBar filters={[{ label: "Sector", options: ["Tech", "Energy", "Finance"] }, { label: "Change", options: ["All", "Up", "Down"] }]} />
+      </Section>
+    </Sidebar>
+    <Section title="Portfolio Summary">
+      <Metric label="Total Value" value={355.9} delta={4.6} unit="M" />
+      <Metric label="Total Change" value={4.6} delta={0.2} unit="%" />
+      <Metric label="Number of Assets" value={3} delta={0} unit="" />
+    </Section>
+    <Section title="Asset Changes">
+      <Explorer
+        toolbar={<Header title="Asset Changes" subtitle="Since Yesterday" />}
+        table={<DataTable columns={["Name", "Value", "Change", "Events"]} rows={assets.map(asset => [asset.name, asset.value, <Delta value={asset.change} basis={asset.value - asset.change} />, <Timeline events={asset.events} />])} />}
+        detail={<Card title="Detailed Analysis">
+          <Comparison entities={assets} metrics={["value", "change"]} />
+          <Timeline events={assets.flatMap(asset => asset.events)} />
+        </Card>}
+      />
+    </Section>
+  </Page>
+);
+
+export default PortfolioPage;
+```

@@ -1,0 +1,64 @@
+```tsx
+import { Page, Header, Section, Card, Tabs, Button, FilterBar, Metric, Delta, Status, EmptyData } from "@stoa/react";
+
+const StudentProfile = () => (
+  <Card title="Student Profile">
+    <Section title="Basic Info">
+      <Metric label="Name" value="Emma Johnson" />
+      <Metric label="Grade" value="6th Grade" />
+      <Metric label="Class" value="Blue Class" />
+      <Metric label="Teacher" value="Mr. Thompson" />
+    </Section>
+    <Section title="Academic Performance">
+      <Metric label="Math" value="85" unit="%" delta={+3} />
+      <Metric label="Reading" value="78" unit="%" delta={-2} />
+      <Metric label="Science" value="92" unit="%" delta={+5} />
+      <Status tone="success" label="On Track" />
+    </Section>
+  </Card>
+);
+
+const ParentMeetingPrep = () => (
+  <Page title="Parent Meeting Prep - Emma Johnson">
+    <Header
+      title="Parent-Teacher Meeting"
+      subtitle="Emma Johnson - 6th Grade - Blue Class"
+      actions={
+        <Button variant="secondary">Save Notes</Button>
+      }
+    />
+    <FilterBar filters={[{ label: "Today", value: "today" }, { label: "Upcoming", value: "upcoming" }]} />
+    <Section title="Student Overview">
+      <StudentProfile />
+    </Section>
+    <Section title="Discussion Points">
+      <Card title="Academic Progress">
+        <p>Emma is performing well in Math and Science, showing consistent improvement. She needs to focus more on Reading comprehension.</p>
+      </Card>
+      <Card title="Behavior">
+        <p>Emma is respectful and participates in class discussions. She occasionally needs reminders to stay focused during independent work.</p>
+      </Card>
+      <Card title="Homework">
+        <p>Emma completes most homework on time, but there have been a few instances of incomplete assignments. Encourage her to ask for help when needed.</p>
+      </Card>
+    </Section>
+    <Section title="Notes">
+      <Card title="Teacher Notes">
+        <p>Emma is a bright student with a positive attitude. She enjoys group work and is eager to learn new concepts. She may benefit from additional reading support.</p>
+      </Card>
+      <Card title="Parent Notes">
+        <p>Please bring any questions you have about Emma's progress. We can discuss strategies to help her improve in Reading.</p>
+      </Card>
+    </Section>
+    <Section title="Quick Actions">
+      <Card title="Prepare for Meeting">
+        <Button>Send Message to Parent</Button>
+        <Button>View Attendance</Button>
+        <Button>Review Recent Work</Button>
+      </Card>
+    </Section>
+  </Page>
+);
+
+export default ParentMeetingPrep;
+```

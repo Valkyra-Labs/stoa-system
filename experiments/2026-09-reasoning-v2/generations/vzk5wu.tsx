@@ -1,0 +1,63 @@
+import { Page, Header, Section, Card, Metric, Delta, DataTable, Comparison, Timeline, AuditLog, Status, EmptyData, StaleData, FilterBar, Button, BulkActions } from "@stoa/react";
+
+export default function PreparationScreen() {
+  return (
+    <Page title="Student Preparation">
+      <Header title="Student Meeting Preparation" subtitle="Tomorrow with Parent" />
+      <Section title="Student Overview">
+        <Card title="Academic Performance">
+          <Metric label="Overall GPA" value={3.2} delta={-0.1} unit="GPA" />
+          <Metric label="Last Exam Score" value={75} delta={-5} unit="%" />
+        </Card>
+        <Card title="Attendance">
+          <Metric label="Days Absent" value={5} delta={2} unit="days" />
+          <Metric label="Tardies" value={3} delta={1} unit="times" />
+        </Card>
+      </Section>
+      <Section title="Recent Activity">
+        <Card title="Behavioral Notes">
+          <DataTable
+            columns={[
+              { label: "Date", field: "date" },
+              { label: "Note", field: "note" },
+              { label: "Action Taken", field: "action" }
+            ]}
+            rows={[
+              { date: "2023-11-01", note: "Late to class", action: "Detention" },
+              { date: "2023-11-02", note: "Disruptive in class", action: "Meeting with counselor" }
+            ]}
+          />
+        </Card>
+        <Card title="Grading Trends">
+          <Comparison
+            entities={[
+              { id: "exam1", label: "Exam 1" },
+              { id: "exam2", label: "Exam 2" }
+            ]}
+            metrics={[
+              { entity: "exam1", label: "Score", value: 80 },
+              { entity: "exam2", label: "Score", value: 75 },
+              { entity: "exam1", label: "GPA Impact", value: 0.3 },
+              { entity: "exam2", label: "GPA Impact", value: 0.2 }
+            ]}
+          />
+        </Card>
+      </Section>
+      <Section title="Action Items">
+        <Card title="Next Steps">
+          <DataTable
+            columns={[
+              { label: "Date", field: "date" },
+              { label: "Action", field: "action" },
+              { label: "Status", field: "status" }
+            ]}
+            rows={[
+              { date: "2023-11-03", action: "Send reminder email", status: "Pending" },
+              { date: "2023-11-04", action: "Schedule tutoring session", status: "Scheduled" }
+            ]}
+          />
+        </Card>
+      </Section>
+    </Page>
+  );
+}

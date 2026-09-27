@@ -1,0 +1,9 @@
+1. The finance director opens this screen weekly as part of their routine to prepare for meetings. They need a quick overview of key financial metrics to identify any issues before discussions.  
+
+2. The shape of the work is getting a general picture of many unrelated numbers with no action expected on this screen. The director reviews a few key financial entities (like departments or products) and their metrics.  
+
+3. The information includes weekly financial metrics (revenue, expenses, profit) for each department, compared to the previous week and targets. Key values like profit margins or variances change the director's next steps.  
+
+4. The director decides whether the numbers are within expected ranges. They need to see the previous week's data, targets, and any anomalies to make informed decisions.  
+
+5. The screen should first show a summary of key metrics, followed by a comparison of departments, and a quick overview of anomalies or variances. The structure supports a quick glance and decision-making without deep dives.

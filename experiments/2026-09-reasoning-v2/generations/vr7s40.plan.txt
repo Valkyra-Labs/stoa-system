@@ -1,0 +1,9 @@
+1. **Person & Session**: A financial adviser opens this screen during a client consultation, likely triggered by a specific client inquiry about fund options. It is a routine but high-stakes decision-making session.
+
+2. **Shape of the Work**: This is **setting a few objects against each other**. The adviser compares two funds side-by-side to determine which better fits the client's profile. There are only two entities in play, and the decision is made on this screen.
+
+3. **The Information**: The screen must display key metrics for both funds simultaneously: expense ratios, historical returns, asset allocation, and risk profiles. Values are judged against the client's specific goals (e.g., long-term growth vs. capital preservation) and current market conditions.
+
+4. **The Decision & Evidence**: The adviser decides which fund to recommend. They need evidence: recent performance trends, volatility data, and fund manager history. A wrong recommendation costs client trust and potential losses; the decision is final once presented to the client.
+
+5. **The Structure**: A top header identifies the client. A central comparison view places the two funds side-by-side with shared metrics and unique details. Below, a summary table shows aggregate scores or risk-adjusted returns. Action buttons (Recommend A, Recommend B) sit at the bottom, leading to client documentation.

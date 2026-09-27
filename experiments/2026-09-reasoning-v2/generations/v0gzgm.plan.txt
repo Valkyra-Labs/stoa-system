@@ -1,0 +1,3 @@
+**Main Goal:** To help the payments operations analyst efficiently identify, investigate, and resolve failed payouts by providing a clear overview, filtering options, and actionable insights.
+
+**Layout Support:** The screen is structured to prioritize the most critical information at the top, such as a summary of failed payouts and key metrics. A filter bar allows the analyst to narrow down the list by criteria like date, payment method, or error type. The main table displays all relevant details, with clear columns and actionable buttons for resolving each payout. A sidebar or drawer can show detailed information or resolution steps. This layout ensures the analyst can quickly scan, filter, and take action on failed payouts without unnecessary distractions.

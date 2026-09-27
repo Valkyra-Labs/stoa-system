@@ -1,0 +1,38 @@
+import { Page, Header, Section, Card, Chart, DataTable, Timeline, Status } from "@stoa/react";
+
+export default function SchoolOverview() {
+  return (
+    <Page title="Spring Term 2023 Overview">
+      <Header title="Spring Term 2023 Overview" subtitle="Key Metrics and Recent Events" />
+      <Section title="Key Metrics">
+        <Card title="Enrollment">
+          <Metric label="Total Students" value={1200} unit="students" />
+          <Metric label="New Students" value={150} delta={20} unit="students" />
+          <Metric label="Graduating Students" value={50} delta={-10} unit="students" />
+        </Card>
+        <Card title="Student Performance">
+          <Metric label="Average GPA" value={3.2} delta={0.1} unit="points" />
+          <Metric label="Pass Rate" value={95} delta={5} unit="%" />
+        </Card>
+        <Card title="Financial Health">
+          <Metric label="Operating Budget" value={500000} unit="USD" />
+          <Metric label="Spending" value={450000} unit="USD" />
+        </Card>
+      </Section>
+      <Section title="Recent Events">
+        <Timeline events={[
+          { date: "2023-03-15", label: "New Scholarship Program Launched", description: "Scholarship program to support underprivileged students." },
+          { date: "2023-04-01", label: "Annual Fundraising Event", description: "Fundraising event raised $50,000." },
+          { date: "2023-04-10", label: "Student Art Exhibition", description: "Student art exhibition featured 50 artists." }
+        ]} />
+      </Section>
+      <Section title="Trends">
+        <Card title="Student GPA Trends">
+          <Chart type="line" series={[
+            { id: "gpa", label: "Average GPA", data: [{ x: "2022-12-31", y: 3.1 }, { x: "2023-01-31", y: 3.15 }, { x: "2023-02-28", y: 3.2 }, { x: "2023-03-31", y: 3.25 }] }
+          ]} x="date" y="value" />
+        </Card>
+      </Section>
+    </Page>
+  );
+}

@@ -1,0 +1,40 @@
+import { Page, Header, Sidebar, Section, Card, Metric, Delta, Comparison, DataTable, FilterBar, SavedViews, Button, BulkActions } from "@stoa/react";
+
+export default function PortfolioOverview() {
+  return (
+    <Page title="Portfolio Overview">
+      <Header title="Portfolio Overview" subtitle="Changes since yesterday" actions={<Button label="Refresh" />} />
+      <Section title="Summary">
+        <Card title="Total Value">
+          <Metric label="Current Value" value={1000000} delta={<Delta value={-5000} basis={1005000} />} unit="USD" />
+        </Card>
+        <Card title="Top Changes">
+          <Comparison entities={[{ id: "AAPL", metrics: { current: 150, previous: 160 }, evidence: "Market drop" }, { id: "MSFT", metrics: { current: 200, previous: 190 }, evidence: "Earnings report" }]} />
+        </Card>
+      </Section>
+      <Section title="Detailed View">
+        <DataTable
+          columns={[
+            { label: "Symbol", field: "symbol", sortable: true },
+            { label: "Current Value", field: "currentValue", sortable: true },
+            { label: "Previous Value", field: "previousValue", sortable: true },
+            { label: "Change", field: "change", sortable: true },
+            { label: "Reason", field: "reason" }
+          ]}
+          rows={[
+            { symbol: "AAPL", currentValue: 150, previousValue: 160, change: -10, reason: "Market drop" },
+            { symbol: "MSFT", currentValue: 200, previousValue: 190, change: 10, reason: "Earnings report" },
+            { symbol: "GOOGL", currentValue: 300, previousValue: 305, change: -5, reason: "Technical analysis" }
+          ]}
+          selectable={true}
+          stickyFirstColumn={true}
+          onRowSelect={(row) => console.log(`Selected ${row.symbol}`)}
+        />
+      </Section>
+      <Sidebar>
+        <FilterBar filters={[{ label: "Show all", selected: true }, { label: "Show gains", selected: false }, { label: "Show losses", selected: false }]} />
+        <SavedViews views={[{ label: "All", active: true }, { label: "Gains", active: false }, { label: "Losses", active: false }]} />
+      </Sidebar>
+    </Page>
+  );
+}

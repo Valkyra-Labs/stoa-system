@@ -1,0 +1,11 @@
+**Step 1:** The head of school reviews this screen periodically to prepare for board meetings, ensuring no changes are needed for the upcoming presentation.
+
+**Step 2:** The session involves getting a general picture of the school's performance across various metrics, with no immediate action required on this screen.
+
+**Step 3:** Key entities include the school overall, its departments, and student groups. Metrics cover enrollment, performance, attendance, and financial health. Time frame spans the current term, with comparison to previous terms.
+
+**Step 4:** No specific decision is made here; the screen serves to provide a comprehensive overview for the presentation.
+
+**Step 5:** The structure should have an overview of key metrics at the top, followed by detailed performance charts and tables. The layout should allow for quick comparison of current and past terms.
+
+Components: Use a **Dashboard** with high-level **Metrics** and **Charts**, along with a **DataTable** for detailed performance data.

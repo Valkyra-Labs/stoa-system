@@ -1,0 +1,9 @@
+1. **Person & Session:** The Head of School is preparing for a high-stakes board presentation. They are in a "preparation" session, likely reviewing the dashboard once or twice to ensure the narrative is clear and the data is ready to be projected. The goal is visual clarity and narrative flow, not interaction.
+
+2. **Shape of Work:** Getting a general picture of many unrelated numbers, with no action expected on this screen. The screen is a read-only summary meant to tell a story about the school's health. The Head of School will act elsewhere (printing, presenting) based on what they see here.
+
+3. **Information:** Entities are academic domains (e.g., Math, Science) and operational pillars (e.g., Safety, Finance). Measures include key metrics like enrollment growth, average test scores, budget burn rate, and incident counts. Judgments are against targets (e.g., "90% graduation rate") and prior periods. Timeframe is the current academic term.
+
+4. **Decision & Evidence:** The decision is to confidently present a coherent story to the board. Evidence needed includes high-level trend lines (to show progress or decline), status indicators (to highlight red flags), and a clean, comparable table of core metrics. The cost of a wrong decision is reputational damage; however, since the screen is read-only, the data must be accurate and up-to-date.
+
+5. **Structure:** A vertical flow starting with a concise header stating the period. A top section of "Key Highlights" using `Metric` cards for the most critical numbers. A middle section of `Chart` components for trends over time. A bottom section using `Comparison` or a dense `DataTable` to allow the viewer to scan specific metrics across different school units side-by-side. No navigation or complex controls are needed.

@@ -1,0 +1,45 @@
+import { Page, Header, Section, Card, Chart, DataTable, Comparison, AuditLog, Status } from "@stoa/react";
+
+export default function MeetingPrep() {
+  return (
+    <Page title="Meeting Prep">
+      <Header title="Meeting with Parent" subtitle="Tomorrow at 3 PM" />
+      <Section title="Overview">
+        <Card title="Student Overview">
+          <Metric label="Overall Performance" value={85} unit="%" />
+          <Metric label="Attendance" value={90} unit="%" />
+          <Trend series={[{ label: "Daily Performance", data: [80, 85, 90, 88, 92] }]} />
+        </Card>
+      </Section>
+      <Section title="Performance">
+        <Card title="Academic Progress">
+          <Chart type="line" series={[{ label: "Math", data: [80, 85, 90, 88, 92] }]} x="Week" y="Score" />
+        </Card>
+      </Section>
+      <Section title="Behavior">
+        <Card title="Behavior Incidents">
+          <DataTable
+            columns={[
+              { label: "Date", key: "date" },
+              { label: "Incident", key: "incident" },
+              { label: "Description", key: "description" },
+            ]}
+            rows={[
+              { date: "2023-10-01", incident: "Tardy", description: "Arrived late to class" },
+              { date: "2023-10-03", incident: "Disruptive", description: "Interrupted class discussion" },
+              { date: "2023-10-05", incident: "Absence", description: "Missed class due to illness" },
+            ]}
+          />
+        </Card>
+      </Section>
+      <Section title="Documents">
+        <Card title="Notes and Reports">
+          <Tabs items={[
+            { id: "notes", label: "Notes", content: <p>Note 1: Student is improving in Math. Note 2: Parent is concerned about behavior.</p> },
+            { id: "reports", label: "Reports", content: <p>Report 1: Math progress report. Report 2: Behavior report.</p> },
+          ]} />
+        </Card>
+      </Section>
+    </Page>
+  );
+}

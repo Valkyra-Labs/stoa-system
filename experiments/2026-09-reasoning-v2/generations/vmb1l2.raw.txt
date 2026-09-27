@@ -1,0 +1,85 @@
+```tsx
+import { Page, Header, Sidebar, Section, Card, Chart, DataTable, FilterBar, Button } from "@stoa/react";
+
+const WeeklyFinanceDashboard = () => {
+  const metrics = [
+    { label: "Revenue", value: "$12.5M", delta: "+2.3%", unit: "USD" },
+    { label: "Expenses", value: "$8.2M", delta: "-1.1%", unit: "USD" },
+    { label: "Net Profit", value: "$4.3M", delta: "+3.8%", unit: "USD" },
+  ];
+
+  const chartData = {
+    type: "line",
+    series: [
+      { name: "Revenue", data: [12.5, 12.3, 12.7, 13.1, 13.4] },
+      { name: "Expenses", data: [8.2, 8.5, 8.1, 7.9, 7.6] },
+    ],
+    x: "Week",
+    y: "USD (M)",
+  };
+
+  const tableData = [
+    { id: 1, department: "Sales", revenue: "$4.2M", expenses: "$2.1M", profit: "$2.1M" },
+    { id: 2, department: "Marketing", revenue: "$3.1M", expenses: "$1.9M", profit: "$1.2M" },
+    { id: 3, department: "Engineering", revenue: "$2.8M", expenses: "$2.4M", profit: "$0.4M" },
+    { id: 4, department: "HR", revenue: "$1.5M", expenses: "$1.1M", profit: "$0.4M" },
+  ];
+
+  const filters = [
+    { id: "department", label: "Department", options: ["All", "Sales", "Marketing", "Engineering", "HR"] },
+    { id: "timeframe", label: "Timeframe", options: ["This Week", "Last Week", "This Month"] },
+  ];
+
+  return (
+    <Page title="Weekly Finance Overview">
+      <Header title="Weekly Finance Overview" subtitle="Monday, April 15, 2024" actions={<Button label="View Full Report" variant="secondary" />} />
+      <Sidebar>
+        <Section title="Navigation">
+          <Card>
+            <ul>
+              <li><Button label="Weekly Summary" variant="secondary" /> </li>
+              <li><Button label="Monthly Trends" variant="secondary" /> </li>
+              <li><Button label="Department Breakdown" variant="secondary" /> </li>
+              <li><Button label="Upcoming Meetings" variant="secondary" /> </li>
+            </ul>
+          </Card>
+        </Section>
+        <Section title="Upcoming Meetings">
+          <Card>
+            <ul>
+              <li>Finance Meeting - 10:00 AM</li>
+              <li>Board Review - 2:00 PM</li>
+              <li>Quarterly Forecast - 4:00 PM</li>
+            </ul>
+          </Card>
+        </Section>
+      </Sidebar>
+      <main>
+        <Section title="Key Metrics">
+          {metrics.map((metric, index) => (
+            <Card key={index} title={metric.label}>
+              <div>{metric.value} <Delta value={metric.delta} basis={metric.value} /></div>
+              <div>{metric.unit}</div>
+            </Card>
+          ))}
+        </Section>
+        <Section title="Weekly Trends">
+          <Card>
+            <Chart {...chartData} />
+          </Card>
+        </Section>
+        <Section title="Detailed Line Items">
+          <FilterBar filters={filters} />
+          <DataTable
+            columns={[{ header: "Department", key: "department" }, { header: "Revenue", key: "revenue" }, { header: "Expenses", key: "expenses" }, { header: "Profit", key: "profit" }]}
+            rows={tableData}
+            selectable
+          />
+        </Section>
+      </main>
+    </Page>
+  );
+};
+
+export default WeeklyFinanceDashboard;
+```

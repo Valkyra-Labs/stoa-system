@@ -1,0 +1,9 @@
+1. The portfolio manager opens the screen daily to review changes in their portfolio since the previous day, as part of their routine morning check to monitor performance and make informed decisions.
+
+2. The shape of the work is scanning a large collection repeatedly for items that deviate, as the manager needs to identify unusual movements in the portfolio.
+
+3. The information includes all positions in the portfolio, their current value, change since yesterday, and reasons for the change. Each value is judged against the previous day's value, and significant changes influence the manager's next steps.
+
+4. The manager decides whether to investigate or take action on positions with significant changes. They need to see the source of the change, how recent it is, and historical context to make informed decisions.
+
+5. The screen should first show an overview of all positions with changes, followed by a detailed view of each position with relevant context and reasons for changes, allowing the manager to scan and investigate as needed.

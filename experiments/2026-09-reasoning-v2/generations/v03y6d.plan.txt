@@ -1,0 +1,5 @@
+1. **The person and session:** A portfolio manager opens the screen daily (routine check) to assess overnight market moves and justify decisions to stakeholders.
+2. **The shape of the work:** Scanning a large collection of positions to identify those with significant deviation (unusual volatility or P&L shifts) and understanding the *why* (news, liquidity, or model drift).
+3. **The information:** Entities are portfolio holdings; measures are overnight P&L, volatility, and sector exposure. Values are judged against yesterday's close, a target band, and a "quiet" threshold.
+4. **The decision and evidence:** The manager decides which positions require rebalancing or reporting. They need fresh data, clear delta indicators, and context (e.g., a "Why" tooltip or summary) to trust the anomaly before acting.
+5. **The structure:** A dashboard layout. A header shows the date and summary alert. A primary "Deviation Heatmap" highlights top movers. Below, a detailed "Inspection Panel" for selected items showing the specific cause (news, volume) and a secondary "Context Table" for stable positions. Progress is implicit via the "Since Yesterday" scope.

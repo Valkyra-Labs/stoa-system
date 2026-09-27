@@ -1,0 +1,9 @@
+The rules that shape this screen most are:
+
+1. **Order and emphasis**: Exceptions and items needing action are shown first to highlight what moved since yesterday.
+2. **Numbers**: Every number shows its basis (like yesterday’s value) and is right-aligned for clarity.
+3. **Working with lists**: Filters persist to maintain context while drilling into changes.
+4. **Evidence and actions**: Reasons for changes are shown next to the data, not hidden, to support decision-making.
+5. **States**: Empty or stale data states are explicitly shown if the data is missing or outdated.
+
+These rules ensure the portfolio manager sees the most important changes first, understands their context, and has all the evidence needed to act.

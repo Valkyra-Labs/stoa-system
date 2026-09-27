@@ -1,0 +1,180 @@
+import {
+  Page,
+  Header,
+  Sidebar,
+  Section,
+  Card,
+  Metric,
+  Delta,
+  DataTable,
+  Status,
+  EmptyData,
+  StaleData,
+  FilterBar,
+  BulkActions,
+  Button,
+  Tabs,
+} from "@stoa/react";
+
+// --- Mock Data ---
+
+const budgetMetrics = [
+  { label: "OpEx", value: 1250000, basis: 1300000, unit: "USD" },
+  { label: "Revenue", value: 4200000, basis: 4100000, unit: "USD" },
+  { label: "Gross Margin", value: 0.68, basis: 0.70, unit: "%" },
+  { label: "EBITDA", value: 850000, basis: 900000, unit: "USD" },
+];
+
+const variances = [
+  {
+    id: 1,
+    category: "Q3 Travel",
+    amount: -12000,
+    reason: "Remote work policy shift",
+    status: "Approved",
+  },
+  {
+    id: 2,
+    category: "Cloud Storage",
+    amount: -45000,
+    reason: "Renegotiated tier",
+    status: "Pending Review",
+  },
+  {
+    id: 3,
+    category: "Legal Fees",
+    amount: -2500,
+    reason: "Early settlement",
+    status: "Approved",
+  },
+  {
+    id: 4,
+    category: "Marketing Campaign",
+    amount: 32000,
+    reason: "Performance bonus",
+    status: "Approved",
+  },
+];
+
+const recentTransactions = [
+  { id: "TRX-001", date: "2023-10-27", amount: 15000, party: "TechCorp", status: "Paid" },
+  { id: "TRX-002", date: "2023-10-27", amount: 4500, party: "ConsultX", status: "Pending" },
+  { id: "TRX-003", date: "2023-10-26", amount: -120000, party: "Payroll", status: "Paid" },
+  { id: "TRX-004", date: "2023-10-26", amount: 8500, party: "Investment", status: "Pending" },
+  { id: "TRX-005", date: "2023-10-25", amount: 22000, party: "Client A", status: "Paid" },
+];
+
+const auditLog = [
+  { id: 1, user: "Alice", action: "Approved Budget Variance", time: "08:15 AM", status: "Success" },
+  { id: 2, user: "Bob", action: "Updated Q3 Forecast", time: "09:30 AM", status: "Success" },
+  { id: 3, user: "System", action: "Imported Bank Feed", time: "10:00 AM", status: "Warning" },
+  { id: 4, user: "Carol", action: "Rejected Vendor Invoice", time: "11:45 AM", status: "Success" },
+];
+
+// --- Components ---
+
+const MetricsSection = () => (
+  <Section title="Weekly Performance (vs. Target)">
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+      {budgetMetrics.map((m) => (
+        <Card key={m.label} title={m.label}>
+          <div className="flex items-end justify-between">
+            <Metric label={m.label} value={m.value.toLocaleString()} unit={m.unit} />
+            <Delta value={m.value - m.basis} basis={m.basis} />
+          </div>
+        </Card>
+      ))}
+    </div>
+  </Section>
+);
+
+const VarianceTable = () => (
+  <Section title="Significant Variances (Largest First)">
+    <Card title="Action Required / Review">
+      <FilterBar filters={{ category: "All", status: "All" }} />
+      <DataTable
+        columns={[
+          { key: "category", label: "Category" },
+          { key: "amount", label: "Variance", type: "money" },
+          { key: "reason", label: "Reason" },
+          { key: "status", label: "Status" },
+        ]}
+        rows={variances}
+        stickyFirstColumn
+        onRowSelect={(row) => console.log("Selected:", row)}
+      />
+      <BulkActions
+        actions={[
+          { label: "Review All", onPress: () => alert("Initiating review") },
+          { label: "Approve Exceptions", onPress: () => alert("Approving exceptions") },
+        ]}
+      />
+    </Card>
+  </Section>
+);
+
+const TransactionList = () => (
+  <Section title="Recent Transactions">
+    <Card title="Cash Flow Monitor">
+      <DataTable
+        columns={[
+          { key: "id", label: "ID" },
+          { key: "date", label: "Date" },
+          { key: "amount", label: "Amount" },
+          { key: "party", label: "Party" },
+          { key: "status", label: "Status" },
+        ]}
+        rows={recentTransactions}
+        selectable
+        onRowSelect={(row) => console.log("Selected:", row)}
+      />
+    </Card>
+  </Section>
+);
+
+const AuditLogSection = () => (
+  <Section title="System Audit Log">
+    <Card title="Activity History">
+      <DataTable
+        columns={[
+          { key: "user", label: "User" },
+          { key: "action", label: "Action" },
+          { key: "time", label: "Time" },
+          { key: "status", label: "Result" },
+        ]}
+        rows={auditLog}
+        stickyFirstColumn
+      />
+    </Card>
+  </Section>
+);
+
+// --- Main Page ---
+
+export default function FinanceDashboard() {
+  return (
+    <Page title="Weekly Finance Review">
+      <Header title="Weekly Finance Review" subtitle="Monday Briefing" />
+      <Sidebar title="Navigation">
+        <div className="space-y-2">
+          <Button label="Dashboard" variant="primary" onPress={() => {}} />
+          <Button label="Budgets" onPress={() => {}} />
+          <Button label="Transactions" onPress={() => {}} />
+          <Button label="Reports" onPress={() => {}} />
+        </div>
+      </Sidebar>
+      <main className="flex-1 p-6">
+        <Tabs
+          items={[
+            { id: "overview", label: "Overview", content: <MetricsSection /> },
+            { id: "variances", label: "Variances", content: <VarianceTable /> },
+            { id: "transactions", label: "Transactions", content: <TransactionList /> },
+          ]}
+        />
+        <div className="mt-8">
+          <AuditLogSection />
+        </div>
+      </main>
+    </Page>
+  );
+}

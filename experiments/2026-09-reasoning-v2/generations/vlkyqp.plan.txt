@@ -1,0 +1,6 @@
+**Main Goal:** Enable the analyst to efficiently identify, triage, and resolve failed payout transactions by providing immediate context, clear action buttons, and a history of related events for each record.
+
+**Layout Strategy:**
+The screen prioritizes speed of resolution. A prominent header displays the total count and a "Clear All" action for bulk processing. The core is a dense, sortable data table listing failed payouts with status indicators, amounts, and failure reasons. Key columns (like `Status` and `Reason`) use semantic colors and labels for instant recognition.
+
+Each row includes inline actions (e.g., "Retry," "Escalate") for quick fixes. For complex cases, a `Drawer` or modal provides full transaction details, `Timeline` events, and `AuditLog` entries without leaving the context. A `FilterBar` and `SavedViews` allow rapid navigation to specific failure types (e.g., "Insufficient Funds"). This structure minimizes context switching, keeping the analyst focused on the list while offering deep inspection only when necessary.

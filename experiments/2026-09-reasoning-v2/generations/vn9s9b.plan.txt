@@ -1,0 +1,23 @@
+### Step-by-Step Reasoning:
+
+1. **Person and Session**: A teacher meets a parent tomorrow about a specific student. The teacher needs to review the student's performance and behavior data to prepare for the meeting. This is a focused task to gather relevant information for a single student.
+
+2. **Shape of the Work**: The teacher needs to understand one student in depth before the meeting. This involves reviewing detailed information about the student's academic performance, behavior, and any notable events.
+
+3. **Information**: The teacher must view the student's academic metrics (grades, attendance), behavior reports, and any relevant timeline of events (such as disciplinary incidents, absences, or notable achievements).
+
+4. **Decision and Evidence**: The decision is to present a comprehensive and accurate picture of the student to the parent. The evidence needed includes recent grades, behavior reports, and a timeline of significant events to provide context and support the narrative.
+
+5. **Structure**: The screen should have the following regions:
+   - **Header**: Title indicating the student's name and the meeting date.
+   - **Primary Section**: Detailed metrics and data for the student (grades, attendance, behavior).
+   - **Context Section**: Timeline of significant events related to the student.
+   - **Actions Section**: Any notes or preparations the teacher is making for the meeting.
+
+6. **Components**: The structure can be realized using the `Inspector` pattern, which is designed to show one object in depth. This pattern includes a primary section for metrics, a context section for additional details, and an actions section for notes or preparations.
+
+### Derived Structure:
+- **Header**: Title with the student's name and the meeting date.
+- **Primary Section**: Metrics and data (grades, attendance, behavior).
+- **Context Section**: Timeline of significant events.
+- **Actions Section**: Notes and preparations for the meeting.

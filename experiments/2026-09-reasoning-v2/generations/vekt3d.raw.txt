@@ -1,0 +1,33 @@
+```tsx
+import { Page, Header, Card, Metric, Trend, Chart } from "@stoa/react";
+
+export default function WeeklyFinanceOverview() {
+  return (
+    <Page title="Weekly Finance Overview">
+      <Header title="Weekly Finance Overview" subtitle="Monday, October 2, 2023" />
+      <main>
+        <section>
+          <Card title="Key Metrics">
+            <Metric label="Revenue" value={1234567.89} delta={-2000} unit="USD" />
+            <Metric label="Expenses" value={876543.21} delta={1500} unit="USD" />
+            <Metric label="Profit" value={358024.68} delta={-3500} unit="USD" />
+          </Card>
+        </section>
+        <section>
+          <Card title="Revenue Trends">
+            <Trend series={[{ date: "2023-09-25", value: 1200000 }, { date: "2023-10-01", value: 1234567.89 }]} />
+          </Card>
+          <Card title="Expense Trends">
+            <Trend series={[{ date: "2023-09-25", value: 850000 }, { date: "2023-10-01", value: 876543.21 }]} />
+          </Card>
+        </section>
+        <section>
+          <Card title="Financial Chart">
+            <Chart type="line" series={[{ date: "2023-09-25", revenue: 1200000, expenses: 850000 }, { date: "2023-10-01", revenue: 1234567.89, expenses: 876543.21 }]} x="date" y="revenue" />
+          </Card>
+        </section>
+      </main>
+    </Page>
+  );
+}
+```

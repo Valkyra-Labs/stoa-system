@@ -1,0 +1,5 @@
+1. The teacher is preparing for a one-on-one meeting with a parent about a specific student. This is a routine but important task, likely done infrequently but with high stakes for the student's progress.  
+2. The shape of the work is understanding one object (the student) fully before acting on it. The teacher needs to review the student's data, context, and history to prepare for the meeting.  
+3. The entities are the student, their academic performance, behavior, and any relevant notes. The teacher needs to see how the student's performance compares to targets, peers, and previous periods.  
+4. The teacher decides on how to approach the parent, based on the student's data, context, and any interventions. They need to see the student's history, current status, and any supporting evidence to make informed recommendations.  
+5. The screen should first show the student's profile, followed by their academic and behavioral data, then any relevant history or notes, and finally the teacher's prepared actions or recommendations for the parent meeting.

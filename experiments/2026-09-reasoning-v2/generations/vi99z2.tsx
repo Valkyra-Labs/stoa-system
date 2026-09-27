@@ -1,0 +1,45 @@
+import { Page, Sidebar, Header, Section, Card, ReviewQueue } from "@stoa/react";
+
+const failedPayouts = [
+  {
+    id: "payout-123",
+    recipient: "user-456",
+    reason: "Insufficient funds",
+    timestamp: "2023-10-01T12:00:00Z",
+    attempts: [
+      { status: "Failed", timestamp: "2023-10-01T12:00:00Z" },
+      { status: "Failed", timestamp: "2023-10-02T12:00:00Z" }
+    ]
+  },
+  {
+    id: "payout-789",
+    recipient: "user-101",
+    reason: "Account closed",
+    timestamp: "2023-10-02T12:00:00Z",
+    attempts: [
+      { status: "Failed", timestamp: "2023-10-02T12:00:00Z" }
+    ]
+  }
+];
+
+const PayoutResolutionScreen = () => {
+  const onResolve = (item) => {
+    // Placeholder for resolution logic
+    console.log(`Resolving payout ${item.id}`);
+  };
+
+  return (
+    <Page title="Failed Payouts">
+      <Header title="Failed Payouts" subtitle="Resolve issues with failed payouts" />
+      <Section title="Failed Payouts">
+        <ReviewQueue
+          items={failedPayouts}
+          current={failedPayouts[0]}
+          decision={onResolve}
+        />
+      </Section>
+    </Page>
+  );
+};
+
+export default PayoutResolutionScreen;

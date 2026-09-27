@@ -1,0 +1,48 @@
+import { Page, Header, Sidebar, Section, Card, Metric, Delta, Comparison, Chart, DataTable, FilterBar, SavedViews, Button, BulkActions } from "@stoa/react";
+
+export default function PortfolioOverview() {
+  return (
+    <Page title="Portfolio Overview">
+      <Header title="Portfolio Overview" subtitle="Movement since yesterday" actions={<Button label="Refresh" />} />
+      <Section title="Top Changes">
+        <Card title="Largest Gains">
+          <Comparison
+            entities={[
+              { id: "AAPL", metrics: [{ label: "Price", value: 155.25, delta: { value: 2.75, basis: 152.50, unit: "USD" } }] },
+              { id: "GOOGL", metrics: [{ label: "Price", value: 2780.00, delta: { value: 15.00, basis: 2765.00, unit: "USD" } }] }
+            ]}
+          />
+        </Card>
+        <Card title="Largest Losses">
+          <Comparison
+            entities={[
+              { id: "AMZN", metrics: [{ label: "Price", value: 3120.50, delta: { value: -15.50, basis: 3136.00, unit: "USD" } }] },
+              { id: "MSFT", metrics: [{ label: "Price", value: 265.75, delta: { value: -3.25, basis: 269.00, unit: "USD" } }] }
+            ]}
+          />
+        </Card>
+      </Section>
+      <Section title="Portfolio Breakdown">
+        <Chart type="bar" series={[{ id: "AAPL", data: [{ x: "2023-10-01", y: 152.50 }, { x: "2023-10-02", y: 155.25 }] }]} x="date" y="price" />
+        <DataTable
+          columns={[
+            { id: "symbol", label: "Symbol", sortable: true, defaultSort: "asc" },
+            { id: "price", label: "Price", sortable: true, type: "number", rightAlign: true },
+            { id: "volume", label: "Volume", sortable: true, type: "number", rightAlign: true },
+            { id: "change", label: "Change", sortable: true, type: "number", rightAlign: true }
+          ]}
+          rows={[
+            { symbol: "AAPL", price: 155.25, volume: 123456, change: 2.75 },
+            { symbol: "GOOGL", price: 2780.00, volume: 789012, change: 15.00 },
+            { symbol: "AMZN", price: 3120.50, volume: 345678, change: -15.50 },
+            { symbol: "MSFT", price: 265.75, volume: 456789, change: -3.25 }
+          ]}
+        />
+      </Section>
+      <Sidebar>
+        <FilterBar filters={[{ id: "dateRange", label: "Date Range", options: ["Yesterday", "Last Week", "Last Month"] }]} />
+        <SavedViews views={[{ id: "default", label: "Default View", description: "Shows all assets with default filters" }]} />
+      </Sidebar>
+    </Page>
+  );
+}

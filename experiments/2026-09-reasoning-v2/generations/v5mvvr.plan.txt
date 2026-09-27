@@ -1,0 +1,9 @@
+1. **The person and session:** A financial adviser opens this screen to fulfill a specific client engagement request. It is a focused, high-stakes decision session, not a routine dashboard check.
+
+2. **The shape of the work:** This is **setting a few objects against each other**. The adviser compares exactly two funds side-by-side to make a single binary recommendation. The action happens here: selecting the winner.
+
+3. **The information:** The screen must display the two funds (Entity A and Entity B) with identical metrics (fees, returns, risk, liquidity). Each value is judged against a client-specific target or the other fund.
+
+4. **The decision and evidence:** The adviser decides which fund to recommend. They need to see the raw numbers, the fund's performance history, and any client-specific notes. A wrong decision risks client loss; the process is linear (compare -> choose -> finalize).
+
+5. **The structure:** A split-view layout is required. The top header states the client context. The main area shows two distinct columns (cards) for the two funds. Below each, a list of metrics allows direct comparison. A prominent action button sits at the bottom to "Recommend Fund X".

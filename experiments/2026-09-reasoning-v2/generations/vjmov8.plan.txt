@@ -1,0 +1,5 @@
+The **Order and emphasis** and **Evidence and actions** rules shape this screen most.
+
+**Order and emphasis** dictates that the student's specific behavioral or academic concerns (exceptions) must appear immediately, sorted by severity, before general class averages. The most critical metric—such as a failing grade or a specific incident—must be the focal point of the header or top card.
+
+**Evidence and actions** ensures that the preparation is actionable. The teacher needs clear, immediate evidence (history, teacher notes, specific incidents) placed directly next to the decision points (e.g., "Discuss Concern" button), rather than buried in secondary tabs. The screen must state the consequence of meeting (e.g., "Confirm behavior plan update") before the action runs. Finally, the **States** rule ensures the screen handles missing data gracefully if the teacher checks in early, preventing confusion. Together, these rules create a focused, evidence-rich interface designed for rapid decision-making during a parent meeting.

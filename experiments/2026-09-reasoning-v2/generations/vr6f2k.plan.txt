@@ -1,0 +1,9 @@
+1. **The person and session:** A payments operations analyst opens this screen in response to a daily batch alert or a specific incident report. They need to resolve a known volume of failed transactions within a tight SLA window. The session is routine but time-sensitive.
+
+2. **The shape of the work:** This is a **taking each item in turn to a decision** workflow. The analyst scans a list, identifies the root cause for each failure, and applies a specific remediation action (e.g., retry, refund, or manual approval) before moving to the next. They act on this screen directly.
+
+3. **The information:** The screen must display the transaction ID, amount, customer identifier, and the specific error code. Crucially, it needs context: the customer's status (active/blocked), recent transaction history, and available retry attempts. Values change the next step: a "blocked account" error requires different handling than a "insufficient funds" error.
+
+4. **The decision and evidence:** The decision is whether to retry, escalate, or write off. Wrong decisions cost customer trust and potential regulatory fines; correct decisions are often undoable via a refund. The analyst must see the fresh error message, the customer's history, and available actions to decide confidently.
+
+5. **The structure:** The screen should be an **Inspector** pattern for the selected item, with a **ReviewQueue** shell for progress. A sidebar shows the queue progress (current item number / total). The main area displays the transaction details and error context. Below, a set of **BulkActions** or individual buttons allows the analyst to apply the chosen resolution immediately, with a confirmation step.

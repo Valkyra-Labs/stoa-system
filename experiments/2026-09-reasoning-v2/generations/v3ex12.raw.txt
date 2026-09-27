@@ -1,0 +1,196 @@
+```tsx
+import {
+  Page,
+  Header,
+  Section,
+  Card,
+  Metric,
+  Delta,
+  Chart,
+  DataTable,
+  Button,
+  Status,
+  Tabs,
+} from "@stoa/react";
+
+export default function StudentPrepScreen() {
+  const student = {
+    id: "S-2024-88",
+    name: "Emma Thompson",
+    grade: "8th Grade",
+    homeroom: "Room 304",
+  };
+
+  const overview = [
+    {
+      label: "Current GPA",
+      value: "3.4",
+      delta: 0.2,
+      basis: "Last semester",
+      unit: "scale of 4.0",
+    },
+    {
+      label: "Attendance",
+      value: "94%",
+      delta: -2,
+      basis: "Last month",
+      unit: "vs. average",
+    },
+    {
+      label: "Behavior Score",
+      value: "4.1",
+      delta: 0,
+      basis: "Last month",
+      unit: "vs. average",
+    },
+    {
+      label: "Homework Completion",
+      value: "85%",
+      delta: 5,
+      basis: "Last month",
+      unit: "vs. average",
+    },
+  ];
+
+  const behaviorTrend = [
+    { label: "Jan", value: 3.8 },
+    { label: "Feb", value: 3.9 },
+    { label: "Mar", value: 4.1 },
+    { label: "Apr", value: 4.1 },
+    { label: "May", value: 4.2 },
+  ];
+
+  const incidents = [
+    {
+      id: "INC-001",
+      date: "May 10",
+      type: "Homework",
+      description: "Missed algebra assignment due to phone usage.",
+      severity: "medium",
+      context: "Homeroom",
+    },
+    {
+      id: "INC-002",
+      date: "May 05",
+      type: "Behavior",
+      description: "Disruptive comment during history lecture.",
+      severity: "high",
+      context: "History",
+    },
+    {
+      id: "INC-003",
+      date: "Apr 28",
+      type: "Attendance",
+      description: "Late arrival by 15 minutes.",
+      severity: "low",
+      context: "General",
+    },
+  ];
+
+  return (
+    <Page title={`Preparation: ${student.name}`}>
+      <Header
+        title={`Student Meeting Prep: ${student.name}`}
+        subtitle="Upcoming conference: Tomorrow, 10:00 AM"
+        actions={
+          <Button label="Schedule Meeting" variant="primary" onPress={() => {}} />
+        }
+      />
+
+      <main>
+        <Section title="Student Overview">
+          <Card title="Key Metrics">
+            <div className="grid-2-col">
+              {overview.map((m) => (
+                <div key={m.label} className="metric-card">
+                  <Metric
+                    label={m.label}
+                    value={m.value}
+                    delta={m.delta}
+                    basis={m.basis}
+                    unit={m.unit}
+                  />
+                </div>
+              ))}
+            </div>
+          </Card>
+
+          <Card title="Behavior Trend (Last 5 Months)">
+            <Chart
+              type="line"
+              series={behaviorTrend}
+              x="label"
+              y="value"
+            />
+            <p className="chart-desc">
+              Trend indicates consistent improvement in classroom behavior.
+            </p>
+          </Card>
+        </Section>
+
+        <Section title="Actionable Insights">
+          <div className="insight-grid">
+            <Card title="Strengths to Highlight">
+              <ul>
+                <li>Excellent participation in science labs.</li>
+                <li>Strong commitment to library reading program.</li>
+                <li>Improving time management on complex projects.</li>
+              </ul>
+            </Card>
+            <Card title="Concerns to Address">
+              <ul>
+                <li>Need to discuss impact of phone usage on homework.</li>
+                <li>Addressing disrespect in the classroom.</li>
+                <li>Improving attendance consistency.</li>
+              </ul>
+            </Card>
+          </div>
+        </Section>
+
+        <Section title="Recent Incidents & Notes">
+          <Card title="Incident Log">
+            <DataTable
+              columns={[
+                { key: "date", label: "Date" },
+                { key: "type", label: "Type" },
+                { key: "description", label: "Description" },
+                { key: "severity", label: "Severity" },
+              ]}
+              rows={incidents.map((i) => ({
+                ...i,
+                severity:
+                  i.severity === "high"
+                    ? <Status tone="error" label="High" />
+                    : i.severity === "medium"
+                    ? <Status tone="warning" label="Medium" />
+                    : <Status tone="success" label="Low" />,
+              }))}
+            />
+          </Card>
+
+          <Card title="Preparation Checklist">
+            <div className="checklist">
+              <label>
+                <input type="checkbox" defaultChecked />
+                Review IEP/504 plan if applicable
+              </label>
+              <label>
+                <input type="checkbox" />
+                Print recent report card
+              </label>
+              <label>
+                <input type="checkbox" />
+                Prepare specific examples for behavior discussion
+              </label>
+              <label>
+                <input type="checkbox" />
+                Confirm parent's availability
+              </label>
+            </div>
+          </Card>
+        </Section>
+      </main>
+    </Page>
+  );
+}
+```

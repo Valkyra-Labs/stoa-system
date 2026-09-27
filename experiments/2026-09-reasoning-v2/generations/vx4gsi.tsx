@@ -1,0 +1,133 @@
+import { Page, Header, Sidebar, Section, Card, Tabs, Metric, EmptyData, Button } from "@stoa/react";
+
+export default function StudentMeetingPrep() {
+  const student = {
+    id: "S-2024-089",
+    name: "Alex Rivera",
+    grade: "9th",
+    avatar: "https://placehold.co/64x64/3b82f6/white?text=AR",
+    status: "At Risk",
+    currentGpa: 2.1,
+    attendance: 82,
+    behaviorScore: 4,
+  };
+
+  const metrics = [
+    { label: "Current GPA", value: student.currentGpa, unit: "scale", delta: -0.3 },
+    { label: "Attendance", value: student.attendance, unit: "%", delta: -5 },
+    { label: "Behavior Score", value: student.behaviorScore, unit: "/5", delta: -1 },
+  ];
+
+  const history = [
+    { period: "Last Quarter", gpa: 2.4, attendance: 90, behavior: 4 },
+    { period: "2nd Semester", gpa: 2.3, attendance: 88, behavior: 4 },
+    { period: "1st Semester", gpa: 2.5, attendance: 92, behavior: 5 },
+  ];
+
+  const notes = [
+    { date: "Oct 12", author: "Ms. Chen", type: "Academic", content: "Missed two calculus assignments due to phone usage." },
+    { date: "Oct 05", author: "Mr. Davis", type: "Behavior", content: "Disruptive in homeroom; requested intervention." },
+    { date: "Sep 28", author: "Ms. Chen", type: "Academic", content: "Returned to baseline performance in algebra." },
+  ];
+
+  return (
+    <Page title="Meeting Prep: Alex Rivera">
+      <Header title="Student Meeting Prep" subtitle="Alex Rivera (9th Grade)" actions={
+        <Button label="Schedule Meeting" onPress={() => alert("Meeting scheduled for tomorrow")}>
+          Schedule
+        </Button>
+      } />
+
+      <Section title="Student Profile & Status">
+        <Card title="Overview">
+          <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
+            <img src={student.avatar} alt="Avatar" style={{ borderRadius: "50%", width: "80px", height: "80px" }} />
+            <div>
+              <h2 style={{ margin: 0 }}>Alex Rivera</h2>
+              <p style={{ margin: 0, color: "#666" }}>9th Grade • ID: S-2024-089</p>
+            </div>
+          </div>
+          <div style={{ marginTop: "20px", display: "flex", gap: "10px" }}>
+            <Status tone="warning" label={student.status} />
+            <Status tone="neutral" label="Next Meeting: Tomorrow 10:00 AM" />
+          </div>
+        </Card>
+      </Section>
+
+      <Section title="Current Metrics">
+        <Card title="Key Indicators">
+          {metrics.map((m) => (
+            <Metric key={m.label} label={m.label} value={m.value} delta={m.delta} unit={m.unit} />
+          ))}
+        </Card>
+      </Section>
+
+      <Section title="Historical Trend">
+        <Card title="Performance Over Time">
+          <div style={{ height: "200px", display: "flex", alignItems: "center", justifyContent: "center", color: "#999" }}>
+            <EmptyData />
+          </div>
+          <div style={{ marginTop: "10px", fontSize: "14px", color: "#666" }}>
+            {history.map((h) => (
+              <div key={h.period} style={{ display: "flex", justifyContent: "space-between", marginBottom: "4px" }}>
+                <span>{h.period}</span>
+                <span>GPA: {h.gpa} | Att: {h.attendance}%</span>
+              </div>
+            ))}
+          </div>
+        </Card>
+      </Section>
+
+      <Section title="Incident Log & Notes">
+        <Card title="Recent Events">
+          {notes.length === 0 ? (
+            <EmptyData />
+          ) : (
+            <ul style={{ listStyle: "none", padding: 0 }}>
+              {notes.map((n, i) => (
+                <li key={i} style={{ padding: "10px 0", borderBottom: "1px solid #eee", display: "flex", gap: "15px" }}>
+                  <div style={{ minWidth: "120px" }}>
+                    <strong>{n.date}</strong>
+                    <div style={{ fontSize: "12px", color: "#666" }}>{n.author}</div>
+                  </div>
+                  <div style={{ flex: 1 }}>
+                    <div style={{ fontWeight: "bold", marginBottom: "4px" }}>{n.type}</div>
+                    <div>{n.content}</div>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          )}
+        </Card>
+      </Section>
+
+      <Section title="Action Plan">
+        <Card title="Pre-Meeting Checklist">
+          <div style={{ display: "flex", flexWrap: "wrap", gap: "15px" }}>
+            <Button label="Draft Talking Points" variant="primary" onPress={() => alert("Drafting talking points...")}>
+              Draft Points
+            </Button>
+            <Button label="Review Intervention Plan" variant="secondary" onPress={() => alert("Opening intervention plan...")}>
+              Review Plan
+            </Button>
+            <Button label="Mark as Ready" variant="success" onPress={() => alert("Meeting prep marked complete")}>
+              Mark Ready
+            </Button>
+          </div>
+        </Card>
+      </Section>
+    </Page>
+  );
+}
+
+function Status({ tone, label }: { tone: "warning" | "neutral", label: string }) {
+  const colors = {
+    warning: "bg-red-100 text-red-800",
+    neutral: "bg-gray-100 text-gray-800",
+  };
+  return (
+    <div className={`px-3 py-1 rounded-full ${colors[tone]}`} style={{ fontSize: "12px" }}>
+      {label}
+    </div>
+  );
+}

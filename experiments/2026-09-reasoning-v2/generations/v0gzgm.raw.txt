@@ -1,0 +1,106 @@
+```tsx
+import { Page, Header, Section, Card, DataTable, Button, FilterBar, Tabs, Drawer, Metric, Delta, Status, EmptyData } from "@stoa/react";
+
+const failedPayouts = [
+  {
+    id: "P-1001",
+    amount: "$50.00",
+    paymentMethod: "Bank Transfer",
+    status: "Failed",
+    reason: "Insufficient Funds",
+    date: "2023-10-05",
+    merchant: "Shopify Store A",
+    lastAttempt: "2023-10-05T14:30:00Z",
+    resolution: "Pending",
+  },
+  {
+    id: "P-1002",
+    amount: "$200.00",
+    paymentMethod: "Credit Card",
+    status: "Failed",
+    reason: "Invalid Card",
+    date: "2023-10-04",
+    merchant: "Amazon Seller B",
+    lastAttempt: "2023-10-04T11:15:00Z",
+    resolution: "Resolved",
+  },
+  {
+    id: "P-1003",
+    amount: "$150.00",
+    paymentMethod: "PayPal",
+    status: "Failed",
+    reason: "Account Locked",
+    date: "2023-10-05",
+    merchant: "E-Commerce C",
+    lastAttempt: "2023-10-05T10:45:00Z",
+    resolution: "Pending",
+  },
+];
+
+const FailedPayoutsPage = () => (
+  <Page title="Failed Payouts">
+    <Header
+      title="Failed Payouts"
+      subtitle="Review and resolve failed payments"
+      actions={
+        <Button variant="primary">Resolve Selected</Button>
+      }
+    />
+    <Section title="Overview">
+      <Card>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <Metric label="Total Failed" value={failedPayouts.length} unit="payouts" />
+          <Metric label="Pending" value={failedPayouts.filter(p => p.resolution === "Pending").length} />
+          <Metric label="Resolved" value={failedPayouts.filter(p => p.resolution === "Resolved").length} />
+        </div>
+      </Card>
+    </Section>
+    <Section title="Failed Payouts">
+      <FilterBar filters={[
+        { label: "All", value: "all" },
+        { label: "Pending", value: "pending" },
+        { label: "Resolved", value: "resolved" },
+      ]} />
+      <DataTable
+        columns={[
+          { key: "id", label: "ID" },
+          { key: "amount", label: "Amount" },
+          { key: "paymentMethod", label: "Payment Method" },
+          { key: "status", label: "Status" },
+          { key: "reason", label: "Reason" },
+          { key: "date", label: "Date" },
+          { key: "merchant", label: "Merchant" },
+          { key: "lastAttempt", label: "Last Attempt" },
+          { key: "resolution", label: "Resolution" },
+          { key: "actions", label: "Actions" },
+        ]}
+        rows={failedPayouts}
+        selectable
+        stickyFirstColumn
+        onRowSelect={(selected) => {
+          // Show drawer with detailed info
+        }}
+      />
+    </Section>
+    <Drawer
+      title="Payout Details"
+      open={false}
+      onClose={() => {}}
+    >
+      <Card>
+        <h3>Payout ID: P-1001</h3>
+        <p><strong>Amount:</strong> $50.00</p>
+        <p><strong>Payment Method:</strong> Bank Transfer</p>
+        <p><strong>Status:</strong> Failed</p>
+        <p><strong>Reason:</strong> Insufficient Funds</p>
+        <p><strong>Date:</strong> 2023-10-05</p>
+        <p><strong>Merchant:</strong> Shopify Store A</p>
+        <p><strong>Last Attempt:</strong> 2023-10-05T14:30:00Z</p>
+        <Button variant="primary">Resolve</Button>
+      </Card>
+    </Drawer>
+  </Page>
+);
+
+export default FailedPayoutsPage;
+```

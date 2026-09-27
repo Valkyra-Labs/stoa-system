@@ -1,0 +1,62 @@
+```tsx
+import { Page, Header, Sidebar, Section, Card, Tabs, Metric, Delta, Chart, DataTable, Comparison, Button, EmptyData } from "@stoa/react";
+
+const FundComparisonPage = () => {
+  return (
+    <Page title="Fund Recommendation">
+      <Header title="Fund Recommendation" subtitle="Compare two funds and choose the best option for your client" />
+      <Sidebar>
+        <Section title="Fund Overview">
+          <Card title="Fund A">
+            <Metric label="Annual Return" value="7.2%" delta={+0.5} unit="%" />
+            <Metric label="Risk Level" value="Medium" />
+            <Metric label="Expense Ratio" value="0.5%" />
+          </Card>
+          <Card title="Fund B">
+            <Metric label="Annual Return" value="6.8%" delta={-0.3} unit="%" />
+            <Metric
+              label="Risk Level"
+              value="Low"
+              tone="success"
+            />
+            <Metric label="Expense Ratio" value="0.3%" />
+          </Card>
+        </Section>
+      </Sidebar>
+      <main>
+        <Section title="Fund Comparison">
+          <Comparison
+            entities={["Fund A", "Fund B"]}
+            metrics={[
+              { name: "Annual Return", value: "7.2%", delta: +0.5 },
+              { name: "Risk Level", value: "Medium", tone: "neutral" },
+              { name: "Expense Ratio", value: "0.5%" },
+            ]}
+          />
+        </Section>
+        <Section title="Performance Trends">
+          <Chart
+            type="line"
+            series={[
+              { name: "Fund A", data: [5, 6, 7, 8, 9, 10] },
+              { name: "Fund B", data: [4, 5, 6, 7, 8, 9] },
+            ]}
+            x="Year"
+            y="Return (%)"
+          />
+        </Section>
+        <Section title="Recommendation">
+          <Card>
+            <p>
+              Based on the data, Fund A offers a slightly higher return but with medium risk, while Fund B provides a lower return with low risk. If your client is seeking growth with moderate risk, Fund A is recommended. If risk-averse, Fund B is the better choice.
+            </p>
+            <Button label="Finalize Recommendation" variant="primary" />
+          </Card>
+        </Section>
+      </main>
+    </Page>
+  );
+};
+
+export default FundComparisonPage;
+```

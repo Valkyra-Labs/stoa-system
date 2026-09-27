@@ -1,0 +1,9 @@
+**Step 1:** The head of school will present a summary of the school's performance for the term to the board without making any changes to the screen.
+
+**Step 2:** The session involves getting a general picture of various metrics related to the school's performance, such as student attendance, academic performance, and financial health. The work is focused on reviewing an overview of the school's status.
+
+**Step 3:** The screen must display key metrics for the current term, including attendance rates, academic performance indicators, financial metrics, and any other relevant KPIs. Each metric should be judged against predefined targets or benchmarks.
+
+**Step 4:** The decision here is to present a comprehensive overview of the school's performance to the board. The evidence needed includes current metric values, target comparisons, and any significant changes or trends over the term.
+
+**Step 5:** The structure should include an overview section with key metrics, a section for academic performance metrics, a section for financial metrics, and a timeline of significant events or trends. The layout should be clear and organized, allowing the head of school to review and present the information efficiently.

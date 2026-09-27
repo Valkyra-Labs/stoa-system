@@ -1,0 +1,13 @@
+**Steps 1 to 5 Summary:**
+
+1. **Person and Session:** A teacher preparing for a parent-teacher meeting about a specific student. The session is a one-time event driven by the upcoming meeting.
+
+2. **Shape of the Work:** Understanding one object (the student) fully before acting (meeting the parent). The focus is on a single student with supporting context.
+
+3. **Information:** The student's profile, academic performance, behavior, and recent activities. Key measures include grades, attendance, and behavioral incidents. The relevant timeframe is recent weeks.
+
+4. **Decision and Evidence:** The teacher needs to summarize the student's progress and any issues to discuss with the parent. Evidence includes specific grades, attendance records, and recent behavioral notes.
+
+5. **Structure:** The screen should have a header with the student's name and a brief overview. Below, it should include sections for academic performance, attendance, behavior, and recent notes. Each section should provide relevant data and context for the meeting. A summary section at the bottom for notes or action items would be helpful.
+
+Components: Use a composed shell like Inspector, with a primary section for the student's profile and context sections for academic, attendance, and behavior details.

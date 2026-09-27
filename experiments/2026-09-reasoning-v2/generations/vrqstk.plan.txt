@@ -1,0 +1,3 @@
+**Main Goal:** The screen enables a financial adviser to compare two funds and recommend the better option based on key performance metrics, risk, and client needs.
+
+**Layout Support:** The layout prioritizes clarity and comparison. A header explains the purpose. A **Comparison** component side-by-side displays both funds with shared metrics like returns, risk, and fees. **Cards** highlight key details for each fund, while **Metrics** and **Delta** components show performance changes. A **Sidebar** offers filters to refine the comparison by time frame or risk tolerance. A **Button** at the bottom allows the adviser to finalize the recommendation, ensuring the most important action is prominent and accessible.

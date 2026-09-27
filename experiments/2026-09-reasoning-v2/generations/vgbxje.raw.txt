@@ -1,0 +1,125 @@
+```tsx
+import { Page, Header, Section, Card, Metric, Delta, Chart, DataTable, Status, Tabs, Button } from "@stoa/react";
+
+const WEEK = {
+  name: "Week 42",
+  period: "Fiscal Q3",
+  date: "Oct 23 - Oct 29"
+};
+
+const REVENUE_METRICS = [
+  { label: "Total Revenue", value: 1245000, delta: 5.2, unit: "USD" },
+  { label: "Cost of Goods", value: 540000, delta: -1.8, unit: "USD" },
+  { label: "Gross Profit", value: 705000, delta: 3.1, unit: "USD" },
+];
+
+const EXPENSE_METRICS = [
+  { label: "Operating Expenses", value: 320000, delta: 8.4, unit: "USD" },
+  { label: "Payroll", value: 280000, delta: 0.5, unit: "USD" },
+  { label: "Tech Stack", value: 45000, delta: 12.0, unit: "USD" },
+];
+
+const CASH_FLOW = [
+  { label: "Cash Balance", value: 8900000, delta: 1.2, unit: "USD" },
+  { label: "Burn Rate", value: -45000, delta: 2.1, unit: "USD/week" },
+];
+
+const TOP_TRANSACTIONS = [
+  { id: 1, entity: "AWS Services", amount: 12500, type: "Expense", date: "Oct 29" },
+  { id: 2, entity: "Sales Team", amount: 89000, type: "Expense", date: "Oct 28" },
+  { id: 3, entity: "Software Licenses", amount: 4500, type: "Expense", date: "Oct 27" },
+  { id: 4, entity: "Q4 Retainer", amount: 150000, type: "Expense", date: "Oct 26" },
+  { id: 5, entity: "Enterprise Sales", amount: 420000, type: "Revenue", date: "Oct 25" },
+  { id: 6, entity: "Cloud Hosting", amount: 9800, type: "Expense", date: "Oct 24" },
+  { id: 7, entity: "Consulting", amount: 65000, type: "Revenue", date: "Oct 23" },
+  { id: 8, entity: "Marketing", amount: 32000, type: "Expense", date: "Oct 22" },
+];
+
+const ALERTS = [
+  { label: "Tech Stack Spend", tone: "warning", msg: "+12% MoM exceeds threshold" },
+  { label: "AWS Services", tone: "error", msg: "Anomalous spike detected" },
+];
+
+const MONTHLY_DATA = [
+  { x: "Sep", y: 820000 },
+  { x: "Oct", y: 890000 },
+  { x: "Nov", y: 750000 },
+  { x: "Dec", y: 910000 },
+  { x: "Jan", y: 880000 },
+  { x: "Feb", y: 940000 },
+  { x: "Mar", y: 870000 },
+  { x: "Apr", y: 905000 },
+  { x: "May", y: 930000 },
+  { x: "Jun", y: 960000 },
+  { x: "Jul", y: 945000 },
+  { x: "Aug", y: 980000 },
+];
+
+export default function FinanceDashboard() {
+  return (
+    <Page title="Weekly Financial Overview">
+      <Header
+        title={WEEK.name}
+        subtitle={`Fiscal ${WEEK.period} | ${WEEK.date}`}
+        actions={
+          <Button label="Download Report" variant="primary" />
+        }
+      />
+
+      <Section title="Key Performance Indicators">
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "1rem" }}>
+          {REVENUE_METRICS.map((m) => (
+            <Card key={m.label} title={m.label}>
+              <Metric label="Value" value={m.value} unit={m.unit} />
+              <Delta value={m.delta} basis="Week-over-Week" />
+            </Card>
+          ))}
+        </div>
+      </Section>
+
+      <Section title="Cash Flow Trend">
+        <Card>
+          <Chart
+            type="line"
+            series={[MONTHLY_DATA]}
+            x={(d) => d.x}
+            y={(d) => d.y}
+          />
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "1rem", marginTop: "1rem" }}>
+            {CASH_FLOW.map((m) => (
+              <Card key={m.label} title={m.label}>
+                <Metric label="Value" value={m.value} unit={m.unit} />
+                <Delta value={m.delta} basis="Year-over-Year" />
+              </Card>
+            ))}
+          </div>
+        </Card>
+      </Section>
+
+      <Section title="Top Transactions & Variance">
+        <Card>
+          <DataTable
+            columns={[
+              { key: "entity", label: "Entity" },
+              { key: "amount", label: "Amount" },
+              { key: "type", label: "Type" },
+              { key: "date", label: "Date" },
+            ]}
+            rows={TOP_TRANSACTIONS}
+            selectable
+          />
+        </Card>
+      </Section>
+
+      <Section title="Critical Alerts">
+        <Card>
+          <Tabs items={[
+            { id: "alerts", label: "Alerts", content: <div>{ALERTS.map(a => <Status key={a.label} tone={a.tone} label={a.label}>{a.msg}</Status>)}</div> }
+            { id: "variance", label: "Variance Analysis", content: <p>Deep dive into variance components coming soon.</p> }
+          ]} />
+        </Card>
+      </Section>
+    </Page>
+  );
+}
+```
