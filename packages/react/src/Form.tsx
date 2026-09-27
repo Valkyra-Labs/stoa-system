@@ -21,12 +21,31 @@ export type TextFieldProps = {
   /** Direction of the typed text; maths stays left to right in an RTL page. */
   dir?: "ltr" | "rtl" | "auto";
   autoFocus?: boolean;
+  /** Ids of further elements that describe the input, announced after
+   * `description`. */
+  "aria-describedby"?: string;
 };
 
 /** A labelled text input. Enter can submit without a surrounding form. */
-export function TextField({ label, value, onChange, onEnter, description, placeholder, dir, autoFocus }: TextFieldProps) {
+export function TextField({
+  label,
+  value,
+  onChange,
+  onEnter,
+  description,
+  placeholder,
+  dir,
+  autoFocus,
+  "aria-describedby": describedBy,
+}: TextFieldProps) {
   return (
-    <AriaTextField className="stoa-field" value={value} onChange={onChange} autoFocus={autoFocus}>
+    <AriaTextField
+      className="stoa-field"
+      value={value}
+      onChange={onChange}
+      autoFocus={autoFocus}
+      aria-describedby={describedBy}
+    >
       <Label className="stoa-field__label">{label}</Label>
       <Input
         className="stoa-field__input"

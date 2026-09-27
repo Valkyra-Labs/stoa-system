@@ -25,6 +25,10 @@ const TOKEN_FILES = ["primitive.json", "semantic.light.json", "semantic.dark.jso
 /** Cap on a request body: the four token files are a few kilobytes. */
 const MAX_BODY = 1 << 20;
 
+/** Cap on what the area panels record in a snapshot. Font references and
+ * six type roles are a few kilobytes; a font file is not. */
+const MAX_PANEL_STATE = 64 << 10;
+
 /** How long the token build or its tests may run before the request fails.
  * A build that hangs would otherwise hold the request open for ever. */
 const BUILD_TIMEOUT_MS = 120_000;
@@ -150,6 +154,25 @@ function tokenFilesFrom(body: unknown): Record<string, string> {
   return out;
 }
 
+/** What the area panels record in a snapshot, by panel id.
+ *
+ * A snapshot is a record of a tuning session, not a place to keep font
+ * files: the type panel sends references, and anything that looks like
+ * embedded font data is refused here as well, so a future panel cannot make
+ * this directory a font store by accident. */
+export function panelStateFrom(panels: unknown): Record<string, unknown> {
+  if (panels === undefined || panels === null) return {};
+  if (typeof panels !== "object" || Array.isArray(panels)) throw new Error("panels must be an object keyed by panel id");
+  const text = JSON.stringify(panels);
+  if (/data:(application|font)\/[^;]*;base64/i.test(text)) {
+    throw new Error("panel state must not carry embedded font data, only references to files");
+  }
+  if (text.length > MAX_PANEL_STATE) {
+    throw new Error(`panel state is ${text.length} bytes, over the ${MAX_PANEL_STATE} a snapshot records`);
+  }
+  return panels as Record<string, unknown>;
+}
+
 /** Build and test the given token files with the real packages/tokens
  * scripts, in a temporary copy of the package. */
 async function buildInTemp(repoRoot: string, files: Record<string, string>) {
@@ -213,8 +236,9 @@ export function isSnapshotSlug(name: string): boolean {
 }
 
 /** What a save writes. Parameters and overrides are the two layers the app
- * restores from; `tokens` is the token sources the overrides are stated
- * against, as text the real build would read. */
+ * restores from; `panels` is what each area panel records (`panelStateFrom`
+ * refuses anything else); `tokens` is the token sources the overrides are
+ * stated against, as text the real build would read. */
 export function snapshotBody(input: {
   name: string;
   savedAt: Date;
@@ -222,6 +246,7 @@ export function snapshotBody(input: {
   state: { commit: string; dirty: boolean };
   parameters: unknown;
   overrides: unknown;
+  panels?: unknown;
   files: Record<string, string>;
 }) {
   const named = input.name.trim();
@@ -235,6 +260,7 @@ export function snapshotBody(input: {
     // what the app calls Stoa today.
     parameters: typeof input.parameters === "object" && input.parameters !== null ? input.parameters : null,
     overrides: (input.overrides ?? {}) as Record<string, string>,
+    panels: panelStateFrom(input.panels),
     tokens: Object.fromEntries(Object.entries(input.files).map(([file, text]) => [file, JSON.parse(text)])),
   };
 }
@@ -322,9 +348,10 @@ export function tokenServer(): Plugin {
             }
 
             // A save is refused before anything is read or run.
-            const { name, overrides, overwrite, parameters } = body as {
+            const { name, overrides, panels, overwrite, parameters } = body as {
               name?: unknown;
               overrides?: unknown;
+              panels?: unknown;
               overwrite?: unknown;
               parameters?: unknown;
             };
@@ -352,6 +379,7 @@ export function tokenServer(): Plugin {
               state,
               parameters,
               overrides,
+              panels,
               files,
             });
             await mkdir(path.dirname(file), { recursive: true });

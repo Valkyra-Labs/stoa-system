@@ -58,7 +58,8 @@ export function requestBuild(files: Record<string, string>): Promise<BuildResult
   return post<BuildResult>("/api/build", { files });
 }
 
-/** Write a snapshot of the current parameters, token files and overrides.
+/** Write a snapshot of the current parameters, token files, overrides and
+ * panel state.
  * An unnamed save is stamped with the time it was written. Without
  * `overwrite` the server refuses a name that is already on disk, and it
  * refuses the committed baseline whatever this says. */
@@ -68,6 +69,9 @@ export function saveSnapshot(payload: {
   overrides: Record<string, string>;
   /** The parameter set the derived layer used, or null for Stoa today. */
   parameters: unknown;
+  /** What each area panel records, by panel id: font references and type
+   * roles for the type panel. References, never font bytes. */
+  panels?: Record<string, unknown>;
   overwrite?: boolean;
 }): Promise<SaveResult> {
   return post<SaveResult>("/api/save", payload);

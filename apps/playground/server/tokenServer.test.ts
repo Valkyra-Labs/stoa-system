@@ -4,7 +4,16 @@
 import type { IncomingMessage, ServerResponse } from "node:http";
 import { fileURLToPath } from "node:url";
 import { describe, expect, it } from "vitest";
-import { PROTECTED_SNAPSHOTS, crossSiteReason, isSnapshotSlug, run, snapshotBody, snapshotSlug, tokenServer } from "./tokenServer";
+import {
+  PROTECTED_SNAPSHOTS,
+  crossSiteReason,
+  isSnapshotSlug,
+  panelStateFrom,
+  run,
+  snapshotBody,
+  snapshotSlug,
+  tokenServer,
+} from "./tokenServer";
 
 const HOST = "127.0.0.1:5174";
 
@@ -174,8 +183,17 @@ describe("the snapshot file name", () => {
 describe("what a snapshot records", () => {
   const at = new Date("2026-09-27T12:36:09.417Z");
   const files = { "primitive.json": '{"color":{}}' };
-  const body = (parameters: unknown, overrides: unknown = {}) =>
-    snapshotBody({ name: "", savedAt: at, slug: "snapshot-1", state: { commit: "abc", dirty: false }, parameters, overrides, files });
+  const body = (parameters: unknown, overrides: unknown = {}, panels?: unknown) =>
+    snapshotBody({
+      name: "",
+      savedAt: at,
+      slug: "snapshot-1",
+      state: { commit: "abc", dirty: false },
+      parameters,
+      overrides,
+      panels,
+      files,
+    });
 
   it("keeps the parameters beside the overrides, so a load can restore both", () => {
     const written = body({ surface: "rule" }, { "semantic.light:color.accent": "oklch(0.3 0.2 300)" });
@@ -189,5 +207,43 @@ describe("what a snapshot records", () => {
     expect(body(null).parameters).toBeNull();
     expect(body(undefined).parameters).toBeNull();
     expect(body("tape").parameters).toBeNull();
+  });
+
+  it("keeps the panels beside the parameters and overrides, through the panel guard", () => {
+    const panels = { type: { fonts: [{ family: "IBM Plex Sans" }] } };
+    const written = body({ surface: "rule" }, {}, panels);
+    expect(written.panels).toEqual(panels);
+    expect(written.parameters).toEqual({ surface: "rule" });
+    expect(body(null).panels).toEqual({});
+    expect(() => body(null, {}, { type: { src: "data:font/woff2;base64,AAAA" } })).toThrow(/embedded font data/);
+  });
+});
+
+describe("what a snapshot records for the area panels", () => {
+  it("keeps the panels' own state, by panel id", () => {
+    const panels = { type: { roles: { body: { $type: "typography" } }, fonts: [{ family: "IBM Plex Sans" }] } };
+    expect(panelStateFrom(panels)).toEqual(panels);
+  });
+
+  it("records nothing when no panel contributed anything", () => {
+    expect(panelStateFrom(undefined)).toEqual({});
+    expect(panelStateFrom(null)).toEqual({});
+  });
+
+  it("refuses anything but an object keyed by panel id", () => {
+    expect(() => panelStateFrom([{ type: {} }])).toThrow(/keyed by panel id/);
+    expect(() => panelStateFrom("type")).toThrow(/keyed by panel id/);
+  });
+
+  it("refuses embedded font data: a snapshot records references, not files", () => {
+    const withFont = { type: { fonts: [{ family: "Inter", src: "data:font/woff2;base64,d09GMgABAAAAAA" }] } };
+    expect(() => panelStateFrom(withFont)).toThrow(/must not carry embedded font data/);
+    const asOctets = { type: { fonts: [{ src: "data:application/octet-stream;base64,AAEAAA" }] } };
+    expect(() => panelStateFrom(asOctets)).toThrow(/must not carry embedded font data/);
+  });
+
+  it("refuses state too large to be a record of a session", () => {
+    const big = { type: { note: "x".repeat(70_000) } };
+    expect(() => panelStateFrom(big)).toThrow(/over the 65536 a snapshot records/);
   });
 });
