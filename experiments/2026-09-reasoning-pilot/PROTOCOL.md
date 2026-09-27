@@ -133,4 +133,7 @@ Checked against hand-coded fixtures by `analysis/check-fixtures.mjs`.
 
 ## Deviations
 
-(none yet)
+- 2026-09-27, before the first generation: the filled prompt is
+  delivered as a file the subagent reads once (its only read), instead
+  of inline in the subagent call. The text is identical; the change
+  only saves context in the orchestrating session.
