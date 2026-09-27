@@ -4,7 +4,16 @@
 import type { IncomingMessage, ServerResponse } from "node:http";
 import { fileURLToPath } from "node:url";
 import { describe, expect, it } from "vitest";
-import { PROTECTED_SNAPSHOTS, crossSiteReason, panelStateFrom, run, snapshotSlug, tokenServer } from "./tokenServer";
+import {
+  PROTECTED_SNAPSHOTS,
+  crossSiteReason,
+  isSnapshotSlug,
+  panelStateFrom,
+  run,
+  snapshotBody,
+  snapshotSlug,
+  tokenServer,
+} from "./tokenServer";
 
 const HOST = "127.0.0.1:5174";
 
@@ -160,6 +169,53 @@ describe("the snapshot file name", () => {
     for (const name of ["stoa-today", "Stoa Today", " stoa today "]) {
       expect(PROTECTED_SNAPSHOTS).toContain(snapshotSlug(name, at));
     }
+  });
+
+  it("accepts for reading only the names a save writes", () => {
+    expect(isSnapshotSlug(snapshotSlug("", at))).toBe(true);
+    expect(isSnapshotSlug("stoa-today")).toBe(true);
+    for (const name of ["../secrets", "a/b", "Stoa-Today", "-leading", "trailing-", "with space", ""]) {
+      expect(isSnapshotSlug(name), name).toBe(false);
+    }
+  });
+});
+
+describe("what a snapshot records", () => {
+  const at = new Date("2026-09-27T12:36:09.417Z");
+  const files = { "primitive.json": '{"color":{}}' };
+  const body = (parameters: unknown, overrides: unknown = {}, panels?: unknown) =>
+    snapshotBody({
+      name: "",
+      savedAt: at,
+      slug: "snapshot-1",
+      state: { commit: "abc", dirty: false },
+      parameters,
+      overrides,
+      panels,
+      files,
+    });
+
+  it("keeps the parameters beside the overrides, so a load can restore both", () => {
+    const written = body({ surface: "rule" }, { "semantic.light:color.accent": "oklch(0.3 0.2 300)" });
+    expect(written.parameters).toEqual({ surface: "rule" });
+    expect(written.overrides).toEqual({ "semantic.light:color.accent": "oklch(0.3 0.2 300)" });
+    expect(written.tokens["primitive.json"]).toEqual({ color: {} });
+    expect(written.name).toBe("snapshot-1");
+  });
+
+  it("records no parameters as null, which is Stoa today", () => {
+    expect(body(null).parameters).toBeNull();
+    expect(body(undefined).parameters).toBeNull();
+    expect(body("tape").parameters).toBeNull();
+  });
+
+  it("keeps the panels beside the parameters and overrides, through the panel guard", () => {
+    const panels = { type: { fonts: [{ family: "IBM Plex Sans" }] } };
+    const written = body({ surface: "rule" }, {}, panels);
+    expect(written.panels).toEqual(panels);
+    expect(written.parameters).toEqual({ surface: "rule" });
+    expect(body(null).panels).toEqual({});
+    expect(() => body(null, {}, { type: { src: "data:font/woff2;base64,AAAA" } })).toThrow(/embedded font data/);
   });
 });
 

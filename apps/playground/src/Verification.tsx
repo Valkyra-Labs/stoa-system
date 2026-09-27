@@ -25,6 +25,13 @@ export type VerificationProps = {
   density: DensityMode;
   /** The current token files as text, exactly as they would be written. */
   files: Record<string, string>;
+  /** Whether a parameter set is deriving the values on screen. The build
+   * reads token files, and a derived tree is not one: exporting it to DTCG
+   * files is out of scope for brief 05. So the build still runs the
+   * sources with the override layer, and the comparisons between what is
+   * on screen and what the build did are withheld rather than reported as
+   * agreement or disagreement they cannot speak to. */
+  derived: boolean;
   /** A verification failure was picked: which tab to show and which
    * tokens to highlight in it. */
   onSelectCheck: (tab: string, tokens: string[]) => void;
@@ -65,7 +72,7 @@ function GateAgreement({ testsPassed, browserFails }: { testsPassed: boolean; br
   );
 }
 
-export function Verification({ tokens, densityTokens, density, files, onSelectCheck }: VerificationProps) {
+export function Verification({ tokens, densityTokens, density, files, derived, onSelectCheck }: VerificationProps) {
   const [busy, setBusy] = useState(false);
   const [verdict, setVerdict] = useState<Verdict | null>(null);
   const [failure, setFailure] = useState<Failure | null>(null);
@@ -98,13 +105,13 @@ export function Verification({ tokens, densityTokens, density, files, onSelectCh
   // outlive the result it came from.
   const agreement = useMemo<Agreement | null>(
     () =>
-      result?.css
+      result?.css && !derived
         ? {
             light: compareVariables(tokens.light.variables, variablesFromCss(result.css, "light", density)),
             dark: compareVariables(tokens.dark.variables, variablesFromCss(result.css, "dark", density)),
           }
         : null,
-    [result, tokens, density],
+    [result, tokens, density, derived],
   );
 
   const run = async () => {
@@ -158,7 +165,9 @@ export function Verification({ tokens, densityTokens, density, files, onSelectCh
           </dd>
           <dt>Preview against built CSS</dt>
           <dd data-testid="agreement-status">
-            {agreement === null ? (
+            {derived ? (
+              <StatusBadge tone="neutral">not compared: the previews are a derived tree, the build is the token sources</StatusBadge>
+            ) : agreement === null ? (
               <StatusBadge tone="neutral">no CSS to compare</StatusBadge>
             ) : (
               <StatusBadge tone={disagreements.length === 0 ? "positive" : "negative"}>
@@ -172,7 +181,11 @@ export function Verification({ tokens, densityTokens, density, files, onSelectCh
             <>
               <dt>Known-violations gate: browser vs server tests</dt>
               <dd data-testid="checks-agreement-status">
-                <GateAgreement testsPassed={result.test.ok} browserFails={browser.wouldFailServerTests} />
+                {derived ? (
+                  <StatusBadge tone="neutral">not compared: the browser checks ran on a derived tree, the tests on the token sources</StatusBadge>
+                ) : (
+                  <GateAgreement testsPassed={result.test.ok} browserFails={browser.wouldFailServerTests} />
+                )}
               </dd>
             </>
           )}
