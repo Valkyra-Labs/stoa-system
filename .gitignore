@@ -6,3 +6,5 @@ node_modules
 playwright-report
 storybook-static
 test-results
+# Rebuilt from generations by owner-coding/prepare.mjs; holds raw model output.
+experiments/*/owner-coding/data.json
