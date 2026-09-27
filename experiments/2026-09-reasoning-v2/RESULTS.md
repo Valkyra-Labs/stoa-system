@@ -1,9 +1,9 @@
 # Experiment v2 results
 
-**Status: provisional.** The pre-registered decision needs the owner's
-blind coding of 72 files and Cohen's kappa of at least 0.6 against the
-Claude coders; until then every number here is final as data but the
-verdict is provisional. Run 2026-09-27, protocol `PROTOCOL.md`
+**Status: final under the Claude coding; not validated by a human
+coder.** The pre-registered check (the owner's blind coding of 72 files,
+Cohen's kappa of at least 0.6) was not carried out, for the reason in
+"The archetype variable" below; see the dated deviation in PROTOCOL.md. Run 2026-09-27, protocol `PROTOCOL.md`
 (registered in 73b1574), generations merged in PR 7 (6475c3f), analysis
 on 33c41ab.
 
@@ -29,7 +29,7 @@ on 33c41ab.
   partition is random, so this adds noise, not a condition bias; matches
   on P1 and P2 are spread across all 8 batches (1 to 5 per batch).
 
-## Primary result (provisional)
+## Primary result
 
 | model | components | generic | rules | reasoning |
 |---|---|---|---|---|
@@ -46,7 +46,9 @@ Archetype match rate per model and condition (n = 30 each).
 - Pre-registered rule: signal needs at least 0.15 and an interval above
   0, positive in 2 of 3 models, guard holding. The effect is positive in
   all three models and the guard holds, but it is below 0.15 and the
-  interval touches 0: **provisional no signal**, a near miss.
+  interval touches 0: **no signal**, a near miss, under the Claude coding.
+  It is not a human-validated result and is not a basis for any public
+  claim about AI.
 
 ## What the numbers show (secondary, labelled)
 
@@ -79,6 +81,28 @@ Archetype match rate per model and condition (n = 30 each).
    components, because these models seldom use them (24 of 360
    files); structure is built from Section, Card and DataTable.
 
+## The archetype variable (methodological finding)
+
+- The owner, a senior product designer, could not apply the archetype
+  categories with confidence even with rendered screens and worked
+  examples: many screens fit several categories at once. The boundaries
+  that caused it are the ones the result depends on: explorer, report
+  and dashboard (a filterable table among panels; a single table with
+  or without narrowing; a list with per-item buttons but no current
+  item).
+- The Claude coders agreed with each other at kappa 0.94. That shows the
+  coding is reproducible by the same model family reading the same
+  guide; it does not show that the categories describe the screens
+  well. Copies of one model can resolve an ambiguity the same way every
+  time.
+- The coders' own judgement calls (in their reports) diverge exactly on
+  those boundaries, and the contrast between conditions lives on the two
+  tasks whose expected archetypes sit there (P1 queue, P2 explorer).
+- Consequence: the next experiment does not ask a coder to name an
+  archetype. It asks for observable yes/no features of the screen and
+  derives the archetype from them by a rule fixed in advance
+  (`../stage-3-draft/RUBRIC-DRAFT.md`).
+
 ## Reproducibility
 
 A seeded 5 percent (18 generations: 4 qwen3:8b, 9 qwen2.5:14b, 5
@@ -89,15 +113,18 @@ raw reply and file are byte-identical in **18 of 18** (`repro/out/`).
 
 - One designer's expected archetypes; four of six tasks are at ceiling,
   so the pooled contrast rests on P1 and P2.
-- Coding by Claude models; the owner's agreement is the check that is
-  still missing.
+- Coding by Claude models only; the categorical archetype variable
+  proved ambiguous for a human expert (above).
 - Local 4B to 14B models at Q4_K_M; not the models people use to build
   products with. The Stage 0 Claude pilot behaved differently on rules.
 
 ## Next
 
-1. Owner codes 72 files; kappa and the final verdict.
-2. If the verdict stays "no signal": the plan-to-code gap is the next
-   hypothesis (for example, a structure turn between plan and code), to
-   be pre-registered separately, not tuned on these data.
-3. Claude replication (Stage 2B) with the same protocol.
+1. Replace the archetype outcome with observable binary features and a
+   pre-registered derivation rule; calibrate the rubric on 20 screens
+   outside the next sample before freezing it
+   (`../stage-3-draft/RUBRIC-DRAFT.md`).
+2. The plan-to-code gap is the next hypothesis (for example, a structure
+   turn between plan and code), to be pre-registered separately, not
+   tuned on these data.
+3. A Claude replication with the same protocol.
