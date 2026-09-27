@@ -4,12 +4,13 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
-import { outOfGamut, parseColor } from "../src/color.mjs";
+import { contrast, outOfGamut, parseColor } from "../src/color.mjs";
 import { pairName, runAllChecks, summarize } from "../src/checks.mjs";
 import { NON_TEXT_PAIRS, TEXT_AA, TEXT_AAA, TEXT_PAIRS } from "../src/pairs.mjs";
 import { resolveTokens } from "../src/resolve.mjs";
 import {
   CARRIED_TOKENS,
+  CORNER_STEPS,
   DEFAULT_PARAMETERS,
   DENSITY_MODES,
   HIGH_CONTRAST,
@@ -21,10 +22,14 @@ import {
   UNCLAMPED_PAIRS,
   UP_DOWN_MIN_LIGHTNESS,
   deriveTokens,
+  fitChroma,
+  formatOklch,
   highContrastParameters,
   isCustomDensity,
+  ladderMultiplier,
   modelRules,
   normalizeParameters,
+  solveLightness,
 } from "../src/model.mjs";
 
 const css = await readFile(new URL("../dist/tokens.css", import.meta.url), "utf8");
@@ -44,7 +49,15 @@ const PARAMETER_SETS = [
   ["flattened ladder", { contrast: { multiplier: 0.7 } }],
   ["paper and ink close together", { neutral: { paper: 0.9, ink: 0.3 } }],
   ["custom density", { density: { mode: "regular", rowHeight: 26, cellPaddingX: 5, fontSize: 12 } }],
+  ["polarity light", { polarity: "light" }],
+  ["polarity dark", { polarity: "dark" }],
 ];
+
+/** Lightness, chroma and hue of an `oklch()` token. */
+function oklchParts(token) {
+  const [lightness, chroma, hue] = token.slice("oklch(".length).split(/[\s/)]+/).map(Number);
+  return { lightness, chroma, hue };
+}
 
 /** The enforced results of src/checks.mjs a derived tree is allowed to
  * fail, and the reason each one is not the model's to clamp. */
@@ -242,13 +255,144 @@ test("the high-contrast variant raises the ladder and the targets", () => {
   const plain = deriveTokens();
   const strong = deriveTokens(highContrastParameters());
   assert.equal(strong.parameters.highContrast, true);
-  assert.equal(strong.parameters.contrast.multiplier, HIGH_CONTRAST.multiplier);
+  assert.equal(ladderMultiplier(strong.parameters), HIGH_CONTRAST.multiplier);
+  const stretched = deriveTokens({ contrast: { multiplier: HIGH_CONTRAST.multiplier } }).themes.light;
+  for (const name of Object.keys(stretched).filter((n) => n.startsWith("color-neutral-"))) {
+    assert.equal(strong.themes.light[name], stretched[name], `${name} is not on the stretched ladder`);
+  }
   const ratio = (tree, id) => checksOf(tree).find((r) => r.id === id).value;
   for (const id of ["text-contrast/light/text-muted-on-surface", "text-contrast/dark/text-muted-on-surface"]) {
     assert.ok(ratio(strong, id) >= TEXT_AAA, `${id}: ${ratio(strong, id).toFixed(2)}:1`);
     assert.ok(ratio(strong, id) > ratio(plain, id), `${id} did not go up`);
   }
   assert.ok(ratio(strong, "non-text-contrast/light/focus-on-surface") >= HIGH_CONTRAST.nonText);
+});
+
+test("the high-contrast variant is the flag alone, so every route to it derives the same tree", () => {
+  // The panel toggle and a snapshot set the flag and nothing else; the
+  // model does the stretching, so both land on the variant tested above.
+  for (const [name, preset] of Object.entries(PRESETS)) {
+    const p = normalizeParameters(preset.parameters);
+    const variant = highContrastParameters(p);
+    assert.deepEqual(variant, { ...p, highContrast: true }, name);
+    assert.deepEqual(deriveTokens({ ...p, highContrast: true }).themes, deriveTokens(variant).themes, name);
+    // Turning it off gives back the author's multiplier and the standard tree.
+    assert.deepEqual(deriveTokens({ ...variant, highContrast: false }).themes, deriveTokens(p).themes, name);
+  }
+  // A multiplier already above the variant's is kept.
+  assert.equal(ladderMultiplier({ highContrast: true, contrast: { multiplier: 1.6 } }), 1.6);
+  assert.equal(ladderMultiplier({ highContrast: false, contrast: { multiplier: 1.2 } }), 1.2);
+});
+
+test("polarity decides which theme the parameters author and which is generated", () => {
+  const accent = { hue: 255, chroma: 0.1, lightness: { light: 0.4, dark: 0.85 } };
+  const lightnessOf = (tree, theme) => oklchParts(tree.themes[theme]["color-accent"]).lightness;
+  const surfaceOf = (tree, theme) => oklchParts(tree.themes[theme]["color-surface"]).lightness;
+
+  // Both: each theme starts from its own lightness, dark tuned separately.
+  const both = deriveTokens({ polarity: "both", accent });
+  assert.equal(lightnessOf(both, "light"), 0.4);
+  assert.equal(lightnessOf(both, "dark"), 0.85);
+
+  // Light: the dark theme ignores its own lightness and mirrors the light
+  // accent across the two surfaces, keeping its distance from the page.
+  const light = deriveTokens({ polarity: "light", accent });
+  assert.equal(lightnessOf(light, "light"), 0.4);
+  const mirrored = Number((surfaceOf(light, "dark") + surfaceOf(light, "light") - 0.4).toFixed(4));
+  assert.equal(lightnessOf(light, "dark"), mirrored);
+  assert.notEqual(light.themes.dark["color-accent"], both.themes.dark["color-accent"]);
+  const withoutDark = deriveTokens({ polarity: "light", accent: { ...accent, lightness: { light: 0.4, dark: null } } });
+  assert.deepEqual(withoutDark.themes.dark, light.themes.dark, "the dark lightness still reached the dark theme");
+
+  // Dark: the other way round.
+  const dark = deriveTokens({ polarity: "dark", accent });
+  assert.equal(lightnessOf(dark, "dark"), 0.85);
+  assert.equal(lightnessOf(dark, "light"), Number((surfaceOf(dark, "light") + surfaceOf(dark, "dark") - 0.85).toFixed(4)));
+  assert.notEqual(dark.themes.light["color-accent"], both.themes.light["color-accent"]);
+
+  // The generated theme is still held to every rule: a mirrored seed that
+  // lands too close to its page is clamped like any other.
+  const tape = deriveTokens(PRESETS.tape.parameters);
+  assert.equal(tape.parameters.polarity, "dark");
+  const accentOnSurface = checksOf(tape).find((r) => r.id === "text-contrast/light/accent-on-surface");
+  assert.ok(accentOnSurface.pass, `${accentOnSurface.value.toFixed(2)}:1`);
+});
+
+test("Broadsheet prints warm ink on warm paper", () => {
+  const { themes } = deriveTokens(PRESETS.broadsheet.parameters);
+  assert.equal(themes.light["color-bg"], "oklch(0.968 0.012 82)");
+  assert.equal(themes.light["color-surface"], "oklch(0.968 0.012 82)");
+  assert.equal(themes.light["color-neutral-0"], "oklch(0.968 0.012 82)");
+  // Ink is at least as tinted as the paper, in the paper's hue.
+  const ink = oklchParts(themes.light["color-text"]);
+  assert.ok(ink.chroma >= 0.012, `ink chroma ${ink.chroma}`);
+  assert.equal(ink.hue, 82);
+  // White paper holds no chroma, so a white-paper preset keeps Stoa's grey
+  // text rung rather than inheriting a tint the page cannot show.
+  assert.equal(deriveTokens().themes.light["color-text"], today.themes.light["color-text"]);
+});
+
+test("fitChroma keeps a colour sRGB can hold and cuts back one it cannot", () => {
+  assert.equal(fitChroma(0.5, 0.05, 250), 0.05);
+  assert.equal(fitChroma(1, 0.05, 250), 0, "white holds no chroma");
+  const cut = fitChroma(0.9, 0.3, 30);
+  assert.ok(cut > 0 && cut < 0.3, `cut back to ${cut}`);
+  const at = (chroma) => parseColor(formatOklch({ lightness: 0.9, chroma, hue: 30 }));
+  assert.ok(!outOfGamut(at(cut)), "the returned chroma is outside sRGB");
+  assert.ok(outOfGamut(at(cut + 0.0001)), "one grid step more still fits, so the cut went too far");
+});
+
+test("solveLightness stops at the first lightness on the grid that reaches the target", () => {
+  const white = { srgb: parseColor("oklch(1 0 0)") };
+  const ask = { seed: 0.75, chroma: 0.17, hue: 255, direction: "down", backgrounds: [white], target: TEXT_AA };
+  const solved = solveLightness(ask);
+  assert.equal(solved.clamped, true);
+  assert.equal(solved.reached, true);
+  const ratioAt = (units) => {
+    const lightness = units / 10_000;
+    const token = formatOklch({ lightness, chroma: fitChroma(lightness, ask.chroma, ask.hue), hue: ask.hue });
+    return contrast(parseColor(token), white.srgb);
+  };
+  assert.ok(ratioAt(solved.units) >= TEXT_AA, `${ratioAt(solved.units).toFixed(3)}:1`);
+  assert.ok(ratioAt(solved.units + 1) < TEXT_AA, "one step lighter also reaches the target");
+
+  // A seed that already clears the target stays where it is.
+  assert.deepEqual(solveLightness({ ...ask, seed: 0.3 }), { units: 3000, clamped: false, reached: true });
+  // A grey on a mid-dark grey cannot reach 4.5:1 even at black.
+  const dim = { srgb: parseColor("oklch(0.3 0 0)") };
+  assert.deepEqual(solveLightness({ ...ask, seed: 0.35, chroma: 0, backgrounds: [dim] }), { units: 0, clamped: true, reached: false });
+});
+
+test("a rule out of reach is reported as out of reach, with the ratio it did get", () => {
+  // Paper and ink this close leave no lightness where text makes 7:1.
+  const derived = deriveTokens({ neutral: { paper: 0.55, ink: 0.45 } });
+  const text = derived.clamps.find((c) => c.id === "light/text/lightness");
+  assert.equal(text.reached, false);
+  assert.match(text.message, /^light text: L [\d.]+ lowered to 0, the end of the scale, and still only \d+\.\d\d:1 against \S+ where 7:1 is asked$/);
+
+  // The wash cannot fix what the text itself misses, and says so rather
+  // than claiming the target was reached.
+  const wash = derived.clamps.find((c) => c.id === "light/up-wash/alpha");
+  assert.equal(wash.reached, false);
+  assert.ok(wash.achieved < wash.target);
+  assert.doesNotMatch(wash.message, /reaches/);
+  assert.match(wash.message, /^light up-wash: alpha 0\.18 lowered to 0, the end of the scale, and text over it on surface is \d+\.\d\d:1 where 4\.5:1 is asked$/);
+});
+
+test("rising and falling that cannot be pushed apart say so", () => {
+  const pair = (up, down) =>
+    deriveTokens({
+      up: { hue: 170, chroma: 0.11, lightness: { light: up } },
+      down: { hue: 170, chroma: 0.11, lightness: { light: down } },
+    }).clamps.find((c) => c.id === "light/up/separation");
+
+  const moved = pair(0.02, 0.03);
+  assert.equal(moved.reached, false);
+  assert.equal(moved.message, "light up: L 0.02 moved to 0, the end of the scale, and up and down are 0.03 apart where 0.08 is asked");
+
+  const stuck = pair(0, 0.02);
+  assert.equal(stuck.reached, false);
+  assert.equal(stuck.message, "light up: L 0 is already the end of the scale, so up and down are 0.02 apart where 0.08 is asked");
 });
 
 test("the pairs the model does not clamp are real pairs of pairs.mjs", () => {
@@ -276,6 +420,13 @@ test("a partial parameter set is filled in from the defaults", () => {
   // An unknown value falls back rather than reaching the derivation.
   assert.equal(normalizeParameters({ surface: "chrome" }).surface, DEFAULT_PARAMETERS.surface);
   assert.equal(normalizeParameters({ polarity: "sideways" }).polarity, DEFAULT_PARAMETERS.polarity);
+});
+
+test("a control corner is one of the corner steps or the default", () => {
+  for (const step of CORNER_STEPS) assert.equal(normalizeParameters({ corner: { control: step } }).corner.control, step);
+  for (const off of [1, 3, 5, 8, -2]) {
+    assert.equal(normalizeParameters({ corner: { control: off } }).corner.control, DEFAULT_PARAMETERS.corner.control, `${off}px`);
+  }
 });
 
 test("a density that no longer matches the mode it names is custom", () => {

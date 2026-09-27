@@ -115,7 +115,7 @@ const atLeast = (value, threshold) => value >= threshold - EPSILON;
  * ratio in this module is measured on the colour a browser will show. The
  * full CSS Color 4 algorithm also clips and judges the result by CIEDE2000;
  * this keeps lightness and hue exactly and gives up chroma alone. */
-function fitChroma(lightness, chroma, hue, alpha) {
+export function fitChroma(lightness, chroma, hue, alpha = 1) {
   const fits = (units) => !outOfGamut(parseColor(formatOklch({ lightness, chroma: units / CHROMA_STEPS, hue, alpha })));
   const asked = Math.round(chroma * CHROMA_STEPS);
   if (fits(asked)) return asked / CHROMA_STEPS;
@@ -150,9 +150,14 @@ function color({ lightness, chroma, hue, alpha = 1 }) {
 /** The neutral ladder Stoa ships today. A derived ladder keeps its shape
  * and moves its ends: `paper` and `ink` set the lightest and darkest step,
  * the contrast multiplier stretches the steps between them, and the chroma
- * parameter scales the whole chroma profile. */
+ * parameter scales the whole chroma profile.
+ *
+ * The paper rung asks for the full neutral chroma. Stoa's paper is white,
+ * which holds no chroma at all, so the gamut map cuts it back to 0 and the
+ * shipped ladder comes out unchanged; a paper below white (Broadsheet's)
+ * keeps the tint it was given. */
 const NEUTRAL_LADDER = [
-  { step: "0", lightness: 1, chroma: 0 },
+  { step: "0", lightness: 1, chroma: 0.012 },
   { step: "50", lightness: 0.985, chroma: 0.002 },
   { step: "100", lightness: 0.967, chroma: 0.003 },
   { step: "150", lightness: 0.94, chroma: 0.004 },
@@ -264,8 +269,8 @@ export const DEFAULT_PARAMETERS = {
    * the accent hue instead of `hue`. */
   neutral: { source: "hue", hue: 250, chroma: 0.012, paper: 1, ink: 0.13 },
   /** Hue and chroma per chromatic role; lightness is solved from contrast,
-   * starting at the value given here for that polarity, or at the role's
-   * seed when it is null. */
+   * starting at the value given here for an authored theme, or at the
+   * role's seed when it is null. */
   accent: { hue: 255, chroma: 0.17, lightness: { light: null, dark: null } },
   up: { hue: 170, chroma: 0.12, lightness: { light: null, dark: null } },
   down: { hue: 30, chroma: 0.18, lightness: { light: null, dark: null } },
@@ -274,9 +279,13 @@ export const DEFAULT_PARAMETERS = {
    * variant, which raises both the multiplier and the contrast targets. */
   contrast: { multiplier: 1 },
   highContrast: false,
-  /** Which polarity the parameters are designed for. Both themes are always
-   * emitted, because every token name has to exist in both; the per-role
-   * `lightness` is where the other polarity is tuned separately. */
+  /** Which theme the parameters author: light, dark, or both. Both themes
+   * are always emitted, because every token name has to exist in both. An
+   * authored theme starts each chromatic role at its own `lightness` for
+   * that theme; with "both", dark is tuned separately from light. A theme
+   * the polarity leaves out ignores its `lightness` and is generated from
+   * the authored one: each role starts at the authored lightness mirrored
+   * across the two themes' surfaces. */
   polarity: "both",
   /** How a panel is separated from the page: border, fill or rule. */
   surface: "fill",
@@ -338,7 +347,7 @@ export function normalizeParameters(given = {}) {
     polarity: oneOf(given.polarity, ["light", "dark", "both"], d.polarity),
     surface: oneOf(given.surface, SURFACE_STRATEGIES, d.surface),
     corner: {
-      control: number(given.corner?.control, d.corner.control),
+      control: oneOf(given.corner?.control, CORNER_STEPS, d.corner.control),
       overlay: number(given.corner?.overlay, d.corner.overlay),
     },
     density: {
@@ -352,14 +361,22 @@ export function normalizeParameters(given = {}) {
 }
 
 /** The generated high-contrast variant of a parameter set: the ladder is
- * stretched and every contrast target goes up a level. */
+ * stretched to at least HIGH_CONTRAST.multiplier and every contrast target
+ * goes up a level.
+ *
+ * The variant is the `highContrast` flag and nothing else: `deriveTokens`
+ * does the stretching, so a snapshot or a panel toggle that sets the flag
+ * derives exactly this variant, and turning the flag off again gives back
+ * the author's own multiplier. */
 export function highContrastParameters(parameters) {
+  return { ...normalizeParameters(parameters), highContrast: true };
+}
+
+/** The ladder multiplier a parameter set derives with: its own, or the
+ * high-contrast one when that is larger and the variant is on. */
+export function ladderMultiplier(parameters) {
   const p = normalizeParameters(parameters);
-  return {
-    ...p,
-    contrast: { multiplier: Math.max(p.contrast.multiplier, HIGH_CONTRAST.multiplier) },
-    highContrast: true,
-  };
+  return p.highContrast ? Math.max(p.contrast.multiplier, HIGH_CONTRAST.multiplier) : p.contrast.multiplier;
 }
 
 /** True when the density numbers no longer match the mode they name, which
@@ -391,9 +408,11 @@ function target(asked, highContrast) {
  * chroma: away from the surface is always more contrast. Every probe is
  * measured on the colour the token would carry, and `contrast` clips into
  * sRGB first, so an out-of-gamut probe is measured as the display would
- * show it rather than as the maths would like it. `reached: false` means
- * even the end of the scale does not make the target. */
-function solveLightness({ seed, chroma, hue, direction, backgrounds, target: wanted }) {
+ * show it rather than as the maths would like it. `units` is the lightness
+ * found, in ten-thousandths (the grid a token is written on); `clamped`
+ * says the seed had to move; `reached: false` means even the end of the
+ * scale does not make the target. */
+export function solveLightness({ seed, chroma, hue, direction, backgrounds, target: wanted }) {
   const at = (units) => color({ lightness: units / LIGHTNESS_STEPS, chroma, hue });
   const ratio = (units) => {
     const c = at(units);
@@ -443,21 +462,29 @@ function deriveRole({ theme, role, seed, chroma, hue, direction, roles, highCont
   if (chosen.clamped && chosen.group) {
     const against = worstBackground(value, chosen.group.backgrounds);
     const achieved = contrast(value.srgb, against.srgb);
+    const from = trim(seed, 4);
+    const to = trim(value.lightness, 4);
     const moved = value.lightness < seed ? "lowered" : "raised";
+    const short = `only ${ratioText(achieved)} against ${against.role} where ${chosen.group.wanted}:1 is asked`;
+    let message = `${theme} ${role}: L ${from} ${moved} to ${to} for ${chosen.group.wanted}:1 against ${against.role}`;
+    if (!chosen.reached) {
+      message =
+        from === to
+          ? `${theme} ${role}: L ${from} is already the end of the scale, and ${short}`
+          : `${theme} ${role}: L ${from} ${moved} to ${to}, the end of the scale, and still ${short}`;
+    }
     clamps.push({
       id: `${theme}/${role}/lightness`,
       theme,
       role,
       property: "lightness",
-      from: Number(trim(seed, 4)),
+      from: Number(from),
       to: value.lightness,
       target: chosen.group.wanted,
       against: against.role,
       achieved,
       reached: chosen.reached,
-      message: chosen.reached
-        ? `${theme} ${role}: L ${trim(seed, 4)} ${moved} to ${trim(value.lightness, 4)} for ${chosen.group.wanted}:1 against ${against.role}`
-        : `${theme} ${role}: L ${trim(seed, 4)} ${moved} to ${trim(value.lightness, 4)}, the end of the scale, and still only ${ratioText(achieved)} against ${against.role} where ${chosen.group.wanted}:1 is asked`,
+      message,
     });
   }
   return value;
@@ -499,28 +526,39 @@ function separateUpDown(theme, roles, clamps) {
   const value = color({ lightness: wanted, chroma: roles[moving].chromaAsked, hue: roles[moving].hue });
   roles[moving] = { ...value, role: moving };
 
+  // `wanted` lies past the end of the scale only when the moving colour
+  // cannot get far enough from the fixed one, which is the unreached case.
   const after = separation(roles.up, roles.down);
+  const from = trim(seed, 4);
+  const to = trim(value.lightness, 4);
+  const apart = `up and down are ${trim(after.lightness, 4)} apart where ${UP_DOWN_MIN_LIGHTNESS} is asked`;
+  let message = `${theme} ${moving}: L ${from} moved to ${to} to keep ${UP_DOWN_MIN_LIGHTNESS} lightness from ${fixed}`;
+  if (!after.pass) {
+    message =
+      from === to
+        ? `${theme} ${moving}: L ${from} is already the end of the scale, so ${apart}`
+        : `${theme} ${moving}: L ${from} moved to ${to}, the end of the scale, and ${apart}`;
+  }
   clamps.push({
     id: `${theme}/${moving}/separation`,
     theme,
     role: moving,
     property: "lightness",
-    from: Number(trim(seed, 4)),
+    from: Number(from),
     to: value.lightness,
     target: UP_DOWN_MIN_LIGHTNESS,
     against: fixed,
     achieved: after.lightness,
     reached: after.pass,
-    message: after.pass
-      ? `${theme} ${moving}: L ${trim(seed, 4)} moved to ${trim(value.lightness, 4)} to keep ${UP_DOWN_MIN_LIGHTNESS} lightness from ${fixed}`
-      : `${theme} ${moving}: L ${trim(seed, 4)} moved to ${trim(value.lightness, 4)}, the end of the scale, and up and down are still ${trim(after.lightness, 4)} apart where ${UP_DOWN_MIN_LIGHTNESS} is asked`,
+    message,
   });
   return after;
 }
 
 /** Lower a wash's alpha until text drawn over it, composited on the surface
  * behind it, reaches the text target. Lowering alpha always moves the
- * composite towards the surface, which text already clears. */
+ * composite towards the surface, which text clears unless the text role was
+ * itself out of reach. */
 function deriveWash({ theme, role, from, alpha, surface, text, highContrast, clamps }) {
   const wanted = target(TEXT_AA, highContrast);
   const at = (units) => color({ lightness: from.lightness, chroma: from.chroma, hue: from.hue, alpha: units / ALPHA_STEPS });
@@ -536,26 +574,42 @@ function deriveWash({ theme, role, from, alpha, surface, text, highContrast, cla
     if (ratio(mid) >= wanted) good = mid;
     else bad = mid;
   }
+  // Even alpha 0 falls short when the text does not clear the bare surface,
+  // which happens only when the text role was itself out of reach.
   const value = at(good);
+  const achieved = ratio(good);
+  const reached = achieved >= wanted;
+  const was = trim(alpha, 3);
+  const now = trim(value.alpha, 3);
+  const short = `text over it on surface is ${ratioText(achieved)} where ${wanted}:1 is asked`;
+  let message = `${theme} ${role}: alpha ${was} lowered to ${now} so text over it on surface reaches ${wanted}:1`;
+  if (!reached) {
+    message =
+      was === now
+        ? `${theme} ${role}: alpha ${was} cannot go lower, and ${short}`
+        : `${theme} ${role}: alpha ${was} lowered to ${now}, the end of the scale, and ${short}`;
+  }
   clamps.push({
     id: `${theme}/${role}/alpha`,
     theme,
     role,
     property: "alpha",
-    from: Number(trim(alpha, 3)),
+    from: Number(was),
     to: value.alpha,
     target: wanted,
     against: "surface",
-    achieved: ratio(good),
-    reached: ratio(good) >= wanted,
-    message: `${theme} ${role}: alpha ${trim(alpha, 3)} lowered to ${trim(value.alpha, 3)} so text over it on surface reaches ${wanted}:1`,
+    achieved,
+    reached,
+    message,
   });
   return value;
 }
 
 /** Every colour role of one theme, in the order the top of this file lists.
- * The roles carry their own name so a clamp note can say what bound them. */
-function deriveThemeRoles(theme, p, ladder, clamps) {
+ * The roles carry their own name so a clamp note can say what bound them.
+ * `seedOf(role, roles)` gives the lightness a chromatic role starts from,
+ * with the theme's surfaces already in `roles`; polarity decides it. */
+function deriveThemeRoles(theme, p, ladder, clamps, seedOf) {
   const direction = theme === "light" ? "down" : "up";
   const named = (role, value) => ({ ...value, role });
   const roles = {};
@@ -568,21 +622,26 @@ function deriveThemeRoles(theme, p, ladder, clamps) {
     if (role !== "border-strong") roles[role] = named(role, ladder[step]);
   }
 
-  const fromRung = (role, step) => {
+  const fromRung = (role, step, chroma = ladder[step].chroma) => {
     const rung = ladder[step];
     return named(
       role,
-      deriveRole({ theme, role, seed: rung.lightness, chroma: rung.chroma, hue: rung.hue, direction, roles, highContrast: p.highContrast, clamps }),
+      deriveRole({ theme, role, seed: rung.lightness, chroma, hue: rung.hue, direction, roles, highContrast: p.highContrast, clamps }),
     );
   };
-  for (const [role, step] of Object.entries(NEUTRAL_ROLE_STEPS[theme])) roles[role] = fromRung(role, step);
+  // Ink is at least as tinted as the paper it is printed on: text at a
+  // lower chroma than a tinted page reads as grey ink on coloured paper. On
+  // white paper this asks for nothing, so Stoa's own text keeps its rung.
+  const paperChroma = ladder["0"].chroma;
+  for (const [role, step] of Object.entries(NEUTRAL_ROLE_STEPS[theme])) {
+    roles[role] = fromRung(role, step, Math.max(ladder[step].chroma, paperChroma));
+  }
   roles["border-strong"] = fromRung("border-strong", steps["border-strong"]);
 
-  const seedOf = (role) => p[role].lightness[theme] ?? ROLE_SEEDS[role][theme];
-  for (const role of ["accent", "up", "down", "warning"]) {
+  for (const role of CHROMATIC_ROLES) {
     roles[role] = named(
       role,
-      deriveRole({ theme, role, seed: seedOf(role), chroma: p[role].chroma, hue: p[role].hue, direction, roles, highContrast: p.highContrast, clamps }),
+      deriveRole({ theme, role, seed: seedOf(role, roles), chroma: p[role].chroma, hue: p[role].hue, direction, roles, highContrast: p.highContrast, clamps }),
     );
   }
   // Focus is the accent hue and chroma at its own starting lightness: it is
@@ -735,6 +794,24 @@ function paletteTokens(light, dark, theme) {
   };
 }
 
+/** The roles whose hue and chroma are parameters and whose lightness is
+ * solved. Focus borrows the accent's and is not one of them. */
+const CHROMATIC_ROLES = ["accent", "up", "down", "warning"];
+
+/** Which themes a polarity authors. The others are generated from the
+ * authored one. */
+function authoredThemes(polarity) {
+  return polarity === "both" ? THEMES : [polarity];
+}
+
+/** Where a role starts in a theme the parameters do not author: the
+ * authored theme's final lightness, mirrored across the two themes'
+ * surfaces, so the role keeps the lightness distance from its page it had
+ * in the theme that was designed. The contrast rules still run on it. */
+function mirroredSeed(source, roles, role) {
+  return clamp01(roles.surface.lightness + source.surface.lightness - source[role].lightness);
+}
+
 const SEMANTIC_ROLES = [
   "bg",
   "surface",
@@ -779,11 +856,22 @@ const SEMANTIC_ROLES = [
 export function deriveTokens(parameters) {
   const p = normalizeParameters(parameters);
   const hue = p.neutral.source === "accent" ? p.accent.hue : p.neutral.hue;
-  const ladder = buildLadder({ ...p.neutral, hue }, p.contrast.multiplier);
+  const ladder = buildLadder({ ...p.neutral, hue }, ladderMultiplier(p));
 
+  // The authored themes first, each from its own starting lightness (with
+  // "both", dark is tuned separately from light); then any theme the
+  // polarity leaves out, generated from the authored one.
   const clamps = [];
   const derived = {};
-  for (const theme of THEMES) derived[theme] = deriveThemeRoles(theme, p, ladder, clamps);
+  const authored = authoredThemes(p.polarity);
+  for (const theme of authored) {
+    derived[theme] = deriveThemeRoles(theme, p, ladder, clamps, (role) => p[role].lightness[theme] ?? ROLE_SEEDS[role][theme]);
+  }
+  for (const theme of THEMES) {
+    if (authored.includes(theme)) continue;
+    const source = derived[authored[0]].roles;
+    derived[theme] = deriveThemeRoles(theme, p, ladder, clamps, (role, roles) => mirroredSeed(source, roles, role));
+  }
 
   const densities = deriveDensities(p.density, clamps);
   const shape = shapeTokens(p.corner);
