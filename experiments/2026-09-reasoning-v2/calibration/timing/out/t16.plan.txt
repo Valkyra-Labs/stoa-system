@@ -1,0 +1,5 @@
+This screen serves as a morning portfolio review, allowing a manager to instantly identify significant price movements and understand the drivers behind them.
+
+The layout features a top **Header** with today's date, portfolio name, and a quick summary of total P&L. Below is a **Section** titled "Market Moves," containing a **DataTable** of the top 10 securities by percentage change. The table includes columns for Symbol, Price, Change %, and Delta.
+
+To the right of the table is a **Drawer** showing the top three movers. Inside the drawer is a **Card** with a **Trend** chart visualizing the stock's daily path and a **Metric** displaying the current valuation. Clicking a row in the table opens an **Inspector** modal overlay. This modal details the specific trade that caused the move, the news headline triggering it, and a **Status** indicator for the trade's execution health. A **FilterBar** sits above the table to sort by volatility or sector.

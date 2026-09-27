@@ -28,6 +28,12 @@ const OUTPUT = 'Now write the file: one TSX file with a single default-exported 
 
 // Model name -> GGUF blob that ollama already holds.
 function blob(model) {
+  const local = plan.gguf?.[model];
+  if (local) {
+    // A downloaded GGUF; its verified checksum sits next to it.
+    const sum = readFileSync(`${local.replace(/\.gguf$/, "")}.sha256`, "utf8").trim();
+    return { digest: `sha256:${sum}`, path: local };
+  }
   const [name, tag] = model.split(":");
   const m = JSON.parse(readFileSync(`${homedir()}/.ollama/models/manifests/registry.ollama.ai/library/${name}/${tag}`, "utf8"));
   const digest = m.layers.find((l) => l.mediaType.endsWith(".model")).digest;

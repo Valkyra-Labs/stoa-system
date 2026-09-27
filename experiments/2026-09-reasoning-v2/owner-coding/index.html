@@ -1,0 +1,448 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Blind coding</title>
+<style>
+:root {
+  --bg: #f6f5f2; --panel: #ffffff; --ink: #1c1b19; --muted: #6b6860; --faint: #a19d93;
+  --line: #d9d5cc; --line-strong: #b9b4a8; --wash: #efede7; --accent: #2a5bd7; --accent-wash: #e6ecfb;
+  --ok: #2f7d4f; --warn: #a15c00; --bad: #b3261e; --mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+  --sans: system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #151514; --panel: #1d1d1b; --ink: #ecebe6; --muted: #a3a097; --faint: #6f6c64;
+    --line: #34332f; --line-strong: #4a4843; --wash: #252422; --accent: #8fb0ff; --accent-wash: #1f2940;
+    --ok: #6cc592; --warn: #e2a24a; --bad: #f08a80; }
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; }
+body { background: var(--bg); color: var(--ink); font: 14px/1.45 var(--sans); }
+button, input, textarea { font: inherit; color: inherit; }
+.top { position: sticky; top: 0; z-index: 5; display: flex; gap: 12px; align-items: center; padding: 10px 16px;
+  background: var(--panel); border-bottom: 1px solid var(--line); }
+.top h1 { font-size: 15px; margin: 0 8px 0 0; font-weight: 600; }
+.top .grow { flex: 1; }
+.bar { height: 6px; width: 180px; background: var(--wash); border-radius: 3px; overflow: hidden; }
+.bar > i { display: block; height: 100%; background: var(--ok); }
+.btn { border: 1px solid var(--line-strong); background: var(--panel); border-radius: 6px; padding: 4px 10px; cursor: pointer; }
+.btn:hover { background: var(--wash); }
+.btn[aria-pressed="true"] { background: var(--accent-wash); border-color: var(--accent); }
+kbd { font: 11px var(--mono); border: 1px solid var(--line-strong); border-bottom-width: 2px; border-radius: 4px; padding: 0 4px; color: var(--muted); }
+.layout { display: grid; grid-template-columns: 220px minmax(0, 1fr) 380px; gap: 0; height: calc(100% - 49px); }
+.list { overflow: auto; border-right: 1px solid var(--line); background: var(--panel); }
+.list button { display: flex; width: 100%; gap: 8px; align-items: center; border: 0; background: none; padding: 6px 12px;
+  cursor: pointer; text-align: left; font: 12px var(--mono); }
+.list button:hover { background: var(--wash); }
+.list button[aria-current="true"] { background: var(--accent-wash); }
+.dot { width: 8px; height: 8px; border-radius: 50%; border: 1px solid var(--line-strong); flex: none; }
+.dot.done { background: var(--ok); border-color: var(--ok); }
+.stage { overflow: auto; padding: 16px 20px 40px; }
+.task { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 10px 14px; margin-bottom: 14px; }
+.task b { font-size: 12px; color: var(--muted); font-weight: 600; letter-spacing: .02em; }
+.banner { border: 1px solid var(--bad); color: var(--bad); border-radius: 8px; padding: 8px 12px; margin-bottom: 12px; }
+.form { overflow: auto; border-left: 1px solid var(--line); background: var(--panel); padding: 14px 16px 40px; }
+.form h2 { font-size: 12px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin: 18px 0 8px; }
+.form h2:first-child { margin-top: 0; }
+.choice { display: grid; grid-template-columns: 22px 1fr; gap: 2px 8px; padding: 6px 8px; border: 1px solid var(--line);
+  border-radius: 6px; margin-bottom: 6px; cursor: pointer; }
+.choice:hover { background: var(--wash); }
+.choice.on { border-color: var(--accent); background: var(--accent-wash); }
+.choice .k { font: 11px var(--mono); color: var(--faint); padding-top: 2px; }
+.choice .n { font-weight: 600; }
+.choice .d { grid-column: 2; font-size: 12px; color: var(--muted); }
+.yn { display: flex; gap: 8px; align-items: flex-start; padding: 6px 8px; border: 1px solid var(--line); border-radius: 6px; margin-bottom: 6px; cursor: pointer; }
+.yn:hover { background: var(--wash); }
+.yn.on { border-color: var(--ok); }
+.yn .box { width: 18px; height: 18px; border: 1px solid var(--line-strong); border-radius: 4px; flex: none; display: grid; place-items: center; font-size: 12px; }
+.yn.on .box { background: var(--ok); border-color: var(--ok); color: #fff; }
+.yn .k { font: 11px var(--mono); color: var(--faint); margin-left: auto; padding-left: 8px; }
+textarea { width: 100%; min-height: 64px; border: 1px solid var(--line-strong); border-radius: 6px; padding: 6px 8px; background: var(--bg); resize: vertical; }
+.saved { font-size: 12px; color: var(--muted); margin-top: 8px; min-height: 18px; }
+.nav { display: flex; gap: 8px; margin-top: 14px; }
+pre.code { font: 12px/1.5 var(--mono); background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 12px; overflow: auto; white-space: pre; }
+.guide { position: fixed; inset: 49px 0 0 auto; width: min(720px, 100%); background: var(--panel); border-left: 1px solid var(--line);
+  overflow: auto; padding: 16px 24px 40px; z-index: 6; box-shadow: -8px 0 24px rgba(0,0,0,.12); font: 13px/1.55 var(--sans); }
+.guide h1 { font-size: 18px; } .guide h2 { font-size: 15px; margin-top: 20px; }
+.guide table { border-collapse: collapse; font-size: 12px; margin: 8px 0; }
+.guide th, .guide td { border: 1px solid var(--line); padding: 4px 6px; vertical-align: top; text-align: left; }
+.guide code { font: 12px var(--mono); background: var(--wash); padding: 0 3px; border-radius: 3px; }
+.guide li { margin: 2px 0; }
+.hidden { display: none !important; }
+@media (max-width: 1000px) {
+  .layout { grid-template-columns: 1fr; height: auto; }
+  .list { display: flex; overflow-x: auto; border-right: 0; border-bottom: 1px solid var(--line); }
+  .list button { width: auto; white-space: nowrap; }
+  .form { border-left: 0; border-top: 1px solid var(--line); }
+  .top .bar { display: none; }
+}
+
+/* Wireframe */
+.wf { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 12px; }
+.w { position: relative; border: 1px solid var(--line-strong); border-radius: 6px; padding: 18px 8px 8px; margin: 6px 0; min-width: 0; }
+.w > .tag { position: absolute; top: 2px; left: 6px; font: 10px var(--mono); color: var(--faint); white-space: nowrap; overflow: hidden; max-width: calc(100% - 12px); text-overflow: ellipsis; }
+.w.plain { border-style: dotted; border-color: var(--line); }
+.w.page { border-width: 2px; }
+.w.pattern { border-color: var(--accent); }
+.w.pattern > .tag { color: var(--accent); font-weight: 600; }
+.w.slot { border-style: dashed; border-color: var(--line); background: transparent; }
+.w.drawer { border-style: dashed; border-width: 2px; }
+.ttl { font-weight: 600; margin-bottom: 4px; }
+.sub { color: var(--muted); font-size: 12px; }
+.row { display: flex; flex-wrap: wrap; gap: 8px; align-items: stretch; }
+.row > * { flex: 1 1 140px; margin: 0; }
+.grid-side { display: grid; grid-template-columns: 180px minmax(0, 1fr); gap: 8px; }
+.pat { display: grid; gap: 8px; }
+.pat.explorer { grid-template-columns: 2fr 1fr; grid-template-areas: "toolbar toolbar" "table detail"; }
+.pat.queue { grid-template-columns: 1fr 2fr 1fr; grid-template-areas: "items current decision"; }
+.pat.inspector { grid-template-columns: 1fr 1fr; grid-template-areas: "primary primary" "context history" "actions actions"; }
+.pat.compare { grid-template-columns: 1fr; }
+.pat.monitor { grid-template-columns: 1fr; }
+.pat.dashboard { grid-template-columns: 1fr; }
+.metric { background: var(--wash); border-radius: 6px; padding: 18px 8px 6px; }
+.metric .v { font: 600 16px var(--mono); }
+.metric .l { font-size: 11px; color: var(--muted); }
+.pill { display: inline-block; font-size: 11px; border: 1px solid var(--line-strong); border-radius: 999px; padding: 0 8px; margin: 2px 4px 2px 0; }
+.btnw { display: inline-block; font-size: 12px; border: 1px solid var(--ink); border-radius: 5px; padding: 1px 8px; margin: 2px 4px 2px 0; }
+.btnw.primary { background: var(--ink); color: var(--panel); }
+.chip { display: inline-block; font-size: 11px; background: var(--wash); border-radius: 4px; padding: 1px 6px; margin: 2px 4px 2px 0; }
+.badge { display: inline-block; font: 10px var(--mono); color: var(--warn); border: 1px solid var(--warn); border-radius: 3px; padding: 0 4px; margin-left: 6px; }
+table.t { width: 100%; border-collapse: collapse; font-size: 12px; table-layout: fixed; }
+table.t th { text-align: left; font-weight: 600; border-bottom: 1px solid var(--line-strong); padding: 3px 4px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+table.t td { border-bottom: 1px solid var(--line); padding: 3px 4px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+table.t td i { display: block; height: 7px; background: var(--wash); border-radius: 3px; }
+.more { font-size: 11px; color: var(--faint); }
+.txt { font-size: 12px; color: var(--muted); margin: 2px 0; }
+.h { font-weight: 600; margin: 4px 0; }
+.tabs { display: flex; gap: 2px; border-bottom: 1px solid var(--line-strong); margin-bottom: 6px; }
+.tabs span { font-size: 12px; padding: 2px 8px; border: 1px solid var(--line); border-bottom: 0; border-radius: 4px 4px 0 0; }
+.tabs span:first-child { background: var(--wash); font-weight: 600; }
+svg.ch { width: 100%; height: 56px; display: block; }
+</style>
+</head>
+<body>
+<div class="top">
+  <h1>Blind coding</h1>
+  <span id="count" class="sub"></span>
+  <div class="bar"><i id="barfill" style="width:0"></i></div>
+  <span class="grow"></span>
+  <button class="btn" id="viewBtn" aria-pressed="false" title="Toggle code view (C)">Code <kbd>C</kbd></button>
+  <button class="btn" id="guideBtn" aria-pressed="false" title="Coding guide (G)">Guide <kbd>G</kbd></button>
+</div>
+<div class="layout">
+  <nav class="list" id="list" aria-label="Files"></nav>
+  <main class="stage" id="stage"></main>
+  <aside class="form" id="form"></aside>
+</div>
+<div class="guide hidden" id="guide"></div>
+<script>
+const ARCH = [
+  ["dashboard", "independent summaries for orientation; nothing is selected or worked on"],
+  ["explorer", "a collection to scan and narrow, with the selected item's detail beside it"],
+  ["queue", "items taken one at a time to a decision, with progress"],
+  ["inspector", "one object in depth: data, context, history, actions"],
+  ["comparison", "two or more objects on the same measures, differences marked"],
+  ["report", "stacked sections read top to bottom; no selection, no per-item action"],
+  ["other", "none of these, or empty or broken; say why in the note"],
+];
+const PATTERNS = {
+  Explorer: ["explorer", ["toolbar", "table", "detail"]],
+  ReviewQueue: ["queue", ["items", "current", "decision"]],
+  Inspector: ["inspector", ["primary", "context", "history", "actions"]],
+  Compare: ["compare", ["entities", "metrics", "evidence"]],
+  Monitor: ["monitor", ["signals", "exceptions"]],
+  Dashboard: ["dashboard", ["metrics", "charts", "table"]],
+};
+let data, answers = {}, idx = 0, view = "wire";
+
+const el = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; };
+const pv = (n, k) => { const p = n.p?.[k]; if (!p) return null; if (p.v != null && p.v !== "…" && p.v !== "fn" && p.v !== "{…}") return p.v; return null; };
+const plabels = (n, k) => n.p?.[k]?.labels ?? [];
+const parr = (n, k) => n.p?.[k]?.arr;
+
+function box(n, cls, extraTag) {
+  const w = el("div", "w " + (cls || ""));
+  w.append(el("span", "tag", n.t + (extraTag ? " · " + extraTag : "")));
+  return w;
+}
+function titleOf(n) { return pv(n, "title") ?? pv(n, "label") ?? pv(n, "name"); }
+function kids(n) { return (n.c ?? []).filter((c) => c.t !== "@slot" && c.t !== "@items"); }
+function slot(n, name) { return (n.c ?? []).find((c) => c.t === "@slot" && c.name === name); }
+function slotsAll(n) { return (n.c ?? []).filter((c) => c.t === "@slot"); }
+function itemsOf(n) { return (n.c ?? []).filter((c) => c.t === "@items"); }
+
+function isMetricish(n) { return n && (n.t === "Metric" || (n.t === "Card" && kids(n).some((c) => c.t === "Metric"))); }
+function renderChildren(list, into) {
+  // Consecutive metric tiles render in a row, as a page would show them.
+  let run = null;
+  const expanded = [];
+  for (const c of list) {
+    if (c.rep) { const k = Math.min(c.repCount ?? 3, 8); for (let i = 0; i < k; i++) expanded.push({ ...c, rep: false, repeated: i === 0 ? (c.repCount ?? "n") : null }); }
+    else expanded.push(c);
+  }
+  for (const c of expanded) {
+    if (isMetricish(c)) { if (!run) { run = el("div", "row"); into.append(run); } run.append(render(c)); }
+    else { run = null; into.append(render(c)); }
+  }
+}
+
+function render(n) {
+  if (!n) return el("div", "txt", "(nothing)");
+  if (n.t === "#text") return el("div", "txt", n.v);
+  if (n.t === "@slot") { const w = el("div", "w slot"); w.append(el("span", "tag", n.name)); renderChildren(n.c ?? [], w); return w; }
+  if (n.t === "@items") {
+    const w = el("div", "w slot"); w.append(el("span", "tag", n.name + " · " + n.items.length + " items"));
+    for (const it of n.items.slice(0, 6)) { if (it.labels.length) w.append(el("div", "h", it.labels[0])); for (const j of it.jsx) w.append(render(j)); }
+    return w;
+  }
+  const rep = n.repeated ? ` × ${n.repeated}` : "";
+  const t = n.t;
+  const title = titleOf(n);
+  let w;
+  switch (t) {
+    case "Page": {
+      w = box(n, "page", rep); if (title) w.append(el("div", "ttl", title));
+      const ks = kids(n);
+      const side = ks.find((c) => ["Sidebar", "aside", "nav"].includes(c.t));
+      if (side) { const g = el("div", "grid-side"); const a = el("div"); a.append(render(side)); const b = el("div"); renderChildren(ks.filter((c) => c !== side), b); g.append(a, b); w.append(g); }
+      else renderChildren(ks, w);
+      for (const s of slotsAll(n)) w.append(render(s));
+      return w;
+    }
+    case "Header": {
+      w = box(n, "", rep);
+      if (title) w.append(el("div", "ttl", title));
+      const sub = pv(n, "subtitle"); if (sub) w.append(el("div", "sub", sub));
+      for (const s of slotsAll(n)) w.append(render(s));
+      renderChildren(kids(n), w); return w;
+    }
+    case "Metric": {
+      w = el("div", "w metric"); w.append(el("span", "tag", "Metric" + rep));
+      w.append(el("div", "l", pv(n, "label") ?? "label"));
+      w.append(el("div", "v", (pv(n, "value") ?? "(value)") + (pv(n, "unit") ? " " + pv(n, "unit") : "")));
+      if (n.p?.delta) w.append(el("div", "sub", "Δ " + (pv(n, "delta") ?? "change")));
+      for (const s of slotsAll(n)) w.append(render(s));
+      return w;
+    }
+    case "Delta": { w = el("span", "chip", "Δ " + (pv(n, "value") ?? "±x") + (n.p?.basis ? " vs " + (pv(n, "basis") ?? "basis") : " (no basis)") + rep); return w; }
+    case "Trend": return el("span", "chip", "trend line" + rep);
+    case "Status": return el("span", "pill", (pv(n, "label") ?? "status") + (pv(n, "tone") ? " · " + pv(n, "tone") : "") + rep);
+    case "Button": return el("span", "btnw" + (pv(n, "variant") === "primary" ? " primary" : ""), (pv(n, "label") ?? "button") + rep);
+    case "Chart": {
+      w = box(n, "", (pv(n, "type") ?? "chart") + rep);
+      w.insertAdjacentHTML("beforeend", '<svg class="ch" viewBox="0 0 200 50" preserveAspectRatio="none"><polyline fill="none" stroke="currentColor" stroke-opacity=".45" stroke-width="1.5" points="0,40 30,32 60,36 90,20 120,26 150,12 200,18"/></svg>');
+      return w;
+    }
+    case "DataTable": {
+      const flags = ["selectable", "onRowSelect", "stickyFirstColumn"].filter((f) => n.p?.[f]);
+      w = box(n, "", flags.join(" · ") + rep);
+      if (n.p?.rows?.derived) w.append(el("span", "badge", "rows " + n.p.rows.derived));
+      const cols = plabels(n, "columns"); const nc = Math.max(cols.length, parr(n, "columns") ?? 3);
+      const rows = plabels(n, "rows"); const nr = parr(n, "rows") ?? 4;
+      const tb = el("table", "t"); const hr = el("tr");
+      for (let i = 0; i < Math.min(nc, 7); i++) hr.append(el("th", "", cols[i] ?? "col " + (i + 1)));
+      tb.append(hr);
+      for (let r = 0; r < Math.min(nr, 5); r++) { const tr = el("tr"); for (let i = 0; i < Math.min(nc, 7); i++) { const td = el("td"); if (i === 0 && rows[r]) td.textContent = rows[r]; else td.append(el("i")); tr.append(td); } tb.append(tr); }
+      w.append(tb); if (nr > 5) w.append(el("div", "more", `${nr} rows`));
+      for (const s of slotsAll(n)) if (s.c?.length) w.append(render(s));
+      return w;
+    }
+    case "Comparison": {
+      w = box(n, "", rep);
+      const ents = plabels(n, "entities"), mets = plabels(n, "metrics");
+      const tb = el("table", "t"); const hr = el("tr"); hr.append(el("th", "", ""));
+      const ne = Math.max(ents.length, parr(n, "entities") ?? 2);
+      for (let i = 0; i < Math.min(ne, 5); i++) hr.append(el("th", "", ents[i] ?? "entity " + (i + 1)));
+      tb.append(hr);
+      const nm = Math.max(mets.length, parr(n, "metrics") ?? 3);
+      for (let r = 0; r < Math.min(nm, 6); r++) { const tr = el("tr"); tr.append(el("td", "", mets[r] ?? "measure")); for (let i = 0; i < Math.min(ne, 5); i++) { const td = el("td"); td.append(el("i")); tr.append(td); } tb.append(tr); }
+      w.append(tb); return w;
+    }
+    case "Timeline": case "AuditLog": {
+      const key = t === "Timeline" ? "events" : "entries";
+      w = box(n, "", (parr(n, key) ?? "") + " " + key + rep);
+      for (const l of plabels(n, key).slice(0, 4)) w.append(el("div", "txt", "• " + l));
+      if (!plabels(n, key).length) for (let i = 0; i < Math.min(parr(n, key) ?? 3, 3); i++) w.append(el("div", "txt", "• event"));
+      return w;
+    }
+    case "FilterBar": case "SavedViews": {
+      const key = t === "FilterBar" ? "filters" : "views";
+      w = box(n, "", rep);
+      const ls = plabels(n, key); for (const l of (ls.length ? ls : Array(Math.min(parr(n, key) ?? 2, 5)).fill(key.slice(0, -1)))) w.append(el("span", "chip", l));
+      return w;
+    }
+    case "BulkActions": { w = box(n, "", rep); const ls = plabels(n, "actions"); for (const l of (ls.length ? ls : ["action"])) w.append(el("span", "btnw", l)); return w; }
+    case "Tabs": {
+      w = box(n, "", rep);
+      const it = itemsOf(n)[0];
+      const labels = plabels(n, "items");
+      const strip = el("div", "tabs"); for (const l of (labels.length ? labels : ["tab"])) strip.append(el("span", "", l)); w.append(strip);
+      if (it && it.items[0]) for (const j of it.items[0].jsx) w.append(render(j));
+      if (it && it.items.length > 1) w.append(el("div", "more", `other tabs: ${it.items.length - 1} (content not shown until selected)`));
+      return w;
+    }
+    case "Drawer": { w = box(n, "drawer", (n.p?.open ? "open: " + (pv(n, "open") ?? "on condition") : "") + rep); if (title) w.append(el("div", "ttl", title)); renderChildren(kids(n), w); return w; }
+    case "EmptyData": case "PartialData": case "StaleData": case "ErrorData": { w = el("span", "chip", t + (pv(n, "since") ? " since " + pv(n, "since") : "") + rep); return w; }
+    case "h1": case "h2": case "h3": { w = el("div", "h"); w.textContent = kids(n).map((c) => c.v ?? "").join(" ") || t; return w; }
+    case "p": { w = el("div", "txt"); w.textContent = kids(n).map((c) => c.v ?? "…").join(" "); return w; }
+  }
+  if (PATTERNS[t]) {
+    const [cls, slots] = PATTERNS[t];
+    w = box(n, "pattern", rep);
+    const g = el("div", "pat " + cls);
+    for (const s of slots) { const sl = slot(n, s); const cell = el("div", "w slot"); cell.style.gridArea = s; cell.append(el("span", "tag", s)); if (sl) renderChildren(sl.c ?? [], cell); else { const p = n.p?.[s]; cell.append(el("div", "more", p ? (p.arr != null ? `${p.arr} items (data)` : "data") : "empty")); } g.append(cell); }
+    w.append(g);
+    for (const s of slotsAll(n)) if (!slots.includes(s.name)) w.append(render(s));
+    renderChildren(kids(n), w);
+    return w;
+  }
+  if (["ul", "ol", "li", "a", "span", "strong", "em", "label"].includes(t)) {
+    // Inline and list elements: text only, no frame.
+    const flat = (m) => m.t === "#text" ? [m.v] : (m.c ?? []).flatMap(flat);
+    const items = t === "ul" || t === "ol" ? kids(n) : [n];
+    if (items.every((k) => !(k.c ?? []).some((c) => !["#text", "a", "span", "strong", "em", "li", "label"].includes(c.t)))) {
+      w = el("div", "txt"); w.textContent = items.map((k) => (t === "ul" || t === "ol" ? "• " : "") + flat(k).join(" ")).join("   "); return w;
+    }
+  }
+  // Section, Card, Sidebar, plain elements and anything unknown.
+  const plain = ["div", "section", "main", "header", "aside", "nav", "ul", "li", "a", "span", "footer"].includes(t);
+  w = box(n, plain ? "plain" : "", rep);
+  if (title && !plain) w.append(el("div", "ttl", title));
+  for (const s of slotsAll(n)) w.append(render(s));
+  for (const s of itemsOf(n)) w.append(render(s));
+  const ks = kids(n);
+  const side = ks.find((c) => ["Sidebar", "aside", "nav"].includes(c.t));
+  if (side && ks.length > 1 && !["Sidebar", "aside", "nav"].includes(t)) {
+    const g = el("div", "grid-side"); const a = el("div"); a.append(render(side)); const b = el("div"); renderChildren(ks.filter((c) => c !== side), b); g.append(a, b); w.append(g);
+  } else renderChildren(ks, w);
+  return w;
+}
+
+function md(src) {
+  const esc = (x) => x.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  const inline = (x) => esc(x).replace(/`([^`]+)`/g, "<code>$1</code>").replace(/\*\*([^*]+)\*\*/g, "<b>$1</b>");
+  const lines = src.split("\n"); let html = "", i = 0;
+  while (i < lines.length) {
+    const l = lines[i];
+    if (/^#{1,3} /.test(l)) { const n = l.match(/^#+/)[0].length; html += `<h${n}>${inline(l.slice(n + 1))}</h${n}>`; i++; continue; }
+    if (l.startsWith("|")) {
+      const rows = []; while (i < lines.length && lines[i].startsWith("|")) rows.push(lines[i++]);
+      const cells = (r) => r.slice(1, -1).split("|").map((c) => c.trim());
+      html += "<table><tr>" + cells(rows[0]).map((c) => `<th>${inline(c)}</th>`).join("") + "</tr>";
+      for (const r of rows.slice(2)) html += "<tr>" + cells(r).map((c) => `<td>${inline(c)}</td>`).join("") + "</tr>";
+      html += "</table>"; continue;
+    }
+    if (/^(\d+\.|-) /.test(l)) {
+      const ordered = /^\d/.test(l); html += ordered ? "<ol>" : "<ul>";
+      while (i < lines.length && (/^(\d+\.|-) /.test(lines[i]) || /^ {2,}\S/.test(lines[i]))) {
+        let item = lines[i++].replace(/^(\d+\.|-) /, "");
+        while (i < lines.length && /^ {2,}\S/.test(lines[i]) && !/^ *(\d+\.|-) /.test(lines[i])) item += " " + lines[i++].trim();
+        html += `<li>${inline(item)}</li>`;
+      }
+      html += ordered ? "</ol>" : "</ul>"; continue;
+    }
+    if (!l.trim()) { i++; continue; }
+    let para = l; i++;
+    while (i < lines.length && lines[i].trim() && !/^(#|\||\d+\. |- )/.test(lines[i])) para += " " + lines[i++];
+    html += `<p>${inline(para)}</p>`;
+  }
+  return html;
+}
+
+function current() { return data.items[idx]; }
+function answerOf(id) { return answers[id] ?? { archetype: null, kpi_row: 0, fit: [0, 0, 0], invalid: 0, note: "" }; }
+function isDone(id) { const a = answers[id]; return !!(a && a.archetype); }
+
+function drawList() {
+  const list = document.getElementById("list"); list.textContent = "";
+  data.items.forEach((it, i) => {
+    const b = el("button"); b.setAttribute("aria-current", String(i === idx));
+    const d = el("span", "dot" + (isDone(it.id) ? " done" : "")); b.append(d, el("span", "", `${String(i + 1).padStart(2, "0")}  ${it.id}  ${it.task}`));
+    b.onclick = () => go(i); list.append(b);
+  });
+  const done = data.items.filter((it) => isDone(it.id)).length;
+  document.getElementById("count").textContent = `${done} / ${data.items.length} coded`;
+  document.getElementById("barfill").style.width = (100 * done / data.items.length) + "%";
+}
+
+function drawStage() {
+  const it = current(); const st = document.getElementById("stage"); st.textContent = "";
+  const task = el("div", "task"); task.append(el("b", "", `${it.id} · task ${it.task}`), el("div", "", it.prompt)); st.append(task);
+  if (!it.parses) st.append(el("div", "banner", "This file does not parse. It is coded invalid automatically (archetype other, all items 0); add a note if useful."));
+  if (view === "code" || !it.tree) { st.append(el("pre", "code", it.code)); }
+  else { const wf = el("div", "wf"); wf.append(render(it.tree)); st.append(wf); }
+  st.scrollTop = 0;
+}
+
+function drawForm() {
+  const it = current(); const a = answerOf(it.id); const f = document.getElementById("form"); f.textContent = "";
+  f.append(el("h2", "", "Archetype"));
+  ARCH.forEach(([name, desc], i) => {
+    const c = el("div", "choice" + (a.archetype === name ? " on" : "")); c.setAttribute("role", "radio"); c.setAttribute("aria-checked", String(a.archetype === name)); c.tabIndex = 0;
+    c.append(el("span", "k", String(i + 1)), el("span", "n", name), el("span", "d", desc));
+    c.onclick = () => set({ archetype: name }); f.append(c);
+  });
+  f.append(el("h2", "", "KPI row"));
+  f.append(yn("Opens with 3+ summary numbers about the whole set, before the main working content", a.kpi_row, "K", () => set({ kpi_row: a.kpi_row ? 0 : 1 })));
+  f.append(el("h2", "", "Task fit"));
+  it.fit.forEach((txt, i) => f.append(yn(txt, a.fit[i], ["A", "S", "D"][i], () => { const fit = [...a.fit]; fit[i] = fit[i] ? 0 : 1; set({ fit }); })));
+  f.append(el("h2", "", "Note"));
+  const ta = el("textarea"); ta.value = a.note ?? ""; ta.placeholder = "One sentence on the main structure (N to focus, Esc to leave)";
+  ta.oninput = () => { clearTimeout(ta._t); ta._t = setTimeout(() => set({ note: ta.value }, false), 400); };
+  ta.onkeydown = (e) => { if (e.key === "Escape") ta.blur(); e.stopPropagation(); };
+  f.append(ta);
+  f.append(el("div", "saved", answers[it.id]?.saved ? "saved " + new Date(answers[it.id].saved).toLocaleTimeString() : "not saved yet"));
+  const nav = el("div", "nav");
+  const prev = el("button", "btn", "← Previous"); prev.onclick = () => go(idx - 1);
+  const next = el("button", "btn", "Next →"); next.onclick = () => go(idx + 1);
+  const nextOpen = el("button", "btn", "Next uncoded"); nextOpen.onclick = () => { const j = data.items.findIndex((x, k) => k > idx && !isDone(x.id)); go(j >= 0 ? j : data.items.findIndex((x) => !isDone(x.id))); };
+  nav.append(prev, next, nextOpen); f.append(nav);
+  f.append(el("div", "saved", "Keys: 1-7 archetype · K kpi · A S D fit · N note · ← → move · C code · G guide"));
+}
+function yn(text, on, key, fn) {
+  const r = el("div", "yn" + (on ? " on" : "")); r.setAttribute("role", "checkbox"); r.setAttribute("aria-checked", String(!!on)); r.tabIndex = 0;
+  r.append(el("span", "box", on ? "✓" : ""), el("span", "", text), el("span", "k", key)); r.onclick = fn; return r;
+}
+
+async function set(patch, redraw = true) {
+  const it = current();
+  let a = { ...answerOf(it.id), ...patch };
+  if (!it.parses) a = { ...a, archetype: "other", kpi_row: 0, fit: [0, 0, 0], invalid: 1 };
+  answers[it.id] = a;
+  if (redraw) { drawForm(); drawList(); }
+  const r = await fetch("/answers", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ id: it.id, answer: a }) });
+  if (r.ok) { answers[it.id].saved = new Date().toISOString(); const s = document.querySelectorAll(".form .saved")[0]; if (s) s.textContent = "saved " + new Date().toLocaleTimeString(); drawList(); }
+  else { const s = document.querySelectorAll(".form .saved")[0]; if (s) s.textContent = "NOT SAVED: " + r.status; }
+}
+function go(i) { if (i < 0 || i >= data.items.length) return; idx = i; try { localStorage.setItem("coding-idx", String(i)); } catch {} drawList(); drawStage(); drawForm(); }
+
+document.addEventListener("keydown", (e) => {
+  if (e.target.tagName === "TEXTAREA" || e.metaKey || e.ctrlKey || e.altKey) return;
+  const k = e.key.toLowerCase();
+  if (k >= "1" && k <= "7") set({ archetype: ARCH[Number(k) - 1][0] });
+  else if (k === "k") set({ kpi_row: answerOf(current().id).kpi_row ? 0 : 1 });
+  else if (["a", "s", "d"].includes(k)) { const i = ["a", "s", "d"].indexOf(k); const fit = [...answerOf(current().id).fit]; fit[i] = fit[i] ? 0 : 1; set({ fit }); }
+  else if (k === "n") { e.preventDefault(); document.querySelector(".form textarea").focus(); }
+  else if (e.key === "ArrowRight") go(idx + 1);
+  else if (e.key === "ArrowLeft") go(idx - 1);
+  else if (k === "c") toggleView();
+  else if (k === "g") toggleGuide();
+  else return;
+  e.preventDefault();
+});
+function toggleView() { view = view === "wire" ? "code" : "wire"; document.getElementById("viewBtn").setAttribute("aria-pressed", String(view === "code")); drawStage(); }
+function toggleGuide() { const g = document.getElementById("guide"); g.classList.toggle("hidden"); document.getElementById("guideBtn").setAttribute("aria-pressed", String(!g.classList.contains("hidden"))); }
+document.getElementById("viewBtn").onclick = toggleView;
+document.getElementById("guideBtn").onclick = toggleGuide;
+
+(async () => {
+  data = await (await fetch("/data.json")).json();
+  answers = await (await fetch("/answers")).json();
+  document.getElementById("guide").innerHTML = md(data.guide);
+  let start = 0; try { start = Number(localStorage.getItem("coding-idx")) || 0; } catch {}
+  go(Math.min(start, data.items.length - 1));
+})();
+</script>
+</body>
+</html>

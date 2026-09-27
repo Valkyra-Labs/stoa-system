@@ -73,3 +73,16 @@ turn, then file turn. Files in `timing/out/`.
 - Reproducibility now holds on two models and both turns.
 - At these times 288 generations over three models of this size take
   roughly three hours; the third model's time is unknown until it runs.
+
+## Addendum: qwen3.5:4b and a blind-coder dry run (same day)
+
+- qwen3.5:4b from `bartowski/Qwen_Qwen3.5-4B-GGUF` (Q4_K_M, sha256
+  verified): loads in llama.cpp, 28 to 46 s per two-turn generation,
+  repeat run byte-identical in both turns, plans in plain text (no
+  thinking leaked with thinking off).
+- Blind coder dry run (Opus subagent, the pre-registered prompt and
+  guide) on the 10 two-turn timing files: valid JSON for all ids,
+  identical codes for the byte-identical repeats, t11 marked invalid.
+  Its seven judgement calls were adopted into the guide as fixed rules,
+  and invalid files are now marked mechanically. The codes themselves
+  are not used anywhere.
