@@ -47,9 +47,35 @@ export const Empty: StoryObj<typeof Ladder> = { args: { data: null } };
 
 const REDRAW_RUNS = 25;
 
+/** The measurement alternates `--stoa-color-surface` between these two, so
+ * every signal re-reads a value that really differs from the one before it.
+ * Both are concrete colours: setting the variable to
+ * `var(--stoa-color-surface)` would be a self-reference, which computes to
+ * an invalid value rather than to the token underneath, so half the runs
+ * would measure drawing with an invalid colour. */
+const PROBE_SURFACES = ["rgb(24, 24, 27)", "rgb(250, 250, 250)"];
+
 function median(samples: number[]): number {
   const sorted = [...samples].sort((a, b) => a - b);
   return sorted[Math.floor(sorted.length / 2)]!;
+}
+
+/** The smallest step this browser's `performance.now()` can report, from
+ * reading it until the value changes. A median at or below this step is
+ * indistinguishable from the clock itself, so the figure it produces is an
+ * upper bound rather than a measurement. */
+function timerResolution(): number {
+  let step = Infinity;
+  for (let i = 0; i < 1000; i++) {
+    const t0 = performance.now();
+    let t1 = t0;
+    // Bounded, so a clock that reads the same value forever cannot hang
+    // the page; a clock that never moved at all reports a step of 0, which
+    // is what such a clock measured every redraw as anyway.
+    for (let spin = 0; spin < 100_000 && t1 === t0; spin++) t1 = performance.now();
+    if (t1 > t0) step = Math.min(step, t1 - t0);
+  }
+  return Number.isFinite(step) ? step : 0;
 }
 
 /** Two previews on one page, each themed on its own wrapper rather than
@@ -58,9 +84,11 @@ function median(samples: number[]): number {
  * preview's own wrapper, dispatches `stoa:tokens` on it, and repeats that
  * `REDRAW_RUNS` times, reporting the median redraw cost (a no-op signal,
  * with no variable changed, would measure event-dispatch overhead rather
- * than the real re-read-and-redraw cost). If every run lands on the same
- * duration, the browser's timer resolution is coarser than one redraw, so
- * the figure is reported as an upper bound rather than a real measurement. */
+ * than the real re-read-and-redraw cost). It then puts the wrapper's own
+ * value back and signals once more, so measuring leaves the preview as it
+ * was. If the median is at or below the browser's timer resolution, the
+ * redraw is shorter than the clock can show, so the figure is reported as
+ * an upper bound rather than a measurement. */
 export const TwoThemes: StoryObj<typeof Ladder> = {
   render: (args) => {
     const light = useRef<HTMLDivElement>(null);
@@ -68,20 +96,32 @@ export const TwoThemes: StoryObj<typeof Ladder> = {
     const [lightCost, setLightCost] = useState<string | null>(null);
     const [darkCost, setDarkCost] = useState<string | null>(null);
 
-    const signal = (root: HTMLDivElement | null, report: (ms: string) => void) => {
+    const signal = (root: HTMLDivElement | null, report: (cost: string) => void) => {
       if (!root) return;
+      const prop = "--stoa-color-surface";
+      const original = root.style.getPropertyValue(prop);
+      const step = timerResolution();
       const samples: number[] = [];
-      for (let i = 0; i < REDRAW_RUNS; i++) {
-        // Alternate between two real tokens so the read after signalling
-        // sees an actual change, not a same-value no-op.
-        root.style.setProperty("--stoa-color-surface", i % 2 === 0 ? "var(--stoa-color-surface)" : "var(--stoa-color-border)");
-        const t0 = performance.now();
+      try {
+        for (let i = 0; i < REDRAW_RUNS; i++) {
+          root.style.setProperty(prop, PROBE_SURFACES[i % PROBE_SURFACES.length]!);
+          const t0 = performance.now();
+          signalTokensChanged(root);
+          samples.push(performance.now() - t0);
+        }
+      } finally {
+        // Put the wrapper back the way it was and signal once more, so the
+        // last run does not leave the preview drawn in a probe colour.
+        if (original) root.style.setProperty(prop, original);
+        else root.style.removeProperty(prop);
         signalTokensChanged(root);
-        samples.push(performance.now() - t0);
       }
       const m = median(samples);
-      const atFloor = Math.max(...samples) === Math.min(...samples);
-      report(atFloor ? `<= ${m.toFixed(2)} (timer resolution; upper bound)` : `${m.toFixed(2)} (median of ${REDRAW_RUNS})`);
+      report(
+        m <= step
+          ? `at most ${step.toFixed(3)} ms (median of ${REDRAW_RUNS} runs at or below this browser's timer step)`
+          : `${m.toFixed(3)} ms (median of ${REDRAW_RUNS} runs, timer step ${step.toFixed(3)} ms)`,
+      );
     };
 
     return (
@@ -89,12 +129,12 @@ export const TwoThemes: StoryObj<typeof Ladder> = {
         <div ref={light} data-theme="light" style={{ maxInlineSize: 320 }}>
           <Ladder {...args} label="Light preview" data={sampleBook(222.6, args.depth, 7)} />
           <button onClick={() => signal(light.current, setLightCost)}>Signal</button>
-          {lightCost && <p>Redraw took {lightCost} ms.</p>}
+          {lightCost && <p>Redraw cost: {lightCost}.</p>}
         </div>
         <div ref={dark} data-theme="dark" style={{ maxInlineSize: 320 }}>
           <Ladder {...args} label="Dark preview" data={sampleBook(222.6, args.depth, 11)} />
           <button onClick={() => signal(dark.current, setDarkCost)}>Signal</button>
-          {darkCost && <p>Redraw took {darkCost} ms.</p>}
+          {darkCost && <p>Redraw cost: {darkCost}.</p>}
         </div>
       </div>
     );

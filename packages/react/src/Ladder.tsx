@@ -1,6 +1,6 @@
 import { useEffect, useImperativeHandle, useRef, useState, type Ref } from "react";
 import { describeBook, ladderRows, parseBook, type Book } from "./book";
-import { fitCanvas, readCanvasTokens, useTokenSignal, type CanvasTokens } from "./tokens";
+import { fitCanvas, readCanvasTokens, useInvalidateOnTokensVersion, useTokenSignal, type CanvasTokens } from "./tokens";
 
 export type LadderHandle = {
   /** Draw a book in the flat engine form, without a React render. */
@@ -93,21 +93,21 @@ export function Ladder({ depth = 12, data, label, formatPrice = (p) => p.toFixed
 
   useImperativeHandle(ref, () => ({ draw: render }));
 
-  // Invalidate cached tokens as soon as `tokensVersion` changes, during
-  // render rather than in an effect, so the unconditional effect below
-  // (which runs on this same render whenever `data` is set) already reads
-  // fresh tokens. Without this, a `tokensVersion` bump with `data` also
-  // set drew twice: once with the still-cached, stale tokens from that
-  // effect, then again from `useTokenSignal`'s own redraw.
-  const [lastTokensVersion, setLastTokensVersion] = useState(tokensVersion);
-  if (tokensVersion !== lastTokensVersion) {
-    setLastTokensVersion(tokensVersion);
+  // Drop the cached tokens when `tokensVersion` changes, from an effect
+  // that runs before the one below (which draws on every render whenever
+  // `data` is set), so that draw reads fresh tokens. Without this, a
+  // `tokensVersion` bump with `data` also set drew twice: once with the
+  // still-cached, stale tokens from that effect, then again from
+  // `useTokenSignal`'s own redraw.
+  useInvalidateOnTokensVersion(tokensVersion, () => {
     tokens.current = null;
-  }
+  });
 
   useEffect(() => {
     if (data !== undefined) render(data);
   });
+  // The data effect above already redrew with fresh tokens when `data` is
+  // set, so the hook only owns the version path when it is not.
   useTokenSignal(canvas, data === undefined ? tokensVersion : undefined, () => {
     tokens.current = null;
     render(lastFlat.current);
