@@ -137,3 +137,15 @@ Checked against hand-coded fixtures by `analysis/check-fixtures.mjs`.
   delivered as a file the subagent reads once (its only read), instead
   of inline in the subagent call. The text is identical; the change
   only saves context in the orchestrating session.
+- 2026-09-27, during generation: one subagent (ggqjy) ran `mkdir` on the
+  output folder before writing; it read nothing. No other run used a
+  tool beyond reading its prompt and writing its file. Three launches
+  hit the concurrency limit and were started again later with the same
+  prompt; none had produced output.
+- 2026-09-27, after the metrics: the mechanical F1 counted a Metric strip
+  inside a detail pane as a KPI row (gip3g: the ReviewQueue sat inside a
+  Section, so its slots were not expanded). The primary result is
+  reported as coded. A blind manual check of F1, F3 and the archetype
+  is added as a secondary, labelled analysis; it does not replace the
+  primary decision.
+

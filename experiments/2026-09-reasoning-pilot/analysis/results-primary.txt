@@ -1,0 +1,47 @@
+{"order":0,"task":"T1","condition":"A","model":"sonnet","sample":2,"id":"gzphq","F1":1,"F2":0,"F3":1,"F4":5,"F5":"saved_views","F6":1,"F7":"baseline","F8":0.111,"F9":"Dashboard","F10":["header","header","metrics","chart","table"]}
+{"order":1,"task":"T2","condition":"C","model":"sonnet","sample":1,"id":"g1pab","F1":1,"F2":1,"F3":0,"F4":4,"F5":"saved_views","F6":1,"F7":"side_by_side","F8":0,"F9":"Monitor","F10":["header","header","filters","metrics"]}
+{"order":2,"task":"T1","condition":"C","model":"haiku","sample":2,"id":"g637k","F1":1,"F2":0,"F3":0,"F4":3,"F5":"none","F6":0,"F7":"none","F8":0.25,"F9":"none","F10":["header","header","metrics"]}
+{"order":3,"task":"T3","condition":"C","model":"haiku","sample":1,"id":"gs99a","F1":0,"F2":1,"F3":0,"F4":3,"F5":"inline","F6":0,"F7":"none","F8":0,"F9":"none","F10":["header","header","main"]}
+{"order":4,"task":"T1","condition":"B","model":"sonnet","sample":1,"id":"gnen4","F1":0,"F2":0,"F3":0,"F4":5,"F5":"filter_bar","F6":0,"F7":"side_by_side","F8":0,"F9":"ReviewQueue","F10":["header","header","comparison","table","filters"]}
+{"order":5,"task":"T2","condition":"C","model":"sonnet","sample":2,"id":"gu9m6","F1":1,"F2":0,"F3":0,"F4":7,"F5":"saved_views","F6":1,"F7":"delta","F8":0.308,"F9":"Monitor","F10":["header","header","metrics","Section","table","metrics","history"]}
+{"order":6,"task":"T1","condition":"B","model":"haiku","sample":2,"id":"ggkxo","F1":1,"F2":0,"F3":0,"F4":6,"F5":"inline","F6":0,"F7":"side_by_side","F8":0.429,"F9":"none","F10":["header","header","metrics","comparison","table","Section"]}
+{"order":7,"task":"T1","condition":"A","model":"haiku","sample":2,"id":"g7z2b","F1":1,"F2":0,"F3":0,"F4":4,"F5":"inline","F6":0,"F7":"none","F8":0,"F9":"none","F10":["header","header","metrics","table"]}
+{"order":8,"task":"T1","condition":"B","model":"sonnet","sample":2,"id":"ggqjy","F1":0,"F2":0,"F3":0,"F4":7,"F5":"saved_views","F6":1,"F7":"baseline","F8":0,"F9":"Explorer","F10":["header","header","metrics","table","filters","table","table"]}
+{"order":9,"task":"T1","condition":"C","model":"haiku","sample":1,"id":"gwfbm","F1":0,"F2":0,"F3":0,"F4":8,"F5":"none","F6":0,"F7":"none","F8":0.2,"F9":"none","F10":["header","header","Section","chart","table","table","table","Section"]}
+{"order":10,"task":"T3","condition":"C","model":"sonnet","sample":2,"id":"gip3g","F1":1,"F2":0,"F3":0,"F4":4,"F5":"saved_views","F6":1,"F7":"none","F8":0,"F9":"ReviewQueue","F10":["header","header","filters","metrics"]}
+{"order":11,"task":"T1","condition":"A","model":"haiku","sample":1,"id":"g06zr","F1":1,"F2":1,"F3":0,"F4":3,"F5":"inline","F6":0,"F7":"none","F8":0.167,"F9":"none","F10":["header","header","metrics"]}
+{"order":12,"task":"T3","condition":"B","model":"haiku","sample":1,"id":"gmrrx","F1":0,"F2":0,"F3":0,"F4":5,"F5":"inline","F6":0,"F7":"none","F8":0.667,"F9":"ReviewQueue","F10":["header","header","table","metrics","actions"]}
+{"order":13,"task":"T2","condition":"B","model":"haiku","sample":2,"id":"gyemq","F1":0,"F2":0,"F3":0,"F4":4,"F5":"filter_bar","F6":0,"F7":"none","F8":0,"F9":"none","F10":["header","header","filters","table"]}
+{"order":14,"task":"T1","condition":"C","model":"sonnet","sample":1,"id":"gtqbs","F1":1,"F2":0,"F3":0,"F4":4,"F5":"saved_views","F6":1,"F7":"delta","F8":0.5,"F9":"Dashboard","F10":["header","header","metrics","table"]}
+{"order":15,"task":"T2","condition":"A","model":"sonnet","sample":1,"id":"gurfy","F1":1,"F2":1,"F3":0,"F4":8,"F5":"saved_views","F6":1,"F7":"side_by_side","F8":0.9,"F9":"Monitor","F10":["header","filters","header","metrics","table","comparison","Section","detail"]}
+{"order":16,"task":"T2","condition":"C","model":"haiku","sample":1,"id":"gw0os","F1":0,"F2":0,"F3":0,"F4":6,"F5":"none","F6":0,"F7":"side_by_side","F8":0,"F9":"none","F10":["header","header","Section","comparison","chart","table"]}
+{"order":17,"task":"T3","condition":"A","model":"haiku","sample":1,"id":"gmf3s","F1":0,"F2":0,"F3":0,"F4":5,"F5":"filter_bar","F6":1,"F7":"none","F8":0.5,"F9":"Explorer","F10":["header","header","filters","table","detail"]}
+{"order":18,"task":"T2","condition":"B","model":"haiku","sample":1,"id":"gkyim","F1":0,"F2":1,"F3":0,"F4":3,"F5":"none","F6":1,"F7":"none","F8":0,"F9":"Inspector","F10":["header","header","table"]}
+{"order":19,"task":"T2","condition":"A","model":"sonnet","sample":2,"id":"g7zpf","F1":0,"F2":1,"F3":0,"F4":5,"F5":"saved_views","F6":1,"F7":"side_by_side","F8":0,"F9":"Dashboard","F10":["header","header","filters","metrics","comparison"]}
+{"order":20,"task":"T3","condition":"B","model":"sonnet","sample":1,"id":"goasc","F1":0,"F2":0,"F3":0,"F4":5,"F5":"saved_views","F6":0,"F7":"none","F8":0,"F9":"ReviewQueue","F10":["header","header","filters","filters","main"]}
+{"order":21,"task":"T2","condition":"C","model":"haiku","sample":2,"id":"g5gu0","F1":0,"F2":0,"F3":1,"F4":7,"F5":"none","F6":0,"F7":"delta","F8":0.25,"F9":"Dashboard","F10":["header","header","metrics","chart","table","table","Section"]}
+{"order":22,"task":"T3","condition":"B","model":"haiku","sample":2,"id":"g2buu","F1":0,"F2":0,"F3":0,"F4":4,"F5":"inline","F6":0,"F7":"delta","F8":0,"F9":"ReviewQueue","F10":["header","table","detail","actions"]}
+{"order":23,"task":"T3","condition":"B","model":"sonnet","sample":2,"id":"grqh0","F1":0,"F2":0,"F3":0,"F4":6,"F5":"filter_bar","F6":1,"F7":"baseline","F8":0.75,"F9":"ReviewQueue","F10":["header","header","filters","table","history","actions"]}
+{"order":24,"task":"T2","condition":"A","model":"haiku","sample":2,"id":"g7hve","F1":0,"F2":0,"F3":0,"F4":3,"F5":"none","F6":0,"F7":"baseline","F8":0.857,"F9":"none","F10":["header","header","metrics"]}
+{"order":25,"task":"T1","condition":"B","model":"haiku","sample":1,"id":"g2tk0","F1":1,"F2":0,"F3":1,"F4":7,"F5":"none","F6":0,"F7":"delta","F8":0.286,"F9":"none","F10":["header","header","metrics","chart","table","table","Section"]}
+{"order":26,"task":"T3","condition":"C","model":"sonnet","sample":1,"id":"gut2z","F1":1,"F2":0,"F3":0,"F4":6,"F5":"filter_bar","F6":1,"F7":"baseline","F8":0,"F9":"ReviewQueue","F10":["header","header","filters","metrics","detail","history"]}
+{"order":27,"task":"T2","condition":"A","model":"haiku","sample":1,"id":"ghzxb","F1":0,"F2":0,"F3":0,"F4":4,"F5":"filter_bar","F6":0,"F7":"none","F8":0.5,"F9":"Dashboard","F10":["header","header","chart","table"]}
+{"order":28,"task":"T2","condition":"B","model":"sonnet","sample":1,"id":"gun55","F1":0,"F2":0,"F3":0,"F4":5,"F5":"saved_views","F6":1,"F7":"side_by_side","F8":0,"F9":"Explorer","F10":["header","header","filters","table","comparison"]}
+{"order":29,"task":"T2","condition":"B","model":"sonnet","sample":2,"id":"g3pih","F1":0,"F2":0,"F3":0,"F4":5,"F5":"saved_views","F6":1,"F7":"baseline","F8":0,"F9":"Explorer","F10":["header","header","filters","table","history"]}
+{"order":30,"task":"T3","condition":"A","model":"sonnet","sample":2,"id":"gbrjo","F1":1,"F2":1,"F3":0,"F4":6,"F5":"saved_views","F6":1,"F7":"baseline","F8":0.2,"F9":"ReviewQueue","F10":["header","header","metrics","filters","detail","history"]}
+{"order":31,"task":"T1","condition":"C","model":"sonnet","sample":2,"id":"ginyt","F1":1,"F2":0,"F3":0,"F4":5,"F5":"filter_bar","F6":1,"F7":"baseline","F8":0.857,"F9":"none","F10":["header","header","metrics","table","table"]}
+{"order":32,"task":"T3","condition":"A","model":"haiku","sample":2,"id":"g1tqh","F1":1,"F2":1,"F3":0,"F4":3,"F5":"filter_bar","F6":1,"F7":"none","F8":1,"F9":"none","F10":["header","header","metrics"]}
+{"order":33,"task":"T3","condition":"C","model":"haiku","sample":2,"id":"gjr83","F1":0,"F2":0,"F3":0,"F4":3,"F5":"inline","F6":0,"F7":"none","F8":0.667,"F9":"none","F10":["header","header","metrics"]}
+{"order":34,"task":"T1","condition":"A","model":"sonnet","sample":1,"id":"g85pw","F1":1,"F2":0,"F3":1,"F4":7,"F5":"filter_bar","F6":1,"F7":"baseline","F8":0.778,"F9":"none","F10":["header","header","metrics","chart","chart","table","detail"]}
+{"order":35,"task":"T3","condition":"A","model":"sonnet","sample":1,"id":"gqyqb","F1":1,"F2":1,"F3":0,"F4":5,"F5":"saved_views","F6":1,"F7":"baseline","F8":0.8,"F9":"ReviewQueue","F10":["header","Sidebar","header","metrics","table"]}
+┌──────────┬───┬───────┬───────┬────────┬─────────┬──────┐
+│ (index)  │ n │ M1    │ M2    │ within │ between │ M3   │
+├──────────┼───┼───────┼───────┼────────┼─────────┼──────┤
+│ sonnet/A │ 6 │ 0.333 │ 1.063 │ 0.526  │ 0.559   │ null │
+│ sonnet/B │ 6 │ 0     │ 1.152 │ 0.376  │ 0.433   │ null │
+│ sonnet/C │ 6 │ 0     │ 1.252 │ 0.368  │ 0.461   │ null │
+│ haiku/A  │ 6 │ 0     │ 0.694 │ 0.45   │ 0.313   │ null │
+│ haiku/B  │ 6 │ 0.167 │ 1.985 │ 0.312  │ 0.619   │ null │
+│ haiku/C  │ 6 │ 0     │ 0.973 │ 0.552  │ 0.537   │ null │
+└──────────┴───┴───────┴───────┴────────┴─────────┴──────┘
+decision: NO SIGNAL
