@@ -1,5 +1,8 @@
 # Stage 3 measurement: observable features instead of archetypes
 
+PARKED on 2026-09-27 (see `../README.md`); calibration stopped after 1 of 20
+screens (`calibration/owner.json`, `calibration/claude.json`).
+
 DRAFT. Not pre-registered. It becomes part of a protocol only after the
 calibration below, one revision, and a freeze. Written 2026-09-27, after
 experiment v2 showed that a human expert cannot apply the categorical
