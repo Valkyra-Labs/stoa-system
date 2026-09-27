@@ -9,7 +9,7 @@
 // save never writes over an existing snapshot unless the request asks for
 // it, nor over the committed baseline at all.
 import { execFile } from "node:child_process";
-import { cp, mkdir, mkdtemp, readFile, rm, symlink, writeFile } from "node:fs/promises";
+import { cp, mkdir, mkdtemp, readdir, readFile, rm, symlink, writeFile } from "node:fs/promises";
 import { existsSync } from "node:fs";
 import type { IncomingMessage, ServerResponse } from "node:http";
 import { tmpdir } from "node:os";
@@ -167,7 +167,13 @@ async function buildInTemp(repoRoot: string, files: Record<string, string>) {
     for (const [name, text] of Object.entries(files)) {
       await writeFile(path.join(dir, "tokens", name), text);
     }
-    await cp(path.join(tokensPackage, "scripts"), path.join(dir, "scripts"), { recursive: true });
+    // Everything the package's scripts and tests read (scripts, sources,
+    // recorded violations, the manifest), except the token files under test,
+    // the build output and the installed dependencies.
+    for (const entry of await readdir(tokensPackage)) {
+      if (["tokens", "dist", "node_modules"].includes(entry)) continue;
+      await cp(path.join(tokensPackage, entry), path.join(dir, entry), { recursive: true });
+    }
     // style-dictionary and culori come from the real package rather than a
     // second install, so the build here is the build there.
     await symlink(path.join(tokensPackage, "node_modules"), path.join(dir, "node_modules"), "dir");
