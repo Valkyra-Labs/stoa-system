@@ -1,0 +1,260 @@
+/* The playground's own chrome. It uses Stoa's tokens from the document
+   root; the preview frames get their own values on their container, so
+   nothing here changes when a token is edited. */
+
+body {
+  margin: 0;
+  background: var(--stoa-color-bg);
+  color: var(--stoa-color-text);
+  font-family: var(--stoa-font-family-sans);
+  font-size: var(--stoa-font-size-sm);
+  line-height: var(--stoa-font-line-height-normal);
+}
+
+code {
+  font-family: var(--stoa-font-family-mono);
+  font-size: var(--stoa-font-size-2xs);
+}
+
+.pg-app {
+  display: grid;
+  grid-template-columns: 420px minmax(0, 1fr);
+  align-items: start;
+  gap: var(--stoa-space-4);
+  padding: var(--stoa-space-4);
+}
+
+.pg-side {
+  position: sticky;
+  inset-block-start: var(--stoa-space-4);
+  display: grid;
+  gap: var(--stoa-space-3);
+  max-block-size: calc(100vh - var(--stoa-space-8));
+  overflow-y: auto;
+  padding-inline-end: var(--stoa-space-2);
+}
+
+.pg-side__header h1 {
+  margin: 0;
+  font-size: var(--stoa-font-size-lg);
+}
+
+.pg-note {
+  margin: var(--stoa-space-1) 0 0;
+  color: var(--stoa-color-text-muted);
+  font-size: var(--stoa-font-size-2xs);
+}
+
+.pg-stack {
+  display: grid;
+  gap: var(--stoa-space-3);
+}
+
+.pg-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--stoa-space-2);
+}
+
+.pg-row--between {
+  justify-content: space-between;
+}
+
+.pg-groups {
+  display: grid;
+  gap: var(--stoa-space-4);
+}
+
+.pg-group {
+  display: grid;
+  gap: var(--stoa-space-2);
+}
+
+.pg-group__title {
+  margin: var(--stoa-space-3) 0 0;
+  font-size: var(--stoa-font-size-2xs);
+  font-weight: var(--stoa-font-weight-medium);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--stoa-color-text-muted);
+}
+
+.pg-token {
+  display: grid;
+  gap: var(--stoa-space-1);
+  padding-block-end: var(--stoa-space-2);
+  border-block-end: 1px solid var(--stoa-color-border);
+}
+
+.pg-token[data-overridden] {
+  border-inline-start: 2px solid var(--stoa-color-warning);
+  padding-inline-start: var(--stoa-space-2);
+}
+
+.pg-token__field {
+  display: grid;
+  grid-template-columns: 20px minmax(0, 1fr);
+  align-items: center;
+  gap: var(--stoa-space-2);
+}
+
+.pg-token__slider {
+  display: grid;
+  gap: var(--stoa-space-1);
+}
+
+.pg-token__label {
+  font-size: var(--stoa-font-size-xs);
+  color: var(--stoa-color-text-muted);
+}
+
+.pg-token__override {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--stoa-space-2);
+  font-size: var(--stoa-font-size-2xs);
+  color: var(--stoa-color-text-muted);
+}
+
+.pg-swatch {
+  inline-size: 20px;
+  block-size: 20px;
+  border: 1px solid var(--stoa-color-border-strong);
+  border-radius: var(--stoa-radius-sm);
+}
+
+.pg-overrides,
+.pg-verify {
+  display: grid;
+  gap: var(--stoa-space-2);
+}
+
+.pg-overrides__table code {
+  overflow-wrap: anywhere;
+}
+
+.pg-verify__results {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: var(--stoa-space-1) var(--stoa-space-3);
+  margin: 0;
+  font-size: var(--stoa-font-size-2xs);
+}
+
+.pg-verify__results dt {
+  color: var(--stoa-color-text-muted);
+}
+
+.pg-verify__results dd {
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--stoa-space-2);
+  align-items: baseline;
+}
+
+.pg-verify__commit,
+.pg-verify__error {
+  font-size: var(--stoa-font-size-2xs);
+}
+
+.pg-verify__error {
+  color: var(--stoa-color-down);
+}
+
+.pg-output {
+  margin: 0;
+  max-block-size: 220px;
+  overflow: auto;
+  padding: var(--stoa-space-2);
+  background: var(--stoa-color-surface-sunken);
+  border: 1px solid var(--stoa-color-border);
+  border-radius: var(--stoa-radius-sm);
+  font-family: var(--stoa-font-family-mono);
+  font-size: var(--stoa-font-size-2xs);
+  white-space: pre-wrap;
+}
+
+.pg-checks {
+  margin: 0;
+  padding-inline-start: var(--stoa-space-4);
+  font-size: var(--stoa-font-size-2xs);
+}
+
+/* Previews. The grid holds four frames at a size a real screen would use,
+   so the cost of a re-theme is the real cost. */
+.pg-frames {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(520px, 1fr));
+  gap: var(--stoa-space-3);
+}
+
+.pg-frame {
+  border: 1px solid var(--stoa-color-border);
+  border-radius: var(--stoa-radius-md);
+  overflow: hidden;
+  min-inline-size: 0;
+}
+
+.pg-frame__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--stoa-space-2);
+  padding: var(--stoa-space-1) var(--stoa-space-2);
+  background: var(--stoa-color-surface-sunken);
+  border-block-end: 1px solid var(--stoa-color-border);
+}
+
+.pg-frame__header h2 {
+  margin: 0;
+  font-size: var(--stoa-font-size-xs);
+  font-weight: var(--stoa-font-weight-medium);
+}
+
+.pg-frame__body {
+  padding: var(--stoa-space-2);
+  background: var(--stoa-color-bg);
+  color: var(--stoa-color-text);
+  font-family: var(--stoa-font-family-sans);
+  font-size: var(--stoa-density-font-size);
+}
+
+.pg-screen {
+  display: grid;
+  grid-template-columns: minmax(200px, 1fr) minmax(240px, 1.2fr);
+  gap: var(--stoa-space-2);
+  align-items: start;
+}
+
+.pg-screen__column {
+  display: grid;
+  gap: var(--stoa-space-2);
+  min-inline-size: 0;
+}
+
+.pg-form {
+  display: grid;
+  gap: var(--stoa-space-2);
+}
+
+.pg-summary {
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: start;
+  gap: var(--stoa-space-1) var(--stoa-space-3);
+  margin: 0;
+  font-family: var(--stoa-font-family-mono);
+  font-size: var(--stoa-font-size-2xs);
+}
+
+.pg-summary dt {
+  color: var(--stoa-color-text-muted);
+}
+
+.pg-summary dd {
+  margin: 0;
+  font-variant-numeric: tabular-nums;
+}

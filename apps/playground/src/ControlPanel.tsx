@@ -1,0 +1,136 @@
+// The editing side of the playground. Every control is a Stoa component:
+// the system's own slider, choice group and text field, so tuning the
+// tokens exercises the components the tokens are for.
+import { useState } from "react";
+import { Button, StatusBadge, Tabs, TextField, TimeSlider } from "@valkyra-labs/stoa-react";
+import type { EditableItem, EditableTab } from "./editable";
+import type { Overrides, ResolvedTokens } from "./tokenModel";
+
+export type ControlPanelProps = {
+  tabs: EditableTab[];
+  overrides: Overrides;
+  values: ResolvedTokens["values"];
+  onEdit: (id: string, value: string) => void;
+  onReset: (id: string) => void;
+};
+
+/** Whether the browser would accept this text as a colour. Guarded because
+ * `CSS.supports` is missing in the unit-test environment. */
+function isColor(value: string): boolean {
+  if (typeof CSS === "undefined" || typeof CSS.supports !== "function") return true;
+  return CSS.supports("color", value);
+}
+
+const sourceText = (value: string | number | (string | number)[]) =>
+  Array.isArray(value) ? value.join(", ") : String(value);
+
+export function ControlPanel({ tabs, overrides, values, onEdit, onReset }: ControlPanelProps) {
+  const [selected, setSelected] = useState(tabs[0]?.id);
+  return (
+    <Tabs
+      label="Token groups"
+      selected={selected}
+      onChange={setSelected}
+      items={tabs.map((tab) => ({
+        id: tab.id,
+        label: tab.label,
+        content: (
+          <div className="pg-groups">
+            {tab.groups.map((group) => (
+              <section key={group.id} className="pg-group" aria-label={group.label}>
+                <h3 className="pg-group__title">{group.label}</h3>
+                {group.items.map((item) => (
+                  <TokenControl
+                    key={item.entry.id}
+                    item={item}
+                    override={overrides[item.entry.id]}
+                    resolved={values[item.entry.id]}
+                    onEdit={onEdit}
+                    onReset={onReset}
+                  />
+                ))}
+              </section>
+            ))}
+          </div>
+        ),
+      }))}
+    />
+  );
+}
+
+function TokenControl({
+  item,
+  override,
+  resolved,
+  onEdit,
+  onReset,
+}: {
+  item: EditableItem;
+  override: string | undefined;
+  resolved: { derived: string; effective: string } | undefined;
+  onEdit: (id: string, value: string) => void;
+  onReset: (id: string) => void;
+}) {
+  const id = item.entry.id;
+  const derived = resolved?.derived ?? sourceText(item.entry.value);
+  const effective = resolved?.effective ?? derived;
+  const text = override ?? sourceText(item.entry.value);
+  const control = item.control;
+  const number = Number.parseFloat(effective);
+
+  return (
+    <div className="pg-token" data-token={id} data-overridden={override !== undefined ? "true" : undefined}>
+      {control.kind === "length" && Number.isFinite(number) ? (
+        <div className="pg-token__slider">
+          <span className="pg-token__label">{item.label}</span>
+          <TimeSlider
+            label={`${item.label} (${item.entry.variable})`}
+            min={control.min}
+            max={control.max}
+            step={control.step}
+            value={number}
+            onChange={(value) => onEdit(id, `${value}px`)}
+            format={(value) => `${value}px`}
+          />
+        </div>
+      ) : (
+        <div className="pg-token__field">
+          {control.kind === "color" && (
+            <span
+              className="pg-swatch"
+              style={{ background: effective }}
+              aria-hidden="true"
+              data-swatch={id}
+            />
+          )}
+          <TextField
+            label={item.label}
+            value={text}
+            onChange={(value) => onEdit(id, value)}
+            dir="ltr"
+            description={
+              control.kind === "color" && !isColor(effective)
+                ? `${effective}: not a colour this browser accepts`
+                : effective === text
+                  ? item.entry.variable
+                  : `${item.entry.variable} resolves to ${effective}`
+            }
+          />
+        </div>
+      )}
+      {override !== undefined && (
+        <div className="pg-token__override">
+          <StatusBadge tone="warning">Override detected</StatusBadge>
+          <code>{id}</code>
+          <span>
+            derived <code>{derived}</code>
+          </span>
+          <span>
+            override <code>{override}</code>
+          </span>
+          <Button onPress={() => onReset(id)}>Reset</Button>
+        </div>
+      )}
+    </div>
+  );
+}
