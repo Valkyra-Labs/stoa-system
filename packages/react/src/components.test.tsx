@@ -41,4 +41,15 @@ describe("TimeSlider", () => {
     const input = screen.getByRole("slider");
     expect(input.getAttribute("aria-valuetext")).toBe("t=42");
   });
+
+  it("points its input at an extra description when given one", () => {
+    const { container } = render(
+      <>
+        <p id="time-notes">Market hours only</p>
+        <TimeSlider label="Time" min={0} max={100} step={1} value={42} onChange={() => {}} format={(v) => `t=${v}`} aria-describedby="time-notes" />
+      </>,
+    );
+    const input = container.querySelector('input[type="range"]');
+    expect(input?.getAttribute("aria-describedby")?.split(" ")).toContain("time-notes");
+  });
 });
