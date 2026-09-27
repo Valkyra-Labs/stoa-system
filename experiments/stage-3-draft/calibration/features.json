@@ -1,0 +1,9 @@
+[
+  { "id": "F1", "name": "set", "question": "Is there a persistent list or set of entities the person chooses from?", "counts": "a table, list or grid of items of one kind that stays on screen and from which items can be selected or acted on", "not": "a table that is one panel of summaries with nothing selectable; a single item" },
+  { "id": "F2", "name": "detail", "question": "Is one selected item's detail shown beside or over the set, with the set still available?", "counts": "a detail pane, drawer or inspector tied to selection, opened by default or by a working control", "not": "detail that replaces the set; a drawer that nothing can open" },
+  { "id": "F3", "name": "decision", "question": "Can the person take a decision on each item individually?", "counts": "per-item actions (retry, approve, escalate) on the item or on the current item", "not": "page-level buttons (export, refresh); bulk actions only" },
+  { "id": "F4", "name": "progress", "question": "Is progress through the set visible?", "counts": "N of M, done and remaining, a position, a count of resolved against pending", "not": "a total count alone" },
+  { "id": "F5", "name": "compare", "question": "Does the main content set two or more objects against each other on the same measures?", "counts": "columns or cards per object on shared measures", "not": "several unrelated metrics; one object with its own history" },
+  { "id": "F6", "name": "single", "question": "Is the main content devoted to one object?", "counts": "a profile or record of one entity with its data, context or history", "not": "a set of entities; a summary of many" },
+  { "id": "F7", "name": "summary", "question": "Is there a row of three or more summary numbers about the whole set before the main content?", "counts": "three or more separate metric tiles about the set", "not": "numbers about one object; tiles after the main content" }
+]

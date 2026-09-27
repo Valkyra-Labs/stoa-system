@@ -70,10 +70,7 @@ so a screen can meet some of its requirements and not others.
 5. Freeze the rubric and the rule; they go into the Stage 3 protocol
    before any Stage 3 generation.
 
-## Open questions for the owner
+## Owner decisions (2026-09-27)
 
-- Is "overview" as one class acceptable for the two dashboard tasks, or
-  do they need a feature of their own (for example, "the screen can be
-  read without selecting anything")?
-- Should F7 stay (it measures the default KPI row, which the rules
-  condition targets) or move to a secondary list?
+- "overview" stays one class for both dashboard tasks; no extra feature.
+- F7 (summary row) stays a primary feature.

@@ -10,3 +10,5 @@ test-results
 experiments/*/owner-coding/data.json
 experiments/*/owner-coding/render-dist/
 experiments/*/owner-coding/render-report.json
+experiments/*/calibration/data.json
+experiments/*/calibration/render-report.json
