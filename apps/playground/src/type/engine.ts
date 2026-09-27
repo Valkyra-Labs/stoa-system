@@ -171,7 +171,12 @@ function measureDigits(font: Font, set: DigitSet, feature: "none" | "tnum"): Dig
     glyphIds.push(glyph?.codepoint ?? 0);
     advances.push(glyph?.xAdvance ?? 0);
   }
-  const runAdvances = shapeText(font, set.text, set, features).map((glyph) => glyph.xAdvance ?? 0);
+  // HarfBuzz returns a right-to-left run in visual order; sorting by cluster
+  // brings it back to logical order, zero first, so that it lines up with
+  // `advances` digit by digit.
+  const runAdvances = shapeText(font, set.text, set, features)
+    .sort((a, b) => a.cluster - b.cluster)
+    .map((glyph) => glyph.xAdvance ?? 0);
   return digitRow(set.id, feature, glyphIds, advances, runAdvances);
 }
 
