@@ -38,13 +38,17 @@ export function readCanvasTokens(el: Element): CanvasTokens {
 /** Custom event type dispatched on a preview root to tell every canvas
  * component whose element sits under that root to re-read its tokens and
  * redraw, even while paused. Any ancestor of the component works, since
- * listeners key off `Node.contains`, not the exact target. */
+ * listeners key off `Node.contains`, not the exact target, and listen in
+ * the capture phase, so the event arrives whether or not it bubbles and
+ * whether or not some other listener stops its propagation. Carries no
+ * `detail`: it is a signal to re-read tokens, not a diff of what changed. */
 export const TOKENS_EVENT = "stoa:tokens";
 
-/** Dispatches {@link TOKENS_EVENT} on `root`, bubbling so it reaches the
- * document and every `useTokenSignal` listener can test containment. Call
- * this after changing token CSS variables on `root` (for example when a
- * playground re-themes one preview frame). */
+/** Dispatches {@link TOKENS_EVENT} on `root`. Call this after changing
+ * token CSS variables on `root` (for example when a playground re-themes
+ * one preview frame). `bubbles` is not required for `useTokenSignal`
+ * listeners, which use the capture phase, but is left on in case a
+ * caller also wants a bubble-phase listener of its own. */
 export function signalTokensChanged(root: Element): void {
   root.dispatchEvent(new CustomEvent(TOKENS_EVENT, { bubbles: true }));
 }
@@ -53,7 +57,7 @@ export function signalTokensChanged(root: Element): void {
  * Subscribes a canvas component to every source that can change the
  * tokens it reads from `el.current`, and calls `redraw` each time:
  *
- * - a {@link TOKENS_EVENT} bubbling from an ancestor of `el.current`
+ * - a {@link TOKENS_EVENT} dispatched on an ancestor of `el.current`
  *   (the primary mechanism: it needs no plumbing through intermediate
  *   components, and one dispatch on a preview root reaches every canvas
  *   underneath it, however deeply nested);
@@ -62,6 +66,14 @@ export function signalTokensChanged(root: Element): void {
  *   prop than dispatch a DOM event);
  * - the existing `<html>` `data-theme`/`data-density` attributes, and the
  *   OS colour scheme, so that global theming keeps working unchanged.
+ *
+ * The event listener is registered in the capture phase, on
+ * `el.current`'s own `ownerDocument` rather than the top-level
+ * `document`, so a preview rendered inside an iframe still gets the
+ * signal, and so does a listener whose event does not bubble or whose
+ * propagation an ancestor stops during its own bubble-phase handling
+ * (that happens on the way back up, after this listener has already
+ * fired on the way down).
  *
  * `redraw` is read through a ref, so subscribing does not depend on its
  * identity being stable across renders, and nothing here dispatches
@@ -72,19 +84,20 @@ export function useTokenSignal(el: RefObject<Element | null>, tokensVersion: num
   redrawRef.current = redraw;
 
   useEffect(() => {
+    const doc = el.current?.ownerDocument ?? document;
     const onEvent = (e: Event) => {
       const root = e.target;
       if (root instanceof Node && el.current && root.contains(el.current)) redrawRef.current();
     };
     const onChange = () => redrawRef.current();
-    document.addEventListener(TOKENS_EVENT, onEvent);
+    doc.addEventListener(TOKENS_EVENT, onEvent, true);
     // jsdom (used in tests) has no matchMedia; skip the OS listener there.
     const mq = typeof matchMedia === "function" ? matchMedia("(prefers-color-scheme: dark)") : null;
     mq?.addEventListener("change", onChange);
     const mo = new MutationObserver(onChange);
-    mo.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme", "data-density"] });
+    mo.observe(doc.documentElement, { attributes: true, attributeFilter: ["data-theme", "data-density"] });
     return () => {
-      document.removeEventListener(TOKENS_EVENT, onEvent);
+      doc.removeEventListener(TOKENS_EVENT, onEvent, true);
       mq?.removeEventListener("change", onChange);
       mo.disconnect();
     };

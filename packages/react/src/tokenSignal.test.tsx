@@ -1,8 +1,8 @@
 // @vitest-environment jsdom
 import { act, render } from "@testing-library/react";
-import { createRef, type ReactNode } from "react";
-import { afterEach, describe, expect, it } from "vitest";
-import { Heatmap, type HeatmapHandle, Ladder, type LadderHandle, signalTokensChanged } from "./index";
+import { createRef, StrictMode, type ReactNode } from "react";
+import { afterEach, describe, expect, it, vi } from "vitest";
+import { Heatmap, type HeatmapHandle, Ladder, type LadderHandle, signalTokensChanged, TOKENS_EVENT } from "./index";
 import { sampleBook, sampleHeatmap } from "./fixtures";
 
 // A canvas 2d context stub: jsdom does not implement one without the
@@ -153,6 +153,134 @@ describe("token change signal", () => {
     wrapper.style.setProperty("--stoa-color-surface", "rgb(4, 4, 4)");
     act(() => signalTokensChanged(wrapper));
     expect(ctx.surfaceFills.at(-1)).toBe("rgb(4, 4, 4)");
+  });
+
+  it("redraws only the wrapper a signal is dispatched on, not a sibling", () => {
+    canvasStub = installFakeCanvas();
+    const refA = createRef<LadderHandle>();
+    const refB = createRef<LadderHandle>();
+    const { container } = render(
+      <div>
+        <Themed surface="rgb(10, 10, 10)">
+          <Ladder ref={refA} label="Light" />
+        </Themed>
+        <Themed surface="rgb(20, 20, 20)">
+          <Ladder ref={refB} label="Dark" />
+        </Themed>
+      </div>,
+    );
+    const outer = container.firstElementChild as HTMLElement;
+    const [wrapperA, wrapperB] = Array.from(outer.children) as HTMLElement[];
+    const [canvasA, canvasB] = container.querySelectorAll("canvas");
+    act(() => {
+      refA.current!.draw(sampleBook());
+      refB.current!.draw(sampleBook());
+    });
+    const ctxA = canvasStub.contexts.get(canvasA!)!;
+    const ctxB = canvasStub.contexts.get(canvasB!)!;
+    const drawsA = ctxA.draws;
+    const drawsB = ctxB.draws;
+
+    wrapperA!.style.setProperty("--stoa-color-surface", "rgb(11, 11, 11)");
+    wrapperB!.style.setProperty("--stoa-color-surface", "rgb(21, 21, 21)");
+    act(() => signalTokensChanged(wrapperA!));
+
+    expect(ctxA.draws).toBe(drawsA + 1);
+    expect(ctxA.surfaceFills.at(-1)).toBe("rgb(11, 11, 11)");
+    expect(ctxB.draws).toBe(drawsB);
+    expect(ctxB.surfaceFills.at(-1)).toBe("rgb(20, 20, 20)");
+  });
+
+  it("redraws immediately when the <html> data-theme attribute changes", async () => {
+    canvasStub = installFakeCanvas();
+    const ref = createRef<LadderHandle>();
+    const { container } = render(
+      <Themed surface="rgb(1, 1, 1)">
+        <Ladder ref={ref} label="Book" />
+      </Themed>,
+    );
+    const canvas = container.querySelector("canvas")!;
+    act(() => ref.current!.draw(sampleBook()));
+    const ctx = canvasStub.contexts.get(canvas)!;
+    const before = ctx.draws;
+
+    try {
+      await act(async () => {
+        document.documentElement.dataset.theme = "dark";
+        // Flush the MutationObserver's microtask queue.
+        await new Promise((resolve) => setTimeout(resolve, 0));
+      });
+      expect(ctx.draws).toBe(before + 1);
+    } finally {
+      delete document.documentElement.dataset.theme;
+    }
+  });
+
+  it("removes its listener on unmount", () => {
+    canvasStub = installFakeCanvas();
+    const addSpy = vi.spyOn(document, "addEventListener");
+    const removeSpy = vi.spyOn(document, "removeEventListener");
+    const ref = createRef<LadderHandle>();
+    const { unmount } = render(
+      <Themed surface="rgb(1, 1, 1)">
+        <Ladder ref={ref} label="Book" />
+      </Themed>,
+    );
+    act(() => ref.current!.draw(sampleBook()));
+    const addCall = addSpy.mock.calls.find(([type, , opts]) => type === TOKENS_EVENT && opts === true);
+    expect(addCall).toBeTruthy();
+    const handler = addCall![1];
+
+    unmount();
+
+    expect(removeSpy).toHaveBeenCalledWith(TOKENS_EVENT, handler, true);
+    addSpy.mockRestore();
+    removeSpy.mockRestore();
+  });
+
+  it("keeps exactly one listener when strict mode double-invokes effects", () => {
+    canvasStub = installFakeCanvas();
+    const ref = createRef<LadderHandle>();
+    const { container } = render(
+      <StrictMode>
+        <Themed surface="rgb(1, 1, 1)">
+          <Ladder ref={ref} label="Book" />
+        </Themed>
+      </StrictMode>,
+    );
+    const wrapper = container.firstElementChild as HTMLElement;
+    const canvas = container.querySelector("canvas")!;
+    act(() => ref.current!.draw(sampleBook()));
+    const ctx = canvasStub.contexts.get(canvas)!;
+    const before = ctx.draws;
+
+    wrapper.style.setProperty("--stoa-color-surface", "rgb(9, 9, 9)");
+    act(() => signalTokensChanged(wrapper));
+
+    expect(ctx.draws).toBe(before + 1);
+  });
+
+  it("still arrives when the event does not bubble", () => {
+    canvasStub = installFakeCanvas();
+    const ref = createRef<LadderHandle>();
+    const { container } = render(
+      <Themed surface="rgb(1, 1, 1)">
+        <Ladder ref={ref} label="Book" />
+      </Themed>,
+    );
+    const wrapper = container.firstElementChild as HTMLElement;
+    const canvas = container.querySelector("canvas")!;
+    act(() => ref.current!.draw(sampleBook()));
+    const ctx = canvasStub.contexts.get(canvas)!;
+    const before = ctx.draws;
+
+    wrapper.style.setProperty("--stoa-color-surface", "rgb(7, 7, 7)");
+    act(() => {
+      wrapper.dispatchEvent(new CustomEvent(TOKENS_EVENT, { bubbles: false }));
+    });
+
+    expect(ctx.draws).toBe(before + 1);
+    expect(ctx.surfaceFills.at(-1)).toBe("rgb(7, 7, 7)");
   });
 
   it("keeps the tokensVersion prop working as an alternative to the event", () => {

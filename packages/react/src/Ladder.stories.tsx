@@ -37,10 +37,30 @@ export const Live: StoryObj<typeof Ladder> = {
 
 export const Empty: StoryObj<typeof Ladder> = { args: { data: null } };
 
+// Tokens ship one scoped override rule for `[data-theme="dark"]`, but none
+// for `[data-theme="light"]`: light values live directly on `:root`. So
+// the "light" wrapper's `data-theme="light"` attribute below is only
+// correct while the surrounding root itself resolves to light (the
+// Storybook toolbar's default, and no `prefers-color-scheme: dark`) - it
+// carries no scoped override of its own, and would silently inherit dark
+// values from an ancestor if the root theme were switched to dark.
+
+const REDRAW_RUNS = 25;
+
+function median(samples: number[]): number {
+  const sorted = [...samples].sort((a, b) => a - b);
+  return sorted[Math.floor(sorted.length / 2)]!;
+}
+
 /** Two previews on one page, each themed on its own wrapper rather than
  * on `<html>`: the mechanism the playground needs to show several themes
- * side by side. Each "Signal" button dispatches `stoa:tokens` on that
- * preview's own wrapper only and times the resulting redraw. */
+ * side by side. Each "Signal" button changes a token variable on that
+ * preview's own wrapper, dispatches `stoa:tokens` on it, and repeats that
+ * `REDRAW_RUNS` times, reporting the median redraw cost (a no-op signal,
+ * with no variable changed, would measure event-dispatch overhead rather
+ * than the real re-read-and-redraw cost). If every run lands on the same
+ * duration, the browser's timer resolution is coarser than one redraw, so
+ * the figure is reported as an upper bound rather than a real measurement. */
 export const TwoThemes: StoryObj<typeof Ladder> = {
   render: (args) => {
     const light = useRef<HTMLDivElement>(null);
@@ -50,13 +70,22 @@ export const TwoThemes: StoryObj<typeof Ladder> = {
 
     const signal = (root: HTMLDivElement | null, report: (ms: string) => void) => {
       if (!root) return;
-      const t0 = performance.now();
-      signalTokensChanged(root);
-      report((performance.now() - t0).toFixed(2));
+      const samples: number[] = [];
+      for (let i = 0; i < REDRAW_RUNS; i++) {
+        // Alternate between two real tokens so the read after signalling
+        // sees an actual change, not a same-value no-op.
+        root.style.setProperty("--stoa-color-surface", i % 2 === 0 ? "var(--stoa-color-surface)" : "var(--stoa-color-border)");
+        const t0 = performance.now();
+        signalTokensChanged(root);
+        samples.push(performance.now() - t0);
+      }
+      const m = median(samples);
+      const atFloor = Math.max(...samples) === Math.min(...samples);
+      report(atFloor ? `<= ${m.toFixed(2)} (timer resolution; upper bound)` : `${m.toFixed(2)} (median of ${REDRAW_RUNS})`);
     };
 
     return (
-      <div style={{ display: "flex", gap: "var(--stoa-space-5)", flexWrap: "wrap" }}>
+      <div style={{ display: "flex", gap: "var(--stoa-space-4)", flexWrap: "wrap" }}>
         <div ref={light} data-theme="light" style={{ maxInlineSize: 320 }}>
           <Ladder {...args} label="Light preview" data={sampleBook(222.6, args.depth, 7)} />
           <button onClick={() => signal(light.current, setLightCost)}>Signal</button>

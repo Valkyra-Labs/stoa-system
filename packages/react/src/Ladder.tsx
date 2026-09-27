@@ -58,6 +58,12 @@ export function Ladder({ depth = 12, data, label, formatPrice = (p) => p.toFixed
   const [summary, setSummary] = useState("The book is empty.");
   const lastSummary = useRef(0);
   const latest = useRef<Book>({ bids: [], asks: [] });
+  // Holds a reference to the caller's buffer, not a copy: a token-triggered
+  // redraw draws whatever `lastFlat.current` points to right now. A caller
+  // that reuses one buffer across frames (the zero-allocation pattern the
+  // `Live` story uses) must not mutate it in place between an animation
+  // frame and a later signal, or the redraw will show newer data than what
+  // was last drawn through React.
   const lastFlat = useRef<ArrayLike<number> | null>(null);
   const trailing = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -86,10 +92,23 @@ export function Ladder({ depth = 12, data, label, formatPrice = (p) => p.toFixed
   }, []);
 
   useImperativeHandle(ref, () => ({ draw: render }));
+
+  // Invalidate cached tokens as soon as `tokensVersion` changes, during
+  // render rather than in an effect, so the unconditional effect below
+  // (which runs on this same render whenever `data` is set) already reads
+  // fresh tokens. Without this, a `tokensVersion` bump with `data` also
+  // set drew twice: once with the still-cached, stale tokens from that
+  // effect, then again from `useTokenSignal`'s own redraw.
+  const [lastTokensVersion, setLastTokensVersion] = useState(tokensVersion);
+  if (tokensVersion !== lastTokensVersion) {
+    setLastTokensVersion(tokensVersion);
+    tokens.current = null;
+  }
+
   useEffect(() => {
     if (data !== undefined) render(data);
   });
-  useTokenSignal(canvas, tokensVersion, () => {
+  useTokenSignal(canvas, data === undefined ? tokensVersion : undefined, () => {
     tokens.current = null;
     render(lastFlat.current);
   });
