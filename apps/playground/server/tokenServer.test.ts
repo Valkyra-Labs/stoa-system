@@ -4,7 +4,7 @@
 import type { IncomingMessage, ServerResponse } from "node:http";
 import { fileURLToPath } from "node:url";
 import { describe, expect, it } from "vitest";
-import { PROTECTED_SNAPSHOTS, crossSiteReason, run, snapshotSlug, tokenServer } from "./tokenServer";
+import { PROTECTED_SNAPSHOTS, crossSiteReason, panelStateFrom, run, snapshotSlug, tokenServer } from "./tokenServer";
 
 const HOST = "127.0.0.1:5174";
 
@@ -160,5 +160,34 @@ describe("the snapshot file name", () => {
     for (const name of ["stoa-today", "Stoa Today", " stoa today "]) {
       expect(PROTECTED_SNAPSHOTS).toContain(snapshotSlug(name, at));
     }
+  });
+});
+
+describe("what a snapshot records for the area panels", () => {
+  it("keeps the panels' own state, by panel id", () => {
+    const panels = { type: { roles: { body: { $type: "typography" } }, fonts: [{ family: "IBM Plex Sans" }] } };
+    expect(panelStateFrom(panels)).toEqual(panels);
+  });
+
+  it("records nothing when no panel contributed anything", () => {
+    expect(panelStateFrom(undefined)).toEqual({});
+    expect(panelStateFrom(null)).toEqual({});
+  });
+
+  it("refuses anything but an object keyed by panel id", () => {
+    expect(() => panelStateFrom([{ type: {} }])).toThrow(/keyed by panel id/);
+    expect(() => panelStateFrom("type")).toThrow(/keyed by panel id/);
+  });
+
+  it("refuses embedded font data: a snapshot records references, not files", () => {
+    const withFont = { type: { fonts: [{ family: "Inter", src: "data:font/woff2;base64,d09GMgABAAAAAA" }] } };
+    expect(() => panelStateFrom(withFont)).toThrow(/must not carry embedded font data/);
+    const asOctets = { type: { fonts: [{ src: "data:application/octet-stream;base64,AAEAAA" }] } };
+    expect(() => panelStateFrom(asOctets)).toThrow(/must not carry embedded font data/);
+  });
+
+  it("refuses state too large to be a record of a session", () => {
+    const big = { type: { note: "x".repeat(70_000) } };
+    expect(() => panelStateFrom(big)).toThrow(/over the 65536 a snapshot records/);
   });
 });

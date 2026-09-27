@@ -7,4 +7,7 @@ import { tokenServer } from "./server/tokenServer.ts";
 export default defineConfig({
   plugins: [react(), tokenServer()],
   server: { port: 5173 },
+  // The font worker imports harfbuzzjs, which initialises its WASM with a
+  // top-level await; the default `iife` worker format cannot carry one.
+  worker: { format: "es" },
 });
