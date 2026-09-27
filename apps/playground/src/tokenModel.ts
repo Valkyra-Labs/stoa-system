@@ -166,8 +166,8 @@ export function resolveTokens(files: TokenFiles, overrides: Overrides, theme: Th
  * only covers one theme and one density mode.
  *
  * References are looked up among the primitives alone. No semantic token
- * is referenced by another token, so the two semantic files can be flat-
- * tened together here without their shared names colliding. */
+ * is referenced by another token, so both semantic files can be flattened
+ * together here without their shared names colliding. */
 export function resolveAllValues(files: TokenFiles, overrides: Overrides): ResolvedTokens["values"] {
   const entries = (Object.keys(TOKEN_FILE_NAMES) as TokenFileName[]).flatMap((file) => flattenFile(file, files[file]));
   const byPath: Lookup = new Map();

@@ -19,9 +19,15 @@ export default defineConfig({
     viewport: { width: 1800, height: 1200 },
   },
   webServer: {
-    command: `pnpm exec vite --port ${PORT} --strictPort`,
+    // The host is stated, not left to `localhost`: on a runner where
+    // localhost resolves to ::1 first, the server binds there and the
+    // check below, which is IPv4, never reaches it. The output is piped
+    // so that a server that fails to start says why in the test log.
+    command: `pnpm exec vite --host 127.0.0.1 --port ${PORT} --strictPort`,
     url: `http://127.0.0.1:${PORT}`,
     reuseExistingServer: !process.env.CI,
     timeout: 120_000,
+    stdout: "pipe",
+    stderr: "pipe",
   },
 });
