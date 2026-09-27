@@ -7,6 +7,12 @@ Blind coder: Claude Opus 5.5, one subagent for all 36 files, comments
 stripped, condition and model hidden. Raw data: `generations/`,
 `analysis/results-primary.txt`, `analysis/blind-coding.json`.
 
+**Status: inconclusive exploratory pilot.** The pre-registered rule
+gives "no signal", but the pilot also showed that its instruments were
+not valid (sections below), so it neither supports nor rejects the
+hypothesis. It is kept unchanged as Stage 0; the next experiment is a
+new protocol, not a revision of this one.
+
 ## Primary result (pre-registered rule): no signal
 
 | model / condition | M1 generic-dashboard rate | M2 divergence ratio |
@@ -43,6 +49,22 @@ claim nothing about AI from this pilot.
    Card, an unneeded sidebar. Any drop in F1, F2 or F8 under B is at
    least partly plain rule-following, not reasoning. C had no rules of
    equal specificity.
+5. **B also named the answer.** The decision layer maps intents straight
+   to pattern components (`review -> ReviewQueue`, `investigate ->
+   Explorer`, `conditions/reasoning.md` lines 19-24). A model that
+   picks ReviewQueue for a review task under B may be following a
+   lookup table, not deriving structure from the task. The next
+   reasoning condition must describe task properties (how often items
+   are scanned, the relation between objects, whether evidence is
+   required, risk) and leave the pattern to the model.
+6. **The generation context was not a bare model.** Each subagent ran
+   inside the Claude Code harness with its system prompt, the owner's
+   global instructions file and the git status of an unrelated
+   repository. Tool logs show every run read only its own prompt and
+   wrote only its own file (plus one `mkdir`), and the context was the
+   same across conditions, so it does not bias the comparison; but
+   sampling (temperature, seed) was neither controlled nor recorded,
+   and the baseline is "Claude in a coding harness", not "Claude".
 
 ## Secondary analysis (blind manual coding, labelled, not the decision)
 
