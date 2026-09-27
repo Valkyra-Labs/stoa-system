@@ -1,0 +1,71 @@
+import { Page, Header, Sidebar, Section, Card, DataTable, Metric, Delta, Status, Button } from "@stoa/react";
+
+export default function PrepareMeeting() {
+  return (
+    <Page title="Prepare for Parent-Teacher Meeting">
+      <Header title="Student: Jane Doe" subtitle="Meeting Tomorrow" actions={<Button label="Save Notes" />} />
+      <main>
+        <Section title="Student Information">
+          <Card title="Basic Details">
+            <p>Name: Jane Doe</p>
+            <p>Grade: 10th</p>
+            <p>Class: A</p>
+          </Card>
+        </Section>
+        <Section title="Academic Performance">
+          <Card title="Grades">
+            <Metric label="Overall Grade" value="B+" unit="%" delta={-5} />
+            <Metric label="Math" value="A" unit="%" delta={0} />
+            <Metric label="English" value="B" unit="%" delta={2} />
+            <Metric label="Science" value="C+" unit="%" delta={-3} />
+          </Card>
+          <Card title="Progress Over Time">
+            <Chart type="line" series={[{ id: "math", label: "Math", data: [{ x: "2023-01-01", y: 85 }, { x: "2023-02-01", y: 90 }, { x: "2023-03-01", y: 95 }] }]} x="Date" y="Grade" />
+          </Card>
+        </Section>
+        <Section title="Behavioral Record">
+          <Card title="Incidents">
+            <DataTable
+              columns={[
+                { id: "date", label: "Date" },
+                { id: "incident", label: "Incident" },
+                { id: "outcome", label: "Outcome" },
+              ]}
+              rows={[
+                { date: "2023-03-15", incident: "Tardy", outcome: "Warning" },
+                { date: "2023-03-22", incident: "Disruptive in class", outcome: "Detention" },
+              ]}
+            />
+          </Card>
+          <Card title="Commendations">
+            <DataTable
+              columns={[
+                { id: "date", label: "Date" },
+                { id: "commendation", label: "Commendation" },
+              ]}
+              rows={[
+                { date: "2023-03-10", commendation: "Participated in debate competition" },
+                { date: "2023-03-20", commendation: "Helped new students" },
+              ]}
+            />
+          </Card>
+        </Section>
+        <Section title="Preparation Notes">
+          <Card title="Teacher's Notes">
+            <p>Discuss progress in Math and Science.</p>
+            <p>Highlight commendations and recent behavioral incidents.</p>
+          </Card>
+        </Section>
+        <Section title="Action Items">
+          <Card title="To-Do List">
+            <ul>
+              <li>Review student's assignments.</li>
+              <li>Prepare a summary of recent grades.</li>
+              <li>Bring commendation letters.</li>
+            </ul>
+          </Card>
+        </Section>
+      </main>
+    </Page>
+  );
+}

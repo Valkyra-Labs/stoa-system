@@ -1,0 +1,60 @@
+```tsx
+import { Page, Header, Compare, Timeline, Card, Metric, Trend, Button } from "@stoa/react";
+
+const clientName = "Jane Doe";
+const fund1 = {
+  id: "fund1",
+  name: "Growth Fund",
+  metrics: [
+    { label: "Annual Return", value: 8.5, delta: 1.2, unit: "%" },
+    { label: "Risk Rating", value: 5, unit: "out of 10" },
+    { label: "Recent Performance", value: 6.3, delta: -0.5, unit: "%" },
+  ],
+  trends: [
+    { label: "1-Year Return", value: [7.5, 8.0, 8.5, 9.0, 9.5] },
+    { label: "3-Year Return", value: [6.0, 6.5, 7.0, 7.5, 8.0] },
+  ],
+};
+
+const fund2 = {
+  id: "fund2",
+  name: "Value Fund",
+  metrics: [
+    { label: "Annual Return", value: 7.0, delta: 0.8, unit: "%" },
+    { label: "Risk Rating", value: 4, unit: "out of 10" },
+    { label: "Recent Performance", value: 7.2, delta: 0.2, unit: "%" },
+  ],
+  trends: [
+    { label: "1-Year Return", value: [6.5, 7.0, 7.5, 8.0, 8.5] },
+    { label: "3-Year Return", value: [5.5, 6.0, 6.5, 7.0, 7.5] },
+  ],
+};
+
+const events = [
+  { date: "2023-04-01", description: "Growth Fund outperforms benchmark by 1.2%" },
+  { date: "2023-03-15", description: "Value Fund beats market by 0.8%" },
+  { date: "2023-02-28", description: "Growth Fund experiences volatility" },
+];
+
+const RecommendationPage = () => (
+  <Page title="Fund Recommendation">
+    <Header title={clientName} subtitle="Recommendation" actions={<Button label="Submit" />} />
+    <Compare
+      entities={[fund1, fund2]}
+      metrics={[
+        { label: "Annual Return", value: (fund) => fund.metrics[0].value },
+        { label: "Risk Rating", value: (fund) => fund.metrics[1].value },
+        { label: "Recent Performance", value: (fund) => fund.metrics[2].value },
+      ]}
+    />
+    <Timeline events={events} />
+    <Card title="Recommendation">
+      <p>Based on the comparison, the recommended fund is:</p>
+      <Button label="Growth Fund" variant="primary" />
+      <Button label="Value Fund" variant="secondary" />
+    </Card>
+  </Page>
+);
+
+export default RecommendationPage;
+```

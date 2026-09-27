@@ -1,0 +1,7 @@
+The rules that shape this screen most are:  
+- **Put the exceptions and the items needing action before the averages**: Failed payouts are exceptions and should be prioritized.  
+- **Sort lists of changes by the size of the change, largest first**: Failed payouts with larger amounts or more critical issues should be addressed first.  
+- **Show at most one level of emphasis per region**: The most critical failed payout should be clearly highlighted.  
+- **Numbers must carry their basis**: Include details like the reason for failure and the amount to inform the analyst’s decision.  
+- **State the consequence of an action before it runs**: When resolving a payout, the analyst must understand the impact of each action.  
+These rules ensure the screen is focused, prioritized, and actionable for the analyst.

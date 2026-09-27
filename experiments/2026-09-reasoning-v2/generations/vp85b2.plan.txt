@@ -1,0 +1,9 @@
+1. The head of school is preparing for a formal presentation to the board, likely a routine but important review. They need a clear, static overview of the school's performance without any interactive changes.
+
+2. The shape of the work is getting a general picture of many unrelated numbers, with no action expected on this screen. The head is reviewing the school's performance across various metrics, likely involving multiple entities and measures.
+
+3. The information includes student performance metrics, staff data, financial figures, and operational statistics. These values are judged against targets, previous periods, and benchmarks. The head needs to see how the school is performing overall, not just individual details.
+
+4. The decision is to present a comprehensive overview for the board. The head needs to see clear, accurate data with context such as trends, comparisons, and benchmarks. A wrong decision could affect the school's direction, but the screen is static, so the risk is minimal.
+
+5. The structure should have a header with the presentation title, a main section with key metrics, a comparison of performance across departments, and a summary of trends. The layout should be clean and professional, prioritizing clarity and visual hierarchy.

@@ -1,0 +1,11 @@
+**1. Person and Session:** The finance director reviews the company's weekly financial metrics every Monday morning to prepare for meetings. The session is routine, focusing on a quick overview of key financial figures.
+
+**2. Shape of Work:** The work involves getting a general picture of many related numbers with no immediate action required on this screen. The focus is on high-level metrics to understand overall financial health.
+
+**3. Information:** The screen must display key financial metrics such as revenue, expenses, profit, and cash flow for the current week compared to the previous week and the same period last year. The metrics should be presented in a way that allows for quick comparison and trend analysis.
+
+**4. Decision and Evidence:** No specific decision is made on this screen; it serves as a preparatory tool. The finance director needs to see the latest figures and trends to discuss them during meetings. The context of historical data and trends is crucial for informed discussions.
+
+**5. Structure:** The screen should have a header with the current week's metrics, followed by a section for detailed metric comparisons (current week vs. previous week and year-over-year). A chart for trend analysis should be included to visualize changes over time. The structure should prioritize quick overview and comparison, with detailed analysis as a secondary focus.
+
+**6. Components:** Use the **Page** component for the overall layout, **Header** for the top-level metrics, **Section** for detailed comparisons, and **Chart** for trend analysis.

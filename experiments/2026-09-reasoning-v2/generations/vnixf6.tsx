@@ -1,0 +1,164 @@
+import { Page, Header, Section, Card, Metric, Delta, Trend, Status, Tabs, EmptyData } from "@stoa/react";
+
+const TERMS = {
+  current: "2023-2024",
+  previous: "2022-2023",
+};
+
+const METRICS = [
+  {
+    id: "academic",
+    label: "Academic Performance",
+    series: [
+      { label: "Jan", value: 85 },
+      { label: "Mar", value: 88 },
+      { label: "May", value: 90 },
+      { label: "Jul", value: 92 },
+      { label: "Sep", value: 93 },
+    ],
+    current: 93,
+    previous: 91,
+    target: 95,
+  },
+  {
+    id: "budget",
+    label: "Budget Variance",
+    series: [
+      { label: "Q1", value: 2 },
+      { label: "Q2", value: -1 },
+      { label: "Q3", value: 0 },
+      { label: "Q4", value: -2 },
+      { label: "Q1", value: -2 },
+    ],
+    current: -2,
+    previous: 1,
+    target: 0,
+  },
+  {
+    id: "staffing",
+    label: "Staff Retention Rate",
+    series: [
+      { label: "Start", value: 98 },
+      { label: "Mid", value: 97 },
+      { label: "End", value: 96 },
+    ],
+    current: 96,
+    previous: 97,
+    target: 98,
+  },
+  {
+    id: "attendance",
+    label: "Student Attendance",
+    series: [
+      { label: "Week 1", value: 94 },
+      { label: "Week 2", value: 95 },
+      { label: "Week 3", value: 94 },
+      { label: "Week 4", value: 96 },
+    ],
+    current: 96,
+    previous: 95,
+    target: 98,
+  },
+];
+
+const StatusCard = ({ title, status, children }: { title: string; status: "positive" | "warning" | "critical"; children: React.ReactNode }) => {
+  return (
+    <Card title={title}>
+      <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
+        <Status tone={status === "positive" ? "good" : status === "warning" ? "caution" : "error"} label={status} />
+        <div>{children}</div>
+      </div>
+    </Card>
+  );
+};
+
+const MetricRow = ({ label, value, delta, unit }: { label: string; value: number; delta?: number; unit?: string }) => {
+  return (
+    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+      <span>{label}</span>
+      <span>
+        {value}
+        {unit && <span style={{ fontSize: "0.8em", color: "#666" }}> {unit}</span>}
+      </span>
+      {delta !== undefined && (
+        <Delta value={delta} basis="target" />
+      )}
+    </div>
+  );
+};
+
+export default function BoardPresentation() {
+  return (
+    <Page title="Term Performance Presentation">
+      <Header
+        title={`School Performance Report: ${TERMS.current}`}
+        subtitle="Board of Directors Presentation"
+        actions={null}
+      />
+
+      <Section title="Executive Summary">
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "24px" }}>
+          {METRICS.map((m) => (
+            <Metric key={m.id} label={m.label} value={m.current} unit="%" />
+          ))}
+        </div>
+      </Section>
+
+      <Section title="Detailed Trends & Analysis">
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "24px" }}>
+          {METRICS.map((m) => (
+            <Card key={m.id} title={m.label}>
+              <Trend series={m.series} />
+              <div style={{ marginTop: "16px" }}>
+                <MetricRow label="Current Value" value={m.current} unit="%" />
+                <MetricRow label="Previous Term" value={m.previous} unit="%" />
+                <MetricRow label="Target" value={m.target} unit="%" />
+              </div>
+            </Card>
+          ))}
+        </div>
+      </Section>
+
+      <Section title="Financial Overview">
+        <Card title="Budget Allocation vs Actuals">
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "16px", backgroundColor: "#f5f5f5", borderRadius: "8px" }}>
+            <span style={{ fontSize: "1.1em" }}>Overall Budget Variance: <strong style={{ color: "#e11d48" }}> -2.0%</strong> </span>
+            <Status tone="caution" label="on track" />
+          </div>
+          <p style={{ color: "#666", fontSize: "0.9em", marginTop: "8px" }}>
+            Q1 overspending due to unforeseen maintenance costs. Q2 and Q3 balanced via reserve funds. Q4 underspending allows for year-end contingency planning.
+          </p>
+        </Card>
+      </Section>
+
+      <Section title="Key Risks & Opportunities">
+        <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+          <div style={{ padding: "16px", border: "1px solid #e5e7eb", borderRadius: "8px", backgroundColor: "#fff" }}>
+            <h3 style={{ margin: "0 0 8px 0", color: "#374151" }}>Academic Growth</h3>
+            <p style={{ margin: 0, color: "#4b5563" }}>
+              Student performance has consistently exceeded targets for the second semester. The new curriculum implementation shows positive correlation with engagement scores.
+            </p>
+          </div>
+          <div style={{ padding: "16px", border: "1px solid #e5e7eb", borderRadius: "8px", backgroundColor: "#fff" }}>
+            <h3 style={{ margin: "0 0 8px 0", color: "#dc2626" }}>Facility Maintenance</h3>
+            <p style={{ margin: 0, color: "#4b5563" }}>
+              Two science laboratories require urgent repairs to meet safety standards. Budget allocation for this repair was delayed by 3 weeks.
+            </p>
+          </div>
+        </div>
+      </Section>
+
+      <Section title="Data Integrity & Freshness">
+        <Card title="Data Status">
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+            <span>Last updated: {new Date().toLocaleDateString()}</span>
+            <Status tone="good" label="verified" />
+          </div>
+          <p style={{ marginTop: "8px", color: "#666", fontSize: "0.9em" }}>
+            All metrics sourced from official term reports. Data has been reconciled against accounting records.
+          </p>
+        </Card>
+      </Section>
+    </Page>
+  );
+}

@@ -1,0 +1,5 @@
+1. The portfolio manager opens the screen daily to review changes in their portfolio, checking for unusual movements and understanding their causes.  
+2. The shape of the work is scanning a large collection for deviations, with decisions made elsewhere.  
+3. The entities are portfolio holdings, measures include price changes and performance, judged against yesterday's values. Key values are price deltas and reasons for changes.  
+4. The manager decides whether to investigate or act on a change. They need to see the source, freshness, and context of each change.  
+5. The structure starts with a summary of changes, followed by a list of affected holdings, with details and reasons for each change. The action buttons are at the end for further steps.

@@ -1,0 +1,3 @@
+**Main Goal:** The screen provides the school head with a clear, concise overview of the school's performance across key areas, enabling them to present a confident and data-driven summary to the board without making any changes.
+
+**Layout Support:** The layout is structured to prioritize key metrics and trends at the top, using cards and charts for quick visual insights. A sidebar offers contextual details and filters, while a section at the bottom provides narrative context and supporting data. This ensures the head can scan the most important information first, then dive into specifics if needed, all while maintaining a clean, professional appearance.

@@ -1,0 +1,8 @@
+The rules that shape this screen most are:  
+- **Order and emphasis**: The most important information—the student's performance, behavior, and any concerns—must be front and center.  
+- **Numbers**: Metrics like grades or attendance should show their basis (e.g., class average, previous term) and be right-aligned.  
+- **Evidence and actions**: The teacher needs clear evidence (e.g., recent work samples, behavior logs) to support any decisions or recommendations.  
+- **States**: The screen must handle partial or missing data (e.g., incomplete attendance records) with clear indicators.  
+- **Working with lists**: If the teacher is reviewing multiple students, filters and bulk actions should persist to help them focus on the relevant student.  
+
+These rules ensure the teacher can quickly grasp the student’s situation, back up observations with data, and prepare for the parent meeting effectively.

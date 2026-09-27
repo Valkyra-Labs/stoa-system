@@ -1,0 +1,50 @@
+import { Page, Header, Section, Card, Status, Metric, Trend, Comparison, DataTable, AuditLog, EmptyData, StaleData, FilterBar, Button, Sidebar } from "@stoa/react";
+
+export default function StudentPreparation() {
+  return (
+    <Page title="Student Preparation">
+      <Header title="John Doe" subtitle="Preparation for Parent-Teacher Meeting" />
+      <Section title="Academic Performance">
+        <Card title="Recent Grades">
+          <Metric label="Overall Grade" value={85} unit="%" />
+          <Trend series={[75, 80, 85, 90]} />
+          <DataTable
+            columns={[
+              { label: "Subject", field: "subject" },
+              { label: "Grade", field: "grade" },
+              { label: "Date", field: "date" },
+            ]}
+            rows={[
+              { subject: "Math", grade: 85, date: "2023-11-15" },
+              { subject: "English", grade: 88, date: "2023-11-10" },
+              { subject: "Science", grade: 82, date: "2023-11-05" },
+            ]}
+          />
+        </Card>
+      </Section>
+      <Section title="Behavior">
+        <Card title="Incidents">
+          <DataTable
+            columns={[
+              { label: "Incident", field: "incident" },
+              { label: "Date", field: "date" },
+              { label: "Teacher", field: "teacher" },
+            ]}
+            rows={[
+              { incident: "Tardy", date: "2023-11-15", teacher: "Ms. Smith" },
+              { incident: "Disruptive", date: "2023-11-10", teacher: "Mr. Johnson" },
+              { incident: "Absent", date: "2023-11-05", teacher: "Ms. Lee" },
+            ]}
+          />
+        </Card>
+      </Section>
+      <Section title="Preparation Notes">
+        <Card title="Meeting Notes">
+          <p>Note 1: John has shown improvement in Math since the last meeting.</p>
+          <p>Note 2: Continue to monitor behavior in English class.</p>
+          <p>Note 3: Parent is concerned about overall grade trend.</p>
+        </Card>
+      </Section>
+    </Page>
+  );
+}

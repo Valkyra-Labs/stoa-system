@@ -1,0 +1,105 @@
+```tsx
+import {
+  Page,
+  Header,
+  Sidebar,
+  Section,
+  Card,
+  Tabs,
+  Metric,
+  DataTable,
+  Button,
+  Status,
+  EmptyData,
+} from "@stoa/react";
+
+// Placeholder data for failed payouts
+const failedPayouts = [
+  { id: "TXN-001", recipient: "Alice Johnson", amount: 1250.00, error: "INSUFF_FUNDS", time: "2023-10-24T10:15:00Z", status: "FAILED" },
+  { id: "TXN-002", recipient: "Bob Smith", amount: 450.50, error: "CARD_DECLINED", time: "2023-10-24T10:16:00Z", status: "FAILED" },
+  { id: "TXN-003", recipient: "Charlie Brown", amount: 890.00, error: "SYSTEM_ERROR", time: "2023-10-24T10:17:00Z", status: "FAILED" },
+  { id: "TXN-004", recipient: "Diana Prince", amount: 2100.00, error: "INVALID_ADDRESS", time: "2023-10-24T10:18:00Z", status: "FAILED" },
+  { id: "TXN-005", recipient: "Evan Wright", amount: 320.75, error: "TIMEOUT", time: "2023-10-24T10:19:00Z", status: "FAILED" },
+];
+
+const resolutionOptions = [
+  { label: "Retry", action: "retry" },
+  { label: "Manual Override", action: "override" },
+  { label: "Reject", action: "reject" },
+];
+
+function FailedPayoutsScreen() {
+  return (
+    <Page title="Failed Payout Resolution">
+      <Header
+        title="Failed Payouts"
+        subtitle="Batch ID: BATCH-2023-10-24"
+        actions={
+          <>
+            <Button label="View Successes" />
+            <Button label="Export Report" />
+          </>
+        }
+      />
+      <Sidebar>
+        <Section title="Filters">
+          <p>Filter by error type, date range, or recipient.</p>
+        </Section>
+        <Section title="Saved Views">
+          <p>Save your current filter configuration.</p>
+        </Section>
+      </Sidebar>
+      <main>
+        <Section title="Resolution Queue">
+          <Card title="Pending Items">
+            <Tabs
+              items={[
+                { id: "list", label: "List View" },
+                { id: "details", label: "Detailed View" },
+              ]}
+            >
+              <div id="list">
+                <DataTable
+                  columns={[
+                    { key: "id", label: "Transaction ID" },
+                    { key: "recipient", label: "Recipient" },
+                    { key: "amount", label: "Amount" },
+                    { key: "error", label: "Error Code" },
+                    { key: "time", label: "Time" },
+                    { key: "status", label: "Status" },
+                  ]}
+                  rows={failedPayouts}
+                  onRowSelect={(row) => {
+                    // In a real app, this would load more details
+                    console.log("Selected:", row);
+                  }}
+                />
+                {failedPayouts.length === 0 && <EmptyData message="No failed payouts found." />}
+              </div>
+              <div id="details" style={{ display: "none" }}>
+                <p>Details view placeholder</p>
+              </div>
+            </Tabs>
+            <div style={{ marginTop: "1rem" }}>
+              <Button label="Retry All" variant="primary" />
+              <Button label="Export Batch" />
+            </div>
+          </Card>
+        </Section>
+        <Section title="Metrics">
+          <Card title="Batch Summary">
+            <div style={{ display: "flex", gap: "1rem" }}>
+              <Metric label="Total Payouts" value="150" />
+              <Metric label="Failed Payouts" value={failedPayouts.length} delta={-5} unit="%" />
+              <Metric label="Success Rate" value="96.7" unit="%" />
+              <Metric label="Avg. Resolution Time" value="12" unit="min" />
+            </div>
+          </Card>
+        </Section>
+      </main>
+    </Page>
+  );
+}
+
+export default FailedPayoutsScreen;
+```

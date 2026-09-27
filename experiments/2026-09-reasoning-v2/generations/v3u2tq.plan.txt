@@ -1,0 +1,13 @@
+**Steps 1 to 5 Summary:**
+
+1. **Session Context:** A payments operations analyst reviews and resolves failed payouts daily. They open this screen to address a list of failed transactions flagged by the system.
+
+2. **Shape of Work:** The analyst works through a queue of failed transactions, one by one, taking actions to resolve each issue.
+
+3. **Information:** The screen needs to display a list of failed payouts with key details like payout ID, recipient, amount, and reason for failure. Each item should also show relevant timestamps and status updates.
+
+4. **Decision and Evidence:** The analyst decides how to resolve each failed payout (e.g., retry, escalate, or mark as invalid). They need detailed transaction history, error codes, and contact information to make informed decisions.
+
+5. **Structure:** The screen should have a queue of failed payouts (ReviewQueue pattern), with each item showing critical details and a history of actions. A sidebar or secondary panel provides additional information and actions for each item. A main area displays the current item's details, and a bottom section shows action buttons (Retry, Escalate, Mark as Invalid).
+
+This structure ensures the analyst sees all necessary information for each decision and can take action directly from the screen.

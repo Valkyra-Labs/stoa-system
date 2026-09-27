@@ -1,0 +1,148 @@
+```tsx
+import { Page, Header, Sidebar, Section, Card, Metric, Trend, DataTable, Button, Status, EmptyData } from "@stoa/react";
+
+const Student = {
+  id: "S-4092",
+  name: "Alex Mercer",
+  grade: "8th",
+  status: "at-risk",
+  attendance: 0.92,
+  mathScore: 0.45,
+  readingScore: 0.78,
+  behaviorNotes: 3,
+  upcomingMeetings: 1,
+  history: [
+    { date: "2023-10-01", metric: "mathScore", value: 0.60 },
+    { date: "2023-10-15", metric: "mathScore", value: 0.55 },
+    { date: "2023-11-01", metric: "mathScore", value: 0.45 },
+  ],
+  incidents: [
+    { id: "INC-001", date: "2023-11-10", type: "disruption", description: "Refused to complete worksheet, called teacher 'boring'." },
+    { id: "INC-002", date: "2023-11-12", type: "absence", description: "Absent without permission." },
+  ],
+  goals: ["Improve math attendance to 100%", "Reduce classroom disruptions by 50%"],
+};
+
+export default function StudentMeetingPrep() {
+  return (
+    <Page title={`Prep: ${Student.name}`} children={<MeetingPrep />} />
+  );
+}
+
+function MeetingPrep() {
+  return (
+    <main className="flex flex-col md:flex-row min-h-screen">
+      <Sidebar className="w-full md:w-80 flex-shrink-0">
+        <Section title="Meeting Agenda">
+          <Card>
+            <ul className="space-y-3">
+              {Student.goals.map((goal, idx) => (
+                <li key={idx} className="flex items-start gap-2">
+                  <span className="w-4 h-4 bg-blue-100 text-blue-700 rounded-full flex items-center justify-center text-xs font-bold mt-0.5">
+                    {idx + 1}
+                  </span>
+                  <span className="text-sm text-gray-700">{goal}</span>
+                </li>
+              ))}
+            </ul>
+            <div className="mt-4 pt-4 border-t border-gray-200">
+              <p className="text-xs text-gray-500">
+                Total goals: {Student.goals.length} | Incidents to discuss: {Student.incidents.length}
+              </p>
+            </div>
+          </Card>
+        </Section>
+      </Sidebar>
+
+      <section className="flex-1 p-6 space-y-6">
+        <Header 
+          title={`Student: ${Student.name}`} 
+          subtitle={`Grade ${Student.grade} | Meeting Tomorrow`} 
+          actions={
+            <Button label="Save Notes" variant="primary" />
+          } 
+        />
+
+        <Section title="Student Status Overview">
+          <Card>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+              <Metric label="Attendance" value={Student.attendance} unit="%" />
+              <Metric label="Math Proficiency" value={Student.mathScore} unit="0.00" />
+              <Metric label="Reading Proficiency" value={Student.readingScore} unit="0.00" />
+              <Metric label="Behavior Incidents" value={Student.behaviorNotes} unit="count" />
+            </div>
+            <div className="mt-6">
+              <Status tone="warning" label="Requires Parent Meeting" />
+              <p className="text-sm text-gray-500 mt-2">
+                Math score has declined by 15% over the last month. Attendance is below target.
+              </p>
+            </div>
+          </Card>
+        </Section>
+
+        <Section title="Performance Trends">
+          <Card>
+            <div className="h-48 flex items-end justify-around gap-4 px-4">
+              <div className="text-center">
+                <div className="w-full bg-blue-100 rounded-t h-24 mb-2"></div>
+                <div className="text-xs text-gray-500">Oct</div>
+              </div>
+              <div className="text-center">
+                <div className="w-full bg-blue-200 rounded-t h-20 mb-2"></div>
+                <div className="text-xs text-gray-500">Nov</div>
+              </div>
+              <div className="text-center">
+                <div className="w-full bg-red-400 rounded-t h-16 mb-2"></div>
+                <div className="text-xs text-gray-500">Current</div>
+              </div>
+            </div>
+            <div className="mt-4 flex justify-between text-sm text-gray-600">
+              <span>Oct</span>
+              <span>Nov</span>
+              <span>Current Month</span>
+            </div>
+          </Card>
+        </Section>
+
+        <Section title="Key Incidents & Context">
+          <Card>
+            <DataTable 
+              columns={[
+                { key: 'date', label: 'Date' },
+                { key: 'type', label: 'Type' },
+                { key: 'description', label: 'Description' },
+              ]}
+              rows={Student.incidents}
+            />
+          </Card>
+        </Section>
+
+        <Section title="Discussion Points">
+          <Card>
+            <div className="space-y-4">
+              <div>
+                <h4 className="font-medium text-gray-900">Math Performance</h4>
+                <p className="text-sm text-gray-600 mt-1">
+                  Alex's math scores have dropped significantly. Discuss the specific areas of struggle and propose a remediation plan.
+                </p>
+              </div>
+              <div>
+                <h4 className="font-medium text-gray-900">Attendance</h4>
+                <p className="text-sm text-gray-600 mt-1">
+                  Unexcused absences are affecting his learning. Ask about home barriers and agree on a communication plan.
+                </p>
+              </div>
+              <div>
+                <h4 className="font-medium text-gray-900">Behavior</h4>
+                <p className="text-sm text-gray-600 mt-1">
+                  Address the recent disruption incident calmly. Focus on the impact on the classroom and set clear expectations.
+                </p>
+              </div>
+            </div>
+          </Card>
+        </Section>
+      </section>
+    </main>
+  );
+}
+```

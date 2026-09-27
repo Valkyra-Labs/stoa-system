@@ -1,0 +1,13 @@
+1. **Person & Session:** A portfolio manager opens the screen daily (routine) to assess overnight market movements and specific asset changes, triggered by the need for morning decision-making.
+
+2. **Shape of Work:** Scanning a large collection of assets to identify deviations (gainers/losers) and understanding the *reason* for those moves. The person acts here by approving or flagging trades.
+
+3. **Information:** Entities are portfolio positions. Measures include price change %, volume, and specific event triggers (news, algorithm). Values are judged against yesterday's close and a volatility threshold. The "why" (news feed) changes the next step.
+
+4. **Decision & Evidence:** The decision is "approve" or "reject" a significant move. Evidence required includes the magnitude of change, the time of the move, the source (news ticker), and the current portfolio impact. A wrong decision risks mispricing exposure; actions can be undone via trade reversal.
+
+5. **Structure:**
+   - **Header:** Date range and high-level summary metrics (total P&L).
+   - **Main Area (Left):** A filtered table of positions sorted by volatility, highlighting outliers.
+   - **Main Area (Right/Overlay):** A dedicated panel showing the "Why" (news/events) for the selected item.
+   - **Footer:** Bulk actions (e.g., "Approve All") and a navigation link to the full history.

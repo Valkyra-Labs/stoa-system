@@ -1,0 +1,43 @@
+```tsx
+import { Page, Header, Sidebar, Section, Card, Button, DataTable, EmptyData, ErrorData } from "@stoa/react";
+
+const FailedPayoutsScreen = () => {
+  const failedPayouts = [
+    { id: "1", amount: "$100.00", recipient: "John Doe", reason: "Insufficient funds" },
+    { id: "2", amount: "$200.00", recipient: "Jane Smith", reason: "Account closed" },
+    // Add more failed payouts as needed
+  ];
+
+  if (failedPayouts.length === 0) {
+    return <EmptyData message="No failed payouts to review." />;
+  }
+
+  const columns = [
+    { key: "id", label: "ID" },
+    { key: "amount", label: "Amount" },
+    { key: "recipient", label: "Recipient" },
+    { key: "reason", label: "Reason" },
+    { key: "actions", label: "Actions" },
+  ];
+
+  const onRowSelect = (row) => {
+    // Handle row selection and display details
+  };
+
+  return (
+    <Page title="Failed Payouts">
+      <Header title="Failed Payouts" subtitle="Review and resolve failed payouts" />
+      <Section title="Failed Payouts Queue">
+        <DataTable
+          columns={columns}
+          rows={failedPayouts}
+          selectable
+          onRowSelect={onRowSelect}
+        />
+      </Section>
+    </Page>
+  );
+};
+
+export default FailedPayoutsScreen;
+```

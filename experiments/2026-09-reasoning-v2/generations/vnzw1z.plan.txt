@@ -1,0 +1,7 @@
+The rules of **Order and emphasis**, **Evidence and actions**, and **States** shape this screen most critically. 
+
+First, **Order and emphasis** dictates that the two funds be presented side-by-side for direct comparison, sorted by the metric most relevant to the client's goal (e.g., return vs. risk), ensuring the recommended choice is immediately apparent without scanning a sea of data. The screen must avoid a "row of KPI cards" and instead use a focused `Comparison` view where the decisive factor is highlighted.
+
+Second, **Evidence and actions** requires that every recommendation be backed by visible context: historical performance, fee structures, and risk profiles must appear directly next to the comparison, not hidden in hover states. The final "Recommend" action must state its consequence (e.g., "allocates 60% of portfolio") before execution.
+
+Finally, **States** ensures the interface remains trustworthy if data is missing or stale. If a fund's recent performance is unavailable, the screen must clearly indicate this via `StaleData` or `EmptyData` rather than silently hiding the option, preserving the client's ability to make an informed decision based on available evidence.

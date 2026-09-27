@@ -1,0 +1,77 @@
+import { Page, Header, Section, Card, Metric, Chart, Tabs, Button, Status, DataTable } from "@stoa/react";
+
+export default function FundSelectionScreen() {
+  const entities = [
+    { id: "fund-a", name: "Nexus Growth Fund", risk: "High", return: 12.4 },
+    { id: "fund-b", name: "Pinnacle Balanced Fund", risk: "Medium", return: 7.8 },
+  ];
+
+  const metrics = [
+    { label: "5-Year CAGR", values: [12.4, 7.8], delta: { value: 4.6, basis: "vs Pinnacle" } },
+    { label: "Expense Ratio", values: [0.75, 0.50], delta: { value: -0.25, basis: "vs Pinnacle" } },
+    { label: "Max Drawdown", values: [-18, -8], delta: { value: -10, basis: "vs Pinnacle" } },
+    { label: "Sharpe Ratio", values: [0.95, 0.65], delta: { value: 0.3, basis: "vs Pinnacle" } },
+  ];
+
+  const chartData = {
+    type: "line",
+    series: [{ id: "A", data: [10, 11, 11.5, 12, 12.4] }, { id: "B", data: [7, 7.5, 7.6, 7.7, 7.8] }],
+    x: ["Y1", "Y2", "Y3", "Y4", "Y5"],
+    y: ["Return %"],
+  };
+
+  return (
+    <Page title="Fund Selection: Client Alpha">
+      <Header title="Client Alpha Portfolio Review" subtitle="Select the optimal fund allocation" actions={<Button label="Save Selection" />} />
+      
+      <Section title="Fund Comparison" children={<ComparisonView entities={entities} metrics={metrics} />} />
+      <Section title="Performance History" children={<ChartView data={chartData} />} />
+      <Section title="Final Recommendation" children={<RecommendationView entities={entities} />} />
+    </Page>
+  );
+}
+
+function ComparisonView({ entities, metrics }: { entities: { id: string; name: string; risk: string; return: number }[]; metrics: { label: string; values: number[]; delta: { value: number; basis: string } }[] }) {
+  return (
+    <Card title="Side-by-Side Analysis">
+      <DataTable
+        columns={[
+          { key: "metric", label: "Metric" },
+          { key: "entityA", label: entities[0].name },
+          { key: "entityB", label: entities[1].name },
+        ]}
+        rows={metrics.map((m, i) => ({
+          key: i,
+          metric: m.label,
+          entityA: `${m.values[0]}% ${m.delta.value > 0 ? "↑" : m.delta.value < 0 ? "↓" : ""}`,
+          entityB: `${m.values[1]}% ${m.delta.value > 0 ? "↑" : m.delta.value < 0 ? "↓" : ""}`,
+        }))}
+      />
+      <div style={{ marginTop: 16 }}>
+        <Metric label="Risk Profile" value={entities[0].risk} />
+        <Metric label="Target Return" value={`${entities[0].return}%`} />
+      </div>
+    </Card>
+  );
+}
+
+function ChartView({ data }: { data: { type: "line"; series: { id: string; data: number[] }[]; x: string[]; y: string } }) {
+  return <Chart type={data.type} series={data.series} x={data.x} y={data.y} />;
+}
+
+function RecommendationView({ entities }: { entities: { id: string; name: string; risk: string; return: number }[] }) {
+  const [selectedId, setSelectedId] = entities[0].id;
+  const selected = entities.find(e => e.id === selectedId) || entities[0];
+
+  return (
+    <Card title="Client Recommendation">
+      <Tabs items={[
+        { id: "fund-a", label: entities[0].name, content: <div><p><Status tone="success" label="Recommended" /></p><p>Risk: {entities[0].risk} | Expected Return: {entities[0].return}%</p><p>Best for aggressive growth portfolios.</p></div> },
+        { id: "fund-b", label: entities[1].name, content: <div><p><Status tone="neutral" label="Alternative" /></p><p>Risk: {entities[1].risk} | Expected Return: {entities[1].return}%</p><p>Best for balanced, moderate-risk portfolios.</p></div> },
+      ]} />
+      <div style={{ marginTop: 16 }}>
+        <Button label={`Select ${selected.name}`} variant={selected.id === selectedId ? "primary" : "secondary"} onPress={() => setSelectedId(selected.id)} />
+      </div>
+    </Card>
+  );
+}

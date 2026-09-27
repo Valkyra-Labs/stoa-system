@@ -1,0 +1,5 @@
+This screen serves as a finalized, immutable presentation dashboard for the School Board to review the term's performance. It is designed to be visually clear and authoritative, requiring no editing during the meeting.
+
+The layout features a clean header with the school name and the specific term title. Below, a primary dashboard section displays key performance metrics (e.g., enrollment, test scores, budget) using large `Metric` cards and a `Chart` to visualize overall trends. A secondary `Section` presents a high-level `Timeline` of major term events and a `Comparison` view to highlight year-over-year or peer school performance.
+
+At the bottom, a `DataTable` offers a detailed but scannable list of critical records, such as teacher assignments or facility statuses, with sticky headers for easy reading. The entire interface uses a neutral, professional color palette with consistent spacing, ensuring the focus remains on the data. No interactive controls or "save" buttons are present; the screen is strictly for viewing.

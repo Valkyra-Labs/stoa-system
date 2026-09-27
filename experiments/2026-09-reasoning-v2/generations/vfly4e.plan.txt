@@ -1,0 +1,11 @@
+**1. Person and Session:** A payments operations analyst reviews a list of failed payouts daily to ensure timely resolution. They open the screen in response to a daily alert or to clear pending issues.
+
+**2. Shape of Work:** The analyst takes each failed payout in turn, reviewing details and making a decision to resolve it. This involves scanning through a list of items, one by one.
+
+**3. Information:** The screen must show a list of failed payouts, each with details like payout ID, reason for failure, amount, and timestamp. Contextual information includes the status of the payout (e.g., "Rejected", "Pending").
+
+**4. Decision and Evidence:** The analyst decides how to resolve each failed payout. Evidence includes the failure reason, amount, and relevant timestamps. The cost of a wrong decision is delayed resolution, potentially leading to customer dissatisfaction.
+
+**5. Structure:** The screen should have a queue of failed payouts at the top, showing basic details and status. Below, there should be a detailed view of the selected payout, including failure reason and timestamp. At the bottom, actions to resolve the payout should be available.
+
+**6. Components:** Use a **ReviewQueue** pattern with a **DataTable** for the list of failed payouts and a **Card** for detailed information. Include **Buttons** for resolution actions.

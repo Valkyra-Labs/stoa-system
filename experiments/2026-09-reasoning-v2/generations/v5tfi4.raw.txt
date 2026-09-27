@@ -1,0 +1,61 @@
+```tsx
+import { Page, Header, Section, Card, Metric, Delta, DataTable, Button, FilterBar, SavedViews, Status, EmptyData, Timeline, AuditLog } from "@stoa/react";
+
+const portfolioData = [
+  { id: "ASSET1", name: "Tech Equity Fund", value: 15000000, delta: 120000, deltaPercent: 0.8, changeTime: "2023-10-05T09:30:00Z" },
+  { id: "ASSET2", name: "Energy Sector ETF", value: 8500000, delta: -150000, deltaPercent: -1.8, changeTime: "2023-10-05T10:15:00Z" },
+  { id: "ASSET3", name: "Bond Portfolio", value: 12000000, delta: 0, deltaPercent: 0, changeTime: "2023-10-05T11:00:00Z" },
+];
+
+const portfolioMetrics = [
+  { label: "Total Value", value: 35500000, delta: 270000, deltaPercent: 0.76, unit: "USD" },
+  { label: "Daily Change", value: 120000, delta: 120000, deltaPercent: 1.2, unit: "USD" },
+  { label: "Volatility", value: 1.5, unit: "%" },
+];
+
+const events = [
+  { time: "2023-10-05T09:30:00Z", description: "Tech Equity Fund increased due to positive earnings report." },
+  { time: "2023-10-05T10:15:00Z", description: "Energy Sector ETF decreased due to geopolitical tensions." },
+  { time: "2023-10-05T11:00:00Z", description: "Bond Portfolio remained stable with no significant market movements." },
+];
+
+const auditLog = [
+  { user: "manager", action: "viewed portfolio", time: "2023-10-05T08:00:00Z" },
+  { user: "system", action: "updated values", time: "2023-10-05T09:00:00Z" },
+];
+
+export default function PortfolioOverview() {
+  return (
+    <Page title="Portfolio Overview">
+      <Header title="Portfolio Movement" subtitle="Changes since yesterday" actions={<Button label="Refresh" />} />
+      <Section title="Key Metrics">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {portfolioMetrics.map((metric, index) => (
+            <Card key={index} title={metric.label}>
+              <Metric value={metric.value} delta={metric.delta} deltaPercent={metric.deltaPercent} unit={metric.unit} />
+            </Card>
+          ))}
+        </div>
+      </Section>
+      <Section title="Asset Movement">
+        <DataTable
+          columns={[
+            { key: "name", label: "Asset" },
+            { key: "value", label: "Value" },
+            { key: "delta", label: "Delta" },
+            { key: "deltaPercent", label: "Delta %" },
+            { key: "changeTime", label: "Change Time" },
+          ]}
+          rows={portfolioData}
+        />
+      </Section>
+      <Section title="Recent Events">
+        <Timeline events={events} />
+      </Section>
+      <Section title="Audit Log">
+        <AuditLog entries={auditLog} />
+      </Section>
+    </Page>
+  );
+}
+```

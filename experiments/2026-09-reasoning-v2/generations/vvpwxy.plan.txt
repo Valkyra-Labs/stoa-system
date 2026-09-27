@@ -1,0 +1,5 @@
+This screen is a **Morning Briefing Dashboard** designed for a portfolio manager to quickly assess overnight market movements and understand the drivers behind them. It prioritizes clarity and speed of insight over granular detail.
+
+The layout features a **Header** with the current date, portfolio name, and a "Refresh" action. Below is a primary **Section** containing three **Metric** cards at the top: Total Portfolio Value, Net Change (with a colored **Delta** indicator), and a **Trend** line showing intraday or historical movement.
+
+Beneath the metrics, a **Chart** type "line" visualizes the portfolio's performance curve since yesterday. The main content area is a **DataTable** listing all holdings. Each row shows the ticker, current price, change, and a clickable link to an **Inspector** panel (opened via a button in the row) that explains *why* the move happened (e.g., news, sector rotation, or manual adjustment). A **FilterBar** sits above the table to quickly sort by volatility or sector, and a **SavedViews** component allows the manager to bookmark specific filter sets for future mornings.

@@ -1,0 +1,102 @@
+import { Page, Header, Section, Card, Tabs, Button, Status, Metric, EmptyData, ErrorData, Timeline } from "@stoa/react";
+
+const TransactionDetails = () => (
+  <div className="space-y-4">
+    <div className="flex justify-between items-start">
+      <div>
+        <h1 className="text-2xl font-bold">Payout #782931 - Failed</h1>
+        <p className="text-gray-500">Customer: Alice Johnson (ID: 44921) | Amount: $125.00</p>
+      </div>
+      <Status tone="error" label="Failed" />
+    </div>
+
+    <div className="grid grid-cols-2 gap-4 text-sm">
+      <div className="space-y-1">
+        <span className="text-gray-500">Status</span>
+        <div className="flex items-center gap-2">
+          <Status tone="error" label="Bank Decline" />
+        </div>
+      </div>
+      <div className="space-y-1">
+        <span className="text-gray-500">Attempt #</span>
+        <span className="font-medium">2</span>
+      </div>
+      <div className="space-y-1">
+        <span className="text-gray-500">Customer Name</span>
+        <span className="font-medium">Alice Johnson</span>
+      </div>
+      <div className="space-y-1">
+        <span className="text-gray-500">Amount</span>
+        <Metric label="Amount" value="125.00" unit="USD" />
+      </div>
+      <div className="space-y-1">
+        <span className="text-gray-500">Bank</span>
+        <span className="font-medium">Chase Bank</span>
+      </div>
+      <div className="space-y-1">
+        <span className="text-gray-500">Date</span>
+        <span className="font-medium">Oct 24, 2023</span>
+      </div>
+    </div>
+
+    <div className="mt-4 p-4 bg-gray-50 border border-gray-200 rounded">
+      <h3 className="font-semibold mb-2">Rejection Code</h3>
+      <p className="font-mono text-red-600">E04 - Insufficient Funds</p>
+      <p className="text-sm mt-1 text-gray-600">The receiving bank reported that the card associated with this payout had no available funds at the time of authorization.</p>
+    </div>
+  </div>
+);
+
+const HistoryLog = () => (
+  <div className="space-y-4">
+    <h2 className="text-lg font-semibold">Transaction History</h2>
+    <Timeline events={[
+      { time: "2023-10-24 14:32:10", type: "info", text: "Payout initiated by Operations Team." },
+      { time: "2023-10-24 14:35:02", type: "success", text: "Authorization approved by merchant." },
+      { time: "2023-10-24 14:35:15", type: "error", text: "Bank Decline: Insufficient Funds (E04)." },
+      { time: "2023-10-24 14:36:00", type: "info", text: "Retry #1 scheduled." },
+      { time: "2023-10-24 14:36:45", type: "error", text: "Bank Decline: Insufficient Funds (E04)." },
+      { time: "2023-10-24 14:37:30", type: "info", text: "Retry #2 scheduled." },
+    ]} />
+  </div>
+);
+
+const ActionsPanel = () => (
+  <div className="mt-8 pt-6 border-t border-gray-200">
+    <h2 className="text-lg font-semibold mb-4">Resolution Actions</h2>
+    <div className="flex flex-wrap gap-3">
+      <Button label="Mark as Resolved" variant="primary" />
+      <Button label="Request Manual Review" variant="secondary" />
+      <Button label="Contact Customer" variant="outline" />
+      <Button label="Archive" variant="ghost" />
+    </div>
+  </div>
+);
+
+export default function FailedPayoutsInspector() {
+  return (
+    <Page title="Failed Payout Resolution">
+      <Header title="Resolution Inspector" subtitle="Transaction #782931" />
+      
+      <main className="flex flex-col md:flex-row gap-6">
+        <Section title="Transaction Details" className="flex-1">
+          <Card title="Primary Record">
+            <TransactionDetails />
+          </Card>
+        </Section>
+
+        <Section title="History & Context" className="w-full md:w-1/3">
+          <Card title="Event Log">
+            <HistoryLog />
+          </Card>
+        </Section>
+      </main>
+
+      <Section title="Resolution Steps" className="w-full">
+        <Card title="Actions">
+          <ActionsPanel />
+        </Card>
+      </Section>
+    </Page>
+  );
+}

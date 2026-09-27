@@ -1,0 +1,9 @@
+1. **The person and the session**: The head of school is presenting to a board next week. This is a high-stakes, infrequent event driven by an external deadline. They need to quickly synthesize complex data into a coherent narrative for decision-makers.
+
+2. **The shape of the work**: The session is about **getting a general picture of many unrelated numbers** to build a story. No individual record needs deep inspection; the goal is synthesis and comparison across categories to demonstrate overall health and specific highlights.
+
+3. **The information**: Entities are academic domains (Math, Science, Arts) and operational metrics (Attendance, Budget). Values are judged against **targets** (KPIs) and **previous periods** (YoY growth). The "decision" is the narrative arc of the presentation, not a binary approval of a single record.
+
+4. **The decision and its evidence**: The decision is to select the strongest data points and trends to tell a story of progress. The evidence required is high-level **metrics** with clear **delta** indicators and **charts** showing trends, not granular transaction logs.
+
+5. **The structure**: The screen must prioritize **high-level metrics** (Key Performance Indicators) at the top for immediate impact. Below this, a **Dashboard** pattern should display **charts** for trends and a **Comparison** view for side-by-side domain performance. A secondary **DataTable** is needed only to allow drilling down into specific highlights if requested, but the primary flow is top-down synthesis.

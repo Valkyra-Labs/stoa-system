@@ -1,0 +1,10 @@
+### Main Goal
+The screen's primary goal is to provide the Finance Director with an immediate, trustworthy snapshot of the company's financial health at a glance. It must answer "Are we on track?" within seconds of loading, enabling quick decision-making before the Monday meeting. The layout prioritizes clarity over density, ensuring critical metrics are prominent while allowing deep dives only when necessary.
+
+### Layout Strategy
+The layout uses a **Dashboard** pattern to organize information hierarchically. 
+1.  **Header**: Clearly states the report date and period.
+2.  **Top Section**: A row of **Metric** cards highlights key performance indicators (KPIs) like Revenue, EBITDA, and Cash Flow with **Delta** indicators to show weekly movement instantly.
+3.  **Middle Section**: A **Comparison** view places the current week side-by-side with last week and the same period last year, using simple **Trend** visuals to contextualize performance.
+4.  **Bottom Section**: An **Explorer** or **DataTable** allows the director to drill down into specific line items if a metric looks anomalous.
+This structure moves from high-level health to specific details, respecting the user's need for speed and context without overwhelming them with data.

@@ -1,0 +1,5 @@
+The rules of **Order and emphasis** and **Evidence and actions** shape this screen most. The portfolio manager needs immediate clarity on what moved, so the screen must present exceptions and items needing action first, sorted by the size of the change, before showing stable averages.
+
+The rule on **Evidence** dictates that the "why" must be visible immediately next to the "what." A manager shouldn't have to click to see the source of a move; the reason, history, and data snapshot must appear beside the metric.
+
+Finally, **Numbers** rule ensures every change is contextualized with a clear basis (e.g., previous period or benchmark) and units, allowing for instant judgment. The layout must prioritize the delta (change) and its magnitude, avoiding decorative KPI cards in favor of a focused table of movements that supports rapid decision-making.

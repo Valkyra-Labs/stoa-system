@@ -1,0 +1,7 @@
+The screen is designed for a teacher to prepare for a meeting with a parent about a specific student. It provides an overview of the student's recent performance, behavior, and any relevant notes or documents. The layout is divided into three main sections:
+
+1. **Student Summary**: A brief introduction to the student, including their name, grade, and a small photo.
+2. **Recent Activity**: Displays a timeline of recent events related to the student, such as assignments, grades, and behavioral incidents.
+3. **Preparation Notes**: A section for the teacher to add notes and review any documents or resources that may be useful during the meeting.
+
+This layout ensures the teacher has all necessary information at hand to prepare effectively for the parent-teacher meeting.

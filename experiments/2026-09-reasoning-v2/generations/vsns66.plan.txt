@@ -1,0 +1,9 @@
+1. **Person & Session:** A financial adviser opens this screen during a client consultation. It is a routine, high-stakes decision requiring immediate, accurate comparison between two options to avoid client loss or dissatisfaction.
+
+2. **Shape of Work:** Setting a few objects against each other. The adviser must evaluate two specific funds simultaneously, comparing their risk, return, and fit against the client's specific goals.
+
+3. **Information:** Entities are Fund A and Fund B. Metrics include risk rating, historical return, expense ratio, and asset class allocation. Values are judged against the client's profile (risk tolerance, liquidity needs) and a performance threshold (e.g., outperforming the benchmark).
+
+4. **Decision & Evidence:** The decision is "Recommend Fund A" or "Fund B" (or "No Recommendation"). Evidence must show side-by-side metrics, historical trends for both, and explicit indicators of which fund aligns better with the client's constraints. A wrong decision costs client trust and potential financial loss; the choice is final for this consultation but can be re-evaluated later.
+
+5. **Structure:** The screen should display the two funds in parallel columns. Key metrics are compared directly in a table. A visual trend line shows performance history for both. A dedicated "Decision Zone" at the bottom forces a binary choice, supported by a summary of why the selected fund wins based on the visible evidence.

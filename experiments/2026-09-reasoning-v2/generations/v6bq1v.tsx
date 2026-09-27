@@ -1,0 +1,194 @@
+import {
+  Page,
+  Header,
+  Section,
+  Card,
+  Tabs,
+  Metric,
+  DataTable,
+  FilterBar,
+  Button,
+  BulkActions,
+  EmptyData,
+  StaleData,
+  Status,
+  Timeline,
+  AuditLog,
+  Drawer,
+} from "@stoa/react";
+
+type FailureReason = "insufficient_balance" | "card_declined" | "fraud_alert" | "network_error" | "other";
+
+const FAULTS: Record<FailureReason, { label: string; count: number; autoResolve: boolean }> = {
+  insufficient_balance: { label: "Insufficient Funds", count: 12, autoResolve: false },
+  card_declined: { label: "Card Declined", count: 8, autoResolve: false },
+  fraud_alert: { label: "Fraud Alert", count: 3, autoResolve: false },
+  network_error: { label: "Network Timeout", count: 15, autoResolve: true },
+  other: { label: "Other", count: 2, autoResolve: false },
+};
+
+const initialData = Array.from({ length: 10 }).map((_, i) => ({
+  id: `PMT-${1000 + i}`,
+  amount: 1250.50,
+  customer: `Customer ${String.fromCharCode(65 + i)}`,
+  status: "Failed",
+  reason: i % 3 === 0 ? "insufficient_balance" : i % 4 === 0 ? "card_declined" : i % 5 === 0 ? "fraud_alert" : "network_error",
+  timestamp: new Date(Date.now() - i * 3600000).toISOString(),
+  attempt: 1,
+  notes: "Initial attempt failed.",
+}));
+
+const columns = [
+  { key: "id", label: "Transaction ID", sticky: true, width: 150 },
+  { key: "amount", label: "Amount", align: "right", width: 120 },
+  { key: "customer", label: "Customer", width: 140 },
+  { key: "reason", label: "Reason", width: 180 },
+  { key: "timestamp", label: "Time", width: 160 },
+  { key: "attempt", label: "Attempts", width: 80 },
+  { key: "action", label: "Action", width: 100 },
+];
+
+export default function FailedPayouts() {
+  const [filters, setFilters] = useState({ reason: "all", status: "Failed" });
+  const [bulkAction, setBulkAction] = useState<"retry" | "escalate" | null>(null);
+  const [detailDrawerOpen, setDetailDrawerOpen] = useState(false);
+  const [selectedId, setSelectedId] = useState<string | null>(null);
+
+  const filteredData = initialData.filter(row => {
+    if (filters.reason !== "all" && row.reason !== filters.reason) return false;
+    if (filters.status !== "Failed" && row.status !== filters.status) return false;
+    return true;
+  });
+
+  const handleBulkAction = (action: typeof bulkAction) => {
+    setBulkAction(action);
+    setTimeout(() => {
+      setBulkAction(null);
+      // Simulate processing
+      alert(`Bulk ${action} initiated for all selected items.`);
+    }, 200);
+  };
+
+  return (
+    <Page title="Failed Payouts Resolution">
+      <Header title="Failed Payouts" subtitle="Resolve and retry failed transactions" />
+      
+      <Section title="Summary">
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "1rem" }}>
+          <Card title="Total Failed">
+            <Metric label="Total Failed" value={initialData.length} />
+          </Card>
+          <Card title="Auto-Resolvable">
+            <Metric label="Auto-Resolvable" value={Object.values(FAULTS).filter(f => f.autoResolve).reduce((sum, f) => sum + f.count, 0)} />
+          </Card>
+          <Card title="Requires Manual Review">
+            <Metric label="Manual Review" value={Object.values(FAULTS).filter(f => !f.autoResolve).reduce((sum, f) => sum + f.count, 0)} />
+          </Card>
+          <Card title="Last Updated">
+            <Metric label="Last Updated" value="Just now" />
+          </Card>
+        </div>
+      </Section>
+
+      <Section title="Resolution Queue">
+        <FilterBar
+          filters={[
+            { key: "reason", label: "Failure Reason", options: ["all", ...Object.keys(FAULTS)] },
+            { key: "status", label: "Status", options: ["Failed", "Pending"] },
+          ]}
+          filters={filters}
+          setFilters={setFilters}
+        />
+
+        <DataTable
+          columns={columns}
+          rows={filteredData}
+          onRowSelect={(id) => {
+            setSelectedId(id);
+            setDetailDrawerOpen(true);
+          }}
+          onRowDeselect={() => {
+            setSelectedId(null);
+            setDetailDrawerOpen(false);
+          }}
+          selectable={true}
+          stickyFirstColumn={true}
+        />
+
+        {filteredData.length > 0 && (
+          <BulkActions
+            actions={[
+              { label: "Retry All", action: "retry" },
+              { label: "Escalate to Support", action: "escalate" },
+            ]}
+            bulkAction={bulkAction}
+            onBulkAction={handleBulkAction}
+          />
+        )}
+
+        {filteredData.length === 0 && <EmptyData message="No failed payouts match your filters." />}
+        {filteredData.length > 0 && filteredData.length < 10 && <StaleData message="Data refreshed 2 minutes ago." />}
+      </Section>
+
+      {selectedId && (
+        <Drawer
+          title={`Details: ${selectedId}`}
+          open={detailDrawerOpen}
+          onClose={() => {
+            setDetailDrawerOpen(false);
+            setSelectedId(null);
+          }}
+        >
+          <Section title="Transaction Info">
+            <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+              <p><strong>Amount:</strong> $1,250.50</p>
+              <p><strong>Customer:</strong> Customer A</p>
+              <p><strong>Failure Reason:</strong> {FAULTS[filteredData.find(r => r.id === selectedId)?.reason || "unknown"].label}</p>
+              <p><strong>Timestamp:</strong> {new Date(filteredData.find(r => r.id === selectedId)?.timestamp || "").toLocaleString()}</p>
+            </div>
+          </Section>
+
+          <Section title="Evidence & History">
+            <Timeline events={[
+              { time: "2023-10-27 14:30", event: "Payout initiated by operator." },
+              { time: "2023-10-27 14:30:05", event: "Network timeout detected." },
+              { time: "2023-10-27 14:30:06", event: "Attempt 1 failed." },
+              { time: "2023-10-27 14:35:00", event: "Retry scheduled." },
+              { time: "2023-10-27 14:35:01", event: "Attempt 2 failed. Reason: Card Declined." },
+              { time: "2023-10-27 14:35:02", event: "Attempt 3 failed. Reason: Insufficient Funds." },
+              { time: "2023-10-27 14:35:03", event: "Final attempt failed. Queueing for manual review." },
+            ]} />
+          </Section>
+
+          <Section title="Actions">
+            <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+              <Button label="Retry Transaction" onPress={() => {
+                alert("Retry initiated for selected transaction.");
+                setDetailDrawerOpen(false);
+                setSelectedId(null);
+              }} variant="primary" />
+              <Button label="Mark as Resolved" onPress={() => {
+                alert("Transaction marked as resolved. No undo available.");
+                setDetailDrawerOpen(false);
+                setSelectedId(null);
+              }} variant="secondary" />
+              <div style={{ fontSize: "0.8rem", color: "#666" }}>
+                <Status tone="neutral" label="Note: Marking resolved cannot be undone. Ensure all attempts have been exhausted." />
+              </div>
+            </div>
+          </Section>
+        </Drawer>
+      )}
+
+      <Section title="Audit Log">
+        <AuditLog
+          entries={[
+            { user: "ops_analyst", action: "created_batch", time: "2023-10-27T10:00:00Z" },
+            { user: "system", action: "failed_retry", time: "2023-10-27T14:35:03Z" },
+            { user: "ops_analyst", action: "reviewed_item", time: "2023-10-27T15:00:00Z" },
+          ]}
+        />
+      </Section>
+    </Page>
+  );
+}

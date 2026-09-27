@@ -1,0 +1,29 @@
+```tsx
+import { Page, Header, Section, Chart, DataTable, Status, Delta } from "@stoa/react";
+
+export default function PortfolioOverview() {
+  return (
+    <Page title="Portfolio Overview">
+      <Header title="Portfolio Overview" subtitle="Movements since yesterday" />
+      <Section title="Portfolio Performance">
+        <Chart type="line" series={[{ id: "portfolio", data: [[0, 100], [1, 105], [2, 103]] }]} x="day" y="value" />
+        <Status tone="positive" label="Overall Gain" />
+      </Section>
+      <Section title="Significant Movements">
+        <DataTable
+          columns={[
+            { label: "Asset", key: "asset" },
+            { label: "Change", key: "change" },
+            { label: "Reason", key: "reason" },
+          ]}
+          rows={[
+            { asset: "Tech Fund", change: <Delta value={3} basis={100} />, reason: "Tech sector rally" },
+            { asset: "Energy Fund", change: <Delta value={-2} basis={100} />, reason: "Oil price drop" },
+            { asset: "Gold ETF", change: <Delta value={1} basis={100} />, reason: "Safe-haven demand" },
+          ]}
+        />
+      </Section>
+    </Page>
+  );
+}
+```

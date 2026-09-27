@@ -1,0 +1,43 @@
+```tsx
+import { Page, Header, Section, Card, Trend, DataTable, Comparison, Timeline } from "@stoa/react";
+
+export default function PortfolioOverview() {
+  return (
+    <Page title="Portfolio Overview">
+      <Header title="Portfolio Overview" subtitle="Top movers since yesterday" actions={<Button label="Sync" />} />
+      <Section title="Top Movers">
+        <Card title="Tech Giants">
+          <Trend series={[{ x: "2023-11-10", y: 102.5 }, { x: "2023-11-11", y: 104.3 }, { x: "2023-11-12", y: 106.1 }]} />
+          <p>Apple Inc. saw a significant rise due to positive earnings reports.</p>
+        </Card>
+        <Card title="Energy Sector">
+          <Trend series={[{ x: "2023-11-10", y: 85.2 }, { x: "2023-11-11", y: 83.9 }, { x: "2023-11-12", y: 81.5 }]} />
+          <p>BP plc declined due to geopolitical tensions in the Middle East.</p>
+        </Card>
+      </Section>
+      <Section title="Portfolio Details">
+        <DataTable
+          columns={[
+            { key: "symbol", label: "Symbol" },
+            { key: "name", label: "Name" },
+            { key: "price", label: "Price", type: "number" },
+            { key: "change", label: "Change", type: "number" },
+            { key: "percentageChange", label: "% Change", type: "number" },
+          ]}
+          rows={[
+            { symbol: "AAPL", name: "Apple Inc.", price: 150.25, change: 2.50, percentageChange: 1.68 },
+            { symbol: "BP.L", name: "BP plc", price: 35.75, change: -1.50, percentageChange: -4.06 },
+            { symbol: "MSFT", name: "Microsoft Corp.", price: 250.75, change: 1.25, percentageChange: 0.50 },
+          ]}
+        />
+      </Section>
+      <Section title="Recent Events">
+        <Timeline events={[
+          { date: "2023-11-12", title: "Apple Reports Strong Earnings", description: "Apple Inc. reported record earnings, driving stock prices up." },
+          { date: "2023-11-12", title: "Middle East Tensions", description: "Geopolitical tensions in the Middle East led to a drop in oil prices, affecting energy stocks." },
+        ]} />
+      </Section>
+    </Page>
+  );
+}
+```

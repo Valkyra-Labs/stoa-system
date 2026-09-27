@@ -1,0 +1,58 @@
+```tsx
+import { Page, Header, Sidebar, Section, Card, Metric, Delta, Trend, Chart, DataTable, FilterBar, Button, EmptyData } from "@stoa/react";
+
+export default function PortfolioDashboard() {
+  return (
+    <Page title="Portfolio Dashboard">
+      <Header title="Portfolio Overview" subtitle="Morning Summary" actions={<Button label="Refresh" />} />
+      <Section title="Overview Metrics">
+        <Metric label="Total Value" value={1000000} delta={-500} unit="USD" />
+        <Metric label="Net Change" value={-500} delta={-200} unit="USD" />
+        <Metric label="Gross Profit" value={2500} delta={-500} unit="USD" />
+      </Section>
+      <Section title="Top Movers">
+        <Card title="Significant Changes">
+          <DataTable
+            columns={[
+              { label: "Asset", key: "asset" },
+              { label: "Change", key: "change" },
+              { label: "Reason", key: "reason" },
+            ]}
+            rows={[
+              { asset: "AAPL", change: -2.5, reason: "Tech sector downturn" },
+              { asset: "GOOGL", change: 1.2, reason: "Positive Q4 earnings report" },
+              { asset: "MSFT", change: -1.5, reason: "CEO resignation rumors" },
+            ]}
+          />
+        </Card>
+      </Section>
+      <Section title="Performance Charts">
+        <Card title="Portfolio Performance">
+          <Chart type="line" series={[{ id: "value", data: [{ x: "2023-11-01", y: 1000000 }, { x: "2023-11-02", y: 999500 }, { x: "2023-11-03", y: 999000 }] }]} x="date" y="value" />
+        </Card>
+      </Section>
+      <Section title="Review Log">
+        <Card title="Significant Events">
+          <DataTable
+            columns={[
+              { label: "Date", key: "date" },
+              { label: "Event", key: "event" },
+              { label: "Description", key: "description" },
+            ]}
+            rows={[
+              { date: "2023-11-02", event: "Trade", description: "Sold 100 shares of AAPL" },
+              { date: "2023-11-02", event: "Adjustment", description: "Increased bond allocation" },
+            ]}
+          />
+        </Card>
+      </Section>
+      <Section title="Action Items">
+        <Card title="Next Steps">
+          <p>Consider rebalancing the portfolio to maintain the desired asset allocation.</p>
+          <p>Monitor the tech sector for further downturns.</p>
+        </Card>
+      </Section>
+    </Page>
+  );
+}
+```

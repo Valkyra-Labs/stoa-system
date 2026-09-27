@@ -1,0 +1,8 @@
+This screen is a preparation dashboard for a teacher to gather evidence and structure a conversation with a parent regarding a specific student. It focuses on clarity, empathy, and data-driven insights to guide the upcoming meeting.
+
+The layout features a **Header** identifying the student and the meeting date. The main area is divided into three vertical sections:
+1.  **Student Overview**: A **Card** displaying key **Metrics** (e.g., attendance, grades) and a small **Trend** line showing recent performance.
+2.  **Evidence Gallery**: A **DataTable** listing specific incidents, strengths, and areas for growth, with a **FilterBar** to sort by date or category.
+3.  **Conversation Prep**: A **Section** containing **Tabs** to toggle between "Strengths to Highlight," "Concerns to Address," and "Action Plan." Below this, a **Status** indicator shows if the meeting notes are "Ready," "Draft," or "Incomplete."
+
+The design ensures all relevant data is visible at a glance while allowing the teacher to quickly customize the narrative for the parent.

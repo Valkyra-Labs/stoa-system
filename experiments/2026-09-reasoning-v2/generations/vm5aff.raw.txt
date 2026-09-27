@@ -1,0 +1,121 @@
+```tsx
+import {
+  Page,
+  Header,
+  Section,
+  Card,
+  Metric,
+  Delta,
+  Timeline,
+  DataTable,
+  Status,
+  Button,
+  EmptyData,
+} from "@stoa/react";
+
+export default function StudentMeetingPrep() {
+  const student = {
+    name: "Maya Lin",
+    grade: "8th Grade",
+    email: "m.lin@school.edu",
+    parentEmail: "mayalinhom@example.com",
+    meetingDate: "2023-10-24",
+    meetingTime: "14:00",
+    location: "Room 304, Main Hall",
+  };
+
+  const recentMetrics = [
+    { label: "Math Proficiency", value: 72, delta: -4, unit: "%", trend: "down" },
+    { label: "Reading Level", value: "Grade 6.5", delta: null, unit: "", trend: "stable" },
+    { label: "Attendance", value: 94, delta: 2, unit: "%", trend: "up" },
+    { label: "Behavior Score", value: 4.2, delta: null, unit: "/5", trend: "stable" },
+  ];
+
+  const timelineEvents = [
+    { date: "2023-10-10", title: "Math quiz failed", description: "Scored below class average.", type: "academic" },
+    { date: "2023-09-28", title: "Attendance spike", description: "Absence of 2 days due to illness.", type: "attendance" },
+    { date: "2023-09-15", title: "Parent call", description: "Discussed reading habits.", type: "communication" },
+    { date: "2023-09-01", title: "New semester", description: "First day of school.", type: "event" },
+  ];
+
+  const concerns = [
+    { id: 1, title: "Math struggles", description: "Difficulty with algebraic concepts.", priority: "high" },
+    { id: 2, title: "Focus issues", description: "Frequently distracted during group work.", priority: "medium" },
+    { id: 3, title: "Homework completion", description: "Misses 2-3 assignments weekly.", priority: "low" },
+  ];
+
+  return (
+    <Page title="Student Meeting Preparation" className="flex flex-col">
+      <Header
+        title={`Meeting Prep: ${student.name}`}
+        subtitle={`Grade ${student.grade} • ${student.grade}`}
+        actions={
+          <>
+            <Button label="Email Parent" variant="primary" />
+            <Button label="Add Note" variant="secondary" />
+          </>
+        }
+      />
+
+      <main className="flex-1">
+        <Section title="Student Overview">
+          <Card title="Key Metrics" className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {recentMetrics.map((metric) => (
+              <Metric
+                key={metric.label}
+                label={metric.label}
+                value={metric.value}
+                delta={metric.delta}
+                unit={metric.unit}
+              />
+            ))}
+          </Card>
+        </Section>
+
+        <Section title="Meeting Briefing">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <Card title="Recent Events" className="col-span-2">
+              <Timeline events={timelineEvents} />
+            </Card>
+
+            <Card title="Key Concerns">
+              <DataTable
+                columns={[
+                  { key: "title", label: "Concern" },
+                  { key: "description", label: "Details" },
+                  { key: "priority", label: "Priority", render: (val) => <Status tone="high" label={val === "high" ? "High" : val === "medium" ? "Medium" : "Low"} /> },
+                ]}
+                rows={concerns}
+                selectable
+              />
+            </Card>
+          </div>
+        </Section>
+
+        <Section title="Meeting Checklist">
+          <Card title="Preparation Items">
+            <div className="space-y-2">
+              <label className="flex items-center space-x-2">
+                <input type="checkbox" defaultChecked />
+                <span>Review past grades and report cards</span>
+              </label>
+              <label className="flex items-center space-x-2">
+                <input type="checkbox" defaultChecked />
+                <span>Prepare examples of work for Math struggle</span>
+              </label>
+              <label className="flex items-center space-x-2">
+                <input type="checkbox" defaultChecked />
+                <span>Draft a supportive opening statement</span>
+              </label>
+              <label className="flex items-center space-x-2">
+                <input type="checkbox" />
+                <span>Check parent availability (optional)</span>
+              </label>
+            </div>
+          </Card>
+        </Section>
+      </main>
+    </Page>
+  );
+}
+```

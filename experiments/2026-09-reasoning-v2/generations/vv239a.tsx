@@ -1,0 +1,51 @@
+import { Page, Header, Section, Card, Metric, Delta, Status, EmptyData, FilterBar, Button, BulkActions, Explorer, DataTable, Comparison, Timeline, AuditLog, Tabs, Drawer, TabsItem, TabContent, Metric, Delta, Status, EmptyData, PartialData, StaleData, ErrorData } from "@stoa/react";
+
+const WeeklyFinanceOverview = () => {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <Page title="Weekly Finance Overview">
+      <Header title="Weekly Finance Numbers" subtitle="Monday Morning Review" actions={<Button label="Refresh" onPress={() => {}} variant="secondary" />} />
+      
+      <Explorer
+        toolbar={
+          <FilterBar filters={[{ label: "Week", value: "Week 42", options: ["Week 41", "Week 42", "Week 43"] }]} />
+        }
+        table={
+          <DataTable
+            columns={[{ key: "metric", label: "Metric" }, { key: "value", label: "Value", stickyFirstColumn: true }]}
+            rows={[
+              { metric: "Revenue", value: <Metric label="Revenue" value="$12.5M" delta={<Delta value="+1.2M" basis="$11.3M" />} unit="USD" /> },
+              { metric: "Expenses", value: <Metric label="Expenses" value="$8.2M" delta={<Delta value="+0.5M" basis="$7.7M" />} unit="USD" /> },
+              { metric: "Net Profit", value: <Metric label="Net Profit" value="$4.3M" delta={<Delta value="+0.8M" basis="$3.5M" />} unit="USD" /> },
+              { metric: "Cash Flow", value: <Metric label="Cash Flow" value="$2.1M" delta={<Delta value="+0.3M" basis="$1.8M" />} unit="USD" /> },
+              { metric: "Accounts Receivable", value: <Metric label="Accounts Receivable" value="$3.2M" delta={<Delta value="+0.4M" basis="$2.8M" />} unit="USD" /> },
+              { metric: "Inventory", value: <Metric label="Inventory" value="$1.8M" delta={<Delta value="-0.2M" basis="$2.0M" />} unit="USD" /> },
+              { metric: "Debt", value: <Metric label="Debt" value="$5.6M" delta={<Delta value="+0.1M" basis="$5.5M" />} unit="USD" /> },
+            ]}
+            selectable
+            onRowSelect={(row) => setOpen(true)}
+          />
+        }
+        detail={
+          open && (
+            <Drawer title="Detailed View" open={open} onClose={() => setOpen(false)}>
+              <Card title="Revenue">
+                <p>Revenue for the week was $12.5M, an increase of $1.2M from the previous week.</p>
+                <Timeline events={[{ date: "2023-09-25", description: "New client onboarding" }, { date: "2023-09-27", description: "Product launch" }]} />
+                <AuditLog entries={[{ user: "jane.doe", action: "updated", timestamp: "2023-09-26T10:30:00Z" }]} />
+              </Card>
+              <Card title="Expenses">
+                <p>Expenses for the week were $8.2M, an increase of $0.5M from the previous week.</p>
+                <Timeline events={[{ date: "2023-09-26", description: "Marketing campaign" }, { date: "2023-09-28", description: "Office relocation" }]} />
+                <AuditLog entries={[{ user: "jane.doe", action: "updated", timestamp: "2023-09-26T10:30:00Z" }]} />
+              </Card>
+            </Drawer>
+          )
+        }
+      />
+    </Page>
+  );
+};
+
+export default WeeklyFinanceOverview;

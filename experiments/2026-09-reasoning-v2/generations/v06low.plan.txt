@@ -1,0 +1,5 @@
+This screen is a high-level executive dashboard designed for a school board presentation. It provides an immediate, unambiguous view of the school's academic and operational health for the upcoming term.
+
+The layout features a fixed top header with the school name and term date. Below is a two-column grid. The left column displays four key performance indicators (e.g., Average GPA, Enrollment Growth, Graduation Rate, Budget Variance) as large Metric cards. The right column contains a single, dominant line chart visualizing student performance trends over the academic year.
+
+At the bottom, a wide table lists top-performing departments or cohorts, sorted by a primary metric. No filters or interactive controls are present; the screen is static and read-only, ensuring the data appears finalized and authoritative during the presentation.

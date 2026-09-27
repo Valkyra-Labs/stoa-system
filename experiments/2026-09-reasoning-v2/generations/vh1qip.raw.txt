@@ -1,0 +1,46 @@
+```tsx
+import { Page, Header, Sidebar, Section, Card, Metric, Trend, Chart, Timeline, Status } from "@stoa/react";
+
+export default function SchoolReport() {
+  return (
+    <Page title="School Performance Report">
+      <Header title="School Performance Report" subtitle="Term Overview" />
+      <Sidebar>
+        <p>School Overview</p>
+        <p>Academic Performance</p>
+        <p>Financial Summary</p>
+        <p>Student Well-being</p>
+      </Sidebar>
+      <main>
+        <Section title="Overview">
+          <Card title="Key Metrics">
+            <Metric label="Enrollment" value={1200} unit="students" />
+            <Metric label="GPA" value={3.2} />
+            <Metric label="Attendance Rate" value={95} unit="%" />
+          </Card>
+          <Card title="Trends">
+            <Trend series={[{ date: "2023-01-01", value: 1150 }, { date: "2023-04-01", value: 1200 }, { date: "2023-07-01", value: 1210 }]} />
+          </Card>
+        </Section>
+        <Section title="Recent Trends">
+          <Card title="Academic Performance Trends">
+            <Chart type="line" series={[{ date: "2023-01-01", value: 3.1 }, { date: "2023-04-01", value: 3.2 }, { date: "2023-07-01", value: 3.3 }]} x="date" y="value" />
+          </Card>
+          <Card title="Attendance Trends">
+            <Chart type="line" series={[{ date: "2023-01-01", value: 94 }, { date: "2023-04-01", value: 95 }, { date: "2023-07-01", value: 96 }]} x="date" y="value" />
+          </Card>
+        </Section>
+        <Section title="Significant Events">
+          <Card title="Timeline of Events">
+            <Timeline events={[
+              { date: "2023-02-15", description: "New Principal Announcement" },
+              { date: "2023-04-20", description: "STEM Program Launch" },
+              { date: "2023-06-30", description: "End of Term Review" }
+            ]} />
+          </Card>
+        </Section>
+      </main>
+    </Page>
+  );
+}
+```

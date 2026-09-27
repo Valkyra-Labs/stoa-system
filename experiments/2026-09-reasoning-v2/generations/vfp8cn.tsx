@@ -1,0 +1,86 @@
+import { Page, Header, Section, Card, DataTable, Button, FilterBar, EmptyData, Delta, Status, Metric, Tabs, Tab, Drawer, Section, Metric, Delta, Status, EmptyData, Button, DataTable, FilterBar, Tabs, Tab, Drawer } from "@stoa/react";
+
+const failedPayouts = [
+  {
+    id: "P-1001",
+    amount: 150.00,
+    recipient: "john.doe@example.com",
+    status: "failed",
+    reason: "insufficient_funds",
+    timestamp: "2023-10-05T14:32:11Z",
+    retryCount: 2,
+    lastAttempt: "2023-10-05T14:32:11Z",
+    errorLog: "Payment failed: insufficient_funds. Account balance: $85.00",
+  },
+  {
+    id: "P-1002",
+    amount: 200.00,
+    recipient: "jane.smith@example.com",
+    status: "failed",
+    reason: "invalid_account",
+    timestamp: "2023-10-05T14:35:02Z",
+    retryCount: 0,
+    lastAttempt: "2023-10-05T14:35:02Z",
+    errorLog: "Payment failed: invalid_account. Account not found.",
+  },
+  {
+    id: "P-1003",
+    amount: 50.00,
+    recipient: "mike.jones@example.com",
+    status: "failed",
+    reason: "network_error",
+    timestamp: "2023-10-05T14:40:15Z",
+    retryCount: 1,
+    lastAttempt: "2023-10-05T14:40:15Z",
+    errorLog: "Payment failed: network error. Retrying in 5 minutes.",
+  },
+];
+
+const columns = [
+  { key: "id", label: "ID" },
+  { key: "amount", label: "Amount", format: (value) => `$${value.toFixed(2)}` },
+  { key: "recipient", label: "Recipient" },
+  { key: "status", label: "Status", format: (value) => <Status tone={value === "failed" ? "error" : "success"} label={value} /> },
+  { key: "reason", label: "Reason" },
+  { key: "timestamp", label: "Timestamp" },
+  { key: "retryCount", label: "Retry Count" },
+  { key: "lastAttempt", label: "Last Attempt" },
+];
+
+const PageComponent = () => {
+  return (
+    <Page title="Failed Payouts">
+      <Header title="Failed Payouts" subtitle="Resolve failed transactions and improve payment success rates" />
+      <FilterBar filters={[]} />
+      <Section title="Overview">
+        <Card>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+            <Metric label="Total Failed Payouts" value={failedPayouts.length} unit="items" />
+            <Metric label="Total Amount Failed" value={failedPayouts.reduce((sum, p) => sum + p.amount, 0)} unit="USD" />
+          </div>
+        </Card>
+      </Section>
+      <Section title="Failed Payouts">
+        <DataTable
+          columns={columns}
+          rows={failedPayouts}
+          selectable
+          stickyFirstColumn
+          onRowSelect={(selected) => console.log("Selected:", selected)}
+        />
+      </Section>
+      <Section title="Bulk Actions">
+        <div style={{ display: "flex", gap: "1rem", justifyContent: "flex-end" }}>
+          <Button variant="secondary" onPress={() => console.log("Mark as Investigated")}>
+            Mark as Investigated
+          </Button>
+          <Button variant="danger" onPress={() => console.log("Delete selected")}>
+            Delete Selected
+          </Button>
+        </div>
+      </Section>
+    </Page>
+  );
+};
+
+export default PageComponent;

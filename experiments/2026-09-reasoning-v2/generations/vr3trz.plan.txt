@@ -1,0 +1,5 @@
+The most critical rule here is **Order and emphasis**, specifically the directive to "Put the exceptions and the items needing action before the averages." A board presentation requires immediate attention to problems; hiding them behind healthy metrics creates a false narrative. The screen must front-load any schools failing targets, budget overruns, or enrollment drops.
+
+Second, **Numbers** dictates that every metric shown must carry its basis (e.g., "vs. last year" or "vs. target") to allow for instant judgment without external reference. A bare number like "85%" is useless without context; "85% (target 90%, -5%)" is actionable.
+
+Finally, **States** rules apply to the presentation context. While data is static for the report, the layout must still handle "StaleData" (last updated dates) or "PartialData" (missing departments) gracefully, as the board may ask about specific regions not fully populated yet. The screen avoids decorative KPI cards, focusing instead on a single level of emphasis per region to keep the narrative clear and concise.

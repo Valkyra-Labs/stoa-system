@@ -1,0 +1,71 @@
+import { Page, Header, Sidebar, Section, Card, Metric, Delta, Chart, DataTable, Tabs, Status, EmptyData } from "@stoa/react";
+
+const WeeklyFinanceOverview = () => {
+  return (
+    <Page title="Weekly Finance Overview">
+      <Header
+        title="Weekly Financial Summary"
+        subtitle="Monday Review - April 22, 2025"
+        actions={
+          <div>
+            <Button label="Export PDF" variant="secondary" />
+            <Button label="View Full Report" variant="primary" />
+          </div>
+        }
+      />
+      <div style={{ display: "grid", gridTemplateColumns: "250px 1fr", gap: "2rem" }}>
+        <Sidebar>
+          <Section title="Quick Links">
+            <Card>
+              <p>Revenue Dashboard</p>
+            </Card>
+            <Card>
+              <p>Expense Breakdown</p>
+            </Card>
+            <Card>
+              <p>Cash Flow Summary</p>
+            </Card>
+          </Section>
+          <Section title="Filters">
+            <FilterBar filters={[{ label: "Week", value: "Week 16", options: ["Week 15", "Week 16", "Week 17"] }]} />
+            <SavedViews views={["Last Week", "Previous Month", "Custom"]} />
+          </Section>
+        </Sidebar>
+        <main>
+          <Section title="Key Metrics">
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "1rem" }}>
+              <Metric label="Revenue" value="$12.4M" delta={+3.2} unit="USD" />
+              <Metric label="Expenses" value="$8.9M" delta={-1.5} unit="USD" />
+              <Metric label="Net Profit" value="$3.5M" delta={+4.8} unit="USD" />
+            </div>
+          </Section>
+          <Section title="Trends">
+            <Card>
+              <Chart type="line" series={[{ name: "Revenue", data: [10, 12, 14, 16, 18] }]} />
+            </Card>
+          </Section>
+          <Section title="Recent Transactions">
+            <DataTable
+              columns={[{ key: "date", label: "Date" }, { key: "type", label: "Type" }, { key: "amount", label: "Amount" }]}
+              rows={[
+                { date: "2025-04-18", type: "Revenue", amount: "$2.1M" },
+                { date: "2025-04-17", type: "Expense", amount: "-$1.2M" },
+                { date: "2025-04-16", type: "Revenue", amount: "$1.8M" },
+              ]}
+              selectable
+            />
+          </Section>
+          <Section title="Status">
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "1rem" }}>
+              <Status tone="success" label="All Systems Operational" />
+              <Status tone="warning" label="Pending Approval: $2.5M" />
+              <Status tone="error" label="Outlier Detected: Revenue" />
+            </div>
+          </Section>
+        </main>
+      </div>
+    </Page>
+  );
+};
+
+export default WeeklyFinanceOverview;

@@ -1,0 +1,87 @@
+```tsx
+import { Page, Header, Section, Card, Metric, Delta, Chart, DataTable, Status, Button } from "@stoa/react";
+
+export default function SchoolDashboard() {
+  const metrics = [
+    { label: "Academic Achievement", value: 94.2, delta: 1.2, unit: "%" },
+    { label: "Student Retention", value: 98.5, delta: 0.3, unit: "%" },
+    { label: "Enrollment Growth", value: 1240, delta: 45, unit: "students" },
+    { label: "Extracurricular Participation", value: 92.1, delta: 2.4, unit: "%" },
+    { label: "Faculty Turnover", value: 8.2, delta: -0.5, unit: "%" },
+    { label: "Campus Safety Score", value: 99.8, delta: 0.1, unit: "%" },
+    { label: "Financial Sustainability", value: 105.3, delta: 1.8, unit: "%" },
+    { label: "Graduation Rate", value: 97.6, delta: 0.4, unit: "%" },
+  ];
+
+  const trends = [
+    { year: "2021", val: 92.0 },
+    { year: "2022", val: 93.5 },
+    { year: "2023", val: 94.2 },
+    { year: "2024", val: 94.2 },
+  ];
+
+  const tableColumns = [
+    { key: "program", label: "Program Area" },
+    { key: "score", label: "Q2 Score" },
+    { key: "target", label: "Target" },
+    { key: "status", label: "Status" },
+  ];
+
+  const tableRows = [
+    { program: "Core Mathematics", score: 91.2, target: 92.0, status: "On Track" },
+    { program: "Advanced Sciences", score: 94.5, target: 93.0, status: "Exceeding" },
+    { program: "Foreign Languages", score: 88.3, target: 90.0, status: "Needs Attention" },
+    { program: "Arts & Humanities", score: 95.1, target: 94.0, status: "Exceeding" },
+    { program: "STEM Innovation", score: 89.7, target: 91.0, status: "Needs Attention" },
+  ];
+
+  return (
+    <Page title="School Term Overview">
+      <Header title="Board Presentation: Term 2024" />
+
+      <main>
+        <Section title="Executive Summary">
+          <Card title="Key Performance Indicators">
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "1rem" }}>
+              {metrics.map((m) => (
+                <Metric key={m.label} label={m.label} value={m.value} delta={m.delta} unit={m.unit} />
+              ))}
+            </div>
+          </Card>
+        </Section>
+
+        <Section title="Trend Analysis">
+          <Card title="Academic Achievement Trajectory">
+            <Chart type="line" series={trends} x="year" y="val" />
+          </Card>
+        </Section>
+
+        <Section title="Detailed Performance Review">
+          <Card title="Program Scores by Area">
+            <DataTable
+              columns={tableColumns}
+              rows={tableRows}
+              stickyFirstColumn
+              onRowSelect={() => {}}
+            />
+          </Card>
+        </Section>
+
+        <Section title="Governance Actions">
+          <Card title="Board Decisions & Approvals">
+            <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap", alignItems: "center" }}>
+              <Status tone="success" label="Budget Approval: Confirmed" />
+              <Status tone="neutral" label="Strategic Plan: Under Review" />
+              <Status tone="success" label="Facility Upgrade: Approved" />
+            </div>
+            <div style={{ marginTop: "1rem" }}>
+              <Button label="Download Full Report" onPress={() => {}} variant="primary" />
+              <Button label="Share Presentation" onPress={() => {}} variant="secondary" />
+            </div>
+          </Card>
+        </Section>
+      </main>
+    </Page>
+  );
+}
+```

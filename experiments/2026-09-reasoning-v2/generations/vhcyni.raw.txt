@@ -1,0 +1,116 @@
+```tsx
+import { Page, Header, Section, Card, Comparison, Metric, Delta, Status, Button, EmptyData } from '@stoa/react';
+
+const FundA = {
+  name: 'Fund Alpha',
+  performance: {
+    annualReturn: 8.2,
+    yearToDate: 7.5,
+    benchmark: 'S&P 500',
+    benchmarkReturn: 6.8,
+  },
+  fees: {
+    managementFee: 0.75,
+    loadFee: 0,
+  },
+  risk: {
+    volatility: 12.3,
+    drawdown: 15.8,
+  },
+  assets: {
+    value: 150000000,
+    growth: 12.4,
+    timeFrame: '1 year',
+  },
+  status: 'current',
+};
+
+const FundB = {
+  name: 'Fund Beta',
+  performance: {
+    annualReturn: 9.1,
+    yearToDate: 8.9,
+    benchmark: 'S&P 500',
+    benchmarkReturn: 6.8,
+  },
+  fees: {
+    managementFee: 0.9,
+    loadFee: 0.5,
+  },
+  risk: {
+    volatility: 14.1,
+    drawdown: 18.2,
+  },
+  assets: {
+    value: 120000000,
+    growth: 10.2,
+    timeFrame: '1 year',
+  },
+  status: 'current',
+};
+
+export default function FundComparison() {
+  return (
+    <Page title="Fund Recommendation">
+      <Header title="Fund Recommendation" subtitle="Compare Fund Alpha and Fund Beta" />
+      <Section title="Fund Comparison">
+        <Comparison
+          entities={[FundA, FundB]}
+          metrics={[
+            {
+              label: 'Annual Return',
+              value: (fund) => fund.performance.annualReturn,
+              basis: (fund) => fund.performance.benchmarkReturn,
+              unit: '%',
+            },
+            {
+              label: 'Year-to-Date Return',
+              value: (fund) => fund.performance.yearToDate,
+              basis: (fund) => fund.performance.benchmarkReturn,
+              unit: '%',
+            },
+            {
+              label: 'Management Fee',
+              value: (fund) => fund.fees.managementFee,
+              unit: '%',
+            },
+            {
+              label: 'Volatility',
+              value: (fund) => fund.risk.volatility,
+              unit: '%',
+            },
+            {
+              label: 'Assets Under Management',
+              value: (fund) => fund.assets.value,
+              unit: '$',
+              timeFrame: (fund) => fund.assets.timeFrame,
+            },
+          ]}
+        />
+      </Section>
+      <Section title="Fund Details">
+        <Card title="Fund Alpha">
+          <Metric label="Annual Return" value={FundA.performance.annualReturn} delta={<Delta value={FundA.performance.annualReturn} basis={FundA.performance.benchmarkReturn} />} unit="%" />
+          <Metric label="Year-to-Date Return" value={FundA.performance.yearToDate} delta={<Delta value={FundA.performance.yearToDate} basis={FundA.performance.benchmarkReturn} />} unit="%" />
+          <Metric label="Management Fee" value={FundA.fees.managementFee} unit="%" />
+          <Metric label="Volatility" value={FundA.risk.volatility} unit="%" />
+          <Metric label="Assets Under Management" value={FundA.assets.value} unit="$" timeFrame={FundA.assets.timeFrame} />
+          <Status tone="positive" label="Current" />
+        </Card>
+        <Card title="Fund Beta">
+          <Metric label="Annual Return" value={FundB.performance.annualReturn} delta={<Delta value={FundB.performance.annualReturn} basis={FundB.performance.benchmarkReturn} />} unit="%" />
+          <Metric label="Year-to-Date Return" value={FundB.performance.yearToDate} delta={<Delta value={FundB.performance.yearToDate} basis={FundB.performance.benchmarkReturn} />} unit="%" />
+          <Metric label="Management Fee" value={FundB.fees.managementFee} unit="%" />
+          <Metric label="Volatility" value={FundB.risk.volatility} unit="%" />
+          <Metric label="Assets Under Management" value={FundB.assets.value} unit="$" timeFrame={FundB.assets.timeFrame} />
+          <Status tone="positive" label="Current" />
+        </Card>
+      </Section>
+      <Section title="Recommendation">
+        <Button label="Recommend Fund Alpha" variant="primary" />
+        <Button label="Recommend Fund Beta" variant="primary" />
+      </Section>
+    </Page>
+  );
+}
+```

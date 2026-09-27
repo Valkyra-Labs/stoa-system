@@ -1,0 +1,76 @@
+import { Page, Header, Sidebar, Section, Card, FilterBar, Button, BulkActions, Metric, Delta, Status, EmptyData } from "@stoa/react";
+
+const StudentPrepPage = () => {
+  const student = {
+    id: "123",
+    name: "Emily Johnson",
+    grade: "6th",
+    class: "Blue",
+    teacher: "Mr. Thompson",
+    meetingDate: "2023-11-03",
+  };
+
+  const academicPerformance = [
+    { label: "Math", value: 85, delta: -5, unit: "%" },
+    { label: "English", value: 92, delta: +3, unit: "%" },
+    { label: "Science", value: 78, delta: -2, unit: "%" },
+  ];
+
+  const behaviorAttendance = {
+    attendance: "95%",
+    behaviorNotes: "Occasionally disrupts class, but responds well to reminders.",
+  };
+
+  const notes = [
+    { id: "note-1", content: "Emily is very engaged during group work but struggles with independent reading." },
+    { id: "note-2", content: "Parent mentioned concerns about homework completion at home." },
+  ];
+
+  return (
+    <Page title="Parent-Teacher Meeting Prep">
+      <Header title={`Prep for ${student.name}`} subtitle={`Meeting: ${student.meetingDate}`} actions={<Button label="Save" />} />
+      <Sidebar>
+        <FilterBar filters={[{ label: "Student", value: student.name }, { label: "Grade", value: student.grade }]} />
+        <BulkActions actions={[{ label: "Mark All Notes as Read", variant: "secondary" }]} />
+      </Sidebar>
+      <main>
+        <Section title="Student Profile">
+          <Card>
+            <p><strong>Name:</strong> {student.name}</p>
+            <p><strong>Grade:</strong> {student.grade}</p>
+            <p><strong>Class:</strong> {student.class}</p>
+            <p><strong>Teacher:</strong> {student.teacher}</p>
+          </Card>
+        </Section>
+        <Section title="Academic Performance">
+          {academicPerformance.map((metric, index) => (
+            <Card key={index}>
+              <Metric label={metric.label} value={metric.value} delta={metric.delta} unit={metric.unit} />
+            </Card>
+          ))}
+        </Section>
+        <Section title="Behavior and Attendance">
+          <Card>
+            <p><strong>Attendance:</strong> {behaviorAttendance.attendance}</p>
+            <p><strong>Behavior Notes:</strong> {behaviorAttendance.behaviorNotes}</p>
+          </Card>
+        </Section>
+        <Section title="Notes">
+          {notes.length > 0 ? (
+            <Card>
+              {notes.map((note) => (
+                <p key={note.id}>{note.content}</p>
+              ))}
+            </Card>
+          ) : (
+            <Card>
+              <EmptyData message="No notes yet. Add notes to prepare for the meeting." />
+            </Card>
+          )}
+        </Section>
+      </main>
+    </Page>
+  );
+};
+
+export default StudentPrepPage;

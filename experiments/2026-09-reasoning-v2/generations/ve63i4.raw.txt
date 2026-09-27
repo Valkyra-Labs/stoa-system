@@ -1,0 +1,53 @@
+```tsx
+import { Page, Header, Card, Metric, Delta, Trend, DataTable, EmptyData, StaleData } from "@stoa/react";
+
+export default function SchoolPerformance() {
+  return (
+    <Page title="School Performance Overview">
+      <Header title="School Performance" subtitle="Term Summary" />
+      <main>
+        <section>
+          <Card title="Key Metrics">
+            <Metric label="Total Students" value={1200} unit="students" />
+            <Metric label="Enrolled Students" value={1185} delta={<Delta value={-15} basis={1200} />} unit="students" />
+            <Metric label="Attendance Rate" value={95.2} delta={<Delta value={-0.5} basis={95.7} />} unit="%" />
+            <Metric label="Growth Rate" value={12.5} unit="%" />
+          </Card>
+        </section>
+        <section>
+          <Card title="Student Enrollment Trends">
+            <Trend series={[{ date: "2023-01-01", value: 1200 }, { date: "2023-02-01", value: 1195 }, { date: "2023-03-01", value: 1185 }]} />
+          </Card>
+        </section>
+        <section>
+          <Card title="Student Attendance">
+            <DataTable
+              columns={[
+                { label: "Date", key: "date" },
+                { label: "Total Students", key: "totalStudents" },
+                { label: "Attended", key: "attended" },
+                { label: "Attendance Rate", key: "attendanceRate" },
+              ]}
+              rows={[
+                { date: "2023-03-01", totalStudents: 1200, attended: 1175, attendanceRate: 97.9 },
+                { date: "2023-02-28", totalStudents: 1200, attended: 1170, attendanceRate: 97.5 },
+                { date: "2023-02-27", totalStudents: 1200, attended: 1165, attendanceRate: 97.1 },
+              ]}
+            />
+          </Card>
+        </section>
+        <section>
+          <Card title="Recent Activity">
+            <EmptyData />
+          </Card>
+        </section>
+        <section>
+          <Card title="Data Freshness">
+            <StaleData since="2023-03-01" />
+          </Card>
+        </section>
+      </main>
+    </Page>
+  );
+}
+```

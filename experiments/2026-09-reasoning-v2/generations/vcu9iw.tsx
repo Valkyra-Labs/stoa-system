@@ -1,0 +1,90 @@
+import { Page, Header, Section, Card, Metric, Delta, Status, Timeline, Comparison, DataTable, FilterBar, Button, EmptyData, StaleData } from "@stoa/react";
+
+const schoolPerformanceData = {
+  metrics: {
+    studentPassRate: { value: 89, basis: 85, unit: "%", delta: 4 },
+    staffAttendance: { value: 96, basis: 94, unit: "%", delta: 2 },
+    budgetUtilization: { value: 82, basis: 78, unit: "%", delta: 4 },
+    averageClassSize: { value: 22, basis: 24, unit: "students", delta: -2 },
+  },
+  timeline: [
+    { date: "2023-09", event: "New curriculum implemented" },
+    { date: "2023-10", event: "Staff training on inclusive education" },
+    { date: "2023-11", event: "Increase in after-school programs" },
+  ],
+  comparison: [
+    { name: "School A", metrics: { studentPassRate: 88, staffAttendance: 95, budgetUtilization: 80 } },
+    { name: "School B", metrics: { studentPassRate: 91, staffAttendance: 94, budgetUtilization: 85 } },
+  ],
+  auditLog: [
+    { timestamp: "2023-11-05 10:00", user: "admin", action: "Updated budget forecast" },
+    { timestamp: "2023-11-04 14:30", user: "admin", action: "Reviewed student performance data" },
+  ],
+  table: {
+    columns: ["Student", "Grade", "Attendance", "Progress"],
+    rows: [
+      { student: "Alice Smith", grade: "10", attendance: "98%", progress: "On track" },
+      { student: "Bob Johnson", grade: "11", attendance: "95%", progress: "Needs support" },
+      { student: "Charlie Lee", grade: "12", attendance: "97%", progress: "On track" },
+    ],
+  },
+  staleData: {
+    status: "Stale",
+    since: "2023-11-03",
+  },
+};
+
+export default function SchoolPerformanceReport() {
+  return (
+    <Page title="School Performance Report">
+      <Header
+        title="School Performance Overview"
+        subtitle="Term Progress and Key Metrics"
+        actions={
+          <Button label="Export Report" variant="secondary" />
+        }
+      />
+      <Section title="Key Performance Metrics">
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))", gap: "20px" }}>
+          <Card>
+            <Metric label="Student Pass Rate" value={schoolPerformanceData.metrics.studentPassRate.value} delta={schoolPerformanceData.metrics.studentPassRate.delta} unit={schoolPerformanceData.metrics.studentPassRate.unit} />
+            <Delta value={schoolPerformanceData.metrics.studentPassRate.value} basis={schoolPerformanceData.metrics.studentPassRate.basis} />
+          </Card>
+          <Card>
+            <Metric label="Staff Attendance" value={schoolPerformanceData.metrics.staffAttendance.value} delta={schoolPerformanceData.metrics.staffAttendance.delta} unit={schoolPerformanceData.metrics.staffAttendance.unit} />
+            <Delta value={schoolPerformanceData.metrics.staffAttendance.value} basis={schoolPerformanceData.metrics.staffAttendance.basis} />
+          </Card>
+          <Card>
+            <Metric label="Budget Utilization" value={schoolPerformanceData.metrics.budgetUtilization.value} delta={schoolPerformanceData.metrics.budgetUtilization.delta} unit={schoolPerformanceData.metrics.budgetUtilization.unit} />
+            <Delta value={schoolPerformanceData.metrics.budgetUtilization.value} basis={schoolPerformanceData.metrics.budgetUtilization.basis} />
+          </Card>
+          <Card>
+            <Metric label="Average Class Size" value={schoolPerformanceData.metrics.averageClassSize.value} delta={schoolPerformanceData.metrics.averageClassSize.delta} unit={schoolPerformanceData.metrics.averageClassSize.unit} />
+            <Delta value={schoolPerformanceData.metrics.averageClassSize.value} basis={schoolPerformanceData.metrics.averageClassSize.basis} />
+          </Card>
+        </div>
+      </Section>
+      <Section title="Performance Comparison">
+        <Comparison entities={schoolPerformanceData.comparison} />
+      </Section>
+      <Section title="Timeline of Key Events">
+        <Timeline events={schoolPerformanceData.timeline} />
+      </Section>
+      <Section title="Audit Log">
+        <DataTable
+          columns={["Timestamp", "User", "Action"]}
+          rows={schoolPerformanceData.auditLog.map(entry => ({ timestamp: entry.timestamp, user: entry.user, action: entry.action }))}
+        />
+      </Section>
+      <Section title="Student Progress Overview">
+        <DataTable
+          columns={schoolPerformanceData.table.columns}
+          rows={schoolPerformanceData.table.rows}
+        />
+      </Section>
+      <Section title="Data Status">
+        <StaleData since={schoolPerformanceData.staleData.since} />
+      </Section>
+    </Page>
+  );
+}

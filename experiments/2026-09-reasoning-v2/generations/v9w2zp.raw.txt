@@ -1,0 +1,80 @@
+```tsx
+import { Page, Header, Section, Card, Metric, Delta, Status, FilterBar, Button, BulkActions, EmptyData, StaleData, DataTable, TableRow, TableCell, TableHeader, TableBody, TableFooter, TableRowSelection, TableSort } from "@stoa/react";
+
+const WeeklyFinanceOverview = () => {
+  const [isStale, setIsStale] = React.useState(true);
+  const [selectedRows, setSelectedRows] = React.useState<number[]>([]);
+
+  const metrics = [
+    { label: "Revenue", value: 1250000, delta: 12000, basis: 1238000, unit: "USD", trend: "up" },
+    { label: "Expenses", value: 890000, delta: -15000, basis: 905000, unit: "USD", trend: "down" },
+    { label: "Net Profit", value: 360000, delta: 22000, basis: 338000, unit: "USD", trend: "up" },
+    { label: "Cash Flow", value: 420000, delta: -8000, basis: 428000, unit: "USD", trend: "down" },
+    { label: "Debt Ratio", value: 0.45, delta: 0.02, basis: 0.43, unit: "%", trend: "up" },
+  ];
+
+  const transactions = [
+    { id: 1, date: "2023-04-05", description: "Sales Revenue", amount: 125000, category: "Revenue" },
+    { id: 2, date: "2023-04-06", description: "Marketing Expenses", amount: -120000, category: "Expenses" },
+    { id: 3, date: "2023-04-07", description: "Loan Payment", amount: -50000, category: "Expenses" },
+    { id: 4, date: "2023-04-08", description: "Interest Income", amount: 15000, category: "Revenue" },
+  ];
+
+  return (
+    <Page title="Weekly Finance Overview">
+      <Header title="Weekly Finance" subtitle="Monday Review" actions={<Button label="Refresh" onPress={() => setIsStale(false)} />} />
+      <Section title="Key Metrics">
+        {isStale ? (
+          <StaleData since="2023-04-04" />
+        ) : (
+          metrics.map((metric, index) => (
+            <Metric
+              key={index}
+              label={metric.label}
+              value={metric.value}
+              delta={metric.delta}
+              basis={metric.basis}
+              unit={metric.unit}
+              trend={metric.trend}
+            />
+          ))
+        )}
+      </Section>
+      <Section title="Recent Transactions">
+        <DataTable
+          columns={[{ key: "date", label: "Date" }, { key: "description", label: "Description" }, { key: "amount", label: "Amount" }]}
+          rows={transactions}
+          selectable
+          stickyFirstColumn
+          onRowSelect={setSelectedRows}
+        >
+          <TableHeader />
+          <TableBody>
+            {transactions.map((row) => (
+              <TableRow key={row.id} selected={selectedRows.includes(row.id)}>
+                <TableCell>{row.date}</TableCell>
+                <TableCell>{row.description}</TableCell>
+                <TableCell>{row.amount}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+          <TableFooter>
+            <TableRowSelection count={selectedRows.length} />
+            <BulkActions>
+              <Button label="Delete" variant="destructive" />
+              <Button label="Export" />
+            </BulkActions>
+          </TableFooter>
+        </DataTable>
+      </Section>
+      <Section title="Status">
+        <Card>
+          <Status tone="success" label="All systems operational" />
+        </Card>
+      </Section>
+    </Page>
+  );
+};
+
+export default WeeklyFinanceOverview;
+```

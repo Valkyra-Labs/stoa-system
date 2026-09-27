@@ -1,0 +1,10 @@
+### Main Goal
+The screen aims to provide an immediate, high-level situational awareness of portfolio performance changes since the previous day, followed by drill-down capabilities to understand the specific drivers (e.g., asset rebalancing, market shifts, or individual trade impacts). The user must quickly identify which positions moved significantly and why without sifting through irrelevant data.
+
+### Layout Strategy
+The layout prioritizes hierarchy and rapid scanning:
+1.  **Header & High-Level Metrics:** A prominent header displays the current date and a summary "Delta" for the entire portfolio, instantly answering "how did we do?"
+2.  **Trend Overview:** A concise chart section visualizes the overall portfolio trajectory over the last 7 days to contextualize today's movement.
+3.  **Top Movers Table:** A focused, sortable table lists positions with the largest percentage changes, highlighting both gains and losses. This table is the primary source of truth for "what moved."
+4.  **Drill-Down Actions:** Each row in the table includes an "Inspector" button. Clicking this opens a dedicated view showing the specific trade logic, underlying data points, and confirmation of the change, supporting the "understand why" requirement.
+5.  **Filters & Actions:** Persistent filter controls allow the manager to isolate specific asset classes or sectors, while bulk actions (e.g., "export report") are available for immediate follow-up.

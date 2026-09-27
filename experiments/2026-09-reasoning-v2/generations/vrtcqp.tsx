@@ -1,0 +1,38 @@
+import { Page, Header, Section, Card, Metric, DataTable, Button } from "@stoa/react";
+
+export default function MeetingPreparation() {
+  return (
+    <Page title="Meeting Preparation">
+      <Header title="Meeting with Parent" subtitle="Student: Alice Johnson" />
+      <Section title="Student Overview">
+        <Card title="Key Metrics">
+          <Metric label="Overall Grade" value="B+" />
+          <Metric label="Attendance" value="95%" />
+          <Metric label="Recent Assignments" value="4/5 completed" />
+        </Card>
+        <Card title="Notes and Communications">
+          <p>Parent contacted on 2023-10-05: Concerns about math grades.</p>
+          <p>Teacher note: Alice needs extra help in geometry.</p>
+        </Card>
+      </Section>
+      <Section title="Recent Grades">
+        <DataTable
+          columns={[
+            { label: "Subject", key: "subject" },
+            { label: "Grade", key: "grade" },
+            { label: "Date", key: "date" },
+          ]}
+          rows={[
+            { subject: "Math", grade: "B", date: "2023-10-02" },
+            { subject: "English", grade: "A-", date: "2023-10-04" },
+            { subject: "Science", grade: "B+", date: "2023-10-05" },
+          ]}
+        />
+      </Section>
+      <Section title="Next Steps">
+        <Button label="Add Note" variant="primary" />
+        <Button label="View Full Report" variant="secondary" />
+      </Section>
+    </Page>
+  );
+}

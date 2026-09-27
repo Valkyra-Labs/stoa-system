@@ -1,0 +1,65 @@
+import { Page, Header, Section, Card, Metric, Delta, Timeline, Status } from "@stoa/react";
+
+export default function PortfolioMorningBook() {
+  return (
+    <Page title="Global Equity Portfolio - Morning Briefing">
+      <Header
+        title="Global Equity Portfolio"
+        subtitle="2023-10-27 | AUM: $4.2B | Yesterday's P&L: +$12.4M"
+        actions={<Button label="Refresh Data" />}
+      />
+
+      <Section title="Overnight Summary">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <Metric label="Total P&L" value="+$12.4M" delta={1.8} unit="%" />
+          <Metric label="Net Inflows" value="+$850K" delta={0.5} unit="%" />
+          <Metric label="Volatility" value="1.45" delta={-0.12} unit="%" />
+        </div>
+      </Section>
+
+      <Section title="Top Movers: Winners & Losers">
+        <Comparison
+          entities={[
+            { id: "SPY", name: "SPDR S&P 500 ETF", change: "+0.85%", value: "$485.20" },
+            { id: "QQQ", name: "Invesco QQQ Trust", change: "+1.20%", value: "$380.50" },
+            { id: "IWM", name: "iShares Russell 2000", change: "+0.45%", value: "$198.30" },
+            { id: "TLT", name: "iShares 20+ Year Treasury", change: "-1.10%", value: "$92.10" },
+            { id: "VWCE", name: "Vanguard FTSE All-World", change: "+0.72%", value: "$89.40" },
+          ]}
+          metrics={[
+            { label: "Change %", id: "change" },
+            { label: "Close Price", id: "price" },
+          ]}
+        />
+      </Section>
+
+      <Section title="Key Drivers (Last 24h)">
+        <Timeline
+          events={[
+            { time: "08:15", title: "Fed Chair Speech", summary: "Suggested data-dependent stance, calming bond markets.", impact: "positive" },
+            { time: "09:30", title: "US Core CPI", summary: "Beat expectations (+0.2%), reinforcing hawkish expectations.", impact: "negative" },
+            { time: "14:20", title: "Tech Sector Rally", summary: "AI-driven optimism boosted semiconductor stocks.", impact: "positive" },
+            { time: "16:45", title: "Energy Drop", summary: "Crude oil fell 3% on OPEC+ supply concerns.", impact: "negative" },
+          ]}
+        />
+      </Section>
+
+      <Section title="Risk Alerts">
+        <Card title="Position Limits">
+          <div className="flex items-center gap-4">
+            <Status tone="warning" label="High Concentration" />
+            <p>Technology sector weight exceeds 35% of portfolio.</p>
+          </div>
+          <div className="flex items-center gap-4 mt-2">
+            <Status tone="neutral" label="Liquidity Check" />
+            <p>All positions meet minimum liquidity thresholds.</p>
+          </div>
+        </Card>
+      </Section>
+    </Page>
+  );
+}
+
+function Button({ label, onPress, variant = "primary" }: { label: string; onPress: () => void; variant?: "primary" }) {
+  return <button className={`p-2 rounded ${variant === 'primary' ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-800'}`} onClick={onPress}>{label}</button>;
+}

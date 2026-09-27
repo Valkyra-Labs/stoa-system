@@ -1,0 +1,9 @@
+1. **Person & Session:** The Finance Director opens this weekly on Monday mornings. It is a routine, high-stakes check to ensure the company's financial health before the board meeting. The session is a "routine check" with a specific deadline (Monday).
+
+2. **Shape of the Work:** This is "getting a general picture of many unrelated numbers, with no action expected on this screen." The goal is rapid scanning of key metrics to identify anomalies or red flags, not drilling down into individual transactions.
+
+3. **Information:** The screen must display current week totals vs. previous week (MoM) and budget targets. Key entities are Revenue, Expenses, and Net Profit. Values change the next step if they miss thresholds or show unexpected variance; everything else is background context.
+
+4. **Decision & Evidence:** The Director decides if the company is "on track." They need immediate visibility into the magnitude of changes (Delta) and status (Green/Yellow/Red) to make a call. The cost of a wrong decision is a missed warning on a critical trend, but the wrong action here is usually a false alarm, which can be ignored.
+
+5. **Structure:** The layout should prioritize the "big picture" at the top (high-level metrics), followed by a secondary layer for detailed line items with variance, and a footer for drill-down actions. A sidebar or top bar should show the "Status" of the overall budget. The structure flows from "Is it good?" to "Where did it go wrong?" to "Show me the details."

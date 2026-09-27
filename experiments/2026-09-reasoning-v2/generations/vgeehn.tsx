@@ -1,0 +1,217 @@
+import {
+  Page,
+  Header,
+  Sidebar,
+  Section,
+  Card,
+  Metric,
+  Delta,
+  Trend,
+  DataTable,
+  Comparison,
+  Status,
+  EmptyData,
+  StaleData,
+  FilterBar,
+  Button,
+  BulkActions,
+  Tabs,
+} from "@stoa/react";
+
+// --- Mock Data ---
+
+const WEEKLY_METRICS = [
+  { id: "revenue", label: "Revenue", target: 1200000, actual: 1185000, unit: "USD" },
+  { id: "expenses", label: "OpEx", target: 450000, actual: 482000, unit: "USD" },
+  { id: "grossMargin", label: "Gross Margin", target: 0.65, actual: 0.62, unit: "%" },
+  { id: "ebitda", label: "EBITDA", target: 450000, actual: 380000, unit: "USD" },
+  { id: "burnRate", label: "Burn Rate", target: 120000, actual: 145000, unit: "USD" },
+];
+
+const LINE_SERIES = [
+  { x: "Mon", y: 1150000 },
+  { x: "Tue", y: 1162000 },
+  { x: "Wed", y: 1145000 },
+  { x: "Thu", y: 1180000 },
+  { x: "Fri", y: 1185000 },
+];
+
+const TRANSACTION_LOG = [
+  { id: "TXN-9921", date: "2023-10-23", type: "Expense", amount: -145000, vendor: "Cloud Services Inc.", status: "Approved", reason: "Q4 Infrastructure" },
+  { id: "TXN-9922", date: "2023-10-22", type: "Revenue", amount: 420000, vendor: "Client Alpha", status: "Pending", reason: "Invoice #8821" },
+  { id: "TXN-9923", date: "2023-10-21", type: "Expense", amount: -85000, vendor: "Marketing Group", status: "Approved", reason: "Campaign Q3" },
+  { id: "TXN-9924", date: "2023-10-20", type: "Revenue", amount: 125000, vendor: "Client Beta", status: "Approved", reason: "Invoice #8820" },
+  { id: "TXN-9925", date: "2023-10-19", type: "Expense", amount: -32000, vendor: "Legal Counsel", status: "Rejected", reason: "Over budget allocation" },
+];
+
+const PEER_COMPARISON = [
+  { entity: "Our Co.", metrics: WEEKLY_METRICS },
+  { entity: "Competitor A", metrics: [
+    { ...WEEKLY_METRICS[0], actual: 1250000 }, // Revenue higher
+    { ...WEEKLY_METRICS[1], actual: 420000 }, // Expenses lower
+    { ...WEEKLY_METRICS[2], actual: 0.70 },   // Margin higher
+    { ...WEEKLY_METRICS[3], actual: 550000 }, // EBITDA higher
+    { ...WEEKLY_METRICS[4], actual: 110000 }, // Burn lower
+  ]},
+  { entity: "Competitor B", metrics: [
+    { ...WEEKLY_METRICS[0], actual: 1100000 }, // Revenue lower
+    { ...WEEKLY_METRICS[1], actual: 460000 }, // Expenses higher
+    { ...WEEKLY_METRICS[2], actual: 0.58 },   // Margin lower
+    { ...WEEKLY_METRICS[3], actual: 400000 }, // EBITDA lower
+    { ...WEEKLY_METRICS[4], actual: 130000 }, // Burn higher
+  ]},
+];
+
+// --- Components ---
+
+const FinancialDashboard = () => {
+  return (
+    <Page title="Weekly Financial Review" children={<FinancialContent />} />
+  );
+};
+
+const FinancialContent = () => {
+  return (
+    <main>
+      <Header 
+        title="Weekly Financial Review" 
+        subtitle="Pre-meeting snapshot: Oct 23, 2023"
+        actions={
+          <Button label="Export Report" variant="secondary" />
+        }
+      />
+      
+      <Section title="Overview & Exceptions">
+        <div className="grid-cols-1 md:grid-cols-3 gap-4">
+          <Card title="Total Variance">
+            <Metric 
+              label="Net Variance" 
+              value="$-70,000" 
+              delta={-70000} 
+              basis="Target" 
+              unit="USD"
+            />
+            <p className="text-sm text-gray-500 mt-2">
+              Driven by unexpected OpEx increase of 7.1% vs target.
+            </p>
+          </Card>
+          <Card title="Margin Status">
+            <Metric 
+              label="Gross Margin" 
+              value="62.0%" 
+              delta={-0.03} 
+              basis="Target" 
+              unit="%"
+            />
+            <p className="text-sm text-gray-500 mt-2">
+              Below target due to higher cost of goods sold.
+            </p>
+          </Card>
+          <Card title="Cash Position">
+            <Metric 
+              label="Runway" 
+              value="4.2 Months" 
+              unit="Months"
+            />
+            <Status tone="warning" label="Burn Rate High" />
+          </Card>
+        </div>
+      </Section>
+
+      <Section title="Detailed Performance">
+        <Tabs 
+          items={[
+            { id: "metrics", label: "Key Metrics", content: <MetricsView /> },
+            { id: "trend", label: "Weekly Trend", content: <TrendView /> },
+          ]}
+        />
+      </Section>
+
+      <Section title="Transaction Log (Last 5)">
+        <FilterBar filters={[{ name: "status", value: "Approved" }]} />
+        <DataTable 
+          columns={[
+            { key: "id", label: "ID" },
+            { key: "date", label: "Date" },
+            { key: "type", label: "Type" },
+            { key: "amount", label: "Amount", align: "right" },
+            { key: "vendor", label: "Vendor" },
+            { key: "status", label: "Status" },
+            { key: "reason", label: "Reason" },
+          ]}
+          rows={TRANSACTION_LOG}
+          selectable
+          onRowSelect={(id) => alert(`Detail view for ${id}`)}
+        />
+        <BulkActions actions={[
+          { label: "Approve All", disabled: true },
+          { label: "Reject All", disabled: true },
+        ]} />
+      </Section>
+
+      <Section title="Peer Comparison">
+        <Comparison entities={PEER_COMPARISON} metrics={WEEKLY_METRICS} />
+      </Section>
+
+      <Section title="Data Integrity">
+        <div className="flex items-center justify-between p-4 bg-gray-50 rounded border">
+          <div>
+            <h3 className="font-semibold">Data Freshness</h3>
+            <p className="text-sm text-gray-600">Last updated: Monday 08:00 AM</p>
+          </div>
+          <Status tone="success" label="Live" />
+        </div>
+      </Section>
+    </main>
+  );
+};
+
+const MetricsView = () => {
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      {WEEKLY_METRICS.map((m) => (
+        <Card key={m.id} title={m.label}>
+          <Metric 
+            label={m.label} 
+            value={m.actual.toLocaleString()} 
+            delta={m.actual - m.target} 
+            basis={m.target} 
+            unit={m.unit}
+          />
+        </Card>
+      ))}
+    </div>
+  );
+};
+
+const TrendView = () => {
+  return (
+    <div className="flex flex-col items-center justify-center h-64">
+      <Chart 
+        type="line" 
+        series={LINE_SERIES} 
+        x="x" 
+        y="y" 
+      />
+      <p className="mt-4 text-sm text-gray-500">
+        Weekly Revenue Trend (Last 5 Days)
+      </p>
+    </div>
+  );
+};
+
+// Helper components for layout consistency
+const Chart = ({ type, series, x, y }: any) => (
+  <div className="w-full h-48 bg-white border rounded p-4 flex items-center justify-center">
+    <svg viewBox="0 0 100 50" className="w-full h-full">
+      <polyline 
+        points={series.map(p => `${p.x * 20},${50 - p.y * 10}`).join(" ")} 
+        fill="none" 
+        stroke="#10b981" 
+        strokeWidth="2" 
+      />
+    </svg>
+  </div>
+);
+
+export default FinancialDashboard;

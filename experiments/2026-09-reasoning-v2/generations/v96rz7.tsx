@@ -1,0 +1,53 @@
+import { Page, Header, Sidebar, Section, Card, Tabs, Metric, Delta, Chart, DataTable, Status, EmptyData } from "@stoa/react";
+
+const SchoolDashboard = () => {
+  return (
+    <Page title="School Performance Overview" subtitle="Term Report for the Board">
+      <Header title="School Performance Overview" subtitle="Term Report for the Board" actions={[]} />
+      <Sidebar>
+        <Section title="Navigation">
+          <Tabs
+            items={[
+              { id: "student-performance", label: "Student Performance", content: <Card title="Student Performance"><Metric label="Average Test Score" value="82.5" unit="%" delta={-1.2} /></Card> },
+              { id: "staff-metrics", label: "Staff Metrics", content: <Card title="Staff Metrics"><Metric label="Staff Retention Rate" value="92%" unit="%" delta={+0.8} /></Card> },
+              { id: "financial-overview", label: "Financial Overview", content: <Card title="Financial Overview"><Metric label="Annual Budget" value="$1.2M" unit="USD" /></Card> },
+            ]}
+          />
+        </Section>
+      </Sidebar>
+      <main>
+        <Section title="Key Metrics">
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "1rem" }}>
+            <Card title="Attendance Rate"><Metric label="Attendance Rate" value="96%" unit="%" delta={+0.5} /></Card>
+            <Card title="Graduation Rate"><Metric label="Graduation Rate" value="91%" unit="%" delta={-0.3} /></Card>
+            <Card title="Safety Index"><Metric label="Safety Index" value="88" unit="scale" /></Card>
+          </div>
+        </Section>
+        <Section title="Performance Trends">
+          <Card title="Student Progress Over Time">
+            <Chart type="line" series={[{ name: "Math", data: [75, 80, 85, 88, 90] }, { name: "English", data: [70, 72, 74, 76, 78] }]} />
+          </Card>
+        </Section>
+        <Section title="Detailed Data">
+          <DataTable
+            columns={[
+              { key: "student", label: "Student" },
+              { key: "grade", label: "Grade" },
+              { key: "testScore", label: "Test Score" },
+              { key: "attendance", label: "Attendance" },
+            ]}
+            rows={[
+              { student: "Alice Johnson", grade: "10th", testScore: "88", attendance: "98%" },
+              { student: "Bob Smith", grade: "11th", testScore: "82", attendance: "95%" },
+              { student: "Charlie Brown", grade: "12th", testScore: "95", attendance: "99%" },
+            ]}
+            selectable
+            stickyFirstColumn
+          />
+        </Section>
+      </main>
+    </Page>
+  );
+};
+
+export default SchoolDashboard;

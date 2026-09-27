@@ -1,0 +1,89 @@
+```tsx
+import { Page, Header, Section, Card, Tabs, Status, Metric, Timeline, EmptyData } from "@stoa/react";
+
+const StudentProfile = () => {
+  const student = {
+    name: "Leo Martinez",
+    grade: "8th Grade",
+    id: "ST-2024-089",
+    attendance: "94%",
+    attendanceDelta: "+2%",
+    readingLevel: "Grade 6.5",
+    attendanceStatus: "Good",
+  };
+
+  const recentEvents = [
+    { id: 1, date: "2023-10-24", type: "academic", message: "Leo missed 3 days due to flu." },
+    { id: 2, date: "2023-10-15", type: "behavior", message: "Disruptive in math class." },
+    { id: 3, date: "2023-09-30", type: "academic", message: "Homework completed on time." },
+    { id: 4, date: "2023-09-12", type: "behavior", message: "Requested counseling session." },
+  ];
+
+  const concerns = [
+    { id: 1, title: "Reading Fluency", details: "Struggles with multi-syllabic words.", severity: "high" },
+    { id: 2, title: "Impulse Control", details: "Difficulty waiting for turns in group work.", severity: "medium" },
+  ];
+
+  const goals = [
+    { id: 1, text: "Improve reading fluency by 1 grade level by end of semester.", owner: "Leo", status: "On Track" },
+    { id: 2, text: "Increase attendance to 95%.", owner: "Leo", status: "On Track" },
+  ];
+
+  return (
+    <Page title="Student Preparation: Leo Martinez">
+      <Header title={`Meeting Prep: ${student.name}`} subtitle="8th Grade" />
+      
+      <Section title="Student Snapshot">
+        <Card title="Key Metrics">
+          <div style={{ display: "flex", gap: "20px", flexWrap: "wrap" }}>
+            <Metric label="Attendance" value={student.attendance} delta={student.attendanceDelta} />
+            <Metric label="Reading Level" value={student.readingLevel} />
+            <Metric label="Status" value={student.attendanceStatus} />
+          </div>
+        </Card>
+      </Section>
+
+      <Section title="Concerns & Goals">
+        <div style={{ display: "flex", gap: "20px", flexWrap: "wrap" }}>
+          <div style={{ flex: 1 }}>
+            <Card title="Current Concerns">
+              {concerns.map((c) => (
+                <div key={c.id} style={{ marginBottom: "10px" }}>
+                  <Status tone={c.severity === "high" ? "critical" : "warning"} label={c.title} />
+                  <p>{c.details}</p>
+                </div>
+              ))}
+            </Card>
+          </div>
+          <div style={{ flex: 1 }}>
+            <Card title="Set Goals">
+              {goals.map((g) => (
+                <div key={g.id} style={{ marginBottom: "10px" }}>
+                  <strong>{g.text}</strong>
+                  <div style={{ fontSize: "0.85em", color: "#666" }}>Owner: {g.owner} | {g.status}</div>
+                </div>
+              ))}
+            </Card>
+          </div>
+        </div>
+      </Section>
+
+      <Section title="Recent Timeline">
+        <Card title="Last 4 Weeks">
+          <Timeline events={recentEvents} />
+        </Card>
+      </Section>
+
+      {recentEvents.length === 0 ? (
+        <EmptyData message="No recent events recorded." />
+      ) : (
+        <div style={{ marginTop: "20px" }}>
+          <p>Review the timeline above and prepare to discuss the specific incidents with Leo's parents.</p>
+        </div>
+      )}
+    </Page>
+  );
+};
+
+export default StudentProfile;
+```

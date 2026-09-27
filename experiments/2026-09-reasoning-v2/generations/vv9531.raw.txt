@@ -1,0 +1,36 @@
+```tsx
+import { Page, Header, Section, Timeline, Card } from "@stoa/react";
+
+const PrepareMeeting = () => {
+  return (
+    <Page title="Meeting Preparation">
+      <Header title="Meeting with Parent" subtitle="Tomorrow at 3 PM" />
+      <Section title="Student Summary">
+        <Card title="Student Information">
+          <p>Name: Jane Doe</p>
+          <p>Grade: 8</p>
+          <p>Class: Math</p>
+          <p>Contact: jane.doe@example.com</p>
+        </Card>
+      </Section>
+      <Section title="Recent Events">
+        <Timeline events={[
+          { date: "2023-10-05", event: "Parent-Teacher Conference" },
+          { date: "2023-10-10", event: "Student received an A in Math" },
+          { date: "2023-10-15", event: "Behavioral Incident Report" },
+          { date: "2023-10-20", event: "Parent email inquiry about grades" }
+        ]} />
+      </Section>
+      <Section title="Meeting Notes">
+        <Card title="Preparation Notes">
+          <p>Discuss recent grades and progress.</p>
+          <p>Address behavior concerns from the report.</p>
+          <p>Review parent's email and respond to questions.</p>
+        </Card>
+      </Section>
+    </Page>
+  );
+};
+
+export default PrepareMeeting;
+```

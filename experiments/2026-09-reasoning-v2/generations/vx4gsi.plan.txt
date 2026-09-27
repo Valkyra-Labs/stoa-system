@@ -1,0 +1,9 @@
+1. **The person and the session**: The teacher opens this screen daily (or pre-emptively) to prepare for a specific meeting. It is a targeted, high-stakes task: understanding one student deeply to negotiate next steps with a parent.
+
+2. **The shape of the work**: This is **understanding one object fully before acting on it**. The teacher needs a complete picture of the student's academic and behavioral context to formulate a coherent narrative for the parent.
+
+3. **The information**: The view requires the student's current performance metrics, historical trends, specific incident logs, and relevant teacher notes. Values are judged against targets and previous periods to identify growth or decline.
+
+4. **The decision and its evidence**: The teacher decides on the meeting's agenda and key talking points. They need evidence of recent behavior, specific data points, and the history of interventions to support their stance. A wrong decision (e.g., missing a trend) risks a failed meeting.
+
+5. **The structure**: The screen must present the student's identity and current status prominently, followed by a detailed view of their metrics and history. A section for pending actions or notes allows the teacher to draft the meeting strategy before the meeting occurs.

@@ -1,0 +1,8 @@
+The screen is a **dashboard** for the finance director to quickly review the company's weekly financial performance before Monday meetings. It is laid out with a **Header** showing the title and a **Sidebar** for navigation. The main content is divided into **Sections**:
+
+- **Weekly Metrics**: Key financial figures like revenue, expenses, and profit, displayed as **Metrics** with **Delta** indicators to show changes from the previous week.
+- **Trends**: A **Chart** showing revenue and expense trends over the last 4 weeks.
+- **Top Performers**: A **DataTable** listing departments or products with their performance metrics.
+- **Exceptions**: A **Comparison** section highlighting any anomalies or underperforming areas.
+
+This layout provides a clear, concise overview for quick decision-making.

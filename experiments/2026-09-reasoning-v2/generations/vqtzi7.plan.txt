@@ -1,0 +1,3 @@
+**Main goal:** Present a clear, concise overview of the school's performance across key areas (academic, financial, operational, and student well-being) to the board, ensuring the head of school can confidently show progress, challenges, and areas for improvement without making changes.
+
+**Layout support:** The screen is structured with a header showing the presentation title, followed by a sidebar with navigation to different sections (academic, financial, operational, well-being). Each section contains cards with metrics, charts, and key insights, allowing the head of school to guide the board through each area visually and factually. A footer includes a summary and next steps, reinforcing the purpose of the presentation.

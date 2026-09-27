@@ -1,0 +1,9 @@
+**Key Rules Shaping This Screen:**
+
+1.  **Order and emphasis:** The finance director needs immediate visibility into variances. Exceptions (missed targets, overages) must appear first, sorted by magnitude of deviation. The most critical number (e.g., total P&L variance) must be obvious without scanning.
+2.  **Numbers:** Every metric displayed for decision-making must show its basis (target vs. actual, period-over-period change). A single number is insufficient; the *change* and *direction* drive the action.
+3.  **Avoid:** No decorative KPI cards or charts where exact comparison is needed. The director needs precise data to justify meeting points, not visual abstraction.
+4.  **States:** The screen must handle stale data (e.g., "Financials updated yesterday") or errors gracefully, as Monday is a fixed schedule where data freshness is critical for trust.
+
+**Pattern Selection:**
+I will use a **Dashboard** pattern for the overview, but customized to prioritize the **Comparison** and **DataTable** patterns for the financial statements, ensuring the "exceptions" rule is strictly followed.

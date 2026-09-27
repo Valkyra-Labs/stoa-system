@@ -1,0 +1,13 @@
+**Answers:**
+
+1. **Session Context:** The finance director reviews the screen weekly on Mondays to prepare for meetings, focusing on high-level financial metrics without immediate action on the screen.
+
+2. **Shape of Work:** The session involves getting a general picture of many related numbers to understand the company's financial health over the past week.
+
+3. **Information:** Key entities are the company's financial metrics (revenue, expenses, profit) for the current week and the previous week. The time frame is the past two weeks. Each value is judged against the previous week's numbers and monthly targets.
+
+4. **Decision and Evidence:** No immediate decision is made on this screen. The FD uses the information to prepare for discussions. Evidence includes month-to-date targets and the previous week's performance.
+
+5. **Structure:** The screen should start with an overview of key metrics, followed by a detailed comparison of this week versus last week, and any alerts for significant changes or anomalies.
+
+Based on these steps, the structure will include a header with the week's metrics, a section for week-on-week comparison, and a brief section for alerts or exceptions.

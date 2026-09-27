@@ -1,0 +1,11 @@
+**1. User and Session:** A payments operations analyst reviews a list of failed payouts daily to ensure timely resolution. They open this screen to address specific failures flagged by the system.
+
+**2. Shape of Work:** The analyst scans a list of items, taking each one in turn to a decision, until no unresolved items remain.
+
+**3. Information:** The screen must show a list of failed payouts, their details, and relevant metadata like the reason for failure, the payout amount, and the associated merchant.
+
+**4. Decision and Evidence:** The analyst decides whether to approve or reject each failed payout. Evidence includes the failure reason, payout amount, and any associated comments or documents.
+
+**5. Structure:** The screen should have a list of failed payouts, with each item expandable to show detailed information. A decision area should be adjacent to each item for marking it as resolved. A progress indicator shows the number of resolved and unresolved items.
+
+Components: Use the `ReviewQueue` pattern with `items` representing failed payouts, `current` for the detailed view, and `decision` for approving or rejecting.

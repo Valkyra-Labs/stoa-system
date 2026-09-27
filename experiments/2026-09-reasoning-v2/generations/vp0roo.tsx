@@ -1,0 +1,109 @@
+import { Page, Header, Section, Card, Comparison, Metric, Delta, Status, Button, EmptyData, Tabs, Tab } from "@stoa/react";
+
+const fundData = [
+  {
+    id: "fund-a",
+    name: "Fund A - Balanced Growth",
+    risk: "Medium",
+    fees: "1.2%",
+    returns: {
+      annual: "12.5%",
+      threeYear: "14.2%",
+      fiveYear: "10.8%",
+    },
+    volatility: {
+      annual: "15%",
+      threeYear: "20%",
+      fiveYear: "12%",
+    },
+    benchmark: "S&P 500",
+    performance: {
+      annual: "2.3%",
+      threeYear: "4.5%",
+      fiveYear: "-1.2%",
+    },
+  },
+  {
+    id: "fund-b",
+    name: "Fund B - Aggressive Growth",
+    risk: "High",
+    fees: "1.5%",
+    returns: {
+      annual: "15.8%",
+      threeYear: "18.4%",
+      fiveYear: "13.6%",
+    },
+    volatility: {
+      annual: "22%",
+      threeYear: "30%",
+      fiveYear: "18%",
+    },
+    benchmark: "NASDAQ 100",
+    performance: {
+      annual: "5.1%",
+      threeYear: "7.9%",
+      fiveYear: "2.4%",
+    },
+  },
+];
+
+const FundComparison = () => (
+  <Page title="Fund Recommendation">
+    <Header title="Fund Recommendation" subtitle="Compare Fund A and Fund B to choose the best option for your client." />
+    <Section title="Fund Overview">
+      <Comparison
+        entities={fundData.map((fund) => fund.name)}
+        metrics={[
+          { label: "Risk Level", value: (fund) => fund.risk },
+          { label: "Annual Fees", value: (fund) => fund.fees },
+          { label: "Annual Return", value: (fund) => fund.returns.annual },
+          { label: "3-Year Return", value: (fund) => fund.returns.threeYear },
+          { label: "5-Year Return", value: (fund) => fund.returns.fiveYear },
+          { label: "Annual Volatility", value: (fund) => fund.volatility.annual },
+          { label: "3-Year Volatility", value: (fund) => fund.volatility.threeYear },
+          { label: "5-Year Volatility", value: (fund) => fund.volatility.fiveYear },
+          { label: "Benchmark", value: (fund) => fund.benchmark },
+          { label: "Annual Performance vs Benchmark", value: (fund) => fund.performance.annual },
+          { label: "3-Year Performance vs Benchmark", value: (fund) => fund.performance.threeYear },
+          { label: "5-Year Performance vs Benchmark", value: (fund) => fund.performance.fiveYear },
+        ]}
+      />
+    </Section>
+    <Section title="Key Metrics">
+      {fundData.map((fund) => (
+        <Card key={fund.id} title={fund.name}>
+          <Metric label="Risk" value={fund.risk} />
+          <Metric label="Annual Fees" value={fund.fees} />
+          <Metric label="Annual Return" value={fund.returns.annual} />
+          <Metric label="Annual Volatility" value={fund.volatility.annual} />
+          <Metric label="Annual Performance vs Benchmark" value={<Delta value={fund.performance.annual} basis={fund.benchmark} />} />
+          <Metric label="Risk Rating" value={fund.risk === "Low" ? "✅ Safe" : fund.risk === "Medium" ? "⚠️ Moderate" : "❌ High"} />
+        </Card>
+      ))}
+    </Section>
+    <Section title="Recommendation">
+      <Tabs>
+        <Tab label="Fund A - Balanced Growth">
+          <Card title="Fund A Summary">
+            <Metric label="Annual Return" value={fundData[0].returns.annual} />
+            <Metric label="Annual Volatility" value={fundData[0].volatility.annual} />
+            <Metric label="Annual Performance vs Benchmark" value={<Delta value={fundData[0].performance.annual} basis={fundData[0].benchmark} />} />
+            <Status tone="info" label="Recommended for: Conservative to Moderate Risk Tolerance" />
+          </Card>
+        </Tab>
+        <Tab label="Fund B - Aggressive Growth">
+          <Card title="Fund B Summary">
+            <Metric label="Annual Return" value={fundData[1].returns.annual} />
+            <Metric label="Annual Volatility" value={fundData[1].volatility.annual} />
+            <Metric label="Annual Performance vs Benchmark" value={<Delta value={fundData[1].performance.annual} basis={fundData[1].benchmark} />} />
+            <Status tone="info" label="Recommended for: High Risk Tolerance and Long-Term Growth" />
+          </Card>
+        </Tab>
+      </Tabs>
+      <Button label="Select Fund A" variant="primary" />
+      <Button label="Select Fund B" variant="primary" />
+    </Section>
+  </Page>
+);
+
+export default FundComparison;

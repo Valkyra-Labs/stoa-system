@@ -1,0 +1,93 @@
+import { Page, Header, Section, Card, Comparison, Metric, Delta, Button, Tabs, Tab } from "@stoa/react";
+
+const fundData = {
+  fundA: {
+    name: "Fund Alpha",
+    risk: "Moderate",
+    fees: "0.75%",
+    oneYearReturn: "12.3%",
+    threeYearReturn: "15.8%",
+    fiveYearReturn: "18.2%",
+    benchmark: "S&P 500",
+    volatility: "12.5%",
+    expenseRatio: "0.65%",
+    manager: "Jane Doe",
+    performance: [
+      { year: "2022", return: "10.2%", benchmark: "11.5%" },
+      { year: "2021", return: "9.8%", benchmark: "10.3%" },
+      { year: "2020", return: "12.1%", benchmark: "13.2%" },
+    ],
+  },
+  fundB: {
+    name: "Fund Beta",
+    risk: "High",
+    fees: "1.2%",
+    oneYearReturn: "14.1%",
+    threeYearReturn: "17.6%",
+    fiveYearReturn: "20.5%",
+    benchmark: "NASDAQ Composite",
+    volatility: "18.2%",
+    expenseRatio: "0.95%",
+    manager: "John Smith",
+    performance: [
+      { year: "2022", return: "13.4%", benchmark: "14.7%" },
+      { year: "2021", return: "12.8%", benchmark: "13.9%" },
+      { year: "2020", return: "15.3%", benchmark: "16.5%" },
+    ],
+  },
+};
+
+export default function FundComparison() {
+  return (
+    <Page title="Fund Recommendation">
+      <Header title="Fund Recommendation" subtitle="Compare Fund Alpha and Fund Beta" />
+      <Section title="Fund Comparison">
+        <Comparison
+          entities={[fundData.fundA, fundData.fundB]}
+          metrics={[
+            { label: "1-Year Return", value: (d) => d.oneYearReturn, delta: (d) => d.oneYearReturn },
+            { label: "3-Year Return", value: (d) => d.threeYearReturn, delta: (d) => d.threeYearReturn },
+            { label: "5-Year Return", value: (d) => d.fiveYearReturn, delta: (d) => d.fiveYearReturn },
+            { label: "Risk Level", value: (d) => d.risk },
+            { label: "Fees", value: (d) => d.fees },
+            { label: "Benchmark", value: (d) => d.benchmark },
+            { label: "Volatility", value: (d) => d.volatility },
+            { label: "Expense Ratio", value: (d) => d.expenseRatio },
+            { label: "Manager", value: (d) => d.manager },
+          ]}
+        />
+      </Section>
+      <Section title="Performance Over Time">
+        <Tabs
+          items={[
+            { id: "fundA", label: "Fund Alpha", content: <Card title="Fund Alpha"><p>Performance over the last 3 years:</p><ul>{fundData.fundA.performance.map((p, i) => (
+              <li key={i}>
+                {p.year}: <Metric label="Return" value={p.return} unit="%" />
+                <Delta value={p.return} basis={p.benchmark} />
+              </li>
+            ))}</ul></Card> },
+            { id: "fundB", label: "Fund Beta", content: <Card title="Fund Beta"><p>Performance over the last 3 years:</p><ul>{fundData.fundB.performance.map((p, i) => (
+              <li key={i}>
+                {p.year}: <Metric label="Return" value={p.return} unit="%" />
+                <Delta value={p.return} basis={p.benchmark} />
+              </li>
+            ))}</ul></Card> },
+          ]}
+        />
+      </Section>
+      <Section title="Recommendation">
+        <Card>
+          <p>
+            Based on the performance, risk, and fees, <strong>Fund Beta</strong> appears to offer higher returns over the last 5 years, though with higher risk and fees. <strong>Fund Alpha</strong> offers a more balanced approach with moderate risk and slightly lower fees.
+          </p>
+          <Button variant="primary" onPress={() => alert("Recommendation sent to client.")}>
+            Recommend Fund Beta
+          </Button>
+          <Button variant="secondary" onPress={() => alert("Recommendation sent to client.")}>
+            Recommend Fund Alpha
+          </Button>
+        </Card>
+      </Section>
+    </Page>
+  );
+}

@@ -1,0 +1,5 @@
+### Main Goal and Layout Strategy
+
+The screen's primary goal is to provide the Board with a single, authoritative snapshot of the school's performance for the upcoming term. It must be visually clear, data-rich yet uncluttered, and entirely accurate, requiring zero changes during the presentation.
+
+The layout prioritizes a high-level executive overview. A prominent header sets the context (Term, School, Date). The core is a **Dashboard** pattern, splitting the screen into two columns: the left holds key **Metrics** (admissions, budget, attendance) and a **Trend** chart to show direction; the right displays a **DataTable** of specific highlights and challenges. This structure allows the presenter to point to specific numbers or trends instantly. Supporting sections include a brief **AuditLog** for recent major events and a **Status** indicator for overall school health. The design uses whitespace to separate these blocks, ensuring every data point is legible and the narrative flows logically from high-level performance to specific details.

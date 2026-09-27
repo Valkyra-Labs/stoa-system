@@ -1,0 +1,5 @@
+The most critical rule is **Evidence and actions**: the fund recommendation must present the comparative evidence (metrics, historical performance, peer data) directly adjacent to the decision point, not hidden behind a second click. The user needs to see *why* one fund is better than the other before selecting.
+
+The second most shaping rule is **Order and emphasis**: the screen must prioritize the fund with the strongest performance or the one requiring the most scrutiny (exceptions/risks) before presenting the averages. The "best" fund should be obvious without scanning every label.
+
+Finally, **Numbers** is essential: every metric (return, expense ratio, volatility) must carry its basis (e.g., vs. benchmark, vs. peer group, or vs. previous year) to enable a true comparison. Without these bases, the numbers are meaningless for selection. Together, these rules ensure the screen functions as a decision-support tool rather than just a data display.

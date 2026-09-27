@@ -1,0 +1,13 @@
+### Answers to Steps 1 to 5
+
+**1. The person and the session:** A payments operations analyst reviews and resolves failed payouts regularly. They open this screen to address specific failed transactions flagged by automated systems.
+
+**2. The shape of the work:** This session involves working through a list of items one by one until all are resolved. The analyst takes each failed payout in turn, investigates it, and makes a decision on how to proceed.
+
+**3. The information:** The analyst needs to see each failed payout, its details (e.g., amount, recipient, reason for failure), and any relevant context (e.g., previous attempts, associated transactions). The information is time-sensitive, with the most recent failures appearing first.
+
+**4. The decision and its evidence:** The analyst decides how to resolve each failed payout, whether by retrying the transaction, investigating further, or marking it as an exception. Evidence includes the reason for failure, transaction history, and any supporting documentation.
+
+**5. The structure:** The screen should have a list of failed payouts with key details visible at a glance. Each item can be expanded to show more information and potential actions. A progress indicator shows how many items are left to resolve. Actions and their outcomes should be clearly visible and actionable directly from the list.
+
+Given this structure, the **ReviewQueue** pattern fits well, with items to resolve, a current item in focus, and decision actions.

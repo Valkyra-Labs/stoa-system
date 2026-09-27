@@ -1,0 +1,29 @@
+```tsx
+import { Page, Header, Sidebar, Section, Card, Button, Comparison, DataTable } from "@stoa/react";
+
+export default function FailedPayoutsScreen() {
+  return (
+    <Page title="Failed Payouts">
+      <Header title="Failed Payouts" subtitle="Resolve failed payments" actions={<Button label="Mark as Resolved" />} />
+      <main>
+        <Section title="Current Failed Payout">
+          <Card title="Payout Details">
+            <p>Payment ID: 12345</p>
+            <p>Recipient: John Doe</p>
+            <p>Status: Failed</p>
+            <p>Reason: Insufficient Funds</p>
+          </Card>
+        </Section>
+        <Sidebar>
+          <Section title="Context">
+            <p>Additional context and notes about the failed payout.</p>
+          </Section>
+          <Section title="History">
+            <p>History of actions taken to resolve the failed payout.</p>
+          </Section>
+        </Sidebar>
+      </main>
+    </Page>
+  );
+}
+```

@@ -1,0 +1,129 @@
+import { Page, Header, Section, Card, Metric, Delta, Trend, Chart, DataTable, Comparison, Timeline, Status, EmptyData, Metric, Delta, Trend, Chart, DataTable, Comparison, Timeline, Status, EmptyData } from "@stoa/react";
+
+const schoolData = {
+  studentPerformance: {
+    label: "Student Performance",
+    value: "82%",
+    delta: 2,
+    unit: "%",
+    trend: "up",
+  },
+  staffRetention: {
+    label: "Staff Retention",
+    value: "88%",
+    delta: -1,
+    unit: "%",
+    trend: "down",
+  },
+  financialHealth: {
+    label: "Financial Health",
+    value: "$1.2M",
+    delta: 150,
+    unit: "USD",
+    trend: "up",
+  },
+  operationalEfficiency: {
+    label: "Operational Efficiency",
+    value: "92%",
+    delta: 0,
+    unit: "%",
+    trend: "stable",
+  },
+};
+
+const metrics = [
+  { label: "Student Performance", value: "82%", delta: 2, unit: "%", trend: "up" },
+  { label: "Staff Retention", value: "88%", delta: -1, unit: "%", trend: "down" },
+  { label: "Financial Health", value: "$1.2M", delta: 150, unit: "USD", trend: "up" },
+  { label: "Operational Efficiency", value: "92%", delta: 0, unit: "%", trend: "stable" },
+];
+
+const departments = [
+  {
+    name: "Math",
+    studentPerformance: "85%",
+    staffRetention: "90%",
+    financialHealth: "$1.1M",
+    operationalEfficiency: "95%",
+  },
+  {
+    name: "Science",
+    studentPerformance: "80%",
+    staffRetention: "85%",
+    financialHealth: "$1.0M",
+    operationalEfficiency: "90%",
+  },
+  {
+    name: "English",
+    studentPerformance: "88%",
+    staffRetention: "87%",
+    financialHealth: "$1.3M",
+    operationalEfficiency: "93%",
+  },
+];
+
+const timelineEvents = [
+  { date: "2023-09-01", description: "New academic year started with 1,200 students." },
+  { date: "2023-10-15", description: "School budget approved with a 5% increase." },
+  { date: "2023-11-01", description: "Staff retention rate improved to 88%." },
+  { date: "2023-12-01", description: "Annual review completed; student performance at 82%." },
+];
+
+const auditLog = [
+  { user: "admin", action: "Viewed report", timestamp: "2023-12-05T14:30:00Z" },
+  { user: "jane.doe", action: "Downloaded report", timestamp: "2023-12-05T14:25:00Z" },
+  { user: "john.smith", action: "Updated financial data", timestamp: "2023-12-05T14:10:00Z" },
+];
+
+const statusItems = [
+  { tone: "success", label: "All students enrolled" },
+  { tone: "warning", label: "One staff member on leave" },
+  { tone: "success", label: "Budget approved" },
+  { tone: "error", label: "Missing data for 2023-04" },
+];
+
+export default function SchoolPerformanceReport() {
+  return (
+    <Page title="School Performance Report">
+      <Header title="School Performance Report" subtitle="Prepared for the Board Meeting" />
+      <Section title="Key Metrics">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {metrics.map((metric, index) => (
+            <Card key={index} title={metric.label}>
+              <Metric value={metric.value} delta={metric.delta} unit={metric.unit} tone={metric.trend === "up" ? "success" : metric.trend === "down" ? "warning" : "neutral"} />
+            </Card>
+          ))}
+        </div>
+      </Section>
+      <Section title="Department Comparison">
+        <Comparison entities={departments.map(d => d.name)} metrics={metrics.map(m => m.label)} />
+      </Section>
+      <Section title="Performance Timeline">
+        <Timeline events={timelineEvents} />
+      </Section>
+      <Section title="Audit Log">
+        <DataTable
+          columns={[{ key: "user", label: "User" }, { key: "action", label: "Action" }, { key: "timestamp", label: "Timestamp" }]}
+          rows={auditLog}
+        />
+      </Section>
+      <Section title="Status Indicators">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {statusItems.map((status, index) => (
+            <Card key={index} title={status.label}>
+              <Status tone={status.tone} />
+            </Card>
+          ))}
+        </div>
+      </Section>
+      <Section title="Detailed Analysis">
+        <Card title="Student Performance">
+          <Chart type="line" series={metrics.filter(m => m.label === "Student Performance").map(m => ({ name: "Student Performance", data: [80, 82, 85, 84, 83] }))} />
+        </Card>
+        <Card title="Financial Health">
+          <Chart type="bar" series={metrics.filter(m => m.label === "Financial Health").map(m => ({ name: "Financial Health", data: [1000000, 1100000, 1200000, 1250000, 1200000] }))} />
+        </Card>
+      </Section>
+    </Page>
+  );
+}

@@ -1,0 +1,48 @@
+import { Page, Header, Section, Metric, Comparison, DataTable, Status } from "@stoa/react";
+
+export default function SchoolPerformance() {
+  return (
+    <Page title="School Performance Overview">
+      <Header title="School Performance Overview" subtitle="Term Summary" />
+      <Section title="Key Metrics">
+        <Metric label="Student Enrollment" value={1200} unit="students" />
+        <Metric label="Teacher Attendance" value={95} delta={-2} basis={97} unit="%" />
+        <Metric label="Student Attendance" value={92} delta={1} basis={91} unit="%" />
+        <Metric label="GPA Average" value={3.2} delta={0.1} basis={3.1} unit="points" />
+      </Section>
+      <Section title="Comparison of Key Metrics">
+        <Comparison
+          entities={[
+            { id: "current", label: "Current Term" },
+            { id: "previous", label: "Previous Term" },
+          ]}
+          metrics={[
+            { label: "Student Enrollment", value: { current: 1200, previous: 1180 } },
+            { label: "Teacher Attendance", value: { current: 95, previous: 97 } },
+            { label: "Student Attendance", value: { current: 92, previous: 91 } },
+            { label: "GPA Average", value: { current: 3.2, previous: 3.1 } },
+          ]}
+        />
+      </Section>
+      <Section title="Student Performance by Grade">
+        <DataTable
+          columns={[
+            { label: "Grade", key: "grade" },
+            { label: "Enrollment", key: "enrollment" },
+            { label: "Attendance", key: "attendance", unit: "%" },
+            { label: "GPA", key: "gpa", unit: "points" },
+          ]}
+          rows={[
+            { grade: "9th", enrollment: 300, attendance: 92, gpa: 3.0 },
+            { grade: "10th", enrollment: 350, attendance: 93, gpa: 3.1 },
+            { grade: "11th", enrollment: 250, attendance: 91, gpa: 3.2 },
+            { grade: "12th", enrollment: 300, attendance: 94, gpa: 3.3 },
+          ]}
+        />
+      </Section>
+      <Section title="System Status">
+        <Status tone="success" label="All systems operational" />
+      </Section>
+    </Page>
+  );
+}

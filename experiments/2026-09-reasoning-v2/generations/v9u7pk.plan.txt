@@ -1,0 +1,5 @@
+1. The analyst is likely a regular user who checks failed payouts daily to resolve issues and ensure smooth operations.  
+2. The shape of the work is taking each item in turn to a decision, until none are left.  
+3. The entities are failed payout records, with measures like status, reason, and timestamp. Each value is judged against a target (resolved) and previous state (successful).  
+4. The analyst decides whether to retry, investigate, or escalate. They need evidence like error logs, timestamps, and resolution history to make informed decisions.  
+5. The structure starts with a list of failed payouts, showing key metrics. Each item has a detail panel for deeper inspection. A sidebar offers filters and bulk actions, while a status summary at the top shows progress and unresolved counts.

@@ -1,0 +1,9 @@
+1. **Person & Session**: The adviser opens this screen when a new client requires a specific fund recommendation. It is a focused, high-stakes decision task, not a routine check.
+
+2. **Shape of Work**: The session involves setting two specific funds against each other to understand their relative performance and risk profiles before making a recommendation.
+
+3. **Information**: The screen must display key metrics for both funds (e.g., returns, volatility, fees) over the same time period. Values are judged against targets or historical baselines.
+
+4. **Decision & Evidence**: The adviser decides which fund is better based on the client's risk tolerance. They need clear, comparable data and the ability to drill down into specific fund details.
+
+5. **Structure**: A two-column layout is optimal. The top shows a high-level comparison summary. Below, two distinct sections allow deep inspection of each fund side-by-side, with actions to select the winner.

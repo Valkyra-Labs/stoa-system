@@ -1,0 +1,57 @@
+```tsx
+import { Page, Header, Sidebar, Section, Card, Tabs, Button, Metric, Delta, Trend, Chart, DataTable, Comparison, EmptyData } from "@stoa/react";
+
+const FundComparisonPage = () => {
+  return (
+    <Page title="Fund Recommendation">
+      <Header title="Choose a Fund for Your Client" subtitle="Compare two funds based on key metrics and performance" />
+      <Sidebar>
+        <Section title="Navigation">
+          <Button label="Fund Overview" />
+          <Button label="Performance History" />
+          <Button label="Risk Analysis" />
+        </Section>
+      </Sidebar>
+      <main>
+        <Section title="Fund Comparison">
+          <Comparison
+            entities={[
+              { id: "fund1", name: "Global Growth Fund", risk: "Moderate", fee: "0.75%", returns: "12.5%" },
+              { id: "fund2", name: "Blue Chip Equity Fund", risk: "Low", fee: "0.5%", returns: "9.8%" }
+            ]}
+            metrics={[
+              { label: "Annual Return", fund1: "12.5%", fund2: "9.8%" },
+              { label: "Risk Rating", fund1: "Moderate", fund2: "Low" },
+              { label: "Fee Rate", fund1: "0.75%", fund2: "0.5%" },
+              { label: "Performance Trend", fund1: <Trend direction="up" />, fund2: <Trend direction="flat" /> }
+            ]}
+          />
+        </Section>
+        <Section title="Performance Overview">
+          <Card title="Fund 1: Global Growth Fund">
+            <Metric label="Annual Return" value="12.5%" delta={+2.5} unit="%" />
+            <Metric label="Risk Rating" value="Moderate" />
+            <Metric label="Fee Rate" value="0.75%" />
+            <Chart type="line" series={[{ name: "Fund 1", data: [10, 12, 14, 15, 13, 16] }]} />
+          </Card>
+          <Card title="Fund 2: Blue Chip Equity Fund">
+            <Metric label="Annual Return" value="9.8%" delta={-0.2} unit="%" />
+            <Metric label="Risk Rating" value="Low" />
+            <Metric label="Fee Rate" value="0.5%" />
+            <Chart type="line" series={[{ name: "Fund 2", data: [8, 9, 10, 11, 10, 12] }]} />
+          </Card>
+        </Section>
+        <Section title="Recommendation">
+          <Card>
+            <p>Select the fund that best aligns with your client's risk tolerance and investment goals.</p>
+            <Button label="Recommend Fund 1" variant="primary" />
+            <Button label="Recommend Fund 2" variant="primary" />
+          </Card>
+        </Section>
+      </main>
+    </Page>
+  );
+};
+
+export default FundComparisonPage;
+```

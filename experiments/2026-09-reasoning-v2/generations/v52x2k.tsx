@@ -1,0 +1,67 @@
+import { Page, Header, Section, Card, Metric, Delta, Tabs, Timeline, Status, EmptyData } from "@stoa/react";
+
+const portfolioData = [
+  { id: "AAPL", name: "Apple Inc.", change: 2.5, reason: "Strong Q3 earnings report", delta: 1.2, basis: 100.0 },
+  { id: "TSLA", name: "Tesla Inc.", change: -4.3, reason: "Regulatory concerns in Europe", delta: -1.8, basis: 250.0 },
+  { id: "GOOGL", name: "Alphabet Inc.", change: 0.8, reason: "Positive sentiment on AI developments", delta: 0.5, basis: 130.0 },
+  { id: "AMZN", name: "Amazon.com Inc.", change: -1.2, reason: "Supply chain disruptions", delta: -0.6, basis: 120.0 },
+];
+
+const reasons = [
+  { id: "strong_earnings", label: "Strong Earnings", count: 3 },
+  { id: "regulatory_concerns", label: "Regulatory Concerns", count: 1 },
+  { id: "supply_chain", label: "Supply Chain Issues", count: 1 },
+  { id: "market_trends", label: "Market Trends", count: 2 },
+];
+
+const timelineData = [
+  { time: "09:15 AM", event: "Apple (AAPL) +2.5% due to strong Q3 earnings" },
+  { time: "10:30 AM", event: "Tesla (TSLA) -4.3% due to regulatory concerns in Europe" },
+  { time: "11:45 AM", event: "Amazon (AMZN) -1.2% due to supply chain disruptions" },
+  { time: "12:00 PM", event: "Alphabet (GOOGL) +0.8% due to positive sentiment on AI developments" },
+];
+
+const PortfolioOverview = () => (
+  <Page title="Portfolio Overview - Daily Movements">
+    <Header
+      title="Daily Portfolio Movements"
+      subtitle="Changes since yesterday and reasons for movements"
+      actions={
+        <div>
+          <Button label="Refresh" variant="primary" />
+          <Button label="Export" variant="secondary" />
+        </div>
+      }
+    />
+    <main>
+      <Section title="Key Changes">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          {portfolioData.map((item) => (
+            <Card key={item.id} title={`${item.name} (${item.id})`}>
+              <Metric label="Change" value={item.change} delta={item.delta} basis={item.basis} unit="%" />
+              <p className="text-sm text-gray-500">{item.reason}</p>
+            </Card>
+          ))}
+        </div>
+      </Section>
+      <Section title="Reasons for Movement">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {reasons.map((reason) => (
+            <Card key={reason.id} title={reason.label}>
+              <Metric label="Count" value={reason.count} />
+            </Card>
+          ))}
+        </div>
+      </Section>
+      <Section title="Timeline of Changes">
+        {timelineData.length > 0 ? (
+          <Timeline events={timelineData} />
+        ) : (
+          <EmptyData message="No changes recorded since yesterday." />
+        )}
+      </Section>
+    </main>
+  </Page>
+);
+
+export default PortfolioOverview;

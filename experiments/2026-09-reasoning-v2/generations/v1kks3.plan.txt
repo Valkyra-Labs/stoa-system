@@ -1,0 +1,9 @@
+1. **The person and the session**: A financial adviser acts on a specific client request, triggered by an unusual inquiry or a scheduled review. This is a focused, high-stakes decision requiring immediate justification to the client.
+
+2. **The shape of the work**: The session involves setting two specific objects (Fund A and Fund B) against each other to find the better fit for a specific client profile. The adviser acts here to make the recommendation.
+
+3. **The information**: The screen must display the two funds side-by-side on shared metrics (e.g., returns, risk, fees) filtered by the client's constraints (age, risk tolerance). Values are judged against a target (client goals) and the peer (the other fund).
+
+4. **The decision and its evidence**: The adviser decides which fund to recommend. They need to see the comparative delta (how much better Fund A is than Fund B), the source of the data, and the specific client criteria used to filter the comparison. A wrong decision costs client trust and potential liability.
+
+5. **The structure**: A split-view layout is required. The left side presents the detailed metrics for Fund A, and the right side presents Fund B, allowing direct comparison. A header defines the client context, and a prominent action area lets the adviser select the winner and log the reasoning.

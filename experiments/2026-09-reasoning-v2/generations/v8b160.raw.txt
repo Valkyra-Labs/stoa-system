@@ -1,0 +1,83 @@
+```tsx
+import { Page, Header, Section, Card, Metric, Delta, Status, EmptyData, FilterBar, Button, BulkActions } from "@stoa/react";
+
+const PortfolioOverview = () => {
+  const today = new Date();
+  const yesterday = new Date();
+  yesterday.setDate(yesterday.getDate() - 1);
+
+  const portfolio = {
+    id: "portfolio-123",
+    name: "Global Equity Fund",
+    totalValue: 150000000,
+    currency: "USD",
+    yesterdayValue: 148500000,
+    change: 1500000,
+    changePercentage: 1.01,
+    status: "stable",
+  };
+
+  const topGainers = [
+    { name: "Tech Innovators ETF", change: 2.5, basis: 148000000, unit: "USD" },
+    { name: "Energy Leaders Fund", change: 1.8, basis: 125000000, unit: "USD" },
+    { name: "Healthcare Growth Fund", change: 1.2, basis: 98000000, unit: "USD" },
+  ];
+
+  const topLosers = [
+    { name: "Consumer Staples Trust", change: -2.3, basis: 110000000, unit: "USD" },
+    { name: "Real Estate REITs", change: -1.5, basis: 85000000, unit: "USD" },
+    { name: "Industrial Goods Fund", change: -1.1, basis: 75000000, unit: "USD" },
+  ];
+
+  const staleData = {
+    title: "Market Data",
+    message: "Stale since 2023-10-05",
+    retry: () => alert("Retrying data fetch..."),
+  };
+
+  return (
+    <Page title="Portfolio Overview">
+      <Header title="Portfolio Overview" subtitle="What moved since yesterday" />
+      <FilterBar filters={[]} />
+      <Section title="Portfolio Summary">
+        <Card>
+          <Metric label="Total Value" value={150000000} unit="USD" />
+          <Metric label="Change Since Yesterday" value={1500000} delta={1.01} unit="USD" />
+          <Status tone={portfolio.status} label={portfolio.status} />
+        </Card>
+      </Section>
+      <Section title="Top Gainers">
+        {topGainers.length > 0 ? (
+          topGainers.map((item, index) => (
+            <Card key={index}>
+              <Metric label={item.name} value={item.basis + item.change} delta={item.change} unit={item.unit} />
+            </Card>
+          ))
+        ) : (
+          <EmptyData title="No Gainers" message="No positions gained value since yesterday." />
+        )}
+      </Section>
+      <Section title="Top Losers">
+        {topLosers.length > 0 ? (
+          topLosers.map((item, index) => (
+            <Card key={index}>
+              <Metric label={item.name} value={item.basis + item.change} delta={item.change} unit={item.unit} />
+            </Card>
+          ))
+        ) : (
+          <EmptyData title="No Losers" message="No positions lost value since yesterday." />
+        )}
+      </Section>
+      <Section title="Data Status">
+        <Card>
+          <Status tone="warning" label="Stale" />
+          <p>{staleData.message}</p>
+          <Button label="Retry" onPress={staleData.retry} variant="primary" />
+        </Card>
+      </Section>
+    </Page>
+  );
+};
+
+export default PortfolioOverview;
+```

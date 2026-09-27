@@ -1,0 +1,9 @@
+1. **The person and session:** The Head of School is presenting to a Board next week. This is a high-stakes, routine event requiring a polished, authoritative overview. They are not changing anything; they are consuming and explaining.
+
+2. **The shape of the work:** The session is about **getting a general picture of many unrelated numbers** with no action expected on this screen. The goal is to demonstrate stability and progress across key pillars (Academics, Finance, Culture).
+
+3. **The information:** Entities are "School Performance," "Academics," "Finance," and "Wellbeing." Measures include enrollment growth, test scores, budget variance, and staff retention. Values are judged against targets and year-over-year trends.
+
+4. **The decision and evidence:** The "decision" is the Board's trust in the school's trajectory. Evidence required is freshness (current term data), context (vs. last year), and clarity (visual trends). A wrong decision risks board confidence or funding; it cannot be undone.
+
+5. **The structure:** The screen needs a prominent **Header** for the report title and date. The core is a **Dashboard** region grouping metrics into thematic cards with trend indicators. Below this, a secondary **DataTable** or **Comparison** view allows drilling into specific rows for detail. An **AuditLog** or status bar at the bottom confirms data freshness.

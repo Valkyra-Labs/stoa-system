@@ -1,0 +1,55 @@
+```tsx
+import { Page, Header, Section, Card, Metric, Chart, DataTable } from "@stoa/react";
+
+const TermDashboard = () => {
+  const metrics = [
+    { label: "Enrollment Growth", value: "12.4%", delta: "+2.1%", unit: "%" },
+    { label: "Test Score Avg", value: "87.2", delta: "+1.5", unit: "pts" },
+    { label: "Budget Utilization", value: "45.8", delta: "-0.3", unit: "%" },
+  ];
+
+  const chartSeries = [
+    { name: "Attendance", data: [85, 87, 86, 88, 89, 90, 91] },
+    { name: "Engagement", data: [60, 65, 70, 72, 75, 78, 80] },
+  ];
+
+  const tableData = [
+    { id: 1, school: "Oak Creek Academy", testScore: 88, budgetUsage: 42, enrollment: 450 },
+    { id: 2, school: "Riverside Prep", testScore: 85, budgetUsage: 48, enrollment: 320 },
+    { id: 3, school: "Summit Heights", testScore: 91, budgetUsage: 40, enrollment: 510 },
+    { id: 4, school: "Valley View", testScore: 82, budgetUsage: 52, enrollment: 280 },
+    { id: 5, school: "Maple Ridge", testScore: 89, budgetUsage: 44, enrollment: 390 },
+  ];
+
+  return (
+    <Page title="Term 4 Performance Review">
+      <Header title="Term 4 Annual Report" subtitle="Board of Directors Presentation" actions={<Button label="Export PDF" />}>
+        <Button label="Print" />
+      </Header>
+      <Section title="Executive Summary">
+        <div className="metrics-grid">
+          {metrics.map((m) => (
+            <Card key={m.label} title={m.label}>
+              <Metric value={m.value} delta={m.delta} unit={m.unit} />
+            </Card>
+          ))}
+        </div>
+      </Section>
+      <Section title="Key Trends">
+        <Chart type="line" series={chartSeries} x="Term Weeks" y="Percentage" />
+      </Section>
+      <Section title="School Performance Comparison">
+        <DataTable columns={[{ key: "school", label: "School" }, { key: "testScore", label: "Avg Test Score" }, { key: "budgetUsage", label: "Budget Used" }, { key: "enrollment", label: "Students" }]} rows={tableData} />
+      </Section>
+    </Page>
+  );
+};
+
+const Button = ({ label, onPress }: { label: string; onPress?: () => void }) => (
+  <button onClick={onPress} style={{ padding: "8px 16px", cursor: "pointer" }}>
+    {label}
+  </button>
+);
+
+export default TermDashboard;
+```

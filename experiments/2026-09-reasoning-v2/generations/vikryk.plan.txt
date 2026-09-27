@@ -1,0 +1,5 @@
+1. The adviser is a professional who regularly reviews client portfolios. This screen is part of a routine check to select the best fund for a client's goals.  
+2. The shape of the work is setting two objects against each other to decide which is better. Two funds are in play, and the adviser acts on this screen.  
+3. The entities are the two funds, and the metrics include returns, risk, fees, and performance vs. benchmarks. Each value is judged against targets, peers, and historical performance.  
+4. The adviser decides which fund to recommend. They need to see performance trends, risk metrics, and fees alongside evidence like historical returns and benchmark comparisons. A wrong decision could misalign with the client’s goals.  
+5. The structure starts with a header showing the client and funds. A comparison section side-by-side displays metrics, with a section for performance trends and risk indicators. A final recommendation section appears at the end with a decision button.

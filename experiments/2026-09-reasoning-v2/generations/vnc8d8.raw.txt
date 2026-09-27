@@ -1,0 +1,103 @@
+```tsx
+import { Page, Header, Section, Card, DataTable, Button, FilterBar, Sidebar, Tabs, Metric, Delta, Status, EmptyData, BulkActions } from "@stoa/react";
+
+const failedPayouts = [
+  {
+    id: "P-1001",
+    amount: 250.00,
+    currency: "USD",
+    status: "failed",
+    reason: "Invalid bank account",
+    createdAt: "2023-10-05T14:30:00Z",
+    updatedAt: "2023-10-05T15:45:00Z",
+    recipient: "Alice Johnson",
+    bank: "Bank of America",
+    transactionId: "TXN-789012",
+  },
+  {
+    id: "P-1002",
+    amount: 150.00,
+    currency: "USD",
+    status: "failed",
+    reason: "Insufficient funds",
+    createdAt: "2023-10-05T13:15:00Z",
+    updatedAt: "2023-10-05T14:00:00Z",
+    recipient: "Bob Smith",
+    bank: "Chase",
+    transactionId: "TXN-789013",
+  },
+  {
+    id: "P-1003",
+    amount: 300.00,
+    currency: "USD",
+    status: "failed",
+    reason: "Account locked",
+    createdAt: "2023-10-05T12:00:00Z",
+    updatedAt: "2023-10-05T12:30:00Z",
+    recipient: "Charlie Brown",
+    bank: "Wells Fargo",
+    transactionId: "TXN-789014",
+  },
+];
+
+const columns = [
+  { key: "id", label: "ID" },
+  { key: "recipient", label: "Recipient" },
+  { key: "amount", label: "Amount" },
+  { key: "currency", label: "Currency" },
+  { key: "status", label: "Status" },
+  { key: "reason", label: "Reason" },
+  { key: "createdAt", label: "Created At" },
+  { key: "updatedAt", label: "Last Updated" },
+];
+
+const filters = [
+  { label: "Status", value: "failed", type: "select", options: ["all", "failed", "pending"] },
+  { label: "Recipient", value: "", type: "text" },
+  { label: "Bank", value: "", type: "text" },
+];
+
+const actions = [
+  { label: "Retry", variant: "primary" },
+  { label: "Review", variant: "secondary" },
+  { label: "Escalate", variant: "danger" },
+];
+
+export default function FailedPayoutsPage() {
+  return (
+    <Page title="Failed Payouts">
+      <Header title="Failed Payouts" subtitle="Review and resolve failed transactions" actions={<BulkActions actions={actions} />} />
+      <FilterBar filters={filters} />
+      <Section title="Overview">
+        <Card>
+          <Metric label="Total Failed Payouts" value={failedPayouts.length} />
+          <Metric label="Average Amount" value={250.00} unit="USD" />
+          <Metric label="Most Common Reason" value="Invalid bank account" />
+        </Card>
+      </Section>
+      <Section title="Failed Payouts">
+        <DataTable
+          columns={columns}
+          rows={failedPayouts}
+          selectable
+          stickyFirstColumn
+          onRowSelect={(selected) => console.log("Selected:", selected)}
+        />
+      </Section>
+      <Sidebar>
+        <Card>
+          <h3>Payout Details</h3>
+          <p><strong>ID:</strong> P-1001</p>
+          <p><strong>Recipient:</strong> Alice Johnson</p>
+          <p><strong>Bank:</strong> Bank of America</p>
+          <p><strong>Reason:</strong> Invalid bank account</p>
+          <p><strong>Status:</strong> <Status tone="danger">Failed</Status></p>
+          <Button label="Retry" variant="primary" />
+          <Button label="Review" variant="secondary" />
+          <Button label="Escalate" variant="danger" />
+        </Card>
+      </Sidebar>
+    </Page>
+  );
+}
+```

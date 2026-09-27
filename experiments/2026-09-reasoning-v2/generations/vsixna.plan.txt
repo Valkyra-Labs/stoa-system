@@ -1,0 +1,3 @@
+**Main Goal:** The screen provides a clear, concise overview of the school's performance across key areas (academic, operational, financial, and student well-being) to inform the board's review and decision-making.
+
+**Layout Support:** The layout prioritizes key metrics in large, prominent cards at the top for quick scanning. Sections are grouped by theme, using headers and cards to visually separate content. A sidebar offers quick access to detailed reports and filters. Charts and tables provide deeper insights while keeping the interface clean and focused. The design ensures the board can quickly grasp the school's performance without being overwhelmed by data, supporting informed and efficient discussion.

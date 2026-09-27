@@ -1,0 +1,5 @@
+### Main Goal and Layout Strategy
+
+The goal is to provide the Finance Director with an immediate, at-a-glance overview of the week's financial performance to facilitate rapid decision-making during Monday meetings. The layout prioritizes speed and clarity by placing the most critical metrics (Revenue, Profit, Cash Flow) at the top in a dashboard format, allowing for instant status assessment.
+
+Below the high-level summary, a detailed data table provides drill-down capability for specific line items or anomalies. Supporting sections include a recent audit log for compliance verification and a comparison view against prior periods to highlight variance. The design uses clear headings and distinct sections to separate high-level trends from granular data, ensuring the screen is scannable in under a minute while remaining accessible for detailed review if needed.

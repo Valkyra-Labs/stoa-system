@@ -1,0 +1,3 @@
+**Main goal**: Help the teacher prepare for a parent-teacher meeting by organizing key student information, notes, and discussion points in a clear, focused way.
+
+**Layout support**: The screen is structured to prioritize the student’s profile and relevant data at the top for quick reference. A sidebar or section for notes and discussion points keeps the teacher’s preparation organized. A header with the meeting details (date, time, parent name) ensures clarity. A section for quick actions (e.g., add note, send message) keeps the teacher focused on actionable steps. This layout supports a clear, task-oriented flow, minimizing distractions and ensuring all necessary information is accessible before the meeting.
