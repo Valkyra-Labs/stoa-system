@@ -1,12 +1,13 @@
 // The playground: one control panel, four preview frames, one verification
 // panel. The base is Stoa today, the built tokens of this working tree;
 // every edit is an override against that base and is shown as one.
-import { useEffect, useMemo, useState } from "react";
+import { Fragment, useCallback, useEffect, useMemo, useState } from "react";
 import { Button, ChoiceGroup, Panel, StatBar, StatusBadge, TextField } from "@valkyra-labs/stoa-react";
 import { ControlPanel } from "./ControlPanel";
 import { OverrideList } from "./OverrideList";
 import { PreviewGrid } from "./PreviewGrid";
 import { Verification } from "./Verification";
+import { AREA_PANELS, mergedVariables, panelSnapshots, type Contribution } from "./panels";
 import { editableTabs } from "./editable";
 import { canRedo, canUndo, clearAll, clearOverride, emptyHistory, endEdit, redo, setOverride, undo } from "./history";
 import { createStream } from "./stream";
@@ -49,6 +50,8 @@ export function App() {
   /** The tokens a selected verification failure reads, so the control panel
    * and the override list can mark and scroll to them. */
   const [highlighted, setHighlighted] = useState<string[]>([]);
+  /** What each area panel contributes, by panel id. */
+  const [contributions, setContributions] = useState<Record<string, Contribution>>({});
 
   const overrides = history.present;
   const stream = useMemo(() => createStream(7), []);
@@ -63,7 +66,6 @@ export function App() {
   );
   const values = useMemo(() => resolveAllValues(baseTokens, overrides), [overrides]);
   const files = useMemo(() => serializeFiles(filesWithOverrides(baseTokens, overrides)), [overrides]);
-  const revision = useMemo(() => digest(JSON.stringify([tokens.light.variables, tokens.dark.variables])), [tokens]);
   // Target size is measured in every density mode, not only the one the
   // previews show, the same way scripts/checks.test.mjs measures it; theme
   // does not change a density token, so "light" is picked arbitrarily.
@@ -74,6 +76,34 @@ export function App() {
         ResolvedTokens
       >,
     [overrides],
+  );
+  const panelVariables = useMemo(() => mergedVariables(contributions), [contributions]);
+  const panelContent = useMemo(
+    () =>
+      AREA_PANELS.map((panel) => (
+        <Fragment key={panel.id}>{contributions[panel.id]?.frameContent ?? null}</Fragment>
+      )),
+    [contributions],
+  );
+  // The canvas views read their variables once, so the revision they are
+  // keyed on has to move when a panel changes one of them too.
+  const revision = useMemo(
+    () => digest(JSON.stringify([tokens.light.variables, tokens.dark.variables, panelVariables])),
+    [tokens, panelVariables],
+  );
+
+  // One stable handler per panel: a panel reports its contribution from an
+  // effect, so a handler that changed identity on every render would keep
+  // the two of them going round.
+  const contribute = useCallback((id: string, contribution: Contribution) => {
+    setContributions((previous) => ({ ...previous, [id]: contribution }));
+  }, []);
+  const handlers = useMemo(
+    () =>
+      Object.fromEntries(
+        AREA_PANELS.map((panel) => [panel.id, (contribution: Contribution) => contribute(panel.id, contribution)]),
+      ),
+    [contribute],
   );
 
   const interval = SPEEDS.find((s) => s.id === speed)?.interval ?? 250;
@@ -89,7 +119,7 @@ export function App() {
   const save = async (overwrite = false) => {
     setSaveError(null);
     try {
-      const result = await saveSnapshot({ name, files, overrides, overwrite });
+      const result = await saveSnapshot({ name, files, overrides, panels: panelSnapshots(contributions), overwrite });
       setTaken(false);
       setSaved(`${result.path} on ${result.commit.slice(0, 7)}${result.dirty ? " (working tree dirty)" : ""}`);
     } catch (cause) {
@@ -190,6 +220,12 @@ export function App() {
           />
         </Panel>
 
+        {AREA_PANELS.map(({ id, title, Component }) => (
+          <Panel key={id} title={title}>
+            <Component density={density} tokens={tokens} onContribute={handlers[id]!} />
+          </Panel>
+        ))}
+
         <Panel title="Snapshot">
           <div className="pg-stack">
             <TextField
@@ -215,7 +251,14 @@ export function App() {
       </aside>
 
       <main className="pg-main">
-        <PreviewGrid stream={stream} tokens={tokens} revision={revision} onRenderTime={setRenderMs} />
+        <PreviewGrid
+          stream={stream}
+          tokens={tokens}
+          revision={revision}
+          onRenderTime={setRenderMs}
+          panelVariables={panelVariables}
+          panelContent={panelContent}
+        />
       </main>
     </div>
   );

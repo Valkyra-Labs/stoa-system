@@ -15,8 +15,10 @@
   "dependencies": {
     "@valkyra-labs/stoa-react": "workspace:*",
     "@valkyra-labs/stoa-tokens": "workspace:*",
+    "harfbuzzjs": "1.6.2",
     "react": "^19.3.0",
-    "react-dom": "^19.3.0"
+    "react-dom": "^19.3.0",
+    "woff2-encoder": "2.0.0"
   },
   "devDependencies": {
     "@fontsource/ibm-plex-mono": "5.3.0",

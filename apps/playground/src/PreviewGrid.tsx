@@ -2,7 +2,7 @@
 // right to left. Token values are written as CSS variables on each frame's
 // container, never on the document, so one edit re-themes four screens
 // without a page-wide restyle.
-import { useEffect, useRef, useState, type CSSProperties } from "react";
+import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from "react";
 import {
   Button,
   ChoiceGroup,
@@ -34,9 +34,21 @@ export type PreviewGridProps = {
   /** Digest of the current token values; canvases are keyed on it. */
   revision: string;
   onRenderTime: (ms: number) => void;
+  /** Variables the area panels contribute, written after the token values
+   * so that a panel can override a token inside the previews. */
+  panelVariables?: Record<string, string>;
+  /** Content the area panels contribute, inside every frame. */
+  panelContent?: ReactNode;
 };
 
-export function PreviewGrid({ stream, tokens, revision, onRenderTime }: PreviewGridProps) {
+export function PreviewGrid({
+  stream,
+  tokens,
+  revision,
+  onRenderTime,
+  panelVariables,
+  panelContent,
+}: PreviewGridProps) {
   const [frame, setFrame] = useState(() => stream.current());
   const published = useRef(0);
 
@@ -56,7 +68,15 @@ export function PreviewGrid({ stream, tokens, revision, onRenderTime }: PreviewG
     <div className="pg-frames">
       <CvdFilterDefs />
       {FRAMES.map((spec) => (
-        <PreviewFrame key={spec.id} spec={spec} tokens={tokens[spec.theme]} revision={revision} frame={frame} />
+        <PreviewFrame
+          key={spec.id}
+          spec={spec}
+          tokens={tokens[spec.theme]}
+          revision={revision}
+          frame={frame}
+          panelVariables={panelVariables}
+          panelContent={panelContent}
+        />
       ))}
     </div>
   );
@@ -67,11 +87,15 @@ function PreviewFrame({
   tokens,
   revision,
   frame,
+  panelVariables,
+  panelContent,
 }: {
   spec: FrameSpec;
   tokens: ResolvedTokens;
   revision: string;
   frame: StreamFrame;
+  panelVariables?: Record<string, string>;
+  panelContent?: ReactNode;
 }) {
   // Local, visual-only, and irrelevant to what the checks measure: a
   // preview is one person looking at one frame, not a value that follows
@@ -92,9 +116,10 @@ function PreviewFrame({
         data-theme={spec.theme}
         data-cvd={cvd}
         dir={spec.dir}
-        style={{ ...(tokens.variables as CSSProperties), ...cvdFilterStyle(cvd) }}
+        style={{ ...tokens.variables, ...panelVariables, ...cvdFilterStyle(cvd) } as CSSProperties}
       >
         <Screen frame={frame} revision={revision} />
+        {panelContent}
       </div>
     </section>
   );
