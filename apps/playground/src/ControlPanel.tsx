@@ -1,7 +1,7 @@
 // The editing side of the playground. Every control is a Stoa component:
 // the system's own slider, choice group and text field, so tuning the
 // tokens exercises the components the tokens are for.
-import { useEffect, useRef } from "react";
+import { useEffect, useId, useRef } from "react";
 import { Button, StatusBadge, Tabs, TextField, TimeSlider } from "@valkyra-labs/stoa-react";
 import { rulesForToken } from "./browserChecks";
 import type { EditableItem, EditableTab } from "./editable";
@@ -104,6 +104,10 @@ function TokenControl({
   const control = item.control;
   const number = Number.parseFloat(effective);
   const rules = rulesForToken(id);
+  // The list shows on hover or focus; the control points at it so a screen
+  // reader announces it with the control, whether or not it is shown.
+  const rulesId = useId();
+  const describedBy = rules.length > 0 ? rulesId : undefined;
 
   const container = useRef<HTMLDivElement>(null);
   useEffect(() => {
@@ -119,7 +123,7 @@ function TokenControl({
       data-highlighted={highlighted ? "true" : undefined}
     >
       {rules.length > 0 && (
-        <ul className="pg-token__rules" aria-hidden="true">
+        <ul id={rulesId} className="pg-token__rules">
           {rules.map((rule, index) => (
             <li key={index}>
               {rule.rule}
@@ -141,6 +145,7 @@ function TokenControl({
             onChange={(value) => onEdit(id, `${value}px`, true)}
             onChangeEnd={onEditEnd}
             format={(value) => `${value}px`}
+            aria-describedby={describedBy}
           />
         </div>
       ) : (
@@ -158,6 +163,7 @@ function TokenControl({
             value={text}
             onChange={(value) => onEdit(id, value)}
             dir="ltr"
+            aria-describedby={describedBy}
             description={
               control.kind === "color" && !isColor(effective)
                 ? `${effective}: not a colour this browser accepts`

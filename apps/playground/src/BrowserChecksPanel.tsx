@@ -7,6 +7,8 @@ import type { BrowserCheck, CheckStatus } from "./browserChecks";
 
 export type BrowserChecksPanelProps = {
   checks: BrowserCheck[];
+  /** Ids in known-violations.json no rule produced (see `BrowserChecks`). */
+  unproduced: string[];
   /** A failure was picked: highlight the tokens it reads. */
   onSelect: (check: BrowserCheck) => void;
 };
@@ -17,6 +19,7 @@ const STATUS_TONE: Record<CheckStatus, StatusTone> = {
   known: "neutral",
   new: "negative",
   reported: "warning",
+  "listed-reported": "negative",
 };
 
 const STATUS_LABEL: Record<CheckStatus, string> = {
@@ -25,6 +28,7 @@ const STATUS_LABEL: Record<CheckStatus, string> = {
   known: "known",
   new: "new failure",
   reported: "reported only",
+  "listed-reported": "listed, but reported only: remove from known-violations.json",
 };
 
 const RULE_LABEL: Record<string, string> = {
@@ -45,7 +49,7 @@ function groupByRule(checks: BrowserCheck[]): [string, BrowserCheck[]][] {
   return [...byRule.entries()];
 }
 
-export function BrowserChecksPanel({ checks, onSelect }: BrowserChecksPanelProps) {
+export function BrowserChecksPanel({ checks, unproduced, onSelect }: BrowserChecksPanelProps) {
   const [filter, setFilter] = useState<"all" | "new">("all");
   const groups = useMemo(() => groupByRule(checks), [checks]);
   const newCount = checks.filter((c) => c.status === "new").length;
@@ -58,6 +62,29 @@ export function BrowserChecksPanel({ checks, onSelect }: BrowserChecksPanelProps
         </StatusBadge>
         <ChoiceGroup label="Show" choices={FILTERS} value={filter} onChange={(v) => setFilter(v as "all" | "new")} />
       </div>
+      {unproduced.length > 0 && (
+        <table className="stoa-table" data-testid="unproduced-entries">
+          <caption>known-violations.json entries no rule produces</caption>
+          <thead>
+            <tr>
+              <th scope="col">Entry</th>
+              <th scope="col">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            {unproduced.map((id) => (
+              <tr key={id} data-entry={id} data-status="unproduced">
+                <td>
+                  <code>{id}</code>
+                </td>
+                <td>
+                  <StatusBadge tone="negative">not produced by any rule: remove the entry or correct the id</StatusBadge>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
       {groups.map(([rule, ruleChecks]) => {
         const shown = filter === "new" ? ruleChecks.filter((c) => c.status === "new") : ruleChecks;
         if (shown.length === 0) return null;
