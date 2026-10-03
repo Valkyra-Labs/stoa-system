@@ -45,7 +45,9 @@ them.
 - Colour: a cool neutral scale, one blue accent, teal for up and bid,
   red for down and ask, amber for warnings; OKLCH; light and dark themes
   (`data-theme`, or the system setting when unset).
-- Type: IBM Plex Sans, Plex Sans Arabic and Plex Mono (SIL OFL 1.1).
+- Type: IBM Plex Sans, Plex Sans Arabic and Plex Mono, with Noto Sans
+  Arabic after Plex Mono in the numeric stack for tabular Arabic-Indic
+  digits (all SIL OFL 1.1).
 - Space on a 4 px grid; radii from 0 to 8 px.
 - Motion: fast 80 ms, base 160 ms, slow 240 ms, value flash 600 ms.
 

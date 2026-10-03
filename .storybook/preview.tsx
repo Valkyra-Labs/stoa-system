@@ -2,7 +2,11 @@ import type { Preview } from "@storybook/react-vite";
 import "@fontsource/ibm-plex-sans/400.css";
 import "@fontsource/ibm-plex-sans/500.css";
 import "@fontsource/ibm-plex-sans-arabic/400.css";
+import "@fontsource/ibm-plex-sans-arabic/500.css";
 import "@fontsource/ibm-plex-mono/400.css";
+// Arabic-Indic digits for the numeric face: IBM Plex Mono has none, and
+// IBM Plex Sans Arabic's are proportional; Noto Sans Arabic's are tabular.
+import "@fontsource/noto-sans-arabic/400.css";
 import "../packages/tokens/dist/tokens.css";
 import "../packages/react/src/styles.css";
 import "./preview.css";
