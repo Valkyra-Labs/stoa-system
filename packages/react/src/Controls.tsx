@@ -111,6 +111,28 @@ export function Select<T extends Key>({ label, hideLabel = false, options, value
   );
 }
 
+export type ToggleProps = {
+  /** The name of the setting the toggle turns on ("Reduced motion"). */
+  children: ReactNode;
+  isSelected: boolean;
+  onChange: (isSelected: boolean) => void;
+  size?: ControlSize;
+};
+
+/** One setting turned on or off: a button that stays pressed while the
+ * setting is on (aria-pressed), drawn like a chosen option when it is. */
+export function Toggle({ children, isSelected, onChange, size = "regular" }: ToggleProps) {
+  return (
+    <ToggleButton
+      isSelected={isSelected}
+      onChange={onChange}
+      className={`stoa-button stoa-choice stoa-toggle stoa-toggle--${size}`}
+    >
+      {children}
+    </ToggleButton>
+  );
+}
+
 export type TimeSliderProps = {
   label: string;
   min: number;

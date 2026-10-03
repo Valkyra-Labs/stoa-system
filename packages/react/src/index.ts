@@ -7,6 +7,7 @@ export {
   NumberField,
   Select,
   TimeSlider,
+  Toggle,
   type ButtonProps,
   type Choice,
   type ChoiceGroupProps,
@@ -14,6 +15,7 @@ export {
   type NumberFieldProps,
   type SelectProps,
   type TimeSliderProps,
+  type ToggleProps,
 } from "./Controls";
 export { Panel, StatBar } from "./Panel";
 export { Chevron } from "./Chevron";

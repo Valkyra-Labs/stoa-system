@@ -81,17 +81,42 @@
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 142
+            "line": 143
           },
           {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
-            "line": 232
+            "line": 233
           },
           {
             "component": "TimeSlider",
             "file": "packages/react/src/styles.css",
-            "line": 181
+            "line": 182
+          },
+          {
+            "component": "Toggle",
+            "file": "packages/react/src/styles.css",
+            "line": 64
+          },
+          {
+            "component": "Toggle",
+            "file": "packages/react/src/styles.css",
+            "line": 67
+          },
+          {
+            "component": "Toggle",
+            "file": "packages/react/src/styles.css",
+            "line": 68
+          },
+          {
+            "component": "Toggle",
+            "file": "packages/react/src/styles.css",
+            "line": 71
+          },
+          {
+            "component": "Toggle",
+            "file": "packages/react/src/styles.css",
+            "line": 72
           }
         ],
         "stories": [
@@ -137,7 +162,7 @@
           {
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
-            "line": 220,
+            "line": 221,
             "via": "--stoa-color-warning"
           }
         ],
@@ -175,7 +200,7 @@
           {
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
-            "line": 220,
+            "line": 221,
             "via": "--stoa-color-warning"
           }
         ],
@@ -425,7 +450,7 @@
           {
             "component": "Disclosure",
             "file": "packages/react/src/styles.css",
-            "line": 160,
+            "line": 161,
             "via": "--stoa-color-focus"
           },
           {
@@ -443,7 +468,7 @@
           {
             "component": "NumberField",
             "file": "packages/react/src/styles.css",
-            "line": 213,
+            "line": 214,
             "via": "--stoa-color-focus"
           },
           {
@@ -451,35 +476,35 @@
             "file": "packages/react/src/styles.css",
             "line": 84,
             "via": "--stoa-color-focus"
-          },
-          {
-            "component": "Select",
-            "file": "packages/react/src/styles.css",
-            "line": 142,
-            "via": "--stoa-color-accent"
           },
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
             "line": 143,
-            "via": "--stoa-color-focus"
+            "via": "--stoa-color-accent"
           },
           {
-            "component": "Tabs",
+            "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 232,
-            "via": "--stoa-color-accent"
+            "line": 144,
+            "via": "--stoa-color-focus"
           },
           {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
             "line": 233,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "Tabs",
+            "file": "packages/react/src/styles.css",
+            "line": 234,
             "via": "--stoa-color-focus"
           },
           {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 213,
+            "line": 214,
             "via": "--stoa-color-focus"
           },
           {
@@ -491,8 +516,44 @@
           {
             "component": "TimeSlider",
             "file": "packages/react/src/styles.css",
-            "line": 181,
+            "line": 182,
             "via": "--stoa-color-accent"
+          },
+          {
+            "component": "Toggle",
+            "file": "packages/react/src/styles.css",
+            "line": 64,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "Toggle",
+            "file": "packages/react/src/styles.css",
+            "line": 67,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "Toggle",
+            "file": "packages/react/src/styles.css",
+            "line": 68,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "Toggle",
+            "file": "packages/react/src/styles.css",
+            "line": 71,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "Toggle",
+            "file": "packages/react/src/styles.css",
+            "line": 72,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "Toggle",
+            "file": "packages/react/src/styles.css",
+            "line": 84,
+            "via": "--stoa-color-focus"
           }
         ],
         "stories": [
@@ -555,13 +616,13 @@
           {
             "component": "Disclosure",
             "file": "packages/react/src/styles.css",
-            "line": 160,
+            "line": 161,
             "via": "--stoa-color-focus"
           },
           {
             "component": "NumberField",
             "file": "packages/react/src/styles.css",
-            "line": 213,
+            "line": 214,
             "via": "--stoa-color-focus"
           },
           {
@@ -573,23 +634,29 @@
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 143,
+            "line": 144,
             "via": "--stoa-color-focus"
           },
           {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
-            "line": 233,
+            "line": 234,
             "via": "--stoa-color-focus"
           },
           {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 213,
+            "line": 214,
             "via": "--stoa-color-focus"
           },
           {
             "component": "TimeSlider",
+            "file": "packages/react/src/styles.css",
+            "line": 84,
+            "via": "--stoa-color-focus"
+          },
+          {
+            "component": "Toggle",
             "file": "packages/react/src/styles.css",
             "line": 84,
             "via": "--stoa-color-focus"
@@ -707,19 +774,49 @@
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 142,
+            "line": 143,
             "via": "--stoa-color-accent"
           },
           {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
-            "line": 232,
+            "line": 233,
             "via": "--stoa-color-accent"
           },
           {
             "component": "TimeSlider",
             "file": "packages/react/src/styles.css",
-            "line": 181,
+            "line": 182,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "Toggle",
+            "file": "packages/react/src/styles.css",
+            "line": 64,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "Toggle",
+            "file": "packages/react/src/styles.css",
+            "line": 67,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "Toggle",
+            "file": "packages/react/src/styles.css",
+            "line": 68,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "Toggle",
+            "file": "packages/react/src/styles.css",
+            "line": 71,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "Toggle",
+            "file": "packages/react/src/styles.css",
+            "line": 72,
             "via": "--stoa-color-accent"
           }
         ],
@@ -807,7 +904,12 @@
           {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
-            "line": 225
+            "line": 226
+          },
+          {
+            "component": "Toggle",
+            "file": "packages/react/src/styles.css",
+            "line": 79
           },
           {
             "component": "TradeTable",
@@ -876,7 +978,7 @@
           {
             "component": "NumberField",
             "file": "packages/react/src/styles.css",
-            "line": 210
+            "line": 211
           },
           {
             "component": "Select",
@@ -886,17 +988,22 @@
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 130
+            "line": 131
           },
           {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 210
+            "line": 211
           },
           {
             "component": "TimeSlider",
             "file": "packages/react/src/styles.css",
-            "line": 177
+            "line": 178
+          },
+          {
+            "component": "Toggle",
+            "file": "packages/react/src/styles.css",
+            "line": 47
           }
         ],
         "stories": [
@@ -941,7 +1048,7 @@
           {
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
-            "line": 218
+            "line": 219
           },
           {
             "component": "TradeTable",
@@ -1055,12 +1162,12 @@
           {
             "component": "Disclosure",
             "file": "packages/react/src/styles.css",
-            "line": 160
+            "line": 161
           },
           {
             "component": "NumberField",
             "file": "packages/react/src/styles.css",
-            "line": 213
+            "line": 214
           },
           {
             "component": "Select",
@@ -1070,20 +1177,25 @@
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 143
+            "line": 144
           },
           {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
-            "line": 233
+            "line": 234
           },
           {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 213
+            "line": 214
           },
           {
             "component": "TimeSlider",
+            "file": "packages/react/src/styles.css",
+            "line": 84
+          },
+          {
+            "component": "Toggle",
             "file": "packages/react/src/styles.css",
             "line": 84
           }
@@ -1162,7 +1274,7 @@
           {
             "component": "NumberField",
             "file": "packages/react/src/styles.css",
-            "line": 211,
+            "line": 212,
             "via": "--stoa-color-surface"
           },
           {
@@ -1180,13 +1292,25 @@
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 129,
+            "line": 130,
             "via": "--stoa-color-surface"
           },
           {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 211,
+            "line": 212,
+            "via": "--stoa-color-surface"
+          },
+          {
+            "component": "Toggle",
+            "file": "packages/react/src/styles.css",
+            "line": 49,
+            "via": "--stoa-color-surface"
+          },
+          {
+            "component": "Toggle",
+            "file": "packages/react/src/styles.css",
+            "line": 64,
             "via": "--stoa-color-surface"
           }
         ],
@@ -1327,13 +1451,13 @@
           {
             "component": "Disclosure",
             "file": "packages/react/src/styles.css",
-            "line": 154,
+            "line": 155,
             "via": "--stoa-color-text"
           },
           {
             "component": "Disclosure",
             "file": "packages/react/src/styles.css",
-            "line": 158,
+            "line": 159,
             "via": "--stoa-color-text"
           },
           {
@@ -1351,7 +1475,7 @@
           {
             "component": "NumberField",
             "file": "packages/react/src/styles.css",
-            "line": 211,
+            "line": 212,
             "via": "--stoa-color-text"
           },
           {
@@ -1375,19 +1499,13 @@
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 134,
+            "line": 135,
             "via": "--stoa-color-text"
           },
           {
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
-            "line": 219,
-            "via": "--stoa-color-text"
-          },
-          {
-            "component": "Tabs",
-            "file": "packages/react/src/styles.css",
-            "line": 231,
+            "line": 220,
             "via": "--stoa-color-text"
           },
           {
@@ -1397,10 +1515,58 @@
             "via": "--stoa-color-text"
           },
           {
+            "component": "Tabs",
+            "file": "packages/react/src/styles.css",
+            "line": 233,
+            "via": "--stoa-color-text"
+          },
+          {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 211,
+            "line": 212,
             "via": "--stoa-color-text"
+          },
+          {
+            "component": "Toggle",
+            "file": "packages/react/src/styles.css",
+            "line": 50,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "Toggle",
+            "file": "packages/react/src/styles.css",
+            "line": 61,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "Toggle",
+            "file": "packages/react/src/styles.css",
+            "line": 67,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "Toggle",
+            "file": "packages/react/src/styles.css",
+            "line": 68,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "Toggle",
+            "file": "packages/react/src/styles.css",
+            "line": 71,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "Toggle",
+            "file": "packages/react/src/styles.css",
+            "line": 72,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "Toggle",
+            "file": "packages/react/src/styles.css",
+            "line": 78,
+            "via": "--stoa-color-surface-sunken"
           }
         ],
         "stories": [
@@ -1520,7 +1686,19 @@
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 141,
+            "line": 142,
+            "via": "--stoa-color-surface-hover"
+          },
+          {
+            "component": "Toggle",
+            "file": "packages/react/src/styles.css",
+            "line": 59,
+            "via": "--stoa-color-surface-hover"
+          },
+          {
+            "component": "Toggle",
+            "file": "packages/react/src/styles.css",
+            "line": 61,
             "via": "--stoa-color-surface-hover"
           }
         ],
@@ -1594,7 +1772,13 @@
           {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
-            "line": 225,
+            "line": 226,
+            "via": "--stoa-color-border"
+          },
+          {
+            "component": "Toggle",
+            "file": "packages/react/src/styles.css",
+            "line": 79,
             "via": "--stoa-color-border"
           },
           {
@@ -1673,7 +1857,7 @@
           {
             "component": "Disclosure",
             "file": "packages/react/src/styles.css",
-            "line": 165,
+            "line": 166,
             "via": "--stoa-color-text-muted"
           },
           {
@@ -1691,13 +1875,13 @@
           {
             "component": "NumberField",
             "file": "packages/react/src/styles.css",
-            "line": 190,
+            "line": 191,
             "via": "--stoa-color-text-muted"
           },
           {
             "component": "NumberField",
             "file": "packages/react/src/styles.css",
-            "line": 203,
+            "line": 204,
             "via": "--stoa-color-text-muted"
           },
           {
@@ -1709,43 +1893,43 @@
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 121,
+            "line": 122,
             "via": "--stoa-color-text-muted"
           },
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 203,
+            "line": 204,
             "via": "--stoa-color-text-muted"
           },
           {
             "component": "StatBar",
             "file": "packages/react/src/styles.css",
-            "line": 199,
+            "line": 200,
             "via": "--stoa-color-text-muted"
           },
           {
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
-            "line": 221,
+            "line": 222,
             "via": "--stoa-color-text-muted"
           },
           {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
-            "line": 228,
+            "line": 229,
             "via": "--stoa-color-text-muted"
           },
           {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 203,
+            "line": 204,
             "via": "--stoa-color-text-muted"
           },
           {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 214,
+            "line": 215,
             "via": "--stoa-color-text-muted"
           },
           {
@@ -1832,7 +2016,7 @@
           {
             "component": "NumberField",
             "file": "packages/react/src/styles.css",
-            "line": 210,
+            "line": 211,
             "via": "--stoa-color-border-strong"
           },
           {
@@ -1850,20 +2034,32 @@
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 130,
+            "line": 131,
             "via": "--stoa-color-border-strong"
           },
           {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 210,
+            "line": 211,
             "via": "--stoa-color-border-strong"
           },
           {
             "component": "TimeSlider",
             "file": "packages/react/src/styles.css",
-            "line": 177,
+            "line": 178,
             "via": "--stoa-color-border-strong"
+          },
+          {
+            "component": "Toggle",
+            "file": "packages/react/src/styles.css",
+            "line": 47,
+            "via": "--stoa-color-border-strong"
+          },
+          {
+            "component": "Toggle",
+            "file": "packages/react/src/styles.css",
+            "line": 80,
+            "via": "--stoa-color-text-subtle"
           }
         ],
         "stories": [
@@ -1961,7 +2157,7 @@
           {
             "component": "NumberField",
             "file": "packages/react/src/styles.css",
-            "line": 210,
+            "line": 211,
             "via": "--stoa-color-border-strong"
           },
           {
@@ -1979,20 +2175,32 @@
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 130,
+            "line": 131,
             "via": "--stoa-color-border-strong"
           },
           {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 210,
+            "line": 211,
             "via": "--stoa-color-border-strong"
           },
           {
             "component": "TimeSlider",
             "file": "packages/react/src/styles.css",
-            "line": 177,
+            "line": 178,
             "via": "--stoa-color-border-strong"
+          },
+          {
+            "component": "Toggle",
+            "file": "packages/react/src/styles.css",
+            "line": 47,
+            "via": "--stoa-color-border-strong"
+          },
+          {
+            "component": "Toggle",
+            "file": "packages/react/src/styles.css",
+            "line": 80,
+            "via": "--stoa-color-text-subtle"
           }
         ],
         "stories": [
@@ -2034,7 +2242,7 @@
           {
             "component": "Disclosure",
             "file": "packages/react/src/styles.css",
-            "line": 165,
+            "line": 166,
             "via": "--stoa-color-text-muted"
           },
           {
@@ -2052,13 +2260,13 @@
           {
             "component": "NumberField",
             "file": "packages/react/src/styles.css",
-            "line": 190,
+            "line": 191,
             "via": "--stoa-color-text-muted"
           },
           {
             "component": "NumberField",
             "file": "packages/react/src/styles.css",
-            "line": 203,
+            "line": 204,
             "via": "--stoa-color-text-muted"
           },
           {
@@ -2070,43 +2278,43 @@
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 121,
+            "line": 122,
             "via": "--stoa-color-text-muted"
           },
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 203,
+            "line": 204,
             "via": "--stoa-color-text-muted"
           },
           {
             "component": "StatBar",
             "file": "packages/react/src/styles.css",
-            "line": 199,
+            "line": 200,
             "via": "--stoa-color-text-muted"
           },
           {
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
-            "line": 221,
+            "line": 222,
             "via": "--stoa-color-text-muted"
           },
           {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
-            "line": 228,
+            "line": 229,
             "via": "--stoa-color-text-muted"
           },
           {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 203,
+            "line": 204,
             "via": "--stoa-color-text-muted"
           },
           {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 214,
+            "line": 215,
             "via": "--stoa-color-text-muted"
           },
           {
@@ -2251,7 +2459,13 @@
           {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
-            "line": 225,
+            "line": 226,
+            "via": "--stoa-color-border"
+          },
+          {
+            "component": "Toggle",
+            "file": "packages/react/src/styles.css",
+            "line": 79,
             "via": "--stoa-color-border"
           },
           {
@@ -2343,7 +2557,19 @@
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 141,
+            "line": 142,
+            "via": "--stoa-color-surface-hover"
+          },
+          {
+            "component": "Toggle",
+            "file": "packages/react/src/styles.css",
+            "line": 59,
+            "via": "--stoa-color-surface-hover"
+          },
+          {
+            "component": "Toggle",
+            "file": "packages/react/src/styles.css",
+            "line": 61,
             "via": "--stoa-color-surface-hover"
           }
         ],
@@ -2483,13 +2709,13 @@
           {
             "component": "Disclosure",
             "file": "packages/react/src/styles.css",
-            "line": 154,
+            "line": 155,
             "via": "--stoa-color-text"
           },
           {
             "component": "Disclosure",
             "file": "packages/react/src/styles.css",
-            "line": 158,
+            "line": 159,
             "via": "--stoa-color-text"
           },
           {
@@ -2519,13 +2745,13 @@
           {
             "component": "NumberField",
             "file": "packages/react/src/styles.css",
-            "line": 211,
+            "line": 212,
             "via": "--stoa-color-surface"
           },
           {
             "component": "NumberField",
             "file": "packages/react/src/styles.css",
-            "line": 211,
+            "line": 212,
             "via": "--stoa-color-text"
           },
           {
@@ -2555,25 +2781,19 @@
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 129,
+            "line": 130,
             "via": "--stoa-color-surface"
           },
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 134,
+            "line": 135,
             "via": "--stoa-color-text"
           },
           {
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
-            "line": 219,
-            "via": "--stoa-color-text"
-          },
-          {
-            "component": "Tabs",
-            "file": "packages/react/src/styles.css",
-            "line": 231,
+            "line": 220,
             "via": "--stoa-color-text"
           },
           {
@@ -2583,15 +2803,69 @@
             "via": "--stoa-color-text"
           },
           {
+            "component": "Tabs",
+            "file": "packages/react/src/styles.css",
+            "line": 233,
+            "via": "--stoa-color-text"
+          },
+          {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 211,
+            "line": 212,
             "via": "--stoa-color-surface"
           },
           {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 211,
+            "line": 212,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "Toggle",
+            "file": "packages/react/src/styles.css",
+            "line": 49,
+            "via": "--stoa-color-surface"
+          },
+          {
+            "component": "Toggle",
+            "file": "packages/react/src/styles.css",
+            "line": 50,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "Toggle",
+            "file": "packages/react/src/styles.css",
+            "line": 61,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "Toggle",
+            "file": "packages/react/src/styles.css",
+            "line": 64,
+            "via": "--stoa-color-surface"
+          },
+          {
+            "component": "Toggle",
+            "file": "packages/react/src/styles.css",
+            "line": 67,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "Toggle",
+            "file": "packages/react/src/styles.css",
+            "line": 68,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "Toggle",
+            "file": "packages/react/src/styles.css",
+            "line": 71,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "Toggle",
+            "file": "packages/react/src/styles.css",
+            "line": 72,
             "via": "--stoa-color-text"
           }
         ],
@@ -2656,7 +2930,7 @@
           {
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
-            "line": 218,
+            "line": 219,
             "via": "--stoa-color-down"
           },
           {
@@ -2726,7 +3000,7 @@
           {
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
-            "line": 218,
+            "line": 219,
             "via": "--stoa-color-down"
           },
           {
@@ -2871,7 +3145,7 @@
           {
             "component": "NumberField",
             "file": "packages/react/src/styles.css",
-            "line": 211
+            "line": 212
           },
           {
             "component": "Panel",
@@ -2886,12 +3160,22 @@
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 129
+            "line": 130
           },
           {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 211
+            "line": 212
+          },
+          {
+            "component": "Toggle",
+            "file": "packages/react/src/styles.css",
+            "line": 49
+          },
+          {
+            "component": "Toggle",
+            "file": "packages/react/src/styles.css",
+            "line": 64
           }
         ],
         "stories": [
@@ -2976,7 +3260,17 @@
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 141
+            "line": 142
+          },
+          {
+            "component": "Toggle",
+            "file": "packages/react/src/styles.css",
+            "line": 59
+          },
+          {
+            "component": "Toggle",
+            "file": "packages/react/src/styles.css",
+            "line": 61
           }
         ],
         "stories": [
@@ -3029,6 +3323,11 @@
             "component": "Select",
             "file": "packages/react/src/styles.css",
             "line": 78
+          },
+          {
+            "component": "Toggle",
+            "file": "packages/react/src/styles.css",
+            "line": 78
           }
         ],
         "stories": [
@@ -3075,7 +3374,7 @@
           {
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
-            "line": 217,
+            "line": 218,
             "via": "--stoa-color-up"
           },
           {
@@ -3145,7 +3444,7 @@
           {
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
-            "line": 217,
+            "line": 218,
             "via": "--stoa-color-up"
           },
           {
@@ -3323,12 +3622,12 @@
           {
             "component": "Disclosure",
             "file": "packages/react/src/styles.css",
-            "line": 154
+            "line": 155
           },
           {
             "component": "Disclosure",
             "file": "packages/react/src/styles.css",
-            "line": 158
+            "line": 159
           },
           {
             "component": "Heatmap",
@@ -3345,7 +3644,7 @@
           {
             "component": "NumberField",
             "file": "packages/react/src/styles.css",
-            "line": 211
+            "line": 212
           },
           {
             "component": "Select",
@@ -3360,17 +3659,12 @@
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 134
+            "line": 135
           },
           {
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
-            "line": 219
-          },
-          {
-            "component": "Tabs",
-            "file": "packages/react/src/styles.css",
-            "line": 231
+            "line": 220
           },
           {
             "component": "Tabs",
@@ -3378,9 +3672,44 @@
             "line": 232
           },
           {
+            "component": "Tabs",
+            "file": "packages/react/src/styles.css",
+            "line": 233
+          },
+          {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 211
+            "line": 212
+          },
+          {
+            "component": "Toggle",
+            "file": "packages/react/src/styles.css",
+            "line": 50
+          },
+          {
+            "component": "Toggle",
+            "file": "packages/react/src/styles.css",
+            "line": 61
+          },
+          {
+            "component": "Toggle",
+            "file": "packages/react/src/styles.css",
+            "line": 67
+          },
+          {
+            "component": "Toggle",
+            "file": "packages/react/src/styles.css",
+            "line": 68
+          },
+          {
+            "component": "Toggle",
+            "file": "packages/react/src/styles.css",
+            "line": 71
+          },
+          {
+            "component": "Toggle",
+            "file": "packages/react/src/styles.css",
+            "line": 72
           }
         ],
         "stories": [
@@ -3435,7 +3764,7 @@
           {
             "component": "Disclosure",
             "file": "packages/react/src/styles.css",
-            "line": 165
+            "line": 166
           },
           {
             "component": "Heatmap",
@@ -3452,12 +3781,12 @@
           {
             "component": "NumberField",
             "file": "packages/react/src/styles.css",
-            "line": 190
+            "line": 191
           },
           {
             "component": "NumberField",
             "file": "packages/react/src/styles.css",
-            "line": 203
+            "line": 204
           },
           {
             "component": "Panel",
@@ -3467,37 +3796,37 @@
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 121
+            "line": 122
           },
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 203
+            "line": 204
           },
           {
             "component": "StatBar",
             "file": "packages/react/src/styles.css",
-            "line": 199
+            "line": 200
           },
           {
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
-            "line": 221
+            "line": 222
           },
           {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
-            "line": 228
+            "line": 229
           },
           {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 203
+            "line": 204
           },
           {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 214
+            "line": 215
           },
           {
             "component": "TradeTable",
@@ -3573,6 +3902,11 @@
             "component": "Select",
             "file": "packages/react/src/styles.css",
             "line": 80
+          },
+          {
+            "component": "Toggle",
+            "file": "packages/react/src/styles.css",
+            "line": 80
           }
         ],
         "stories": [
@@ -3614,7 +3948,7 @@
           {
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
-            "line": 217
+            "line": 218
           },
           {
             "component": "TradeTable",
@@ -3718,7 +4052,7 @@
           {
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
-            "line": 220
+            "line": 221
           }
         ],
         "stories": [
@@ -3926,7 +4260,7 @@
           {
             "component": "Disclosure",
             "file": "packages/react/src/styles.css",
-            "line": 161
+            "line": 162
           },
           {
             "component": "Select",
@@ -3935,6 +4269,11 @@
           },
           {
             "component": "TimeSlider",
+            "file": "packages/react/src/styles.css",
+            "line": 85
+          },
+          {
+            "component": "Toggle",
             "file": "packages/react/src/styles.css",
             "line": 85
           }
@@ -3983,12 +4322,12 @@
           {
             "component": "Disclosure",
             "file": "packages/react/src/styles.css",
-            "line": 160
+            "line": 161
           },
           {
             "component": "NumberField",
             "file": "packages/react/src/styles.css",
-            "line": 213
+            "line": 214
           },
           {
             "component": "Select",
@@ -3998,20 +4337,25 @@
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 143
+            "line": 144
           },
           {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
-            "line": 233
+            "line": 234
           },
           {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 213
+            "line": 214
           },
           {
             "component": "TimeSlider",
+            "file": "packages/react/src/styles.css",
+            "line": 84
+          },
+          {
+            "component": "Toggle",
             "file": "packages/react/src/styles.css",
             "line": 84
           }
@@ -4065,27 +4409,27 @@
           {
             "component": "NumberField",
             "file": "packages/react/src/styles.css",
-            "line": 190
+            "line": 191
           },
           {
             "component": "NumberField",
             "file": "packages/react/src/styles.css",
-            "line": 209
+            "line": 210
           },
           {
             "component": "StatBar",
             "file": "packages/react/src/styles.css",
-            "line": 197
+            "line": 198
           },
           {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 209
+            "line": 210
           },
           {
             "component": "TimeSlider",
             "file": "packages/react/src/styles.css",
-            "line": 173
+            "line": 174
           },
           {
             "component": "TradeTable",
@@ -4142,7 +4486,7 @@
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 132
+            "line": 133
           },
           {
             "component": "TradeTable",
@@ -4251,12 +4595,12 @@
           {
             "component": "StatBar",
             "file": "packages/react/src/styles.css",
-            "line": 197
+            "line": 198
           },
           {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 214
+            "line": 215
           }
         ],
         "stories": [
@@ -4342,7 +4686,7 @@
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 133
+            "line": 134
           }
         ],
         "stories": [
@@ -4400,27 +4744,27 @@
           {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
-            "line": 113
+            "line": 114
           },
           {
             "component": "Disclosure",
             "file": "packages/react/src/styles.css",
-            "line": 153
+            "line": 154
           },
           {
             "component": "NumberField",
             "file": "packages/react/src/styles.css",
-            "line": 190
+            "line": 191
           },
           {
             "component": "NumberField",
             "file": "packages/react/src/styles.css",
-            "line": 192
+            "line": 193
           },
           {
             "component": "NumberField",
             "file": "packages/react/src/styles.css",
-            "line": 203
+            "line": 204
           },
           {
             "component": "Panel",
@@ -4430,27 +4774,32 @@
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 113
+            "line": 114
           },
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 117
+            "line": 118
           },
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 203
+            "line": 204
           },
           {
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
-            "line": 216
+            "line": 217
           },
           {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 203
+            "line": 204
+          },
+          {
+            "component": "Toggle",
+            "file": "packages/react/src/styles.css",
+            "line": 114
           }
         ],
         "stories": [
@@ -4490,7 +4839,7 @@
           {
             "component": "Disclosure",
             "file": "packages/react/src/styles.css",
-            "line": 153
+            "line": 154
           },
           {
             "component": "Panel",
@@ -4500,12 +4849,12 @@
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 142
+            "line": 143
           },
           {
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
-            "line": 216
+            "line": 217
           }
         ],
         "stories": [
@@ -4636,10 +4985,15 @@
           {
             "component": "Disclosure",
             "file": "packages/react/src/styles.css",
-            "line": 166
+            "line": 167
           },
           {
             "component": "Select",
+            "file": "packages/react/src/styles.css",
+            "line": 52
+          },
+          {
+            "component": "Toggle",
             "file": "packages/react/src/styles.css",
             "line": 52
           }
@@ -4803,10 +5157,15 @@
           {
             "component": "Disclosure",
             "file": "packages/react/src/styles.css",
-            "line": 166
+            "line": 167
           },
           {
             "component": "Select",
+            "file": "packages/react/src/styles.css",
+            "line": 52
+          },
+          {
+            "component": "Toggle",
             "file": "packages/react/src/styles.css",
             "line": 52
           }
@@ -4845,12 +5204,12 @@
           {
             "component": "TimeSlider",
             "file": "packages/react/src/styles.css",
-            "line": 177
+            "line": 178
           },
           {
             "component": "TimeSlider",
             "file": "packages/react/src/styles.css",
-            "line": 181
+            "line": 182
           }
         ],
         "stories": [
@@ -4991,12 +5350,12 @@
           {
             "component": "Disclosure",
             "file": "packages/react/src/styles.css",
-            "line": 162
+            "line": 163
           },
           {
             "component": "NumberField",
             "file": "packages/react/src/styles.css",
-            "line": 211
+            "line": 212
           },
           {
             "component": "Select",
@@ -5006,12 +5365,27 @@
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 131
+            "line": 132
           },
           {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 211
+            "line": 212
+          },
+          {
+            "component": "Toggle",
+            "file": "packages/react/src/styles.css",
+            "line": 48
+          },
+          {
+            "component": "Toggle",
+            "file": "packages/react/src/styles.css",
+            "line": 102
+          },
+          {
+            "component": "Toggle",
+            "file": "packages/react/src/styles.css",
+            "line": 105
           }
         ],
         "stories": [
@@ -5108,22 +5482,17 @@
           {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
-            "line": 115
+            "line": 116
           },
           {
             "component": "Disclosure",
             "file": "packages/react/src/styles.css",
-            "line": 152
+            "line": 153
           },
           {
             "component": "Disclosure",
             "file": "packages/react/src/styles.css",
-            "line": 170
-          },
-          {
-            "component": "NumberField",
-            "file": "packages/react/src/styles.css",
-            "line": 187
+            "line": 171
           },
           {
             "component": "NumberField",
@@ -5133,7 +5502,12 @@
           {
             "component": "NumberField",
             "file": "packages/react/src/styles.css",
-            "line": 194
+            "line": 189
+          },
+          {
+            "component": "NumberField",
+            "file": "packages/react/src/styles.css",
+            "line": 195
           },
           {
             "component": "Select",
@@ -5143,42 +5517,52 @@
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 115
+            "line": 116
           },
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 119
+            "line": 120
           },
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 136
+            "line": 137
           },
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 138
+            "line": 139
           },
           {
             "component": "StatBar",
             "file": "packages/react/src/styles.css",
-            "line": 198
+            "line": 199
           },
           {
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
-            "line": 216
+            "line": 217
           },
           {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
-            "line": 224
+            "line": 225
           },
           {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 202
+            "line": 203
+          },
+          {
+            "component": "Toggle",
+            "file": "packages/react/src/styles.css",
+            "line": 46
+          },
+          {
+            "component": "Toggle",
+            "file": "packages/react/src/styles.css",
+            "line": 116
           }
         ],
         "stories": [
@@ -5251,12 +5635,12 @@
           {
             "component": "Disclosure",
             "file": "packages/react/src/styles.css",
-            "line": 151
+            "line": 152
           },
           {
             "component": "NumberField",
             "file": "packages/react/src/styles.css",
-            "line": 210
+            "line": 211
           },
           {
             "component": "Panel",
@@ -5271,17 +5655,22 @@
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 120
+            "line": 121
           },
           {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
-            "line": 228
+            "line": 229
           },
           {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 210
+            "line": 211
+          },
+          {
+            "component": "Toggle",
+            "file": "packages/react/src/styles.css",
+            "line": 46
           }
         ],
         "stories": [
@@ -5326,17 +5715,17 @@
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 138
+            "line": 139
           },
           {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
-            "line": 228
+            "line": 229
           },
           {
             "component": "TimeSlider",
             "file": "packages/react/src/styles.css",
-            "line": 172
+            "line": 173
           }
         ],
         "stories": [
@@ -5376,12 +5765,12 @@
           {
             "component": "StatBar",
             "file": "packages/react/src/styles.css",
-            "line": 197
+            "line": 198
           },
           {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
-            "line": 234
+            "line": 235
           }
         ],
         "stories": [
@@ -5421,17 +5810,22 @@
           {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
-            "line": 114
+            "line": 115
           },
           {
             "component": "NumberField",
             "file": "packages/react/src/styles.css",
-            "line": 193
+            "line": 194
           },
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 114
+            "line": 115
+          },
+          {
+            "component": "Toggle",
+            "file": "packages/react/src/styles.css",
+            "line": 115
           }
         ],
         "stories": [
@@ -5510,7 +5904,7 @@
     {
       "name": "--trigger-width",
       "file": "packages/react/src/styles.css",
-      "line": 128
+      "line": 129
     }
   ],
   "summary": {

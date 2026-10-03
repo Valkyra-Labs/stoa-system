@@ -109,6 +109,7 @@
 
 /* The small size, for toolbars and headers. */
 .stoa-choice-group--small > .stoa-choice,
+.stoa-toggle--small,
 .stoa-select--small .stoa-select__button {
   font-size: var(--stoa-font-size-xs);
   min-block-size: var(--stoa-space-6);
