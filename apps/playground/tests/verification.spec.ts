@@ -71,6 +71,24 @@ test("each frame offers a colour-vision preview", async ({ page }) => {
   await expect(frame).toHaveCSS("filter", /url\("?#pg-cvd-deuteranopia"?\)/);
 });
 
+test("each frame can preview reduced motion, without touching the other", async ({ page }) => {
+  await page.goto("/");
+  const first = page.locator('[data-slot="1"]');
+  const body = first.locator("[data-frame]");
+  const duration = (frame: typeof body) =>
+    frame.evaluate((element) => getComputedStyle(element).getPropertyValue("--stoa-motion-duration-fast").trim());
+  expect(await duration(body)).not.toBe("0ms");
+
+  await first.getByRole("button", { name: "Reduced motion" }).click();
+  await expect(first.getByRole("button", { name: "Reduced motion" })).toHaveAttribute("aria-pressed", "true");
+  await expect(body).toHaveAttribute("data-motion", "reduce");
+  expect(await duration(body)).toBe("0ms");
+  // The buttons inside the frame stop animating their fill.
+  await expect(body.getByRole("button", { name: "Send" })).toHaveCSS("transition-duration", "0s");
+  // The other frame keeps its motion.
+  expect(await duration(page.locator('[data-slot="2"] [data-frame]'))).not.toBe("0ms");
+});
+
 /** The cost label's figure in ms, or null while it reads "not yet timed". */
 async function costMs(cost: Locator): Promise<number | null> {
   const match = /\d+ checks in ([\d.]+) ms/.exec((await cost.textContent()) ?? "");
