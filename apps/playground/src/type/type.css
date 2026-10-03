@@ -41,6 +41,39 @@
   color: var(--stoa-color-text-muted);
 }
 
+/* The file input's button drawn as a Stoa button: the browser's default
+   is a grey system control that matches nothing else in the tool. */
+.pg-type__file input[type="file"] {
+  font: inherit;
+  color: var(--stoa-color-text-muted);
+}
+
+.pg-type__file input[type="file"]::file-selector-button {
+  font: inherit;
+  font-size: var(--stoa-font-size-sm);
+  margin-inline-end: var(--stoa-space-2);
+  padding: var(--stoa-space-1) var(--stoa-space-2);
+  border: 1px solid var(--stoa-color-border-strong);
+  border-radius: var(--stoa-radius-sm);
+  background: var(--stoa-color-surface);
+  color: var(--stoa-color-text);
+  cursor: pointer;
+  transition: background-color var(--stoa-motion-duration-fast) var(--stoa-motion-easing-standard);
+}
+
+.pg-type__file input[type="file"]:hover::file-selector-button {
+  background: var(--stoa-color-surface-hover);
+}
+
+.pg-type__file input[type="file"]:active::file-selector-button {
+  background: color-mix(in oklch, var(--stoa-color-surface-hover), var(--stoa-color-text) 8%);
+}
+
+.pg-type__file input[type="file"]:focus-visible {
+  outline: var(--stoa-focus-width) solid var(--stoa-color-focus);
+  outline-offset: var(--stoa-focus-offset);
+}
+
 .pg-type__loaded {
   display: grid;
   gap: var(--stoa-space-1);
