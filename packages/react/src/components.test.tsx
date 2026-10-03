@@ -1,7 +1,9 @@
 // @vitest-environment jsdom
-import { describe, expect, it } from "vitest";
-import { render, screen } from "@testing-library/react";
-import { ChoiceGroup, TimeSlider, TradeTable } from "./index";
+import { afterEach, describe, expect, it, vi } from "vitest";
+import { act, cleanup, fireEvent, render, screen } from "@testing-library/react";
+import { ChoiceGroup, Disclosure, NumberField, Select, TimeSlider, Toggle, TradeTable } from "./index";
+
+afterEach(cleanup);
 
 describe("TradeTable", () => {
   it("states the side in words, not only in colour", () => {
@@ -51,5 +53,110 @@ describe("TimeSlider", () => {
     );
     const input = container.querySelector('input[type="range"]');
     expect(input?.getAttribute("aria-describedby")?.split(" ")).toContain("time-notes");
+  });
+});
+
+describe("Select", () => {
+  const VIEWS = [
+    { id: "light-ltr", label: "Light, left to right" },
+    { id: "dark-rtl", label: "Dark, right to left" },
+  ];
+
+  it("names its button with the chosen option and the label, even when the label is hidden", () => {
+    render(<Select label="Frame view" hideLabel options={VIEWS} value="dark-rtl" onChange={() => {}} />);
+    const button = screen.getByRole("button");
+    const names = (button.getAttribute("aria-labelledby") ?? "").split(" ").map((id) => document.getElementById(id)?.textContent);
+    expect(names).toContain("Frame view");
+    expect(names).toContain("Dark, right to left");
+    expect(screen.getByText("Frame view").className).toBe("stoa-visually-hidden");
+  });
+
+  it("reports the option picked from the list", () => {
+    const onChange = vi.fn();
+    render(<Select label="Frame view" options={VIEWS} value="light-ltr" onChange={onChange} />);
+    const button = screen.getByRole("button");
+    act(() => button.focus());
+    fireEvent.keyDown(button, { key: "ArrowDown" });
+    fireEvent.keyUp(button, { key: "ArrowDown" });
+    const option = screen.getByRole("option", { name: "Dark, right to left" });
+    fireEvent.keyDown(option, { key: "Enter" });
+    fireEvent.keyUp(option, { key: "Enter" });
+    expect(onChange).toHaveBeenCalledWith("dark-rtl");
+  });
+});
+
+describe("Disclosure", () => {
+  it("opens from its summary and draws the shared chevron, hidden from assistive technology", () => {
+    const { container } = render(
+      <Disclosure summary="Text contrast" data-role="body">
+        <p>pairs</p>
+      </Disclosure>,
+    );
+    const details = container.querySelector("details")!;
+    expect(details.open).toBe(false);
+    expect(details.dataset.role).toBe("body");
+    const summary = container.querySelector("summary")!;
+    expect(summary.textContent).toBe("Text contrast");
+    expect(summary.querySelector("svg.stoa-chevron")?.getAttribute("aria-hidden")).toBe("true");
+    fireEvent.click(summary);
+    expect(details.open).toBe(true);
+  });
+
+  it("can start open", () => {
+    const { container } = render(
+      <Disclosure summary="Target size" defaultOpen>
+        <p>rows</p>
+      </Disclosure>,
+    );
+    expect(container.querySelector("details")!.open).toBe(true);
+  });
+});
+
+describe("NumberField", () => {
+  it("commits a typed number on Enter and steps with the arrow keys", () => {
+    const onChange = vi.fn();
+    render(<NumberField label="row-height in px" hideLabel unit="px" value={22} minValue={0} step={1} onChange={onChange} />);
+    const input = screen.getByRole("textbox", { name: "row-height in px" });
+    expect((input as HTMLInputElement).value).toBe("22");
+    fireEvent.change(input, { target: { value: "30" } });
+    fireEvent.keyDown(input, { key: "Enter" });
+    expect(onChange).toHaveBeenLastCalledWith(30);
+    fireEvent.keyDown(input, { key: "ArrowUp" });
+    expect(onChange).toHaveBeenCalledTimes(2);
+    expect(screen.getByText("px").getAttribute("aria-hidden")).toBe("true");
+  });
+
+  it("reports nothing for an emptied field", () => {
+    const onChange = vi.fn();
+    render(<NumberField label="gap" value={4} onChange={onChange} />);
+    const input = screen.getByRole("textbox", { name: "gap" });
+    fireEvent.change(input, { target: { value: "" } });
+    fireEvent.blur(input);
+    expect(onChange).not.toHaveBeenCalled();
+  });
+});
+
+describe("TimeSlider without its output", () => {
+  it("still announces the value, with no visible output", () => {
+    const { container } = render(
+      <TimeSlider label="Gap" min={0} max={16} step={1} value={4} onChange={() => {}} format={(v) => `${v}px`} showOutput={false} />,
+    );
+    expect(container.querySelector(".stoa-slider__output")).toBeNull();
+    expect(screen.getByRole("slider").getAttribute("aria-valuetext")).toBe("4px");
+  });
+});
+
+describe("Toggle", () => {
+  it("is a pressed button while its setting is on, and reports the change", () => {
+    const onChange = vi.fn();
+    render(
+      <Toggle isSelected={false} onChange={onChange}>
+        Reduced motion
+      </Toggle>,
+    );
+    const button = screen.getByRole("button", { name: "Reduced motion" });
+    expect(button.getAttribute("aria-pressed")).toBe("false");
+    fireEvent.click(button);
+    expect(onChange).toHaveBeenCalledWith(true);
   });
 });

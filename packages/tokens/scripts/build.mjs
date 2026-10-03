@@ -49,9 +49,13 @@ const dark = new StyleDictionary({
 await dark.buildAllPlatforms();
 
 // Density modes: the same variables, one selector per mode; regular is
-// the default.
+// the default. The default block is written first: `:root` and an
+// attribute selector have the same specificity, so a mode set on the root
+// element (`<html data-density="compact">`) only wins when its block comes
+// after `:root`.
 const density = JSON.parse(await readFile("tokens/density.json", "utf8"));
 const densityCss = Object.entries(density)
+  .sort(([a], [b]) => Number(b === "regular") - Number(a === "regular"))
   .map(([mode, vars]) => {
     const body = Object.entries(vars)
       .map(([name, t]) => `  --stoa-density-${name}: ${t.$value};`)
@@ -70,6 +74,16 @@ const reducedMotion = `@media (prefers-reduced-motion: reduce) {
   }
 }`;
 
+// The same values gated on an attribute: a page cannot force
+// prefers-reduced-motion from JavaScript, so an application's own setting,
+// or a preview of one part of a page, sets data-motion="reduce" instead.
+const reducedMotionAttribute = `[data-motion="reduce"] {
+  --stoa-motion-duration-fast: 0ms;
+  --stoa-motion-duration-base: 0ms;
+  --stoa-motion-duration-slow: 0ms;
+  --stoa-motion-duration-flash: 0ms;
+}`;
+
 const light = await readFile(`${out}light.css`, "utf8");
 const darkCss = await readFile(`${out}dark.css`, "utf8");
 const darkAuto = await readFile(`${out}dark-auto.css`, "utf8");
@@ -80,6 +94,7 @@ const css = [
   `@media (prefers-color-scheme: dark) {\n${darkAuto}\n}`,
   densityCss,
   reducedMotion,
+  reducedMotionAttribute,
   "",
 ].join("\n");
 await writeFile(`${out}tokens.css`, css);

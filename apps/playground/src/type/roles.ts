@@ -265,7 +265,7 @@ export function familyStack(primary: string, pairing: string | null, generic = "
 }
 
 /** The CSS custom properties one role contributes. The specimens read these
- * rather than inline styles so that the four preview frames can be styled
+ * rather than inline styles so that every preview frame can be styled
  * from one place and a frame's own density still decides the working
  * sizes. */
 export function roleVariables(role: TypeRole, size: number, stack = familyStack(role.family, null)): Record<string, string> {

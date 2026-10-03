@@ -21,6 +21,8 @@
   text-transform: uppercase;
   color: var(--stoa-color-text-muted);
 }
+/* Arabic letters join; spacing them apart breaks the word. */
+.stoa-panel__title:lang(ar) { letter-spacing: 0; }
 
 .stoa-ladder, .stoa-heatmap { margin: 0; }
 .stoa-ladder__canvas, .stoa-heatmap__canvas { display: block; inline-size: 100%; }
@@ -33,6 +35,8 @@
 }
 .stoa-table th, .stoa-table td { block-size: var(--stoa-density-row-height); padding-inline: var(--stoa-density-cell-padding-x); }
 .stoa-num { text-align: end; font-variant-numeric: tabular-nums; }
+/* A table with no rows yet says so in one muted, centred row. */
+.stoa-table__empty td { text-align: center; color: var(--stoa-color-text-muted); font-family: var(--stoa-font-family-sans); }
 .stoa-table th.stoa-num { text-align: end; }
 .stoa-up { color: var(--stoa-color-up); }
 .stoa-down { color: var(--stoa-color-down); }
@@ -80,7 +84,91 @@
   outline: var(--stoa-focus-width) solid var(--stoa-color-focus);
   outline-offset: var(--stoa-focus-offset);
 }
-.stoa-choice-group { display: inline-flex; gap: var(--stoa-space-1); }
+/* A choice group is one segmented control: the options touch and share
+   their borders, and only the outer corners are rounded. A group too wide
+   for its container wraps; the negative margins overlap neighbouring
+   borders in both directions, and the padding gives the first row and
+   column back the pixel they lend. The chosen, hovered and focused option
+   is raised so its border and ring sit over its neighbours'. */
+.stoa-choice-group {
+  display: inline-flex; flex-wrap: wrap; max-inline-size: 100%;
+  padding-block-start: 1px; padding-inline-start: 1px;
+}
+.stoa-choice-group > .stoa-choice {
+  position: relative; border-radius: 0;
+  margin-block-start: -1px; margin-inline-start: -1px;
+}
+.stoa-choice-group > .stoa-choice:first-child {
+  border-start-start-radius: var(--stoa-radius-sm); border-end-start-radius: var(--stoa-radius-sm);
+}
+.stoa-choice-group > .stoa-choice:last-child {
+  border-start-end-radius: var(--stoa-radius-sm); border-end-end-radius: var(--stoa-radius-sm);
+}
+.stoa-choice-group > .stoa-choice[data-hovered], .stoa-choice-group > .stoa-choice[data-selected] { z-index: 1; }
+.stoa-choice-group > .stoa-choice[data-focus-visible] { z-index: 2; }
+
+/* The small size, for toolbars and headers. */
+.stoa-choice-group--small > .stoa-choice,
+.stoa-toggle--small,
+.stoa-select--small .stoa-select__button {
+  font-size: var(--stoa-font-size-xs);
+  min-block-size: var(--stoa-space-6);
+  padding: calc(var(--stoa-space-1) / 2) calc(var(--stoa-space-1) * 1.5);
+}
+.stoa-select__popover.stoa-select__popover--small { font-size: var(--stoa-font-size-xs); }
+
+.stoa-select { display: inline-grid; gap: var(--stoa-space-1); }
+.stoa-select__button { display: inline-flex; align-items: center; justify-content: space-between; gap: var(--stoa-space-2); text-align: start; }
+.stoa-select__chevron { color: var(--stoa-color-text-muted); }
+.stoa-select[data-open] .stoa-select__chevron { transform: rotate(180deg); }
+/* The list is portalled to the document, so it takes the document's
+   tokens, not those of the element that opened it. `--trigger-width` is
+   not a Stoa token: React Aria sets it on the popover to the button's
+   width. */
+.stoa-select__popover {
+  min-inline-size: var(--trigger-width);
+  background: var(--stoa-color-surface);
+  border: 1px solid var(--stoa-color-border-strong);
+  border-radius: var(--stoa-radius-sm);
+  font-family: var(--stoa-font-family-sans);
+  font-size: var(--stoa-font-size-sm);
+  color: var(--stoa-color-text);
+}
+.stoa-select__list { padding: var(--stoa-space-1) 0; outline: none; max-block-size: inherit; overflow-y: auto; }
+.stoa-select__option {
+  padding: var(--stoa-space-1) var(--stoa-space-3); cursor: pointer; outline: none;
+  border-inline-start: 2px solid transparent;
+}
+.stoa-select__option[data-focused] { background: var(--stoa-color-surface-hover); }
+.stoa-select__option[data-selected] { font-weight: var(--stoa-font-weight-medium); border-inline-start-color: var(--stoa-color-accent); }
+.stoa-select__option[data-focus-visible] { outline: var(--stoa-focus-width) solid var(--stoa-color-focus); outline-offset: calc(-1 * var(--stoa-focus-width)); }
+
+.stoa-chevron { flex: none; }
+
+/* Disclosure: the summary row reads like a panel's own heading level, with
+   the Select's chevron before it. Closed, the chevron points to the end
+   of the line (right in left-to-right text, left in right-to-left). */
+.stoa-disclosure__summary {
+  display: flex; align-items: center; gap: var(--stoa-space-2);
+  padding-block: var(--stoa-space-1);
+  font-size: var(--stoa-font-size-xs); font-weight: var(--stoa-font-weight-medium);
+  color: var(--stoa-color-text);
+  list-style: none; cursor: pointer;
+}
+.stoa-disclosure__summary::-webkit-details-marker { display: none; }
+.stoa-disclosure__summary:hover .stoa-disclosure__chevron { color: var(--stoa-color-text); }
+.stoa-disclosure__summary:focus-visible {
+  outline: var(--stoa-focus-width) solid var(--stoa-color-focus);
+  outline-offset: var(--stoa-focus-offset);
+  border-radius: var(--stoa-radius-sm);
+}
+.stoa-disclosure__chevron {
+  color: var(--stoa-color-text-muted);
+  transition: transform var(--stoa-motion-duration-fast) var(--stoa-motion-easing-standard);
+}
+.stoa-disclosure:not([open]) > .stoa-disclosure__summary .stoa-disclosure__chevron { transform: rotate(-90deg); }
+.stoa-disclosure:not([open]) > .stoa-disclosure__summary .stoa-disclosure__chevron:dir(rtl) { transform: rotate(90deg); }
+.stoa-disclosure__content { padding-block-start: var(--stoa-space-1); }
 
 .stoa-slider { display: grid; grid-template-columns: auto 1fr; align-items: center; gap: var(--stoa-space-3); flex: 1; min-inline-size: 200px; }
 .stoa-slider__output { font-family: var(--stoa-font-family-mono); font-variant-numeric: tabular-nums; min-inline-size: 12ch; }
@@ -94,6 +182,19 @@
   border-radius: var(--stoa-radius-full); background: var(--stoa-color-accent);
 }
 
+/* Without its output, the track takes the whole row. */
+.stoa-slider--bare { grid-template-columns: minmax(0, 1fr); }
+
+.stoa-number { display: inline-grid; gap: var(--stoa-space-1); }
+.stoa-number__group { display: inline-flex; align-items: center; gap: var(--stoa-space-1); }
+.stoa-number__input { inline-size: 7ch; text-align: end; font-variant-numeric: tabular-nums; }
+.stoa-number__unit { font-family: var(--stoa-font-family-mono); font-size: var(--stoa-font-size-xs); color: var(--stoa-color-text-muted); }
+.stoa-number--small .stoa-number__input {
+  font-size: var(--stoa-font-size-xs);
+  min-block-size: var(--stoa-space-6);
+  padding: calc(var(--stoa-space-1) / 2) calc(var(--stoa-space-1) * 1.5);
+}
+
 .stoa-statbar { display: flex; flex-wrap: wrap; gap: var(--stoa-space-4); margin: 0; font-family: var(--stoa-font-family-mono); font-size: var(--stoa-font-size-2xs); }
 .stoa-statbar__item { display: flex; gap: var(--stoa-space-1); }
 .stoa-statbar dt { color: var(--stoa-color-text-muted); }
@@ -101,7 +202,11 @@
 
 .stoa-field { display: grid; gap: var(--stoa-space-1); }
 .stoa-field__label { font-size: var(--stoa-font-size-xs); color: var(--stoa-color-text-muted); }
+/* An input takes the width of its field and never sets it: without the
+   zero minimum, its default 20-character size would hold a narrow column
+   open. */
 .stoa-field__input {
+  min-inline-size: 0;
   font: inherit; font-family: var(--stoa-font-family-mono);
   padding: var(--stoa-space-2); border: 1px solid var(--stoa-color-border-strong);
   border-radius: var(--stoa-radius-sm); background: var(--stoa-color-surface); color: var(--stoa-color-text);
@@ -128,6 +233,13 @@
 .stoa-tabs__tab[data-selected] { color: var(--stoa-color-text); border-block-end-color: var(--stoa-color-accent); }
 .stoa-tabs__tab[data-focus-visible] { outline: var(--stoa-focus-width) solid var(--stoa-color-focus); outline-offset: -2px; }
 .stoa-tabs__panel { padding-block: var(--stoa-space-4); outline: none; }
+/* A panel with nothing focusable inside takes focus itself (React Aria
+   gives it tabindex 0), so it shows the ring like any other stop. */
+.stoa-tabs__panel[data-focus-visible] {
+  outline: var(--stoa-focus-width) solid var(--stoa-color-focus);
+  outline-offset: var(--stoa-focus-offset);
+  border-radius: var(--stoa-radius-sm);
+}
 /* Panels kept mounted while inactive are inert; they keep their state
    (a running worker, a filled form) but take no space. */
 .stoa-tabs__panel[inert] { display: none; }

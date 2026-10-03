@@ -1,4 +1,4 @@
-// Screenshot the four preview frames, for a pull request or a record of
+// Screenshot the preview frames, for a pull request or a record of
 // how a snapshot looked. Needs a dev server already running:
 //
 //   pnpm --filter playground dev

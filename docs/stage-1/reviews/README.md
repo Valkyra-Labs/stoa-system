@@ -5,6 +5,3 @@ session checks out the pull request's branch, applies every item,
 runs the acceptance commands from `CLAUDE.md`, pushes to the same
 branch, and updates the pull request description with what changed in
 response to the review. Items marked "report only" need no code change.
-
-Authorship and pull request text were corrected by the owner before
-merge; `CLAUDE.md` holds the rules.

@@ -1,4 +1,5 @@
 // Book data and its ladder layout, independent of drawing.
+import { stoaFormat, type StoaFormat } from "./locale";
 
 export type Level = { price: number; size: number };
 export type Book = { bids: Level[]; asks: Level[] };
@@ -35,12 +36,17 @@ export function ladderRows(book: Book, depth: number, rowHeight: number, maxBar:
 }
 
 /** One sentence describing the top of the book, for screen readers. */
-export function describeBook(book: Book, format: (p: number) => string = (p) => p.toFixed(2)): string {
+export function describeBook(
+  book: Book,
+  format: (p: number) => string = (p) => p.toFixed(2),
+  locale: StoaFormat = stoaFormat("en-US"),
+): string {
+  const words = locale.messages;
   const b = book.bids[0];
   const a = book.asks[0];
-  if (!b && !a) return "The book is empty.";
-  const bid = b ? `best bid ${format(b.price)} for ${b.size.toLocaleString("en-US")}` : "no bids";
-  const ask = a ? `best ask ${format(a.price)} for ${a.size.toLocaleString("en-US")}` : "no asks";
-  const spread = a && b ? `, spread ${format(a.price - b.price)}` : "";
-  return `${bid}, ${ask}${spread}.`;
+  if (!b && !a) return words.bookEmpty;
+  const bid = b ? words.bestBid(format(b.price), locale.integer(b.size)) : words.noBids;
+  const ask = a ? words.bestAsk(format(a.price), locale.integer(a.size)) : words.noAsks;
+  const spread = a && b ? words.spread(format(a.price - b.price)) : null;
+  return words.book(bid, ask, spread);
 }

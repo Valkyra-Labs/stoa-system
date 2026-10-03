@@ -23,6 +23,9 @@
       "400": {
         "$value": "oklch(0.71 0.01 250)"
       },
+      "450": {
+        "$value": "oklch(0.64 0.011 250)"
+      },
       "500": {
         "$value": "oklch(0.55 0.012 250)"
       },
@@ -84,6 +87,9 @@
     "amber": {
       "500": {
         "$value": "oklch(0.78 0.15 80)"
+      },
+      "700": {
+        "$value": "oklch(0.55 0.12 65)"
       }
     }
   },
@@ -101,6 +107,7 @@
       "mono": {
         "$value": [
           "IBM Plex Mono",
+          "Noto Sans Arabic",
           "ui-monospace",
           "monospace"
         ]

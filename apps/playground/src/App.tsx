@@ -1,12 +1,10 @@
-// The playground: a list of side panels, four preview frames, one
-// verification panel. Under everything sits either the parameter model
-// (parameters -> derived tokens) or Stoa today, the built tokens of this
-// working tree; on top of either sits the override layer, and every
+// The playground: a list of side panels, two preview frames, one
+// verification panel. Under everything sits stoa-default, the token files
+// of this working tree; on top of it sits the override layer, and every
 // override is shown as one. The area panels (src/panels.tsx) sit in the
 // same list and contribute variables and content to every preview frame.
 import { Fragment, useCallback, useEffect, useMemo, useState } from "react";
-import { Button, ChoiceGroup, Panel, StatBar, StatusBadge, Tabs, TextField } from "@valkyra-labs/stoa-react";
-import type { PartialParameters } from "@valkyra-labs/stoa-tokens/model";
+import { Button, ChoiceGroup, Panel, StatusBadge, Tabs, TextField } from "@valkyra-labs/stoa-react";
 import { ControlPanel } from "./ControlPanel";
 import { OverrideList } from "./OverrideList";
 import { PreviewGrid } from "./PreviewGrid";
@@ -27,9 +25,7 @@ import {
 } from "./history";
 import { createStream } from "./stream";
 import { ApiError, listSnapshots, readSnapshotFile, saveSnapshot } from "./api";
-import { derive, derivedTokens, derivedValues } from "./parameters/derived";
-import { CUSTOM, STOA_TODAY, ParametersPanel, parametersForPreset } from "./parameters/ParametersPanel";
-import { readSnapshot } from "./parameters/snapshot";
+import { readSnapshot } from "./snapshot";
 import {
   DENSITY_MODES,
   baseTokens,
@@ -55,9 +51,6 @@ export function App() {
   const [density, setDensity] = useState<DensityMode>("regular");
   const [running, setRunning] = useState(true);
   const [speed, setSpeed] = useState("1");
-  /** The parameter set under the override layer, or null for Stoa today. */
-  const [parameters, setParameters] = useState<PartialParameters | null>(null);
-  const [preset, setPreset] = useState(STOA_TODAY);
   // Empty: the server stamps an unnamed save with the time it was written,
   // so a save never lands on an earlier snapshot by default.
   const [name, setName] = useState("");
@@ -70,7 +63,7 @@ export function App() {
   const [renderMs, setRenderMs] = useState(0);
   const [controlTab, setControlTab] = useState<string>();
   /** The side panel tab on show; every tab stays mounted. */
-  const [sideTab, setSideTab] = useState("parameters");
+  const [sideTab, setSideTab] = useState("tokens");
   /** The tokens a selected verification failure reads, so the control panel
    * and the override list can mark and scroll to them. */
   const [highlighted, setHighlighted] = useState<string[]>([]);
@@ -81,29 +74,16 @@ export function App() {
   const stream = useMemo(() => createStream(7), []);
   const tabs = useMemo(() => editableTabs(baseTokens), []);
 
-  const tree = useMemo(() => derive(parameters), [parameters]);
-
   const tokens = useMemo<Record<Theme, ResolvedTokens>>(
-    () =>
-      tree
-        ? {
-            light: derivedTokens(tree, overrides, "light", density),
-            dark: derivedTokens(tree, overrides, "dark", density),
-          }
-        : {
-            light: resolveTokens(baseTokens, overrides, "light", density),
-            dark: resolveTokens(baseTokens, overrides, "dark", density),
-          },
-    [tree, overrides, density],
+    () => ({
+      light: resolveTokens(baseTokens, overrides, "light", density),
+      dark: resolveTokens(baseTokens, overrides, "dark", density),
+    }),
+    [overrides, density],
   );
-  const values = useMemo(
-    () => (tree ? derivedValues(tree, overrides) : resolveAllValues(baseTokens, overrides)),
-    [tree, overrides],
-  );
-  // The build endpoint reads token files, so it is always sent the sources
-  // with the override layer written in. A derived tree is not a token file
-  // set: exporting one is out of scope for this brief, and the verification
-  // panel says as much rather than comparing the two.
+  const values = useMemo(() => resolveAllValues(baseTokens, overrides), [overrides]);
+  // The build endpoint reads token files, so it is sent the sources with
+  // the override layer written in.
   const files = useMemo(() => serializeFiles(filesWithOverrides(baseTokens, overrides)), [overrides]);
   // Target size is measured in every density mode, not only the one the
   // previews show, the same way scripts/checks.test.mjs measures it; theme
@@ -111,12 +91,9 @@ export function App() {
   const densityTokens = useMemo<Record<DensityMode, ResolvedTokens>>(
     () =>
       Object.fromEntries(
-        DENSITY_MODES.map((mode) => [
-          mode,
-          tree ? derivedTokens(tree, overrides, "light", mode) : resolveTokens(baseTokens, overrides, "light", mode),
-        ]),
+        DENSITY_MODES.map((mode) => [mode, resolveTokens(baseTokens, overrides, "light", mode)]),
       ) as Record<DensityMode, ResolvedTokens>,
-    [tree, overrides],
+    [overrides],
   );
   const panelVariables = useMemo(() => mergedVariables(contributions), [contributions]);
   const panelContent = useMemo(
@@ -169,7 +146,6 @@ export function App() {
         name,
         files,
         overrides,
-        parameters,
         panels: panelSnapshots(contributions),
         overwrite,
       });
@@ -188,11 +164,8 @@ export function App() {
     setSaveError(null);
     try {
       const state = readSnapshot(await readSnapshotFile(slug));
-      setParameters(state.parameters);
-      setPreset(state.parameters === null ? STOA_TODAY : CUSTOM);
       setHistory((h) => commit(h, state.overrides));
-      const layer = state.parameters === null ? "Stoa today" : "parameters";
-      setSaved(`${slug}: ${layer} and ${Object.keys(state.overrides).length} override(s) restored`);
+      setSaved(`${slug}: ${Object.keys(state.overrides).length} override(s) restored`);
     } catch (cause) {
       setSaveError(cause instanceof Error ? cause.message : String(cause));
     }
@@ -227,36 +200,7 @@ export function App() {
             value={density}
             onChange={setDensity}
           />
-          <StatBar
-            label="Playground counters"
-            items={[
-              { label: "state to effect", value: `${renderMs.toFixed(1)} ms` },
-              { label: "interval", value: `${interval} ms` },
-              { label: "tokens", value: String(Object.keys(tokens.light.variables).length) },
-              { label: "clamps", value: String(tree?.clamps.length ?? 0) },
-              { label: "revision", value: revision },
-            ]}
-          />
         </div>
-      ),
-    },
-    {
-      id: "parameters",
-      title: "Parameters",
-      content: (
-        <ParametersPanel
-          preset={preset}
-          parameters={parameters}
-          derived={tree}
-          onPreset={(id) => {
-            setPreset(id);
-            setParameters(parametersForPreset(id, parameters));
-          }}
-          onChange={(next) => {
-            setParameters(next);
-            setPreset(CUSTOM);
-          }}
-        />
       ),
     },
     {
@@ -308,7 +252,6 @@ export function App() {
           densityTokens={densityTokens}
           density={density}
           files={files}
-          derived={tree !== null}
           onSelectCheck={(tab, checkTokens) => {
             setControlTab(tab);
             setHighlighted(checkTokens);
@@ -335,7 +278,7 @@ export function App() {
               setTaken(false);
             }}
             dir="ltr"
-            description="Written to apps/playground/snapshots, with the parameters, the overrides, what each area panel records and the commit it was based on. Empty: named after the time it was saved."
+            description="Written to apps/playground/snapshots, with the overrides, what each area panel records and the commit it was based on. Empty: named after the time it was saved."
           />
           <div className="pg-row">
             <Button variant="primary" onPress={() => void save()}>
@@ -357,8 +300,29 @@ export function App() {
               ))
             )}
           </div>
-          <p className="pg-note">Loading a snapshot restores its parameters and its overrides, as one step back.</p>
+          <p className="pg-note">Loading a snapshot restores its overrides, as one step back.</p>
         </div>
+      ),
+    },
+    // The counters change with every stream frame; in a tab of their own
+    // they no longer move the controls under them.
+    {
+      id: "stats",
+      title: "Stats",
+      content: (
+        <dl className="pg-stats" aria-label="Playground counters">
+          {[
+            { label: "state to effect", value: `${renderMs.toFixed(1)} ms` },
+            { label: "interval", value: `${interval} ms` },
+            { label: "tokens", value: String(Object.keys(tokens.light.variables).length) },
+            { label: "revision", value: revision },
+          ].map((stat) => (
+            <div key={stat.label} className="pg-stats__row">
+              <dt className="pg-token__label">{stat.label}</dt>
+              <dd>{stat.value}</dd>
+            </div>
+          ))}
+        </dl>
       ),
     },
   ];
@@ -368,9 +332,6 @@ export function App() {
       <aside className="pg-side">
         <header className="pg-side__header">
           <h1>Stoa playground</h1>
-          <p className="pg-note">
-            Base: {tree ? "the parameter model, deriving every token from the parameters below" : "Stoa today, the token files of this working tree"}. Every edit in Tokens is an override against it.
-          </p>
         </header>
 
         {panels

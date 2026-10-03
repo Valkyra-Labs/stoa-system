@@ -19,3 +19,20 @@ test("density modes and reduced motion are present", () => {
   assert.match(css, /--stoa-density-row-height: 28px/);
   assert.match(css, /prefers-reduced-motion: reduce[\s\S]*--stoa-motion-duration-flash: 0ms/);
 });
+
+test("reduced motion is also an attribute, for a setting or a preview that cannot force the media query", () => {
+  const block = css.slice(css.indexOf('[data-motion="reduce"]'));
+  for (const name of ["fast", "base", "slow", "flash"]) {
+    assert.match(block, new RegExp(`--stoa-motion-duration-${name}: 0ms`));
+  }
+});
+
+test("a density mode set on the root element wins over the default", () => {
+  // `:root` and `[data-density="..."]` weigh the same, so the default block
+  // has to come first for <html data-density="compact"> to take effect.
+  const regular = css.indexOf(':root, [data-density="regular"]');
+  for (const mode of ["compact", "comfortable"]) {
+    const block = css.indexOf(`[data-density="${mode}"] {`);
+    assert.ok(regular !== -1 && block > regular, `${mode} comes after the default block`);
+  }
+});

@@ -38,7 +38,7 @@ test("the resolver does not let the prefers-color-scheme block leak into the lig
 
 test("the resolver reads every density mode, with regular as the default", () => {
   assert.deepEqual(Object.keys(resolved.densities), ["compact", "regular", "comfortable"]);
-  assert.equal(resolved.densities.compact["density-row-height"], "22px");
+  assert.equal(resolved.densities.compact["density-row-height"], "24px");
   assert.equal(resolved.densities.regular["density-row-height"], "28px");
   assert.equal(resolved.densities.comfortable["density-row-height"], "36px");
   // Regular is declared on `:root` as well, so the theme maps carry it.
@@ -68,7 +68,7 @@ test("the rule set covers the pair lists in both themes and every density", () =
   // One luminance ratio plus one CIEDE2000 per colour-vision model, per theme.
   assert.equal(perRule(RULES.upDown).length, (1 + CVD_MODELS.length) * 2);
   assert.equal(perRule(RULES.targetSize).length, TARGETS.length * 3);
-  assert.equal(results.length, 81);
+  assert.equal(results.length, 77);
 });
 
 test("a pair whose background is a wash is measured over the colour behind it", () => {

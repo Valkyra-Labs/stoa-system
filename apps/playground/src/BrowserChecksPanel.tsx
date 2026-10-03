@@ -2,7 +2,7 @@
 // packages/tokens/src/checks.mjs, run on the live token values, grouped by
 // rule and matched against known-violations.json.
 import { useMemo, useState } from "react";
-import { Button, ChoiceGroup, StatusBadge, type StatusTone } from "@valkyra-labs/stoa-react";
+import { Button, ChoiceGroup, Disclosure, StatusBadge, type StatusTone } from "@valkyra-labs/stoa-react";
 import type { BrowserCheck, CheckStatus } from "./browserChecks";
 
 export type BrowserChecksPanelProps = {
@@ -90,20 +90,19 @@ export function BrowserChecksPanel({ checks, unproduced, onSelect }: BrowserChec
         if (shown.length === 0) return null;
         const flagged = ruleChecks.filter((c) => c.status !== "pass").length;
         return (
-          <details key={rule} className="pg-check-group" open={flagged > 0}>
-            <summary>
-              {RULE_LABEL[rule] ?? rule} ({ruleChecks.length}, {flagged} flagged)
-            </summary>
+          <Disclosure
+            key={rule}
+            className="pg-check-group"
+            defaultOpen={flagged > 0}
+            summary={`${RULE_LABEL[rule] ?? rule} (${ruleChecks.length}, ${flagged} flagged)`}
+          >
             <table className="stoa-table">
               <caption className="stoa-visually-hidden">{RULE_LABEL[rule] ?? rule} results</caption>
               <thead>
                 <tr>
-                  <th scope="col">Subject</th>
-                  <th scope="col">Theme</th>
-                  <th scope="col">Value</th>
-                  <th scope="col">Threshold</th>
-                  <th scope="col">Status</th>
-                  <th scope="col">
+                  <th scope="col">Check</th>
+                  <th scope="col">Result</th>
+                  <th scope="col" className="pg-check__action">
                     <span className="stoa-visually-hidden">Highlight</span>
                   </th>
                 </tr>
@@ -114,16 +113,14 @@ export function BrowserChecksPanel({ checks, unproduced, onSelect }: BrowserChec
                     <td>
                       {check.subject}
                       {check.model ? ` (${check.model})` : ""}
+                      <span className="pg-check__measure">
+                        {check.theme ?? "both themes"}: {check.value.toFixed(2)} {check.unit}, threshold {check.threshold}
+                      </span>
                     </td>
-                    <td>{check.theme ?? "—"}</td>
-                    <td>
-                      {check.value.toFixed(2)} {check.unit}
-                    </td>
-                    <td>{check.threshold}</td>
                     <td>
                       <StatusBadge tone={STATUS_TONE[check.status]}>{STATUS_LABEL[check.status]}</StatusBadge>
                     </td>
-                    <td>
+                    <td className="pg-check__action">
                       <Button onPress={() => onSelect(check)} isDisabled={check.tokens.length === 0}>
                         Highlight
                       </Button>
@@ -132,7 +129,7 @@ export function BrowserChecksPanel({ checks, unproduced, onSelect }: BrowserChec
                 ))}
               </tbody>
             </table>
-          </details>
+          </Disclosure>
         );
       })}
     </div>

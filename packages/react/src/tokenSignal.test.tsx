@@ -34,7 +34,10 @@ function fakeContext(): FakeCtx & Record<string, unknown> {
     moveTo() {},
     lineTo() {},
     stroke() {},
+    strokeRect() {},
+    lineWidth: 1,
     fillText() {},
+    measureText: (text: string) => ({ width: text.length * 7, fontBoundingBoxAscent: 10, fontBoundingBoxDescent: 3 }),
     fillRect() {
       if (sinceTransform) {
         surfaceFills.push(String(ctx.fillStyle));

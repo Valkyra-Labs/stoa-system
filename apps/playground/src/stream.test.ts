@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { createStream } from "./stream";
+import { HISTORY, createStream, timeAt } from "./stream";
 
 describe("the synthetic stream", () => {
   it("repeats exactly for the same seed", () => {
@@ -12,6 +12,23 @@ describe("the synthetic stream", () => {
       expect([...left.book]).toEqual([...right.book]);
       expect(left.trades.map((t) => t.id)).toEqual(right.trades.map((t) => t.id));
     }
+  });
+
+  it("replays the heatmap window of an earlier frame, before frame 0 too", () => {
+    const stream = createStream(7);
+    for (let i = 0; i < 5; i++) stream.step();
+    const at5 = stream.current();
+    expect(at5.tick).toBe(5);
+    expect(Array.from(stream.heatmapAt(5).cells)).toEqual(Array.from(at5.heatmap.cells));
+    expect(Array.from(stream.heatmapAt(5 - HISTORY).cells)).toEqual(Array.from(at5.heatmap.cells));
+    expect(Array.from(stream.heatmapAt(4).cells)).not.toEqual(Array.from(at5.heatmap.cells));
+    expect(stream.heatmapAt(-3).cells.length).toBe(at5.heatmap.cells.length);
+  });
+
+  it("keeps market time by frame, not by the wall clock", () => {
+    expect(timeAt(0)).toBe("14:30:00.000");
+    expect(timeAt(5)).toBe("14:30:02.000");
+    expect(timeAt(-5)).toBe("14:29:58.000");
   });
 
   it("publishes each frame to its subscribers until they unsubscribe", () => {

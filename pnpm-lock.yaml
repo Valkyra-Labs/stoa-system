@@ -17,6 +17,9 @@ importers:
       '@fontsource/ibm-plex-sans-arabic':
         specifier: 5.3.0
         version: 5.3.0
+      '@fontsource/noto-sans-arabic':
+        specifier: 5.3.0
+        version: 5.3.0
       '@storybook/react-vite':
         specifier: 10.6.0
         version: 10.6.0(@types/react-dom@19.3.0(@types/react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)(storybook@10.6.0(@types/react@19.3.0)(prettier@3.9.9)(react@19.3.0))(typescript@6.0.3)(vite@8.3.1(@types/node@24.19.0)(esbuild@0.28.2))
@@ -75,9 +78,12 @@ importers:
       '@fontsource/ibm-plex-sans-arabic':
         specifier: 5.3.0
         version: 5.3.0
+      '@fontsource/noto-sans-arabic':
+        specifier: 5.3.0
+        version: 5.3.0
       '@playwright/test':
-        specifier: 1.56.1
-        version: 1.56.1
+        specifier: 1.63.0
+        version: 1.63.0
       '@types/node':
         specifier: ^24.10.1
         version: 24.19.0
@@ -464,6 +470,9 @@ packages:
 
   '@fontsource/ibm-plex-sans@5.3.0':
     resolution: {integrity: sha512-CbE4CbbEEZJX860XyUiRpsksXIQR8Rp2XDva2VO53NJox9tVNtusrysd2x5YkUEY3ErQ66W1IiiQL8/wihhw5w==}
+
+  '@fontsource/noto-sans-arabic@5.3.0':
+    resolution: {integrity: sha512-i3t6GR0LOReyJVEk+YfYCnxv53wuIelg7Y9NGNvOq4Diq/EP0YszaGXkQwfQNigLjfO4POrLaPGM0sNliGYk7A==}
 
   '@internationalized/date@3.12.4':
     resolution: {integrity: sha512-M1dEn4c1U1HsSlaVR8upZtSqvXrTkHDfv18H01uCSJyjVLDxnBR38v/fMxecmlwXKR4i9HeZcmgQAPE6A+aGJQ==}
@@ -862,9 +871,9 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@playwright/test@1.56.1':
-    resolution: {integrity: sha512-vSMYtL/zOcFpvJCW71Q/OEGQb7KYBPAdKh35WNSkaZA75JlAO8ED8UN6GUNTm3drWomcbcqRPFqQbLae8yBTdg==}
-    engines: {node: '>=18'}
+  '@playwright/test@1.63.0':
+    resolution: {integrity: sha512-oxMK4vllB9RK5NQ2l1pq1IfOf2AvnEuj/vYGDj0H2nMtmtZpKtCwt/l00GEO6xjGfpBNAvjovvYdCm50dRQkpQ==}
+    engines: {node: '>=20'}
     hasBin: true
 
   '@react-types/shared@3.36.1':
@@ -1432,11 +1441,6 @@ packages:
     resolution: {integrity: sha512-dKx12eRCVIzqCxFGplyFKJMPvLEWgmNtUrpTiJIR5u97zEhRG8ySrtboPHZXx7daLxQVrl643cTzbab2tkQjxg==}
     engines: {node: '>= 0.4'}
 
-  fsevents@2.3.2:
-    resolution: {integrity: sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA==}
-    engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
-    os: [darwin]
-
   fsevents@2.3.3:
     resolution: {integrity: sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==}
     engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
@@ -1774,14 +1778,14 @@ packages:
     resolution: {integrity: sha512-qcJu88Q2IWqJsDD529JKMdwGm/dvInW4HvQnRwiH9JtihJvzGOscDtHE3x1pBKeUOTysQ8kVmLnJ2kJu7yhcGA==}
     engines: {node: '>=12'}
 
-  playwright-core@1.56.1:
-    resolution: {integrity: sha512-hutraynyn31F+Bifme+Ps9Vq59hKuUCz7H1kDOcBs+2oGguKkWTU50bBWrtz34OUWmIwpBTWDxaRPXrIXkgvmQ==}
-    engines: {node: '>=18'}
+  playwright-core@1.63.0:
+    resolution: {integrity: sha512-rYCsBF/M5HjUch52bbtVONEFjv6Xu8sm8h72dNlR5bzIE1fvC/bxgspzkjSfU+MweEMmPM8KJebG6nnyxo5mCg==}
+    engines: {node: '>=20'}
     hasBin: true
 
-  playwright@1.56.1:
-    resolution: {integrity: sha512-aFi5B0WovBHTEvpM3DzXTUaeN6eN0qWnTkKx4NQaH4Wvcmc153PdaY2UBdSYKaGYw+UyWXSVyxDUg5DoPEttjw==}
-    engines: {node: '>=18'}
+  playwright@1.63.0:
+    resolution: {integrity: sha512-+7ziBLidS4NaNCdt57SUDT+wYmmd5fmiQejUic/kb+YsYSCPyOOE9sebzMjNmQrsnNpDJqd4WHvV/8lfKfUDUg==}
+    engines: {node: '>=20'}
     hasBin: true
 
   possible-typed-array-names@1.1.0:
@@ -2507,6 +2511,8 @@ snapshots:
 
   '@fontsource/ibm-plex-sans@5.3.0': {}
 
+  '@fontsource/noto-sans-arabic@5.3.0': {}
+
   '@internationalized/date@3.12.4':
     dependencies:
       '@swc/helpers': 0.5.23
@@ -2817,9 +2823,9 @@ snapshots:
   '@oxc-resolver/binding-win32-x64-msvc@11.21.2':
     optional: true
 
-  '@playwright/test@1.56.1':
+  '@playwright/test@1.63.0':
     dependencies:
-      playwright: 1.56.1
+      playwright: 1.63.0
 
   '@react-types/shared@3.36.1(react@19.3.0)':
     dependencies:
@@ -3317,9 +3323,6 @@ snapshots:
     dependencies:
       is-callable: 1.2.7
 
-  fsevents@2.3.2:
-    optional: true
-
   fsevents@2.3.3:
     optional: true
 
@@ -3671,13 +3674,11 @@ snapshots:
 
   picomatch@4.0.7: {}
 
-  playwright-core@1.56.1: {}
+  playwright-core@1.63.0: {}
 
-  playwright@1.56.1:
+  playwright@1.63.0:
     dependencies:
-      playwright-core: 1.56.1
-    optionalDependencies:
-      fsevents: 2.3.2
+      playwright-core: 1.63.0
 
   possible-typed-array-names@1.1.0: {}
 

@@ -146,7 +146,7 @@ the committed Inter digits subset as the numeric role's face:
   variables, with the frames' mono variable pointed at that face:
   `13px StoaLoadedInterVariable..., system-ui, sans-serif`, not tabular,
   3 distinct advances. Nine distinct advances in font units collapse to
-  three at 13px, which is the size a compact row uses, and three is still
+  three at 13px, the regular density's font size, and three is still
   a column that does not line up.
 
 Only one engine was measured. The panel reports the browser it ran in and

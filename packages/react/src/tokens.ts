@@ -33,7 +33,8 @@ export function readCanvasTokens(el: Element): CanvasTokens {
     bidWash: v("--stoa-color-up-wash"),
     askWash: v("--stoa-color-down-wash"),
     accent: v("--stoa-color-accent"),
-    rowHeight: parseFloat(v("--stoa-density-row-height")) || 22,
+    // Without the token, the regular density's row height.
+    rowHeight: parseFloat(v("--stoa-density-row-height")) || 28,
     font: `${v("--stoa-density-font-size") || "12px"} ${v("--stoa-font-family-mono") || "monospace"}`,
   };
 }
@@ -161,4 +162,13 @@ export function fitCanvas(canvas: HTMLCanvasElement, cssHeight: number): CanvasR
   const ctx = canvas.getContext("2d")!;
   ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
   return ctx;
+}
+
+/** The empty state, centred on the canvas in text-muted on surface. */
+export function drawEmpty(ctx: CanvasRenderingContext2D, t: CanvasTokens, text: string, width: number, height: number) {
+  ctx.font = t.font;
+  ctx.fillStyle = t.muted;
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+  ctx.fillText(text, width / 2, height / 2);
 }

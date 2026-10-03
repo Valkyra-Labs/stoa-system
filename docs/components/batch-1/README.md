@@ -4,18 +4,18 @@ From the roadmap (`docs/roadmap/README.md`) and an inventory of the Tyche
 and Themis demos: what they hand-roll today. Each brief is one pull
 request; the six can run in parallel.
 
-| Brief | Branch | Component |
-|---|---|---|
-| [C1](c1-table.md) | `components/table` | Table; TradeTable rebuilt on it |
-| [C2](c2-callout.md) | `components/callout` | Callout |
-| [C3](c3-progress.md) | `components/progress` | Skeleton, ProgressBar |
-| [C4](c4-empty-states.md) | `components/empty-states` | EmptyState; empty and stale states on Ladder and Heatmap |
-| [C5](c5-toolbar.md) | `components/toolbar` | Toolbar, ButtonGroup |
-| [C6](c6-app-shell.md) | `components/app-shell` | AppHeader, PageShell, VisuallyHidden, LiveRegion |
+| Brief | Branch | Component | Status |
+|---|---|---|---|
+| [C1](c1-table.md) | `components/table` | Table; TradeTable rebuilt on it | Not started; TradeTable already has locale headers and an empty row |
+| [C2](c2-callout.md) | `components/callout` | Callout | Not started |
+| [C3](c3-progress.md) | `components/progress` | Skeleton, ProgressBar | Not started |
+| [C4](c4-empty-states.md) | `components/empty-states` | EmptyState; empty and stale states on Ladder and Heatmap | Partly done: the empty states exist |
+| [C5](c5-toolbar.md) | `components/toolbar` | Toolbar, ButtonGroup | Not started |
+| [C6](c6-app-shell.md) | `components/app-shell` | AppHeader, PageShell, VisuallyHidden, LiveRegion | Not started |
 
 ## Rules for every component brief
 
-- Read `CLAUDE.md` first. Work in `packages/react` only (plus
+- Read `CONTRIBUTING.md` first. Work in `packages/react` only (plus
   `packages/react/src/styles.css`); do not touch the demos, the
   playground or the token sources.
 - Tokens only: no literal colours, sizes, radii, durations or easings in
@@ -35,4 +35,4 @@ request; the six can run in parallel.
 - Keep the component small: the props the demos need, not a general
   library API. List what you left out in the PR.
 - Before finishing: merge the latest `main`, run the acceptance commands
-  from `CLAUDE.md`, open the PR against `main`.
+  from `CONTRIBUTING.md`, open the PR against `main`.

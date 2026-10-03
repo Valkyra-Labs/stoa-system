@@ -15,6 +15,8 @@ const SAMPLES: Record<RoleId, string> = {
   code: "mid = (bid + ask) / 2",
 };
 
+const TITLE = "Type roles at this frame's density and direction";
+
 export type SpecimensProps = {
   roles: Record<RoleId, TypeRole>;
   /** The size each role resolved to, in pixels, for the column that says
@@ -24,39 +26,47 @@ export type SpecimensProps = {
 
 export function Specimens({ roles, sizes }: SpecimensProps) {
   return (
-    <table className="stoa-table pg-type__specimens" data-testid="type-specimens">
-      <caption>Type roles at this frame's density and direction</caption>
-      <thead>
-        <tr>
-          <th scope="col">Role</th>
-          <th scope="col">Specimen</th>
-          <th scope="col" className="stoa-num">
-            Size
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        {ROLE_IDS.map((id) => (
-          <tr key={id} data-role={id}>
-            <th scope="row">{ROLE_LABELS[id]}</th>
-            <td
-              data-specimen={id}
-              style={{
-                fontFamily: `var(--stoa-type-${id}-family)`,
-                fontSize: `var(--stoa-type-${id}-size)`,
-                fontWeight: `var(--stoa-type-${id}-weight)`,
-                lineHeight: `var(--stoa-type-${id}-line-height)`,
-                letterSpacing: `var(--stoa-type-${id}-tracking)`,
-                fontFeatureSettings: `var(--stoa-type-${id}-features)`,
-                fontVariationSettings: `var(--stoa-type-${id}-variations)`,
-              }}
-            >
-              {SAMPLES[id]}
-            </td>
-            <td className="stoa-num">{sizes[id]}px</td>
+    <>
+      {/* A divider with the title in it, between the screen and the
+          specimens. The table keeps its caption for assistive technology,
+          so the divider's text is hidden from it. */}
+      <p className="pg-type__specimens-title" aria-hidden="true">
+        {TITLE}
+      </p>
+      <table className="stoa-table pg-type__specimens" data-testid="type-specimens">
+        <caption className="stoa-visually-hidden">{TITLE}</caption>
+        <thead>
+          <tr>
+            <th scope="col">Role</th>
+            <th scope="col">Specimen</th>
+            <th scope="col" className="stoa-num">
+              Size
+            </th>
           </tr>
-        ))}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {ROLE_IDS.map((id) => (
+            <tr key={id} data-role={id}>
+              <th scope="row">{ROLE_LABELS[id]}</th>
+              <td
+                data-specimen={id}
+                style={{
+                  fontFamily: `var(--stoa-type-${id}-family)`,
+                  fontSize: `var(--stoa-type-${id}-size)`,
+                  fontWeight: `var(--stoa-type-${id}-weight)`,
+                  lineHeight: `var(--stoa-type-${id}-line-height)`,
+                  letterSpacing: `var(--stoa-type-${id}-tracking)`,
+                  fontFeatureSettings: `var(--stoa-type-${id}-features)`,
+                  fontVariationSettings: `var(--stoa-type-${id}-variations)`,
+                }}
+              >
+                {SAMPLES[id]}
+              </td>
+              <td className="stoa-num">{sizes[id]}px</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </>
   );
 }

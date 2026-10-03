@@ -15,3 +15,6 @@ export default meta;
 
 export const Liquidity: StoryObj<typeof Heatmap> = { args: { data: sampleHeatmap() } };
 export const Sparse: StoryObj<typeof Heatmap> = { args: { data: sampleHeatmap(60, 40, 11) } };
+
+/** Nothing to draw yet: the chart says so, on the canvas and as text. */
+export const Empty: StoryObj<typeof Heatmap> = { args: { data: null } };

@@ -1,6 +1,6 @@
 {
   "compact": {
-    "row-height": { "$type": "dimension", "$value": "22px" },
+    "row-height": { "$type": "dimension", "$value": "24px" },
     "cell-padding-x": { "$type": "dimension", "$value": "6px" },
     "font-size": { "$type": "dimension", "$value": "12px" }
   },
