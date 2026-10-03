@@ -1,7 +1,7 @@
 import { useEffect, useImperativeHandle, useRef, type Ref } from "react";
 import { cellAlpha, maxAbs } from "./heatmapScale";
 import { useStoaFormat, type StoaFormat } from "./locale";
-import { fitCanvas, readCanvasTokens, useInvalidateOnTokensVersion, useTokenSignal, type CanvasTokens } from "./tokens";
+import { drawEmpty, fitCanvas, readCanvasTokens, useInvalidateOnTokensVersion, useTokenSignal, type CanvasTokens } from "./tokens";
 
 export type HeatmapData = {
   /** Column-major cells: `columns` slices of `rows` prices, top row first;
@@ -26,14 +26,30 @@ export type HeatmapProps = {
    * dispatching `stoa:tokens` on an ancestor (see `useTokenSignal`). */
   tokensVersion?: number;
   ref?: Ref<HeatmapHandle>;
+  /** What the chart says while it has nothing to draw; the locale's "No
+   * liquidity to show." by default. Drawn on the canvas and given to
+   * assistive technology as text. */
+  emptyText?: string;
 };
 
-function draw(canvas: HTMLCanvasElement, t: CanvasTokens, d: HeatmapData | null, height: number, locale: StoaFormat) {
+const isEmpty = (d: HeatmapData | null | undefined): boolean => !d || d.columns === 0 || d.rows === 0;
+
+function draw(
+  canvas: HTMLCanvasElement,
+  t: CanvasTokens,
+  d: HeatmapData | null,
+  height: number,
+  locale: StoaFormat,
+  emptyText: string,
+) {
   const width = canvas.clientWidth;
   const ctx = fitCanvas(canvas, height);
   ctx.fillStyle = t.surface;
   ctx.fillRect(0, 0, width, height);
-  if (!d || d.columns === 0 || d.rows === 0) return;
+  if (!d || isEmpty(d)) {
+    drawEmpty(ctx, t, emptyText, width, height);
+    return;
+  }
   const cw = width / d.columns;
   const rh = height / d.rows;
   const max = maxAbs(d.cells);
@@ -82,8 +98,9 @@ function plate(ctx: CanvasRenderingContext2D, t: CanvasTokens, text: string, wid
 /** Displayed liquidity over time on a canvas: time left to right, price
  * top to bottom, bids in the bid colour and asks in the ask colour,
  * opacity by size on a log scale. */
-export function Heatmap({ height = 240, label, description, data, tokensVersion, ref }: HeatmapProps) {
+export function Heatmap({ height = 240, label, description, data, tokensVersion, ref, emptyText }: HeatmapProps) {
   const locale = useStoaFormat();
+  const empty = emptyText ?? locale.messages.noLiquidity;
   const canvas = useRef<HTMLCanvasElement>(null);
   const tokens = useRef<CanvasTokens | null>(null);
   const lastData = useRef<HeatmapData | null>(null);
@@ -92,7 +109,7 @@ export function Heatmap({ height = 240, label, description, data, tokensVersion,
     if (!c) return;
     lastData.current = d;
     tokens.current ??= readCanvasTokens(c);
-    draw(c, tokens.current, d, height, locale);
+    draw(c, tokens.current, d, height, locale, empty);
   };
   useImperativeHandle(ref, () => ({ draw: render }));
   // Drop the cached tokens when `tokensVersion` changes, from an effect
@@ -116,7 +133,14 @@ export function Heatmap({ height = 240, label, description, data, tokensVersion,
   return (
     <figure className="stoa-heatmap" aria-label={label}>
       <canvas ref={canvas} className="stoa-heatmap__canvas" aria-hidden="true" />
-      {description && <figcaption className="stoa-visually-hidden">{description}</figcaption>}
+      {/* While there is nothing to draw, the text alternative says so;
+          data passed through the imperative handle is the caller's to
+          describe. */}
+      {(description || (data !== undefined && isEmpty(data))) && (
+        <figcaption className="stoa-visually-hidden">
+          {data !== undefined && isEmpty(data) ? empty : description}
+        </figcaption>
+      )}
     </figure>
   );
 }

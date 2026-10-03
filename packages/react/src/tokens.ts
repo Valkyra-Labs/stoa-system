@@ -162,3 +162,12 @@ export function fitCanvas(canvas: HTMLCanvasElement, cssHeight: number): CanvasR
   ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
   return ctx;
 }
+
+/** The empty state, centred on the canvas in text-muted on surface. */
+export function drawEmpty(ctx: CanvasRenderingContext2D, t: CanvasTokens, text: string, width: number, height: number) {
+  ctx.font = t.font;
+  ctx.fillStyle = t.muted;
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+  ctx.fillText(text, width / 2, height / 2);
+}

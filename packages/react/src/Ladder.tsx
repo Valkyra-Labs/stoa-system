@@ -1,7 +1,7 @@
 import { useEffect, useImperativeHandle, useRef, useState, type Ref } from "react";
 import { describeBook, ladderRows, parseBook, type Book } from "./book";
 import { useStoaFormat, type StoaFormat } from "./locale";
-import { fitCanvas, readCanvasTokens, useInvalidateOnTokensVersion, useTokenSignal, type CanvasTokens } from "./tokens";
+import { drawEmpty, fitCanvas, readCanvasTokens, useInvalidateOnTokensVersion, useTokenSignal, type CanvasTokens } from "./tokens";
 
 export type LadderHandle = {
   /** Draw a book in the flat engine form, without a React render. */
@@ -42,6 +42,10 @@ function draw(
   ctx.textBaseline = "middle";
   const mid = t.rowHeight / 2;
   const rows = ladderRows(book, depth, t.rowHeight, width * 0.5);
+  if (rows.length === 0) {
+    drawEmpty(ctx, t, locale.messages.bookEmpty, width, height);
+    return;
+  }
   const { bidMark, askMark } = locale.messages;
   // The price column ends at 45% of the width, or further right when the
   // side marker and the widest price need more: a marker is a word in
