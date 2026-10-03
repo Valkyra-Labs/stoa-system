@@ -118,8 +118,14 @@ function PreviewFrame({
   return (
     <section className="pg-frame" aria-label={`${name}: ${spec.label}`} data-slot={slot}>
       <header className="pg-frame__header">
-        <Select label={`${name} view`} hideLabel options={VIEW_OPTIONS} value={view} onChange={setView} />
-        <ChoiceGroup label={`${name}: colour-vision preview`} choices={CVD_CHOICES} value={cvd} onChange={setCvd} />
+        <Select label={`${name} view`} hideLabel size="small" options={VIEW_OPTIONS} value={view} onChange={setView} />
+        <ChoiceGroup
+          label={`${name}: colour-vision preview`}
+          size="small"
+          choices={CVD_CHOICES}
+          value={cvd}
+          onChange={setCvd}
+        />
       </header>
       <div
         className="pg-frame__body"

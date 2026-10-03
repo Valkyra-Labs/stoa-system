@@ -49,6 +49,9 @@ code {
   align-items: center;
   min-block-size: var(--pg-bar);
   margin-block-start: 1px;
+  /* The first side panel starts where a frame's first panel does: a frame
+     body has space-2 above its panels, the side column a space-3 gap. */
+  margin-block-end: calc(var(--stoa-space-2) - var(--stoa-space-3));
   padding-inline: calc(var(--stoa-space-3) + 1px);
 }
 
@@ -59,9 +62,9 @@ code {
 
 .pg-side__header h1 {
   margin: 0;
-  font-size: var(--stoa-font-size-sm);
-  font-weight: var(--stoa-font-weight-semibold);
-  letter-spacing: 0.08em;
+  font-size: var(--stoa-font-size-lg);
+  font-weight: var(--stoa-font-weight-medium);
+  letter-spacing: 0.04em;
   text-transform: uppercase;
 }
 
@@ -289,8 +292,9 @@ code {
    so the cost of a re-theme is the real cost. */
 .pg-frames {
   display: grid;
-  /* The two frames side by side where each gets a realistic width, one
-     above the other where they do not; never a page wider than the window. */
+  /* The two frames side by side where each is wide enough for its header
+     on one row, one above the other where they are not; never a page wider
+     than the window. */
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 400px), 1fr));
   gap: var(--stoa-space-3);
 }
