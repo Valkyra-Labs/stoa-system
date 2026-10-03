@@ -61,8 +61,8 @@ test("every token colour parses to the same sRGB as culori", () => {
       checked++;
     }
   }
-  // 43 colour tokens per theme, light and dark.
-  assert.equal(checked, 86);
+  // 45 colour tokens per theme, light and dark.
+  assert.equal(checked, 90);
 });
 
 test("hex and rgb notations parse, unknown notations return null", () => {
