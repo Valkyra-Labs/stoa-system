@@ -1,7 +1,7 @@
 {
   "name": "stoa-default",
-  "savedAt": "2026-09-27T12:36:09.417Z",
-  "commit": "600d0523d5861ea17d00e3a5c4654c3dc6cc03a4",
+  "savedAt": "2026-10-03T17:35:04.000Z",
+  "commit": "bec55003b331786ae21742bf1b44fb824c6c909f",
   "dirty": false,
   "base": "stoa-default: the token files of packages/tokens at this commit",
   "overrides": {},
@@ -30,6 +30,9 @@
           },
           "400": {
             "$value": "oklch(0.71 0.01 250)"
+          },
+          "450": {
+            "$value": "oklch(0.64 0.011 250)"
           },
           "500": {
             "$value": "oklch(0.55 0.012 250)"
@@ -92,6 +95,9 @@
         "amber": {
           "500": {
             "$value": "oklch(0.78 0.15 80)"
+          },
+          "700": {
+            "$value": "oklch(0.55 0.12 65)"
           }
         }
       },
@@ -109,6 +115,7 @@
           "mono": {
             "$value": [
               "IBM Plex Mono",
+              "Noto Sans Arabic",
               "ui-monospace",
               "monospace"
             ]
@@ -161,8 +168,12 @@
         }
       },
       "space": {
+        "$type": "dimension",
         "0": {
           "$value": "0px"
+        },
+        "0-5": {
+          "$value": "2px"
         },
         "1": {
           "$value": "4px"
@@ -184,10 +195,6 @@
         },
         "12": {
           "$value": "48px"
-        },
-        "$type": "dimension",
-        "0-5": {
-          "$value": "2px"
         }
       },
       "radius": {
@@ -285,7 +292,7 @@
           "$value": "{color.neutral.200}"
         },
         "border-strong": {
-          "$value": "{color.neutral.300}"
+          "$value": "{color.neutral.450}"
         },
         "text": {
           "$value": "{color.neutral.950}"
@@ -321,7 +328,7 @@
           "$value": "{color.red.wash}"
         },
         "warning": {
-          "$value": "{color.amber.500}"
+          "$value": "{color.amber.700}"
         }
       }
     },
@@ -344,7 +351,7 @@
           "$value": "{color.neutral.850}"
         },
         "border-strong": {
-          "$value": "{color.neutral.800}"
+          "$value": "{color.neutral.500}"
         },
         "text": {
           "$value": "{color.neutral.100}"
@@ -353,7 +360,7 @@
           "$value": "{color.neutral.400}"
         },
         "text-subtle": {
-          "$value": "{color.neutral.500}"
+          "$value": "{color.neutral.450}"
         },
         "accent": {
           "$value": "{color.blue.400}"
@@ -388,7 +395,7 @@
       "compact": {
         "row-height": {
           "$type": "dimension",
-          "$value": "22px"
+          "$value": "24px"
         },
         "cell-padding-x": {
           "$type": "dimension",
