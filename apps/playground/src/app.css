@@ -2,14 +2,19 @@
    root; the preview frames get their own values on their container, so
    nothing here changes when a token is edited. */
 
-/* Scrollbars in the border colours, thin: lighter than the platform's.
-   The colour is inherited; the width is not, so it is set on every box. */
+/* Every scrollbar in the tool alike: thin, a light neutral thumb on the
+   page background. The colour is its own, not border-strong: the
+   boundary of a control has to reach 3:1, a scrollbar of the tool's own
+   chrome does not, and it should stay quiet. Set on every box rather
+   than inherited, with an opaque track, so the page's scrollbar and the
+   side panel's are drawn the same. */
 :root {
-  scrollbar-color: var(--stoa-color-border-strong) transparent;
+  --pg-scrollbar-thumb: var(--stoa-color-neutral-300);
 }
 
 :root,
 :root * {
+  scrollbar-color: var(--pg-scrollbar-thumb) var(--stoa-color-bg);
   scrollbar-width: thin;
 }
 
