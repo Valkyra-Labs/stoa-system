@@ -1,7 +1,7 @@
-// Four frames of the same dense screen: light and dark, left to right and
-// right to left. Token values are written as CSS variables on each frame's
-// container, never on the document, so one edit re-themes four screens
-// without a page-wide restyle.
+// Two frames of the same dense screen, each showing one of four views:
+// light or dark, left to right or right to left. Token values are written
+// as CSS variables on each frame's container, never on the document, so
+// one edit re-themes both screens without a page-wide restyle.
 import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from "react";
 import {
   Button,
@@ -9,6 +9,7 @@ import {
   Heatmap,
   Ladder,
   Panel,
+  Select,
   StatusBadge,
   Tabs,
   TextField,
@@ -21,7 +22,8 @@ import type { Stream, StreamFrame } from "./stream";
 
 export type FrameSpec = { id: string; label: string; theme: Theme; dir: "ltr" | "rtl" };
 
-export const FRAMES: FrameSpec[] = [
+/** The views a frame can show. */
+export const VIEWS: FrameSpec[] = [
   { id: "light-ltr", label: "Light, left to right", theme: "light", dir: "ltr" },
   { id: "light-rtl", label: "Light, right to left", theme: "light", dir: "rtl" },
   { id: "dark-ltr", label: "Dark, left to right", theme: "dark", dir: "ltr" },
@@ -40,6 +42,12 @@ export type PreviewGridProps = {
   /** Content the area panels contribute, inside every frame. */
   panelContent?: ReactNode;
 };
+
+/** What the two frames show on load: between them, both themes and both
+ * directions. */
+const INITIAL_VIEWS = ["light-ltr", "dark-rtl"];
+
+const VIEW_OPTIONS = VIEWS.map(({ id, label }) => ({ id, label }));
 
 export function PreviewGrid({
   stream,
@@ -67,11 +75,12 @@ export function PreviewGrid({
   return (
     <div className="pg-frames">
       <CvdFilterDefs />
-      {FRAMES.map((spec) => (
+      {INITIAL_VIEWS.map((view, index) => (
         <PreviewFrame
-          key={spec.id}
-          spec={spec}
-          tokens={tokens[spec.theme]}
+          key={index}
+          slot={index + 1}
+          initialView={view}
+          tokens={tokens}
           revision={revision}
           frame={frame}
           panelVariables={panelVariables}
@@ -83,15 +92,17 @@ export function PreviewGrid({
 }
 
 function PreviewFrame({
-  spec,
+  slot,
+  initialView,
   tokens,
   revision,
   frame,
   panelVariables,
   panelContent,
 }: {
-  spec: FrameSpec;
-  tokens: ResolvedTokens;
+  slot: number;
+  initialView: string;
+  tokens: Record<Theme, ResolvedTokens>;
   revision: string;
   frame: StreamFrame;
   panelVariables?: Record<string, string>;
@@ -101,14 +112,14 @@ function PreviewFrame({
   // preview is one person looking at one frame, not a value that follows
   // the tokens into history or a snapshot.
   const [cvd, setCvd] = useState<CvdMode>("none");
+  const [view, setView] = useState(initialView);
+  const spec = VIEWS.find((candidate) => candidate.id === view) ?? VIEWS[0]!;
+  const name = `Preview ${slot}`;
   return (
-    <section className="pg-frame" aria-label={spec.label}>
+    <section className="pg-frame" aria-label={`${name}: ${spec.label}`} data-slot={slot}>
       <header className="pg-frame__header">
-        <h2>{spec.label}</h2>
-        <div className="pg-row">
-          <ChoiceGroup label={`${spec.label}: colour-vision preview`} choices={CVD_CHOICES} value={cvd} onChange={setCvd} />
-          <code>{spec.theme}</code>
-        </div>
+        <Select label={`${name} view`} hideLabel options={VIEW_OPTIONS} value={view} onChange={setView} />
+        <ChoiceGroup label={`${name}: colour-vision preview`} choices={CVD_CHOICES} value={cvd} onChange={setCvd} />
       </header>
       <div
         className="pg-frame__body"
@@ -116,9 +127,11 @@ function PreviewFrame({
         data-theme={spec.theme}
         data-cvd={cvd}
         dir={spec.dir}
-        style={{ ...tokens.variables, ...panelVariables, ...cvdFilterStyle(cvd) } as CSSProperties}
+        style={{ ...tokens[spec.theme].variables, ...panelVariables, ...cvdFilterStyle(cvd) } as CSSProperties}
       >
-        <Screen frame={frame} revision={revision} />
+        {/* The canvases read their colours and direction when they mount,
+            so a change of view re-mounts them like a token edit does. */}
+        <Screen frame={frame} revision={`${revision}:${spec.id}`} />
         {panelContent}
       </div>
     </section>

@@ -59,9 +59,10 @@ const densityFontSizeOf = (variables: Record<string, string>): number => {
   return Number.isFinite(parsed) ? parsed : 13;
 };
 
-/** The frame the canvas check reads Ladder's font shorthand from. Any frame
- * would do; they differ by theme and direction, not by type. */
-const PROBE_FRAME = '[data-frame="light-ltr"]';
+/** The frame the canvas check reads Ladder's font shorthand from: the
+ * first one. Any frame would do; whatever view each shows, they differ by
+ * theme and direction, not by type. */
+const PROBE_FRAME = "[data-frame]";
 
 export function TypePanel({ density, tokens, onContribute }: PanelProps) {
   const engine = fontEngine();

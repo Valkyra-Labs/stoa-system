@@ -4,11 +4,10 @@
 import { rm } from "node:fs/promises";
 import { PRESETS, deriveTokens, type DerivedTokens, type Theme } from "@valkyra-labs/stoa-tokens/model";
 import { expect, test, type Page } from "@playwright/test";
+import { VIEW_PAIRS, showViews } from "./frames";
 
 /** The side panel is tabbed; a control is reachable once its tab is open. */
 const openTab = (page: Page, name: string | RegExp) => page.getByRole("tab", { name }).click();
-
-const FRAMES = ["light-ltr", "light-rtl", "dark-ltr", "dark-rtl"];
 
 /** The one snapshot this file writes. It is a test artefact, not a saved
  * design, so it is removed again whatever the run does. */
@@ -50,7 +49,7 @@ test("a preset derives every token, and the clamps it applied are listed", async
   await expect
     .poll(() => variable(page, "light-ltr", "--stoa-color-bg"), { message: "the light frames take the derived paper" })
     .toBe(derived(BROADSHEET, "light", "color-bg"));
-  expect(await variable(page, "dark-ltr", "--stoa-color-bg")).toBe(derived(BROADSHEET, "dark", "color-bg"));
+  expect(await variable(page, "dark-rtl", "--stoa-color-bg")).toBe(derived(BROADSHEET, "dark", "color-bg"));
   // Rule surfaces: the panel is the page tone, separated by a hairline.
   expect(await variable(page, "light-ltr", "--stoa-color-surface")).toBe(derived(BROADSHEET, "light", "color-bg"));
   expect(await variable(page, "light-ltr", "--stoa-radius-sm")).toBe("0px");
@@ -75,12 +74,12 @@ test("an override still sits on top of the derived tree, and Stoa today comes ba
   const token = "semantic.dark:color.accent";
   const derivedAccent = derived(deriveTokens(PRESETS.tape.parameters), "dark", "color-accent");
   await expect
-    .poll(() => variable(page, "dark-ltr", "--stoa-color-accent"))
+    .poll(() => variable(page, "dark-rtl", "--stoa-color-accent"))
     .toBe(derivedAccent);
 
   await openTab(page, "Tokens");
   await page.locator(`[data-token="${token}"] input`).fill("oklch(0.7 0.2 300)");
-  await expect.poll(() => variable(page, "dark-ltr", "--stoa-color-accent")).toBe("oklch(0.7 0.2 300)");
+  await expect.poll(() => variable(page, "dark-rtl", "--stoa-color-accent")).toBe("oklch(0.7 0.2 300)");
   // The light frames keep the derived value: this override names one theme.
   expect(await variable(page, "light-ltr", "--stoa-color-accent")).not.toBe("oklch(0.7 0.2 300)");
 
@@ -91,10 +90,13 @@ test("an override still sits on top of the derived tree, and Stoa today comes ba
 
   await openTab(page, "Parameters");
   await preset(page, "Stoa today").click();
-  for (const frame of FRAMES) {
-    await expect.poll(() => variable(page, frame, "--stoa-color-bg")).toBe(
-      frame.startsWith("light") ? TODAY_BG : "oklch(0.13 0.006 250)",
-    );
+  for (const pair of VIEW_PAIRS) {
+    await showViews(page, pair);
+    for (const frame of pair) {
+      await expect.poll(() => variable(page, frame, "--stoa-color-bg")).toBe(
+        frame.startsWith("light") ? TODAY_BG : "oklch(0.13 0.006 250)",
+      );
+    }
   }
   // The override outlives the switch: it is a layer of its own.
   await expect(control).toHaveAttribute("data-overridden", "true");

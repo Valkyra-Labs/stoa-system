@@ -17,6 +17,10 @@ code {
 }
 
 .pg-app {
+  /* The block size of the bar at the top of each column: the playground's
+     name over the side panel, a frame's view and colour-vision controls
+     over each preview. The two line up across the page. */
+  --pg-bar: 40px;
   display: grid;
   /* The side panel takes a fixed share of wide screens and never forces the
      page wider than the window; its content wraps or scrolls inside it. */
@@ -37,9 +41,28 @@ code {
   padding-inline-end: var(--stoa-space-2);
 }
 
+/* The frames have a 1px border their header sits inside, so the name bar
+   starts 1px lower to share the frames' centre line; its text starts where
+   a side panel's content does. */
+.pg-side__header {
+  display: flex;
+  align-items: center;
+  min-block-size: var(--pg-bar);
+  margin-block-start: 1px;
+  padding-inline: calc(var(--stoa-space-3) + 1px);
+}
+
+/* Six tabs in one row at the panel's usual widths. */
+.pg-side .stoa-tabs__tab {
+  padding-inline: var(--stoa-space-2);
+}
+
 .pg-side__header h1 {
   margin: 0;
-  font-size: var(--stoa-font-size-lg);
+  font-size: var(--stoa-font-size-sm);
+  font-weight: var(--stoa-font-weight-semibold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .pg-note {
@@ -262,13 +285,13 @@ code {
   overflow: hidden;
 }
 
-/* Previews. The grid holds four frames at a size a real screen would use,
+/* Previews. The grid holds two frames at a size a real screen would use,
    so the cost of a re-theme is the real cost. */
 .pg-frames {
   display: grid;
-  /* Two frames side by side where they fit at a realistic width, one per row
-     where they do not; never a page wider than the window. */
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 560px), 1fr));
+  /* The two frames side by side where each gets a realistic width, one
+     above the other where they do not; never a page wider than the window. */
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 400px), 1fr));
   gap: var(--stoa-space-3);
 }
 
@@ -281,18 +304,15 @@ code {
 
 .pg-frame__header {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
-  align-items: baseline;
+  align-items: center;
   gap: var(--stoa-space-2);
+  box-sizing: border-box;
+  min-block-size: var(--pg-bar);
   padding: var(--stoa-space-1) var(--stoa-space-2);
   background: var(--stoa-color-surface-sunken);
   border-block-end: 1px solid var(--stoa-color-border);
-}
-
-.pg-frame__header h2 {
-  margin: 0;
-  font-size: var(--stoa-font-size-xs);
-  font-weight: var(--stoa-font-weight-medium);
 }
 
 .pg-frame__body {
@@ -303,17 +323,26 @@ code {
   font-size: var(--stoa-density-font-size);
 }
 
+/* The screen's two columns sit side by side while both fit and stack when
+   they do not. A column never gets narrower than its content's narrowest
+   layout (the trades table, at the frame's density), so a table cannot
+   spill out of its column; what does not fit wraps to the next line. */
 .pg-screen {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+  display: flex;
+  flex-wrap: wrap;
   gap: var(--stoa-space-2);
   align-items: start;
 }
 
+/* A flex column rather than a grid: a grid sizes its intrinsic minimum
+   from each panel's `min-inline-size: 0`, which would let the column go
+   narrower than the table inside it. */
 .pg-screen__column {
-  display: grid;
+  flex: 1 1 180px;
+  min-inline-size: min-content;
+  display: flex;
+  flex-direction: column;
   gap: var(--stoa-space-2);
-  min-inline-size: 0;
 }
 
 .pg-form {
