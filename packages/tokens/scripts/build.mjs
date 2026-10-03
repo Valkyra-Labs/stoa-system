@@ -49,9 +49,13 @@ const dark = new StyleDictionary({
 await dark.buildAllPlatforms();
 
 // Density modes: the same variables, one selector per mode; regular is
-// the default.
+// the default. The default block is written first: `:root` and an
+// attribute selector have the same specificity, so a mode set on the root
+// element (`<html data-density="compact">`) only wins when its block comes
+// after `:root`.
 const density = JSON.parse(await readFile("tokens/density.json", "utf8"));
 const densityCss = Object.entries(density)
+  .sort(([a], [b]) => Number(b === "regular") - Number(a === "regular"))
   .map(([mode, vars]) => {
     const body = Object.entries(vars)
       .map(([name, t]) => `  --stoa-density-${name}: ${t.$value};`)
