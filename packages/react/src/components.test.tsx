@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { act, cleanup, fireEvent, render, screen } from "@testing-library/react";
-import { ChoiceGroup, Disclosure, NumberField, Select, TimeSlider, TradeTable } from "./index";
+import { ChoiceGroup, Disclosure, NumberField, Select, TimeSlider, Toggle, TradeTable } from "./index";
 
 afterEach(cleanup);
 
@@ -143,5 +143,20 @@ describe("TimeSlider without its output", () => {
     );
     expect(container.querySelector(".stoa-slider__output")).toBeNull();
     expect(screen.getByRole("slider").getAttribute("aria-valuetext")).toBe("4px");
+  });
+});
+
+describe("Toggle", () => {
+  it("is a pressed button while its setting is on, and reports the change", () => {
+    const onChange = vi.fn();
+    render(
+      <Toggle isSelected={false} onChange={onChange}>
+        Reduced motion
+      </Toggle>,
+    );
+    const button = screen.getByRole("button", { name: "Reduced motion" });
+    expect(button.getAttribute("aria-pressed")).toBe("false");
+    fireEvent.click(button);
+    expect(onChange).toHaveBeenCalledWith(true);
   });
 });
