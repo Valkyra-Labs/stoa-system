@@ -45,7 +45,7 @@ export const TEXT_PAIRS = [
   { fg: "text", bg: "surface-hover", min: TEXT_AA, reason: "Button label while the pointer is over the button." },
   { fg: "text", bg: "surface-sunken", min: TEXT_AA, reason: "Body text in a sunken well." },
   { fg: "surface", bg: "accent", min: TEXT_AA, reason: "Label of a primary button or a selected choice: the surface colour reversed out of the accent fill." },
-  { fg: "text-muted", bg: "surface", min: TEXT_AA, reason: "Panel title, field label, table header and statbar term." },
+  { fg: "text-muted", bg: "surface", min: TEXT_AA, reason: "Panel title, field label, table header, statbar term, and the heatmap price labels on their surface plates." },
   { fg: "text-muted", bg: "bg", min: TEXT_AA, reason: "The same muted labels when a table or statbar sits straight on the page background." },
   { fg: "text-muted", bg: "surface-sunken", min: TEXT_AA, reason: "Muted labels in a sunken well." },
   { fg: "text-subtle", bg: "surface", min: TEXT_AA, reason: "The third text role. No component uses it yet; checked so the name keeps its promise." },
@@ -60,18 +60,6 @@ export const TEXT_PAIRS = [
   { fg: "ask", bg: "surface", min: TEXT_AA, reason: "Ask prices and the A marker the ladder draws over its own surface fill." },
   { fg: "warning", bg: "surface", min: TEXT_AA, reason: "The warning glyph of a status badge; the badge draws it as a character, so it is text." },
   { fg: "warning", bg: "bg", min: TEXT_AA, reason: "The same glyph on the page background." },
-  {
-    fg: "text-muted",
-    bg: "bid",
-    min: TEXT_AA,
-    reason: "Top and bottom price label of the heatmap, drawn in text-muted over whatever cell is behind it. A bid cell reaches full opacity at the largest size in view, so the opaque bid colour is the worst case and the one measured.",
-  },
-  {
-    fg: "text-muted",
-    bg: "ask",
-    min: TEXT_AA,
-    reason: "The same labels over an ask cell at full opacity.",
-  },
   {
     fg: "text",
     bg: "up-wash",

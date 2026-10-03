@@ -47,12 +47,35 @@ function draw(canvas: HTMLCanvasElement, t: CanvasTokens, d: HeatmapData | null,
   }
   ctx.globalAlpha = 1;
   ctx.font = t.font;
+  plate(ctx, t, d.top.toFixed(2), width, 0);
+  plate(ctx, t, (d.top - d.tick * (d.rows - 1)).toFixed(2), width, height, true);
+}
+
+/** Inset of a price label from the chart's corner, and its padding. */
+const PLATE_INSET = 2;
+const PLATE_PAD = 4;
+
+/** A price label in the chart's top or bottom end corner, on a plate of
+ * the surface colour. The cells behind a label can be any bid or ask fill
+ * at any opacity, so the label never sits on them directly: on the plate
+ * it is text-muted on surface, a pair the contrast tests measure. */
+function plate(ctx: CanvasRenderingContext2D, t: CanvasTokens, text: string, width: number, y: number, bottom = false) {
+  const metrics = ctx.measureText(text);
+  const ascent = metrics.fontBoundingBoxAscent || metrics.actualBoundingBoxAscent;
+  const descent = metrics.fontBoundingBoxDescent || metrics.actualBoundingBoxDescent;
+  const w = Math.ceil(metrics.width) + PLATE_PAD * 2;
+  const h = Math.ceil(ascent + descent) + PLATE_PAD;
+  const x = width - PLATE_INSET - w;
+  const top = bottom ? y - PLATE_INSET - h : y + PLATE_INSET;
+  ctx.fillStyle = t.surface;
+  ctx.fillRect(x, top, w, h);
+  ctx.strokeStyle = t.border;
+  ctx.lineWidth = 1;
+  ctx.strokeRect(x + 0.5, top + 0.5, w - 1, h - 1);
   ctx.fillStyle = t.muted;
   ctx.textAlign = "right";
-  ctx.textBaseline = "top";
-  ctx.fillText(d.top.toFixed(2), width - 4, 2);
-  ctx.textBaseline = "bottom";
-  ctx.fillText((d.top - d.tick * (d.rows - 1)).toFixed(2), width - 4, height - 2);
+  ctx.textBaseline = "alphabetic";
+  ctx.fillText(text, x + w - PLATE_PAD, top + PLATE_PAD / 2 + ascent);
 }
 
 /** Displayed liquidity over time on a canvas: time left to right, price
