@@ -5,6 +5,9 @@ import { rm } from "node:fs/promises";
 import { PRESETS, deriveTokens, type DerivedTokens, type Theme } from "@valkyra-labs/stoa-tokens/model";
 import { expect, test, type Page } from "@playwright/test";
 
+/** The side panel is tabbed; a control is reachable once its tab is open. */
+const openTab = (page: Page, name: string | RegExp) => page.getByRole("tab", { name }).click();
+
 const FRAMES = ["light-ltr", "light-rtl", "dark-ltr", "dark-rtl"];
 
 /** The one snapshot this file writes. It is a test artefact, not a saved
@@ -60,6 +63,7 @@ test("a preset derives every token, and the clamps it applied are listed", async
   // The build endpoint reads token files, so it has nothing to say about a
   // derived tree, and the panel says that rather than reporting a
   // disagreement it cannot speak to.
+  await openTab(page, "Checks");
   await page.getByRole("button", { name: "Build and test" }).click();
   await expect(page.getByTestId("agreement-status")).toContainText("not compared", { timeout: 90_000 });
 });
@@ -74,6 +78,7 @@ test("an override still sits on top of the derived tree, and Stoa today comes ba
     .poll(() => variable(page, "dark-ltr", "--stoa-color-accent"))
     .toBe(derivedAccent);
 
+  await openTab(page, "Tokens");
   await page.locator(`[data-token="${token}"] input`).fill("oklch(0.7 0.2 300)");
   await expect.poll(() => variable(page, "dark-ltr", "--stoa-color-accent")).toBe("oklch(0.7 0.2 300)");
   // The light frames keep the derived value: this override names one theme.
@@ -84,6 +89,7 @@ test("an override still sits on top of the derived tree, and Stoa today comes ba
   await expect(control).toContainText("Override detected");
   await expect(control).toContainText(derivedAccent);
 
+  await openTab(page, "Parameters");
   await preset(page, "Stoa today").click();
   for (const frame of FRAMES) {
     await expect.poll(() => variable(page, frame, "--stoa-color-bg")).toBe(
@@ -100,15 +106,18 @@ test("a snapshot restores the parameters it was saved with", async ({ page }) =>
   const studio = deriveTokens(PRESETS.studio.parameters);
   await expect.poll(() => variable(page, "light-ltr", "--stoa-color-accent")).toBe(derived(studio, "light", "color-accent"));
 
+  await openTab(page, "Snapshot");
   await page.getByRole("textbox", { name: "Snapshot name" }).fill("brief 05 studio");
   await page.getByRole("button", { name: "Save snapshot" }).click();
   await expect(page.getByText("snapshots/brief-05-studio.json")).toBeVisible();
 
   // Back to the built tokens, then load the snapshot: the parameters come
   // back with it, not just the overrides.
+  await openTab(page, "Parameters");
   await preset(page, "Stoa today").click();
   await expect.poll(() => variable(page, "light-ltr", "--stoa-color-bg")).toBe(TODAY_BG);
 
+  await openTab(page, "Snapshot");
   await page.getByTestId("snapshot-load").getByRole("button", { name: "brief-05-studio" }).click();
   await expect.poll(() => variable(page, "light-ltr", "--stoa-color-accent")).toBe(derived(studio, "light", "color-accent"));
 });
