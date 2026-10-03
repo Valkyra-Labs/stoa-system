@@ -108,11 +108,16 @@ test("the replay slider scrubs the heatmap back, and its end is live again", asy
   await expect.poll(live).toBeGreaterThan(2);
 
   await slider.focus();
+  // A frame well inside the history: the oldest frame itself (Home) falls
+  // out of the history with the next stream frame and is then held at the
+  // new oldest one, by design, so it would not stay put.
   await page.keyboard.press("Home");
+  for (let step = 0; step < 40; step++) await page.keyboard.press("ArrowRight");
   const replayed = await value();
-  expect(replayed).toBeLessThan(await live());
+  const liveThen = await live();
+  expect(replayed).toBeLessThan(liveThen);
   // A replayed time stays put while the stream moves on.
-  await expect.poll(live).toBeGreaterThan(replayed + 3);
+  await expect.poll(live).toBeGreaterThan(liveThen + 3);
   expect(await value()).toBe(replayed);
 
   await page.keyboard.press("End");
