@@ -192,4 +192,4 @@ None.
 
 | Name | File | Line | Fallback |
 | --- | --- | --- | --- |
-| `--trigger-width` | packages/react/src/styles.css | 124 | - |
+| `--trigger-width` | packages/react/src/styles.css | 126 | - |
