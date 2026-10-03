@@ -88,6 +88,28 @@ test("one colour override reaches every view, and reset undoes it", async ({ pag
   await expect(page.locator(`[data-token="${TOKEN}"]`)).not.toHaveAttribute("data-overridden", "true");
 });
 
+test("the replay slider scrubs the heatmap back, and its end is live again", async ({ page }) => {
+  await page.goto("/");
+  const frame = page.locator('[data-slot="1"]');
+  const slider = frame.getByRole("slider", { name: "Replay time" });
+  // The slider is a native range input: its bounds and value are attributes.
+  const live = async () => Number(await slider.getAttribute("max"));
+  const value = async () => Number(await slider.inputValue());
+  // Wait for the stream to have moved, so the history is not one frame.
+  await expect.poll(live).toBeGreaterThan(2);
+
+  await slider.focus();
+  await page.keyboard.press("Home");
+  const replayed = await value();
+  expect(replayed).toBeLessThan(await live());
+  // A replayed time stays put while the stream moves on.
+  await expect.poll(live).toBeGreaterThan(replayed + 3);
+  expect(await value()).toBe(replayed);
+
+  await page.keyboard.press("End");
+  await expect.poll(async () => (await value()) === (await live())).toBe(true);
+});
+
 test("the build endpoint builds and tests the unmodified base", async ({ page }) => {
   await page.goto("/");
   await openTab(page, "Checks");

@@ -18,7 +18,7 @@ import {
 } from "@valkyra-labs/stoa-react";
 import { CVD_CHOICES, CvdFilterDefs, cvdFilterStyle, type CvdMode } from "./cvdPreview";
 import type { ResolvedTokens, Theme } from "./tokenModel";
-import type { Stream, StreamFrame } from "./stream";
+import { HISTORY, timeAt, type Stream, type StreamFrame } from "./stream";
 
 export type FrameSpec = { id: string; label: string; theme: Theme; dir: "ltr" | "rtl" };
 
@@ -80,6 +80,7 @@ export function PreviewGrid({
           key={index}
           slot={index + 1}
           initialView={view}
+          stream={stream}
           tokens={tokens}
           revision={revision}
           frame={frame}
@@ -94,6 +95,7 @@ export function PreviewGrid({
 function PreviewFrame({
   slot,
   initialView,
+  stream,
   tokens,
   revision,
   frame,
@@ -102,6 +104,7 @@ function PreviewFrame({
 }: {
   slot: number;
   initialView: string;
+  stream: Stream;
   tokens: Record<Theme, ResolvedTokens>;
   revision: string;
   frame: StreamFrame;
@@ -137,7 +140,7 @@ function PreviewFrame({
       >
         {/* The canvases read their colours and direction when they mount,
             so a change of view re-mounts them like a token edit does. */}
-        <Screen frame={frame} revision={`${revision}:${spec.id}`} />
+        <Screen stream={stream} frame={frame} revision={`${revision}:${spec.id}`} />
         {panelContent}
       </div>
     </section>
@@ -149,16 +152,22 @@ const SIDES = [
   { id: "sell", label: "Sell" },
 ];
 
-const clock = (seconds: number) =>
-  `${String(Math.floor(seconds / 3600)).padStart(2, "0")}:${String(Math.floor((seconds % 3600) / 60)).padStart(2, "0")}:${String(seconds % 60).padStart(2, "0")}`;
+/** A frame's market time to the tenth of a second, "HH:MM:SS.s". */
+const clock = (tick: number) => timeAt(tick).slice(0, 10);
 
 /** The dense screen under test: the two canvas views, the trades tape, and
  * the controls and form fields, at sizes a real screen would use. */
-function Screen({ frame, revision }: { frame: StreamFrame; revision: string }) {
+function Screen({ stream, frame, revision }: { stream: Stream; frame: StreamFrame; revision: string }) {
   const [side, setSide] = useState("buy");
   const [limit, setLimit] = useState("222.60");
   const [quantity, setQuantity] = useState("500");
-  const [replay, setReplay] = useState(52_200);
+  // The frame the heatmap is replaying, or null to follow the stream. A
+  // replayed frame stays put while the stream moves on, until it falls out
+  // of the history and is held at its oldest frame.
+  const [replayAt, setReplayAt] = useState<number | null>(null);
+  const live = frame.tick;
+  const earliest = live - (HISTORY - 1);
+  const shown = replayAt === null ? live : Math.max(replayAt, earliest);
 
   return (
     <div className="pg-screen">
@@ -189,17 +198,18 @@ function Screen({ frame, revision }: { frame: StreamFrame; revision: string }) {
           <Heatmap
             key={revision}
             height={180}
-            data={frame.heatmap}
+            data={replayAt === null ? frame.heatmap : stream.heatmapAt(shown)}
             label="Displayed liquidity over the last three minutes"
             description="Bids below the midpoint, asks above; darker cells hold more shares."
           />
+          {/* The end of the track is live; anywhere before it replays. */}
           <TimeSlider
             label="Replay time"
-            min={50_400}
-            max={57_600}
-            step={60}
-            value={replay}
-            onChange={setReplay}
+            min={earliest}
+            max={live}
+            step={1}
+            value={shown}
+            onChange={(at) => setReplayAt(at >= live ? null : at)}
             format={clock}
           />
         </Panel>

@@ -25,6 +25,19 @@ const WINDOW = 180;
 const ROWS = 64;
 const TRADE_ROWS = 12;
 
+/** How many frames back the heatmap can be replayed: one window. */
+export const HISTORY = WINDOW;
+
+/** Market time of frame 0, and how much market time one frame covers. The
+ * clock is the stream's own, not the wall clock, so it does not depend on
+ * the playback speed. */
+const START = Date.UTC(2026, 0, 1, 14, 30, 0);
+const FRAME_MS = 400;
+
+/** The market time of a frame, "HH:MM:SS.mmm". Frames before the first
+ * one are allowed: the replay reaches back a window from frame 0 too. */
+export const timeAt = (tick: number): string => new Date(START + tick * FRAME_MS).toISOString().slice(11, 23);
+
 function rng(seed: number) {
   let s = seed >>> 0;
   return () => {
@@ -35,6 +48,9 @@ function rng(seed: number) {
 
 export type Stream = {
   current(): StreamFrame;
+  /** The heatmap window that ended at an earlier frame, for replay. The
+   * buffer repeats every window, so any frame has one. */
+  heatmapAt(tick: number): HeatmapData;
   /** Advance one frame and publish it. */
   step(): StreamFrame;
   subscribe(listener: (frame: StreamFrame) => void): () => void;
@@ -54,22 +70,24 @@ export function createStream(seed = 7): Stream {
   let mid = 222.6;
   let trades: Trade[] = [];
 
-  const frameAt = (): StreamFrame => {
-    const start = tick % WINDOW;
+  const heatmapAt = (at: number): HeatmapData => {
+    const start = ((at % WINDOW) + WINDOW) % WINDOW;
     return {
-      tick,
-      book: sampleBook(mid, 12, seed + tick),
-      heatmap: {
-        cells: buffer.cells.subarray(start * ROWS, (start + WINDOW) * ROWS),
-        columns: WINDOW,
-        rows: ROWS,
-        top: +(mid + (ROWS / 2) * 0.01).toFixed(2),
-        tick: 0.01,
-      },
-      trades,
-      mid,
+      cells: buffer.cells.subarray(start * ROWS, (start + WINDOW) * ROWS),
+      columns: WINDOW,
+      rows: ROWS,
+      top: +(mid + (ROWS / 2) * 0.01).toFixed(2),
+      tick: 0.01,
     };
   };
+
+  const frameAt = (): StreamFrame => ({
+    tick,
+    book: sampleBook(mid, 12, seed + tick),
+    heatmap: heatmapAt(tick),
+    trades,
+    mid,
+  });
 
   let frame = frameAt();
 
@@ -79,7 +97,7 @@ export function createStream(seed = 7): Stream {
     const buy = random() < 0.5;
     const trade: Trade = {
       id: `t${tick}`,
-      time: new Date(Date.UTC(2026, 0, 1, 14, 30, 0) + tick * 400).toISOString().slice(11, 23),
+      time: timeAt(tick),
       side: buy ? "buy" : "sell",
       price: +(mid + (buy ? 0.01 : -0.01)).toFixed(2),
       size: Math.round(50 + random() * random() * 1500),
@@ -92,6 +110,7 @@ export function createStream(seed = 7): Stream {
 
   return {
     current: () => frame,
+    heatmapAt,
     step,
     subscribe(listener) {
       listeners.add(listener);
