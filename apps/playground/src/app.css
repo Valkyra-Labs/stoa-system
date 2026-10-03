@@ -2,6 +2,17 @@
    root; the preview frames get their own values on their container, so
    nothing here changes when a token is edited. */
 
+/* Scrollbars in the border colours, thin: lighter than the platform's.
+   The colour is inherited; the width is not, so it is set on every box. */
+:root {
+  scrollbar-color: var(--stoa-color-border-strong) transparent;
+}
+
+:root,
+:root * {
+  scrollbar-width: thin;
+}
+
 body {
   margin: 0;
   background: var(--stoa-color-bg);
@@ -38,7 +49,10 @@ code {
   gap: var(--stoa-space-3);
   max-block-size: calc(100vh - var(--stoa-space-8));
   overflow-y: auto;
-  padding-inline-end: var(--stoa-space-2);
+  /* The scrollbar keeps its own lane and a gap from the panels, whether
+     or not the content is long enough to scroll. */
+  scrollbar-gutter: stable;
+  padding-inline-end: var(--stoa-space-3);
 }
 
 /* The frames have a 1px border their header sits inside, so the name bar
