@@ -110,6 +110,30 @@ test("the replay slider scrubs the heatmap back, and its end is live again", asy
   await expect.poll(async () => (await value()) === (await live())).toBe(true);
 });
 
+test("a frame switches its screen to Arabic words and digits, and back", async ({ page }) => {
+  await page.goto("/");
+  const frame = page.locator('[data-slot="2"]');
+  const body = frame.locator("[data-frame]");
+  const limit = body.getByRole("textbox").first();
+  await expect(limit).toHaveValue("222.60");
+
+  await frame.getByRole("radiogroup", { name: "Preview 2: language" }).getByRole("radio", { name: "AR" }).click();
+  await expect(body).toHaveAttribute("lang", "ar");
+  await expect(body.getByRole("columnheader", { name: "الوقت" })).toBeVisible();
+  await expect(body.locator(".stoa-panel__title").first()).toHaveText("دفتر الأوامر");
+  await expect(limit).toHaveValue("٢٢٢٫٦٠");
+  // Digits in the tape are Arabic-Indic, not Latin.
+  await expect(body.locator(".stoa-table tbody td").first()).toHaveText(/^[٠-٩:٫]+$/);
+  // The other frame keeps its own language.
+  await expect(page.locator('[data-slot="1"] [data-frame]')).toHaveAttribute("lang", "en");
+  // Arabic words are wider than English ones; nothing spills out of the frame.
+  expect(await frame.evaluate((element) => element.scrollWidth - element.clientWidth)).toBe(0);
+
+  await frame.getByRole("radiogroup", { name: "Preview 2: language" }).getByRole("radio", { name: "EN" }).click();
+  await expect(limit).toHaveValue("222.60");
+  await expect(body.getByRole("columnheader", { name: "Time" })).toBeVisible();
+});
+
 test("the build endpoint builds and tests the unmodified base", async ({ page }) => {
   await page.goto("/");
   await openTab(page, "Checks");
