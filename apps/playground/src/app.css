@@ -163,6 +163,13 @@ code {
   gap: var(--stoa-space-1);
 }
 
+.pg-token__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--stoa-space-2);
+}
+
 .pg-token__label {
   font-size: var(--stoa-font-size-xs);
   color: var(--stoa-color-text-muted);

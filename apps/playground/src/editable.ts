@@ -68,7 +68,11 @@ export function editableTabs(files: TokenFiles): EditableTab[] {
         {
           id: "shape.all",
           label: "Space, radius and focus",
-          items: shape.map((entry) => ({ entry, label: entry.path.join("."), control: lengthControl(entry.value) })),
+          // Lengths with a slider first, then the ones edited as text
+          // (radius.full, 9999px), at the end of the list.
+          items: shape
+            .map((entry) => ({ entry, label: entry.path.join("."), control: lengthControl(entry.value) }))
+            .sort((a, b) => Number(a.control.kind === "text") - Number(b.control.kind === "text")),
         },
       ],
     },
