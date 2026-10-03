@@ -233,6 +233,13 @@
 .stoa-tabs__tab[data-selected] { color: var(--stoa-color-text); border-block-end-color: var(--stoa-color-accent); }
 .stoa-tabs__tab[data-focus-visible] { outline: var(--stoa-focus-width) solid var(--stoa-color-focus); outline-offset: -2px; }
 .stoa-tabs__panel { padding-block: var(--stoa-space-4); outline: none; }
+/* A panel with nothing focusable inside takes focus itself (React Aria
+   gives it tabindex 0), so it shows the ring like any other stop. */
+.stoa-tabs__panel[data-focus-visible] {
+  outline: var(--stoa-focus-width) solid var(--stoa-color-focus);
+  outline-offset: var(--stoa-focus-offset);
+  border-radius: var(--stoa-radius-sm);
+}
 /* Panels kept mounted while inactive are inert; they keep their state
    (a running worker, a filled form) but take no space. */
 .stoa-tabs__panel[inert] { display: none; }
