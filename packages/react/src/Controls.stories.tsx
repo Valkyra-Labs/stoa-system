@@ -77,6 +77,15 @@ export const Trades: StoryObj = {
   ),
 };
 
+/** Before the first trade: one row that says so. */
+export const TradesEmpty: StoryObj = {
+  render: () => (
+    <Panel title="Trades">
+      <TradeTable caption="Recent trades" trades={[]} />
+    </Panel>
+  ),
+};
+
 export const Counters: StoryObj = {
   render: () => (
     <StatBar
