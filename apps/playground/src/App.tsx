@@ -5,7 +5,7 @@
 // override is shown as one. The area panels (src/panels.tsx) sit in the
 // same list and contribute variables and content to every preview frame.
 import { Fragment, useCallback, useEffect, useMemo, useState } from "react";
-import { Button, ChoiceGroup, Panel, StatBar, StatusBadge, TextField } from "@valkyra-labs/stoa-react";
+import { Button, ChoiceGroup, Panel, StatBar, StatusBadge, Tabs, TextField } from "@valkyra-labs/stoa-react";
 import type { PartialParameters } from "@valkyra-labs/stoa-tokens/model";
 import { ControlPanel } from "./ControlPanel";
 import { OverrideList } from "./OverrideList";
@@ -69,6 +69,8 @@ export function App() {
   const [snapshots, setSnapshots] = useState<string[]>([]);
   const [renderMs, setRenderMs] = useState(0);
   const [controlTab, setControlTab] = useState<string>();
+  /** The side panel tab on show; every tab stays mounted. */
+  const [sideTab, setSideTab] = useState("parameters");
   /** The tokens a selected verification failure reads, so the control panel
    * and the override list can mark and scroll to them. */
   const [highlighted, setHighlighted] = useState<string[]>([]);
@@ -285,6 +287,7 @@ export function App() {
     {
       id: "overrides",
       title: "Overrides",
+      tab: `Overrides (${Object.keys(overrides).length})`,
       content: (
         <OverrideList
           overrides={overrides}
@@ -298,6 +301,7 @@ export function App() {
     {
       id: "verification",
       title: "Verification",
+      tab: "Checks",
       content: (
         <Verification
           tokens={tokens}
@@ -308,6 +312,7 @@ export function App() {
           onSelectCheck={(tab, checkTokens) => {
             setControlTab(tab);
             setHighlighted(checkTokens);
+            setSideTab("tokens");
           }}
         />
       ),
@@ -368,11 +373,27 @@ export function App() {
           </p>
         </header>
 
-        {panels.map((panel) => (
-          <Panel key={panel.id} title={panel.title}>
-            {panel.content}
-          </Panel>
-        ))}
+        {panels
+          .filter((panel) => panel.id === "session")
+          .map((panel) => (
+            <Panel key={panel.id} title={panel.title}>
+              {panel.content}
+            </Panel>
+          ))}
+
+        <Tabs
+          label="Playground panels"
+          keepMounted
+          selected={sideTab}
+          onChange={setSideTab}
+          items={panels
+            .filter((panel) => panel.id !== "session")
+            .map((panel) => ({
+              id: panel.id,
+              label: "tab" in panel && typeof panel.tab === "string" ? panel.tab : panel.title,
+              content: <Panel title={panel.title}>{panel.content}</Panel>,
+            }))}
+        />
       </aside>
 
       <main className="pg-main">

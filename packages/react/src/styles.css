@@ -45,11 +45,36 @@
   background: var(--stoa-color-surface);
   color: var(--stoa-color-text);
   cursor: pointer;
-  transition: background-color var(--stoa-motion-duration-fast) cubic-bezier(0.2, 0, 0, 1);
+  transition: background-color var(--stoa-motion-duration-fast) var(--stoa-motion-easing-standard);
 }
-.stoa-button[data-hovered] { background: var(--stoa-color-surface-hover); }
+/* States are set per variant: a hover rule shared by every variant would
+   outrank the primary fill (equal specificity, later rule) and put the
+   primary text on a near-white surface. Hover and press move the fill
+   toward the text colour, so they darken in light themes and lighten in
+   dark ones without new tokens. */
+.stoa-button[data-hovered], .stoa-choice[data-hovered]:not([data-selected]) { background: var(--stoa-color-surface-hover); }
+.stoa-button[data-pressed], .stoa-choice[data-pressed]:not([data-selected]) {
+  background: color-mix(in oklch, var(--stoa-color-surface-hover), var(--stoa-color-text) 8%);
+}
 .stoa-button--primary, .stoa-choice[data-selected] {
   background: var(--stoa-color-accent); border-color: var(--stoa-color-accent); color: var(--stoa-color-surface);
+}
+.stoa-button--primary[data-hovered], .stoa-choice[data-selected][data-hovered] {
+  background: color-mix(in oklch, var(--stoa-color-accent), var(--stoa-color-text) 14%);
+  border-color: color-mix(in oklch, var(--stoa-color-accent), var(--stoa-color-text) 14%);
+}
+.stoa-button--primary[data-pressed], .stoa-choice[data-selected][data-pressed] {
+  background: color-mix(in oklch, var(--stoa-color-accent), var(--stoa-color-text) 26%);
+  border-color: color-mix(in oklch, var(--stoa-color-accent), var(--stoa-color-text) 26%);
+}
+/* Disabled reads as unavailable in every variant: no fill, subtle text,
+   no pointer. WCAG 1.4.3 exempts inactive controls, so the subtle text
+   is a choice, not a contrast failure. */
+.stoa-button[data-disabled], .stoa-button--primary[data-disabled], .stoa-choice[data-disabled] {
+  background: var(--stoa-color-surface-sunken);
+  border-color: var(--stoa-color-border);
+  color: var(--stoa-color-text-subtle);
+  cursor: not-allowed;
 }
 .stoa-button[data-focus-visible], .stoa-slider__thumb[data-focus-visible] {
   outline: var(--stoa-focus-width) solid var(--stoa-color-focus);
@@ -91,11 +116,18 @@
 .stoa-badge--warning > span:first-child { color: var(--stoa-color-warning); }
 .stoa-badge--neutral { color: var(--stoa-color-text-muted); }
 
-.stoa-tabs__list { display: flex; gap: var(--stoa-space-1); border-block-end: 1px solid var(--stoa-color-border); }
+.stoa-tabs__list {
+  display: flex; flex-wrap: wrap; gap: var(--stoa-space-1);
+  border-block-end: 1px solid var(--stoa-color-border);
+}
 .stoa-tabs__tab {
   padding: var(--stoa-space-2) var(--stoa-space-3); cursor: pointer; color: var(--stoa-color-text-muted);
   border-block-end: 2px solid transparent; outline: none;
 }
+.stoa-tabs__tab[data-hovered]:not([data-selected]) { color: var(--stoa-color-text); }
 .stoa-tabs__tab[data-selected] { color: var(--stoa-color-text); border-block-end-color: var(--stoa-color-accent); }
 .stoa-tabs__tab[data-focus-visible] { outline: var(--stoa-focus-width) solid var(--stoa-color-focus); outline-offset: -2px; }
 .stoa-tabs__panel { padding-block: var(--stoa-space-4); outline: none; }
+/* Panels kept mounted while inactive are inert; they keep their state
+   (a running worker, a filled form) but take no space. */
+.stoa-tabs__panel[inert] { display: none; }
