@@ -83,8 +83,21 @@ export function StatusBadge({ tone, children }: { tone: StatusTone; children: Re
 
 export type TabItem = { id: string; label: string; content: ReactNode };
 
-/** Tabs with arrow-key navigation (React Aria). */
-export function Tabs({ label, items, selected, onChange }: { label: string; items: TabItem[]; selected?: string; onChange?: (id: string) => void }) {
+/** Tabs with arrow-key navigation (React Aria). With `keepMounted`, inactive
+ * panels stay mounted (inert and hidden), so their state survives a switch. */
+export function Tabs({
+  label,
+  items,
+  selected,
+  onChange,
+  keepMounted = false,
+}: {
+  label: string;
+  items: TabItem[];
+  selected?: string;
+  onChange?: (id: string) => void;
+  keepMounted?: boolean;
+}) {
   return (
     <AriaTabs className="stoa-tabs" selectedKey={selected} onSelectionChange={(k: Key) => onChange?.(String(k))}>
       <TabList aria-label={label} className="stoa-tabs__list">
@@ -95,7 +108,7 @@ export function Tabs({ label, items, selected, onChange }: { label: string; item
         ))}
       </TabList>
       {items.map((t) => (
-        <TabPanel key={t.id} id={t.id} className="stoa-tabs__panel">
+        <TabPanel key={t.id} id={t.id} className="stoa-tabs__panel" shouldForceMount={keepMounted}>
           {t.content}
         </TabPanel>
       ))}

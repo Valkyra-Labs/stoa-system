@@ -1,6 +1,9 @@
 // @vitest-environment jsdom
-import { describe, expect, it, vi } from "vitest";
-import { fireEvent, render, screen } from "@testing-library/react";
+import React from "react";
+import { afterEach, describe, expect, it, vi } from "vitest";
+import { cleanup, fireEvent, render, screen } from "@testing-library/react";
+
+afterEach(cleanup);
 import { StatusBadge, Tabs, TextField } from "./index";
 
 describe("StatusBadge", () => {
@@ -50,5 +53,47 @@ describe("Tabs", () => {
     first.focus();
     fireEvent.keyDown(first, { key: "ArrowRight" });
     expect(screen.getByRole("tab", { name: "Examples" }).getAttribute("aria-selected")).toBe("true");
+  });
+
+  it("keeps inactive panels mounted and inert with keepMounted, so their state survives", () => {
+    let mounts = 0;
+    const Counted = () => {
+      React.useEffect(() => {
+        mounts += 1;
+      }, []);
+      return <p>examples panel</p>;
+    };
+    render(
+      <Tabs
+        label="Sections"
+        keepMounted
+        items={[
+          { id: "a", label: "Check", content: <p>check panel</p> },
+          { id: "b", label: "Examples", content: <Counted /> },
+        ]}
+      />,
+    );
+    // The inactive panel is in the document but inert, so it is neither
+    // shown nor reachable.
+    const hidden = screen.getByText("examples panel").closest(".stoa-tabs__panel");
+    expect(hidden?.hasAttribute("inert")).toBe(true);
+    const tab = screen.getByRole("tab", { name: "Examples" });
+    fireEvent.mouseDown(tab);
+    fireEvent.click(tab);
+    fireEvent.keyDown(screen.getByRole("tab", { name: "Check" }), { key: "ArrowRight" });
+    expect(mounts).toBe(1);
+  });
+
+  it("unmounts inactive panels by default", () => {
+    render(
+      <Tabs
+        label="Sections"
+        items={[
+          { id: "a", label: "Check", content: <p>check panel</p> },
+          { id: "b", label: "Examples", content: <p>examples panel</p> },
+        ]}
+      />,
+    );
+    expect(screen.queryByText("examples panel")).toBeNull();
   });
 });

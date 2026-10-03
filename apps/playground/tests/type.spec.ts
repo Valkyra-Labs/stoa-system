@@ -3,6 +3,9 @@
 // reach all four frames, and the canvas check answers for this browser.
 import { expect, test, type Page } from "@playwright/test";
 
+/** The side panel is tabbed; a control is reachable once its tab is open. */
+const openTab = (page: Page, name: string | RegExp) => page.getByRole("tab", { name }).click();
+
 const FRAMES = ["light-ltr", "light-rtl", "dark-ltr", "dark-rtl"];
 
 const FIXTURES = {
@@ -14,6 +17,7 @@ const FIXTURES = {
 
 const openTypePanel = async (page: Page) => {
   await page.goto("/");
+  await openTab(page, "Type");
   await expect(page.getByRole("heading", { name: "Type", level: 2 })).toBeVisible();
   // The shipped families are read out of the bundle on open, which is also
   // the proof that the worker started and HarfBuzz initialised.
@@ -170,6 +174,7 @@ test("a snapshot carries the font references and the roles, and no font bytes", 
       body: JSON.stringify({ path: "apps/playground/snapshots/test.json", commit: "0".repeat(40), dirty: true }),
     });
   });
+  await openTab(page, "Snapshot");
   await page.getByRole("button", { name: "Save snapshot" }).click();
   await expect.poll(() => payload !== null).toBe(true);
 
