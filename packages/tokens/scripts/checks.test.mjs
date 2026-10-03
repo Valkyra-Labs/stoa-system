@@ -38,7 +38,7 @@ test("the resolver does not let the prefers-color-scheme block leak into the lig
 
 test("the resolver reads every density mode, with regular as the default", () => {
   assert.deepEqual(Object.keys(resolved.densities), ["compact", "regular", "comfortable"]);
-  assert.equal(resolved.densities.compact["density-row-height"], "22px");
+  assert.equal(resolved.densities.compact["density-row-height"], "24px");
   assert.equal(resolved.densities.regular["density-row-height"], "28px");
   assert.equal(resolved.densities.comfortable["density-row-height"], "36px");
   // Regular is declared on `:root` as well, so the theme maps carry it.

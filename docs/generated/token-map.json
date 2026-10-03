@@ -141,15 +141,45 @@
       "reachedByTheme": {
         "light": {
           "direct": false,
-          "via": [
-            "--stoa-color-warning"
-          ]
+          "via": []
         },
         "dark": {
           "direct": false,
           "via": [
             "--stoa-color-warning"
           ]
+        }
+      },
+      "unused": false
+    },
+    {
+      "name": "--stoa-color-amber-700",
+      "group": "color",
+      "kind": "primitive",
+      "value": "oklch(0.55 0.12 65)",
+      "resolvedValue": "oklch(0.55 0.12 65)",
+      "aliasOf": null,
+      "readBy": {
+        "components": [
+          {
+            "component": "StatusBadge",
+            "file": "packages/react/src/styles.css",
+            "line": 218,
+            "via": "--stoa-color-warning"
+          }
+        ],
+        "stories": []
+      },
+      "reachedByTheme": {
+        "light": {
+          "direct": false,
+          "via": [
+            "--stoa-color-warning"
+          ]
+        },
+        "dark": {
+          "direct": false,
+          "via": []
         }
       },
       "unused": false
@@ -777,14 +807,14 @@
       "name": "--stoa-color-border-strong",
       "group": "color",
       "kind": "semantic",
-      "value": "var(--stoa-color-neutral-300)",
-      "resolvedValue": "oklch(0.87 0.007 250)",
-      "aliasOf": "--stoa-color-neutral-300",
+      "value": "var(--stoa-color-neutral-450)",
+      "resolvedValue": "oklch(0.64 0.011 250)",
+      "aliasOf": "--stoa-color-neutral-450",
       "theme": {
         "dark": {
-          "value": "oklch(0.28 0.01 250)",
-          "aliasOf": "--stoa-color-neutral-800",
-          "resolvedValue": "oklch(0.28 0.01 250)"
+          "value": "oklch(0.55 0.012 250)",
+          "aliasOf": "--stoa-color-neutral-500",
+          "resolvedValue": "oklch(0.55 0.012 250)"
         }
       },
       "readBy": {
@@ -1533,70 +1563,20 @@
       "resolvedValue": "oklch(0.87 0.007 250)",
       "aliasOf": null,
       "readBy": {
-        "components": [
-          {
-            "component": "Button",
-            "file": "packages/react/src/styles.css",
-            "line": 45,
-            "via": "--stoa-color-border-strong"
-          },
-          {
-            "component": "ChoiceGroup",
-            "file": "packages/react/src/styles.css",
-            "line": 45,
-            "via": "--stoa-color-border-strong"
-          },
-          {
-            "component": "NumberField",
-            "file": "packages/react/src/styles.css",
-            "line": 208,
-            "via": "--stoa-color-border-strong"
-          },
-          {
-            "component": "Select",
-            "file": "packages/react/src/styles.css",
-            "line": 45,
-            "via": "--stoa-color-border-strong"
-          },
-          {
-            "component": "Select",
-            "file": "packages/react/src/styles.css",
-            "line": 128,
-            "via": "--stoa-color-border-strong"
-          },
-          {
-            "component": "TextField",
-            "file": "packages/react/src/styles.css",
-            "line": 208,
-            "via": "--stoa-color-border-strong"
-          },
-          {
-            "component": "TimeSlider",
-            "file": "packages/react/src/styles.css",
-            "line": 175,
-            "via": "--stoa-color-border-strong"
-          }
-        ],
-        "stories": [
-          "Controls/Playback > Choices",
-          "Controls/Playback > Counters",
-          "Controls/Playback > Trades",
-          "Controls/Playback > Transport"
-        ]
+        "components": [],
+        "stories": []
       },
       "reachedByTheme": {
         "light": {
           "direct": false,
-          "via": [
-            "--stoa-color-border-strong"
-          ]
+          "via": []
         },
         "dark": {
           "direct": false,
           "via": []
         }
       },
-      "unused": false
+      "unused": true
     },
     {
       "name": "--stoa-color-neutral-400",
@@ -1721,6 +1701,99 @@
       "unused": false
     },
     {
+      "name": "--stoa-color-neutral-450",
+      "group": "color",
+      "kind": "primitive",
+      "value": "oklch(0.64 0.011 250)",
+      "resolvedValue": "oklch(0.64 0.011 250)",
+      "aliasOf": null,
+      "readBy": {
+        "components": [
+          {
+            "component": "Button",
+            "file": "packages/react/src/styles.css",
+            "line": 45,
+            "via": "--stoa-color-border-strong"
+          },
+          {
+            "component": "Button",
+            "file": "packages/react/src/styles.css",
+            "line": 78,
+            "via": "--stoa-color-text-subtle"
+          },
+          {
+            "component": "ChoiceGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 45,
+            "via": "--stoa-color-border-strong"
+          },
+          {
+            "component": "ChoiceGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 78,
+            "via": "--stoa-color-text-subtle"
+          },
+          {
+            "component": "NumberField",
+            "file": "packages/react/src/styles.css",
+            "line": 208,
+            "via": "--stoa-color-border-strong"
+          },
+          {
+            "component": "Select",
+            "file": "packages/react/src/styles.css",
+            "line": 45,
+            "via": "--stoa-color-border-strong"
+          },
+          {
+            "component": "Select",
+            "file": "packages/react/src/styles.css",
+            "line": 78,
+            "via": "--stoa-color-text-subtle"
+          },
+          {
+            "component": "Select",
+            "file": "packages/react/src/styles.css",
+            "line": 128,
+            "via": "--stoa-color-border-strong"
+          },
+          {
+            "component": "TextField",
+            "file": "packages/react/src/styles.css",
+            "line": 208,
+            "via": "--stoa-color-border-strong"
+          },
+          {
+            "component": "TimeSlider",
+            "file": "packages/react/src/styles.css",
+            "line": 175,
+            "via": "--stoa-color-border-strong"
+          }
+        ],
+        "stories": [
+          "Controls/Playback > Choices",
+          "Controls/Playback > Counters",
+          "Controls/Playback > Trades",
+          "Controls/Playback > Transport"
+        ]
+      },
+      "reachedByTheme": {
+        "light": {
+          "direct": false,
+          "via": [
+            "--stoa-color-border-strong"
+          ]
+        },
+        "dark": {
+          "direct": false,
+          "via": [
+            "--stoa-color-text-subtle"
+          ]
+        }
+      },
+      "unused": false
+    },
+    {
       "name": "--stoa-color-neutral-50",
       "group": "color",
       "kind": "primitive",
@@ -1764,8 +1837,20 @@
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
+            "line": 45,
+            "via": "--stoa-color-border-strong"
+          },
+          {
+            "component": "Button",
+            "file": "packages/react/src/styles.css",
             "line": 78,
             "via": "--stoa-color-text-subtle"
+          },
+          {
+            "component": "ChoiceGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 45,
+            "via": "--stoa-color-border-strong"
           },
           {
             "component": "ChoiceGroup",
@@ -1774,10 +1859,40 @@
             "via": "--stoa-color-text-subtle"
           },
           {
+            "component": "NumberField",
+            "file": "packages/react/src/styles.css",
+            "line": 208,
+            "via": "--stoa-color-border-strong"
+          },
+          {
+            "component": "Select",
+            "file": "packages/react/src/styles.css",
+            "line": 45,
+            "via": "--stoa-color-border-strong"
+          },
+          {
             "component": "Select",
             "file": "packages/react/src/styles.css",
             "line": 78,
             "via": "--stoa-color-text-subtle"
+          },
+          {
+            "component": "Select",
+            "file": "packages/react/src/styles.css",
+            "line": 128,
+            "via": "--stoa-color-border-strong"
+          },
+          {
+            "component": "TextField",
+            "file": "packages/react/src/styles.css",
+            "line": 208,
+            "via": "--stoa-color-border-strong"
+          },
+          {
+            "component": "TimeSlider",
+            "file": "packages/react/src/styles.css",
+            "line": 175,
+            "via": "--stoa-color-border-strong"
           }
         ],
         "stories": [
@@ -1797,7 +1912,7 @@
         "dark": {
           "direct": false,
           "via": [
-            "--stoa-color-text-subtle"
+            "--stoa-color-border-strong"
           ]
         }
       },
@@ -1956,56 +2071,8 @@
       "resolvedValue": "oklch(0.28 0.01 250)",
       "aliasOf": null,
       "readBy": {
-        "components": [
-          {
-            "component": "Button",
-            "file": "packages/react/src/styles.css",
-            "line": 45,
-            "via": "--stoa-color-border-strong"
-          },
-          {
-            "component": "ChoiceGroup",
-            "file": "packages/react/src/styles.css",
-            "line": 45,
-            "via": "--stoa-color-border-strong"
-          },
-          {
-            "component": "NumberField",
-            "file": "packages/react/src/styles.css",
-            "line": 208,
-            "via": "--stoa-color-border-strong"
-          },
-          {
-            "component": "Select",
-            "file": "packages/react/src/styles.css",
-            "line": 45,
-            "via": "--stoa-color-border-strong"
-          },
-          {
-            "component": "Select",
-            "file": "packages/react/src/styles.css",
-            "line": 128,
-            "via": "--stoa-color-border-strong"
-          },
-          {
-            "component": "TextField",
-            "file": "packages/react/src/styles.css",
-            "line": 208,
-            "via": "--stoa-color-border-strong"
-          },
-          {
-            "component": "TimeSlider",
-            "file": "packages/react/src/styles.css",
-            "line": 175,
-            "via": "--stoa-color-border-strong"
-          }
-        ],
-        "stories": [
-          "Controls/Playback > Choices",
-          "Controls/Playback > Counters",
-          "Controls/Playback > Trades",
-          "Controls/Playback > Transport"
-        ]
+        "components": [],
+        "stories": []
       },
       "reachedByTheme": {
         "light": {
@@ -2014,12 +2081,10 @@
         },
         "dark": {
           "direct": false,
-          "via": [
-            "--stoa-color-border-strong"
-          ]
+          "via": []
         }
       },
-      "unused": false
+      "unused": true
     },
     {
       "name": "--stoa-color-neutral-850",
@@ -3297,9 +3362,9 @@
       "aliasOf": "--stoa-color-neutral-500",
       "theme": {
         "dark": {
-          "value": "oklch(0.55 0.012 250)",
-          "aliasOf": "--stoa-color-neutral-500",
-          "resolvedValue": "oklch(0.55 0.012 250)"
+          "value": "oklch(0.64 0.011 250)",
+          "aliasOf": "--stoa-color-neutral-450",
+          "resolvedValue": "oklch(0.64 0.011 250)"
         }
       },
       "readBy": {
@@ -3440,9 +3505,9 @@
       "name": "--stoa-color-warning",
       "group": "color",
       "kind": "semantic",
-      "value": "var(--stoa-color-amber-500)",
-      "resolvedValue": "oklch(0.78 0.15 80)",
-      "aliasOf": "--stoa-color-amber-500",
+      "value": "var(--stoa-color-amber-700)",
+      "resolvedValue": "oklch(0.55 0.12 65)",
+      "aliasOf": "--stoa-color-amber-700",
       "theme": {
         "dark": {
           "value": "oklch(0.78 0.15 80)",
@@ -3581,7 +3646,7 @@
       "resolvedValue": "28px",
       "aliasOf": null,
       "density": {
-        "compact": "22px",
+        "compact": "24px",
         "regular": "28px",
         "comfortable": "36px"
       },
@@ -5119,7 +5184,9 @@
     }
   ],
   "unusedTokens": [
+    "--stoa-color-neutral-300",
     "--stoa-color-neutral-700",
+    "--stoa-color-neutral-800",
     "--stoa-font-line-height-normal",
     "--stoa-font-line-height-tight",
     "--stoa-font-size-2xl",
@@ -5149,8 +5216,8 @@
     }
   ],
   "summary": {
-    "tokenCount": 84,
-    "unusedCount": 20,
+    "tokenCount": 86,
+    "unusedCount": 22,
     "hardcodedLiteralCount": 0,
     "undefinedCount": 1
   }

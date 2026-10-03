@@ -3,9 +3,12 @@
 // tested the same way tokenModel.test.ts tests the resolver: against the
 // real token sources, no browser and no build required.
 import { describe, expect, it } from "vitest";
-import knownViolations from "../../../packages/tokens/known-violations.json";
+import knownViolationsJson from "../../../packages/tokens/known-violations.json";
 import { rulesForToken, runBrowserChecks, tokensForCheck, type BrowserCheck } from "./browserChecks";
 import { DENSITY_MODES, baseTokens, resolveTokens, type DensityMode, type Overrides, type ResolvedTokens } from "./tokenModel";
+
+// Typed here: with the list empty, the JSON's own type is never[].
+const knownViolations: { violations: { id: string }[] } = knownViolationsJson;
 
 function inputsFor(overrides: Overrides) {
   const themes = { light: resolveTokens(baseTokens, overrides, "light", "regular"), dark: resolveTokens(baseTokens, overrides, "dark", "regular") };
@@ -73,7 +76,12 @@ describe("runBrowserChecks reacting to an override", () => {
   });
 
   it("turns a recorded violation into fixed when the override corrects it", () => {
-    const fixed = runBrowserChecks(inputsFor({ "semantic.light:color.warning": "oklch(0.35 0.15 80)" }));
+    // The real list is empty, so the recorded violation is this test's own:
+    // warning made too light to pass, then corrected by the override.
+    const fixed = runBrowserChecks({
+      ...inputsFor({ "semantic.light:color.warning": "oklch(0.35 0.15 80)" }),
+      known: [{ id: "text-contrast/light/warning-on-surface" }],
+    });
     if (!fixed.available) throw new Error(fixed.note);
     const entry = byId(fixed.checks).get("text-contrast/light/warning-on-surface");
     expect(entry?.pass).toBe(true);

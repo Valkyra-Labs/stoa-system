@@ -26,12 +26,14 @@ them.
   colour and a shape or sign. Contrast is measured rather than claimed:
   `packages/tokens/src/pairs.mjs` lists every colour pair and size that is
   checked and why, `pnpm --filter @valkyra-labs/stoa-tokens verify` prints
-  the current numbers, and the failures that exist today are recorded in
-  `packages/tokens/known-violations.json`. Body text meets 7:1 on both
-  surfaces and most text roles meet AA; the warning colour used as text,
-  `text-subtle` in the dark theme, the heatmap's price labels over a
-  full-opacity cell, and the boundary of a text field or button are below
-  their thresholds and are Stage 2 work.
+  the current numbers, and any failure that is accepted for a while is
+  recorded in `packages/tokens/known-violations.json`, which is empty:
+  every enforced check passes in both themes and every density. Body
+  text meets 7:1 on both surfaces. Ten measurements are reported but not
+  enforced, each with its reason in `pairs.mjs`: the decorative `border`
+  rule, the translucent depth bars (their sizes are printed beside them),
+  and the lightness gap between up and down (told apart by sign and
+  shape, and by hue for every colour-vision model checked).
 - **Motion explains a change of state** and follows the user's
   reduced-motion setting: every duration token goes to zero.
 - **Right-to-left from the start**: logical properties only, and a type

@@ -7,22 +7,16 @@ import { INITIAL_VIEWS, OTHER_VIEWS, VIEW_PAIRS, showViews } from "./frames";
 /** The side panel is tabbed; a control is reachable once its tab is open. */
 const openTab = (page: Page, name: string | RegExp) => page.getByRole("tab", { name }).click();
 
-/** A primitive both themes reference (`--stoa-color-warning` in each), so
+/** A primitive both themes reference (`--stoa-color-up-wash` in each), so
  * one edit has to show up in every view. */
-const TOKEN = "primitive:color.amber.500";
-const BASE_VALUE = "oklch(0.78 0.15 80)";
-const EDITED_VALUE = "oklch(0.55 0.2 300)";
+const TOKEN = "primitive:color.teal.wash";
+const BASE_VALUE = "oklch(0.62 0.13 170 / 0.18)";
+const EDITED_VALUE = "oklch(0.55 0.2 300 / 0.3)";
 
-const warningVariable = (page: Page, frame: string) =>
+const washVariable = (page: Page, frame: string) =>
   page
     .locator(`[data-frame="${frame}"]`)
-    .evaluate((element) => getComputedStyle(element).getPropertyValue("--stoa-color-warning").trim());
-
-const badgeColor = (page: Page, frame: string) =>
-  page
-    .locator(`[data-frame="${frame}"] .stoa-badge--warning > span`)
-    .first()
-    .evaluate((element) => getComputedStyle(element).color);
+    .evaluate((element) => getComputedStyle(element).getPropertyValue("--stoa-color-up-wash").trim());
 
 test("loads two frames of the same dense screen, which show all four views between them", async ({ page }) => {
   await page.goto("/");
@@ -52,21 +46,19 @@ test("one colour override reaches every view, and reset undoes it", async ({ pag
   await page.goto("/");
   const shown = INITIAL_VIEWS;
   const other = OTHER_VIEWS;
-  const before = await Promise.all(shown.map((frame) => badgeColor(page, frame)));
-  for (const frame of shown) expect(await warningVariable(page, frame)).toBe(BASE_VALUE);
+  for (const frame of shown) expect(await washVariable(page, frame)).toBe(BASE_VALUE);
 
   await openTab(page, "Tokens");
   await page.locator(`[data-token="${TOKEN}"] input`).fill(EDITED_VALUE);
 
-  for (const [index, frame] of shown.entries()) {
+  for (const frame of shown) {
     await expect
-      .poll(() => warningVariable(page, frame), { message: `${frame} takes the override` })
+      .poll(() => washVariable(page, frame), { message: `${frame} takes the override` })
       .toBe(EDITED_VALUE);
-    expect(await badgeColor(page, frame)).not.toBe(before[index]);
   }
   // A view picked after the edit shows it too.
   await showViews(page, other);
-  for (const frame of other) expect(await warningVariable(page, frame)).toBe(EDITED_VALUE);
+  for (const frame of other) expect(await washVariable(page, frame)).toBe(EDITED_VALUE);
   await showViews(page, shown);
 
   // The override is marked on the control and listed with its derived value.
@@ -81,10 +73,7 @@ test("one colour override reaches every view, and reset undoes it", async ({ pag
   await row.getByRole("button", { name: "Reset" }).click();
 
   await expect(page.locator('[data-override-count="0"]')).toBeVisible();
-  for (const [index, frame] of shown.entries()) {
-    await expect.poll(() => warningVariable(page, frame)).toBe(BASE_VALUE);
-    expect(await badgeColor(page, frame)).toBe(before[index]);
-  }
+  for (const frame of shown) await expect.poll(() => washVariable(page, frame)).toBe(BASE_VALUE);
   await expect(page.locator(`[data-token="${TOKEN}"]`)).not.toHaveAttribute("data-overridden", "true");
 });
 
