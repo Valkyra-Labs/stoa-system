@@ -16,8 +16,9 @@ pnpm --filter playground dev   # http://localhost:5173
   synthetic stream that can be paused and resumed. Each frame header picks
   the frame's view (light or dark by left to right or right to left), its
   language (English or Arabic: the screen's words, Stoa's own words and
-  Arabic-Indic digits, through React Aria's `I18nProvider`), and a
-  colour-vision preview. The replay slider under the heatmap scrubs back
+  Arabic-Indic digits, through React Aria's `I18nProvider`), a reduced
+  motion switch (`data-motion="reduce"` on the frame, every duration token
+  at zero), and a colour-vision preview. The replay slider under the heatmap scrubs back
   over the stream's last window of frames.
 - Token values are written as CSS custom properties on each frame's
   container, never on the document, so a re-theme restyles the preview
@@ -25,6 +26,9 @@ pnpm --filter playground dev   # http://localhost:5173
 - The base is stoa-default: the token files in `packages/tokens/tokens`
   as they are in this working tree, one theme with a light and a dark
   mode.
+- While a token's field has focus, the checks that read that token are
+  listed in a tooltip beside the side panel; length tokens take a typed
+  value as well as the slider. The Stats tab holds the session counters.
 - Every edit in the tokens panel is an override against stoa-default,
   listed with the value the token files give, resettable one by one or all
   at once, with undo and redo. One step back is one edit as a person would
