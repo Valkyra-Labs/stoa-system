@@ -79,17 +79,23 @@
             "via": "readCanvasTokens"
           },
           {
+            "component": "Select",
+            "file": "packages/react/src/styles.css",
+            "line": 138
+          },
+          {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
-            "line": 128
+            "line": 188
           },
           {
             "component": "TimeSlider",
             "file": "packages/react/src/styles.css",
-            "line": 94
+            "line": 150
           }
         ],
         "stories": [
+          "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
           "Controls/Playback > Transport",
@@ -126,7 +132,7 @@
           {
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
-            "line": 116,
+            "line": 176,
             "via": "--stoa-color-warning"
           }
         ],
@@ -380,21 +386,39 @@
             "via": "--stoa-color-accent"
           },
           {
+            "component": "Select",
+            "file": "packages/react/src/styles.css",
+            "line": 80,
+            "via": "--stoa-color-focus"
+          },
+          {
+            "component": "Select",
+            "file": "packages/react/src/styles.css",
+            "line": 138,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "Select",
+            "file": "packages/react/src/styles.css",
+            "line": 139,
+            "via": "--stoa-color-focus"
+          },
+          {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
-            "line": 128,
+            "line": 188,
             "via": "--stoa-color-accent"
           },
           {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
-            "line": 129,
+            "line": 189,
             "via": "--stoa-color-focus"
           },
           {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 109,
+            "line": 169,
             "via": "--stoa-color-focus"
           },
           {
@@ -406,11 +430,12 @@
           {
             "component": "TimeSlider",
             "file": "packages/react/src/styles.css",
-            "line": 94,
+            "line": 150,
             "via": "--stoa-color-accent"
           }
         ],
         "stories": [
+          "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
           "Controls/Playback > Transport",
@@ -460,15 +485,27 @@
             "via": "--stoa-color-focus"
           },
           {
+            "component": "Select",
+            "file": "packages/react/src/styles.css",
+            "line": 80,
+            "via": "--stoa-color-focus"
+          },
+          {
+            "component": "Select",
+            "file": "packages/react/src/styles.css",
+            "line": 139,
+            "via": "--stoa-color-focus"
+          },
+          {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
-            "line": 129,
+            "line": 189,
             "via": "--stoa-color-focus"
           },
           {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 109,
+            "line": 169,
             "via": "--stoa-color-focus"
           },
           {
@@ -479,6 +516,7 @@
           }
         ],
         "stories": [
+          "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
           "Controls/Playback > Transport",
@@ -581,19 +619,26 @@
             "via": "--stoa-color-accent"
           },
           {
+            "component": "Select",
+            "file": "packages/react/src/styles.css",
+            "line": 138,
+            "via": "--stoa-color-accent"
+          },
+          {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
-            "line": 128,
+            "line": 188,
             "via": "--stoa-color-accent"
           },
           {
             "component": "TimeSlider",
             "file": "packages/react/src/styles.css",
-            "line": 94,
+            "line": 150,
             "via": "--stoa-color-accent"
           }
         ],
         "stories": [
+          "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
           "Controls/Playback > Transport",
@@ -664,9 +709,14 @@
             "line": 11
           },
           {
+            "component": "Select",
+            "file": "packages/react/src/styles.css",
+            "line": 75
+          },
+          {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
-            "line": 121
+            "line": 181
           },
           {
             "component": "TradeTable",
@@ -675,6 +725,7 @@
           }
         ],
         "stories": [
+          "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
           "Controls/Playback > Transport",
@@ -725,17 +776,28 @@
             "line": 43
           },
           {
+            "component": "Select",
+            "file": "packages/react/src/styles.css",
+            "line": 43
+          },
+          {
+            "component": "Select",
+            "file": "packages/react/src/styles.css",
+            "line": 126
+          },
+          {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 106
+            "line": 166
           },
           {
             "component": "TimeSlider",
             "file": "packages/react/src/styles.css",
-            "line": 90
+            "line": 146
           }
         ],
         "stories": [
+          "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
           "Controls/Playback > Transport"
@@ -772,7 +834,7 @@
           {
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
-            "line": 114
+            "line": 174
           },
           {
             "component": "TradeTable",
@@ -781,6 +843,7 @@
           }
         ],
         "stories": [
+          "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
           "Controls/Playback > Transport",
@@ -876,14 +939,24 @@
             "line": 80
           },
           {
+            "component": "Select",
+            "file": "packages/react/src/styles.css",
+            "line": 80
+          },
+          {
+            "component": "Select",
+            "file": "packages/react/src/styles.css",
+            "line": 139
+          },
+          {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
-            "line": 129
+            "line": 189
           },
           {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 109
+            "line": 169
           },
           {
             "component": "TimeSlider",
@@ -892,6 +965,7 @@
           }
         ],
         "stories": [
+          "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
           "Controls/Playback > Transport",
@@ -962,13 +1036,26 @@
             "via": "--stoa-color-surface"
           },
           {
+            "component": "Select",
+            "file": "packages/react/src/styles.css",
+            "line": 45,
+            "via": "--stoa-color-surface"
+          },
+          {
+            "component": "Select",
+            "file": "packages/react/src/styles.css",
+            "line": 125,
+            "via": "--stoa-color-surface"
+          },
+          {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 107,
+            "line": 167,
             "via": "--stoa-color-surface"
           }
         ],
         "stories": [
+          "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
           "Controls/Playback > Transport",
@@ -1107,31 +1194,56 @@
             "via": "--stoa-color-text"
           },
           {
+            "component": "Select",
+            "file": "packages/react/src/styles.css",
+            "line": 46,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "Select",
+            "file": "packages/react/src/styles.css",
+            "line": 57,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "Select",
+            "file": "packages/react/src/styles.css",
+            "line": 74,
+            "via": "--stoa-color-surface-sunken"
+          },
+          {
+            "component": "Select",
+            "file": "packages/react/src/styles.css",
+            "line": 130,
+            "via": "--stoa-color-text"
+          },
+          {
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
-            "line": 115,
+            "line": 175,
             "via": "--stoa-color-text"
           },
           {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
-            "line": 127,
+            "line": 187,
             "via": "--stoa-color-text"
           },
           {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
-            "line": 128,
+            "line": 188,
             "via": "--stoa-color-text"
           },
           {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 107,
+            "line": 167,
             "via": "--stoa-color-text"
           }
         ],
         "stories": [
+          "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
           "Controls/Playback > Transport",
@@ -1224,9 +1336,28 @@
             "file": "packages/react/src/styles.css",
             "line": 57,
             "via": "--stoa-color-surface-hover"
+          },
+          {
+            "component": "Select",
+            "file": "packages/react/src/styles.css",
+            "line": 55,
+            "via": "--stoa-color-surface-hover"
+          },
+          {
+            "component": "Select",
+            "file": "packages/react/src/styles.css",
+            "line": 57,
+            "via": "--stoa-color-surface-hover"
+          },
+          {
+            "component": "Select",
+            "file": "packages/react/src/styles.css",
+            "line": 137,
+            "via": "--stoa-color-surface-hover"
           }
         ],
         "stories": [
+          "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
           "Controls/Playback > Transport"
@@ -1286,9 +1417,15 @@
             "via": "--stoa-color-border"
           },
           {
+            "component": "Select",
+            "file": "packages/react/src/styles.css",
+            "line": 75,
+            "via": "--stoa-color-border"
+          },
+          {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
-            "line": 121,
+            "line": 181,
             "via": "--stoa-color-border"
           },
           {
@@ -1299,6 +1436,7 @@
           }
         ],
         "stories": [
+          "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
           "Controls/Playback > Transport",
@@ -1346,19 +1484,32 @@
             "via": "--stoa-color-border-strong"
           },
           {
+            "component": "Select",
+            "file": "packages/react/src/styles.css",
+            "line": 43,
+            "via": "--stoa-color-border-strong"
+          },
+          {
+            "component": "Select",
+            "file": "packages/react/src/styles.css",
+            "line": 126,
+            "via": "--stoa-color-border-strong"
+          },
+          {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 106,
+            "line": 166,
             "via": "--stoa-color-border-strong"
           },
           {
             "component": "TimeSlider",
             "file": "packages/react/src/styles.css",
-            "line": 90,
+            "line": 146,
             "via": "--stoa-color-border-strong"
           }
         ],
         "stories": [
+          "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
           "Controls/Playback > Transport"
@@ -1406,33 +1557,45 @@
             "via": "--stoa-color-text-muted"
           },
           {
-            "component": "StatBar",
-            "file": "packages/react/src/styles.css",
-            "line": 99,
-            "via": "--stoa-color-text-muted"
-          },
-          {
-            "component": "StatusBadge",
+            "component": "Select",
             "file": "packages/react/src/styles.css",
             "line": 117,
             "via": "--stoa-color-text-muted"
           },
           {
+            "component": "Select",
+            "file": "packages/react/src/styles.css",
+            "line": 159,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "StatBar",
+            "file": "packages/react/src/styles.css",
+            "line": 155,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "StatusBadge",
+            "file": "packages/react/src/styles.css",
+            "line": 177,
+            "via": "--stoa-color-text-muted"
+          },
+          {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
-            "line": 124,
+            "line": 184,
             "via": "--stoa-color-text-muted"
           },
           {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 103,
+            "line": 159,
             "via": "--stoa-color-text-muted"
           },
           {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 110,
+            "line": 170,
             "via": "--stoa-color-text-muted"
           },
           {
@@ -1443,6 +1606,7 @@
           }
         ],
         "stories": [
+          "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
           "Controls/Playback > Transport",
@@ -1521,9 +1685,16 @@
             "file": "packages/react/src/styles.css",
             "line": 76,
             "via": "--stoa-color-text-subtle"
+          },
+          {
+            "component": "Select",
+            "file": "packages/react/src/styles.css",
+            "line": 76,
+            "via": "--stoa-color-text-subtle"
           }
         ],
         "stories": [
+          "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
           "Controls/Playback > Transport"
@@ -1573,33 +1744,45 @@
             "via": "--stoa-color-text-muted"
           },
           {
-            "component": "StatBar",
-            "file": "packages/react/src/styles.css",
-            "line": 99,
-            "via": "--stoa-color-text-muted"
-          },
-          {
-            "component": "StatusBadge",
+            "component": "Select",
             "file": "packages/react/src/styles.css",
             "line": 117,
             "via": "--stoa-color-text-muted"
           },
           {
+            "component": "Select",
+            "file": "packages/react/src/styles.css",
+            "line": 159,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "StatBar",
+            "file": "packages/react/src/styles.css",
+            "line": 155,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "StatusBadge",
+            "file": "packages/react/src/styles.css",
+            "line": 177,
+            "via": "--stoa-color-text-muted"
+          },
+          {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
-            "line": 124,
+            "line": 184,
             "via": "--stoa-color-text-muted"
           },
           {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 103,
+            "line": 159,
             "via": "--stoa-color-text-muted"
           },
           {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 110,
+            "line": 170,
             "via": "--stoa-color-text-muted"
           },
           {
@@ -1610,6 +1793,7 @@
           }
         ],
         "stories": [
+          "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
           "Controls/Playback > Transport",
@@ -1681,19 +1865,32 @@
             "via": "--stoa-color-border-strong"
           },
           {
+            "component": "Select",
+            "file": "packages/react/src/styles.css",
+            "line": 43,
+            "via": "--stoa-color-border-strong"
+          },
+          {
+            "component": "Select",
+            "file": "packages/react/src/styles.css",
+            "line": 126,
+            "via": "--stoa-color-border-strong"
+          },
+          {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 106,
+            "line": 166,
             "via": "--stoa-color-border-strong"
           },
           {
             "component": "TimeSlider",
             "file": "packages/react/src/styles.css",
-            "line": 90,
+            "line": 146,
             "via": "--stoa-color-border-strong"
           }
         ],
         "stories": [
+          "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
           "Controls/Playback > Transport"
@@ -1753,9 +1950,15 @@
             "via": "--stoa-color-border"
           },
           {
+            "component": "Select",
+            "file": "packages/react/src/styles.css",
+            "line": 75,
+            "via": "--stoa-color-border"
+          },
+          {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
-            "line": 121,
+            "line": 181,
             "via": "--stoa-color-border"
           },
           {
@@ -1766,6 +1969,7 @@
           }
         ],
         "stories": [
+          "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
           "Controls/Playback > Transport",
@@ -1823,9 +2027,28 @@
             "file": "packages/react/src/styles.css",
             "line": 57,
             "via": "--stoa-color-surface-hover"
+          },
+          {
+            "component": "Select",
+            "file": "packages/react/src/styles.css",
+            "line": 55,
+            "via": "--stoa-color-surface-hover"
+          },
+          {
+            "component": "Select",
+            "file": "packages/react/src/styles.css",
+            "line": 57,
+            "via": "--stoa-color-surface-hover"
+          },
+          {
+            "component": "Select",
+            "file": "packages/react/src/styles.css",
+            "line": 137,
+            "via": "--stoa-color-surface-hover"
           }
         ],
         "stories": [
+          "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
           "Controls/Playback > Transport"
@@ -1987,37 +2210,68 @@
             "via": "--stoa-color-surface"
           },
           {
+            "component": "Select",
+            "file": "packages/react/src/styles.css",
+            "line": 45,
+            "via": "--stoa-color-surface"
+          },
+          {
+            "component": "Select",
+            "file": "packages/react/src/styles.css",
+            "line": 46,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "Select",
+            "file": "packages/react/src/styles.css",
+            "line": 57,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "Select",
+            "file": "packages/react/src/styles.css",
+            "line": 125,
+            "via": "--stoa-color-surface"
+          },
+          {
+            "component": "Select",
+            "file": "packages/react/src/styles.css",
+            "line": 130,
+            "via": "--stoa-color-text"
+          },
+          {
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
-            "line": 115,
+            "line": 175,
             "via": "--stoa-color-text"
           },
           {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
-            "line": 127,
+            "line": 187,
             "via": "--stoa-color-text"
           },
           {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
-            "line": 128,
+            "line": 188,
             "via": "--stoa-color-text"
           },
           {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 107,
+            "line": 167,
             "via": "--stoa-color-surface"
           },
           {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 107,
+            "line": 167,
             "via": "--stoa-color-text"
           }
         ],
         "stories": [
+          "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
           "Controls/Playback > Transport",
@@ -2070,7 +2324,7 @@
           {
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
-            "line": 114,
+            "line": 174,
             "via": "--stoa-color-down"
           },
           {
@@ -2081,6 +2335,7 @@
           }
         ],
         "stories": [
+          "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
           "Controls/Playback > Transport",
@@ -2132,7 +2387,7 @@
           {
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
-            "line": 114,
+            "line": 174,
             "via": "--stoa-color-down"
           },
           {
@@ -2143,6 +2398,7 @@
           }
         ],
         "stories": [
+          "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
           "Controls/Playback > Transport",
@@ -2271,12 +2527,23 @@
             "line": 10
           },
           {
+            "component": "Select",
+            "file": "packages/react/src/styles.css",
+            "line": 45
+          },
+          {
+            "component": "Select",
+            "file": "packages/react/src/styles.css",
+            "line": 125
+          },
+          {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 107
+            "line": 167
           }
         ],
         "stories": [
+          "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
           "Controls/Playback > Transport",
@@ -2336,9 +2603,25 @@
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
             "line": 57
+          },
+          {
+            "component": "Select",
+            "file": "packages/react/src/styles.css",
+            "line": 55
+          },
+          {
+            "component": "Select",
+            "file": "packages/react/src/styles.css",
+            "line": 57
+          },
+          {
+            "component": "Select",
+            "file": "packages/react/src/styles.css",
+            "line": 137
           }
         ],
         "stories": [
+          "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
           "Controls/Playback > Transport"
@@ -2381,9 +2664,15 @@
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
             "line": 74
+          },
+          {
+            "component": "Select",
+            "file": "packages/react/src/styles.css",
+            "line": 74
           }
         ],
         "stories": [
+          "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
           "Controls/Playback > Transport"
@@ -2425,7 +2714,7 @@
           {
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
-            "line": 113,
+            "line": 173,
             "via": "--stoa-color-up"
           },
           {
@@ -2436,6 +2725,7 @@
           }
         ],
         "stories": [
+          "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
           "Controls/Playback > Transport",
@@ -2487,7 +2777,7 @@
           {
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
-            "line": 113,
+            "line": 173,
             "via": "--stoa-color-up"
           },
           {
@@ -2498,6 +2788,7 @@
           }
         ],
         "stories": [
+          "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
           "Controls/Playback > Transport",
@@ -2666,27 +2957,43 @@
             "via": "readCanvasTokens"
           },
           {
+            "component": "Select",
+            "file": "packages/react/src/styles.css",
+            "line": 46
+          },
+          {
+            "component": "Select",
+            "file": "packages/react/src/styles.css",
+            "line": 57
+          },
+          {
+            "component": "Select",
+            "file": "packages/react/src/styles.css",
+            "line": 130
+          },
+          {
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
-            "line": 115
+            "line": 175
           },
           {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
-            "line": 127
+            "line": 187
           },
           {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
-            "line": 128
+            "line": 188
           },
           {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 107
+            "line": 167
           }
         ],
         "stories": [
+          "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
           "Controls/Playback > Transport",
@@ -2745,29 +3052,39 @@
             "line": 22
           },
           {
-            "component": "StatBar",
-            "file": "packages/react/src/styles.css",
-            "line": 99
-          },
-          {
-            "component": "StatusBadge",
+            "component": "Select",
             "file": "packages/react/src/styles.css",
             "line": 117
           },
           {
+            "component": "Select",
+            "file": "packages/react/src/styles.css",
+            "line": 159
+          },
+          {
+            "component": "StatBar",
+            "file": "packages/react/src/styles.css",
+            "line": 155
+          },
+          {
+            "component": "StatusBadge",
+            "file": "packages/react/src/styles.css",
+            "line": 177
+          },
+          {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
-            "line": 124
+            "line": 184
           },
           {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 103
+            "line": 159
           },
           {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 110
+            "line": 170
           },
           {
             "component": "TradeTable",
@@ -2776,6 +3093,7 @@
           }
         ],
         "stories": [
+          "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
           "Controls/Playback > Transport",
@@ -2825,9 +3143,15 @@
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
             "line": 76
+          },
+          {
+            "component": "Select",
+            "file": "packages/react/src/styles.css",
+            "line": 76
           }
         ],
         "stories": [
+          "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
           "Controls/Playback > Transport"
@@ -2864,7 +3188,7 @@
           {
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
-            "line": 113
+            "line": 173
           },
           {
             "component": "TradeTable",
@@ -2873,6 +3197,7 @@
           }
         ],
         "stories": [
+          "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
           "Controls/Playback > Transport",
@@ -2960,7 +3285,7 @@
           {
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
-            "line": 116
+            "line": 176
           }
         ],
         "stories": []
@@ -2998,6 +3323,7 @@
           }
         ],
         "stories": [
+          "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
           "Controls/Playback > Transport"
@@ -3053,6 +3379,7 @@
           }
         ],
         "stories": [
+          "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
           "Controls/Playback > Transport",
@@ -3109,6 +3436,7 @@
           }
         ],
         "stories": [
+          "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
           "Controls/Playback > Transport",
@@ -3152,12 +3480,18 @@
             "line": 81
           },
           {
+            "component": "Select",
+            "file": "packages/react/src/styles.css",
+            "line": 81
+          },
+          {
             "component": "TimeSlider",
             "file": "packages/react/src/styles.css",
             "line": 81
           }
         ],
         "stories": [
+          "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
           "Controls/Playback > Transport"
@@ -3195,14 +3529,24 @@
             "line": 80
           },
           {
+            "component": "Select",
+            "file": "packages/react/src/styles.css",
+            "line": 80
+          },
+          {
+            "component": "Select",
+            "file": "packages/react/src/styles.css",
+            "line": 139
+          },
+          {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
-            "line": 129
+            "line": 189
           },
           {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 109
+            "line": 169
           },
           {
             "component": "TimeSlider",
@@ -3211,6 +3555,7 @@
           }
         ],
         "stories": [
+          "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
           "Controls/Playback > Transport"
@@ -3252,17 +3597,17 @@
           {
             "component": "StatBar",
             "file": "packages/react/src/styles.css",
-            "line": 97
+            "line": 153
           },
           {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 105
+            "line": 165
           },
           {
             "component": "TimeSlider",
             "file": "packages/react/src/styles.css",
-            "line": 86
+            "line": 142
           },
           {
             "component": "TradeTable",
@@ -3271,6 +3616,7 @@
           }
         ],
         "stories": [
+          "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
           "Controls/Playback > Transport",
@@ -3307,9 +3653,19 @@
             "component": "(css) body",
             "file": ".storybook/preview.css",
             "line": 4
+          },
+          {
+            "component": "Select",
+            "file": "packages/react/src/styles.css",
+            "line": 128
           }
         ],
-        "stories": []
+        "stories": [
+          "Controls/Playback > Choices",
+          "Controls/Playback > Counters",
+          "Controls/Playback > Trades",
+          "Controls/Playback > Transport"
+        ]
       },
       "reachedByTheme": {
         "light": {
@@ -3404,15 +3760,16 @@
           {
             "component": "StatBar",
             "file": "packages/react/src/styles.css",
-            "line": 97
+            "line": 153
           },
           {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 110
+            "line": 170
           }
         ],
         "stories": [
+          "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
           "Controls/Playback > Transport"
@@ -3484,20 +3841,31 @@
       "resolvedValue": "13px",
       "aliasOf": null,
       "readBy": {
-        "components": [],
-        "stories": []
+        "components": [
+          {
+            "component": "Select",
+            "file": "packages/react/src/styles.css",
+            "line": 129
+          }
+        ],
+        "stories": [
+          "Controls/Playback > Choices",
+          "Controls/Playback > Counters",
+          "Controls/Playback > Trades",
+          "Controls/Playback > Transport"
+        ]
       },
       "reachedByTheme": {
         "light": {
-          "direct": false,
+          "direct": true,
           "via": []
         },
         "dark": {
-          "direct": false,
+          "direct": true,
           "via": []
         }
       },
-      "unused": true
+      "unused": false
     },
     {
       "name": "--stoa-font-size-xl",
@@ -3532,22 +3900,43 @@
       "readBy": {
         "components": [
           {
+            "component": "ChoiceGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 109
+          },
+          {
             "component": "Panel",
             "file": "packages/react/src/styles.css",
             "line": 18
           },
           {
+            "component": "Select",
+            "file": "packages/react/src/styles.css",
+            "line": 109
+          },
+          {
+            "component": "Select",
+            "file": "packages/react/src/styles.css",
+            "line": 113
+          },
+          {
+            "component": "Select",
+            "file": "packages/react/src/styles.css",
+            "line": 159
+          },
+          {
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
-            "line": 112
+            "line": 172
           },
           {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 103
+            "line": 159
           }
         ],
         "stories": [
+          "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
           "Controls/Playback > Transport"
@@ -3580,12 +3969,18 @@
             "line": 19
           },
           {
+            "component": "Select",
+            "file": "packages/react/src/styles.css",
+            "line": 138
+          },
+          {
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
-            "line": 112
+            "line": 172
           }
         ],
         "stories": [
+          "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
           "Controls/Playback > Transport"
@@ -3619,6 +4014,7 @@
           }
         ],
         "stories": [
+          "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
           "Controls/Playback > Transport"
@@ -3700,9 +4096,15 @@
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
             "line": 48
+          },
+          {
+            "component": "Select",
+            "file": "packages/react/src/styles.css",
+            "line": 48
           }
         ],
         "stories": [
+          "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
           "Controls/Playback > Transport"
@@ -3853,9 +4255,15 @@
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
             "line": 48
+          },
+          {
+            "component": "Select",
+            "file": "packages/react/src/styles.css",
+            "line": 48
           }
         ],
         "stories": [
+          "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
           "Controls/Playback > Transport"
@@ -3885,15 +4293,16 @@
           {
             "component": "TimeSlider",
             "file": "packages/react/src/styles.css",
-            "line": 90
+            "line": 146
           },
           {
             "component": "TimeSlider",
             "file": "packages/react/src/styles.css",
-            "line": 94
+            "line": 150
           }
         ],
         "stories": [
+          "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
           "Controls/Playback > Transport"
@@ -3950,6 +4359,7 @@
           }
         ],
         "stories": [
+          "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
           "Controls/Playback > Transport"
@@ -4010,12 +4420,33 @@
             "line": 44
           },
           {
+            "component": "ChoiceGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 98
+          },
+          {
+            "component": "ChoiceGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 101
+          },
+          {
+            "component": "Select",
+            "file": "packages/react/src/styles.css",
+            "line": 44
+          },
+          {
+            "component": "Select",
+            "file": "packages/react/src/styles.css",
+            "line": 127
+          },
+          {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 107
+            "line": 167
           }
         ],
         "stories": [
+          "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
           "Controls/Playback > Transport",
@@ -4102,30 +4533,56 @@
           {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
-            "line": 83
+            "line": 111
+          },
+          {
+            "component": "Select",
+            "file": "packages/react/src/styles.css",
+            "line": 42
+          },
+          {
+            "component": "Select",
+            "file": "packages/react/src/styles.css",
+            "line": 111
+          },
+          {
+            "component": "Select",
+            "file": "packages/react/src/styles.css",
+            "line": 115
+          },
+          {
+            "component": "Select",
+            "file": "packages/react/src/styles.css",
+            "line": 132
+          },
+          {
+            "component": "Select",
+            "file": "packages/react/src/styles.css",
+            "line": 134
           },
           {
             "component": "StatBar",
             "file": "packages/react/src/styles.css",
-            "line": 98
+            "line": 154
           },
           {
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
-            "line": 112
+            "line": 172
           },
           {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
-            "line": 120
+            "line": 180
           },
           {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 102
+            "line": 158
           }
         ],
         "stories": [
+          "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
           "Controls/Playback > Transport"
@@ -4191,17 +4648,28 @@
             "line": 17
           },
           {
+            "component": "Select",
+            "file": "packages/react/src/styles.css",
+            "line": 42
+          },
+          {
+            "component": "Select",
+            "file": "packages/react/src/styles.css",
+            "line": 116
+          },
+          {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
-            "line": 124
+            "line": 184
           },
           {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 106
+            "line": 166
           }
         ],
         "stories": [
+          "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
           "Controls/Playback > Transport"
@@ -4234,17 +4702,23 @@
             "line": 13
           },
           {
+            "component": "Select",
+            "file": "packages/react/src/styles.css",
+            "line": 134
+          },
+          {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
-            "line": 124
+            "line": 184
           },
           {
             "component": "TimeSlider",
             "file": "packages/react/src/styles.css",
-            "line": 85
+            "line": 141
           }
         ],
         "stories": [
+          "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
           "Controls/Playback > Transport"
@@ -4274,15 +4748,16 @@
           {
             "component": "StatBar",
             "file": "packages/react/src/styles.css",
-            "line": 97
+            "line": 153
           },
           {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
-            "line": 130
+            "line": 190
           }
         ],
         "stories": [
+          "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
           "Controls/Playback > Transport"
@@ -4308,20 +4783,36 @@
       "resolvedValue": "24px",
       "aliasOf": null,
       "readBy": {
-        "components": [],
-        "stories": []
+        "components": [
+          {
+            "component": "ChoiceGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 110
+          },
+          {
+            "component": "Select",
+            "file": "packages/react/src/styles.css",
+            "line": 110
+          }
+        ],
+        "stories": [
+          "Controls/Playback > Choices",
+          "Controls/Playback > Counters",
+          "Controls/Playback > Trades",
+          "Controls/Playback > Transport"
+        ]
       },
       "reachedByTheme": {
         "light": {
-          "direct": false,
+          "direct": true,
           "via": []
         },
         "dark": {
-          "direct": false,
+          "direct": true,
           "via": []
         }
       },
-      "unused": true
+      "unused": false
     },
     {
       "name": "--stoa-space-8",
@@ -4354,7 +4845,6 @@
     "--stoa-font-size-2xl",
     "--stoa-font-size-lg",
     "--stoa-font-size-md",
-    "--stoa-font-size-sm",
     "--stoa-font-size-xl",
     "--stoa-font-weight-semibold",
     "--stoa-motion-duration-base",
@@ -4368,15 +4858,20 @@
     "--stoa-space-0",
     "--stoa-space-0-5",
     "--stoa-space-12",
-    "--stoa-space-6",
     "--stoa-space-8"
   ],
   "hardcodedLiterals": [],
-  "undefinedCustomProperties": [],
+  "undefinedCustomProperties": [
+    {
+      "name": "--trigger-width",
+      "file": "packages/react/src/styles.css",
+      "line": 124
+    }
+  ],
   "summary": {
     "tokenCount": 84,
-    "unusedCount": 22,
+    "unusedCount": 20,
     "hardcodedLiteralCount": 0,
-    "undefinedCount": 0
+    "undefinedCount": 1
   }
 }

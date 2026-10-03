@@ -108,7 +108,7 @@
 .stoa-select--small .stoa-select__button {
   font-size: var(--stoa-font-size-xs);
   min-block-size: var(--stoa-space-6);
-  padding: 2px calc(var(--stoa-space-1) * 1.5);
+  padding: calc(var(--stoa-space-1) / 2) calc(var(--stoa-space-1) * 1.5);
 }
 .stoa-select__popover.stoa-select__popover--small { font-size: var(--stoa-font-size-xs); }
 
@@ -117,7 +117,9 @@
 .stoa-select__chevron { flex: none; color: var(--stoa-color-text-muted); }
 .stoa-select[data-open] .stoa-select__chevron { transform: rotate(180deg); }
 /* The list is portalled to the document, so it takes the document's
-   tokens, not those of the element that opened it. */
+   tokens, not those of the element that opened it. `--trigger-width` is
+   not a Stoa token: React Aria sets it on the popover to the button's
+   width. */
 .stoa-select__popover {
   min-inline-size: var(--trigger-width);
   background: var(--stoa-color-surface);
