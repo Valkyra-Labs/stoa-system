@@ -2,6 +2,11 @@ import { useLayoutEffect, useRef, type ReactNode } from "react";
 import {
   Button as AriaButton,
   Label,
+  ListBox,
+  ListBoxItem,
+  Popover,
+  Select as AriaSelect,
+  SelectValue,
   Slider,
   SliderOutput,
   SliderThumb,
@@ -48,6 +53,53 @@ export function ChoiceGroup<T extends Key>({ label, choices, value, onChange }: 
         </ToggleButton>
       ))}
     </ToggleButtonGroup>
+  );
+}
+
+export type SelectProps<T extends Key> = {
+  label: string;
+  /** Keep the label for assistive technology only, where the options
+   * name themselves (a view picker in a header, for example). */
+  hideLabel?: boolean;
+  options: Choice<T>[];
+  value: T;
+  onChange: (value: T) => void;
+};
+
+/** One of several options in a drop-down list: for a choice with more
+ * options, or less room, than a ChoiceGroup can show. Enter, Space or an
+ * arrow key opens the list; typing a name selects the option it starts. */
+export function Select<T extends Key>({ label, hideLabel = false, options, value, onChange }: SelectProps<T>) {
+  return (
+    <AriaSelect
+      className="stoa-select"
+      selectedKey={value}
+      onSelectionChange={(key) => {
+        if (key !== null) onChange(key as T);
+      }}
+    >
+      <Label className={hideLabel ? "stoa-visually-hidden" : "stoa-field__label"}>{label}</Label>
+      <AriaButton className="stoa-button stoa-select__button">
+        <SelectValue className="stoa-select__value" />
+        <svg className="stoa-select__chevron" aria-hidden="true" focusable="false" viewBox="0 0 10 6" width="10" height="6">
+          <path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" strokeWidth="1.5" />
+        </svg>
+      </AriaButton>
+      <Popover className="stoa-select__popover" offset={4}>
+        <ListBox className="stoa-select__list">
+          {options.map((option) => (
+            <ListBoxItem
+              key={String(option.id)}
+              id={option.id}
+              className="stoa-select__option"
+              textValue={typeof option.label === "string" ? option.label : String(option.id)}
+            >
+              {option.label}
+            </ListBoxItem>
+          ))}
+        </ListBox>
+      </Popover>
+    </AriaSelect>
   );
 }
 

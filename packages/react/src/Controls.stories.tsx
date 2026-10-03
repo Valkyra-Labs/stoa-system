@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useState } from "react";
-import { Button, ChoiceGroup, TimeSlider } from "./Controls";
+import { Button, ChoiceGroup, Select, TimeSlider } from "./Controls";
 import { Panel, StatBar } from "./Panel";
 import { TradeTable } from "./TradeTable";
 
@@ -23,6 +23,38 @@ export const Transport: StoryObj = {
           <Button variant="primary" onPress={() => setPlaying((p) => !p)}>{playing ? "Pause" : "Play"}</Button>
           <ChoiceGroup label="Speed" value={speed} onChange={setSpeed} choices={[1, 10, 60, 600].map((s) => ({ id: s, label: `${s}x` }))} />
           <TimeSlider label="Time" min={4 * 3600} max={20 * 3600} step={1} value={t} onChange={setT} format={fmt} />
+        </div>
+      </Panel>
+    );
+  },
+};
+
+/** A ChoiceGroup is one segmented control; a Select holds a choice with
+ * more options, or less room, than a segmented control can show. */
+export const Choices: StoryObj = {
+  render: () => {
+    const [density, setDensity] = useState("regular");
+    const [view, setView] = useState("light-ltr");
+    return (
+      <Panel title="Choices">
+        <div style={{ display: "flex", gap: "var(--stoa-space-4)", alignItems: "end", flexWrap: "wrap" }}>
+          <ChoiceGroup
+            label="Density"
+            value={density}
+            onChange={setDensity}
+            choices={["compact", "regular", "comfortable"].map((id) => ({ id, label: id }))}
+          />
+          <Select
+            label="View"
+            value={view}
+            onChange={setView}
+            options={[
+              { id: "light-ltr", label: "Light, left to right" },
+              { id: "light-rtl", label: "Light, right to left" },
+              { id: "dark-ltr", label: "Dark, left to right" },
+              { id: "dark-rtl", label: "Dark, right to left" },
+            ]}
+          />
         </div>
       </Panel>
     );
