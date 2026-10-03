@@ -146,7 +146,11 @@
 
 .stoa-field { display: grid; gap: var(--stoa-space-1); }
 .stoa-field__label { font-size: var(--stoa-font-size-xs); color: var(--stoa-color-text-muted); }
+/* An input takes the width of its field and never sets it: without the
+   zero minimum, its default 20-character size would hold a narrow column
+   open. */
 .stoa-field__input {
+  min-inline-size: 0;
   font: inherit; font-family: var(--stoa-font-family-mono);
   padding: var(--stoa-space-2); border: 1px solid var(--stoa-color-border-strong);
   border-radius: var(--stoa-radius-sm); background: var(--stoa-color-surface); color: var(--stoa-color-text);
