@@ -1,6 +1,6 @@
-// Every override in one place: the token, what it would have derived, and
-// what it was set to. Tokens will later come from a few parameters, so a
-// hand edit is an explicit layer on top and has to stay visible.
+// Every override in one place: the token, what stoa-default gives it, and
+// what it was set to. A hand edit is an explicit layer on top of the token
+// files and has to stay visible.
 import { Button, StatusBadge } from "@valkyra-labs/stoa-react";
 import type { Overrides, ResolvedTokens } from "./tokenModel";
 
@@ -19,7 +19,7 @@ export function OverrideList({ overrides, values, onReset, onResetAll, highlight
     <div className="pg-overrides" data-override-count={ids.length}>
       <div className="pg-row pg-row--between">
         <StatusBadge tone={ids.length > 0 ? "warning" : "neutral"}>
-          {ids.length === 0 ? "No overrides: Stoa today" : `${ids.length} override${ids.length === 1 ? "" : "s"}`}
+          {ids.length === 0 ? "No overrides: stoa-default" : `${ids.length} override${ids.length === 1 ? "" : "s"}`}
         </StatusBadge>
         <Button onPress={onResetAll} isDisabled={ids.length === 0}>
           Reset all

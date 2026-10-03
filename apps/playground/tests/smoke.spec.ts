@@ -113,7 +113,7 @@ test("nothing scrolls sideways, in any side panel tab or frame", async ({ page }
   for (const width of [1440, 1280, 1024, 800]) {
     await page.setViewportSize({ width, height: 900 });
     await page.goto("/");
-    for (const tab of ["Parameters", "Tokens", /^Overrides/, "Checks", "Type", "Snapshot"]) {
+    for (const tab of ["Tokens", /^Overrides/, "Checks", "Type", "Snapshot"]) {
       await openTab(page, tab);
       // Every collapsible group open, so a wide table cannot hide in one.
       await page.evaluate(() => document.querySelectorAll("details").forEach((details) => (details.open = true)));
@@ -139,7 +139,7 @@ test("nothing scrolls sideways, in any side panel tab or frame", async ({ page }
 test("saving refuses to write over the committed baseline", async ({ page }) => {
   await page.goto("/");
   await openTab(page, "Snapshot");
-  await page.getByRole("textbox", { name: "Snapshot name" }).fill("stoa-today");
+  await page.getByRole("textbox", { name: "Snapshot name" }).fill("stoa-default");
   await page.getByRole("button", { name: "Save snapshot" }).click();
 
   // Refused with no way to force it: the file is the base of every override.

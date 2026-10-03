@@ -11,45 +11,34 @@ pnpm --filter playground dev   # http://localhost:5173
 
 ## What it does
 
-- Four preview frames at once, light and dark by left to right and right
-  to left, each one running the same dense screen: Ladder, Heatmap,
-  TradeTable, the controls and the form fields, off one synthetic stream
-  that can be paused and resumed.
+- Two preview frames at once, each running the same dense screen
+  (Ladder, Heatmap, TradeTable, the controls and the form fields) off one
+  synthetic stream that can be paused and resumed. Each frame header picks
+  the frame's view, light or dark by left to right or right to left, and a
+  colour-vision preview.
 - Token values are written as CSS custom properties on each frame's
-  container, never on the document, so a re-theme restyles four preview
+  container, never on the document, so a re-theme restyles the preview
   containers rather than the whole page.
-- The base is one of two things. Stoa today: the token files in
-  `packages/tokens/tokens` as they are in this working tree. Or the
-  parameter model of `packages/tokens/src/model.mjs`: a few parameters
-  (neutral temperature, the chromatic roles, contrast, polarity, surface
-  strategy, corner language, density) from which every token is derived,
-  with the hard accessibility rules kept by clamping. The parameters panel
-  picks between them, offers the three presets, and lists every value a
-  rule had to move and every role whose chroma the sRGB gamut cut back.
-- Every edit in the tokens panel is an override against whichever base is
-  underneath, listed with the value it would have derived, resettable one
-  by one or all at once, with undo and redo. One step back is one edit as a
-  person would mean it: typing into a field is one step per pause of
-  500 ms, and a slider drag is one step however far it travels. With the
-  parameter model underneath, the tree is already resolved, so an override
-  changes the token it names and no longer travels to the roles that alias
-  it in the sources.
+- The base is stoa-default: the token files in `packages/tokens/tokens`
+  as they are in this working tree, one theme with a light and a dark
+  mode.
+- Every edit in the tokens panel is an override against stoa-default,
+  listed with the value the token files give, resettable one by one or all
+  at once, with undo and redo. One step back is one edit as a person would
+  mean it: typing into a field is one step per pause of 500 ms, and a
+  slider drag is one step however far it travels.
 - The verification panel runs the real `packages/tokens` build and its
   tests on the edited files, in a temporary directory, and compares the
   values the previews are using with the variables the build emitted. A
   disagreement is a failure: it means the previews are not showing what
-  the build would produce. The build reads token files, so with the
-  parameter model underneath the comparison is withheld and says so:
-  writing a derived tree back out as DTCG files is not part of this
-  version.
+  the build would produce.
 - The type panel loads fonts (dropped files or Fontsource ids), reads what
   each file really contains with HarfBuzz in a worker, and tunes six type
-  roles whose specimens are rendered in a table row inside all four frames.
+  roles whose specimens are rendered in a table row inside every frame.
   See "Type" below.
-- Snapshots (parameters, token files, overrides, what each area panel
-  recorded, and the commit they were based on) are written to
-  `snapshots/`, and loading one restores its parameters and its
-  overrides.
+- Snapshots (token files, overrides, what each area panel recorded, and
+  the commit they were based on) are written to `snapshots/`, and loading
+  one restores its overrides.
 
 ## Type
 
@@ -105,7 +94,7 @@ version downloads: `pnpm --filter playground exec playwright install
 chromium`.
 
 `node apps/playground/scripts/screenshot.mjs [url] [out]` photographs the
-four frames against a dev server that is already running.
+frames against a dev server that is already running.
 
 ## Endpoints
 
@@ -117,9 +106,9 @@ All three are development only and live in `server/tokenServer.ts`.
   CSS, both commands' output, and the commit the repository was on. A
   command that outlives its timeout is killed and reported as failed.
 - `POST /api/save` writes a snapshot to `snapshots/<name>.json`, with the
-  parameters and the overrides beside the token files. An unnamed save is
+  overrides beside the token files. An unnamed save is
   stamped with the time it was written. A name already on disk is refused
-  with 409 until the request says `overwrite: true`; `stoa-today` is
+  with 409 until the request says `overwrite: true`; `stoa-default` is
   refused with 403 whatever the request says, because it is the committed
   base every override is stated against. What the area panels
   contributed is recorded under `panels`, by panel id; the type panel puts
@@ -138,18 +127,11 @@ another origin cannot drive the commands they run.
 
 ## Not here yet
 
-- The parameter model covers seven parameters. Type, numeric style, change
-  encoding and motion are later briefs, so the model carries the type
-  ramp, the space scale and the motion tokens through unchanged and they
-  are not editable as parameters in this version. The type panel tunes
-  its roles for the previews on its own, outside the model.
-- No export of a derived tree to DTCG token files, so the build endpoint
-  always builds the token sources with the override layer written in.
 - The type panel does not write token files. It produces role tokens (DTCG
   typography, with axes, features and the pairing under
   `$extensions["dev.stoa.type"]`) into a snapshot; migrating the token
   sources is Stage 2, and the specification generator is Wave 3. Loading
-  a snapshot restores parameters and overrides, not the panel state.
+  a snapshot restores overrides, not the panel state.
 - The Fontsource path is written against the keyless v1 API and is covered
   by unit tests with a stubbed fetch. It has not been exercised against
   the live endpoints in this environment, which has no route to
