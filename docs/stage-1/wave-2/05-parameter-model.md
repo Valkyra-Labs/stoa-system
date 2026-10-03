@@ -16,7 +16,7 @@ Hand edits stay possible as the existing override layer on top.
 - The playground (brief 04) edits built tokens directly and marks every
   edit as an override against "Stoa today". This brief puts a derived
   layer underneath: parameters -> derived tokens -> overrides.
-- Parameters for this wave (seven of the eleven in the internal research;
+- Parameters for this wave (seven of the eleven in earlier research;
   type, numeric style, change encoding and motion come later):
   1. neutral temperature: hue 0 to 360, chroma 0 to 0.03, or "tint from
      accent";
