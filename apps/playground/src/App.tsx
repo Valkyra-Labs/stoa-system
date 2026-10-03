@@ -1,4 +1,4 @@
-// The playground: a list of side panels, four preview frames, one
+// The playground: a list of side panels, two preview frames, one
 // verification panel. Under everything sits either the parameter model
 // (parameters -> derived tokens) or Stoa today, the built tokens of this
 // working tree; on top of either sits the override layer, and every
@@ -368,9 +368,6 @@ export function App() {
       <aside className="pg-side">
         <header className="pg-side__header">
           <h1>Stoa playground</h1>
-          <p className="pg-note">
-            Base: {tree ? "the parameter model, deriving every token from the parameters below" : "Stoa today, the token files of this working tree"}. Every edit in Tokens is an override against it.
-          </p>
         </header>
 
         {panels

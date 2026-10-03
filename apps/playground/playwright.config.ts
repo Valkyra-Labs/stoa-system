@@ -15,7 +15,7 @@ export default defineConfig({
   use: {
     baseURL: `http://127.0.0.1:${PORT}`,
     browserName: "chromium",
-    // Wide enough for the four frames to sit two by two beside the panel.
+    // Wide enough for the two frames to sit side by side beside the panel.
     viewport: { width: 1800, height: 1200 },
   },
   webServer: {

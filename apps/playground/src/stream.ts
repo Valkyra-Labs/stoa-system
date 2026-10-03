@@ -1,4 +1,4 @@
-// A deterministic synthetic market stream shared by the four preview
+// A deterministic synthetic market stream shared by the preview
 // frames: one clock, one set of frames, so the frames differ only by
 // theme and direction.
 //
@@ -20,7 +20,7 @@ export type StreamFrame = {
 
 /** Columns held in the heatmap window; the buffer is twice this, and the
  * window scrolls across it so a frame is a subarray, not a copy. A window
- * of 180 by 64 is about 11,500 cells, redrawn in four frames at once. */
+ * of 180 by 64 is about 11,500 cells, redrawn in every frame at once. */
 const WINDOW = 180;
 const ROWS = 64;
 const TRADE_ROWS = 12;

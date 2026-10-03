@@ -1,12 +1,11 @@
 // The acceptance test of brief 07, in a browser: the worker really reads
 // fonts, the numeric verdicts are the ones the engine reports, the roles
-// reach all four frames, and the canvas check answers for this browser.
+// reach every view, and the canvas check answers for this browser.
 import { expect, test, type Page } from "@playwright/test";
+import { VIEW_PAIRS, showViews } from "./frames";
 
 /** The side panel is tabbed; a control is reachable once its tab is open. */
 const openTab = (page: Page, name: string | RegExp) => page.getByRole("tab", { name }).click();
-
-const FRAMES = ["light-ltr", "light-rtl", "dark-ltr", "dark-rtl"];
 
 const FIXTURES = {
   /** Committed subsets: a variable TTF with proportional Latin digits, and
@@ -102,17 +101,20 @@ test("shows the axes and named instances of a variable file", async ({ page }) =
   await expect(digitRow(page, "latin", "tnum")).toContainText("tabular");
 });
 
-test("puts a specimen of every role in all four frames, at the frame's density", async ({ page }) => {
+test("puts a specimen of every role in every view, at the frame's density", async ({ page }) => {
   await openTypePanel(page);
-  for (const frame of FRAMES) {
-    const specimens = page.locator(`[data-frame="${frame}"] [data-testid="type-specimens"]`);
-    await expect(specimens.locator("tbody tr")).toHaveCount(6);
-    await expect(specimens.locator('[data-specimen="numeric"]')).toBeVisible();
+  for (const pair of [...VIEW_PAIRS].reverse()) {
+    await showViews(page, pair);
+    for (const frame of pair) {
+      const specimens = page.locator(`[data-frame="${frame}"] [data-testid="type-specimens"]`);
+      await expect(specimens.locator("tbody tr")).toHaveCount(6);
+      await expect(specimens.locator('[data-specimen="numeric"]')).toBeVisible();
+    }
   }
 
   // The size a specimen is drawn at is the size the panel says, and the
   // direction is the frame's.
-  const cell = page.locator('[data-frame="light-rtl"] [data-specimen="body"]');
+  const cell = page.locator('[data-frame="dark-rtl"] [data-specimen="body"]');
   await expect(cell).toHaveCSS("font-size", "14px");
   const rtlDirection = await cell.evaluate((element) => getComputedStyle(element).direction);
   expect(rtlDirection).toBe("rtl");
@@ -138,7 +140,7 @@ test("the reading scale moves the reading roles only", async ({ page }) => {
   await page.keyboard.press("End");
   await expect(page.locator('[data-testid="type-size-display"]')).toHaveText("33px");
   await expect(page.locator('[data-testid="type-size-numeric"]')).toHaveText("13px");
-  await expect(page.locator('[data-frame="dark-ltr"] [data-specimen="display"]')).toHaveCSS("font-size", "33px");
+  await expect(page.locator('[data-frame="dark-rtl"] [data-specimen="display"]')).toHaveCSS("font-size", "33px");
 });
 
 test("computes size-adjust for an Arabic pairing from the two x-heights", async ({ page }) => {
@@ -153,7 +155,7 @@ test("computes size-adjust for an Arabic pairing from the two x-heights", async 
 
   // The pairing is in the stack the frames use.
   const family = await page
-    .locator('[data-frame="light-rtl"] [data-specimen="body"]')
+    .locator('[data-frame="dark-rtl"] [data-specimen="body"]')
     .evaluate((element) => getComputedStyle(element).fontFamily);
   expect(family).toContain("IBM Plex Sans Arabic");
 });
