@@ -7,15 +7,21 @@ built in the open alongside two products that use it,
 replay) and [themis-steps](https://github.com/Valkyra-Labs/themis-steps)
 (step-checked algebra).
 
-Status: early. Tokens are in; components follow as the products need
-them.
+Status: early. Tokens and a first set of React components are in; more
+follow as the products need them.
 
 ## Packages
 
 - `@valkyra-labs/stoa-tokens`: design tokens in the W3C Design Tokens
   format, built with Style Dictionary into CSS variables (`--stoa-*`),
   an ES module with TypeScript declarations, and flat JSON.
-- `@valkyra-labs/stoa-react` (next): React components on React Aria.
+- `@valkyra-labs/stoa-react`: React components on React Aria. Ladder and
+  Heatmap on canvas and TradeTable, each with an empty state; Button,
+  ChoiceGroup, Select, NumberField, TimeSlider, Toggle, TextField, Tabs,
+  StatusBadge, Panel, StatBar and Disclosure. Words and digits follow the
+  locale set with React Aria's `I18nProvider` (`useStoaFormat`), so an
+  Arabic locale such as `ar-u-nu-arab` gets Arabic words and
+  Arabic-Indic digits.
 
 ## Principles
 
@@ -29,13 +35,15 @@ them.
   the current numbers, and any failure that is accepted for a while is
   recorded in `packages/tokens/known-violations.json`, which is empty:
   every enforced check passes in both themes and every density. Body
-  text meets 7:1 on both surfaces. Ten measurements are reported but not
-  enforced, each with its reason in `pairs.mjs`: the decorative `border`
-  rule, the translucent depth bars (their sizes are printed beside them),
-  and the lightness gap between up and down (told apart by sign and
-  shape, and by hue for every colour-vision model checked).
+  text meets 7:1 on both surfaces. Eighteen measurements are reported but
+  not enforced, each with its reason in `pairs.mjs`; ten of them are
+  below their threshold: the decorative `border` rule, the translucent
+  depth bars (their sizes are printed beside them), and the lightness gap
+  between up and down (told apart by sign and shape, and by hue for every
+  colour-vision model checked).
 - **Motion explains a change of state** and follows the user's
-  reduced-motion setting: every duration token goes to zero.
+  reduced-motion setting, or `data-motion="reduce"` on any element for an
+  application's own setting: every duration token goes to zero.
 - **Right-to-left from the start**: logical properties only, and a type
   stack with IBM Plex Sans Arabic.
 - **Numbers are tabular** and prices align on the decimal point.
@@ -54,12 +62,19 @@ them.
 ## Development
 
 ```bash
-pnpm install
+pnpm install --frozen-lockfile
+pnpm build
+pnpm -r typecheck
+pnpm test
 ```
 
-```bash
-pnpm build && pnpm test
-```
+`pnpm test:e2e` runs the playground's browser tests (it needs the
+Chromium that `pnpm --filter playground exec playwright install chromium`
+downloads), `node scripts/token-map.mjs --check` fails when the token map
+in `docs/generated/` is stale, and `pnpm storybook` serves the stories.
+The playground, the tool the tokens are tuned in, is described in
+[apps/playground/README.md](apps/playground/README.md). How to contribute,
+and what every change has to pass: [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## License
 

@@ -29,13 +29,21 @@ pnpm --filter playground dev   # http://localhost:5173
 - While a token's field has focus, the checks that read that token are
   listed in a tooltip beside the side panel; length tokens take a typed
   value as well as the slider. The Stats tab holds the session counters.
+- Above the side tabs: undo, redo, pause or resume, the stream speed
+  (1x, 2x, 4x) and the density mode both frames use. The side tabs are
+  Tokens, Overrides, Checks, Type, Snapshot and Stats.
 - Every edit in the tokens panel is an override against stoa-default,
   listed with the value the token files give, resettable one by one or all
   at once, with undo and redo. One step back is one edit as a person would
   mean it: typing into a field is one step per pause of 500 ms, and a
   slider drag is one step however far it travels.
-- The verification panel runs the real `packages/tokens` build and its
-  tests on the edited files, in a temporary directory, and compares the
+- The Checks tab runs every rule in `packages/tokens/src/checks.mjs` in
+  the browser on the live values of both themes (target size in all
+  three densities), matches the results against `known-violations.json`
+  the way `scripts/checks.test.mjs` gates them, and a Highlight on a
+  check opens the Tokens tab with the tokens it reads marked. On request
+  it also runs the real `packages/tokens` build and its tests on the
+  edited files, in a temporary directory, and compares the
   values the previews are using with the variables the build emitted. A
   disagreement is a failure: it means the previews are not showing what
   the build would produce.
@@ -94,7 +102,7 @@ node apps/playground/scripts/font-report.mjs "IBM Plex Sans=path/to/IBMPlexSans-
 | `pnpm --filter playground test:e2e` | The Playwright smoke test. Needs a browser. |
 
 `pnpm test` stays browser-free so that the acceptance commands in
-`CLAUDE.md` run on a fresh machine. The smoke test is its own script,
+`CONTRIBUTING.md` run on a fresh machine. The smoke test is its own script,
 `test:e2e`, and CI runs it in a step of its own. It starts its own dev
 server on port 5174 and needs the Chromium that the pinned Playwright
 version downloads: `pnpm --filter playground exec playwright install
@@ -105,7 +113,7 @@ frames against a dev server that is already running.
 
 ## Endpoints
 
-All three are development only and live in `server/tokenServer.ts`.
+All four are development only and live in `server/tokenServer.ts`.
 
 - `POST /api/build` takes the four token files as text, writes them to a
   temporary directory with the real `packages/tokens` scripts, runs that
@@ -137,15 +145,14 @@ another origin cannot drive the commands they run.
 - The type panel does not write token files. It produces role tokens (DTCG
   typography, with axes, features and the pairing under
   `$extensions["dev.stoa.type"]`) into a snapshot; migrating the token
-  sources is Stage 2, and the specification generator is Wave 3. Loading
-  a snapshot restores overrides, not the panel state.
+  sources (DTCG 2025.10) is step 2 of `docs/roadmap/README.md`. Loading a
+  snapshot restores overrides, not the panel state.
 - The Fontsource path is written against the keyless v1 API and is covered
   by unit tests with a stubbed fetch. It has not been exercised against
   the live endpoints in this environment, which has no route to
   `api.fontsource.org`.
-- Canvas components read their colours once, so a token edit re-mounts
-  them (`revision` in `PreviewGrid.tsx`). The token-change signal of
-  brief 02 replaces that.
-- In-browser checks wait for the verification engine of brief 01; the seam
-  is `src/browserChecks.ts`, and until then the panel says the checks are
-  not available rather than implying a pass.
+- A token edit re-mounts the canvas components (`revision` in
+  `PreviewGrid.tsx`). Stoa React has the token-change signal
+  (`tokensVersion`, `useTokenSignal`); the playground does not use it yet.
+- The easing and spring editors of the motion brief were not taken; only
+  the reduced-motion switch was.

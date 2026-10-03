@@ -12,3 +12,6 @@ experiments/*/owner-coding/render-dist/
 experiments/*/owner-coding/render-report.json
 experiments/*/calibration/data.json
 experiments/*/calibration/render-report.json
+# Local agent instructions; the shared rules are in CONTRIBUTING.md.
+CLAUDE.md
+AGENTS.md
