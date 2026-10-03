@@ -179,6 +179,19 @@
   border-radius: var(--stoa-radius-full); background: var(--stoa-color-accent);
 }
 
+/* Without its output, the track takes the whole row. */
+.stoa-slider--bare { grid-template-columns: minmax(0, 1fr); }
+
+.stoa-number { display: inline-grid; gap: var(--stoa-space-1); }
+.stoa-number__group { display: inline-flex; align-items: center; gap: var(--stoa-space-1); }
+.stoa-number__input { inline-size: 7ch; text-align: end; font-variant-numeric: tabular-nums; }
+.stoa-number__unit { font-family: var(--stoa-font-family-mono); font-size: var(--stoa-font-size-xs); color: var(--stoa-color-text-muted); }
+.stoa-number--small .stoa-number__input {
+  font-size: var(--stoa-font-size-xs);
+  min-block-size: var(--stoa-space-6);
+  padding: calc(var(--stoa-space-1) / 2) calc(var(--stoa-space-1) * 1.5);
+}
+
 .stoa-statbar { display: flex; flex-wrap: wrap; gap: var(--stoa-space-4); margin: 0; font-family: var(--stoa-font-family-mono); font-size: var(--stoa-font-size-2xs); }
 .stoa-statbar__item { display: flex; gap: var(--stoa-space-1); }
 .stoa-statbar dt { color: var(--stoa-color-text-muted); }

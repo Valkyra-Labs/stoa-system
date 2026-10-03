@@ -4,12 +4,14 @@ export { TradeTable, type Trade, type TradeTableProps } from "./TradeTable";
 export {
   Button,
   ChoiceGroup,
+  NumberField,
   Select,
   TimeSlider,
   type ButtonProps,
   type Choice,
   type ChoiceGroupProps,
   type ControlSize,
+  type NumberFieldProps,
   type SelectProps,
   type TimeSliderProps,
 } from "./Controls";
