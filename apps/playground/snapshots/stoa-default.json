@@ -1,9 +1,9 @@
 {
-  "name": "stoa-today",
+  "name": "stoa-default",
   "savedAt": "2026-09-27T12:36:09.417Z",
   "commit": "600d0523d5861ea17d00e3a5c4654c3dc6cc03a4",
   "dirty": false,
-  "base": "Stoa today: the token files of packages/tokens at this commit",
+  "base": "stoa-default: the token files of packages/tokens at this commit",
   "overrides": {},
   "tokens": {
     "primitive.json": {

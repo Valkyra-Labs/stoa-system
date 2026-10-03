@@ -1,5 +1,10 @@
 # Brief 05: parameter model
 
+Removed 2026-10-03: Stoa keeps one base theme, stoa-default, so the
+parameter model (`packages/tokens/src/model.mjs`), its presets and the
+playground's parameters panel were deleted. The code is in the history
+before that date. This brief stays as the record of what was built.
+
 ## Goal
 
 The owner sets a few parameters and every token is derived from them,

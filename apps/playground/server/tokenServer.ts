@@ -36,9 +36,9 @@ const BUILD_TIMEOUT_MS = 120_000;
 /** How long a git query may run. It reads the working tree and nothing else. */
 const GIT_TIMEOUT_MS = 10_000;
 
-/** Snapshots the server never writes over. `stoa-today` is committed and is
- * the base every override is stated against. */
-export const PROTECTED_SNAPSHOTS = ["stoa-today"];
+/** Snapshots the server never writes over. `stoa-default` is committed and
+ * is the base every override is stated against. */
+export const PROTECTED_SNAPSHOTS = ["stoa-default"];
 
 type CommandResult = { ok: boolean; command: string; output: string };
 
@@ -235,8 +235,8 @@ export function isSnapshotSlug(name: string): boolean {
   return /^[a-z0-9][a-z0-9-]*$/.test(name) && name === slugify(name);
 }
 
-/** What a save writes. Parameters and overrides are the two layers the app
- * restores from; `panels` is what each area panel records (`panelStateFrom`
+/** What a save writes. The overrides are what the app restores from;
+ * `panels` is what each area panel records (`panelStateFrom`
  * refuses anything else); `tokens` is the token sources the overrides are
  * stated against, as text the real build would read. */
 export function snapshotBody(input: {
@@ -244,7 +244,6 @@ export function snapshotBody(input: {
   savedAt: Date;
   slug: string;
   state: { commit: string; dirty: boolean };
-  parameters: unknown;
   overrides: unknown;
   panels?: unknown;
   files: Record<string, string>;
@@ -255,10 +254,7 @@ export function snapshotBody(input: {
     savedAt: input.savedAt.toISOString(),
     commit: input.state.commit,
     dirty: input.state.dirty,
-    base: "Stoa today: the token files of packages/tokens at this commit",
-    // null means no derived layer: the token sources are the base, which is
-    // what the app calls Stoa today.
-    parameters: typeof input.parameters === "object" && input.parameters !== null ? input.parameters : null,
+    base: "stoa-default: the token files of packages/tokens at this commit",
     overrides: (input.overrides ?? {}) as Record<string, string>,
     panels: panelStateFrom(input.panels),
     tokens: Object.fromEntries(Object.entries(input.files).map(([file, text]) => [file, JSON.parse(text)])),
@@ -348,12 +344,11 @@ export function tokenServer(): Plugin {
             }
 
             // A save is refused before anything is read or run.
-            const { name, overrides, panels, overwrite, parameters } = body as {
+            const { name, overrides, panels, overwrite } = body as {
               name?: unknown;
               overrides?: unknown;
               panels?: unknown;
               overwrite?: unknown;
-              parameters?: unknown;
             };
             const savedAt = new Date();
             const slug = snapshotSlug(typeof name === "string" ? name : "", savedAt);
@@ -377,7 +372,6 @@ export function tokenServer(): Plugin {
               savedAt,
               slug,
               state,
-              parameters,
               overrides,
               panels,
               files,
