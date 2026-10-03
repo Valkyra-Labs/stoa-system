@@ -98,14 +98,8 @@ export function BrowserChecksPanel({ checks, unproduced, onSelect }: BrowserChec
               <caption className="stoa-visually-hidden">{RULE_LABEL[rule] ?? rule} results</caption>
               <thead>
                 <tr>
-                  <th scope="col">Subject</th>
-                  <th scope="col">Theme</th>
-                  <th scope="col">Value</th>
-                  <th scope="col">Threshold</th>
-                  <th scope="col">Status</th>
-                  <th scope="col">
-                    <span className="stoa-visually-hidden">Highlight</span>
-                  </th>
+                  <th scope="col">Check</th>
+                  <th scope="col">Result</th>
                 </tr>
               </thead>
               <tbody>
@@ -114,19 +108,17 @@ export function BrowserChecksPanel({ checks, unproduced, onSelect }: BrowserChec
                     <td>
                       {check.subject}
                       {check.model ? ` (${check.model})` : ""}
-                    </td>
-                    <td>{check.theme ?? "—"}</td>
-                    <td>
-                      {check.value.toFixed(2)} {check.unit}
-                    </td>
-                    <td>{check.threshold}</td>
-                    <td>
-                      <StatusBadge tone={STATUS_TONE[check.status]}>{STATUS_LABEL[check.status]}</StatusBadge>
+                      <span className="pg-check__measure">
+                        {check.theme ?? "both themes"}: {check.value.toFixed(2)} {check.unit}, threshold {check.threshold}
+                      </span>
                     </td>
                     <td>
-                      <Button onPress={() => onSelect(check)} isDisabled={check.tokens.length === 0}>
-                        Highlight
-                      </Button>
+                      <span className="pg-check__result">
+                        <StatusBadge tone={STATUS_TONE[check.status]}>{STATUS_LABEL[check.status]}</StatusBadge>
+                        <Button onPress={() => onSelect(check)} isDisabled={check.tokens.length === 0}>
+                          Highlight
+                        </Button>
+                      </span>
                     </td>
                   </tr>
                 ))}
