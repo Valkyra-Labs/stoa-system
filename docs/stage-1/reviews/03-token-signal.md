@@ -1,4 +1,4 @@
-# PR 3 (claude/token-signal-docs-hgznlg): fixes
+# PR 3 (token-signal docs): fixes
 
 1. The listener sits on `document` in the bubble phase (`tokens.ts:80`),
    so an event dispatched without `bubbles: true`, or one stopped by an

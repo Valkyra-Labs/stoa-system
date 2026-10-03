@@ -17,20 +17,22 @@ as overrides on top of it, once the base passes every rule.
 
 ## Order of work
 
-1. **Base theme (owner).** Tune stoa-default's light and dark in the
-   playground and write the result back to the token files. Everything
-   after this reads them.
-2. **Migration.** Token sources to DTCG 2025.10; light/dark times density
-   in the build; `known-violations.json` emptied by fixing, not by
-   loosening; components read the motion and line-height tokens and stop
-   hard-coding literals (the token map lists them); tabular Arabic-Indic
-   digits in the numeric face; Heatmap height from the density tokens.
+1. **Base theme.** Tune stoa-default's light and dark in the playground
+   and write the result back to the token files. Every enforced check
+   passes since d014714; what is left is taste, not compliance.
+2. **Migration.** Done: `known-violations.json` emptied by fixing, not by
+   loosening (d014714); tabular Arabic-Indic digits in the numeric face
+   (555e82d); components read the motion and line-height tokens, with no
+   hard-coded literals left in the token map. Open: token sources to
+   DTCG 2025.10; light/dark times density in the build; Heatmap height
+   from the density tokens (the Tyche demo derives it itself for now).
 3. **Components the demos need**, each with a story, keyboard and
    screen-reader behaviour, tests, and light and dark in its story:
    1. Table (generic; TradeTable rebuilt on it; localisable headers)
    2. Callout (tones, role, action slot)
    3. Skeleton and ProgressBar
-   4. EmptyState, and empty or stale states on Ladder, Heatmap, TradeTable
+   4. EmptyState, and stale states on Ladder, Heatmap, TradeTable (their
+      empty states exist)
    5. Toolbar and ButtonGroup (roving focus)
    6. AppHeader / PageShell
    7. Math and code display (LTR isolation, `bdi`, `lang`, mono)
@@ -38,15 +40,15 @@ as overrides on top of it, once the base passes every rule.
    9. Metric (value, unit, basis, threshold); StatBar on top of it
    10. Kbd, a shortcut hook and a shortcuts Dialog
    11. AlertDialog and an undo Toast
-   12. Exported VisuallyHidden and LiveRegion; stories for TextField,
-       Tabs and StatusBadge (ChoiceGroup is now a segmented control, and
-       Select exists)
+   12. Exported VisuallyHidden and LiveRegion (stories for TextField,
+       Tabs and StatusBadge exist; ChoiceGroup is a segmented control, and
+       Select, NumberField, Toggle and Disclosure exist)
 4. **Storybook as the public face.** Foundations (tokens in light and
    dark, the live verification report), components with usage rules, a
    page on how each promise is checked.
 5. **Demos.** Tyche and Themis on stoa-default, with no hand-rolled
    interface left; loading, empty, error and stale states everywhere;
-   deployed when the repositories are opened.
+   deployed with each demo.
 
 ## Working rules for this phase
 
@@ -54,5 +56,3 @@ as overrides on top of it, once the base passes every rule.
   before merge; branches updated from `main` and re-checked before merge.
 - No new experiments, no new playground features unless a step above
   needs them.
-- Cloud credit goes to component briefs; simple components on the
-  cheaper model.

@@ -11,7 +11,7 @@ controls that affect nothing are listed as defects.
 - Components read tokens in two ways: CSS (`var(--stoa-...)` in
   `packages/react/src/styles.css` and inline styles) and canvas
   (`readCanvasTokens` in `packages/react/src/tokens.ts`).
-- An internal audit found that the easing, flash and line-height tokens
+- An audit found that the easing, flash and line-height tokens
   are not read by any component, and `styles.css` hard-codes
   `cubic-bezier(0.2, 0, 0, 1)` instead of the easing token. The map must
   find these by itself; do not special-case them.

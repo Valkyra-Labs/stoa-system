@@ -7,7 +7,7 @@ really contains, and tunes six type roles in live table rows, with the
 numeric promises (tabular digits in Latin and Arabic-Indic) checked by
 shaping, not by trusting a feature list.
 
-## Context (measured in internal research; re-verify)
+## Context (measured in earlier research; re-verify)
 
 - harfbuzzjs (MIT) is the engine: `getAxisInfos`, GSUB feature tags and
   their UI names (ss01.., cv01..), OS/2 metrics, shaping with features

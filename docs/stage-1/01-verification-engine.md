@@ -12,7 +12,7 @@ that reports the current violations honestly without breaking CI.
   theme with WCAG 2 contrast (culori `wcagContrast`), reading
   `dist/tokens.css`. It proves only that list. Borders, the input
   boundary and non-text marks are not checked.
-- An internal audit found violations the current tests do not see, for
+- An audit found violations the current tests do not see, for
   example (light/dark): `border` on `surface` 1.27/1.16:1,
   `border-strong` 1.48/1.33:1 (the text field boundary uses it, so inputs
   fail WCAG 1.4.11, which needs 3:1); up and down colours have almost the
