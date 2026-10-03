@@ -1,8 +1,7 @@
 # C1: Table
 
 Why: Themis's audit view renders a raw `<table className="stoa-table">`
-using Stoa's internal class; Tyche's TradeTable hard-codes English
-headers and `en-US`, and shows bare headers when empty.
+using Stoa's internal class.
 
 Build `Table` for data grids that are read, not edited:
 - columns: id, header (a node, so it can be translated), alignment
@@ -14,8 +13,7 @@ Build `Table` for data grids that are read, not edited:
 - density follows the density tokens (row height, padding, font size).
 
 Then rebuild `TradeTable` on `Table` without changing its public props,
-adding: localisable column headers and a `locale` for number and time
-formatting (default stays `en-US`), and an empty row. Its tests must
-still pass.
+keeping the locale-driven headers, digits and empty row it already has
+(`useStoaFormat`, `emptyText`). Its tests must still pass.
 
 Out of scope: sorting, selection, virtualisation, editing.

@@ -1,7 +1,7 @@
 {
   "name": "@valkyra-labs/stoa-react",
   "version": "0.0.0",
-  "description": "React components of Stoa, a design system for dense data: accessible controls on React Aria and canvas views for books, heatmaps and trades",
+  "description": "React components of Stoa, a design system for dense data: accessible controls on React Aria and canvas views for order books and heatmaps, and a trades table",
   "type": "module",
   "license": "MIT OR Apache-2.0",
   "repository": {
