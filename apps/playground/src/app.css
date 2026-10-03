@@ -332,23 +332,16 @@ code {
   gap: var(--stoa-space-2);
 }
 
+/* The trades summary: a label column as wide as its words, the values
+   after it, not spread across the panel. */
 .pg-summary {
-  display: grid;
-  grid-template-columns: auto auto;
-  justify-content: start;
-  gap: var(--stoa-space-1) var(--stoa-space-3);
-  margin: 0;
-  font-family: var(--stoa-font-family-mono);
-  font-size: var(--stoa-font-size-2xs);
+  inline-size: auto;
+  min-inline-size: 50%;
 }
 
-.pg-summary dt {
-  color: var(--stoa-color-text-muted);
-}
-
-.pg-summary dd {
-  margin: 0;
-  font-variant-numeric: tabular-nums;
+/* Row headers, not column headers: no rule under each one. */
+.pg-summary th {
+  border-block-end: 0;
 }
 
 /* Nothing in the side panel scrolls sideways: tables take the panel's

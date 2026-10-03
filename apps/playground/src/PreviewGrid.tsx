@@ -211,15 +211,26 @@ function Screen({ frame, revision }: { frame: StreamFrame; revision: string }) {
               {
                 id: "summary",
                 label: "Summary",
+                // A table like the tape beside it, so it takes the frame's
+                // density: font size, row height and cell padding.
                 content: (
-                  <dl className="pg-summary">
-                    <dt>Mid</dt>
-                    <dd>{frame.mid.toFixed(2)}</dd>
-                    <dt>Trades</dt>
-                    <dd>{frame.trades.length}</dd>
-                    <dt>Frame</dt>
-                    <dd>{frame.tick}</dd>
-                  </dl>
+                  <table className="stoa-table stoa-table--numeric pg-summary">
+                    <caption className="stoa-visually-hidden">Market summary</caption>
+                    <tbody>
+                      <tr>
+                        <th scope="row">Mid</th>
+                        <td className="stoa-num">{frame.mid.toFixed(2)}</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Trades</th>
+                        <td className="stoa-num">{frame.trades.length}</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Frame</th>
+                        <td className="stoa-num">{frame.tick}</td>
+                      </tr>
+                    </tbody>
+                  </table>
                 ),
               },
             ]}
