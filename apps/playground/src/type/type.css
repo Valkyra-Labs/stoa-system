@@ -116,15 +116,28 @@
 
 /* Inside a preview frame: the specimen column takes what is left, and a
    long specimen is allowed to wrap rather than widen the frame. */
-.pg-type__specimens {
-  margin-block-start: var(--stoa-space-2);
+/* The title between the screen and the specimens: centred, with a dashed
+   rule in the divider colour on each side. */
+.pg-type__specimens-title {
+  display: flex;
+  align-items: center;
+  gap: var(--stoa-space-3);
+  margin: var(--stoa-space-4) 0 var(--stoa-space-2);
+  font-size: var(--stoa-font-size-xs);
+  color: var(--stoa-color-text-muted);
+  text-align: center;
 }
 
-.pg-type__specimens caption {
-  text-align: start;
-  padding-block-end: var(--stoa-space-1);
-  color: var(--stoa-color-text-muted);
-  font-size: var(--stoa-font-size-2xs);
+.pg-type__specimens-title::before,
+.pg-type__specimens-title::after {
+  content: "";
+  flex: 1;
+  border-block-start: 1px dashed var(--stoa-color-border);
+}
+
+/* The last role closes the table; no rule under it. */
+.pg-type__specimens tbody tr:last-child > * {
+  border-block-end: 0;
 }
 
 .pg-type__specimens td[data-specimen] {
