@@ -2,7 +2,7 @@
 // the system's own slider, choice group and text field, so tuning the
 // tokens exercises the components the tokens are for.
 import { useEffect, useId, useRef, useState } from "react";
-import { Button, StatusBadge, Tabs, TextField, TimeSlider } from "@valkyra-labs/stoa-react";
+import { Button, NumberField, StatusBadge, Tabs, TextField, TimeSlider } from "@valkyra-labs/stoa-react";
 import { rulesForToken } from "./browserChecks";
 import { RulesTooltip } from "./RulesTooltip";
 import type { EditableItem, EditableTab } from "./editable";
@@ -146,7 +146,22 @@ function TokenControl({
       )}
       {control.kind === "length" && Number.isFinite(number) ? (
         <div className="pg-token__slider">
-          <span className="pg-token__label">{item.label}</span>
+          {/* The value in the heading is a field: typed by hand, or stepped
+              with the arrow keys, past the slider's range if need be. */}
+          <div className="pg-token__head">
+            <span className="pg-token__label">{item.label}</span>
+            <NumberField
+              label={`${item.label} in px`}
+              hideLabel
+              size="small"
+              unit="px"
+              value={number}
+              minValue={0}
+              step={control.step}
+              onChange={(value) => onEdit(id, `${value}px`)}
+              aria-describedby={describedBy}
+            />
+          </div>
           <TimeSlider
             label={`${item.label} (${item.entry.variable})`}
             min={control.min}
@@ -158,6 +173,7 @@ function TokenControl({
             onChangeEnd={onEditEnd}
             format={(value) => `${value}px`}
             aria-describedby={describedBy}
+            showOutput={false}
           />
         </div>
       ) : (

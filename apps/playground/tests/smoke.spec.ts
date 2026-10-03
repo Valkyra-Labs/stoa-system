@@ -88,6 +88,26 @@ test("one colour override reaches every view, and reset undoes it", async ({ pag
   await expect(page.locator(`[data-token="${TOKEN}"]`)).not.toHaveAttribute("data-overridden", "true");
 });
 
+test("a length token is typed into its heading as well as dragged, and radius.full comes last", async ({ page }) => {
+  await page.goto("/");
+  await openTab(page, "Tokens");
+  await page.getByRole("tab", { name: "Shape" }).click();
+  const control = page.locator('[data-token="primitive:space.1"]');
+  const field = control.getByRole("textbox", { name: "space.1 in px" });
+  await field.fill("6");
+  await field.press("Enter");
+  await expect(control).toHaveAttribute("data-overridden", "true");
+  await expect(control.getByRole("slider")).toHaveAttribute("aria-valuetext", "6px");
+  // Beyond the slider's range is allowed: the field is the way past it.
+  await field.fill("40");
+  await field.press("Enter");
+  await expect(field).toHaveValue("40");
+
+  const shape = page.locator('section[aria-label="Space, radius and focus"] [data-token]');
+  await expect(shape.last()).toHaveAttribute("data-token", "primitive:radius.full");
+  await expect(shape.last().getByRole("slider")).toHaveCount(0);
+});
+
 test("the replay slider scrubs the heatmap back, and its end is live again", async ({ page }) => {
   await page.goto("/");
   const frame = page.locator('[data-slot="1"]');
