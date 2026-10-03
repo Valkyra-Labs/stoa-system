@@ -4083,8 +4083,8 @@
       "resolvedValue": "8px",
       "aliasOf": null,
       "density": {
-        "compact": "6px",
         "regular": "8px",
+        "compact": "6px",
         "comfortable": "12px"
       },
       "readBy": {
@@ -4123,8 +4123,8 @@
       "resolvedValue": "13px",
       "aliasOf": null,
       "density": {
-        "compact": "12px",
         "regular": "13px",
+        "compact": "12px",
         "comfortable": "14px"
       },
       "readBy": {
@@ -4137,13 +4137,13 @@
           {
             "component": "Heatmap",
             "file": "packages/react/src/Heatmap.tsx",
-            "line": 37,
+            "line": 38,
             "via": "readCanvasTokens"
           },
           {
             "component": "Ladder",
             "file": "packages/react/src/Ladder.tsx",
-            "line": 37,
+            "line": 38,
             "via": "readCanvasTokens"
           },
           {
@@ -4187,8 +4187,8 @@
       "resolvedValue": "28px",
       "aliasOf": null,
       "density": {
-        "compact": "24px",
         "regular": "28px",
+        "compact": "24px",
         "comfortable": "36px"
       },
       "readBy": {
@@ -4196,13 +4196,13 @@
           {
             "component": "Heatmap",
             "file": "packages/react/src/Heatmap.tsx",
-            "line": 36,
+            "line": 37,
             "via": "readCanvasTokens"
           },
           {
             "component": "Ladder",
             "file": "packages/react/src/Ladder.tsx",
-            "line": 36,
+            "line": 37,
             "via": "readCanvasTokens"
           },
           {
@@ -4389,21 +4389,21 @@
       "name": "--stoa-font-family-mono",
       "group": "font",
       "kind": "primitive",
-      "value": "'IBM Plex Mono', ui-monospace, monospace",
-      "resolvedValue": "'IBM Plex Mono', ui-monospace, monospace",
+      "value": "'IBM Plex Mono', 'Noto Sans Arabic', ui-monospace, monospace",
+      "resolvedValue": "'IBM Plex Mono', 'Noto Sans Arabic', ui-monospace, monospace",
       "aliasOf": null,
       "readBy": {
         "components": [
           {
             "component": "Heatmap",
             "file": "packages/react/src/Heatmap.tsx",
-            "line": 37,
+            "line": 38,
             "via": "readCanvasTokens"
           },
           {
             "component": "Ladder",
             "file": "packages/react/src/Ladder.tsx",
-            "line": 37,
+            "line": 38,
             "via": "readCanvasTokens"
           },
           {

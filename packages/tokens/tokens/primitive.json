@@ -107,6 +107,7 @@
       "mono": {
         "$value": [
           "IBM Plex Mono",
+          "Noto Sans Arabic",
           "ui-monospace",
           "monospace"
         ]
