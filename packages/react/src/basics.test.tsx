@@ -2,7 +2,7 @@
 // Button, Panel and StatBar, and the empty states of the data views.
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { cleanup, fireEvent, render, screen } from "@testing-library/react";
-import { Button, Heatmap, I18nProvider, Panel, StatBar, TradeTable } from "./index";
+import { Button, Heatmap, I18nProvider, Ladder, Panel, StatBar, TradeTable } from "./index";
 
 afterEach(() => {
   cleanup();
@@ -96,5 +96,19 @@ describe("empty states", () => {
     vi.spyOn(HTMLCanvasElement.prototype, "getContext").mockReturnValue(context as unknown as CanvasRenderingContext2D);
     const { container } = render(<Heatmap label="Liquidity" description="Bids below, asks above." data={null} />);
     expect(container.querySelector("figcaption")?.textContent).toBe("No liquidity to show.");
+  });
+});
+
+describe("canvas views reserve their height before they draw", () => {
+  it("sizes the heatmap and the ladder from their props, not the canvas default", () => {
+    const { container } = render(
+      <>
+        <Heatmap label="Liquidity" height={180} />
+        <Ladder label="Book" depth={12} />
+      </>,
+    );
+    const [heatmap, ladder] = [...container.querySelectorAll("canvas")];
+    expect(heatmap!.style.blockSize).toBe("180px");
+    expect(ladder!.style.blockSize).toBe("calc(var(--stoa-density-row-height, 28px) * 24)");
   });
 });

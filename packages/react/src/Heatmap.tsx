@@ -132,7 +132,9 @@ export function Heatmap({ height = 240, label, description, data, tokensVersion,
   });
   return (
     <figure className="stoa-heatmap" aria-label={label}>
-      <canvas ref={canvas} className="stoa-heatmap__canvas" aria-hidden="true" />
+      {/* The height is set before the first draw, so the canvas does not
+          take its default 2:1 shape and then jump to its real size. */}
+      <canvas ref={canvas} className="stoa-heatmap__canvas" aria-hidden="true" style={{ blockSize: height }} />
       {/* While there is nothing to draw, the text alternative says so;
           data passed through the imperative handle is the caller's to
           describe. */}
