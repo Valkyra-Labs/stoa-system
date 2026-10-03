@@ -2,9 +2,12 @@ import { useLayoutEffect, useRef, type ReactNode } from "react";
 import { Chevron } from "./Chevron";
 import {
   Button as AriaButton,
+  Group,
+  Input,
   Label,
   ListBox,
   ListBoxItem,
+  NumberField as AriaNumberField,
   Popover,
   Select as AriaSelect,
   SelectValue,
@@ -122,6 +125,10 @@ export type TimeSliderProps = {
   format: (value: number) => string;
   /** Ids of elements that describe the slider, announced with its value. */
   "aria-describedby"?: string;
+  /** Show the formatted value beside the track. Off when a field next to
+   * the slider already shows (and edits) the value; the value is still
+   * announced. */
+  showOutput?: boolean;
 };
 
 /** A time scrubber: keyboard steps, and the value read out as text.
@@ -139,6 +146,7 @@ export function TimeSlider({
   onChangeEnd,
   format,
   "aria-describedby": describedBy,
+  showOutput = true,
 }: TimeSliderProps) {
   const input = useRef<HTMLInputElement>(null);
   useLayoutEffect(() => {
@@ -146,7 +154,7 @@ export function TimeSlider({
   });
   return (
     <Slider
-      className="stoa-slider"
+      className={showOutput ? "stoa-slider" : "stoa-slider stoa-slider--bare"}
       minValue={min}
       maxValue={max}
       step={step}
@@ -156,10 +164,70 @@ export function TimeSlider({
       aria-describedby={describedBy}
     >
       <Label className="stoa-visually-hidden">{label}</Label>
-      <SliderOutput className="stoa-slider__output">{({ state }) => format(state.getThumbValue(0))}</SliderOutput>
+      {showOutput && (
+        <SliderOutput className="stoa-slider__output">{({ state }) => format(state.getThumbValue(0))}</SliderOutput>
+      )}
       <SliderTrack className="stoa-slider__track">
         <SliderThumb className="stoa-slider__thumb" inputRef={input} />
       </SliderTrack>
     </Slider>
+  );
+}
+
+export type NumberFieldProps = {
+  label: string;
+  /** Keep the label for assistive technology only, where the field sits
+   * beside a visible name (a slider's heading, for example). */
+  hideLabel?: boolean;
+  value: number;
+  /** Called with a committed number: on Enter, on leaving the field, or on
+   * each arrow-key step. An emptied field reports nothing. */
+  onChange: (value: number) => void;
+  minValue?: number;
+  maxValue?: number;
+  step?: number;
+  /** A unit drawn after the number ("px"). Include it in `label` too: the
+   * drawn unit is hidden from assistive technology. */
+  unit?: string;
+  size?: ControlSize;
+  "aria-describedby"?: string;
+};
+
+/** A number typed by hand, on React Aria: the arrow keys step it, and it
+ * is formatted in the locale. */
+export function NumberField({
+  label,
+  hideLabel = false,
+  value,
+  onChange,
+  minValue,
+  maxValue,
+  step,
+  unit,
+  size = "regular",
+  "aria-describedby": describedBy,
+}: NumberFieldProps) {
+  return (
+    <AriaNumberField
+      className={`stoa-number stoa-number--${size}`}
+      value={value}
+      onChange={(next) => {
+        if (Number.isFinite(next)) onChange(next);
+      }}
+      minValue={minValue}
+      maxValue={maxValue}
+      step={step}
+      aria-describedby={describedBy}
+    >
+      <Label className={hideLabel ? "stoa-visually-hidden" : "stoa-field__label"}>{label}</Label>
+      <Group className="stoa-number__group">
+        <Input className="stoa-field__input stoa-number__input" />
+        {unit && (
+          <span className="stoa-number__unit" aria-hidden="true">
+            {unit}
+          </span>
+        )}
+      </Group>
+    </AriaNumberField>
   );
 }

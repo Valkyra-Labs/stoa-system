@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { act, cleanup, fireEvent, render, screen } from "@testing-library/react";
-import { ChoiceGroup, Disclosure, Select, TimeSlider, TradeTable } from "./index";
+import { ChoiceGroup, Disclosure, NumberField, Select, TimeSlider, TradeTable } from "./index";
 
 afterEach(cleanup);
 
@@ -109,5 +109,39 @@ describe("Disclosure", () => {
       </Disclosure>,
     );
     expect(container.querySelector("details")!.open).toBe(true);
+  });
+});
+
+describe("NumberField", () => {
+  it("commits a typed number on Enter and steps with the arrow keys", () => {
+    const onChange = vi.fn();
+    render(<NumberField label="row-height in px" hideLabel unit="px" value={22} minValue={0} step={1} onChange={onChange} />);
+    const input = screen.getByRole("textbox", { name: "row-height in px" });
+    expect((input as HTMLInputElement).value).toBe("22");
+    fireEvent.change(input, { target: { value: "30" } });
+    fireEvent.keyDown(input, { key: "Enter" });
+    expect(onChange).toHaveBeenLastCalledWith(30);
+    fireEvent.keyDown(input, { key: "ArrowUp" });
+    expect(onChange).toHaveBeenCalledTimes(2);
+    expect(screen.getByText("px").getAttribute("aria-hidden")).toBe("true");
+  });
+
+  it("reports nothing for an emptied field", () => {
+    const onChange = vi.fn();
+    render(<NumberField label="gap" value={4} onChange={onChange} />);
+    const input = screen.getByRole("textbox", { name: "gap" });
+    fireEvent.change(input, { target: { value: "" } });
+    fireEvent.blur(input);
+    expect(onChange).not.toHaveBeenCalled();
+  });
+});
+
+describe("TimeSlider without its output", () => {
+  it("still announces the value, with no visible output", () => {
+    const { container } = render(
+      <TimeSlider label="Gap" min={0} max={16} step={1} value={4} onChange={() => {}} format={(v) => `${v}px`} showOutput={false} />,
+    );
+    expect(container.querySelector(".stoa-slider__output")).toBeNull();
+    expect(screen.getByRole("slider").getAttribute("aria-valuetext")).toBe("4px");
   });
 });

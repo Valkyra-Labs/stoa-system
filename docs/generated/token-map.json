@@ -86,12 +86,12 @@
           {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
-            "line": 190
+            "line": 230
           },
           {
             "component": "TimeSlider",
             "file": "packages/react/src/styles.css",
-            "line": 152
+            "line": 179
           }
         ],
         "stories": [
@@ -132,7 +132,7 @@
           {
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
-            "line": 178,
+            "line": 218,
             "via": "--stoa-color-warning"
           }
         ],
@@ -374,6 +374,12 @@
             "via": "--stoa-color-focus"
           },
           {
+            "component": "Disclosure",
+            "file": "packages/react/src/styles.css",
+            "line": 158,
+            "via": "--stoa-color-focus"
+          },
+          {
             "component": "Heatmap",
             "file": "packages/react/src/Heatmap.tsx",
             "line": 35,
@@ -384,6 +390,12 @@
             "file": "packages/react/src/Ladder.tsx",
             "line": 35,
             "via": "--stoa-color-accent"
+          },
+          {
+            "component": "NumberField",
+            "file": "packages/react/src/styles.css",
+            "line": 211,
+            "via": "--stoa-color-focus"
           },
           {
             "component": "Select",
@@ -406,19 +418,19 @@
           {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
-            "line": 190,
+            "line": 230,
             "via": "--stoa-color-accent"
           },
           {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
-            "line": 191,
+            "line": 231,
             "via": "--stoa-color-focus"
           },
           {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 171,
+            "line": 211,
             "via": "--stoa-color-focus"
           },
           {
@@ -430,7 +442,7 @@
           {
             "component": "TimeSlider",
             "file": "packages/react/src/styles.css",
-            "line": 152,
+            "line": 179,
             "via": "--stoa-color-accent"
           }
         ],
@@ -485,6 +497,18 @@
             "via": "--stoa-color-focus"
           },
           {
+            "component": "Disclosure",
+            "file": "packages/react/src/styles.css",
+            "line": 158,
+            "via": "--stoa-color-focus"
+          },
+          {
+            "component": "NumberField",
+            "file": "packages/react/src/styles.css",
+            "line": 211,
+            "via": "--stoa-color-focus"
+          },
+          {
             "component": "Select",
             "file": "packages/react/src/styles.css",
             "line": 82,
@@ -499,13 +523,13 @@
           {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
-            "line": 191,
+            "line": 231,
             "via": "--stoa-color-focus"
           },
           {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 171,
+            "line": 211,
             "via": "--stoa-color-focus"
           },
           {
@@ -627,13 +651,13 @@
           {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
-            "line": 190,
+            "line": 230,
             "via": "--stoa-color-accent"
           },
           {
             "component": "TimeSlider",
             "file": "packages/react/src/styles.css",
-            "line": 152,
+            "line": 179,
             "via": "--stoa-color-accent"
           }
         ],
@@ -716,7 +740,7 @@
           {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
-            "line": 183
+            "line": 223
           },
           {
             "component": "TradeTable",
@@ -776,6 +800,11 @@
             "line": 45
           },
           {
+            "component": "NumberField",
+            "file": "packages/react/src/styles.css",
+            "line": 208
+          },
+          {
             "component": "Select",
             "file": "packages/react/src/styles.css",
             "line": 45
@@ -788,12 +817,12 @@
           {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 168
+            "line": 208
           },
           {
             "component": "TimeSlider",
             "file": "packages/react/src/styles.css",
-            "line": 148
+            "line": 175
           }
         ],
         "stories": [
@@ -834,7 +863,7 @@
           {
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
-            "line": 176
+            "line": 216
           },
           {
             "component": "TradeTable",
@@ -939,6 +968,16 @@
             "line": 82
           },
           {
+            "component": "Disclosure",
+            "file": "packages/react/src/styles.css",
+            "line": 158
+          },
+          {
+            "component": "NumberField",
+            "file": "packages/react/src/styles.css",
+            "line": 211
+          },
+          {
             "component": "Select",
             "file": "packages/react/src/styles.css",
             "line": 82
@@ -951,12 +990,12 @@
           {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
-            "line": 191
+            "line": 231
           },
           {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 171
+            "line": 211
           },
           {
             "component": "TimeSlider",
@@ -1030,6 +1069,12 @@
             "via": "--stoa-color-surface"
           },
           {
+            "component": "NumberField",
+            "file": "packages/react/src/styles.css",
+            "line": 209,
+            "via": "--stoa-color-surface"
+          },
+          {
             "component": "Panel",
             "file": "packages/react/src/styles.css",
             "line": 10,
@@ -1050,7 +1095,7 @@
           {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 169,
+            "line": 209,
             "via": "--stoa-color-surface"
           }
         ],
@@ -1182,6 +1227,18 @@
             "via": "--stoa-color-surface-sunken"
           },
           {
+            "component": "Disclosure",
+            "file": "packages/react/src/styles.css",
+            "line": 152,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "Disclosure",
+            "file": "packages/react/src/styles.css",
+            "line": 156,
+            "via": "--stoa-color-text"
+          },
+          {
             "component": "Heatmap",
             "file": "packages/react/src/Heatmap.tsx",
             "line": 28,
@@ -1191,6 +1248,12 @@
             "component": "Ladder",
             "file": "packages/react/src/Ladder.tsx",
             "line": 28,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "NumberField",
+            "file": "packages/react/src/styles.css",
+            "line": 209,
             "via": "--stoa-color-text"
           },
           {
@@ -1220,25 +1283,25 @@
           {
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
-            "line": 177,
+            "line": 217,
             "via": "--stoa-color-text"
           },
           {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
-            "line": 189,
+            "line": 229,
             "via": "--stoa-color-text"
           },
           {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
-            "line": 190,
+            "line": 230,
             "via": "--stoa-color-text"
           },
           {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 169,
+            "line": 209,
             "via": "--stoa-color-text"
           }
         ],
@@ -1425,7 +1488,7 @@
           {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
-            "line": 183,
+            "line": 223,
             "via": "--stoa-color-border"
           },
           {
@@ -1484,6 +1547,12 @@
             "via": "--stoa-color-border-strong"
           },
           {
+            "component": "NumberField",
+            "file": "packages/react/src/styles.css",
+            "line": 208,
+            "via": "--stoa-color-border-strong"
+          },
+          {
             "component": "Select",
             "file": "packages/react/src/styles.css",
             "line": 45,
@@ -1498,13 +1567,13 @@
           {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 168,
+            "line": 208,
             "via": "--stoa-color-border-strong"
           },
           {
             "component": "TimeSlider",
             "file": "packages/react/src/styles.css",
-            "line": 148,
+            "line": 175,
             "via": "--stoa-color-border-strong"
           }
         ],
@@ -1539,6 +1608,12 @@
       "readBy": {
         "components": [
           {
+            "component": "Disclosure",
+            "file": "packages/react/src/styles.css",
+            "line": 163,
+            "via": "--stoa-color-text-muted"
+          },
+          {
             "component": "Heatmap",
             "file": "packages/react/src/Heatmap.tsx",
             "line": 29,
@@ -1548,6 +1623,18 @@
             "component": "Ladder",
             "file": "packages/react/src/Ladder.tsx",
             "line": 29,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "NumberField",
+            "file": "packages/react/src/styles.css",
+            "line": 188,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "NumberField",
+            "file": "packages/react/src/styles.css",
+            "line": 201,
             "via": "--stoa-color-text-muted"
           },
           {
@@ -1565,37 +1652,37 @@
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 161,
+            "line": 201,
             "via": "--stoa-color-text-muted"
           },
           {
             "component": "StatBar",
             "file": "packages/react/src/styles.css",
-            "line": 157,
+            "line": 197,
             "via": "--stoa-color-text-muted"
           },
           {
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
-            "line": 179,
+            "line": 219,
             "via": "--stoa-color-text-muted"
           },
           {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
-            "line": 186,
+            "line": 226,
             "via": "--stoa-color-text-muted"
           },
           {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 161,
+            "line": 201,
             "via": "--stoa-color-text-muted"
           },
           {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 172,
+            "line": 212,
             "via": "--stoa-color-text-muted"
           },
           {
@@ -1726,6 +1813,12 @@
       "readBy": {
         "components": [
           {
+            "component": "Disclosure",
+            "file": "packages/react/src/styles.css",
+            "line": 163,
+            "via": "--stoa-color-text-muted"
+          },
+          {
             "component": "Heatmap",
             "file": "packages/react/src/Heatmap.tsx",
             "line": 29,
@@ -1735,6 +1828,18 @@
             "component": "Ladder",
             "file": "packages/react/src/Ladder.tsx",
             "line": 29,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "NumberField",
+            "file": "packages/react/src/styles.css",
+            "line": 188,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "NumberField",
+            "file": "packages/react/src/styles.css",
+            "line": 201,
             "via": "--stoa-color-text-muted"
           },
           {
@@ -1752,37 +1857,37 @@
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 161,
+            "line": 201,
             "via": "--stoa-color-text-muted"
           },
           {
             "component": "StatBar",
             "file": "packages/react/src/styles.css",
-            "line": 157,
+            "line": 197,
             "via": "--stoa-color-text-muted"
           },
           {
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
-            "line": 179,
+            "line": 219,
             "via": "--stoa-color-text-muted"
           },
           {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
-            "line": 186,
+            "line": 226,
             "via": "--stoa-color-text-muted"
           },
           {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 161,
+            "line": 201,
             "via": "--stoa-color-text-muted"
           },
           {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 172,
+            "line": 212,
             "via": "--stoa-color-text-muted"
           },
           {
@@ -1865,6 +1970,12 @@
             "via": "--stoa-color-border-strong"
           },
           {
+            "component": "NumberField",
+            "file": "packages/react/src/styles.css",
+            "line": 208,
+            "via": "--stoa-color-border-strong"
+          },
+          {
             "component": "Select",
             "file": "packages/react/src/styles.css",
             "line": 45,
@@ -1879,13 +1990,13 @@
           {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 168,
+            "line": 208,
             "via": "--stoa-color-border-strong"
           },
           {
             "component": "TimeSlider",
             "file": "packages/react/src/styles.css",
-            "line": 148,
+            "line": 175,
             "via": "--stoa-color-border-strong"
           }
         ],
@@ -1958,7 +2069,7 @@
           {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
-            "line": 183,
+            "line": 223,
             "via": "--stoa-color-border"
           },
           {
@@ -2180,6 +2291,18 @@
             "via": "--stoa-color-text"
           },
           {
+            "component": "Disclosure",
+            "file": "packages/react/src/styles.css",
+            "line": 152,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "Disclosure",
+            "file": "packages/react/src/styles.css",
+            "line": 156,
+            "via": "--stoa-color-text"
+          },
+          {
             "component": "Heatmap",
             "file": "packages/react/src/Heatmap.tsx",
             "line": 27,
@@ -2201,6 +2324,18 @@
             "component": "Ladder",
             "file": "packages/react/src/Ladder.tsx",
             "line": 28,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "NumberField",
+            "file": "packages/react/src/styles.css",
+            "line": 209,
+            "via": "--stoa-color-surface"
+          },
+          {
+            "component": "NumberField",
+            "file": "packages/react/src/styles.css",
+            "line": 209,
             "via": "--stoa-color-text"
           },
           {
@@ -2242,31 +2377,31 @@
           {
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
-            "line": 177,
+            "line": 217,
             "via": "--stoa-color-text"
           },
           {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
-            "line": 189,
+            "line": 229,
             "via": "--stoa-color-text"
           },
           {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
-            "line": 190,
+            "line": 230,
             "via": "--stoa-color-text"
           },
           {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 169,
+            "line": 209,
             "via": "--stoa-color-surface"
           },
           {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 169,
+            "line": 209,
             "via": "--stoa-color-text"
           }
         ],
@@ -2324,7 +2459,7 @@
           {
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
-            "line": 176,
+            "line": 216,
             "via": "--stoa-color-down"
           },
           {
@@ -2387,7 +2522,7 @@
           {
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
-            "line": 176,
+            "line": 216,
             "via": "--stoa-color-down"
           },
           {
@@ -2522,6 +2657,11 @@
             "via": "readCanvasTokens"
           },
           {
+            "component": "NumberField",
+            "file": "packages/react/src/styles.css",
+            "line": 209
+          },
+          {
             "component": "Panel",
             "file": "packages/react/src/styles.css",
             "line": 10
@@ -2539,7 +2679,7 @@
           {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 169
+            "line": 209
           }
         ],
         "stories": [
@@ -2714,7 +2854,7 @@
           {
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
-            "line": 175,
+            "line": 215,
             "via": "--stoa-color-up"
           },
           {
@@ -2777,7 +2917,7 @@
           {
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
-            "line": 175,
+            "line": 215,
             "via": "--stoa-color-up"
           },
           {
@@ -2945,6 +3085,16 @@
             "line": 70
           },
           {
+            "component": "Disclosure",
+            "file": "packages/react/src/styles.css",
+            "line": 152
+          },
+          {
+            "component": "Disclosure",
+            "file": "packages/react/src/styles.css",
+            "line": 156
+          },
+          {
             "component": "Heatmap",
             "file": "packages/react/src/Heatmap.tsx",
             "line": 28,
@@ -2955,6 +3105,11 @@
             "file": "packages/react/src/Ladder.tsx",
             "line": 28,
             "via": "readCanvasTokens"
+          },
+          {
+            "component": "NumberField",
+            "file": "packages/react/src/styles.css",
+            "line": 209
           },
           {
             "component": "Select",
@@ -2974,22 +3129,22 @@
           {
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
-            "line": 177
+            "line": 217
           },
           {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
-            "line": 189
+            "line": 229
           },
           {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
-            "line": 190
+            "line": 230
           },
           {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 169
+            "line": 209
           }
         ],
         "stories": [
@@ -3035,6 +3190,11 @@
       "readBy": {
         "components": [
           {
+            "component": "Disclosure",
+            "file": "packages/react/src/styles.css",
+            "line": 163
+          },
+          {
             "component": "Heatmap",
             "file": "packages/react/src/Heatmap.tsx",
             "line": 29,
@@ -3045,6 +3205,16 @@
             "file": "packages/react/src/Ladder.tsx",
             "line": 29,
             "via": "readCanvasTokens"
+          },
+          {
+            "component": "NumberField",
+            "file": "packages/react/src/styles.css",
+            "line": 188
+          },
+          {
+            "component": "NumberField",
+            "file": "packages/react/src/styles.css",
+            "line": 201
           },
           {
             "component": "Panel",
@@ -3059,32 +3229,32 @@
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 161
+            "line": 201
           },
           {
             "component": "StatBar",
             "file": "packages/react/src/styles.css",
-            "line": 157
+            "line": 197
           },
           {
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
-            "line": 179
+            "line": 219
           },
           {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
-            "line": 186
+            "line": 226
           },
           {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 161
+            "line": 201
           },
           {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 172
+            "line": 212
           },
           {
             "component": "TradeTable",
@@ -3188,7 +3358,7 @@
           {
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
-            "line": 175
+            "line": 215
           },
           {
             "component": "TradeTable",
@@ -3285,7 +3455,7 @@
           {
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
-            "line": 178
+            "line": 218
           }
         ],
         "stories": []
@@ -3480,6 +3650,11 @@
             "line": 83
           },
           {
+            "component": "Disclosure",
+            "file": "packages/react/src/styles.css",
+            "line": 159
+          },
+          {
             "component": "Select",
             "file": "packages/react/src/styles.css",
             "line": 83
@@ -3529,6 +3704,16 @@
             "line": 82
           },
           {
+            "component": "Disclosure",
+            "file": "packages/react/src/styles.css",
+            "line": 158
+          },
+          {
+            "component": "NumberField",
+            "file": "packages/react/src/styles.css",
+            "line": 211
+          },
+          {
             "component": "Select",
             "file": "packages/react/src/styles.css",
             "line": 82
@@ -3541,12 +3726,12 @@
           {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
-            "line": 191
+            "line": 231
           },
           {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 171
+            "line": 211
           },
           {
             "component": "TimeSlider",
@@ -3595,19 +3780,29 @@
             "via": "readCanvasTokens"
           },
           {
+            "component": "NumberField",
+            "file": "packages/react/src/styles.css",
+            "line": 188
+          },
+          {
+            "component": "NumberField",
+            "file": "packages/react/src/styles.css",
+            "line": 207
+          },
+          {
             "component": "StatBar",
             "file": "packages/react/src/styles.css",
-            "line": 155
+            "line": 195
           },
           {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 167
+            "line": 207
           },
           {
             "component": "TimeSlider",
             "file": "packages/react/src/styles.css",
-            "line": 144
+            "line": 171
           },
           {
             "component": "TradeTable",
@@ -3760,12 +3955,12 @@
           {
             "component": "StatBar",
             "file": "packages/react/src/styles.css",
-            "line": 155
+            "line": 195
           },
           {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 172
+            "line": 212
           }
         ],
         "stories": [
@@ -3905,6 +4100,26 @@
             "line": 111
           },
           {
+            "component": "Disclosure",
+            "file": "packages/react/src/styles.css",
+            "line": 151
+          },
+          {
+            "component": "NumberField",
+            "file": "packages/react/src/styles.css",
+            "line": 188
+          },
+          {
+            "component": "NumberField",
+            "file": "packages/react/src/styles.css",
+            "line": 190
+          },
+          {
+            "component": "NumberField",
+            "file": "packages/react/src/styles.css",
+            "line": 201
+          },
+          {
             "component": "Panel",
             "file": "packages/react/src/styles.css",
             "line": 18
@@ -3922,17 +4137,17 @@
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 161
+            "line": 201
           },
           {
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
-            "line": 174
+            "line": 214
           },
           {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 161
+            "line": 201
           }
         ],
         "stories": [
@@ -3964,6 +4179,11 @@
       "readBy": {
         "components": [
           {
+            "component": "Disclosure",
+            "file": "packages/react/src/styles.css",
+            "line": 151
+          },
+          {
             "component": "Panel",
             "file": "packages/react/src/styles.css",
             "line": 19
@@ -3976,7 +4196,7 @@
           {
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
-            "line": 174
+            "line": 214
           }
         ],
         "stories": [
@@ -4096,6 +4316,11 @@
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
             "line": 50
+          },
+          {
+            "component": "Disclosure",
+            "file": "packages/react/src/styles.css",
+            "line": 164
           },
           {
             "component": "Select",
@@ -4257,6 +4482,11 @@
             "line": 50
           },
           {
+            "component": "Disclosure",
+            "file": "packages/react/src/styles.css",
+            "line": 164
+          },
+          {
             "component": "Select",
             "file": "packages/react/src/styles.css",
             "line": 50
@@ -4293,12 +4523,12 @@
           {
             "component": "TimeSlider",
             "file": "packages/react/src/styles.css",
-            "line": 148
+            "line": 175
           },
           {
             "component": "TimeSlider",
             "file": "packages/react/src/styles.css",
-            "line": 152
+            "line": 179
           }
         ],
         "stories": [
@@ -4430,6 +4660,16 @@
             "line": 103
           },
           {
+            "component": "Disclosure",
+            "file": "packages/react/src/styles.css",
+            "line": 160
+          },
+          {
+            "component": "NumberField",
+            "file": "packages/react/src/styles.css",
+            "line": 209
+          },
+          {
             "component": "Select",
             "file": "packages/react/src/styles.css",
             "line": 46
@@ -4442,7 +4682,7 @@
           {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 169
+            "line": 209
           }
         ],
         "stories": [
@@ -4536,6 +4776,31 @@
             "line": 113
           },
           {
+            "component": "Disclosure",
+            "file": "packages/react/src/styles.css",
+            "line": 150
+          },
+          {
+            "component": "Disclosure",
+            "file": "packages/react/src/styles.css",
+            "line": 168
+          },
+          {
+            "component": "NumberField",
+            "file": "packages/react/src/styles.css",
+            "line": 185
+          },
+          {
+            "component": "NumberField",
+            "file": "packages/react/src/styles.css",
+            "line": 186
+          },
+          {
+            "component": "NumberField",
+            "file": "packages/react/src/styles.css",
+            "line": 192
+          },
+          {
             "component": "Select",
             "file": "packages/react/src/styles.css",
             "line": 44
@@ -4563,22 +4828,22 @@
           {
             "component": "StatBar",
             "file": "packages/react/src/styles.css",
-            "line": 156
+            "line": 196
           },
           {
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
-            "line": 174
+            "line": 214
           },
           {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
-            "line": 182
+            "line": 222
           },
           {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 160
+            "line": 200
           }
         ],
         "stories": [
@@ -4643,6 +4908,16 @@
             "line": 44
           },
           {
+            "component": "Disclosure",
+            "file": "packages/react/src/styles.css",
+            "line": 149
+          },
+          {
+            "component": "NumberField",
+            "file": "packages/react/src/styles.css",
+            "line": 208
+          },
+          {
             "component": "Panel",
             "file": "packages/react/src/styles.css",
             "line": 17
@@ -4660,12 +4935,12 @@
           {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
-            "line": 186
+            "line": 226
           },
           {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 168
+            "line": 208
           }
         ],
         "stories": [
@@ -4709,12 +4984,12 @@
           {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
-            "line": 186
+            "line": 226
           },
           {
             "component": "TimeSlider",
             "file": "packages/react/src/styles.css",
-            "line": 143
+            "line": 170
           }
         ],
         "stories": [
@@ -4748,12 +5023,12 @@
           {
             "component": "StatBar",
             "file": "packages/react/src/styles.css",
-            "line": 155
+            "line": 195
           },
           {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
-            "line": 192
+            "line": 232
           }
         ],
         "stories": [
@@ -4788,6 +5063,11 @@
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
             "line": 112
+          },
+          {
+            "component": "NumberField",
+            "file": "packages/react/src/styles.css",
+            "line": 191
           },
           {
             "component": "Select",
