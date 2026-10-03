@@ -35,7 +35,7 @@ code {
   display: grid;
   /* The side panel takes a fixed share of wide screens and never forces the
      page wider than the window; its content wraps or scrolls inside it. */
-  grid-template-columns: clamp(360px, 30vw, 480px) minmax(0, 1fr);
+  grid-template-columns: clamp(360px, 25vw, 480px) minmax(0, 1fr);
   align-items: start;
   gap: var(--stoa-space-4);
   padding: var(--stoa-space-4);
@@ -307,10 +307,11 @@ code {
 .pg-frames {
   display: grid;
   /* The two frames side by side where each is wide enough for its header
-     on one row (view, language and colour vision take about 440 px), one
-     above the other where they are not: from about 1366 px side by side,
-     at 1280 px stacked. Never a page wider than the window. */
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 448px), 1fr));
+     on one row (view, language, reduced motion and colour vision take
+     about 550 px), one above the other where they are not: side by side
+     from about 1570 px, stacked below. Never a page wider than the
+     window. */
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 560px), 1fr));
   gap: var(--stoa-space-3);
 }
 

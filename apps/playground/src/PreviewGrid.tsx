@@ -16,6 +16,7 @@ import {
   Tabs,
   TextField,
   TimeSlider,
+  Toggle,
   TradeTable,
   useStoaFormat,
 } from "@valkyra-labs/stoa-react";
@@ -52,6 +53,16 @@ export type PreviewGridProps = {
 const INITIAL_VIEWS = ["light-ltr", "dark-rtl"];
 
 const VIEW_OPTIONS = VIEWS.map(({ id, label }) => ({ id, label }));
+
+/** What `[data-motion="reduce"]` sets in tokens.css. The frame writes the
+ * token values inline, which outranks that rule, so a reduced frame writes
+ * these after them. */
+const REDUCED_MOTION = {
+  "--stoa-motion-duration-fast": "0ms",
+  "--stoa-motion-duration-base": "0ms",
+  "--stoa-motion-duration-slow": "0ms",
+  "--stoa-motion-duration-flash": "0ms",
+};
 
 export function PreviewGrid({
   stream,
@@ -123,6 +134,9 @@ function PreviewFrame({
   // The language of the screen's words and digits, apart from the view:
   // Arabic in a left-to-right frame is a case to look at, not an error.
   const [language, setLanguage] = useState<Language>("en");
+  // The frame's own reduced-motion setting, as an application would offer
+  // it; the system setting applies to the whole page through tokens.css.
+  const [reducedMotion, setReducedMotion] = useState(false);
   const spec = VIEWS.find((candidate) => candidate.id === view) ?? VIEWS[0]!;
   const name = `Preview ${slot}`;
   return (
@@ -138,22 +152,35 @@ function PreviewFrame({
             onChange={setLanguage}
           />
         </div>
-        <ChoiceGroup
-          label={`${name}: colour-vision preview`}
-          size="small"
-          choices={CVD_CHOICES}
-          value={cvd}
-          onChange={setCvd}
-        />
+        <div className="pg-frame__picks">
+          <Toggle size="small" isSelected={reducedMotion} onChange={setReducedMotion}>
+            Reduced motion
+          </Toggle>
+          <ChoiceGroup
+            label={`${name}: colour-vision preview`}
+            size="small"
+            choices={CVD_CHOICES}
+            value={cvd}
+            onChange={setCvd}
+          />
+        </div>
       </header>
       <div
         className="pg-frame__body"
         data-frame={spec.id}
         data-theme={spec.theme}
         data-cvd={cvd}
+        data-motion={reducedMotion ? "reduce" : undefined}
         dir={spec.dir}
         lang={language}
-        style={{ ...tokens[spec.theme].variables, ...panelVariables, ...cvdFilterStyle(cvd) } as CSSProperties}
+        style={
+          {
+            ...tokens[spec.theme].variables,
+            ...panelVariables,
+            ...(reducedMotion ? REDUCED_MOTION : {}),
+            ...cvdFilterStyle(cvd),
+          } as CSSProperties
+        }
       >
         {/* The canvases read their colours and direction when they mount,
             so a change of view re-mounts them like a token edit does. */}
