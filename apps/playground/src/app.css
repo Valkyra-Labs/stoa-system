@@ -369,17 +369,41 @@ code {
   font-variant-numeric: tabular-nums;
 }
 
-/* Wide result tables scroll inside their group instead of widening the side
-   panel (a data table is the WCAG 1.4.10 exception for two-way scrolling). */
-.pg-side details,
-.pg-side .pg-checks {
-  min-inline-size: 0;
-  overflow-x: auto;
+/* Nothing in the side panel scrolls sideways: tables take the panel's
+   width and their cells wrap, long identifiers included. */
+.pg-side table {
+  table-layout: fixed;
 }
 
+.pg-side td,
+.pg-side th,
 .pg-side code,
 .pg-side .pg-note {
   overflow-wrap: anywhere;
+}
+
+/* A check is one row of two cells: what was measured, with the measure
+   under it, and the verdict with its action. */
+.pg-check-group td {
+  vertical-align: top;
+  padding-block: var(--stoa-space-1);
+}
+
+.pg-check-group th:last-child {
+  inline-size: 40%;
+}
+
+.pg-check__measure {
+  display: block;
+  color: var(--stoa-color-text-muted);
+  font-family: var(--stoa-font-family-mono);
+}
+
+.pg-check__result {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--stoa-space-1) var(--stoa-space-2);
 }
 
 /* Narrow windows: the side panel stacks above the previews and scrolls with

@@ -109,6 +109,33 @@ test("the build endpoint builds and tests the unmodified base", async ({ page })
   await expect(results).toBeHidden();
 });
 
+test("nothing scrolls sideways, in any side panel tab or frame", async ({ page }) => {
+  for (const width of [1440, 1280, 1024, 800]) {
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto("/");
+    for (const tab of ["Parameters", "Tokens", /^Overrides/, "Checks", "Type", "Snapshot"]) {
+      await openTab(page, tab);
+      // Every collapsible group open, so a wide table cannot hide in one.
+      await page.evaluate(() => document.querySelectorAll("details").forEach((details) => (details.open = true)));
+      const sideways = await page.evaluate(() => {
+        const page = document.documentElement;
+        const found = page.scrollWidth > page.clientWidth ? [`page ${page.scrollWidth} > ${page.clientWidth}`] : [];
+        for (const element of document.querySelectorAll<HTMLElement>(".pg-app *")) {
+          // Visually hidden text (Stoa's and React Aria's live regions) is a
+          // 1 px box that clips by design.
+          if (element.closest(".stoa-visually-hidden") || element.clientWidth <= 1) continue;
+          if (getComputedStyle(element).overflowX === "visible") continue;
+          if (element.scrollWidth > element.clientWidth + 1) {
+            found.push(`${element.tagName.toLowerCase()}.${element.className} ${element.scrollWidth} > ${element.clientWidth}`);
+          }
+        }
+        return found;
+      });
+      expect(sideways, `at ${width} px, tab ${String(tab)}`).toEqual([]);
+    }
+  }
+});
+
 test("saving refuses to write over the committed baseline", async ({ page }) => {
   await page.goto("/");
   await openTab(page, "Snapshot");
