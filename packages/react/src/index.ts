@@ -14,6 +14,8 @@ export {
   type TimeSliderProps,
 } from "./Controls";
 export { Panel, StatBar } from "./Panel";
+export { Chevron } from "./Chevron";
+export { Disclosure, type DisclosureProps } from "./Disclosure";
 export { parseBook, ladderRows, describeBook, type Book, type Level, type LadderRow } from "./book";
 export { cellAlpha, maxAbs } from "./heatmapScale";
 export { readCanvasTokens, fitCanvas, useTokenSignal, useInvalidateOnTokensVersion, signalTokensChanged, TOKENS_EVENT, type CanvasTokens } from "./tokens";

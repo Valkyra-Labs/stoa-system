@@ -105,18 +105,9 @@
   padding-block-end: var(--stoa-space-2);
 }
 
+/* The role's summary wraps when the family name is long. */
 .pg-type__role > summary {
-  display: flex;
   flex-wrap: wrap;
-  align-items: baseline;
-  gap: var(--stoa-space-2);
-  cursor: pointer;
-  padding-block: var(--stoa-space-1);
-}
-
-.pg-type__role > summary:focus-visible {
-  outline: var(--stoa-focus-width) solid var(--stoa-color-focus);
-  outline-offset: var(--stoa-focus-offset);
 }
 
 .pg-type__role-name {

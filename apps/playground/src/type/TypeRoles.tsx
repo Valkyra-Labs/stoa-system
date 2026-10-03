@@ -2,7 +2,7 @@
 // reading role has a step on the scale, a working role has an offset from
 // the density mode's font size, and each row says which rule produced the
 // size on screen.
-import { Button, ChoiceGroup, StatusBadge, TextField, TimeSlider } from "@valkyra-labs/stoa-react";
+import { Button, ChoiceGroup, Disclosure, StatusBadge, TextField, TimeSlider } from "@valkyra-labs/stoa-react";
 import type { DensityMode } from "../tokenModel";
 import type { Axis } from "./report.ts";
 import {
@@ -147,14 +147,19 @@ function RoleFields({
   const named = (field: string) => `${ROLE_LABELS[role.id]} ${field}`;
 
   return (
-    <details className="pg-type__role" data-role={role.id}>
-      <summary>
-        <span className="pg-type__role-name">{ROLE_LABELS[role.id]}</span>
-        <code data-testid={`type-size-${role.id}`}>{size}px</code>
-        <span className="pg-note">
-          {role.hierarchy}, {role.family}
-        </span>
-      </summary>
+    <Disclosure
+      className="pg-type__role"
+      data-role={role.id}
+      summary={
+        <>
+          <span className="pg-type__role-name">{ROLE_LABELS[role.id]}</span>
+          <code data-testid={`type-size-${role.id}`}>{size}px</code>
+          <span className="pg-note">
+            {role.hierarchy}, {role.family}
+          </span>
+        </>
+      }
+    >
 
       <div className="pg-stack">
         <p className="pg-note" data-testid={`type-provenance-${role.id}`}>
@@ -280,6 +285,6 @@ function RoleFields({
           <Button onPress={() => onRole(role.id, DEFAULT_ROLES[role.id])}>Reset this role</Button>
         </div>
       </div>
-    </details>
+    </Disclosure>
   );
 }

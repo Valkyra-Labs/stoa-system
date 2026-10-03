@@ -69,9 +69,14 @@ code {
   padding-inline: calc(var(--stoa-space-3) + 1px);
 }
 
-/* Six tabs in one row at the panel's usual widths. */
+/* Six tabs in one row down to the panel's narrowest width (360 px): the
+   selected tab is marked by its underline, so the tabs can touch. */
+.pg-side .stoa-tabs__list {
+  column-gap: 0;
+}
+
 .pg-side .stoa-tabs__tab {
-  padding-inline: var(--stoa-space-2);
+  padding-inline: calc(var(--stoa-space-1) * 1.5);
 }
 
 .pg-side__header h1 {
@@ -255,12 +260,6 @@ code {
   display: grid;
   gap: var(--stoa-space-2);
   font-size: var(--stoa-font-size-2xs);
-}
-
-.pg-check-group summary {
-  cursor: pointer;
-  padding-block: var(--stoa-space-1);
-  font-weight: var(--stoa-font-weight-medium);
 }
 
 .pg-check-group table tr[data-status="new"] {
