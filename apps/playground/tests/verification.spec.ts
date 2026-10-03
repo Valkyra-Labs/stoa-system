@@ -121,7 +121,31 @@ test("a token control's list of rules reading it reaches assistive technology", 
   await page.goto("/");
   await openTab(page, "Tokens");
   const input = page.locator(`[data-token="${TOKEN}"] input`);
-  // The list is only drawn on hover or focus; the description is there
-  // either way.
+  // The list is drawn only while the field is edited; the description is
+  // there either way.
   await expect(input).toHaveAccessibleDescription(/text-contrast \(light\): text on surface/);
+});
+
+test("editing a token's field shows the checks reading it beside the side panel", async ({ page }) => {
+  await page.goto("/");
+  await openTab(page, "Tokens");
+  const tooltip = page.getByTestId("rules-tooltip");
+  await expect(tooltip).toHaveCount(0);
+
+  const input = page.locator(`[data-token="${TOKEN}"] input`);
+  await input.click();
+  await expect(tooltip).toBeVisible();
+  await expect(tooltip).toContainText("text-contrast (light): text on surface");
+  // Beside the side panel, not over it.
+  const side = await page.locator(".pg-side").boundingBox();
+  const tip = await tooltip.boundingBox();
+  expect(tip!.x).toBeGreaterThanOrEqual(side!.x + side!.width);
+
+  // Moving to the next field moves the tooltip with it; leaving the
+  // fields closes it.
+  await page.keyboard.press("Tab");
+  await expect(tooltip).toHaveCount(1);
+  await expect(tooltip).toContainText("Checks reading text-muted");
+  await page.locator("h1").click();
+  await expect(tooltip).toHaveCount(0);
 });

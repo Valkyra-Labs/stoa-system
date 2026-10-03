@@ -146,21 +146,6 @@ code {
   border-radius: var(--stoa-radius-sm);
 }
 
-/* The rules a token feeds, shown only while a pointer or focus is over its
-   control: a hover affordance, not information every row needs open. */
-.pg-token__rules {
-  display: none;
-  margin: 0 0 var(--stoa-space-1);
-  padding-inline-start: var(--stoa-space-4);
-  font-size: var(--stoa-font-size-2xs);
-  color: var(--stoa-color-text-muted);
-}
-
-.pg-token:hover .pg-token__rules,
-.pg-token:focus-within .pg-token__rules {
-  display: block;
-}
-
 .pg-token__field {
   display: grid;
   align-items: center;
@@ -268,6 +253,37 @@ code {
 
 .pg-check-group table tr[data-status="fixed"] {
   background: color-mix(in oklch, var(--stoa-color-up) 12%, transparent);
+}
+
+/* The checks reading a token, beside the side panel while its field is
+   edited (RulesTooltip.tsx). Fixed to the window, so it is not clipped
+   by the side panel's scrolling box. */
+.pg-rules-tip {
+  position: fixed;
+  z-index: 10;
+  box-sizing: border-box;
+  max-block-size: calc(100vh - var(--stoa-space-4));
+  overflow-y: auto;
+  padding: var(--stoa-space-2) var(--stoa-space-3);
+  background: var(--stoa-color-surface);
+  border: 1px solid var(--stoa-color-border-strong);
+  border-inline-start: 2px solid var(--stoa-color-accent);
+  border-radius: var(--stoa-radius-md);
+  color: var(--stoa-color-text);
+  font-size: var(--stoa-font-size-2xs);
+  pointer-events: none;
+}
+
+.pg-rules-tip__title {
+  margin: 0 0 var(--stoa-space-1);
+  font-size: var(--stoa-font-size-xs);
+  font-weight: var(--stoa-font-weight-medium);
+}
+
+.pg-rules-tip__list {
+  margin: 0;
+  padding-inline-start: var(--stoa-space-4);
+  color: var(--stoa-color-text-muted);
 }
 
 /* Kept out of layout: only its filter defs are read, by the frames'

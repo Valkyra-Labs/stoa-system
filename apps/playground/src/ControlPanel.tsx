@@ -1,9 +1,10 @@
 // The editing side of the playground. Every control is a Stoa component:
 // the system's own slider, choice group and text field, so tuning the
 // tokens exercises the components the tokens are for.
-import { useEffect, useId, useRef } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import { Button, StatusBadge, Tabs, TextField, TimeSlider } from "@valkyra-labs/stoa-react";
 import { rulesForToken } from "./browserChecks";
+import { RulesTooltip } from "./RulesTooltip";
 import type { EditableItem, EditableTab } from "./editable";
 import type { Overrides, ResolvedTokens } from "./tokenModel";
 
@@ -104,10 +105,12 @@ function TokenControl({
   const control = item.control;
   const number = Number.parseFloat(effective);
   const rules = rulesForToken(id);
-  // The list shows on hover or focus; the control points at it so a screen
-  // reader announces it with the control, whether or not it is shown.
+  // The checks reading this token describe its field, for a screen reader,
+  // from a visually hidden list; while the field is being edited the same
+  // list is drawn as a tooltip beside the side panel.
   const rulesId = useId();
   const describedBy = rules.length > 0 ? rulesId : undefined;
+  const [editing, setEditing] = useState(false);
 
   const container = useRef<HTMLDivElement>(null);
   useEffect(() => {
@@ -121,9 +124,15 @@ function TokenControl({
       data-token={id}
       data-overridden={override !== undefined ? "true" : undefined}
       data-highlighted={highlighted ? "true" : undefined}
+      // Only a field being edited opens the tooltip: a text input or a
+      // slider's thumb, not the Reset button beside them.
+      onFocus={(event) => setEditing(event.target instanceof HTMLInputElement)}
+      onBlur={(event) => {
+        if (!event.currentTarget.contains(event.relatedTarget as Node | null)) setEditing(false);
+      }}
     >
       {rules.length > 0 && (
-        <ul id={rulesId} className="pg-token__rules">
+        <ul id={rulesId} className="stoa-visually-hidden">
           {rules.map((rule, index) => (
             <li key={index}>
               {rule.rule}
@@ -131,6 +140,9 @@ function TokenControl({
             </li>
           ))}
         </ul>
+      )}
+      {editing && rules.length > 0 && (
+        <RulesTooltip anchor={container} title={`Checks reading ${item.label}`} rules={rules} />
       )}
       {control.kind === "length" && Number.isFinite(number) ? (
         <div className="pg-token__slider">
