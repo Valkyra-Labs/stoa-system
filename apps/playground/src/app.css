@@ -18,13 +18,16 @@ code {
 
 .pg-app {
   display: grid;
-  grid-template-columns: 420px minmax(0, 1fr);
+  /* The side panel takes a fixed share of wide screens and never forces the
+     page wider than the window; its content wraps or scrolls inside it. */
+  grid-template-columns: clamp(360px, 30vw, 480px) minmax(0, 1fr);
   align-items: start;
   gap: var(--stoa-space-4);
   padding: var(--stoa-space-4);
 }
 
 .pg-side {
+  min-inline-size: 0;
   position: sticky;
   inset-block-start: var(--stoa-space-4);
   display: grid;
@@ -263,7 +266,9 @@ code {
    so the cost of a re-theme is the real cost. */
 .pg-frames {
   display: grid;
-  grid-template-columns: repeat(2, minmax(520px, 1fr));
+  /* Two frames side by side where they fit at a realistic width, one per row
+     where they do not; never a page wider than the window. */
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 560px), 1fr));
   gap: var(--stoa-space-3);
 }
 
@@ -300,7 +305,7 @@ code {
 
 .pg-screen {
   display: grid;
-  grid-template-columns: minmax(200px, 1fr) minmax(240px, 1.2fr);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
   gap: var(--stoa-space-2);
   align-items: start;
 }
@@ -333,4 +338,31 @@ code {
 .pg-summary dd {
   margin: 0;
   font-variant-numeric: tabular-nums;
+}
+
+/* Wide result tables scroll inside their group instead of widening the side
+   panel (a data table is the WCAG 1.4.10 exception for two-way scrolling). */
+.pg-side details,
+.pg-side .pg-checks {
+  min-inline-size: 0;
+  overflow-x: auto;
+}
+
+.pg-side code,
+.pg-side .pg-note {
+  overflow-wrap: anywhere;
+}
+
+/* Narrow windows: the side panel stacks above the previews and scrolls with
+   the page. */
+@media (max-width: 900px) {
+  .pg-app {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .pg-side {
+    position: static;
+    max-block-size: none;
+    overflow-y: visible;
+  }
 }

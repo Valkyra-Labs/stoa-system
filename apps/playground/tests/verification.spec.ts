@@ -3,7 +3,10 @@
 // resetting it clears the failure. `smoke.spec.ts` covers the rest of the
 // playground; this file is the in-browser checks' own scenario.
 import { execSync } from "node:child_process";
-import { expect, test, type Locator } from "@playwright/test";
+import { expect, test, type Locator, type Page } from "@playwright/test";
+
+/** The side panel is tabbed; a control is reachable once its tab is open. */
+const openTab = (page: Page, name: string | RegExp) => page.getByRole("tab", { name }).click();
 
 const TOKEN = "semantic.light:color.text";
 // text on surface needs 7:1 (AAA); this is close to the surface colour, so
@@ -12,6 +15,7 @@ const BROKEN_VALUE = "oklch(0.98 0.002 250)";
 
 test("an override that breaks a text pair shows a new failure, and resetting it clears the failure", async ({ page }) => {
   await page.goto("/");
+  await openTab(page, "Checks");
   const checks = page.getByTestId("browser-checks");
   await expect(checks).toBeVisible();
 
@@ -19,7 +23,9 @@ test("an override that breaks a text pair shows a new failure, and resetting it 
   await expect(failedRow).toHaveAttribute("data-status", "pass");
   await expect(checks.locator('[data-status="new"]')).toHaveCount(0);
 
+  await openTab(page, "Tokens");
   await page.locator(`[data-token="${TOKEN}"] input`).fill(BROKEN_VALUE);
+  await openTab(page, "Checks");
 
   await expect(failedRow).toHaveAttribute("data-status", "new");
   await expect.poll(() => checks.locator('[data-status="new"]').count()).toBeGreaterThan(0);
@@ -28,6 +34,9 @@ test("an override that breaks a text pair shows a new failure, and resetting it 
   await failedRow.getByRole("button", { name: "Highlight" }).click();
   await expect(page.locator(`[data-token="${TOKEN}"]`)).toHaveAttribute("data-highlighted", "true");
 
+  // Highlight opens the Tokens tab; the override is reset from its list.
+  await expect(page.getByRole("tab", { name: "Tokens" })).toHaveAttribute("aria-selected", "true");
+  await openTab(page, /^Overrides/);
   await page.locator(`[data-override="${TOKEN}"]`).getByRole("button", { name: "Reset" }).click();
 
   await expect(failedRow).toHaveAttribute("data-status", "pass");
@@ -36,11 +45,14 @@ test("an override that breaks a text pair shows a new failure, and resetting it 
 
 test("the new-only filter hides everything but new failures", async ({ page }) => {
   await page.goto("/");
+  await openTab(page, "Checks");
   const checks = page.getByTestId("browser-checks");
   await expect(checks).toBeVisible();
   await expect(checks.locator("tbody tr")).not.toHaveCount(0);
 
+  await openTab(page, "Tokens");
   await page.locator(`[data-token="${TOKEN}"] input`).fill(BROKEN_VALUE);
+  await openTab(page, "Checks");
   await expect.poll(() => checks.locator('[data-status="new"]').count()).toBeGreaterThan(0);
   const newCount = await checks.locator('[data-status="new"]').count();
 
@@ -67,6 +79,7 @@ async function costMs(cost: Locator): Promise<number | null> {
 
 test("logs how long full check runs took, for the acceptance record", async ({ page, browser }) => {
   await page.goto("/");
+  await openTab(page, "Checks");
   const checks = page.getByTestId("browser-checks");
   const cost = page.getByTestId("browser-checks-cost");
   await expect(cost).toBeVisible();
@@ -81,9 +94,11 @@ test("logs how long full check runs took, for the acceptance record", async ({ p
   // wait again, read again.
   const failedRow = checks.locator('tr[data-check="text-contrast/light/text-on-surface"]');
   for (let i = 0; i < 5; i++) {
+    await openTab(page, "Tokens");
     await page.locator(`[data-token="${TOKEN}"] input`).fill(BROKEN_VALUE);
     await expect(failedRow).toHaveAttribute("data-status", "new");
     samples.push((await costMs(cost)) as number);
+    await openTab(page, /^Overrides/);
     await page.locator(`[data-override="${TOKEN}"]`).getByRole("button", { name: "Reset" }).click();
     await expect(failedRow).toHaveAttribute("data-status", "pass");
     samples.push((await costMs(cost)) as number);
@@ -104,6 +119,7 @@ test("logs how long full check runs took, for the acceptance record", async ({ p
 
 test("a token control's list of rules reading it reaches assistive technology", async ({ page }) => {
   await page.goto("/");
+  await openTab(page, "Tokens");
   const input = page.locator(`[data-token="${TOKEN}"] input`);
   // The list is only drawn on hover or focus; the description is there
   // either way.

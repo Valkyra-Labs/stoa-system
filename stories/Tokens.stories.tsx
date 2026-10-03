@@ -27,6 +27,8 @@ export const SemanticColours: StoryObj = {
       setRows(roles.map(([role, bg, min]) => ({ role, value: v(role), ratio: wcagContrast(parse(v(role))!, parse(v(bg))!), min })));
     }, [ctx.globals.theme]);
     return (
+      // A data table may scroll sideways on a narrow screen (WCAG 1.4.10).
+      <div style={{ overflowX: "auto" }}>
       <table className="stoa-table">
         <caption className="stoa-visually-hidden">Semantic colours and contrast on the surface</caption>
         <thead>
@@ -36,7 +38,24 @@ export const SemanticColours: StoryObj = {
           {rows.map((r) => (
             <tr key={r.role}>
               <td>{r.role}</td>
-              <td><span style={{ color: `var(--stoa-color-${r.role})`, fontWeight: 600 }}>Aa 222.64</span></td>
+              <td>
+                {r.min < 4.5 ? (
+                  // A non-text colour (3:1, WCAG 1.4.11) is shown as the mark it
+                  // draws, not as text it is never used for.
+                  <span
+                    aria-hidden="true"
+                    style={{
+                      display: "inline-block",
+                      inlineSize: "2.5em",
+                      blockSize: "1.25em",
+                      border: `var(--stoa-focus-width) solid var(--stoa-color-${r.role})`,
+                      borderRadius: "var(--stoa-radius-sm)",
+                    }}
+                  />
+                ) : (
+                  <span style={{ color: `var(--stoa-color-${r.role})`, fontWeight: 600 }}>Aa 222.64</span>
+                )}
+              </td>
               <td><code>{r.value}</code></td>
               <td className="stoa-num">{r.ratio.toFixed(2)}:1</td>
               <td className="stoa-num">{r.min}:1 {r.ratio >= r.min ? "pass" : "FAIL"}</td>
@@ -44,6 +63,7 @@ export const SemanticColours: StoryObj = {
           ))}
         </tbody>
       </table>
+      </div>
     );
   },
 };

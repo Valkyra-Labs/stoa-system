@@ -3,6 +3,9 @@
 // endpoint really builds and tests the token package.
 import { expect, test, type Page } from "@playwright/test";
 
+/** The side panel is tabbed; a control is reachable once its tab is open. */
+const openTab = (page: Page, name: string | RegExp) => page.getByRole("tab", { name }).click();
+
 const FRAMES = ["light-ltr", "light-rtl", "dark-ltr", "dark-rtl"];
 
 /** A primitive both themes reference (`--stoa-color-warning` in each), so
@@ -39,6 +42,7 @@ test("loads four frames of the same dense screen", async ({ page }) => {
     await expect(body.locator(".stoa-table tbody tr").first()).toBeVisible();
   }
 
+  await openTab(page, /^Overrides/);
   await expect(page.locator('[data-override-count="0"]')).toBeVisible();
 });
 
@@ -47,6 +51,7 @@ test("one colour override reaches all four frames, and reset undoes it", async (
   const before = await Promise.all(FRAMES.map((frame) => badgeColor(page, frame)));
   for (const frame of FRAMES) expect(await warningVariable(page, frame)).toBe(BASE_VALUE);
 
+  await openTab(page, "Tokens");
   await page.locator(`[data-token="${TOKEN}"] input`).fill(EDITED_VALUE);
 
   for (const [index, frame] of FRAMES.entries()) {
@@ -60,6 +65,7 @@ test("one colour override reaches all four frames, and reset undoes it", async (
   await expect(page.locator(`[data-token="${TOKEN}"]`)).toHaveAttribute("data-overridden", "true");
   await expect(page.locator(`[data-token="${TOKEN}"]`)).toContainText("Override detected");
   const row = page.locator(`[data-override="${TOKEN}"]`);
+  await openTab(page, /^Overrides/);
   await expect(row).toContainText(BASE_VALUE);
   await expect(row).toContainText(EDITED_VALUE);
   await expect(page.locator('[data-override-count="1"]')).toBeVisible();
@@ -76,6 +82,7 @@ test("one colour override reaches all four frames, and reset undoes it", async (
 
 test("the build endpoint builds and tests the unmodified base", async ({ page }) => {
   await page.goto("/");
+  await openTab(page, "Checks");
   await page.getByRole("button", { name: "Build and test" }).click();
 
   const results = page.getByTestId("build-results");
@@ -88,12 +95,15 @@ test("the build endpoint builds and tests the unmodified base", async ({ page })
 
   // The verdict is about the files it was taken on: an edit retires it
   // rather than leaving a "passed" beside tokens that have since changed.
+  await openTab(page, "Tokens");
   await page.locator(`[data-token="${TOKEN}"] input`).fill(EDITED_VALUE);
+  await openTab(page, "Checks");
   await expect(results).toBeHidden();
 });
 
 test("saving refuses to write over the committed baseline", async ({ page }) => {
   await page.goto("/");
+  await openTab(page, "Snapshot");
   await page.getByRole("textbox", { name: "Snapshot name" }).fill("stoa-today");
   await page.getByRole("button", { name: "Save snapshot" }).click();
 
