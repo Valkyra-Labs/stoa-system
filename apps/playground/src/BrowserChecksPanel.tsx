@@ -102,6 +102,9 @@ export function BrowserChecksPanel({ checks, unproduced, onSelect }: BrowserChec
                 <tr>
                   <th scope="col">Check</th>
                   <th scope="col">Result</th>
+                  <th scope="col" className="pg-check__action">
+                    <span className="stoa-visually-hidden">Highlight</span>
+                  </th>
                 </tr>
               </thead>
               <tbody>
@@ -115,12 +118,12 @@ export function BrowserChecksPanel({ checks, unproduced, onSelect }: BrowserChec
                       </span>
                     </td>
                     <td>
-                      <span className="pg-check__result">
-                        <StatusBadge tone={STATUS_TONE[check.status]}>{STATUS_LABEL[check.status]}</StatusBadge>
-                        <Button onPress={() => onSelect(check)} isDisabled={check.tokens.length === 0}>
-                          Highlight
-                        </Button>
-                      </span>
+                      <StatusBadge tone={STATUS_TONE[check.status]}>{STATUS_LABEL[check.status]}</StatusBadge>
+                    </td>
+                    <td className="pg-check__action">
+                      <Button onPress={() => onSelect(check)} isDisabled={check.tokens.length === 0}>
+                        Highlight
+                      </Button>
                     </td>
                   </tr>
                 ))}

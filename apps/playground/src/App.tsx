@@ -4,7 +4,7 @@
 // override is shown as one. The area panels (src/panels.tsx) sit in the
 // same list and contribute variables and content to every preview frame.
 import { Fragment, useCallback, useEffect, useMemo, useState } from "react";
-import { Button, ChoiceGroup, Panel, StatBar, StatusBadge, Tabs, TextField } from "@valkyra-labs/stoa-react";
+import { Button, ChoiceGroup, Panel, StatusBadge, Tabs, TextField } from "@valkyra-labs/stoa-react";
 import { ControlPanel } from "./ControlPanel";
 import { OverrideList } from "./OverrideList";
 import { PreviewGrid } from "./PreviewGrid";
@@ -310,15 +310,19 @@ export function App() {
       id: "stats",
       title: "Stats",
       content: (
-        <StatBar
-          label="Playground counters"
-          items={[
+        <dl className="pg-stats" aria-label="Playground counters">
+          {[
             { label: "state to effect", value: `${renderMs.toFixed(1)} ms` },
             { label: "interval", value: `${interval} ms` },
             { label: "tokens", value: String(Object.keys(tokens.light.variables).length) },
             { label: "revision", value: revision },
-          ]}
-        />
+          ].map((stat) => (
+            <div key={stat.label} className="pg-stats__row">
+              <dt className="pg-token__label">{stat.label}</dt>
+              <dd>{stat.value}</dd>
+            </div>
+          ))}
+        </dl>
       ),
     },
   ];

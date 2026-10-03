@@ -401,15 +401,21 @@ code {
   overflow-wrap: anywhere;
 }
 
-/* A check is one row of two cells: what was measured, with the measure
-   under it, and the verdict with its action. */
+/* A check is one row of three cells: what was measured, with the measure
+   under it; the verdict; and its action, every button on the table's end
+   edge. The verdict and the button sit on the first line of the row. */
 .pg-check-group td {
   vertical-align: top;
   padding-block: var(--stoa-space-1);
 }
 
-.pg-check-group th:last-child {
-  inline-size: 40%;
+.pg-check-group th:nth-child(2) {
+  inline-size: 30%;
+}
+
+.pg-check-group .pg-check__action {
+  inline-size: calc(var(--stoa-space-12) * 2);
+  text-align: end;
 }
 
 .pg-check__measure {
@@ -418,11 +424,31 @@ code {
   font-family: var(--stoa-font-family-mono);
 }
 
-.pg-check__result {
+/* Stats: one counter per row, named like a token and valued in figures
+   that do not shift as they change. */
+.pg-stats {
+  display: grid;
+  margin: 0;
+}
+
+.pg-stats__row {
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: var(--stoa-space-1) var(--stoa-space-2);
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--stoa-space-2);
+  padding-block: var(--stoa-space-2);
+  border-block-end: 1px solid var(--stoa-color-border);
+}
+
+.pg-stats__row:last-child {
+  border-block-end: 0;
+}
+
+.pg-stats__row dd {
+  margin: 0;
+  font-family: var(--stoa-font-family-mono);
+  font-size: var(--stoa-font-size-xs);
+  font-variant-numeric: tabular-nums;
 }
 
 /* Narrow windows: the side panel stacks above the previews and scrolls with
