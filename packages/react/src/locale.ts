@@ -21,6 +21,10 @@ export type StoaMessages = {
   bidMark: string;
   askMark: string;
   bookEmpty: string;
+  /** A trades table with no trades yet. */
+  noTrades: string;
+  /** A heatmap with nothing to draw. */
+  noLiquidity: string;
   bestBid: (price: string, size: string) => string;
   bestAsk: (price: string, size: string) => string;
   noBids: string;
@@ -40,6 +44,8 @@ const EN: StoaMessages = {
   bidMark: "B",
   askMark: "A",
   bookEmpty: "The book is empty.",
+  noTrades: "No trades yet.",
+  noLiquidity: "No liquidity to show.",
   bestBid: (price, size) => `best bid ${price} for ${size}`,
   bestAsk: (price, size) => `best ask ${price} for ${size}`,
   noBids: "no bids",
@@ -58,6 +64,8 @@ const AR: StoaMessages = {
   bidMark: "شراء",
   askMark: "بيع",
   bookEmpty: "دفتر الأوامر فارغ.",
+  noTrades: "لا صفقات بعد.",
+  noLiquidity: "لا سيولة لعرضها.",
   bestBid: (price, size) => `أفضل سعر شراء ${price} بكمية ${size}`,
   bestAsk: (price, size) => `أفضل سعر بيع ${price} بكمية ${size}`,
   noBids: "لا أوامر شراء",

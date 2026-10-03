@@ -13,13 +13,16 @@ export type Trade = {
 export type TradeTableProps = {
   trades: Trade[];
   caption: string;
+  /** What the table says while it has no trades; the locale's "No trades
+   * yet." by default. */
+  emptyText?: string;
   formatPrice?: (p: number) => string;
 };
 
 /** Recent trades, newest first. Side is a word and a colour; numbers are
  * tabular and right-aligned. Headers, side words and digits follow the
  * locale (see `locale.ts`); `formatPrice` overrides the price format. */
-export function TradeTable({ trades, caption, formatPrice }: TradeTableProps) {
+export function TradeTable({ trades, caption, formatPrice, emptyText }: TradeTableProps) {
   const locale = useStoaFormat();
   const words = locale.messages;
   const price = formatPrice ?? ((p: number) => locale.decimal(p, 2));
@@ -35,6 +38,11 @@ export function TradeTable({ trades, caption, formatPrice }: TradeTableProps) {
         </tr>
       </thead>
       <tbody>
+        {trades.length === 0 && (
+          <tr className="stoa-table__empty">
+            <td colSpan={4}>{emptyText ?? words.noTrades}</td>
+          </tr>
+        )}
         {trades.map((t) => (
           <tr key={t.id}>
             <td>{locale.digits(t.time)}</td>

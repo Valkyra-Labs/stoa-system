@@ -35,6 +35,8 @@
 }
 .stoa-table th, .stoa-table td { block-size: var(--stoa-density-row-height); padding-inline: var(--stoa-density-cell-padding-x); }
 .stoa-num { text-align: end; font-variant-numeric: tabular-nums; }
+/* A table with no rows yet says so in one muted, centred row. */
+.stoa-table__empty td { text-align: center; color: var(--stoa-color-text-muted); font-family: var(--stoa-font-family-sans); }
 .stoa-table th.stoa-num { text-align: end; }
 .stoa-up { color: var(--stoa-color-up); }
 .stoa-down { color: var(--stoa-color-down); }
