@@ -1,5 +1,6 @@
 import { useEffect, useImperativeHandle, useRef, type Ref } from "react";
 import { cellAlpha, maxAbs } from "./heatmapScale";
+import { useStoaFormat, type StoaFormat } from "./locale";
 import { fitCanvas, readCanvasTokens, useInvalidateOnTokensVersion, useTokenSignal, type CanvasTokens } from "./tokens";
 
 export type HeatmapData = {
@@ -27,7 +28,7 @@ export type HeatmapProps = {
   ref?: Ref<HeatmapHandle>;
 };
 
-function draw(canvas: HTMLCanvasElement, t: CanvasTokens, d: HeatmapData | null, height: number) {
+function draw(canvas: HTMLCanvasElement, t: CanvasTokens, d: HeatmapData | null, height: number, locale: StoaFormat) {
   const width = canvas.clientWidth;
   const ctx = fitCanvas(canvas, height);
   ctx.fillStyle = t.surface;
@@ -47,8 +48,8 @@ function draw(canvas: HTMLCanvasElement, t: CanvasTokens, d: HeatmapData | null,
   }
   ctx.globalAlpha = 1;
   ctx.font = t.font;
-  plate(ctx, t, d.top.toFixed(2), width, 0);
-  plate(ctx, t, (d.top - d.tick * (d.rows - 1)).toFixed(2), width, height, true);
+  plate(ctx, t, locale.decimal(d.top, 2), width, 0);
+  plate(ctx, t, locale.decimal(d.top - d.tick * (d.rows - 1), 2), width, height, true);
 }
 
 /** Inset of a price label from the chart's corner, and its padding. */
@@ -82,6 +83,7 @@ function plate(ctx: CanvasRenderingContext2D, t: CanvasTokens, text: string, wid
  * top to bottom, bids in the bid colour and asks in the ask colour,
  * opacity by size on a log scale. */
 export function Heatmap({ height = 240, label, description, data, tokensVersion, ref }: HeatmapProps) {
+  const locale = useStoaFormat();
   const canvas = useRef<HTMLCanvasElement>(null);
   const tokens = useRef<CanvasTokens | null>(null);
   const lastData = useRef<HeatmapData | null>(null);
@@ -90,7 +92,7 @@ export function Heatmap({ height = 240, label, description, data, tokensVersion,
     if (!c) return;
     lastData.current = d;
     tokens.current ??= readCanvasTokens(c);
-    draw(c, tokens.current, d, height);
+    draw(c, tokens.current, d, height, locale);
   };
   useImperativeHandle(ref, () => ({ draw: render }));
   // Drop the cached tokens when `tokensVersion` changes, from an effect

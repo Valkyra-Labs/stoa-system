@@ -19,52 +19,52 @@
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
-            "line": 60
+            "line": 62
           },
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
-            "line": 63
+            "line": 65
           },
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
-            "line": 64
+            "line": 66
           },
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
-            "line": 67
+            "line": 69
           },
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
-            "line": 68
+            "line": 70
           },
           {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
-            "line": 60
+            "line": 62
           },
           {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
-            "line": 63
+            "line": 65
           },
           {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
-            "line": 64
+            "line": 66
           },
           {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
-            "line": 67
+            "line": 69
           },
           {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
-            "line": 68
+            "line": 70
           },
           {
             "component": "Heatmap",
@@ -81,17 +81,17 @@
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 138
+            "line": 140
           },
           {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
-            "line": 188
+            "line": 190
           },
           {
             "component": "TimeSlider",
             "file": "packages/react/src/styles.css",
-            "line": 150
+            "line": 152
           }
         ],
         "stories": [
@@ -132,7 +132,7 @@
           {
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
-            "line": 176,
+            "line": 178,
             "via": "--stoa-color-warning"
           }
         ],
@@ -304,73 +304,73 @@
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
-            "line": 60,
+            "line": 62,
             "via": "--stoa-color-accent"
           },
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
-            "line": 63,
+            "line": 65,
             "via": "--stoa-color-accent"
           },
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
-            "line": 64,
+            "line": 66,
             "via": "--stoa-color-accent"
           },
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
-            "line": 67,
+            "line": 69,
             "via": "--stoa-color-accent"
           },
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
-            "line": 68,
+            "line": 70,
             "via": "--stoa-color-accent"
           },
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
-            "line": 80,
+            "line": 82,
             "via": "--stoa-color-focus"
           },
           {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
-            "line": 60,
+            "line": 62,
             "via": "--stoa-color-accent"
           },
           {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
-            "line": 63,
+            "line": 65,
             "via": "--stoa-color-accent"
           },
           {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
-            "line": 64,
+            "line": 66,
             "via": "--stoa-color-accent"
           },
           {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
-            "line": 67,
+            "line": 69,
             "via": "--stoa-color-accent"
           },
           {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
-            "line": 68,
+            "line": 70,
             "via": "--stoa-color-accent"
           },
           {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
-            "line": 80,
+            "line": 82,
             "via": "--stoa-color-focus"
           },
           {
@@ -388,49 +388,49 @@
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 80,
+            "line": 82,
             "via": "--stoa-color-focus"
           },
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 138,
+            "line": 140,
             "via": "--stoa-color-accent"
           },
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 139,
+            "line": 141,
             "via": "--stoa-color-focus"
           },
           {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
-            "line": 188,
+            "line": 190,
             "via": "--stoa-color-accent"
           },
           {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
-            "line": 189,
+            "line": 191,
             "via": "--stoa-color-focus"
           },
           {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 169,
+            "line": 171,
             "via": "--stoa-color-focus"
           },
           {
             "component": "TimeSlider",
             "file": "packages/react/src/styles.css",
-            "line": 80,
+            "line": 82,
             "via": "--stoa-color-focus"
           },
           {
             "component": "TimeSlider",
             "file": "packages/react/src/styles.css",
-            "line": 150,
+            "line": 152,
             "via": "--stoa-color-accent"
           }
         ],
@@ -475,43 +475,43 @@
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
-            "line": 80,
+            "line": 82,
             "via": "--stoa-color-focus"
           },
           {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
-            "line": 80,
+            "line": 82,
             "via": "--stoa-color-focus"
           },
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 80,
+            "line": 82,
             "via": "--stoa-color-focus"
           },
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 139,
+            "line": 141,
             "via": "--stoa-color-focus"
           },
           {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
-            "line": 189,
+            "line": 191,
             "via": "--stoa-color-focus"
           },
           {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 169,
+            "line": 171,
             "via": "--stoa-color-focus"
           },
           {
             "component": "TimeSlider",
             "file": "packages/react/src/styles.css",
-            "line": 80,
+            "line": 82,
             "via": "--stoa-color-focus"
           }
         ],
@@ -549,61 +549,61 @@
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
-            "line": 60,
+            "line": 62,
             "via": "--stoa-color-accent"
           },
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
-            "line": 63,
+            "line": 65,
             "via": "--stoa-color-accent"
           },
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
-            "line": 64,
+            "line": 66,
             "via": "--stoa-color-accent"
           },
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
-            "line": 67,
+            "line": 69,
             "via": "--stoa-color-accent"
           },
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
-            "line": 68,
+            "line": 70,
             "via": "--stoa-color-accent"
           },
           {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
-            "line": 60,
+            "line": 62,
             "via": "--stoa-color-accent"
           },
           {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
-            "line": 63,
+            "line": 65,
             "via": "--stoa-color-accent"
           },
           {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
-            "line": 64,
+            "line": 66,
             "via": "--stoa-color-accent"
           },
           {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
-            "line": 67,
+            "line": 69,
             "via": "--stoa-color-accent"
           },
           {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
-            "line": 68,
+            "line": 70,
             "via": "--stoa-color-accent"
           },
           {
@@ -621,19 +621,19 @@
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 138,
+            "line": 140,
             "via": "--stoa-color-accent"
           },
           {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
-            "line": 188,
+            "line": 190,
             "via": "--stoa-color-accent"
           },
           {
             "component": "TimeSlider",
             "file": "packages/react/src/styles.css",
-            "line": 150,
+            "line": 152,
             "via": "--stoa-color-accent"
           }
         ],
@@ -684,12 +684,12 @@
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
-            "line": 75
+            "line": 77
           },
           {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
-            "line": 75
+            "line": 77
           },
           {
             "component": "Heatmap",
@@ -711,17 +711,17 @@
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 75
+            "line": 77
           },
           {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
-            "line": 181
+            "line": 183
           },
           {
             "component": "TradeTable",
             "file": "packages/react/src/styles.css",
-            "line": 32
+            "line": 34
           }
         ],
         "stories": [
@@ -768,32 +768,32 @@
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
-            "line": 43
+            "line": 45
           },
           {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
-            "line": 43
+            "line": 45
           },
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 43
+            "line": 45
           },
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 126
+            "line": 128
           },
           {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 166
+            "line": 168
           },
           {
             "component": "TimeSlider",
             "file": "packages/react/src/styles.css",
-            "line": 146
+            "line": 148
           }
         ],
         "stories": [
@@ -834,12 +834,12 @@
           {
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
-            "line": 174
+            "line": 176
           },
           {
             "component": "TradeTable",
             "file": "packages/react/src/styles.css",
-            "line": 38
+            "line": 40
           }
         ],
         "stories": [
@@ -931,37 +931,37 @@
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
-            "line": 80
+            "line": 82
           },
           {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
-            "line": 80
+            "line": 82
           },
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 80
+            "line": 82
           },
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 139
+            "line": 141
           },
           {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
-            "line": 189
+            "line": 191
           },
           {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 169
+            "line": 171
           },
           {
             "component": "TimeSlider",
             "file": "packages/react/src/styles.css",
-            "line": 80
+            "line": 82
           }
         ],
         "stories": [
@@ -996,25 +996,25 @@
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
-            "line": 45,
+            "line": 47,
             "via": "--stoa-color-surface"
           },
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
-            "line": 60,
+            "line": 62,
             "via": "--stoa-color-surface"
           },
           {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
-            "line": 45,
+            "line": 47,
             "via": "--stoa-color-surface"
           },
           {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
-            "line": 60,
+            "line": 62,
             "via": "--stoa-color-surface"
           },
           {
@@ -1038,19 +1038,19 @@
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 45,
+            "line": 47,
             "via": "--stoa-color-surface"
           },
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 125,
+            "line": 127,
             "via": "--stoa-color-surface"
           },
           {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 167,
+            "line": 169,
             "via": "--stoa-color-surface"
           }
         ],
@@ -1100,85 +1100,85 @@
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
-            "line": 46,
+            "line": 48,
             "via": "--stoa-color-text"
           },
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
-            "line": 57,
+            "line": 59,
             "via": "--stoa-color-text"
           },
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
-            "line": 63,
+            "line": 65,
             "via": "--stoa-color-text"
           },
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
-            "line": 64,
+            "line": 66,
             "via": "--stoa-color-text"
           },
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
-            "line": 67,
+            "line": 69,
             "via": "--stoa-color-text"
           },
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
-            "line": 68,
+            "line": 70,
             "via": "--stoa-color-text"
           },
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
-            "line": 74,
+            "line": 76,
             "via": "--stoa-color-surface-sunken"
           },
           {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
-            "line": 46,
+            "line": 48,
             "via": "--stoa-color-text"
           },
           {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
-            "line": 57,
+            "line": 59,
             "via": "--stoa-color-text"
           },
           {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
-            "line": 63,
+            "line": 65,
             "via": "--stoa-color-text"
           },
           {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
-            "line": 64,
+            "line": 66,
             "via": "--stoa-color-text"
           },
           {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
-            "line": 67,
+            "line": 69,
             "via": "--stoa-color-text"
           },
           {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
-            "line": 68,
+            "line": 70,
             "via": "--stoa-color-text"
           },
           {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
-            "line": 74,
+            "line": 76,
             "via": "--stoa-color-surface-sunken"
           },
           {
@@ -1196,49 +1196,49 @@
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 46,
+            "line": 48,
             "via": "--stoa-color-text"
           },
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 57,
+            "line": 59,
             "via": "--stoa-color-text"
           },
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 74,
+            "line": 76,
             "via": "--stoa-color-surface-sunken"
           },
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 130,
+            "line": 132,
             "via": "--stoa-color-text"
           },
           {
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
-            "line": 175,
+            "line": 177,
             "via": "--stoa-color-text"
           },
           {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
-            "line": 187,
+            "line": 189,
             "via": "--stoa-color-text"
           },
           {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
-            "line": 188,
+            "line": 190,
             "via": "--stoa-color-text"
           },
           {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 167,
+            "line": 169,
             "via": "--stoa-color-text"
           }
         ],
@@ -1316,19 +1316,13 @@
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
-            "line": 55,
+            "line": 57,
             "via": "--stoa-color-surface-hover"
           },
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
-            "line": 57,
-            "via": "--stoa-color-surface-hover"
-          },
-          {
-            "component": "ChoiceGroup",
-            "file": "packages/react/src/styles.css",
-            "line": 55,
+            "line": 59,
             "via": "--stoa-color-surface-hover"
           },
           {
@@ -1338,9 +1332,9 @@
             "via": "--stoa-color-surface-hover"
           },
           {
-            "component": "Select",
+            "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
-            "line": 55,
+            "line": 59,
             "via": "--stoa-color-surface-hover"
           },
           {
@@ -1352,7 +1346,13 @@
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 137,
+            "line": 59,
+            "via": "--stoa-color-surface-hover"
+          },
+          {
+            "component": "Select",
+            "file": "packages/react/src/styles.css",
+            "line": 139,
             "via": "--stoa-color-surface-hover"
           }
         ],
@@ -1389,13 +1389,13 @@
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
-            "line": 75,
+            "line": 77,
             "via": "--stoa-color-border"
           },
           {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
-            "line": 75,
+            "line": 77,
             "via": "--stoa-color-border"
           },
           {
@@ -1419,19 +1419,19 @@
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 75,
+            "line": 77,
             "via": "--stoa-color-border"
           },
           {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
-            "line": 181,
+            "line": 183,
             "via": "--stoa-color-border"
           },
           {
             "component": "TradeTable",
             "file": "packages/react/src/styles.css",
-            "line": 32,
+            "line": 34,
             "via": "--stoa-color-border"
           }
         ],
@@ -1474,37 +1474,37 @@
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
-            "line": 43,
+            "line": 45,
             "via": "--stoa-color-border-strong"
           },
           {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
-            "line": 43,
+            "line": 45,
             "via": "--stoa-color-border-strong"
           },
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 43,
+            "line": 45,
             "via": "--stoa-color-border-strong"
           },
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 126,
+            "line": 128,
             "via": "--stoa-color-border-strong"
           },
           {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 166,
+            "line": 168,
             "via": "--stoa-color-border-strong"
           },
           {
             "component": "TimeSlider",
             "file": "packages/react/src/styles.css",
-            "line": 146,
+            "line": 148,
             "via": "--stoa-color-border-strong"
           }
         ],
@@ -1559,49 +1559,49 @@
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 117,
+            "line": 119,
             "via": "--stoa-color-text-muted"
           },
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 159,
+            "line": 161,
             "via": "--stoa-color-text-muted"
           },
           {
             "component": "StatBar",
             "file": "packages/react/src/styles.css",
-            "line": 155,
+            "line": 157,
             "via": "--stoa-color-text-muted"
           },
           {
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
-            "line": 177,
+            "line": 179,
             "via": "--stoa-color-text-muted"
           },
           {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
-            "line": 184,
+            "line": 186,
             "via": "--stoa-color-text-muted"
           },
           {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 159,
+            "line": 161,
             "via": "--stoa-color-text-muted"
           },
           {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 170,
+            "line": 172,
             "via": "--stoa-color-text-muted"
           },
           {
             "component": "TradeTable",
             "file": "packages/react/src/styles.css",
-            "line": 32,
+            "line": 34,
             "via": "--stoa-color-text-muted"
           }
         ],
@@ -1677,19 +1677,19 @@
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
-            "line": 76,
+            "line": 78,
             "via": "--stoa-color-text-subtle"
           },
           {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
-            "line": 76,
+            "line": 78,
             "via": "--stoa-color-text-subtle"
           },
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 76,
+            "line": 78,
             "via": "--stoa-color-text-subtle"
           }
         ],
@@ -1746,49 +1746,49 @@
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 117,
+            "line": 119,
             "via": "--stoa-color-text-muted"
           },
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 159,
+            "line": 161,
             "via": "--stoa-color-text-muted"
           },
           {
             "component": "StatBar",
             "file": "packages/react/src/styles.css",
-            "line": 155,
+            "line": 157,
             "via": "--stoa-color-text-muted"
           },
           {
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
-            "line": 177,
+            "line": 179,
             "via": "--stoa-color-text-muted"
           },
           {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
-            "line": 184,
+            "line": 186,
             "via": "--stoa-color-text-muted"
           },
           {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 159,
+            "line": 161,
             "via": "--stoa-color-text-muted"
           },
           {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 170,
+            "line": 172,
             "via": "--stoa-color-text-muted"
           },
           {
             "component": "TradeTable",
             "file": "packages/react/src/styles.css",
-            "line": 32,
+            "line": 34,
             "via": "--stoa-color-text-muted"
           }
         ],
@@ -1855,37 +1855,37 @@
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
-            "line": 43,
+            "line": 45,
             "via": "--stoa-color-border-strong"
           },
           {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
-            "line": 43,
+            "line": 45,
             "via": "--stoa-color-border-strong"
           },
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 43,
+            "line": 45,
             "via": "--stoa-color-border-strong"
           },
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 126,
+            "line": 128,
             "via": "--stoa-color-border-strong"
           },
           {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 166,
+            "line": 168,
             "via": "--stoa-color-border-strong"
           },
           {
             "component": "TimeSlider",
             "file": "packages/react/src/styles.css",
-            "line": 146,
+            "line": 148,
             "via": "--stoa-color-border-strong"
           }
         ],
@@ -1922,13 +1922,13 @@
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
-            "line": 75,
+            "line": 77,
             "via": "--stoa-color-border"
           },
           {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
-            "line": 75,
+            "line": 77,
             "via": "--stoa-color-border"
           },
           {
@@ -1952,19 +1952,19 @@
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 75,
+            "line": 77,
             "via": "--stoa-color-border"
           },
           {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
-            "line": 181,
+            "line": 183,
             "via": "--stoa-color-border"
           },
           {
             "component": "TradeTable",
             "file": "packages/react/src/styles.css",
-            "line": 32,
+            "line": 34,
             "via": "--stoa-color-border"
           }
         ],
@@ -2007,19 +2007,13 @@
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
-            "line": 55,
+            "line": 57,
             "via": "--stoa-color-surface-hover"
           },
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
-            "line": 57,
-            "via": "--stoa-color-surface-hover"
-          },
-          {
-            "component": "ChoiceGroup",
-            "file": "packages/react/src/styles.css",
-            "line": 55,
+            "line": 59,
             "via": "--stoa-color-surface-hover"
           },
           {
@@ -2029,9 +2023,9 @@
             "via": "--stoa-color-surface-hover"
           },
           {
-            "component": "Select",
+            "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
-            "line": 55,
+            "line": 59,
             "via": "--stoa-color-surface-hover"
           },
           {
@@ -2043,7 +2037,13 @@
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 137,
+            "line": 59,
+            "via": "--stoa-color-surface-hover"
+          },
+          {
+            "component": "Select",
+            "file": "packages/react/src/styles.css",
+            "line": 139,
             "via": "--stoa-color-surface-hover"
           }
         ],
@@ -2086,97 +2086,97 @@
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
-            "line": 45,
+            "line": 47,
             "via": "--stoa-color-surface"
           },
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
-            "line": 46,
+            "line": 48,
             "via": "--stoa-color-text"
           },
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
-            "line": 57,
+            "line": 59,
             "via": "--stoa-color-text"
           },
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
-            "line": 60,
+            "line": 62,
             "via": "--stoa-color-surface"
           },
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
-            "line": 63,
+            "line": 65,
             "via": "--stoa-color-text"
           },
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
-            "line": 64,
+            "line": 66,
             "via": "--stoa-color-text"
           },
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
-            "line": 67,
+            "line": 69,
             "via": "--stoa-color-text"
           },
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
-            "line": 68,
+            "line": 70,
             "via": "--stoa-color-text"
           },
           {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
-            "line": 45,
+            "line": 47,
             "via": "--stoa-color-surface"
           },
           {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
-            "line": 46,
+            "line": 48,
             "via": "--stoa-color-text"
           },
           {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
-            "line": 57,
+            "line": 59,
             "via": "--stoa-color-text"
           },
           {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
-            "line": 60,
+            "line": 62,
             "via": "--stoa-color-surface"
           },
           {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
-            "line": 63,
+            "line": 65,
             "via": "--stoa-color-text"
           },
           {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
-            "line": 64,
+            "line": 66,
             "via": "--stoa-color-text"
           },
           {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
-            "line": 67,
+            "line": 69,
             "via": "--stoa-color-text"
           },
           {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
-            "line": 68,
+            "line": 70,
             "via": "--stoa-color-text"
           },
           {
@@ -2212,61 +2212,61 @@
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 45,
+            "line": 47,
             "via": "--stoa-color-surface"
           },
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 46,
+            "line": 48,
             "via": "--stoa-color-text"
           },
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 57,
+            "line": 59,
             "via": "--stoa-color-text"
           },
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 125,
+            "line": 127,
             "via": "--stoa-color-surface"
           },
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 130,
+            "line": 132,
             "via": "--stoa-color-text"
           },
           {
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
-            "line": 175,
+            "line": 177,
             "via": "--stoa-color-text"
           },
           {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
-            "line": 187,
+            "line": 189,
             "via": "--stoa-color-text"
           },
           {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
-            "line": 188,
+            "line": 190,
             "via": "--stoa-color-text"
           },
           {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 167,
+            "line": 169,
             "via": "--stoa-color-surface"
           },
           {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 167,
+            "line": 169,
             "via": "--stoa-color-text"
           }
         ],
@@ -2324,13 +2324,13 @@
           {
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
-            "line": 174,
+            "line": 176,
             "via": "--stoa-color-down"
           },
           {
             "component": "TradeTable",
             "file": "packages/react/src/styles.css",
-            "line": 38,
+            "line": 40,
             "via": "--stoa-color-down"
           }
         ],
@@ -2387,13 +2387,13 @@
           {
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
-            "line": 174,
+            "line": 176,
             "via": "--stoa-color-down"
           },
           {
             "component": "TradeTable",
             "file": "packages/react/src/styles.css",
-            "line": 38,
+            "line": 40,
             "via": "--stoa-color-down"
           }
         ],
@@ -2492,22 +2492,22 @@
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
-            "line": 45
+            "line": 47
           },
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
-            "line": 60
+            "line": 62
           },
           {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
-            "line": 45
+            "line": 47
           },
           {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
-            "line": 60
+            "line": 62
           },
           {
             "component": "Heatmap",
@@ -2529,17 +2529,17 @@
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 45
+            "line": 47
           },
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 125
+            "line": 127
           },
           {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 167
+            "line": 169
           }
         ],
         "stories": [
@@ -2587,17 +2587,12 @@
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
-            "line": 55
+            "line": 57
           },
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
-            "line": 57
-          },
-          {
-            "component": "ChoiceGroup",
-            "file": "packages/react/src/styles.css",
-            "line": 55
+            "line": 59
           },
           {
             "component": "ChoiceGroup",
@@ -2605,9 +2600,9 @@
             "line": 57
           },
           {
-            "component": "Select",
+            "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
-            "line": 55
+            "line": 59
           },
           {
             "component": "Select",
@@ -2617,7 +2612,12 @@
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 137
+            "line": 59
+          },
+          {
+            "component": "Select",
+            "file": "packages/react/src/styles.css",
+            "line": 139
           }
         ],
         "stories": [
@@ -2658,17 +2658,17 @@
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
-            "line": 74
+            "line": 76
           },
           {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
-            "line": 74
+            "line": 76
           },
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 74
+            "line": 76
           }
         ],
         "stories": [
@@ -2714,13 +2714,13 @@
           {
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
-            "line": 173,
+            "line": 175,
             "via": "--stoa-color-up"
           },
           {
             "component": "TradeTable",
             "file": "packages/react/src/styles.css",
-            "line": 37,
+            "line": 39,
             "via": "--stoa-color-up"
           }
         ],
@@ -2777,13 +2777,13 @@
           {
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
-            "line": 173,
+            "line": 175,
             "via": "--stoa-color-up"
           },
           {
             "component": "TradeTable",
             "file": "packages/react/src/styles.css",
-            "line": 37,
+            "line": 39,
             "via": "--stoa-color-up"
           }
         ],
@@ -2887,62 +2887,62 @@
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
-            "line": 46
+            "line": 48
           },
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
-            "line": 57
+            "line": 59
           },
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
-            "line": 63
+            "line": 65
           },
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
-            "line": 64
+            "line": 66
           },
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
-            "line": 67
+            "line": 69
           },
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
-            "line": 68
+            "line": 70
           },
           {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
-            "line": 46
+            "line": 48
           },
           {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
-            "line": 57
+            "line": 59
           },
           {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
-            "line": 63
+            "line": 65
           },
           {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
-            "line": 64
+            "line": 66
           },
           {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
-            "line": 67
+            "line": 69
           },
           {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
-            "line": 68
+            "line": 70
           },
           {
             "component": "Heatmap",
@@ -2959,37 +2959,37 @@
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 46
+            "line": 48
           },
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 57
+            "line": 59
           },
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 130
+            "line": 132
           },
           {
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
-            "line": 175
+            "line": 177
           },
           {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
-            "line": 187
+            "line": 189
           },
           {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
-            "line": 188
+            "line": 190
           },
           {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 167
+            "line": 169
           }
         ],
         "stories": [
@@ -3054,42 +3054,42 @@
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 117
+            "line": 119
           },
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 159
+            "line": 161
           },
           {
             "component": "StatBar",
             "file": "packages/react/src/styles.css",
-            "line": 155
+            "line": 157
           },
           {
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
-            "line": 177
+            "line": 179
           },
           {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
-            "line": 184
+            "line": 186
           },
           {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 159
+            "line": 161
           },
           {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 170
+            "line": 172
           },
           {
             "component": "TradeTable",
             "file": "packages/react/src/styles.css",
-            "line": 32
+            "line": 34
           }
         ],
         "stories": [
@@ -3137,17 +3137,17 @@
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
-            "line": 76
+            "line": 78
           },
           {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
-            "line": 76
+            "line": 78
           },
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 76
+            "line": 78
           }
         ],
         "stories": [
@@ -3188,12 +3188,12 @@
           {
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
-            "line": 173
+            "line": 175
           },
           {
             "component": "TradeTable",
             "file": "packages/react/src/styles.css",
-            "line": 37
+            "line": 39
           }
         ],
         "stories": [
@@ -3285,7 +3285,7 @@
           {
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
-            "line": 176
+            "line": 178
           }
         ],
         "stories": []
@@ -3319,7 +3319,7 @@
           {
             "component": "TradeTable",
             "file": "packages/react/src/styles.css",
-            "line": 34
+            "line": 36
           }
         ],
         "stories": [
@@ -3375,7 +3375,7 @@
           {
             "component": "TradeTable",
             "file": "packages/react/src/styles.css",
-            "line": 28
+            "line": 30
           }
         ],
         "stories": [
@@ -3432,7 +3432,7 @@
           {
             "component": "TradeTable",
             "file": "packages/react/src/styles.css",
-            "line": 34
+            "line": 36
           }
         ],
         "stories": [
@@ -3472,22 +3472,22 @@
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
-            "line": 81
+            "line": 83
           },
           {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
-            "line": 81
+            "line": 83
           },
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 81
+            "line": 83
           },
           {
             "component": "TimeSlider",
             "file": "packages/react/src/styles.css",
-            "line": 81
+            "line": 83
           }
         ],
         "stories": [
@@ -3521,37 +3521,37 @@
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
-            "line": 80
+            "line": 82
           },
           {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
-            "line": 80
+            "line": 82
           },
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 80
+            "line": 82
           },
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 139
+            "line": 141
           },
           {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
-            "line": 189
+            "line": 191
           },
           {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 169
+            "line": 171
           },
           {
             "component": "TimeSlider",
             "file": "packages/react/src/styles.css",
-            "line": 80
+            "line": 82
           }
         ],
         "stories": [
@@ -3597,22 +3597,22 @@
           {
             "component": "StatBar",
             "file": "packages/react/src/styles.css",
-            "line": 153
+            "line": 155
           },
           {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 165
+            "line": 167
           },
           {
             "component": "TimeSlider",
             "file": "packages/react/src/styles.css",
-            "line": 142
+            "line": 144
           },
           {
             "component": "TradeTable",
             "file": "packages/react/src/styles.css",
-            "line": 29
+            "line": 31
           }
         ],
         "stories": [
@@ -3657,7 +3657,7 @@
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 128
+            "line": 130
           }
         ],
         "stories": [
@@ -3760,12 +3760,12 @@
           {
             "component": "StatBar",
             "file": "packages/react/src/styles.css",
-            "line": 153
+            "line": 155
           },
           {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 170
+            "line": 172
           }
         ],
         "stories": [
@@ -3845,7 +3845,7 @@
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 129
+            "line": 131
           }
         ],
         "stories": [
@@ -3902,7 +3902,7 @@
           {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
-            "line": 109
+            "line": 111
           },
           {
             "component": "Panel",
@@ -3912,27 +3912,27 @@
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 109
+            "line": 111
           },
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 113
+            "line": 115
           },
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 159
+            "line": 161
           },
           {
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
-            "line": 172
+            "line": 174
           },
           {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 159
+            "line": 161
           }
         ],
         "stories": [
@@ -3971,12 +3971,12 @@
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 138
+            "line": 140
           },
           {
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
-            "line": 172
+            "line": 174
           }
         ],
         "stories": [
@@ -4010,7 +4010,7 @@
           {
             "component": "TradeTable",
             "file": "packages/react/src/styles.css",
-            "line": 31
+            "line": 33
           }
         ],
         "stories": [
@@ -4090,17 +4090,17 @@
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
-            "line": 48
+            "line": 50
           },
           {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
-            "line": 48
+            "line": 50
           },
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 48
+            "line": 50
           }
         ],
         "stories": [
@@ -4249,17 +4249,17 @@
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
-            "line": 48
+            "line": 50
           },
           {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
-            "line": 48
+            "line": 50
           },
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 48
+            "line": 50
           }
         ],
         "stories": [
@@ -4293,12 +4293,12 @@
           {
             "component": "TimeSlider",
             "file": "packages/react/src/styles.css",
-            "line": 146
+            "line": 148
           },
           {
             "component": "TimeSlider",
             "file": "packages/react/src/styles.css",
-            "line": 150
+            "line": 152
           }
         ],
         "stories": [
@@ -4412,37 +4412,37 @@
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
-            "line": 44
+            "line": 46
           },
           {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
-            "line": 44
+            "line": 46
           },
           {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
-            "line": 98
+            "line": 100
           },
           {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
-            "line": 101
+            "line": 103
           },
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 44
+            "line": 46
           },
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 127
+            "line": 129
           },
           {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 167
+            "line": 169
           }
         ],
         "stories": [
@@ -4523,37 +4523,32 @@
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
-            "line": 42
+            "line": 44
           },
           {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
-            "line": 42
+            "line": 44
           },
           {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
-            "line": 111
+            "line": 113
           },
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 42
+            "line": 44
           },
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 111
+            "line": 113
           },
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 115
-          },
-          {
-            "component": "Select",
-            "file": "packages/react/src/styles.css",
-            "line": 132
+            "line": 117
           },
           {
             "component": "Select",
@@ -4561,24 +4556,29 @@
             "line": 134
           },
           {
+            "component": "Select",
+            "file": "packages/react/src/styles.css",
+            "line": 136
+          },
+          {
             "component": "StatBar",
             "file": "packages/react/src/styles.css",
-            "line": 154
+            "line": 156
           },
           {
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
-            "line": 172
+            "line": 174
           },
           {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
-            "line": 180
+            "line": 182
           },
           {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 158
+            "line": 160
           }
         ],
         "stories": [
@@ -4635,12 +4635,12 @@
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
-            "line": 42
+            "line": 44
           },
           {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
-            "line": 42
+            "line": 44
           },
           {
             "component": "Panel",
@@ -4650,22 +4650,22 @@
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 42
+            "line": 44
           },
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 116
+            "line": 118
           },
           {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
-            "line": 184
+            "line": 186
           },
           {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
-            "line": 166
+            "line": 168
           }
         ],
         "stories": [
@@ -4704,17 +4704,17 @@
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 134
+            "line": 136
           },
           {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
-            "line": 184
+            "line": 186
           },
           {
             "component": "TimeSlider",
             "file": "packages/react/src/styles.css",
-            "line": 141
+            "line": 143
           }
         ],
         "stories": [
@@ -4748,12 +4748,12 @@
           {
             "component": "StatBar",
             "file": "packages/react/src/styles.css",
-            "line": 153
+            "line": 155
           },
           {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
-            "line": 190
+            "line": 192
           }
         ],
         "stories": [
@@ -4787,12 +4787,12 @@
           {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
-            "line": 110
+            "line": 112
           },
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 110
+            "line": 112
           }
         ],
         "stories": [
@@ -4865,7 +4865,7 @@
     {
       "name": "--trigger-width",
       "file": "packages/react/src/styles.css",
-      "line": 124
+      "line": 126
     }
   ],
   "summary": {
