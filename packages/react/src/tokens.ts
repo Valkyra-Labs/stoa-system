@@ -33,7 +33,8 @@ export function readCanvasTokens(el: Element): CanvasTokens {
     bidWash: v("--stoa-color-up-wash"),
     askWash: v("--stoa-color-down-wash"),
     accent: v("--stoa-color-accent"),
-    rowHeight: parseFloat(v("--stoa-density-row-height")) || 22,
+    // Without the token, the regular density's row height.
+    rowHeight: parseFloat(v("--stoa-density-row-height")) || 28,
     font: `${v("--stoa-density-font-size") || "12px"} ${v("--stoa-font-family-mono") || "monospace"}`,
   };
 }

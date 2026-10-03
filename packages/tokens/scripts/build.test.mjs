@@ -26,3 +26,13 @@ test("reduced motion is also an attribute, for a setting or a preview that canno
     assert.match(block, new RegExp(`--stoa-motion-duration-${name}: 0ms`));
   }
 });
+
+test("a density mode set on the root element wins over the default", () => {
+  // `:root` and `[data-density="..."]` weigh the same, so the default block
+  // has to come first for <html data-density="compact"> to take effect.
+  const regular = css.indexOf(':root, [data-density="regular"]');
+  for (const mode of ["compact", "comfortable"]) {
+    const block = css.indexOf(`[data-density="${mode}"] {`);
+    assert.ok(regular !== -1 && block > regular, `${mode} comes after the default block`);
+  }
+});
