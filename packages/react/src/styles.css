@@ -116,7 +116,7 @@
 
 .stoa-select { display: inline-grid; gap: var(--stoa-space-1); }
 .stoa-select__button { display: inline-flex; align-items: center; justify-content: space-between; gap: var(--stoa-space-2); text-align: start; }
-.stoa-select__chevron { flex: none; color: var(--stoa-color-text-muted); }
+.stoa-select__chevron { color: var(--stoa-color-text-muted); }
 .stoa-select[data-open] .stoa-select__chevron { transform: rotate(180deg); }
 /* The list is portalled to the document, so it takes the document's
    tokens, not those of the element that opened it. `--trigger-width` is
@@ -139,6 +139,33 @@
 .stoa-select__option[data-focused] { background: var(--stoa-color-surface-hover); }
 .stoa-select__option[data-selected] { font-weight: var(--stoa-font-weight-medium); border-inline-start-color: var(--stoa-color-accent); }
 .stoa-select__option[data-focus-visible] { outline: var(--stoa-focus-width) solid var(--stoa-color-focus); outline-offset: calc(-1 * var(--stoa-focus-width)); }
+
+.stoa-chevron { flex: none; }
+
+/* Disclosure: the summary row reads like a panel's own heading level, with
+   the Select's chevron before it. Closed, the chevron points to the end
+   of the line (right in left-to-right text, left in right-to-left). */
+.stoa-disclosure__summary {
+  display: flex; align-items: center; gap: var(--stoa-space-2);
+  padding-block: var(--stoa-space-1);
+  font-size: var(--stoa-font-size-xs); font-weight: var(--stoa-font-weight-medium);
+  color: var(--stoa-color-text);
+  list-style: none; cursor: pointer;
+}
+.stoa-disclosure__summary::-webkit-details-marker { display: none; }
+.stoa-disclosure__summary:hover .stoa-disclosure__chevron { color: var(--stoa-color-text); }
+.stoa-disclosure__summary:focus-visible {
+  outline: var(--stoa-focus-width) solid var(--stoa-color-focus);
+  outline-offset: var(--stoa-focus-offset);
+  border-radius: var(--stoa-radius-sm);
+}
+.stoa-disclosure__chevron {
+  color: var(--stoa-color-text-muted);
+  transition: transform var(--stoa-motion-duration-fast) var(--stoa-motion-easing-standard);
+}
+.stoa-disclosure:not([open]) > .stoa-disclosure__summary .stoa-disclosure__chevron { transform: rotate(-90deg); }
+.stoa-disclosure:not([open]) > .stoa-disclosure__summary .stoa-disclosure__chevron:dir(rtl) { transform: rotate(90deg); }
+.stoa-disclosure__content { padding-block-start: var(--stoa-space-1); }
 
 .stoa-slider { display: grid; grid-template-columns: auto 1fr; align-items: center; gap: var(--stoa-space-3); flex: 1; min-inline-size: 200px; }
 .stoa-slider__output { font-family: var(--stoa-font-family-mono); font-variant-numeric: tabular-nums; min-inline-size: 12ch; }

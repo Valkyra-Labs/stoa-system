@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { act, cleanup, fireEvent, render, screen } from "@testing-library/react";
-import { ChoiceGroup, Select, TimeSlider, TradeTable } from "./index";
+import { ChoiceGroup, Disclosure, Select, TimeSlider, TradeTable } from "./index";
 
 afterEach(cleanup);
 
@@ -82,5 +82,32 @@ describe("Select", () => {
     fireEvent.keyDown(option, { key: "Enter" });
     fireEvent.keyUp(option, { key: "Enter" });
     expect(onChange).toHaveBeenCalledWith("dark-rtl");
+  });
+});
+
+describe("Disclosure", () => {
+  it("opens from its summary and draws the shared chevron, hidden from assistive technology", () => {
+    const { container } = render(
+      <Disclosure summary="Text contrast" data-role="body">
+        <p>pairs</p>
+      </Disclosure>,
+    );
+    const details = container.querySelector("details")!;
+    expect(details.open).toBe(false);
+    expect(details.dataset.role).toBe("body");
+    const summary = container.querySelector("summary")!;
+    expect(summary.textContent).toBe("Text contrast");
+    expect(summary.querySelector("svg.stoa-chevron")?.getAttribute("aria-hidden")).toBe("true");
+    fireEvent.click(summary);
+    expect(details.open).toBe(true);
+  });
+
+  it("can start open", () => {
+    const { container } = render(
+      <Disclosure summary="Target size" defaultOpen>
+        <p>rows</p>
+      </Disclosure>,
+    );
+    expect(container.querySelector("details")!.open).toBe(true);
   });
 });

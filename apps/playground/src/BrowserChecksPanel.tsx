@@ -2,7 +2,7 @@
 // packages/tokens/src/checks.mjs, run on the live token values, grouped by
 // rule and matched against known-violations.json.
 import { useMemo, useState } from "react";
-import { Button, ChoiceGroup, StatusBadge, type StatusTone } from "@valkyra-labs/stoa-react";
+import { Button, ChoiceGroup, Disclosure, StatusBadge, type StatusTone } from "@valkyra-labs/stoa-react";
 import type { BrowserCheck, CheckStatus } from "./browserChecks";
 
 export type BrowserChecksPanelProps = {
@@ -90,10 +90,12 @@ export function BrowserChecksPanel({ checks, unproduced, onSelect }: BrowserChec
         if (shown.length === 0) return null;
         const flagged = ruleChecks.filter((c) => c.status !== "pass").length;
         return (
-          <details key={rule} className="pg-check-group" open={flagged > 0}>
-            <summary>
-              {RULE_LABEL[rule] ?? rule} ({ruleChecks.length}, {flagged} flagged)
-            </summary>
+          <Disclosure
+            key={rule}
+            className="pg-check-group"
+            defaultOpen={flagged > 0}
+            summary={`${RULE_LABEL[rule] ?? rule} (${ruleChecks.length}, ${flagged} flagged)`}
+          >
             <table className="stoa-table">
               <caption className="stoa-visually-hidden">{RULE_LABEL[rule] ?? rule} results</caption>
               <thead>
@@ -124,7 +126,7 @@ export function BrowserChecksPanel({ checks, unproduced, onSelect }: BrowserChec
                 ))}
               </tbody>
             </table>
-          </details>
+          </Disclosure>
         );
       })}
     </div>

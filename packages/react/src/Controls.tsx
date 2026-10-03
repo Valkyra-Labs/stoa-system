@@ -1,4 +1,5 @@
 import { useLayoutEffect, useRef, type ReactNode } from "react";
+import { Chevron } from "./Chevron";
 import {
   Button as AriaButton,
   Label,
@@ -87,9 +88,7 @@ export function Select<T extends Key>({ label, hideLabel = false, options, value
       <Label className={hideLabel ? "stoa-visually-hidden" : "stoa-field__label"}>{label}</Label>
       <AriaButton className="stoa-button stoa-select__button">
         <SelectValue className="stoa-select__value" />
-        <svg className="stoa-select__chevron" aria-hidden="true" focusable="false" viewBox="0 0 10 6" width="10" height="6">
-          <path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" strokeWidth="1.5" />
-        </svg>
+        <Chevron className="stoa-select__chevron" />
       </AriaButton>
       <Popover className={`stoa-select__popover stoa-select__popover--${size}`} offset={4}>
         <ListBox className="stoa-select__list">
