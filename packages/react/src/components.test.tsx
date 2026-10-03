@@ -1,7 +1,9 @@
 // @vitest-environment jsdom
-import { describe, expect, it } from "vitest";
-import { render, screen } from "@testing-library/react";
-import { ChoiceGroup, TimeSlider, TradeTable } from "./index";
+import { afterEach, describe, expect, it, vi } from "vitest";
+import { act, cleanup, fireEvent, render, screen } from "@testing-library/react";
+import { ChoiceGroup, Select, TimeSlider, TradeTable } from "./index";
+
+afterEach(cleanup);
 
 describe("TradeTable", () => {
   it("states the side in words, not only in colour", () => {
@@ -51,5 +53,34 @@ describe("TimeSlider", () => {
     );
     const input = container.querySelector('input[type="range"]');
     expect(input?.getAttribute("aria-describedby")?.split(" ")).toContain("time-notes");
+  });
+});
+
+describe("Select", () => {
+  const VIEWS = [
+    { id: "light-ltr", label: "Light, left to right" },
+    { id: "dark-rtl", label: "Dark, right to left" },
+  ];
+
+  it("names its button with the chosen option and the label, even when the label is hidden", () => {
+    render(<Select label="Frame view" hideLabel options={VIEWS} value="dark-rtl" onChange={() => {}} />);
+    const button = screen.getByRole("button");
+    const names = (button.getAttribute("aria-labelledby") ?? "").split(" ").map((id) => document.getElementById(id)?.textContent);
+    expect(names).toContain("Frame view");
+    expect(names).toContain("Dark, right to left");
+    expect(screen.getByText("Frame view").className).toBe("stoa-visually-hidden");
+  });
+
+  it("reports the option picked from the list", () => {
+    const onChange = vi.fn();
+    render(<Select label="Frame view" options={VIEWS} value="light-ltr" onChange={onChange} />);
+    const button = screen.getByRole("button");
+    act(() => button.focus());
+    fireEvent.keyDown(button, { key: "ArrowDown" });
+    fireEvent.keyUp(button, { key: "ArrowDown" });
+    const option = screen.getByRole("option", { name: "Dark, right to left" });
+    fireEvent.keyDown(option, { key: "Enter" });
+    fireEvent.keyUp(option, { key: "Enter" });
+    expect(onChange).toHaveBeenCalledWith("dark-rtl");
   });
 });

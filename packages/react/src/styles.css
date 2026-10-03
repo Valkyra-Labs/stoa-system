@@ -80,7 +80,52 @@
   outline: var(--stoa-focus-width) solid var(--stoa-color-focus);
   outline-offset: var(--stoa-focus-offset);
 }
-.stoa-choice-group { display: inline-flex; gap: var(--stoa-space-1); }
+/* A choice group is one segmented control: the options touch and share
+   their borders, and only the outer corners are rounded. A group too wide
+   for its container wraps; the negative margins overlap neighbouring
+   borders in both directions, and the padding gives the first row and
+   column back the pixel they lend. The chosen, hovered and focused option
+   is raised so its border and ring sit over its neighbours'. */
+.stoa-choice-group {
+  display: inline-flex; flex-wrap: wrap; max-inline-size: 100%;
+  padding-block-start: 1px; padding-inline-start: 1px;
+}
+.stoa-choice-group > .stoa-choice {
+  position: relative; border-radius: 0;
+  margin-block-start: -1px; margin-inline-start: -1px;
+}
+.stoa-choice-group > .stoa-choice:first-child {
+  border-start-start-radius: var(--stoa-radius-sm); border-end-start-radius: var(--stoa-radius-sm);
+}
+.stoa-choice-group > .stoa-choice:last-child {
+  border-start-end-radius: var(--stoa-radius-sm); border-end-end-radius: var(--stoa-radius-sm);
+}
+.stoa-choice-group > .stoa-choice[data-hovered], .stoa-choice-group > .stoa-choice[data-selected] { z-index: 1; }
+.stoa-choice-group > .stoa-choice[data-focus-visible] { z-index: 2; }
+
+.stoa-select { display: inline-grid; gap: var(--stoa-space-1); }
+.stoa-select__button { display: inline-flex; align-items: center; justify-content: space-between; gap: var(--stoa-space-2); text-align: start; }
+.stoa-select__chevron { flex: none; color: var(--stoa-color-text-muted); }
+.stoa-select[data-open] .stoa-select__chevron { transform: rotate(180deg); }
+/* The list is portalled to the document, so it takes the document's
+   tokens, not those of the element that opened it. */
+.stoa-select__popover {
+  min-inline-size: var(--trigger-width);
+  background: var(--stoa-color-surface);
+  border: 1px solid var(--stoa-color-border-strong);
+  border-radius: var(--stoa-radius-sm);
+  font-family: var(--stoa-font-family-sans);
+  font-size: var(--stoa-font-size-sm);
+  color: var(--stoa-color-text);
+}
+.stoa-select__list { padding: var(--stoa-space-1) 0; outline: none; max-block-size: inherit; overflow-y: auto; }
+.stoa-select__option {
+  padding: var(--stoa-space-1) var(--stoa-space-3); cursor: pointer; outline: none;
+  border-inline-start: 2px solid transparent;
+}
+.stoa-select__option[data-focused] { background: var(--stoa-color-surface-hover); }
+.stoa-select__option[data-selected] { font-weight: var(--stoa-font-weight-medium); border-inline-start-color: var(--stoa-color-accent); }
+.stoa-select__option[data-focus-visible] { outline: var(--stoa-focus-width) solid var(--stoa-color-focus); outline-offset: calc(-1 * var(--stoa-focus-width)); }
 
 .stoa-slider { display: grid; grid-template-columns: auto 1fr; align-items: center; gap: var(--stoa-space-3); flex: 1; min-inline-size: 200px; }
 .stoa-slider__output { font-family: var(--stoa-font-family-mono); font-variant-numeric: tabular-nums; min-inline-size: 12ch; }
