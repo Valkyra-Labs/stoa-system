@@ -9,6 +9,7 @@ export {
   type ButtonProps,
   type Choice,
   type ChoiceGroupProps,
+  type ControlSize,
   type SelectProps,
   type TimeSliderProps,
 } from "./Controls";

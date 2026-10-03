@@ -103,6 +103,15 @@
 .stoa-choice-group > .stoa-choice[data-hovered], .stoa-choice-group > .stoa-choice[data-selected] { z-index: 1; }
 .stoa-choice-group > .stoa-choice[data-focus-visible] { z-index: 2; }
 
+/* The small size, for toolbars and headers. */
+.stoa-choice-group--small > .stoa-choice,
+.stoa-select--small .stoa-select__button {
+  font-size: var(--stoa-font-size-xs);
+  min-block-size: var(--stoa-space-6);
+  padding: 2px calc(var(--stoa-space-1) * 1.5);
+}
+.stoa-select__popover.stoa-select__popover--small { font-size: var(--stoa-font-size-xs); }
+
 .stoa-select { display: inline-grid; gap: var(--stoa-space-1); }
 .stoa-select__button { display: inline-flex; align-items: center; justify-content: space-between; gap: var(--stoa-space-2); text-align: start; }
 .stoa-select__chevron { flex: none; color: var(--stoa-color-text-muted); }

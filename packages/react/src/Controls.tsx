@@ -25,16 +25,21 @@ export function Button({ variant = "default", className, ...rest }: ButtonProps)
 
 export type Choice<T extends Key> = { id: T; label: ReactNode };
 
+/** "small" is for toolbars and headers: smaller type and padding, still
+ * at least 24 px tall (WCAG 2.5.8). */
+export type ControlSize = "regular" | "small";
+
 export type ChoiceGroupProps<T extends Key> = {
   label: string;
   choices: Choice<T>[];
   value: T;
   onChange: (value: T) => void;
+  size?: ControlSize;
 };
 
 /** One of a few options (for example a playback speed): a toggle group
  * with single selection, arrow keys moving between options. */
-export function ChoiceGroup<T extends Key>({ label, choices, value, onChange }: ChoiceGroupProps<T>) {
+export function ChoiceGroup<T extends Key>({ label, choices, value, onChange, size = "regular" }: ChoiceGroupProps<T>) {
   return (
     <ToggleButtonGroup
       aria-label={label}
@@ -45,7 +50,7 @@ export function ChoiceGroup<T extends Key>({ label, choices, value, onChange }: 
         const [first] = keys;
         if (first !== undefined) onChange(first as T);
       }}
-      className="stoa-choice-group"
+      className={`stoa-choice-group stoa-choice-group--${size}`}
     >
       {choices.map((c) => (
         <ToggleButton key={String(c.id)} id={c.id} className="stoa-button stoa-choice">
@@ -64,15 +69,16 @@ export type SelectProps<T extends Key> = {
   options: Choice<T>[];
   value: T;
   onChange: (value: T) => void;
+  size?: ControlSize;
 };
 
 /** One of several options in a drop-down list: for a choice with more
  * options, or less room, than a ChoiceGroup can show. Enter, Space or an
  * arrow key opens the list; typing a name selects the option it starts. */
-export function Select<T extends Key>({ label, hideLabel = false, options, value, onChange }: SelectProps<T>) {
+export function Select<T extends Key>({ label, hideLabel = false, options, value, onChange, size = "regular" }: SelectProps<T>) {
   return (
     <AriaSelect
-      className="stoa-select"
+      className={`stoa-select stoa-select--${size}`}
       selectedKey={value}
       onSelectionChange={(key) => {
         if (key !== null) onChange(key as T);
@@ -85,7 +91,7 @@ export function Select<T extends Key>({ label, hideLabel = false, options, value
           <path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" strokeWidth="1.5" />
         </svg>
       </AriaButton>
-      <Popover className="stoa-select__popover" offset={4}>
+      <Popover className={`stoa-select__popover stoa-select__popover--${size}`} offset={4}>
         <ListBox className="stoa-select__list">
           {options.map((option) => (
             <ListBoxItem
