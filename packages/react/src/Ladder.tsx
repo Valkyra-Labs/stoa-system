@@ -142,7 +142,15 @@ export function Ladder({ depth = 12, data, label, formatPrice: priceFormat, toke
 
   return (
     <figure className="stoa-ladder" aria-label={label}>
-      <canvas ref={canvas} className="stoa-ladder__canvas" aria-hidden="true" />
+      {/* Its height, depth times two rows of the density in effect, is set
+          before the first draw (the same sum draw() makes), so the canvas
+          does not take its default 2:1 shape and then jump. */}
+      <canvas
+        ref={canvas}
+        className="stoa-ladder__canvas"
+        aria-hidden="true"
+        style={{ blockSize: `calc(var(--stoa-density-row-height, 28px) * ${depth * 2})` }}
+      />
       <figcaption className="stoa-visually-hidden" aria-live="polite">
         {summary}
       </figcaption>
