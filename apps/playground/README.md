@@ -14,8 +14,11 @@ pnpm --filter playground dev   # http://localhost:5173
 - Two preview frames at once, each running the same dense screen
   (Ladder, Heatmap, TradeTable, the controls and the form fields) off one
   synthetic stream that can be paused and resumed. Each frame header picks
-  the frame's view, light or dark by left to right or right to left, and a
-  colour-vision preview.
+  the frame's view (light or dark by left to right or right to left), its
+  language (English or Arabic: the screen's words, Stoa's own words and
+  Arabic-Indic digits, through React Aria's `I18nProvider`), and a
+  colour-vision preview. The replay slider under the heatmap scrubs back
+  over the stream's last window of frames.
 - Token values are written as CSS custom properties on each frame's
   container, never on the document, so a re-theme restyles the preview
   containers rather than the whole page.

@@ -271,9 +271,10 @@ code {
 .pg-frames {
   display: grid;
   /* The two frames side by side where each is wide enough for its header
-     on one row, one above the other where they are not; never a page wider
-     than the window. */
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 400px), 1fr));
+     on one row (view, language and colour vision take about 440 px), one
+     above the other where they are not: from about 1366 px side by side,
+     at 1280 px stacked. Never a page wider than the window. */
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 448px), 1fr));
   gap: var(--stoa-space-3);
 }
 
@@ -295,6 +296,13 @@ code {
   padding: var(--stoa-space-1) var(--stoa-space-2);
   background: var(--stoa-color-surface-sunken);
   border-block-end: 1px solid var(--stoa-color-border);
+}
+
+/* The view and the language sit together at the start of the header. */
+.pg-frame__picks {
+  display: flex;
+  align-items: center;
+  gap: var(--stoa-space-2);
 }
 
 .pg-frame__body {
