@@ -159,7 +159,7 @@ test("nothing scrolls sideways, in any side panel tab or frame", async ({ page }
   for (const width of [1440, 1280, 1024, 800]) {
     await page.setViewportSize({ width, height: 900 });
     await page.goto("/");
-    for (const tab of ["Tokens", /^Overrides/, "Checks", "Type", "Snapshot"]) {
+    for (const tab of ["Tokens", /^Overrides/, "Checks", "Type", "Snapshot", "Stats"]) {
       await openTab(page, tab);
       // Every collapsible group open, so a wide table cannot hide in one.
       await page.evaluate(() => document.querySelectorAll("details").forEach((details) => (details.open = true)));

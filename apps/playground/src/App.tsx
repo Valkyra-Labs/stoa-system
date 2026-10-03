@@ -200,15 +200,6 @@ export function App() {
             value={density}
             onChange={setDensity}
           />
-          <StatBar
-            label="Playground counters"
-            items={[
-              { label: "state to effect", value: `${renderMs.toFixed(1)} ms` },
-              { label: "interval", value: `${interval} ms` },
-              { label: "tokens", value: String(Object.keys(tokens.light.variables).length) },
-              { label: "revision", value: revision },
-            ]}
-          />
         </div>
       ),
     },
@@ -311,6 +302,23 @@ export function App() {
           </div>
           <p className="pg-note">Loading a snapshot restores its overrides, as one step back.</p>
         </div>
+      ),
+    },
+    // The counters change with every stream frame; in a tab of their own
+    // they no longer move the controls under them.
+    {
+      id: "stats",
+      title: "Stats",
+      content: (
+        <StatBar
+          label="Playground counters"
+          items={[
+            { label: "state to effect", value: `${renderMs.toFixed(1)} ms` },
+            { label: "interval", value: `${interval} ms` },
+            { label: "tokens", value: String(Object.keys(tokens.light.variables).length) },
+            { label: "revision", value: revision },
+          ]}
+        />
       ),
     },
   ];
