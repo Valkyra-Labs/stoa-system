@@ -502,6 +502,12 @@
             "via": "--stoa-color-focus"
           },
           {
+            "component": "Tabs",
+            "file": "packages/react/src/styles.css",
+            "line": 239,
+            "via": "--stoa-color-focus"
+          },
+          {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
             "line": 214,
@@ -641,6 +647,12 @@
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
             "line": 234,
+            "via": "--stoa-color-focus"
+          },
+          {
+            "component": "Tabs",
+            "file": "packages/react/src/styles.css",
+            "line": 239,
             "via": "--stoa-color-focus"
           },
           {
@@ -1183,6 +1195,11 @@
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
             "line": 234
+          },
+          {
+            "component": "Tabs",
+            "file": "packages/react/src/styles.css",
+            "line": 239
           },
           {
             "component": "TextField",
@@ -4268,6 +4285,11 @@
             "line": 85
           },
           {
+            "component": "Tabs",
+            "file": "packages/react/src/styles.css",
+            "line": 240
+          },
+          {
             "component": "TimeSlider",
             "file": "packages/react/src/styles.css",
             "line": 85
@@ -4279,6 +4301,9 @@
           }
         ],
         "stories": [
+          "Controls/Form > Badges",
+          "Controls/Form > Fields",
+          "Controls/Form > TabList",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -4343,6 +4368,11 @@
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
             "line": 234
+          },
+          {
+            "component": "Tabs",
+            "file": "packages/react/src/styles.css",
+            "line": 239
           },
           {
             "component": "TextField",
@@ -5366,6 +5396,11 @@
             "component": "Select",
             "file": "packages/react/src/styles.css",
             "line": 132
+          },
+          {
+            "component": "Tabs",
+            "file": "packages/react/src/styles.css",
+            "line": 241
           },
           {
             "component": "TextField",
