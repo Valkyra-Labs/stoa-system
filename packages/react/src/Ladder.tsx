@@ -15,6 +15,12 @@ export type LadderProps = {
   data?: ArrayLike<number> | null;
   label: string;
   formatPrice?: (p: number) => string;
+  /** Least time between two announcements of the top of the book, in
+   * milliseconds. A live book changes many times a second; reading each
+   * change aloud would leave a screen-reader user no room for anything
+   * else, so the text follows at most this often and always ends on the
+   * latest book. */
+  announceEvery?: number;
   /** Bumped to force a token re-read and redraw, as an alternative to
    * dispatching `stoa:tokens` on an ancestor (see `useTokenSignal`). */
   tokensVersion?: number;
@@ -75,9 +81,17 @@ function draw(
 
 /** An order-book ladder on a canvas: asks above, bids below, a size bar
  * per level. Screen readers get the top of the book as text, updated at
- * most once a second. Side markers, digits and the text follow the
+ * most every `announceEvery` milliseconds (five seconds by default). Side markers, digits and the text follow the
  * locale (see `locale.ts`); `formatPrice` overrides the price format. */
-export function Ladder({ depth = 12, data, label, formatPrice: priceFormat, tokensVersion, ref }: LadderProps) {
+export function Ladder({
+  depth = 12,
+  data,
+  label,
+  formatPrice: priceFormat,
+  announceEvery = 5000,
+  tokensVersion,
+  ref,
+}: LadderProps) {
   const locale = useStoaFormat();
   const formatPrice = priceFormat ?? ((p: number) => locale.decimal(p, 2));
   const canvas = useRef<HTMLCanvasElement>(null);
@@ -101,16 +115,17 @@ export function Ladder({ depth = 12, data, label, formatPrice: priceFormat, toke
     tokens.current ??= readCanvasTokens(c);
     const book = parseBook(flat);
     draw(c, tokens.current, book, depth, formatPrice, locale);
-    // The text alternative follows at most once a second, and always ends
-    // on the latest book: a leading-edge-only throttle left "The book is
-    // empty." in place when playback paused right after the first draw.
+    // The text alternative follows at most every announceEvery ms, and
+    // always ends on the latest book: a leading-edge-only throttle left
+    // "The book is empty." in place when playback paused right after the
+    // first draw.
     latest.current = book;
     const publish = () => {
       trailing.current = null;
       lastSummary.current = performance.now();
       setSummary(describeBook(latest.current, formatPrice, locale));
     };
-    const wait = 1000 - (performance.now() - lastSummary.current);
+    const wait = announceEvery - (performance.now() - lastSummary.current);
     if (wait <= 0) publish();
     else trailing.current ??= setTimeout(publish, wait);
   };

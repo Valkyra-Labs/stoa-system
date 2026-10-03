@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 // Button, Panel and StatBar, and the empty states of the data views.
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { cleanup, fireEvent, render, screen } from "@testing-library/react";
+import { act, cleanup, fireEvent, render, screen } from "@testing-library/react";
 import { Button, Heatmap, I18nProvider, Ladder, Panel, StatBar, TradeTable } from "./index";
 
 afterEach(() => {
@@ -110,5 +110,30 @@ describe("canvas views reserve their height before they draw", () => {
     const [heatmap, ladder] = [...container.querySelectorAll("canvas")];
     expect(heatmap!.style.blockSize).toBe("180px");
     expect(ladder!.style.blockSize).toBe("calc(var(--stoa-density-row-height, 28px) * 24)");
+  });
+});
+
+describe("the ladder's text alternative", () => {
+  it("follows the book at most every announceEvery ms, and ends on the latest book", () => {
+    vi.useFakeTimers({ toFake: ["setTimeout", "clearTimeout", "performance"] });
+    vi.setSystemTime(0);
+    vi.advanceTimersByTime(10_000);
+    const context = new Proxy({ measureText: () => ({ width: 0 }) } as Record<string, unknown>, {
+      get: (target, key) => (key in target ? target[key as string] : () => {}),
+      set: () => true,
+    });
+    vi.spyOn(HTMLCanvasElement.prototype, "getContext").mockReturnValue(context as unknown as CanvasRenderingContext2D);
+    const book = (bid: number) => [1, 1, bid, 100, 99.1, 50];
+    const { container, rerender } = render(<Ladder label="Book" data={book(99)} announceEvery={5000} />);
+    const caption = () => container.querySelector("figcaption")?.textContent;
+    expect(caption()).toContain("best bid 99.00");
+
+    act(() => rerender(<Ladder label="Book" data={book(98)} announceEvery={5000} />));
+    act(() => vi.advanceTimersByTime(1000));
+    expect(caption()).toContain("best bid 99.00");
+
+    act(() => vi.advanceTimersByTime(4000));
+    expect(caption()).toContain("best bid 98.00");
+    vi.useRealTimers();
   });
 });
