@@ -97,6 +97,7 @@ export const NON_TEXT_PAIRS = [
   { fg: "focus", bg: "bg", min: NON_TEXT, reason: "Focus ring around a control on the page background." },
   { fg: "accent", bg: "surface", min: NON_TEXT, reason: "Underline of the selected tab, the fill of a checked checkbox and of a switch that is on, and the filled part of a slider track: how the selected state or the value is shown." },
   { fg: "accent", bg: "bg", min: NON_TEXT, reason: "The same tab indicator when the tab list sits straight on the page background." },
+  { fg: "accent", bg: "surface-sunken", min: NON_TEXT, reason: "The bar at the start edge of the picked row of a RecordList while that row is hovered or focused, on the row's sunken fill: it shows which record the detail shows." },
   {
     fg: "up-wash",
     bg: "surface",
