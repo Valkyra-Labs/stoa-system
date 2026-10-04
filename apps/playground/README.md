@@ -20,6 +20,11 @@ pnpm --filter playground dev   # http://localhost:5173
   motion switch (`data-motion="reduce"` on the frame, every duration token
   at zero), and a colour-vision preview. The replay slider under the heatmap scrubs back
   over the stream's last window of frames.
+- The page is a Stoa PageShell with a fixed header: the header stays at
+  the top and the page scrolls in the region under it, whose scrollbar
+  lane is reserved; the side panel sticks inside that region. Every
+  scrollbar is Stoa's own, thin and in the scrollbar tokens of its box's
+  theme, so a dark frame draws a dark one.
 - Token values are written as CSS custom properties on each frame's
   container, never on the document, so a re-theme restyles the preview
   containers rather than the whole page.
