@@ -112,6 +112,21 @@ export type StoaMessages = {
   eventItem: (date: string, kind: string) => string;
   /** An event strip with no events. */
   noEvents: string;
+  /** DataGrid: the name of the checkbox that selects every row. */
+  gridSelectAll: string;
+  /** DataGrid: the name of a row's checkbox, from the row's first value. */
+  gridSelectRow: (row: string) => string;
+  /** DataGrid: announced after a header sorts its column. */
+  gridSortedAscending: (column: string) => string;
+  gridSortedDescending: (column: string) => string;
+  gridSortCleared: string;
+  /** DataGrid: the row count, and the selected count when there is one,
+   * both already in the locale's digits; announced when either changes. */
+  gridCounts: (rows: string, selected: string | null) => string;
+  /** DataGrid: what an empty grid says, unless the caller gives its own. */
+  gridNoRows: string;
+  /** DataGrid: announced while rows load. */
+  gridLoading: string;
 };
 
 const EN: StoaMessages = {
@@ -184,6 +199,14 @@ const EN: StoaMessages = {
   eventSummary: (from, to, parts) => `From ${from} to ${to}: ${parts.join("; ")}.`,
   eventItem: (date, kind) => `${date}: ${kind}`,
   noEvents: "No events to show.",
+  gridSelectAll: "Select all rows",
+  gridSelectRow: (row) => `Select row ${row}`,
+  gridSortedAscending: (column) => `Sorted by ${column}, ascending`,
+  gridSortedDescending: (column) => `Sorted by ${column}, descending`,
+  gridSortCleared: "Sort cleared",
+  gridCounts: (rows, selected) => `${rows} ${rows === "1" ? "row" : "rows"}${selected ? `, ${selected} selected` : ""}.`,
+  gridNoRows: "No rows to show.",
+  gridLoading: "Loading rows",
 };
 
 const AR: StoaMessages = {
@@ -256,6 +279,14 @@ const AR: StoaMessages = {
   eventSummary: (from, to, parts) => `من ${from} إلى ${to}: ${parts.join("؛ ")}.`,
   eventItem: (date, kind) => `${date}: ${kind}`,
   noEvents: "لا أحداث لعرضها.",
+  gridSelectAll: "تحديد كل الصفوف",
+  gridSelectRow: (row) => `تحديد الصف ${row}`,
+  gridSortedAscending: (column) => `مرتب حسب ${column} تصاعديًا`,
+  gridSortedDescending: (column) => `مرتب حسب ${column} تنازليًا`,
+  gridSortCleared: "أُلغي الترتيب",
+  gridCounts: (rows, selected) => `الصفوف: ${rows}${selected ? `، المحددة: ${selected}` : ""}.`,
+  gridNoRows: "لا صفوف لعرضها.",
+  gridLoading: "جارٍ تحميل الصفوف",
 };
 
 const RU: StoaMessages = {
@@ -329,6 +360,14 @@ const RU: StoaMessages = {
   eventSummary: (from, to, parts) => `С ${from} по ${to}: ${parts.join("; ")}.`,
   eventItem: (date, kind) => `${date}: ${kind}`,
   noEvents: "Событий для показа нет.",
+  gridSelectAll: "Выбрать все строки",
+  gridSelectRow: (row) => `Выбрать строку ${row}`,
+  gridSortedAscending: (column) => `Сортировка по столбцу ${column}, по возрастанию`,
+  gridSortedDescending: (column) => `Сортировка по столбцу ${column}, по убыванию`,
+  gridSortCleared: "Сортировка снята",
+  gridCounts: (rows, selected) => `Строк: ${rows}${selected ? `, выбрано: ${selected}` : ""}.`,
+  gridNoRows: "Строк для показа нет.",
+  gridLoading: "Загрузка строк",
 };
 
 /** Stoa's words for a locale: Arabic for any "ar" tag, Russian for any

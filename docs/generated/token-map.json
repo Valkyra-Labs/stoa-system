@@ -92,6 +92,31 @@
             "line": 88
           },
           {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1005
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1012
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1014
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1019
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1053
+          },
+          {
             "component": "EventStrip",
             "file": "packages/react/src/styles.css",
             "line": 946
@@ -299,6 +324,11 @@
           "Data/Charts > StripEmpty",
           "Data/Charts > StripPayments",
           "Data/Charts > StripTimeFollowsLocale",
+          "Data/DataGrid > Editable",
+          "Data/DataGrid > Empty",
+          "Data/DataGrid > FiftyThousandRows",
+          "Data/DataGrid > Loading",
+          "Data/DataGrid > RightToLeft",
           "Data/Heatmap > Empty",
           "Data/Heatmap > Liquidity",
           "Data/Heatmap > Sparse",
@@ -934,6 +964,54 @@
             "via": "--stoa-color-focus"
           },
           {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 993,
+            "via": "--stoa-color-focus"
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1005,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1012,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1014,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1019,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1029,
+            "via": "--stoa-color-focus"
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1044,
+            "via": "--stoa-color-focus"
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1053,
+            "via": "--stoa-color-accent"
+          },
+          {
             "component": "Disclosure",
             "file": "packages/react/src/styles.css",
             "line": 177,
@@ -1298,6 +1376,11 @@
           "Data/Charts > StripEmpty",
           "Data/Charts > StripPayments",
           "Data/Charts > StripTimeFollowsLocale",
+          "Data/DataGrid > Editable",
+          "Data/DataGrid > Empty",
+          "Data/DataGrid > FiftyThousandRows",
+          "Data/DataGrid > Loading",
+          "Data/DataGrid > RightToLeft",
           "Data/Heatmap > Empty",
           "Data/Heatmap > Liquidity",
           "Data/Heatmap > Sparse",
@@ -1403,6 +1486,24 @@
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
             "line": 100,
+            "via": "--stoa-color-focus"
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 993,
+            "via": "--stoa-color-focus"
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1029,
+            "via": "--stoa-color-focus"
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1044,
             "via": "--stoa-color-focus"
           },
           {
@@ -1563,6 +1664,11 @@
           "Controls/Playback > Trades",
           "Controls/Playback > TradesEmpty",
           "Controls/Playback > Transport",
+          "Data/DataGrid > Editable",
+          "Data/DataGrid > Empty",
+          "Data/DataGrid > FiftyThousandRows",
+          "Data/DataGrid > Loading",
+          "Data/DataGrid > RightToLeft",
           "Data/Table > Basic",
           "Data/Table > Compact",
           "Data/Table > Empty",
@@ -1729,6 +1835,36 @@
             "via": "--stoa-color-accent"
           },
           {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1005,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1012,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1014,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1019,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1053,
+            "via": "--stoa-color-accent"
+          },
+          {
             "component": "EventStrip",
             "file": "packages/react/src/styles.css",
             "line": 946,
@@ -1967,6 +2103,11 @@
           "Data/Charts > StripEmpty",
           "Data/Charts > StripPayments",
           "Data/Charts > StripTimeFollowsLocale",
+          "Data/DataGrid > Editable",
+          "Data/DataGrid > Empty",
+          "Data/DataGrid > FiftyThousandRows",
+          "Data/DataGrid > Loading",
+          "Data/DataGrid > RightToLeft",
           "Data/Heatmap > Empty",
           "Data/Heatmap > Liquidity",
           "Data/Heatmap > Sparse",
@@ -2082,6 +2223,21 @@
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
             "line": 95
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 960
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 981
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1059
           },
           {
             "component": "FilterChip",
@@ -2206,6 +2362,11 @@
           "Data/Charts > StripEmpty",
           "Data/Charts > StripPayments",
           "Data/Charts > StripTimeFollowsLocale",
+          "Data/DataGrid > Editable",
+          "Data/DataGrid > Empty",
+          "Data/DataGrid > FiftyThousandRows",
+          "Data/DataGrid > Loading",
+          "Data/DataGrid > RightToLeft",
           "Data/Heatmap > Empty",
           "Data/Heatmap > Liquidity",
           "Data/Heatmap > Sparse",
@@ -2321,6 +2482,31 @@
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
             "line": 63
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 987
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1002
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1027
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1037
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1067
           },
           {
             "component": "EventStrip",
@@ -2463,6 +2649,11 @@
           "Data/Charts > StripEmpty",
           "Data/Charts > StripPayments",
           "Data/Charts > StripTimeFollowsLocale",
+          "Data/DataGrid > Editable",
+          "Data/DataGrid > Empty",
+          "Data/DataGrid > FiftyThousandRows",
+          "Data/DataGrid > Loading",
+          "Data/DataGrid > RightToLeft",
           "Feedback/Feedback and layout > CalloutDismissible",
           "Feedback/Feedback and layout > CalloutInfo",
           "Feedback/Feedback and layout > CalloutNegativeWithRetry",
@@ -2575,6 +2766,16 @@
             "line": 397
           },
           {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1032
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1060
+          },
+          {
             "component": "LineChart",
             "file": "packages/react/src/styles.css",
             "line": 924
@@ -2650,6 +2851,11 @@
           "Data/Charts > StripEmpty",
           "Data/Charts > StripPayments",
           "Data/Charts > StripTimeFollowsLocale",
+          "Data/DataGrid > Editable",
+          "Data/DataGrid > Empty",
+          "Data/DataGrid > FiftyThousandRows",
+          "Data/DataGrid > Loading",
+          "Data/DataGrid > RightToLeft",
           "Data/Table > Basic",
           "Data/Table > Compact",
           "Data/Table > Empty",
@@ -2802,6 +3008,21 @@
             "line": 100
           },
           {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 993
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1029
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1044
+          },
+          {
             "component": "Disclosure",
             "file": "packages/react/src/styles.css",
             "line": 177
@@ -2938,6 +3159,11 @@
           "Controls/Playback > Trades",
           "Controls/Playback > TradesEmpty",
           "Controls/Playback > Transport",
+          "Data/DataGrid > Editable",
+          "Data/DataGrid > Empty",
+          "Data/DataGrid > FiftyThousandRows",
+          "Data/DataGrid > Loading",
+          "Data/DataGrid > RightToLeft",
           "Data/Table > Basic",
           "Data/Table > Compact",
           "Data/Table > Empty",
@@ -3069,6 +3295,36 @@
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
             "line": 80,
+            "via": "--stoa-color-surface"
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 963,
+            "via": "--stoa-color-surface"
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 982,
+            "via": "--stoa-color-surface"
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1028,
+            "via": "--stoa-color-surface"
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1036,
+            "via": "--stoa-color-surface"
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1058,
             "via": "--stoa-color-surface"
           },
           {
@@ -3250,6 +3506,11 @@
           "Data/Charts > StripEmpty",
           "Data/Charts > StripPayments",
           "Data/Charts > StripTimeFollowsLocale",
+          "Data/DataGrid > Editable",
+          "Data/DataGrid > Empty",
+          "Data/DataGrid > FiftyThousandRows",
+          "Data/DataGrid > Loading",
+          "Data/DataGrid > RightToLeft",
           "Data/Heatmap > Empty",
           "Data/Heatmap > Liquidity",
           "Data/Heatmap > Sparse",
@@ -3505,6 +3766,24 @@
             "file": "packages/react/src/styles.css",
             "line": 94,
             "via": "--stoa-color-surface-sunken"
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 964,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 999,
+            "via": "--stoa-color-surface-sunken"
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1028,
+            "via": "--stoa-color-text"
           },
           {
             "component": "Disclosure",
@@ -3853,6 +4132,11 @@
           "Data/Charts > StripEmpty",
           "Data/Charts > StripPayments",
           "Data/Charts > StripTimeFollowsLocale",
+          "Data/DataGrid > Editable",
+          "Data/DataGrid > Empty",
+          "Data/DataGrid > FiftyThousandRows",
+          "Data/DataGrid > Loading",
+          "Data/DataGrid > RightToLeft",
           "Data/Heatmap > Empty",
           "Data/Heatmap > Liquidity",
           "Data/Heatmap > Sparse",
@@ -4042,6 +4326,24 @@
             "via": "--stoa-color-surface-hover"
           },
           {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1010,
+            "via": "--stoa-color-surface-hover"
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1052,
+            "via": "--stoa-color-surface-hover"
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1080,
+            "via": "--stoa-color-surface-hover"
+          },
+          {
             "component": "FilterChip",
             "file": "packages/react/src/styles.css",
             "line": 75,
@@ -4130,6 +4432,11 @@
           "Controls/Playback > Trades",
           "Controls/Playback > TradesEmpty",
           "Controls/Playback > Transport",
+          "Data/DataGrid > Editable",
+          "Data/DataGrid > Empty",
+          "Data/DataGrid > FiftyThousandRows",
+          "Data/DataGrid > Loading",
+          "Data/DataGrid > RightToLeft",
           "Feedback/Feedback and layout > CalloutDismissible",
           "Feedback/Feedback and layout > CalloutInfo",
           "Feedback/Feedback and layout > CalloutNegativeWithRetry",
@@ -4236,6 +4543,24 @@
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
             "line": 95,
+            "via": "--stoa-color-border"
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 960,
+            "via": "--stoa-color-border"
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 981,
+            "via": "--stoa-color-border"
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1059,
             "via": "--stoa-color-border"
           },
           {
@@ -4375,6 +4700,11 @@
           "Data/Charts > StripEmpty",
           "Data/Charts > StripPayments",
           "Data/Charts > StripTimeFollowsLocale",
+          "Data/DataGrid > Editable",
+          "Data/DataGrid > Empty",
+          "Data/DataGrid > FiftyThousandRows",
+          "Data/DataGrid > Loading",
+          "Data/DataGrid > RightToLeft",
           "Data/Heatmap > Empty",
           "Data/Heatmap > Liquidity",
           "Data/Heatmap > Sparse",
@@ -4567,6 +4897,18 @@
             "component": "CodeView",
             "file": "packages/react/src/styles.css",
             "line": 853,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1000,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1076,
             "via": "--stoa-color-text-muted"
           },
           {
@@ -4826,6 +5168,11 @@
           "Data/Charts > StripEmpty",
           "Data/Charts > StripPayments",
           "Data/Charts > StripTimeFollowsLocale",
+          "Data/DataGrid > Editable",
+          "Data/DataGrid > Empty",
+          "Data/DataGrid > FiftyThousandRows",
+          "Data/DataGrid > Loading",
+          "Data/DataGrid > RightToLeft",
           "Data/Heatmap > Empty",
           "Data/Heatmap > Liquidity",
           "Data/Heatmap > Sparse",
@@ -4979,6 +5326,36 @@
             "file": "packages/react/src/styles.css",
             "line": 96,
             "via": "--stoa-color-text-subtle"
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 987,
+            "via": "--stoa-color-border-strong"
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1002,
+            "via": "--stoa-color-border-strong"
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1027,
+            "via": "--stoa-color-border-strong"
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1037,
+            "via": "--stoa-color-border-strong"
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1067,
+            "via": "--stoa-color-border-strong"
           },
           {
             "component": "EventStrip",
@@ -5177,6 +5554,11 @@
           "Data/Charts > StripEmpty",
           "Data/Charts > StripPayments",
           "Data/Charts > StripTimeFollowsLocale",
+          "Data/DataGrid > Editable",
+          "Data/DataGrid > Empty",
+          "Data/DataGrid > FiftyThousandRows",
+          "Data/DataGrid > Loading",
+          "Data/DataGrid > RightToLeft",
           "Feedback/Feedback and layout > CalloutDismissible",
           "Feedback/Feedback and layout > CalloutInfo",
           "Feedback/Feedback and layout > CalloutNegativeWithRetry",
@@ -5375,6 +5757,36 @@
             "via": "--stoa-color-text-subtle"
           },
           {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 987,
+            "via": "--stoa-color-border-strong"
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1002,
+            "via": "--stoa-color-border-strong"
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1027,
+            "via": "--stoa-color-border-strong"
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1037,
+            "via": "--stoa-color-border-strong"
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1067,
+            "via": "--stoa-color-border-strong"
+          },
+          {
             "component": "EventStrip",
             "file": "packages/react/src/styles.css",
             "line": 918,
@@ -5571,6 +5983,11 @@
           "Data/Charts > StripEmpty",
           "Data/Charts > StripPayments",
           "Data/Charts > StripTimeFollowsLocale",
+          "Data/DataGrid > Editable",
+          "Data/DataGrid > Empty",
+          "Data/DataGrid > FiftyThousandRows",
+          "Data/DataGrid > Loading",
+          "Data/DataGrid > RightToLeft",
           "Feedback/Feedback and layout > CalloutDismissible",
           "Feedback/Feedback and layout > CalloutInfo",
           "Feedback/Feedback and layout > CalloutNegativeWithRetry",
@@ -5727,6 +6144,18 @@
             "component": "CodeView",
             "file": "packages/react/src/styles.css",
             "line": 853,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1000,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1076,
             "via": "--stoa-color-text-muted"
           },
           {
@@ -5986,6 +6415,11 @@
           "Data/Charts > StripEmpty",
           "Data/Charts > StripPayments",
           "Data/Charts > StripTimeFollowsLocale",
+          "Data/DataGrid > Editable",
+          "Data/DataGrid > Empty",
+          "Data/DataGrid > FiftyThousandRows",
+          "Data/DataGrid > Loading",
+          "Data/DataGrid > RightToLeft",
           "Data/Heatmap > Empty",
           "Data/Heatmap > Liquidity",
           "Data/Heatmap > Sparse",
@@ -6157,6 +6591,24 @@
             "via": "--stoa-color-border"
           },
           {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 960,
+            "via": "--stoa-color-border"
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 981,
+            "via": "--stoa-color-border"
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1059,
+            "via": "--stoa-color-border"
+          },
+          {
             "component": "FilterChip",
             "file": "packages/react/src/styles.css",
             "line": 95,
@@ -6293,6 +6745,11 @@
           "Data/Charts > StripEmpty",
           "Data/Charts > StripPayments",
           "Data/Charts > StripTimeFollowsLocale",
+          "Data/DataGrid > Editable",
+          "Data/DataGrid > Empty",
+          "Data/DataGrid > FiftyThousandRows",
+          "Data/DataGrid > Loading",
+          "Data/DataGrid > RightToLeft",
           "Data/Heatmap > Empty",
           "Data/Heatmap > Liquidity",
           "Data/Heatmap > Sparse",
@@ -6417,6 +6874,24 @@
             "via": "--stoa-color-surface-hover"
           },
           {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1010,
+            "via": "--stoa-color-surface-hover"
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1052,
+            "via": "--stoa-color-surface-hover"
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1080,
+            "via": "--stoa-color-surface-hover"
+          },
+          {
             "component": "FilterChip",
             "file": "packages/react/src/styles.css",
             "line": 75,
@@ -6505,6 +6980,11 @@
           "Controls/Playback > Trades",
           "Controls/Playback > TradesEmpty",
           "Controls/Playback > Transport",
+          "Data/DataGrid > Editable",
+          "Data/DataGrid > Empty",
+          "Data/DataGrid > FiftyThousandRows",
+          "Data/DataGrid > Loading",
+          "Data/DataGrid > RightToLeft",
           "Feedback/Feedback and layout > CalloutDismissible",
           "Feedback/Feedback and layout > CalloutInfo",
           "Feedback/Feedback and layout > CalloutNegativeWithRetry",
@@ -6770,6 +7250,48 @@
             "via": "--stoa-color-text"
           },
           {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 963,
+            "via": "--stoa-color-surface"
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 964,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 982,
+            "via": "--stoa-color-surface"
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1028,
+            "via": "--stoa-color-surface"
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1028,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1036,
+            "via": "--stoa-color-surface"
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1058,
+            "via": "--stoa-color-surface"
+          },
+          {
             "component": "Disclosure",
             "file": "packages/react/src/styles.css",
             "line": 171,
@@ -7218,6 +7740,11 @@
           "Data/Charts > StripEmpty",
           "Data/Charts > StripPayments",
           "Data/Charts > StripTimeFollowsLocale",
+          "Data/DataGrid > Editable",
+          "Data/DataGrid > Empty",
+          "Data/DataGrid > FiftyThousandRows",
+          "Data/DataGrid > Loading",
+          "Data/DataGrid > RightToLeft",
           "Data/Heatmap > Empty",
           "Data/Heatmap > Liquidity",
           "Data/Heatmap > Sparse",
@@ -7351,6 +7878,18 @@
             "via": "--stoa-color-down"
           },
           {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1032,
+            "via": "--stoa-color-down"
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1060,
+            "via": "--stoa-color-down"
+          },
+          {
             "component": "Heatmap",
             "file": "packages/react/src/Heatmap.tsx",
             "line": 32,
@@ -7445,6 +7984,11 @@
           "Data/Charts > StripEmpty",
           "Data/Charts > StripPayments",
           "Data/Charts > StripTimeFollowsLocale",
+          "Data/DataGrid > Editable",
+          "Data/DataGrid > Empty",
+          "Data/DataGrid > FiftyThousandRows",
+          "Data/DataGrid > Loading",
+          "Data/DataGrid > RightToLeft",
           "Data/Heatmap > Empty",
           "Data/Heatmap > Liquidity",
           "Data/Heatmap > Sparse",
@@ -7577,6 +8121,18 @@
             "via": "--stoa-color-down"
           },
           {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1032,
+            "via": "--stoa-color-down"
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1060,
+            "via": "--stoa-color-down"
+          },
+          {
             "component": "Heatmap",
             "file": "packages/react/src/Heatmap.tsx",
             "line": 32,
@@ -7671,6 +8227,11 @@
           "Data/Charts > StripEmpty",
           "Data/Charts > StripPayments",
           "Data/Charts > StripTimeFollowsLocale",
+          "Data/DataGrid > Editable",
+          "Data/DataGrid > Empty",
+          "Data/DataGrid > FiftyThousandRows",
+          "Data/DataGrid > Loading",
+          "Data/DataGrid > RightToLeft",
           "Data/Heatmap > Empty",
           "Data/Heatmap > Liquidity",
           "Data/Heatmap > Sparse",
@@ -7860,6 +8421,31 @@
             "line": 80
           },
           {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 963
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 982
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1028
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1036
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1058
+          },
+          {
             "component": "FilterChip",
             "file": "packages/react/src/styles.css",
             "line": 65
@@ -8017,6 +8603,11 @@
           "Data/Charts > StripEmpty",
           "Data/Charts > StripPayments",
           "Data/Charts > StripTimeFollowsLocale",
+          "Data/DataGrid > Editable",
+          "Data/DataGrid > Empty",
+          "Data/DataGrid > FiftyThousandRows",
+          "Data/DataGrid > Loading",
+          "Data/DataGrid > RightToLeft",
           "Data/Heatmap > Empty",
           "Data/Heatmap > Liquidity",
           "Data/Heatmap > Sparse",
@@ -8140,6 +8731,21 @@
             "line": 77
           },
           {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1010
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1052
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1080
+          },
+          {
             "component": "FilterChip",
             "file": "packages/react/src/styles.css",
             "line": 75
@@ -8218,6 +8824,11 @@
           "Controls/Playback > Trades",
           "Controls/Playback > TradesEmpty",
           "Controls/Playback > Transport",
+          "Data/DataGrid > Editable",
+          "Data/DataGrid > Empty",
+          "Data/DataGrid > FiftyThousandRows",
+          "Data/DataGrid > Loading",
+          "Data/DataGrid > RightToLeft",
           "Feedback/Feedback and layout > CalloutDismissible",
           "Feedback/Feedback and layout > CalloutInfo",
           "Feedback/Feedback and layout > CalloutNegativeWithRetry",
@@ -8320,6 +8931,11 @@
             "line": 94
           },
           {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 999
+          },
+          {
             "component": "FilterChip",
             "file": "packages/react/src/styles.css",
             "line": 94
@@ -8378,6 +8994,11 @@
           "Controls/Playback > Trades",
           "Controls/Playback > TradesEmpty",
           "Controls/Playback > Transport",
+          "Data/DataGrid > Editable",
+          "Data/DataGrid > Empty",
+          "Data/DataGrid > FiftyThousandRows",
+          "Data/DataGrid > Loading",
+          "Data/DataGrid > RightToLeft",
           "Feedback/Feedback and layout > CalloutDismissible",
           "Feedback/Feedback and layout > CalloutInfo",
           "Feedback/Feedback and layout > CalloutNegativeWithRetry",
@@ -8965,6 +9586,16 @@
             "line": 88
           },
           {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 964
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1028
+          },
+          {
             "component": "Disclosure",
             "file": "packages/react/src/styles.css",
             "line": 171
@@ -9232,6 +9863,11 @@
           "Data/Charts > StripEmpty",
           "Data/Charts > StripPayments",
           "Data/Charts > StripTimeFollowsLocale",
+          "Data/DataGrid > Editable",
+          "Data/DataGrid > Empty",
+          "Data/DataGrid > FiftyThousandRows",
+          "Data/DataGrid > Loading",
+          "Data/DataGrid > RightToLeft",
           "Data/Heatmap > Empty",
           "Data/Heatmap > Liquidity",
           "Data/Heatmap > Sparse",
@@ -9393,6 +10029,16 @@
             "component": "CodeView",
             "file": "packages/react/src/styles.css",
             "line": 853
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1000
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1076
           },
           {
             "component": "Disclosure",
@@ -9617,6 +10263,11 @@
           "Data/Charts > StripEmpty",
           "Data/Charts > StripPayments",
           "Data/Charts > StripTimeFollowsLocale",
+          "Data/DataGrid > Editable",
+          "Data/DataGrid > Empty",
+          "Data/DataGrid > FiftyThousandRows",
+          "Data/DataGrid > Loading",
+          "Data/DataGrid > RightToLeft",
           "Data/Heatmap > Empty",
           "Data/Heatmap > Liquidity",
           "Data/Heatmap > Sparse",
@@ -10202,6 +10853,21 @@
       "readBy": {
         "components": [
           {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 979
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1023
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1026
+          },
+          {
             "component": "Table",
             "file": "packages/react/src/styles.css",
             "line": 52
@@ -10213,6 +10879,11 @@
           }
         ],
         "stories": [
+          "Data/DataGrid > Editable",
+          "Data/DataGrid > Empty",
+          "Data/DataGrid > FiftyThousandRows",
+          "Data/DataGrid > Loading",
+          "Data/DataGrid > RightToLeft",
           "Data/Table > Basic",
           "Data/Table > Compact",
           "Data/Table > Empty",
@@ -10255,6 +10926,11 @@
             "line": 5
           },
           {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 965
+          },
+          {
             "component": "EventStrip",
             "file": "packages/react/src/styles.css",
             "line": 932
@@ -10292,6 +10968,11 @@
           "Data/Charts > StripEmpty",
           "Data/Charts > StripPayments",
           "Data/Charts > StripTimeFollowsLocale",
+          "Data/DataGrid > Editable",
+          "Data/DataGrid > Empty",
+          "Data/DataGrid > FiftyThousandRows",
+          "Data/DataGrid > Loading",
+          "Data/DataGrid > RightToLeft",
           "Data/Heatmap > Empty",
           "Data/Heatmap > Liquidity",
           "Data/Heatmap > Sparse",
@@ -10336,6 +11017,26 @@
       "readBy": {
         "components": [
           {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 959
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 972
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1072
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1078
+          },
+          {
             "component": "Heatmap",
             "file": "packages/react/src/Heatmap.tsx",
             "line": 37,
@@ -10354,6 +11055,11 @@
           }
         ],
         "stories": [
+          "Data/DataGrid > Editable",
+          "Data/DataGrid > Empty",
+          "Data/DataGrid > FiftyThousandRows",
+          "Data/DataGrid > Loading",
+          "Data/DataGrid > RightToLeft",
           "Data/Heatmap > Empty",
           "Data/Heatmap > Liquidity",
           "Data/Heatmap > Sparse",
@@ -10599,6 +11305,51 @@
             "line": 100
           },
           {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 993
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 994
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1012
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1019
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1029
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1030
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1044
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1045
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1049
+          },
+          {
             "component": "Disclosure",
             "file": "packages/react/src/styles.css",
             "line": 177
@@ -10760,6 +11511,11 @@
           "Controls/Playback > Trades",
           "Controls/Playback > TradesEmpty",
           "Controls/Playback > Transport",
+          "Data/DataGrid > Editable",
+          "Data/DataGrid > Empty",
+          "Data/DataGrid > FiftyThousandRows",
+          "Data/DataGrid > Loading",
+          "Data/DataGrid > RightToLeft",
           "Data/Table > Basic",
           "Data/Table > Compact",
           "Data/Table > Empty",
@@ -10856,6 +11612,11 @@
             "component": "(css) .stoa-step__value",
             "file": "packages/react/src/styles.css",
             "line": 818
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 989
           },
           {
             "component": "EventStrip",
@@ -10965,6 +11726,11 @@
           "Data/Charts > StripEmpty",
           "Data/Charts > StripPayments",
           "Data/Charts > StripTimeFollowsLocale",
+          "Data/DataGrid > Editable",
+          "Data/DataGrid > Empty",
+          "Data/DataGrid > FiftyThousandRows",
+          "Data/DataGrid > Loading",
+          "Data/DataGrid > RightToLeft",
           "Data/Heatmap > Empty",
           "Data/Heatmap > Liquidity",
           "Data/Heatmap > Sparse",
@@ -11055,6 +11821,16 @@
             "line": 4
           },
           {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1039
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1061
+          },
+          {
             "component": "Select",
             "file": "packages/react/src/styles.css",
             "line": 149
@@ -11076,6 +11852,11 @@
           "Controls/Playback > Trades",
           "Controls/Playback > TradesEmpty",
           "Controls/Playback > Transport",
+          "Data/DataGrid > Editable",
+          "Data/DataGrid > Empty",
+          "Data/DataGrid > FiftyThousandRows",
+          "Data/DataGrid > Loading",
+          "Data/DataGrid > RightToLeft",
           "Data/Table > Basic",
           "Data/Table > Compact",
           "Data/Table > Empty",
@@ -11482,6 +12263,11 @@
           "Data/Charts > StripEmpty",
           "Data/Charts > StripPayments",
           "Data/Charts > StripTimeFollowsLocale",
+          "Data/DataGrid > Editable",
+          "Data/DataGrid > Empty",
+          "Data/DataGrid > FiftyThousandRows",
+          "Data/DataGrid > Loading",
+          "Data/DataGrid > RightToLeft",
           "Layout/Panel > Header",
           "Layout/Panel > Sections",
           "Layout/Panel > Titled",
@@ -11890,6 +12676,11 @@
             "line": 130
           },
           {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1062
+          },
+          {
             "component": "Disclosure",
             "file": "packages/react/src/styles.css",
             "line": 170
@@ -12055,6 +12846,11 @@
           "Data/Charts > StripEmpty",
           "Data/Charts > StripPayments",
           "Data/Charts > StripTimeFollowsLocale",
+          "Data/DataGrid > Editable",
+          "Data/DataGrid > Empty",
+          "Data/DataGrid > FiftyThousandRows",
+          "Data/DataGrid > Loading",
+          "Data/DataGrid > RightToLeft",
           "Data/Table > Basic",
           "Data/Table > Compact",
           "Data/Table > Empty",
@@ -12138,6 +12934,16 @@
             "line": 790
           },
           {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1001
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1054
+          },
+          {
             "component": "Disclosure",
             "file": "packages/react/src/styles.css",
             "line": 170
@@ -12218,6 +13024,11 @@
           "Data/Charts > StripEmpty",
           "Data/Charts > StripPayments",
           "Data/Charts > StripTimeFollowsLocale",
+          "Data/DataGrid > Editable",
+          "Data/DataGrid > Empty",
+          "Data/DataGrid > FiftyThousandRows",
+          "Data/DataGrid > Loading",
+          "Data/DataGrid > RightToLeft",
           "Data/Table > Basic",
           "Data/Table > Compact",
           "Data/Table > Empty",
@@ -12374,6 +13185,11 @@
             "line": 345
           },
           {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1018
+          },
+          {
             "component": "ToastRegion",
             "file": "packages/react/src/styles.css",
             "line": 319
@@ -12402,6 +13218,11 @@
           "Controls/Inputs > TagsSmall",
           "Controls/Inputs > ThemeSwitchStates",
           "Controls/Inputs > ToolbarTransport",
+          "Data/DataGrid > Editable",
+          "Data/DataGrid > Empty",
+          "Data/DataGrid > FiftyThousandRows",
+          "Data/DataGrid > Loading",
+          "Data/DataGrid > RightToLeft",
           "Feedback/Feedback and layout > CalloutDismissible",
           "Feedback/Feedback and layout > CalloutInfo",
           "Feedback/Feedback and layout > CalloutNegativeWithRetry",
@@ -12757,9 +13578,20 @@
             "component": "(css) .stoa-sheet[data-entering]",
             "file": "packages/react/src/styles.css",
             "line": 693
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1081
           }
         ],
-        "stories": []
+        "stories": [
+          "Data/DataGrid > Editable",
+          "Data/DataGrid > Empty",
+          "Data/DataGrid > FiftyThousandRows",
+          "Data/DataGrid > Loading",
+          "Data/DataGrid > RightToLeft"
+        ]
       },
       "reachedByTheme": {
         "light": {
@@ -12884,6 +13716,11 @@
             "line": 68
           },
           {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1081
+          },
+          {
             "component": "Disclosure",
             "file": "packages/react/src/styles.css",
             "line": 183
@@ -12967,6 +13804,11 @@
           "Controls/Playback > Trades",
           "Controls/Playback > TradesEmpty",
           "Controls/Playback > Transport",
+          "Data/DataGrid > Editable",
+          "Data/DataGrid > Empty",
+          "Data/DataGrid > FiftyThousandRows",
+          "Data/DataGrid > Loading",
+          "Data/DataGrid > RightToLeft",
           "Feedback/Feedback and layout > CalloutDismissible",
           "Feedback/Feedback and layout > CalloutInfo",
           "Feedback/Feedback and layout > CalloutNegativeWithRetry",
@@ -13211,6 +14053,11 @@
             "line": 341
           },
           {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 961
+          },
+          {
             "component": "Panel",
             "file": "packages/react/src/styles.css",
             "line": 12
@@ -13249,6 +14096,11 @@
           "Data/Charts > StripEmpty",
           "Data/Charts > StripPayments",
           "Data/Charts > StripTimeFollowsLocale",
+          "Data/DataGrid > Editable",
+          "Data/DataGrid > Empty",
+          "Data/DataGrid > FiftyThousandRows",
+          "Data/DataGrid > Loading",
+          "Data/DataGrid > RightToLeft",
           "Data/Table > Basic",
           "Data/Table > Compact",
           "Data/Table > Empty",
@@ -13398,6 +14250,21 @@
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
             "line": 615
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1038
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1067
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1079
           },
           {
             "component": "Disclosure",
@@ -13576,6 +14443,11 @@
           "Controls/Playback > Trades",
           "Controls/Playback > TradesEmpty",
           "Controls/Playback > Transport",
+          "Data/DataGrid > Editable",
+          "Data/DataGrid > Empty",
+          "Data/DataGrid > FiftyThousandRows",
+          "Data/DataGrid > Loading",
+          "Data/DataGrid > RightToLeft",
           "Feedback/Feedback and layout > CalloutDismissible",
           "Feedback/Feedback and layout > CalloutInfo",
           "Feedback/Feedback and layout > CalloutNegativeWithRetry",
@@ -13665,6 +14537,11 @@
       "readBy": {
         "components": [
           {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1020
+          },
+          {
             "component": "Kbd",
             "file": "packages/react/src/styles.css",
             "line": 629
@@ -13727,7 +14604,12 @@
           "Controls/Inputs > TagTones",
           "Controls/Inputs > TagsSmall",
           "Controls/Inputs > ThemeSwitchStates",
-          "Controls/Inputs > ToolbarTransport"
+          "Controls/Inputs > ToolbarTransport",
+          "Data/DataGrid > Editable",
+          "Data/DataGrid > Empty",
+          "Data/DataGrid > FiftyThousandRows",
+          "Data/DataGrid > Loading",
+          "Data/DataGrid > RightToLeft"
         ]
       },
       "reachedByTheme": {
@@ -13805,6 +14687,26 @@
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
             "line": 132
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 998
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1042
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1048
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1057
           },
           {
             "component": "Disclosure",
@@ -14102,6 +15004,11 @@
           "Data/Charts > StripEmpty",
           "Data/Charts > StripPayments",
           "Data/Charts > StripTimeFollowsLocale",
+          "Data/DataGrid > Editable",
+          "Data/DataGrid > Empty",
+          "Data/DataGrid > FiftyThousandRows",
+          "Data/DataGrid > Loading",
+          "Data/DataGrid > RightToLeft",
           "Feedback/Feedback and layout > CalloutDismissible",
           "Feedback/Feedback and layout > CalloutInfo",
           "Feedback/Feedback and layout > CalloutNegativeWithRetry",
@@ -14315,6 +15222,16 @@
             "line": 62
           },
           {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1057
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1073
+          },
+          {
             "component": "Disclosure",
             "file": "packages/react/src/styles.css",
             "line": 168
@@ -14525,6 +15442,11 @@
           "Data/Charts > StripEmpty",
           "Data/Charts > StripPayments",
           "Data/Charts > StripTimeFollowsLocale",
+          "Data/DataGrid > Editable",
+          "Data/DataGrid > Empty",
+          "Data/DataGrid > FiftyThousandRows",
+          "Data/DataGrid > Loading",
+          "Data/DataGrid > RightToLeft",
           "Data/Table > Basic",
           "Data/Table > Compact",
           "Data/Table > Empty",
@@ -14638,6 +15560,16 @@
             "line": 852
           },
           {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1048
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1074
+          },
+          {
             "component": "FilterChip",
             "file": "packages/react/src/styles.css",
             "line": 495
@@ -14748,6 +15680,11 @@
           "Data/Charts > StripEmpty",
           "Data/Charts > StripPayments",
           "Data/Charts > StripTimeFollowsLocale",
+          "Data/DataGrid > Editable",
+          "Data/DataGrid > Empty",
+          "Data/DataGrid > FiftyThousandRows",
+          "Data/DataGrid > Loading",
+          "Data/DataGrid > RightToLeft",
           "Data/Table > Basic",
           "Data/Table > Compact",
           "Data/Table > Empty",

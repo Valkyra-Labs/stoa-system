@@ -108,3 +108,16 @@ export { Table, type TableColumn, type TableProps } from "./Table";
 export { LineChart, type ChartPoint, type ChartTone, type LineChartProps, type LineSeries } from "./LineChart";
 export { EventStrip, type EventKind, type EventStripProps, type StripEvent } from "./EventStrip";
 export { niceTicks, formatDate, type Ticks } from "./chartScale";
+// DataGrid
+export {
+  DataGrid,
+  type DataGridCell,
+  type DataGridColumn,
+  type DataGridEdit,
+  type DataGridEditor,
+  type DataGridOption,
+  type DataGridProps,
+  type DataGridSort,
+  type DataGridValidate,
+  type DataGridValue,
+} from "./DataGrid";

@@ -946,3 +946,141 @@
 .stoa-event-strip__mark--amortisation { fill: var(--stoa-color-accent); }
 .stoa-event-strip__mark--offer { fill: var(--stoa-color-warning); }
 .stoa-event-strip__mark--maturity { fill: var(--stoa-color-text); }
+/* ==== DataGrid ==== */
+/* The wrapper holds the scrolling grid, the overlays for the loading and
+   empty states, and the live region. It is fifteen rows and a header
+   tall unless a class sizes it. The component places rows by translateY
+   (index times the measured row height); pinned cells stick to the start
+   edge and the others sit at their column's offset by
+   inset-inline-start, so the grid mirrors in a right-to-left page without
+   overrides. */
+.stoa-data-grid {
+  position: relative;
+  block-size: calc(var(--stoa-density-row-height) * 16);
+  border: 1px solid var(--stoa-color-border);
+  border-radius: var(--stoa-radius-md);
+  overflow: hidden;
+  background: var(--stoa-color-surface);
+  color: var(--stoa-color-text);
+  font-size: var(--stoa-density-font-size);
+}
+.stoa-data-grid__scroller { position: relative; block-size: 100%; overflow: auto; overscroll-behavior: contain; outline: none; }
+.stoa-data-grid__head { position: sticky; inset-block-start: 0; z-index: 3; }
+.stoa-data-grid__body { position: relative; }
+.stoa-data-grid__row {
+  position: absolute; inset-block-start: 0; inset-inline-start: 0;
+  display: flex; block-size: var(--stoa-density-row-height);
+}
+.stoa-data-grid__row--head { position: relative; }
+/* A row being edited, and its editor, sit above the rows after it. */
+.stoa-data-grid__row[data-editing] { z-index: 2; }
+.stoa-data-grid__cell {
+  box-sizing: border-box; display: flex; align-items: center; flex: none; block-size: 100%;
+  padding-inline: var(--stoa-density-cell-padding-x);
+  overflow: hidden; white-space: nowrap;
+  border-block-end: 1px solid var(--stoa-color-border);
+  background: var(--stoa-color-surface);
+  outline: none;
+}
+.stoa-data-grid__cell--pinned { position: sticky; z-index: 1; }
+.stoa-data-grid__cell--center { position: absolute; inset-block-start: 0; }
+.stoa-data-grid__cell--pin-edge { border-inline-end: 1px solid var(--stoa-color-border-strong); }
+.stoa-data-grid__cell--end { justify-content: flex-end; }
+.stoa-data-grid__cell--num { justify-content: flex-end; font-family: var(--stoa-font-family-mono); font-variant-numeric: tabular-nums; }
+.stoa-data-grid__cell--select { justify-content: center; padding-inline: 0; }
+.stoa-data-grid__cell[data-editing] { overflow: visible; z-index: 2; padding-inline: 0; }
+.stoa-data-grid__cell:focus-visible {
+  outline: var(--stoa-focus-width) solid var(--stoa-color-focus);
+  outline-offset: calc(-1 * var(--stoa-focus-width));
+}
+.stoa-data-grid__text { overflow: hidden; text-overflow: ellipsis; }
+.stoa-data-grid__row--head .stoa-data-grid__cell {
+  gap: var(--stoa-space-1);
+  background: var(--stoa-color-surface-sunken);
+  color: var(--stoa-color-text-muted);
+  font-weight: var(--stoa-font-weight-medium);
+  border-block-end-color: var(--stoa-color-border-strong);
+}
+.stoa-data-grid__cell--sortable { cursor: pointer; user-select: none; }
+.stoa-data-grid__sort { color: var(--stoa-color-accent); }
+.stoa-data-grid__sort--ascending { transform: rotate(180deg); }
+/* A selected row: the hover fill (body text on it is a checked pair), the
+   checked box, and an accent bar at the start of the row, so the state is
+   never told by the fill alone. */
+.stoa-data-grid__row[data-selected] > .stoa-data-grid__cell { background: var(--stoa-color-surface-hover); }
+.stoa-data-grid__row[data-selected] > .stoa-data-grid__cell--select {
+  border-inline-start: var(--stoa-focus-width) solid var(--stoa-color-accent);
+}
+.stoa-data-grid__checkbox { margin: 0; accent-color: var(--stoa-color-accent); cursor: pointer; }
+/* A search match: weight and an accent underline, no new fill colour. */
+.stoa-data-grid__mark {
+  background: none; color: inherit;
+  font-weight: var(--stoa-font-weight-semibold);
+  text-decoration: underline var(--stoa-focus-width) var(--stoa-color-accent);
+  text-underline-offset: var(--stoa-space-0-5);
+}
+.stoa-data-grid__editor { position: relative; display: flex; align-items: center; inline-size: 100%; block-size: 100%; }
+.stoa-data-grid__editor > .stoa-data-grid__text { padding-inline: var(--stoa-density-cell-padding-x); }
+.stoa-data-grid__input {
+  box-sizing: border-box; inline-size: 100%; block-size: 100%; min-inline-size: 0;
+  font: inherit; padding-inline: var(--stoa-density-cell-padding-x);
+  border: 1px solid var(--stoa-color-border-strong); border-radius: 0;
+  background: var(--stoa-color-surface); color: var(--stoa-color-text);
+  outline: var(--stoa-focus-width) solid var(--stoa-color-focus);
+  outline-offset: calc(-1 * var(--stoa-focus-width));
+}
+.stoa-data-grid__input[aria-invalid="true"] { border-color: var(--stoa-color-down); }
+.stoa-data-grid__popover {
+  position: absolute; inset-inline-start: 0; inset-block-start: 100%;
+  min-inline-size: 100%; z-index: 2;
+  background: var(--stoa-color-surface);
+  border: 1px solid var(--stoa-color-border-strong);
+  border-radius: var(--stoa-radius-sm);
+  font-family: var(--stoa-font-family-sans);
+}
+.stoa-data-grid__popover[data-placement="above"] { inset-block-start: auto; inset-block-end: 100%; }
+.stoa-data-grid__listbox { padding-block: var(--stoa-space-1); outline: none; }
+.stoa-data-grid__listbox:focus-visible {
+  outline: var(--stoa-focus-width) solid var(--stoa-color-focus);
+  outline-offset: calc(-1 * var(--stoa-focus-width));
+}
+.stoa-data-grid__option {
+  padding: var(--stoa-space-1) var(--stoa-space-3); cursor: pointer; white-space: nowrap;
+  border-inline-start: var(--stoa-focus-width) solid transparent;
+}
+.stoa-data-grid__option[aria-selected="true"] {
+  background: var(--stoa-color-surface-hover);
+  border-inline-start-color: var(--stoa-color-accent);
+  font-weight: var(--stoa-font-weight-medium);
+}
+.stoa-data-grid__error {
+  padding: var(--stoa-space-1) var(--stoa-space-2);
+  background: var(--stoa-color-surface);
+  border-block-start: 1px solid var(--stoa-color-border);
+  color: var(--stoa-color-down);
+  font-family: var(--stoa-font-family-sans);
+  font-size: var(--stoa-font-size-xs);
+  white-space: normal;
+}
+.stoa-data-grid__editor > .stoa-data-grid__error {
+  position: absolute; inset-inline-start: 0; inset-block-start: 100%; min-inline-size: 100%;
+  border: 1px solid var(--stoa-color-border-strong); border-radius: var(--stoa-radius-sm);
+}
+/* Loading and empty states sit under the header, over the empty body. */
+.stoa-data-grid__overlay {
+  position: absolute; inset-inline: 0; inset-block-end: 0;
+  inset-block-start: var(--stoa-density-row-height);
+  display: grid; align-content: start; gap: var(--stoa-space-2);
+  padding: var(--stoa-space-3);
+}
+.stoa-data-grid__empty { color: var(--stoa-color-text-muted); justify-items: center; }
+.stoa-data-grid__skeleton {
+  display: block; block-size: calc(var(--stoa-density-row-height) / 2);
+  border-radius: var(--stoa-radius-sm);
+  background: var(--stoa-color-surface-hover);
+  animation: stoa-data-grid-pulse calc(var(--stoa-motion-duration-slow) * 5) var(--stoa-motion-easing-standard) infinite alternate;
+}
+@keyframes stoa-data-grid-pulse {
+  from { opacity: 1; }
+  to { opacity: 0.5; }
+}
