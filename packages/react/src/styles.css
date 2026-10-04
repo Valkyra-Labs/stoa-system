@@ -259,3 +259,32 @@
 /* Panels kept mounted while inactive are inert; they keep their state
    (a running worker, a filled form) but take no space. */
 .stoa-tabs__panel[inert] { display: none; }
+
+/* ==== Controls ==== */
+
+/* Button variants. Each sets its own hover, press and disabled rules after
+   the shared ones, for the reason given above the primary rules: a shared
+   state rule of equal specificity would otherwise win over the fill.
+   Secondary sits on the sunken surface with no border; ghost has neither
+   fill nor border until hovered, and borrows the default press; danger is
+   the primary pattern on the falling colour. */
+.stoa-button--secondary { background: var(--stoa-color-surface-sunken); border-color: transparent; }
+.stoa-button--ghost { background: transparent; border-color: transparent; }
+.stoa-button--danger { background: var(--stoa-color-down); border-color: var(--stoa-color-down); color: var(--stoa-color-surface); }
+.stoa-button--secondary[data-hovered], .stoa-button--ghost[data-hovered] { background: var(--stoa-color-surface-hover); }
+.stoa-button--secondary[data-pressed], .stoa-button--ghost[data-pressed] {
+  background: color-mix(in oklch, var(--stoa-color-surface-hover), var(--stoa-color-text) 8%);
+}
+.stoa-button--danger[data-hovered] {
+  background: color-mix(in oklch, var(--stoa-color-down), var(--stoa-color-text) 14%);
+  border-color: color-mix(in oklch, var(--stoa-color-down), var(--stoa-color-text) 14%);
+}
+.stoa-button--danger[data-pressed] {
+  background: color-mix(in oklch, var(--stoa-color-down), var(--stoa-color-text) 26%);
+  border-color: color-mix(in oklch, var(--stoa-color-down), var(--stoa-color-text) 26%);
+}
+.stoa-button--secondary[data-disabled], .stoa-button--ghost[data-disabled], .stoa-button--danger[data-disabled] {
+  background: var(--stoa-color-surface-sunken);
+  border-color: var(--stoa-color-border);
+  color: var(--stoa-color-text-subtle);
+}
