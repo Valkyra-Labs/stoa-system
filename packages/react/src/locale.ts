@@ -32,6 +32,21 @@ export type StoaMessages = {
   spread: (value: string) => string;
   /** One sentence from the bid part, the ask part and the spread, if any. */
   book: (bid: string, ask: string, spread: string | null) => string;
+  /** DataGrid: the name of the checkbox that selects every row. */
+  gridSelectAll: string;
+  /** DataGrid: the name of a row's checkbox, from the row's first value. */
+  gridSelectRow: (row: string) => string;
+  /** DataGrid: announced after a header sorts its column. */
+  gridSortedAscending: (column: string) => string;
+  gridSortedDescending: (column: string) => string;
+  gridSortCleared: string;
+  /** DataGrid: the row count, and the selected count when there is one,
+   * both already in the locale's digits; announced when either changes. */
+  gridCounts: (rows: string, selected: string | null) => string;
+  /** DataGrid: what an empty grid says, unless the caller gives its own. */
+  gridNoRows: string;
+  /** DataGrid: announced while rows load. */
+  gridLoading: string;
 };
 
 const EN: StoaMessages = {
@@ -52,6 +67,14 @@ const EN: StoaMessages = {
   noAsks: "no asks",
   spread: (value) => `spread ${value}`,
   book: (bid, ask, spread) => `${bid}, ${ask}${spread ? `, ${spread}` : ""}.`,
+  gridSelectAll: "Select all rows",
+  gridSelectRow: (row) => `Select row ${row}`,
+  gridSortedAscending: (column) => `Sorted by ${column}, ascending`,
+  gridSortedDescending: (column) => `Sorted by ${column}, descending`,
+  gridSortCleared: "Sort cleared",
+  gridCounts: (rows, selected) => `${rows} ${rows === "1" ? "row" : "rows"}${selected ? `, ${selected} selected` : ""}.`,
+  gridNoRows: "No rows to show.",
+  gridLoading: "Loading rows",
 };
 
 const AR: StoaMessages = {
@@ -72,6 +95,14 @@ const AR: StoaMessages = {
   noAsks: "لا أوامر بيع",
   spread: (value) => `الفارق ${value}`,
   book: (bid, ask, spread) => `${bid}، ${ask}${spread ? `، ${spread}` : ""}.`,
+  gridSelectAll: "تحديد كل الصفوف",
+  gridSelectRow: (row) => `تحديد الصف ${row}`,
+  gridSortedAscending: (column) => `مرتب حسب ${column} تصاعديًا`,
+  gridSortedDescending: (column) => `مرتب حسب ${column} تنازليًا`,
+  gridSortCleared: "أُلغي الترتيب",
+  gridCounts: (rows, selected) => `الصفوف: ${rows}${selected ? `، المحددة: ${selected}` : ""}.`,
+  gridNoRows: "لا صفوف لعرضها.",
+  gridLoading: "جارٍ تحميل الصفوف",
 };
 
 /** Stoa's words for a locale: Arabic for any "ar" tag, English otherwise. */
