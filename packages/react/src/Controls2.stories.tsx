@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useState } from "react";
 import { FilterChip, FilterChipGroup, Tag } from "./Chips";
 import { Button } from "./Controls";
+import { Checkbox, CheckboxGroup, Switch } from "./Toggles";
 
 const meta: Meta = { title: "Controls/Inputs" };
 export default meta;
@@ -131,6 +132,112 @@ export const FilterChipsScroll: StoryObj = {
     return (
       <div style={{ maxInlineSize: 280, border: "1px solid var(--stoa-color-border)" }}>
         <FilterChipGroup label="Order status" chips={STATUS} value={value} onChange={setValue} overflow="scroll" size="small" />
+      </div>
+    );
+  },
+};
+
+const column = { display: "grid", gap: "var(--stoa-space-3)", justifyItems: "start" } as const;
+
+/** Off and on, with and without a description. Space toggles a focused
+ * switch. */
+export const SwitchStates: StoryObj = {
+  render: () => {
+    const [live, setLive] = useState(true);
+    const [sound, setSound] = useState(false);
+    return (
+      <div style={column}>
+        <Switch isSelected={live} onChange={setLive} description="Prices move as trades arrive.">
+          Live updates
+        </Switch>
+        <Switch isSelected={sound} onChange={setSound}>
+          Sound on fills
+        </Switch>
+      </div>
+    );
+  },
+};
+
+/** Disabled, off and on. The reason is shown under the label and announced
+ * with the switch, so the state is explained, not only greyed out. */
+export const SwitchDisabled: StoryObj = {
+  render: () => (
+    <div style={column}>
+      <Switch isSelected={false} onChange={() => {}} isDisabled disabledReason="Needs a live feed; this is a replay.">
+        Live updates
+      </Switch>
+      <Switch isSelected onChange={() => {}} isDisabled disabledReason="Set by your organisation.">
+        Confirm orders
+      </Switch>
+    </div>
+  ),
+};
+
+/** The small size, for a toolbar or a settings row. */
+export const SwitchSmall: StoryObj = {
+  render: () => {
+    const [on, setOn] = useState(true);
+    return (
+      <Switch size="small" isSelected={on} onChange={setOn}>
+        Reduced motion
+      </Switch>
+    );
+  },
+};
+
+/** Unchecked, checked, mixed and disabled. */
+export const CheckboxStates: StoryObj = {
+  render: () => {
+    const [fees, setFees] = useState(false);
+    const [totals, setTotals] = useState(true);
+    return (
+      <div style={column}>
+        <Checkbox isSelected={fees} onChange={setFees} description="Commission and exchange fees.">
+          Show fees
+        </Checkbox>
+        <Checkbox isSelected={totals} onChange={setTotals}>
+          Show totals
+        </Checkbox>
+        <Checkbox isSelected={false} isIndeterminate onChange={() => {}}>
+          All columns
+        </Checkbox>
+        <Checkbox isSelected onChange={() => {}} isDisabled>
+          Price (always shown)
+        </Checkbox>
+      </div>
+    );
+  },
+};
+
+const COLUMNS = [
+  { value: "time", label: "Time" },
+  { value: "side", label: "Side" },
+  { value: "price", label: "Price" },
+  { value: "size", label: "Size" },
+];
+
+/** A group under one label, with a mixed "all" box above it that checks
+ * or clears every column. */
+export const CheckboxGroupWithAll: StoryObj = {
+  render: () => {
+    const [value, setValue] = useState(["time", "price"]);
+    const all = value.length === COLUMNS.length;
+    return (
+      <div style={column}>
+        <Checkbox
+          isSelected={all}
+          isIndeterminate={value.length > 0 && !all}
+          onChange={(on) => setValue(on ? COLUMNS.map((c) => c.value) : [])}
+        >
+          All columns
+        </Checkbox>
+        <CheckboxGroup label="Show columns" value={value} onChange={setValue} description="Hidden columns stay in the export.">
+          {COLUMNS.map((c) => (
+            <Checkbox key={c.value} value={c.value}>
+              {c.label}
+            </Checkbox>
+          ))}
+        </CheckboxGroup>
       </div>
     );
   },

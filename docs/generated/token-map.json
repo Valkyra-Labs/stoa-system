@@ -42,6 +42,11 @@
             "line": 88
           },
           {
+            "component": "Checkbox",
+            "file": "packages/react/src/styles.css",
+            "line": 406
+          },
+          {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
             "line": 80
@@ -134,6 +139,16 @@
             "line": 159
           },
           {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 361
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 363
+          },
+          {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
             "line": 249
@@ -185,9 +200,14 @@
           "Controls/Form > TabList",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
           "Controls/Inputs > TagsSmall",
           "Controls/Playback > Choices",
@@ -248,9 +268,14 @@
           "Controls/Form > TabList",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
           "Controls/Inputs > TagsSmall",
           "Layout/Panel > Header",
@@ -300,9 +325,14 @@
           "Controls/Form > TabList",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
           "Controls/Inputs > TagsSmall",
           "Layout/Panel > Header",
@@ -510,6 +540,18 @@
             "via": "--stoa-color-focus"
           },
           {
+            "component": "Checkbox",
+            "file": "packages/react/src/styles.css",
+            "line": 372,
+            "via": "--stoa-color-focus"
+          },
+          {
+            "component": "Checkbox",
+            "file": "packages/react/src/styles.css",
+            "line": 406,
+            "via": "--stoa-color-accent"
+          },
+          {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
             "line": 80,
@@ -660,6 +702,24 @@
             "via": "--stoa-color-focus"
           },
           {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 361,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 363,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 372,
+            "via": "--stoa-color-focus"
+          },
+          {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
             "line": 249,
@@ -750,9 +810,14 @@
           "Controls/Form > TabList",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
           "Controls/Inputs > TagsSmall",
           "Controls/Playback > Choices",
@@ -804,6 +869,12 @@
             "via": "--stoa-color-focus"
           },
           {
+            "component": "Checkbox",
+            "file": "packages/react/src/styles.css",
+            "line": 372,
+            "via": "--stoa-color-focus"
+          },
+          {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
             "line": 100,
@@ -846,6 +917,12 @@
             "via": "--stoa-color-focus"
           },
           {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 372,
+            "via": "--stoa-color-focus"
+          },
+          {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
             "line": 250,
@@ -882,9 +959,14 @@
           "Controls/Form > TabList",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
           "Controls/Inputs > TagsSmall",
           "Controls/Playback > Choices",
@@ -952,6 +1034,12 @@
             "via": "--stoa-color-accent"
           },
           {
+            "component": "Checkbox",
+            "file": "packages/react/src/styles.css",
+            "line": 406,
+            "via": "--stoa-color-accent"
+          },
+          {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
             "line": 80,
@@ -1060,6 +1148,18 @@
             "via": "--stoa-color-accent"
           },
           {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 361,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 363,
+            "via": "--stoa-color-accent"
+          },
+          {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
             "line": 249,
@@ -1120,9 +1220,14 @@
           "Controls/Form > TabList",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
           "Controls/Inputs > TagsSmall",
           "Controls/Playback > Choices",
@@ -1189,6 +1294,11 @@
             "line": 288
           },
           {
+            "component": "Checkbox",
+            "file": "packages/react/src/styles.css",
+            "line": 378
+          },
+          {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
             "line": 95
@@ -1226,6 +1336,16 @@
             "line": 95
           },
           {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 378
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 380
+          },
+          {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
             "line": 242
@@ -1247,9 +1367,14 @@
           "Controls/Form > TabList",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
           "Controls/Inputs > TagsSmall",
           "Controls/Playback > Choices",
@@ -1303,6 +1428,11 @@
             "line": 63
           },
           {
+            "component": "Checkbox",
+            "file": "packages/react/src/styles.css",
+            "line": 400
+          },
+          {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
             "line": 63
@@ -1333,6 +1463,16 @@
             "line": 147
           },
           {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 348
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 357
+          },
+          {
             "component": "Tag",
             "file": "packages/react/src/styles.css",
             "line": 298
@@ -1359,9 +1499,14 @@
           "Controls/Form > TabList",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
           "Controls/Inputs > TagsSmall",
           "Controls/Playback > Choices",
@@ -1449,9 +1594,14 @@
           "Controls/Form > TabList",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
           "Controls/Inputs > TagsSmall",
           "Controls/Playback > Choices",
@@ -1550,6 +1700,11 @@
             "line": 100
           },
           {
+            "component": "Checkbox",
+            "file": "packages/react/src/styles.css",
+            "line": 372
+          },
+          {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
             "line": 100
@@ -1585,6 +1740,11 @@
             "line": 160
           },
           {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 372
+          },
+          {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
             "line": 250
@@ -1616,9 +1776,14 @@
           "Controls/Form > TabList",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
           "Controls/Inputs > TagsSmall",
           "Controls/Playback > Choices",
@@ -1675,6 +1840,12 @@
             "component": "Button",
             "file": "packages/react/src/styles.css",
             "line": 273,
+            "via": "--stoa-color-surface"
+          },
+          {
+            "component": "Checkbox",
+            "file": "packages/react/src/styles.css",
+            "line": 401,
             "via": "--stoa-color-surface"
           },
           {
@@ -1750,6 +1921,18 @@
             "via": "--stoa-color-surface"
           },
           {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 349,
+            "via": "--stoa-color-surface"
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 366,
+            "via": "--stoa-color-surface"
+          },
+          {
             "component": "Tag",
             "file": "packages/react/src/styles.css",
             "line": 308,
@@ -1780,9 +1963,14 @@
           "Controls/Form > TabList",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
           "Controls/Inputs > TagsSmall",
           "Controls/Playback > Choices",
@@ -1923,6 +2111,18 @@
             "via": "--stoa-color-surface-sunken"
           },
           {
+            "component": "Checkbox",
+            "file": "packages/react/src/styles.css",
+            "line": 341,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "Checkbox",
+            "file": "packages/react/src/styles.css",
+            "line": 378,
+            "via": "--stoa-color-surface-sunken"
+          },
+          {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
             "line": 66,
@@ -2109,6 +2309,24 @@
             "via": "--stoa-color-text"
           },
           {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 341,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 363,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 378,
+            "via": "--stoa-color-surface-sunken"
+          },
+          {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
             "line": 248,
@@ -2181,9 +2399,14 @@
           "Controls/Form > TabList",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
           "Controls/Inputs > TagsSmall",
           "Controls/Playback > Choices",
@@ -2286,6 +2509,12 @@
             "via": "--stoa-color-surface-hover"
           },
           {
+            "component": "Checkbox",
+            "file": "packages/react/src/styles.css",
+            "line": 404,
+            "via": "--stoa-color-surface-hover"
+          },
+          {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
             "line": 75,
@@ -2340,6 +2569,12 @@
             "via": "--stoa-color-surface-hover"
           },
           {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 360,
+            "via": "--stoa-color-surface-hover"
+          },
+          {
             "component": "Toggle",
             "file": "packages/react/src/styles.css",
             "line": 75,
@@ -2355,9 +2590,14 @@
         "stories": [
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
           "Controls/Inputs > TagsSmall",
           "Controls/Playback > Choices",
@@ -2412,6 +2652,12 @@
             "via": "--stoa-color-border"
           },
           {
+            "component": "Checkbox",
+            "file": "packages/react/src/styles.css",
+            "line": 378,
+            "via": "--stoa-color-border"
+          },
+          {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
             "line": 95,
@@ -2454,6 +2700,18 @@
             "via": "--stoa-color-border"
           },
           {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 378,
+            "via": "--stoa-color-border"
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 380,
+            "via": "--stoa-color-border"
+          },
+          {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
             "line": 242,
@@ -2478,9 +2736,14 @@
           "Controls/Form > TabList",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
           "Controls/Inputs > TagsSmall",
           "Controls/Playback > Choices",
@@ -2553,6 +2816,24 @@
             "via": "--stoa-color-text-muted"
           },
           {
+            "component": "Checkbox",
+            "file": "packages/react/src/styles.css",
+            "line": 231,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "CheckboxGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 220,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "CheckboxGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 231,
+            "via": "--stoa-color-text-muted"
+          },
+          {
             "component": "Disclosure",
             "file": "packages/react/src/styles.css",
             "line": 182,
@@ -2613,6 +2894,12 @@
             "via": "--stoa-color-text-muted"
           },
           {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 231,
+            "via": "--stoa-color-text-muted"
+          },
+          {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
             "line": 245,
@@ -2655,9 +2942,14 @@
           "Controls/Form > TabList",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
           "Controls/Inputs > TagsSmall",
           "Controls/Playback > Choices",
@@ -2717,6 +3009,24 @@
             "component": "Button",
             "file": "packages/react/src/styles.css",
             "line": 289,
+            "via": "--stoa-color-text-subtle"
+          },
+          {
+            "component": "Checkbox",
+            "file": "packages/react/src/styles.css",
+            "line": 375,
+            "via": "--stoa-color-text-subtle"
+          },
+          {
+            "component": "Checkbox",
+            "file": "packages/react/src/styles.css",
+            "line": 400,
+            "via": "--stoa-color-border-strong"
+          },
+          {
+            "component": "Checkbox",
+            "file": "packages/react/src/styles.css",
+            "line": 407,
             "via": "--stoa-color-text-subtle"
           },
           {
@@ -2780,6 +3090,24 @@
             "via": "--stoa-color-border-strong"
           },
           {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 348,
+            "via": "--stoa-color-border-strong"
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 357,
+            "via": "--stoa-color-border-strong"
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 375,
+            "via": "--stoa-color-text-subtle"
+          },
+          {
             "component": "Tag",
             "file": "packages/react/src/styles.css",
             "line": 298,
@@ -2816,9 +3144,14 @@
           "Controls/Form > TabList",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
           "Controls/Inputs > TagsSmall",
           "Controls/Playback > Choices",
@@ -2907,6 +3240,24 @@
             "via": "--stoa-color-text-subtle"
           },
           {
+            "component": "Checkbox",
+            "file": "packages/react/src/styles.css",
+            "line": 375,
+            "via": "--stoa-color-text-subtle"
+          },
+          {
+            "component": "Checkbox",
+            "file": "packages/react/src/styles.css",
+            "line": 400,
+            "via": "--stoa-color-border-strong"
+          },
+          {
+            "component": "Checkbox",
+            "file": "packages/react/src/styles.css",
+            "line": 407,
+            "via": "--stoa-color-text-subtle"
+          },
+          {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
             "line": 63,
@@ -2967,6 +3318,24 @@
             "via": "--stoa-color-border-strong"
           },
           {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 348,
+            "via": "--stoa-color-border-strong"
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 357,
+            "via": "--stoa-color-border-strong"
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 375,
+            "via": "--stoa-color-text-subtle"
+          },
+          {
             "component": "Tag",
             "file": "packages/react/src/styles.css",
             "line": 298,
@@ -3003,9 +3372,14 @@
           "Controls/Form > TabList",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
           "Controls/Inputs > TagsSmall",
           "Controls/Playback > Choices",
@@ -3047,6 +3421,24 @@
             "component": "AppHeader",
             "file": "packages/react/src/styles.css",
             "line": 38,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "Checkbox",
+            "file": "packages/react/src/styles.css",
+            "line": 231,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "CheckboxGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 220,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "CheckboxGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 231,
             "via": "--stoa-color-text-muted"
           },
           {
@@ -3110,6 +3502,12 @@
             "via": "--stoa-color-text-muted"
           },
           {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 231,
+            "via": "--stoa-color-text-muted"
+          },
+          {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
             "line": 245,
@@ -3152,9 +3550,14 @@
           "Controls/Form > TabList",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
           "Controls/Inputs > TagsSmall",
           "Controls/Playback > Choices",
@@ -3263,6 +3666,12 @@
             "via": "--stoa-color-border"
           },
           {
+            "component": "Checkbox",
+            "file": "packages/react/src/styles.css",
+            "line": 378,
+            "via": "--stoa-color-border"
+          },
+          {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
             "line": 95,
@@ -3305,6 +3714,18 @@
             "via": "--stoa-color-border"
           },
           {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 378,
+            "via": "--stoa-color-border"
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 380,
+            "via": "--stoa-color-border"
+          },
+          {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
             "line": 242,
@@ -3329,9 +3750,14 @@
           "Controls/Form > TabList",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
           "Controls/Inputs > TagsSmall",
           "Controls/Playback > Choices",
@@ -3399,6 +3825,12 @@
             "via": "--stoa-color-surface-hover"
           },
           {
+            "component": "Checkbox",
+            "file": "packages/react/src/styles.css",
+            "line": 404,
+            "via": "--stoa-color-surface-hover"
+          },
+          {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
             "line": 75,
@@ -3453,6 +3885,12 @@
             "via": "--stoa-color-surface-hover"
           },
           {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 360,
+            "via": "--stoa-color-surface-hover"
+          },
+          {
             "component": "Toggle",
             "file": "packages/react/src/styles.css",
             "line": 75,
@@ -3468,9 +3906,14 @@
         "stories": [
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
           "Controls/Inputs > TagsSmall",
           "Controls/Playback > Choices",
@@ -3607,6 +4050,18 @@
             "file": "packages/react/src/styles.css",
             "line": 284,
             "via": "--stoa-color-text"
+          },
+          {
+            "component": "Checkbox",
+            "file": "packages/react/src/styles.css",
+            "line": 341,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "Checkbox",
+            "file": "packages/react/src/styles.css",
+            "line": 401,
+            "via": "--stoa-color-surface"
           },
           {
             "component": "ChoiceGroup",
@@ -3843,6 +4298,30 @@
             "via": "--stoa-color-text"
           },
           {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 341,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 349,
+            "via": "--stoa-color-surface"
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 363,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 366,
+            "via": "--stoa-color-surface"
+          },
+          {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
             "line": 248,
@@ -3933,9 +4412,14 @@
           "Controls/Form > TabList",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
           "Controls/Inputs > TagsSmall",
           "Controls/Playback > Choices",
@@ -4048,9 +4532,14 @@
           "Controls/Form > TabList",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
           "Controls/Inputs > TagsSmall",
           "Controls/Playback > Choices",
@@ -4162,9 +4651,14 @@
           "Controls/Form > TabList",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
           "Controls/Inputs > TagsSmall",
           "Controls/Playback > Choices",
@@ -4285,6 +4779,11 @@
             "line": 273
           },
           {
+            "component": "Checkbox",
+            "file": "packages/react/src/styles.css",
+            "line": 401
+          },
+          {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
             "line": 65
@@ -4347,6 +4846,16 @@
             "line": 146
           },
           {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 349
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 366
+          },
+          {
             "component": "Tag",
             "file": "packages/react/src/styles.css",
             "line": 308
@@ -4373,9 +4882,14 @@
           "Controls/Form > TabList",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
           "Controls/Inputs > TagsSmall",
           "Controls/Playback > Choices",
@@ -4445,6 +4959,11 @@
             "line": 276
           },
           {
+            "component": "Checkbox",
+            "file": "packages/react/src/styles.css",
+            "line": 404
+          },
+          {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
             "line": 75
@@ -4490,6 +5009,11 @@
             "line": 158
           },
           {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 360
+          },
+          {
             "component": "Toggle",
             "file": "packages/react/src/styles.css",
             "line": 75
@@ -4503,9 +5027,14 @@
         "stories": [
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
           "Controls/Inputs > TagsSmall",
           "Controls/Playback > Choices",
@@ -4562,6 +5091,11 @@
             "line": 287
           },
           {
+            "component": "Checkbox",
+            "file": "packages/react/src/styles.css",
+            "line": 378
+          },
+          {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
             "line": 94
@@ -4582,6 +5116,11 @@
             "line": 94
           },
           {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 378
+          },
+          {
             "component": "Toggle",
             "file": "packages/react/src/styles.css",
             "line": 94
@@ -4590,9 +5129,14 @@
         "stories": [
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
           "Controls/Inputs > TagsSmall",
           "Controls/Playback > Choices",
@@ -4663,9 +5207,14 @@
           "Controls/Form > TabList",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
           "Controls/Inputs > TagsSmall",
           "Controls/Playback > Choices",
@@ -4747,9 +5296,14 @@
           "Controls/Form > TabList",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
           "Controls/Inputs > TagsSmall",
           "Controls/Playback > Choices",
@@ -4915,6 +5469,11 @@
             "line": 284
           },
           {
+            "component": "Checkbox",
+            "file": "packages/react/src/styles.css",
+            "line": 341
+          },
+          {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
             "line": 66
@@ -5052,6 +5611,16 @@
             "line": 236
           },
           {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 341
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 363
+          },
+          {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
             "line": 248
@@ -5108,9 +5677,14 @@
           "Controls/Form > TabList",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
           "Controls/Inputs > TagsSmall",
           "Controls/Playback > Choices",
@@ -5165,6 +5739,21 @@
             "line": 38
           },
           {
+            "component": "Checkbox",
+            "file": "packages/react/src/styles.css",
+            "line": 231
+          },
+          {
+            "component": "CheckboxGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 220
+          },
+          {
+            "component": "CheckboxGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 231
+          },
+          {
             "component": "Disclosure",
             "file": "packages/react/src/styles.css",
             "line": 182
@@ -5217,6 +5806,11 @@
             "line": 238
           },
           {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 231
+          },
+          {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
             "line": 245
@@ -5253,9 +5847,14 @@
           "Controls/Form > TabList",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
           "Controls/Inputs > TagsSmall",
           "Controls/Playback > Choices",
@@ -5315,6 +5914,16 @@
             "line": 289
           },
           {
+            "component": "Checkbox",
+            "file": "packages/react/src/styles.css",
+            "line": 375
+          },
+          {
+            "component": "Checkbox",
+            "file": "packages/react/src/styles.css",
+            "line": 407
+          },
+          {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
             "line": 96
@@ -5335,6 +5944,11 @@
             "line": 96
           },
           {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 375
+          },
+          {
             "component": "Toggle",
             "file": "packages/react/src/styles.css",
             "line": 96
@@ -5343,9 +5957,14 @@
         "stories": [
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
           "Controls/Inputs > TagsSmall",
           "Controls/Playback > Choices",
@@ -5408,9 +6027,14 @@
           "Controls/Form > TabList",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
           "Controls/Inputs > TagsSmall",
           "Controls/Playback > Choices",
@@ -5520,9 +6144,14 @@
           "Controls/Form > TabList",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
           "Controls/Inputs > TagsSmall",
           "Layout/Panel > Header",
@@ -5720,6 +6349,11 @@
             "line": 101
           },
           {
+            "component": "Checkbox",
+            "file": "packages/react/src/styles.css",
+            "line": 373
+          },
+          {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
             "line": 101
@@ -5750,6 +6384,11 @@
             "line": 101
           },
           {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 373
+          },
+          {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
             "line": 256
@@ -5771,9 +6410,14 @@
           "Controls/Form > TabList",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
           "Controls/Inputs > TagsSmall",
           "Controls/Playback > Choices",
@@ -5811,6 +6455,11 @@
             "component": "Button",
             "file": "packages/react/src/styles.css",
             "line": 100
+          },
+          {
+            "component": "Checkbox",
+            "file": "packages/react/src/styles.css",
+            "line": 372
           },
           {
             "component": "ChoiceGroup",
@@ -5853,6 +6502,11 @@
             "line": 160
           },
           {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 372
+          },
+          {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
             "line": 250
@@ -5884,9 +6538,14 @@
           "Controls/Form > TabList",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
           "Controls/Inputs > TagsSmall",
           "Controls/Playback > Choices",
@@ -6064,9 +6723,14 @@
         "stories": [
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
           "Controls/Inputs > TagsSmall"
         ]
@@ -6139,9 +6803,24 @@
       "readBy": {
         "components": [
           {
+            "component": "Checkbox",
+            "file": "packages/react/src/styles.css",
+            "line": 231
+          },
+          {
+            "component": "CheckboxGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 231
+          },
+          {
             "component": "StatBar",
             "file": "packages/react/src/styles.css",
             "line": 214
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 231
           },
           {
             "component": "Tag",
@@ -6160,9 +6839,14 @@
           "Controls/Form > TabList",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
           "Controls/Inputs > TagsSmall",
           "Controls/Playback > Choices",
@@ -6319,6 +7003,11 @@
       "readBy": {
         "components": [
           {
+            "component": "CheckboxGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 220
+          },
+          {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
             "line": 130
@@ -6389,6 +7078,11 @@
             "line": 233
           },
           {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 381
+          },
+          {
             "component": "Tag",
             "file": "packages/react/src/styles.css",
             "line": 299
@@ -6410,9 +7104,14 @@
           "Controls/Form > TabList",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
           "Controls/Inputs > TagsSmall",
           "Controls/Playback > Choices",
@@ -6478,9 +7177,14 @@
           "Controls/Form > TabList",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
           "Controls/Inputs > TagsSmall",
           "Controls/Playback > Choices",
@@ -6636,6 +7340,16 @@
             "line": 68
           },
           {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 350
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 358
+          },
+          {
             "component": "Toggle",
             "file": "packages/react/src/styles.css",
             "line": 68
@@ -6644,9 +7358,14 @@
         "stories": [
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
           "Controls/Inputs > TagsSmall",
           "Controls/Playback > Choices",
@@ -6826,6 +7545,16 @@
             "line": 68
           },
           {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 350
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 358
+          },
+          {
             "component": "Toggle",
             "file": "packages/react/src/styles.css",
             "line": 68
@@ -6834,9 +7563,14 @@
         "stories": [
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
           "Controls/Inputs > TagsSmall",
           "Controls/Playback > Choices",
@@ -6881,6 +7615,16 @@
             "line": 324
           },
           {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 348
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 356
+          },
+          {
             "component": "TimeSlider",
             "file": "packages/react/src/styles.css",
             "line": 194
@@ -6894,9 +7638,14 @@
         "stories": [
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
           "Controls/Inputs > TagsSmall",
           "Controls/Playback > Choices",
@@ -7020,6 +7769,11 @@
             "line": 64
           },
           {
+            "component": "Checkbox",
+            "file": "packages/react/src/styles.css",
+            "line": 400
+          },
+          {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
             "line": 64
@@ -7121,9 +7875,14 @@
           "Controls/Form > TabList",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
           "Controls/Inputs > TagsSmall",
           "Controls/Playback > Choices",
@@ -7182,6 +7941,36 @@
       "readBy": {
         "components": [
           {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 347
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 354
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 355
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 367
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 386
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 388
+          },
+          {
             "component": "Tag",
             "file": "packages/react/src/styles.css",
             "line": 303
@@ -7190,9 +7979,14 @@
         "stories": [
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
           "Controls/Inputs > TagsSmall"
         ]
@@ -7222,6 +8016,21 @@
             "component": "Button",
             "file": "packages/react/src/styles.css",
             "line": 62
+          },
+          {
+            "component": "Checkbox",
+            "file": "packages/react/src/styles.css",
+            "line": 338
+          },
+          {
+            "component": "CheckboxGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 408
+          },
+          {
+            "component": "CheckboxGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 409
           },
           {
             "component": "ChoiceGroup",
@@ -7339,6 +8148,41 @@
             "line": 233
           },
           {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 338
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 345
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 346
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 381
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 383
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 391
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 392
+          },
+          {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
             "line": 241
@@ -7375,9 +8219,14 @@
           "Controls/Form > TabList",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
           "Controls/Inputs > TagsSmall",
           "Controls/Playback > Choices",
@@ -7440,6 +8289,16 @@
             "line": 62
           },
           {
+            "component": "Checkbox",
+            "file": "packages/react/src/styles.css",
+            "line": 340
+          },
+          {
+            "component": "Checkbox",
+            "file": "packages/react/src/styles.css",
+            "line": 393
+          },
+          {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
             "line": 62
@@ -7490,6 +8349,26 @@
             "line": 137
           },
           {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 340
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 386
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 388
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 391
+          },
+          {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
             "line": 245
@@ -7511,9 +8390,14 @@
           "Controls/Form > TabList",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
           "Controls/Inputs > TagsSmall",
           "Controls/Playback > Choices",
@@ -7583,6 +8467,21 @@
             "line": 155
           },
           {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 354
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 355
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 367
+          },
+          {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
             "line": 245
@@ -7599,9 +8498,14 @@
           "Controls/Form > TabList",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
           "Controls/Inputs > TagsSmall",
           "Controls/Playback > Choices",
@@ -7641,9 +8545,29 @@
             "line": 31
           },
           {
+            "component": "Checkbox",
+            "file": "packages/react/src/styles.css",
+            "line": 393
+          },
+          {
+            "component": "Checkbox",
+            "file": "packages/react/src/styles.css",
+            "line": 399
+          },
+          {
             "component": "StatBar",
             "file": "packages/react/src/styles.css",
             "line": 214
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 346
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 384
           },
           {
             "component": "Tabs",
@@ -7655,6 +8579,18 @@
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Controls/Inputs > ButtonVariants",
+          "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -7686,6 +8622,11 @@
       "aliasOf": null,
       "readBy": {
         "components": [
+          {
+            "component": "Checkbox",
+            "file": "packages/react/src/styles.css",
+            "line": 341
+          },
           {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
@@ -7722,6 +8663,21 @@
             "line": 131
           },
           {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 341
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 383
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 392
+          },
+          {
             "component": "Toggle",
             "file": "packages/react/src/styles.css",
             "line": 131
@@ -7733,9 +8689,14 @@
           "Controls/Form > TabList",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
           "Controls/Inputs > TagsSmall",
           "Controls/Playback > Choices",
@@ -7768,20 +8729,44 @@
       "resolvedValue": "32px",
       "aliasOf": null,
       "readBy": {
-        "components": [],
-        "stories": []
+        "components": [
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 345
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 391
+          }
+        ],
+        "stories": [
+          "Controls/Inputs > ButtonVariants",
+          "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall"
+        ]
       },
       "reachedByTheme": {
         "light": {
-          "direct": false,
+          "direct": true,
           "via": []
         },
         "dark": {
-          "direct": false,
+          "direct": true,
           "via": []
         }
       },
-      "unused": true
+      "unused": false
     }
   ],
   "unusedTokens": [
@@ -7801,8 +8786,7 @@
     "--stoa-radius-lg",
     "--stoa-radius-none",
     "--stoa-space-0",
-    "--stoa-space-12",
-    "--stoa-space-8"
+    "--stoa-space-12"
   ],
   "hardcodedLiterals": [],
   "undefinedCustomProperties": [
@@ -7814,7 +8798,7 @@
   ],
   "summary": {
     "tokenCount": 86,
-    "unusedCount": 18,
+    "unusedCount": 17,
     "hardcodedLiteralCount": 0,
     "undefinedCount": 1
   }

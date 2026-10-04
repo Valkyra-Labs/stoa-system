@@ -330,3 +330,80 @@
   min-block-size: var(--stoa-space-6);
   padding: calc(var(--stoa-space-1) / 2) var(--stoa-space-2);
 }
+
+/* Switch: a track with a thumb, the label beside it, and a note (the
+   description, or why it is disabled) under them. The thumb moves to the
+   end of the track when on, along the inline axis, so it moves left in a
+   right-to-left page. The percentage margin resolves against the track. */
+.stoa-switch, .stoa-checkbox { display: inline-grid; gap: var(--stoa-space-1); }
+.stoa-switch__button, .stoa-checkbox__button {
+  display: inline-flex; align-items: center; gap: var(--stoa-space-2);
+  min-block-size: var(--stoa-space-6); cursor: pointer; color: var(--stoa-color-text);
+}
+.stoa-switch__track {
+  display: inline-flex; align-items: center; flex: none;
+  inline-size: calc(var(--stoa-space-8) + var(--stoa-space-1));
+  block-size: calc(var(--stoa-space-4) + var(--stoa-space-1));
+  padding: var(--stoa-space-0-5);
+  border: 1px solid var(--stoa-color-border-strong); border-radius: var(--stoa-radius-full);
+  background: var(--stoa-color-surface);
+  transition: background-color var(--stoa-motion-duration-fast) var(--stoa-motion-easing-standard);
+}
+.stoa-switch__thumb {
+  flex: none;
+  inline-size: calc(var(--stoa-space-3) + var(--stoa-space-0-5));
+  block-size: calc(var(--stoa-space-3) + var(--stoa-space-0-5));
+  border-radius: var(--stoa-radius-full);
+  background: var(--stoa-color-border-strong);
+  transition: margin-inline-start var(--stoa-motion-duration-fast) var(--stoa-motion-easing-standard);
+}
+.stoa-switch__button[data-hovered] .stoa-switch__track { background: var(--stoa-color-surface-hover); }
+.stoa-switch__button[data-selected] .stoa-switch__track { background: var(--stoa-color-accent); border-color: var(--stoa-color-accent); }
+.stoa-switch__button[data-selected][data-hovered] .stoa-switch__track {
+  background: color-mix(in oklch, var(--stoa-color-accent), var(--stoa-color-text) 14%);
+}
+.stoa-switch__button[data-selected] .stoa-switch__thumb {
+  background: var(--stoa-color-surface);
+  margin-inline-start: calc(100% - var(--stoa-space-3) - var(--stoa-space-0-5));
+}
+.stoa-switch__button[data-pressed] .stoa-switch__thumb { transform: scale(0.85); }
+.stoa-switch__button[data-focus-visible] .stoa-switch__track,
+.stoa-checkbox__button[data-focus-visible] .stoa-checkbox__box {
+  outline: var(--stoa-focus-width) solid var(--stoa-color-focus);
+  outline-offset: var(--stoa-focus-offset);
+}
+.stoa-switch__button[data-disabled], .stoa-checkbox__button[data-disabled] { color: var(--stoa-color-text-subtle); cursor: not-allowed; }
+.stoa-switch__button[data-disabled] .stoa-switch__track,
+.stoa-checkbox__button[data-disabled] .stoa-checkbox__box {
+  background: var(--stoa-color-surface-sunken); border-color: var(--stoa-color-border);
+}
+.stoa-switch__button[data-disabled] .stoa-switch__thumb { background: var(--stoa-color-border); }
+.stoa-switch--small .stoa-switch__button { font-size: var(--stoa-font-size-xs); gap: var(--stoa-space-1); }
+.stoa-switch--small .stoa-switch__track {
+  inline-size: calc(var(--stoa-space-6) + var(--stoa-space-1));
+  block-size: var(--stoa-space-4);
+}
+.stoa-switch--small .stoa-switch__thumb { inline-size: calc(var(--stoa-space-2) + var(--stoa-space-0-5)); block-size: calc(var(--stoa-space-2) + var(--stoa-space-0-5)); }
+.stoa-switch--small .stoa-switch__button[data-selected] .stoa-switch__thumb {
+  margin-inline-start: calc(100% - var(--stoa-space-2) - var(--stoa-space-0-5));
+}
+/* The note lines up with the label, past the track or the box. */
+.stoa-switch__note { padding-inline-start: calc(var(--stoa-space-8) + var(--stoa-space-1) + var(--stoa-space-2)); }
+.stoa-switch--small .stoa-switch__note { padding-inline-start: calc(var(--stoa-space-6) + var(--stoa-space-1) + var(--stoa-space-1)); }
+.stoa-checkbox__note { padding-inline-start: calc(var(--stoa-space-4) + var(--stoa-space-2)); }
+
+/* Checkbox: a box with a drawn check mark, or a bar while mixed, in the
+   surface colour on the accent fill. */
+.stoa-checkbox__box {
+  display: inline-grid; place-items: center; flex: none;
+  inline-size: var(--stoa-space-4); block-size: var(--stoa-space-4);
+  border: 1px solid var(--stoa-color-border-strong); border-radius: var(--stoa-radius-sm);
+  background: var(--stoa-color-surface); color: var(--stoa-color-surface);
+}
+.stoa-checkbox__mark { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.stoa-checkbox__button[data-hovered] .stoa-checkbox__box { background: var(--stoa-color-surface-hover); }
+.stoa-checkbox__button[data-selected] .stoa-checkbox__box,
+.stoa-checkbox__button[data-indeterminate] .stoa-checkbox__box { background: var(--stoa-color-accent); border-color: var(--stoa-color-accent); }
+.stoa-checkbox__button[data-disabled] .stoa-checkbox__box { color: var(--stoa-color-text-subtle); }
+.stoa-checkbox-group { display: grid; gap: var(--stoa-space-1); }
+.stoa-checkbox-group__items { display: grid; gap: var(--stoa-space-1); }
