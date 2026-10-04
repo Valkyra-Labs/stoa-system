@@ -206,7 +206,7 @@ describe("ProgressBar", () => {
 
 describe("Callout", () => {
   const TONES: [FeedbackTone, string, string][] = [
-    ["info", "i", "Note"],
+    ["info", "◆", "Note"],
     ["positive", "✓", "Success"],
     ["warning", "!", "Warning"],
     ["negative", "✗", "Error"],
@@ -227,6 +227,14 @@ describe("Callout", () => {
     expect(hidden.textContent).toBe(`${word}:`);
     // Read in order: the tone word, then the title, then the body.
     expect(callout.textContent).toBe(`${symbol}${word}:FeedThe feed is fifteen minutes behind.`);
+  });
+
+  it("draws no tone as a letter of any script, so an Arabic interface shows no Latin letter", () => {
+    for (const [tone] of TONES) {
+      const { container } = render(<Callout tone={tone}>Text</Callout>);
+      expect(container.querySelector(".stoa-tone-symbol")!.textContent, tone).not.toMatch(/\p{L}/u);
+      cleanup();
+    }
   });
 
   it("is a polite status by default, an alert only when asked, and no live region for a static note", () => {
