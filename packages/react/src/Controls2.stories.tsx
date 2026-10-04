@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useState } from "react";
 import { FilterChip, FilterChipGroup, Tag } from "./Chips";
 import { Button } from "./Controls";
+import { Slider } from "./Slider";
 import { Checkbox, CheckboxGroup, Switch } from "./Toggles";
 
 const meta: Meta = { title: "Controls/Inputs" };
@@ -238,6 +239,45 @@ export const CheckboxGroupWithAll: StoryObj = {
             </Checkbox>
           ))}
         </CheckboxGroup>
+      </div>
+    );
+  },
+};
+
+const sliders = { display: "grid", gap: "var(--stoa-space-4)", maxInlineSize: 320 } as const;
+
+/** A plain number, and a formatted one with a hint. The format is what is
+ * shown and what is announced (aria-valuetext). */
+export const SliderStates: StoryObj = {
+  render: () => {
+    const [depth, setDepth] = useState(12);
+    const [opacity, setOpacity] = useState(60);
+    return (
+      <div style={sliders}>
+        <Slider label="Book depth" min={4} max={40} step={2} value={depth} onChange={setDepth} hint="Levels shown on each side." />
+        <Slider label="Heatmap opacity" value={opacity} onChange={setOpacity} step={5} format={(v) => `${v} %`} />
+      </div>
+    );
+  },
+};
+
+/** Disabled: the value is still shown, the track and thumb go grey. */
+export const SliderDisabled: StoryObj = {
+  render: () => (
+    <div style={sliders}>
+      <Slider label="Book depth" min={4} max={40} value={12} onChange={() => {}} isDisabled hint="Fixed while the replay loads." />
+    </div>
+  ),
+};
+
+/** The small size: smaller text, the same track height, which is the
+ * minimum target. */
+export const SliderSmall: StoryObj = {
+  render: () => {
+    const [speed, setSpeed] = useState(1);
+    return (
+      <div style={sliders}>
+        <Slider size="small" label="Speed" min={0.25} max={4} step={0.25} value={speed} onChange={setSpeed} format={(v) => `${v}x`} />
       </div>
     );
   },

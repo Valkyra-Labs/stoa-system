@@ -407,3 +407,23 @@
 .stoa-checkbox__button[data-disabled] .stoa-checkbox__box { color: var(--stoa-color-text-subtle); }
 .stoa-checkbox-group { display: grid; gap: var(--stoa-space-1); }
 .stoa-checkbox-group__items { display: grid; gap: var(--stoa-space-1); }
+
+/* Slider: the label and the value on one line, the track under them, a
+   hint under the track. It shares TimeSlider's rail and thumb, on a track
+   as tall as the minimum target, and fills the rail up to the thumb from
+   the start of the line. */
+.stoa-range { display: grid; gap: var(--stoa-space-1); min-inline-size: 0; }
+.stoa-range__head { display: flex; justify-content: space-between; align-items: baseline; gap: var(--stoa-space-3); }
+.stoa-range__output { font-family: var(--stoa-font-family-mono); font-size: var(--stoa-font-size-xs); font-variant-numeric: tabular-nums; color: var(--stoa-color-text); }
+.stoa-range__track { block-size: var(--stoa-space-6); }
+.stoa-range__fill {
+  position: absolute; inset-inline-start: 0; inset-block-start: 50%;
+  block-size: var(--stoa-space-1); transform: translateY(-50%);
+  background: var(--stoa-color-accent); border-radius: var(--stoa-radius-full);
+}
+.stoa-range__thumb { border: 2px solid var(--stoa-color-surface); box-sizing: content-box; }
+.stoa-range[data-disabled] .stoa-range__label,
+.stoa-range[data-disabled] .stoa-range__output { color: var(--stoa-color-text-subtle); }
+.stoa-range[data-disabled] .stoa-range__fill,
+.stoa-range[data-disabled] .stoa-range__thumb { background: var(--stoa-color-border-strong); }
+.stoa-range--small .stoa-range__label, .stoa-range--small .stoa-range__output { font-size: var(--stoa-font-size-2xs); }

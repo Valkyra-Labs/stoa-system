@@ -49,3 +49,4 @@ export {
   type CheckboxProps,
   type SwitchProps,
 } from "./Toggles";
+export { Slider, type SliderProps } from "./Slider";

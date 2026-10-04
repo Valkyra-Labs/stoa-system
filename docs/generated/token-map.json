@@ -139,6 +139,16 @@
             "line": 159
           },
           {
+            "component": "Slider",
+            "file": "packages/react/src/styles.css",
+            "line": 198
+          },
+          {
+            "component": "Slider",
+            "file": "packages/react/src/styles.css",
+            "line": 422
+          },
+          {
             "component": "Switch",
             "file": "packages/react/src/styles.css",
             "line": 361
@@ -205,6 +215,9 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
           "Controls/Inputs > SwitchDisabled",
           "Controls/Inputs > SwitchSmall",
           "Controls/Inputs > SwitchStates",
@@ -273,6 +286,9 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
           "Controls/Inputs > SwitchDisabled",
           "Controls/Inputs > SwitchSmall",
           "Controls/Inputs > SwitchStates",
@@ -330,6 +346,9 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
           "Controls/Inputs > SwitchDisabled",
           "Controls/Inputs > SwitchSmall",
           "Controls/Inputs > SwitchStates",
@@ -702,6 +721,24 @@
             "via": "--stoa-color-focus"
           },
           {
+            "component": "Slider",
+            "file": "packages/react/src/styles.css",
+            "line": 100,
+            "via": "--stoa-color-focus"
+          },
+          {
+            "component": "Slider",
+            "file": "packages/react/src/styles.css",
+            "line": 198,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "Slider",
+            "file": "packages/react/src/styles.css",
+            "line": 422,
+            "via": "--stoa-color-accent"
+          },
+          {
             "component": "Switch",
             "file": "packages/react/src/styles.css",
             "line": 361,
@@ -815,6 +852,9 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
           "Controls/Inputs > SwitchDisabled",
           "Controls/Inputs > SwitchSmall",
           "Controls/Inputs > SwitchStates",
@@ -917,6 +957,12 @@
             "via": "--stoa-color-focus"
           },
           {
+            "component": "Slider",
+            "file": "packages/react/src/styles.css",
+            "line": 100,
+            "via": "--stoa-color-focus"
+          },
+          {
             "component": "Switch",
             "file": "packages/react/src/styles.css",
             "line": 372,
@@ -964,6 +1010,9 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
           "Controls/Inputs > SwitchDisabled",
           "Controls/Inputs > SwitchSmall",
           "Controls/Inputs > SwitchStates",
@@ -1148,6 +1197,18 @@
             "via": "--stoa-color-accent"
           },
           {
+            "component": "Slider",
+            "file": "packages/react/src/styles.css",
+            "line": 198,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "Slider",
+            "file": "packages/react/src/styles.css",
+            "line": 422,
+            "via": "--stoa-color-accent"
+          },
+          {
             "component": "Switch",
             "file": "packages/react/src/styles.css",
             "line": 361,
@@ -1225,6 +1286,9 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
           "Controls/Inputs > SwitchDisabled",
           "Controls/Inputs > SwitchSmall",
           "Controls/Inputs > SwitchStates",
@@ -1372,6 +1436,9 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
           "Controls/Inputs > SwitchDisabled",
           "Controls/Inputs > SwitchSmall",
           "Controls/Inputs > SwitchStates",
@@ -1463,6 +1530,16 @@
             "line": 147
           },
           {
+            "component": "Slider",
+            "file": "packages/react/src/styles.css",
+            "line": 194
+          },
+          {
+            "component": "Slider",
+            "file": "packages/react/src/styles.css",
+            "line": 428
+          },
+          {
             "component": "Switch",
             "file": "packages/react/src/styles.css",
             "line": 348
@@ -1504,6 +1581,9 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
           "Controls/Inputs > SwitchDisabled",
           "Controls/Inputs > SwitchSmall",
           "Controls/Inputs > SwitchStates",
@@ -1599,6 +1679,9 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
           "Controls/Inputs > SwitchDisabled",
           "Controls/Inputs > SwitchSmall",
           "Controls/Inputs > SwitchStates",
@@ -1740,6 +1823,11 @@
             "line": 160
           },
           {
+            "component": "Slider",
+            "file": "packages/react/src/styles.css",
+            "line": 100
+          },
+          {
             "component": "Switch",
             "file": "packages/react/src/styles.css",
             "line": 372
@@ -1781,6 +1869,9 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
           "Controls/Inputs > SwitchDisabled",
           "Controls/Inputs > SwitchSmall",
           "Controls/Inputs > SwitchStates",
@@ -1921,6 +2012,12 @@
             "via": "--stoa-color-surface"
           },
           {
+            "component": "Slider",
+            "file": "packages/react/src/styles.css",
+            "line": 424,
+            "via": "--stoa-color-surface"
+          },
+          {
             "component": "Switch",
             "file": "packages/react/src/styles.css",
             "line": 349,
@@ -1968,6 +2065,9 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
           "Controls/Inputs > SwitchDisabled",
           "Controls/Inputs > SwitchSmall",
           "Controls/Inputs > SwitchStates",
@@ -2303,6 +2403,12 @@
             "via": "--stoa-color-text"
           },
           {
+            "component": "Slider",
+            "file": "packages/react/src/styles.css",
+            "line": 417,
+            "via": "--stoa-color-text"
+          },
+          {
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
             "line": 236,
@@ -2404,6 +2510,9 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
           "Controls/Inputs > SwitchDisabled",
           "Controls/Inputs > SwitchSmall",
           "Controls/Inputs > SwitchStates",
@@ -2595,6 +2704,9 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
           "Controls/Inputs > SwitchDisabled",
           "Controls/Inputs > SwitchSmall",
           "Controls/Inputs > SwitchStates",
@@ -2741,6 +2853,9 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
           "Controls/Inputs > SwitchDisabled",
           "Controls/Inputs > SwitchSmall",
           "Controls/Inputs > SwitchStates",
@@ -2882,6 +2997,18 @@
             "via": "--stoa-color-text-muted"
           },
           {
+            "component": "Slider",
+            "file": "packages/react/src/styles.css",
+            "line": 220,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "Slider",
+            "file": "packages/react/src/styles.css",
+            "line": 231,
+            "via": "--stoa-color-text-muted"
+          },
+          {
             "component": "StatBar",
             "file": "packages/react/src/styles.css",
             "line": 216,
@@ -2947,6 +3074,9 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
           "Controls/Inputs > SwitchDisabled",
           "Controls/Inputs > SwitchSmall",
           "Controls/Inputs > SwitchStates",
@@ -3090,6 +3220,24 @@
             "via": "--stoa-color-border-strong"
           },
           {
+            "component": "Slider",
+            "file": "packages/react/src/styles.css",
+            "line": 194,
+            "via": "--stoa-color-border-strong"
+          },
+          {
+            "component": "Slider",
+            "file": "packages/react/src/styles.css",
+            "line": 426,
+            "via": "--stoa-color-text-subtle"
+          },
+          {
+            "component": "Slider",
+            "file": "packages/react/src/styles.css",
+            "line": 428,
+            "via": "--stoa-color-border-strong"
+          },
+          {
             "component": "Switch",
             "file": "packages/react/src/styles.css",
             "line": 348,
@@ -3149,6 +3297,9 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
           "Controls/Inputs > SwitchDisabled",
           "Controls/Inputs > SwitchSmall",
           "Controls/Inputs > SwitchStates",
@@ -3318,6 +3469,24 @@
             "via": "--stoa-color-border-strong"
           },
           {
+            "component": "Slider",
+            "file": "packages/react/src/styles.css",
+            "line": 194,
+            "via": "--stoa-color-border-strong"
+          },
+          {
+            "component": "Slider",
+            "file": "packages/react/src/styles.css",
+            "line": 426,
+            "via": "--stoa-color-text-subtle"
+          },
+          {
+            "component": "Slider",
+            "file": "packages/react/src/styles.css",
+            "line": 428,
+            "via": "--stoa-color-border-strong"
+          },
+          {
             "component": "Switch",
             "file": "packages/react/src/styles.css",
             "line": 348,
@@ -3377,6 +3546,9 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
           "Controls/Inputs > SwitchDisabled",
           "Controls/Inputs > SwitchSmall",
           "Controls/Inputs > SwitchStates",
@@ -3490,6 +3662,18 @@
             "via": "--stoa-color-text-muted"
           },
           {
+            "component": "Slider",
+            "file": "packages/react/src/styles.css",
+            "line": 220,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "Slider",
+            "file": "packages/react/src/styles.css",
+            "line": 231,
+            "via": "--stoa-color-text-muted"
+          },
+          {
             "component": "StatBar",
             "file": "packages/react/src/styles.css",
             "line": 216,
@@ -3555,6 +3739,9 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
           "Controls/Inputs > SwitchDisabled",
           "Controls/Inputs > SwitchSmall",
           "Controls/Inputs > SwitchStates",
@@ -3755,6 +3942,9 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
           "Controls/Inputs > SwitchDisabled",
           "Controls/Inputs > SwitchSmall",
           "Controls/Inputs > SwitchStates",
@@ -3911,6 +4101,9 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
           "Controls/Inputs > SwitchDisabled",
           "Controls/Inputs > SwitchSmall",
           "Controls/Inputs > SwitchStates",
@@ -4292,6 +4485,18 @@
             "via": "--stoa-color-text"
           },
           {
+            "component": "Slider",
+            "file": "packages/react/src/styles.css",
+            "line": 417,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "Slider",
+            "file": "packages/react/src/styles.css",
+            "line": 424,
+            "via": "--stoa-color-surface"
+          },
+          {
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
             "line": 236,
@@ -4417,6 +4622,9 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
           "Controls/Inputs > SwitchDisabled",
           "Controls/Inputs > SwitchSmall",
           "Controls/Inputs > SwitchStates",
@@ -4537,6 +4745,9 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
           "Controls/Inputs > SwitchDisabled",
           "Controls/Inputs > SwitchSmall",
           "Controls/Inputs > SwitchStates",
@@ -4656,6 +4867,9 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
           "Controls/Inputs > SwitchDisabled",
           "Controls/Inputs > SwitchSmall",
           "Controls/Inputs > SwitchStates",
@@ -4846,6 +5060,11 @@
             "line": 146
           },
           {
+            "component": "Slider",
+            "file": "packages/react/src/styles.css",
+            "line": 424
+          },
+          {
             "component": "Switch",
             "file": "packages/react/src/styles.css",
             "line": 349
@@ -4887,6 +5106,9 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
           "Controls/Inputs > SwitchDisabled",
           "Controls/Inputs > SwitchSmall",
           "Controls/Inputs > SwitchStates",
@@ -5032,6 +5254,9 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
           "Controls/Inputs > SwitchDisabled",
           "Controls/Inputs > SwitchSmall",
           "Controls/Inputs > SwitchStates",
@@ -5134,6 +5359,9 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
           "Controls/Inputs > SwitchDisabled",
           "Controls/Inputs > SwitchSmall",
           "Controls/Inputs > SwitchStates",
@@ -5212,6 +5440,9 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
           "Controls/Inputs > SwitchDisabled",
           "Controls/Inputs > SwitchSmall",
           "Controls/Inputs > SwitchStates",
@@ -5301,6 +5532,9 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
           "Controls/Inputs > SwitchDisabled",
           "Controls/Inputs > SwitchSmall",
           "Controls/Inputs > SwitchStates",
@@ -5606,6 +5840,11 @@
             "line": 151
           },
           {
+            "component": "Slider",
+            "file": "packages/react/src/styles.css",
+            "line": 417
+          },
+          {
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
             "line": 236
@@ -5682,6 +5921,9 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
           "Controls/Inputs > SwitchDisabled",
           "Controls/Inputs > SwitchSmall",
           "Controls/Inputs > SwitchStates",
@@ -5796,6 +6038,16 @@
             "line": 220
           },
           {
+            "component": "Slider",
+            "file": "packages/react/src/styles.css",
+            "line": 220
+          },
+          {
+            "component": "Slider",
+            "file": "packages/react/src/styles.css",
+            "line": 231
+          },
+          {
             "component": "StatBar",
             "file": "packages/react/src/styles.css",
             "line": 216
@@ -5852,6 +6104,9 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
           "Controls/Inputs > SwitchDisabled",
           "Controls/Inputs > SwitchSmall",
           "Controls/Inputs > SwitchStates",
@@ -5944,6 +6199,11 @@
             "line": 96
           },
           {
+            "component": "Slider",
+            "file": "packages/react/src/styles.css",
+            "line": 426
+          },
+          {
             "component": "Switch",
             "file": "packages/react/src/styles.css",
             "line": 375
@@ -5962,6 +6222,9 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
           "Controls/Inputs > SwitchDisabled",
           "Controls/Inputs > SwitchSmall",
           "Controls/Inputs > SwitchStates",
@@ -6032,6 +6295,9 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
           "Controls/Inputs > SwitchDisabled",
           "Controls/Inputs > SwitchSmall",
           "Controls/Inputs > SwitchStates",
@@ -6149,6 +6415,9 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
           "Controls/Inputs > SwitchDisabled",
           "Controls/Inputs > SwitchSmall",
           "Controls/Inputs > SwitchStates",
@@ -6384,6 +6653,11 @@
             "line": 101
           },
           {
+            "component": "Slider",
+            "file": "packages/react/src/styles.css",
+            "line": 101
+          },
+          {
             "component": "Switch",
             "file": "packages/react/src/styles.css",
             "line": 373
@@ -6415,6 +6689,9 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
           "Controls/Inputs > SwitchDisabled",
           "Controls/Inputs > SwitchSmall",
           "Controls/Inputs > SwitchStates",
@@ -6502,6 +6779,11 @@
             "line": 160
           },
           {
+            "component": "Slider",
+            "file": "packages/react/src/styles.css",
+            "line": 100
+          },
+          {
             "component": "Switch",
             "file": "packages/react/src/styles.css",
             "line": 372
@@ -6543,6 +6825,9 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
           "Controls/Inputs > SwitchDisabled",
           "Controls/Inputs > SwitchSmall",
           "Controls/Inputs > SwitchStates",
@@ -6607,6 +6892,11 @@
             "line": 226
           },
           {
+            "component": "Slider",
+            "file": "packages/react/src/styles.css",
+            "line": 417
+          },
+          {
             "component": "StatBar",
             "file": "packages/react/src/styles.css",
             "line": 214
@@ -6631,6 +6921,21 @@
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Controls/Inputs > ButtonVariants",
+          "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -6728,6 +7033,9 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
           "Controls/Inputs > SwitchDisabled",
           "Controls/Inputs > SwitchSmall",
           "Controls/Inputs > SwitchStates",
@@ -6813,6 +7121,16 @@
             "line": 231
           },
           {
+            "component": "Slider",
+            "file": "packages/react/src/styles.css",
+            "line": 231
+          },
+          {
+            "component": "Slider",
+            "file": "packages/react/src/styles.css",
+            "line": 429
+          },
+          {
             "component": "StatBar",
             "file": "packages/react/src/styles.css",
             "line": 214
@@ -6844,6 +7162,9 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
           "Controls/Inputs > SwitchDisabled",
           "Controls/Inputs > SwitchSmall",
           "Controls/Inputs > SwitchStates",
@@ -7073,6 +7394,16 @@
             "line": 220
           },
           {
+            "component": "Slider",
+            "file": "packages/react/src/styles.css",
+            "line": 220
+          },
+          {
+            "component": "Slider",
+            "file": "packages/react/src/styles.css",
+            "line": 417
+          },
+          {
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
             "line": 233
@@ -7109,6 +7440,9 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
           "Controls/Inputs > SwitchDisabled",
           "Controls/Inputs > SwitchSmall",
           "Controls/Inputs > SwitchStates",
@@ -7182,6 +7516,9 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
           "Controls/Inputs > SwitchDisabled",
           "Controls/Inputs > SwitchSmall",
           "Controls/Inputs > SwitchStates",
@@ -7363,6 +7700,9 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
           "Controls/Inputs > SwitchDisabled",
           "Controls/Inputs > SwitchSmall",
           "Controls/Inputs > SwitchStates",
@@ -7568,6 +7908,9 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
           "Controls/Inputs > SwitchDisabled",
           "Controls/Inputs > SwitchSmall",
           "Controls/Inputs > SwitchStates",
@@ -7615,6 +7958,21 @@
             "line": 324
           },
           {
+            "component": "Slider",
+            "file": "packages/react/src/styles.css",
+            "line": 194
+          },
+          {
+            "component": "Slider",
+            "file": "packages/react/src/styles.css",
+            "line": 198
+          },
+          {
+            "component": "Slider",
+            "file": "packages/react/src/styles.css",
+            "line": 422
+          },
+          {
             "component": "Switch",
             "file": "packages/react/src/styles.css",
             "line": 348
@@ -7643,6 +8001,9 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
           "Controls/Inputs > SwitchDisabled",
           "Controls/Inputs > SwitchSmall",
           "Controls/Inputs > SwitchStates",
@@ -7880,6 +8241,9 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
           "Controls/Inputs > SwitchDisabled",
           "Controls/Inputs > SwitchSmall",
           "Controls/Inputs > SwitchStates",
@@ -7984,6 +8348,9 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
           "Controls/Inputs > SwitchDisabled",
           "Controls/Inputs > SwitchSmall",
           "Controls/Inputs > SwitchStates",
@@ -8138,6 +8505,16 @@
             "line": 155
           },
           {
+            "component": "Slider",
+            "file": "packages/react/src/styles.css",
+            "line": 415
+          },
+          {
+            "component": "Slider",
+            "file": "packages/react/src/styles.css",
+            "line": 421
+          },
+          {
             "component": "StatBar",
             "file": "packages/react/src/styles.css",
             "line": 215
@@ -8224,6 +8601,9 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
           "Controls/Inputs > SwitchDisabled",
           "Controls/Inputs > SwitchSmall",
           "Controls/Inputs > SwitchStates",
@@ -8395,6 +8775,9 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
           "Controls/Inputs > SwitchDisabled",
           "Controls/Inputs > SwitchSmall",
           "Controls/Inputs > SwitchStates",
@@ -8467,6 +8850,11 @@
             "line": 155
           },
           {
+            "component": "Slider",
+            "file": "packages/react/src/styles.css",
+            "line": 416
+          },
+          {
             "component": "Switch",
             "file": "packages/react/src/styles.css",
             "line": 354
@@ -8503,6 +8891,9 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
           "Controls/Inputs > SwitchDisabled",
           "Controls/Inputs > SwitchSmall",
           "Controls/Inputs > SwitchStates",
@@ -8586,6 +8977,9 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
           "Controls/Inputs > SwitchDisabled",
           "Controls/Inputs > SwitchSmall",
           "Controls/Inputs > SwitchStates",
@@ -8663,6 +9057,11 @@
             "line": 131
           },
           {
+            "component": "Slider",
+            "file": "packages/react/src/styles.css",
+            "line": 418
+          },
+          {
             "component": "Switch",
             "file": "packages/react/src/styles.css",
             "line": 341
@@ -8694,6 +9093,9 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
           "Controls/Inputs > SwitchDisabled",
           "Controls/Inputs > SwitchSmall",
           "Controls/Inputs > SwitchStates",
@@ -8749,6 +9151,9 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
           "Controls/Inputs > SwitchDisabled",
           "Controls/Inputs > SwitchSmall",
           "Controls/Inputs > SwitchStates",
