@@ -26,6 +26,12 @@ export { cellAlpha, maxAbs } from "./heatmapScale";
 export { readCanvasTokens, fitCanvas, useTokenSignal, useInvalidateOnTokensVersion, signalTokensChanged, TOKENS_EVENT, type CanvasTokens } from "./tokens";
 export { messagesFor, stoaFormat, useStoaFormat, type StoaFormat, type StoaMessages } from "./locale";
 export { I18nProvider } from "react-aria-components";
+// The provider that sets where overlays (dialogs, popovers, toasts) are
+// portalled, for an application that renders into a frame of its own. It
+// comes from the react-aria that react-aria-components uses (the same
+// exact version), so its context is the one Stoa's overlays read and an
+// application needs no React Aria of its own.
+export { UNSAFE_PortalProvider, type PortalProviderProps } from "react-aria/PortalProvider";
 export { TextField, StatusBadge, Tabs, type TextFieldProps, type StatusTone, type TabItem } from "./Form";
 // Feedback and layout: callouts, empty states, loading, toasts, live
 // regions and the page shell.

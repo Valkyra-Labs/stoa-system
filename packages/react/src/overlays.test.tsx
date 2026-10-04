@@ -5,7 +5,7 @@
 import { useState } from "react";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { act, cleanup, fireEvent, render, screen, waitFor, within } from "@testing-library/react";
-import { AlertDialog, Button, Dialog, I18nProvider, Sheet, ShortcutList, ShortcutsDialog } from "./index";
+import { AlertDialog, Button, Dialog, I18nProvider, Sheet, ShortcutList, ShortcutsDialog, UNSAFE_PortalProvider } from "./index";
 
 afterEach(() => {
   cleanup();
@@ -439,5 +439,21 @@ describe("shortcuts", () => {
     fireEvent.keyDown(document.activeElement!, { key: "Escape" });
     expect(screen.queryByRole("dialog")).toBeNull();
     await waitFor(() => expect(document.activeElement).toBe(trigger));
+  });
+});
+
+describe("UNSAFE_PortalProvider from stoa-react", () => {
+  it("puts Stoa's overlays into the container it names, the same React Aria context Stoa's components read", () => {
+    const frame = document.createElement("div");
+    document.body.appendChild(frame);
+    render(
+      <UNSAFE_PortalProvider getContainer={() => frame}>
+        <Dialog title="Order details" defaultOpen>
+          <p>Limit 101.50</p>
+        </Dialog>
+      </UNSAFE_PortalProvider>,
+    );
+    expect(frame.contains(screen.getByRole("dialog", { name: "Order details" }))).toBe(true);
+    frame.remove();
   });
 });
