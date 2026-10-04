@@ -91,3 +91,34 @@ test("in a right-to-left grid the pinned columns stick to the right edge", async
   const pinned = (await grid.getByRole("rowheader").first().boundingBox())!;
   expect(Math.round(box.x + box.width - (pinned.x + pinned.width))).toBe(40);
 });
+
+test("the focus stays on the active cell's row when rows are inserted above it or reordered", async ({ page }) => {
+  const grid = await openGrid(page, "live-rows", "Live orders");
+  const rowOf = (cell: Locator) => cell.evaluate((el) => el.closest('[role="row"]')!.querySelector('[role="rowheader"]')!.textContent);
+  await grid.locator('[data-cell="3:2"]').click();
+  const focused = page.locator(":focus");
+  const order = await rowOf(focused);
+  await page.keyboard.press("i");
+  await expect(grid).toHaveAttribute("aria-rowcount", "102");
+  await expect(focused).toHaveAttribute("data-cell", "4:2");
+  // The focused cell is the grid's one tab stop, the active cell.
+  await expect(focused).toHaveAttribute("tabindex", "0");
+  expect(await rowOf(focused)).toBe(order);
+  await page.keyboard.press("r");
+  await expect(focused).toHaveAttribute("data-cell", "96:2");
+  expect(await rowOf(focused)).toBe(order);
+  // The arrows go on from there.
+  await page.keyboard.press("ArrowDown");
+  await expect(focused).toHaveAttribute("data-cell", "97:2");
+});
+
+test("the focus stays in the grid, at the same position, when the focused row is deleted", async ({ page }) => {
+  const grid = await openGrid(page, "live-rows", "Live orders");
+  await grid.locator('[data-cell="2:2"]').click();
+  await page.keyboard.press("d");
+  await expect(grid).toHaveAttribute("aria-rowcount", "96");
+  const focused = page.locator(":focus");
+  await expect(focused).toHaveAttribute("data-cell", "2:2");
+  await page.keyboard.press("ArrowDown");
+  await expect(focused).toHaveAttribute("data-cell", "3:2");
+});

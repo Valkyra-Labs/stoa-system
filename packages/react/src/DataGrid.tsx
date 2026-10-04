@@ -59,7 +59,11 @@ export type DataGridSort = { column: string; direction: "ascending" | "descendin
  * selection column first when there is one (aria-colindex minus one). */
 export type DataGridCell = { row: number; column: number };
 
-export type DataGridEdit<Row> = { row: Row; rowKey: string; column: string; value: string };
+/** The cell an editor opened on: its row, the row's key and the
+ * column's id. */
+export type DataGridEditTarget<Row> = { row: Row; rowKey: string; column: string };
+
+export type DataGridEdit<Row> = DataGridEditTarget<Row> & { value: string };
 
 export type DataGridProps<Row> = {
   /** The grid's accessible name. */
@@ -80,12 +84,24 @@ export type DataGridProps<Row> = {
   selectedKeys?: ReadonlySet<string>;
   defaultSelectedKeys?: Iterable<string>;
   onSelectionChange?: (keys: Set<string>) => void;
+  /** The active cell, by position. When `rows` change under it, it
+   * follows its row to the row's new position (reported through
+   * `onActiveCellChange`), and keeps the focus if it had it. */
   activeCell?: DataGridCell;
   defaultActiveCell?: DataGridCell;
   onActiveCellChange?: (cell: DataGridCell) => void;
   /** A value saved from an editor, only when it differs from the current
    * one. The grid does not change `rows`; the caller does. */
   onEdit?: (edit: DataGridEdit<Row>) => void;
+  /** An editor opened on a cell (Enter, F2 or a double click). An open
+   * editor belongs to its row's key: rows inserted above or a new order
+   * do not move it to another row. */
+  onEditStart?: (target: DataGridEditTarget<Row>) => void;
+  /** An editor closed without saving a change: Escape, leaving it with an
+   * invalid value, saving the value it started with, or its row leaving
+   * `rows`. Every editor that opens ends in exactly one `onEdit` or
+   * `onEditCancel`. */
+  onEditCancel?: (target: DataGridEditTarget<Row>) => void;
   /** Text to mark in every cell that contains it, ignoring case. */
   highlight?: string;
   /** Rows are on their way: skeleton lines, and the grid is busy. */
@@ -104,7 +120,10 @@ type GridColumn<Row> = {
   offset: number;
 };
 
-type Editing = { row: number; col: number; draft: string; error: string | null; above: boolean };
+/** An open editor. It belongs to the row with `key`; `row` is where that
+ * row was last seen, checked against the key on every render. `data` is
+ * the row as it was when the editor opened. */
+type Editing<Row> = { key: string; row: number; data: Row; col: number; draft: string; error: string | null; above: boolean };
 
 type Window = { r0: number; r1: number; c0: number; c1: number; page: number };
 
@@ -210,6 +229,8 @@ export function DataGrid<Row>({
   defaultActiveCell,
   onActiveCellChange,
   onEdit,
+  onEditStart,
+  onEditCancel,
   highlight = "",
   loading = false,
   emptyState,
@@ -229,7 +250,7 @@ export function DataGrid<Row>({
     onSelectionChange && ((keys) => onSelectionChange(keys as Set<string>)),
   );
   const [activeRaw, setActiveRaw] = useControllable(activeCell, () => defaultActiveCell ?? { row: 0, column: 0 }, onActiveCellChange);
-  const [editing, setEditing] = useState<Editing | null>(null);
+  const [editing, setEditing] = useState<Editing<Row> | null>(null);
   const [announcement, setAnnouncement] = useState("");
 
   const scroller = useRef<HTMLDivElement>(null);
@@ -296,10 +317,29 @@ export function DataGrid<Row>({
   }, [selected, allKeys]);
   const allSelected = rows.length > 0 && selectedCount === rows.length;
 
-  const active: DataGridCell = {
-    row: rowCount === 0 ? -1 : Math.min(Math.max(activeRaw.row, -1), rowCount - 1),
-    column: Math.min(Math.max(activeRaw.column, 0), colCount - 1),
+  /** Where the row with `key` is shown now: at `hint` if it is still
+   * there, else found by a scan; -1 when it is gone. */
+  const indexOfKey = (key: string, hint: number) => {
+    if (hint >= 0 && hint < rowCount && keyAt(hint) === key) return hint;
+    for (let r = 0; r < rowCount; r++) if (keyAt(r) === key) return r;
+    return -1;
   };
+
+  // The active cell follows its row when the rows or their order change
+  // under an active position that did not move itself.
+  const tracked = useRef<{ rows: readonly Row[]; order: number[]; key: string | null; raw: number } | null>(null);
+  let activeRow = rowCount === 0 ? -1 : Math.min(Math.max(activeRaw.row, -1), rowCount - 1);
+  let followed = false;
+  const last = tracked.current;
+  if (last && last.key !== null && (last.rows !== rows || last.order !== order) && last.raw === activeRaw.row) {
+    const moved = indexOfKey(last.key, activeRow);
+    if (moved >= 0 && moved !== activeRow) {
+      activeRow = moved;
+      followed = true;
+    }
+  }
+  const active: DataGridCell = { row: activeRow, column: Math.min(Math.max(activeRaw.column, 0), colCount - 1) };
+  const editRow = editing ? indexOfKey(editing.key, editing.row) : -1;
 
   // Geometry and the visible window.
   const [rowHeight, setRowHeight] = useState(FALLBACK_ROW_HEIGHT);
@@ -361,12 +401,52 @@ export function DataGrid<Row>({
     };
   }, [refreshWindow]);
 
-  // Focus follows a move made by the person, once the cell is rendered
-  // (the active cell always is).
+  // Whether the focus is in the grid. A row's element moved by a new
+  // order, or removed, takes the focus with it without a focusout that
+  // names where it went; the focus is put back on the active cell then.
+  const hasFocus = useRef(false);
+  const onFocus = () => {
+    hasFocus.current = true;
+  };
+  const onBlur = (e: FocusEvent) => {
+    const to = e.relatedTarget as Node | null;
+    if (to) {
+      hasFocus.current = scroller.current?.contains(to) ?? false;
+      return;
+    }
+    setTimeout(() => {
+      const el = scroller.current;
+      if (!el || !el.contains(el.ownerDocument.activeElement)) hasFocus.current = false;
+    });
+  };
+
+  // Rows changed under the active cell or an open editor: the active cell
+  // follows its row (reported, for a controlled grid), the editor stays
+  // with its row or closes when the row is gone.
   useLayoutEffect(() => {
-    if (!pendingFocus.current) return;
+    if (followed) setActiveRaw(active);
+    tracked.current = { rows, order, key: active.row >= 0 && showRows ? keyAt(active.row) : null, raw: followed ? active.row : activeRaw.row };
+    if (editing && editRow !== editing.row) {
+      if (editRow >= 0) {
+        setEditing({ ...editing, row: editRow });
+      } else {
+        editorOpen.current = false;
+        setEditing(null);
+        const column = gridColumns[editing.col]?.data;
+        if (column) onEditCancel?.({ row: editing.data, rowKey: editing.key, column: column.id });
+      }
+    }
+  });
+
+  // Focus follows a move made by the person, once the cell is rendered
+  // (the active cell always is), and returns to the active cell when the
+  // rows changed under the focused one.
+  useLayoutEffect(() => {
+    const el = scroller.current;
+    const lost = hasFocus.current && !editing && el !== null && !el.contains(el.ownerDocument.activeElement);
+    if (!pendingFocus.current && !lost) return;
     pendingFocus.current = false;
-    scroller.current?.querySelector<HTMLElement>(`[data-cell="${active.row}:${active.column}"]`)?.focus({ preventScroll: true });
+    el?.querySelector<HTMLElement>(`[data-cell="${active.row}:${active.column}"]`)?.focus({ preventScroll: true });
   });
 
   // Counts, announced when they change (not on first render).
@@ -456,28 +536,43 @@ export function DataGrid<Row>({
     // of the view, so the list stays inside the grid.
     const above = el ? (cell.row + 1) * rowHeight - el.scrollTop > el.clientHeight / 2 : false;
     if (cell.row !== activeRaw.row || cell.column !== activeRaw.column) setActiveRaw(cell);
-    setEditing({ row: cell.row, col: cell.column, draft: String(column.accessor(rowAt(cell.row))), error: null, above });
+    const row = rowAt(cell.row);
+    const key = rowKey(row);
+    setEditing({ key, row: cell.row, data: row, col: cell.column, draft: String(column.accessor(row)), error: null, above });
+    onEditStart?.({ row, rowKey: key, column: column.id });
   };
 
-  const closeEditor = () => {
+  const target = (e: Editing<Row>): DataGridEditTarget<Row> | null => {
+    const column = gridColumns[e.col]?.data;
+    return column ? { row: editRow >= 0 ? rowAt(editRow) : e.data, rowKey: e.key, column: column.id } : null;
+  };
+
+  /** Closes the editor; one that saved no change is reported as a
+   * cancel. */
+  const closeEditor = (saved = false) => {
     editorOpen.current = false;
+    if (editing && !saved) {
+      const t = target(editing);
+      if (t) onEditCancel?.(t);
+    }
     setEditing(null);
     pendingFocus.current = true;
   };
 
   const commit = (value?: string) => {
-    if (!editing) return;
+    if (!editing || editRow < 0) return;
     const column = gridColumns[editing.col]?.data;
     if (!column?.editor) return;
-    const row = rowAt(editing.row);
+    const row = rowAt(editRow);
     const draft = value ?? editing.draft;
     const error = column.editor.validate?.(draft, row) ?? null;
     if (error) {
       setEditing({ ...editing, draft, error });
       return;
     }
-    closeEditor();
-    if (draft !== String(column.accessor(row))) onEdit?.({ row, rowKey: rowKey(row), column: column.id, value: draft });
+    const changed = draft !== String(column.accessor(row));
+    closeEditor(changed);
+    if (changed) onEdit?.({ row, rowKey: editing.key, column: column.id, value: draft });
   };
 
   /** Leaving the editor saves a valid value and drops an invalid one. */
@@ -485,12 +580,14 @@ export function DataGrid<Row>({
     if (!editorOpen.current || e.currentTarget.contains(e.relatedTarget as Node | null)) return;
     if (!editing) return;
     const column = gridColumns[editing.col]?.data;
-    const row = rowAt(editing.row);
+    const row = editRow >= 0 ? rowAt(editRow) : editing.data;
     const error = column?.editor?.validate?.(editing.draft, row) ?? null;
     editorOpen.current = false;
     setEditing(null);
     if (!error && column && editing.draft !== String(column.accessor(row))) {
-      onEdit?.({ row, rowKey: rowKey(row), column: column.id, value: editing.draft });
+      onEdit?.({ row, rowKey: editing.key, column: column.id, value: editing.draft });
+    } else if (column) {
+      onEditCancel?.({ row, rowKey: editing.key, column: column.id });
     }
   };
 
@@ -564,7 +661,7 @@ export function DataGrid<Row>({
   const renderedRows: number[] = [];
   if (showRows) {
     for (let r = win.r0; r <= Math.min(win.r1, rowCount - 1); r++) renderedRows.push(r);
-    for (const extra of [active.row, editing?.row ?? -1]) {
+    for (const extra of [active.row, editRow]) {
       if (extra >= 0 && extra < rowCount && !renderedRows.includes(extra)) renderedRows.push(extra);
     }
     renderedRows.sort((a, b) => a - b);
@@ -641,7 +738,7 @@ export function DataGrid<Row>({
     const key = rowKey(row);
     const isSelected = selectable && selected.has(key);
     const rowLabel = rowHeaderCol >= 0 ? defaultText(gridColumns[rowHeaderCol]!.data!, gridColumns[rowHeaderCol]!.data!.accessor(row), row, locale) : key;
-    const isEditingRow = editing?.row === r;
+    const isEditingRow = editing !== null && editRow === r;
     return (
       <div
         key={key}
@@ -695,7 +792,7 @@ export function DataGrid<Row>({
                   errorId={errorId}
                   onChange={(draft) => setEditing({ ...editing, draft, error: null })}
                   onCommit={commit}
-                  onCancel={closeEditor}
+                  onCancel={() => closeEditor()}
                   onBlur={blurEditor}
                 />
               ) : (
@@ -706,7 +803,7 @@ export function DataGrid<Row>({
                   errorId={errorId}
                   onChange={(draft) => setEditing({ ...editing, draft, error: null })}
                   onCommit={() => commit()}
-                  onCancel={closeEditor}
+                  onCancel={() => closeEditor()}
                   onBlur={blurEditor}
                 />
               );
@@ -746,6 +843,8 @@ export function DataGrid<Row>({
         aria-describedby={empty ? emptyId : undefined}
         className="stoa-data-grid__scroller"
         onKeyDown={onKeyDown}
+        onFocus={onFocus}
+        onBlur={onBlur}
       >
         <div role="rowgroup" className="stoa-data-grid__head" style={{ inlineSize: totalWidth }}>
           <div ref={headRow} role="row" aria-rowindex={1} className="stoa-data-grid__row stoa-data-grid__row--head">

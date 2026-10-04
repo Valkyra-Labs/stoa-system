@@ -394,3 +394,116 @@ describe("DataGrid states and locale", () => {
     expect(quantity.textContent).toMatch(/^[٠-٩٬]+$/);
   });
 });
+
+describe("DataGrid when rows change under it", () => {
+  const withNew = (rows: Item[], ...ids: string[]) => [
+    ...ids.map((id) => ({ id, name: `New ${id}`, qty: 1, status: "open", note: "" })),
+    ...rows,
+  ];
+
+  function Live(props: Partial<DataGridProps<Item>> & { rows: Item[] }) {
+    return <DataGrid label="Items" columns={COLUMNS} rowKey={(r) => r.id} {...props} />;
+  }
+
+  it("reports when an edit starts, and when it ends without a change", () => {
+    const onEditStart = vi.fn();
+    const onEditCancel = vi.fn();
+    const onEdit = vi.fn();
+    const { grid } = setup({ onEditStart, onEditCancel, onEdit }, 10);
+    fireEvent.click(cell(grid, 1, 3));
+    key("F2");
+    expect(onEditStart).toHaveBeenCalledWith(expect.objectContaining({ rowKey: "k1", column: "note" }));
+    expect(onEditStart.mock.calls[0]![0].row.id).toBe("k1");
+    // Escape: cancelled.
+    key("Escape");
+    expect(onEditCancel).toHaveBeenCalledTimes(1);
+    expect(onEditCancel).toHaveBeenLastCalledWith(expect.objectContaining({ rowKey: "k1", column: "note" }));
+    // Enter on the value it started with: nothing changed, so cancelled too.
+    key("Enter");
+    key("Enter");
+    expect(onEditCancel).toHaveBeenCalledTimes(2);
+    // A saved change is an edit, not a cancel.
+    key("Enter");
+    fireEvent.change(screen.getByRole("textbox", { name: "Note" }), { target: { value: "ok" } });
+    key("Enter");
+    expect(onEdit).toHaveBeenCalledOnce();
+    expect(onEditCancel).toHaveBeenCalledTimes(2);
+    expect(onEditStart).toHaveBeenCalledTimes(3);
+    // Leaving with an invalid value drops it: cancelled.
+    key("Enter");
+    fireEvent.change(screen.getByRole("textbox", { name: "Note" }), { target: { value: "far too long" } });
+    fireEvent.blur(screen.getByRole("textbox", { name: "Note" }), { relatedTarget: document.body });
+    expect(onEditCancel).toHaveBeenCalledTimes(3);
+    expect(onEdit).toHaveBeenCalledOnce();
+  });
+
+  it("keeps an open editor on its row when rows are inserted above it", () => {
+    const onEdit = vi.fn();
+    const rows = items(10);
+    const { rerender } = render(<Live rows={rows} onEdit={onEdit} />);
+    const grid = screen.getByRole("grid");
+    fireEvent.click(cell(grid, 2, 3));
+    key("F2");
+    const input = screen.getByRole("textbox", { name: "Note" });
+    fireEvent.change(input, { target: { value: "mine" } });
+    rerender(<Live rows={withNew(rows, "n1", "n2")} onEdit={onEdit} />);
+    const still = screen.getByRole("textbox", { name: "Note" });
+    expect(still).toBe(input);
+    expect(still.closest("[role=row]")!.getAttribute("aria-rowindex")).toBe("6");
+    expect(document.activeElement).toBe(still);
+    key("Enter");
+    expect(onEdit).toHaveBeenCalledWith(expect.objectContaining({ rowKey: "k2", column: "note", value: "mine" }));
+  });
+
+  it("closes the editor and reports a cancel when its row goes away", () => {
+    const onEditCancel = vi.fn();
+    const rows = items(10);
+    const { rerender } = render(<Live rows={rows} onEditCancel={onEditCancel} />);
+    fireEvent.click(cell(screen.getByRole("grid"), 2, 3));
+    key("F2");
+    rerender(<Live rows={rows.filter((r) => r.id !== "k2")} onEditCancel={onEditCancel} />);
+    expect(screen.queryByRole("textbox")).toBeNull();
+    expect(onEditCancel).toHaveBeenCalledWith(expect.objectContaining({ rowKey: "k2", column: "note" }));
+  });
+
+  it("keeps the active cell, and the focus, on its row when rows are inserted above or the order changes", () => {
+    const onActiveCellChange = vi.fn();
+    const rows = items(10);
+    const { rerender } = render(<Live rows={rows} onActiveCellChange={onActiveCellChange} />);
+    const grid = screen.getByRole("grid");
+    fireEvent.click(cell(grid, 3, 1));
+    expect(focused().closest("[role=row]")!.textContent).toContain("Item 0003");
+    rerender(<Live rows={withNew(rows, "n1")} onActiveCellChange={onActiveCellChange} />);
+    expect(onActiveCellChange).toHaveBeenLastCalledWith({ row: 4, column: 1 });
+    expect(position()).toBe("4:1");
+    expect(focused().closest("[role=row]")!.textContent).toContain("Item 0003");
+    expect(grid.querySelectorAll('[tabindex="0"]')).toHaveLength(1);
+    // A new order moves the row's element in the DOM; focus stays on it.
+    rerender(<Live rows={[...withNew(rows, "n1")].reverse()} onActiveCellChange={onActiveCellChange} />);
+    expect(position()).toBe("6:1");
+    expect(focused().closest("[role=row]")!.textContent).toContain("Item 0003");
+    // The row gone: the position stays.
+    rerender(<Live rows={rows.filter((r) => r.id !== "k3")} onActiveCellChange={onActiveCellChange} />);
+    expect(grid.querySelector('[tabindex="0"]')!.getAttribute("data-cell")).toBe("6:1");
+  });
+
+  it("does not take the focus back when it was outside the grid", () => {
+    const rows = items(10);
+    const { rerender } = render(
+      <>
+        <button type="button">Elsewhere</button>
+        <Live rows={rows} />
+      </>,
+    );
+    fireEvent.click(cell(screen.getByRole("grid"), 3, 1));
+    const elsewhere = screen.getByRole("button", { name: "Elsewhere" });
+    act(() => elsewhere.focus());
+    rerender(
+      <>
+        <button type="button">Elsewhere</button>
+        <Live rows={[...rows].reverse()} />
+      </>,
+    );
+    expect(document.activeElement).toBe(elsewhere);
+  });
+});
