@@ -24,6 +24,22 @@
 /* Arabic letters join; spacing them apart breaks the word. */
 .stoa-panel__title:lang(ar) { letter-spacing: 0; }
 
+/* AppHeader: one bar for every application, at the sizes of the Themis
+   demo (title at the large size, subtitle and note at the small one). */
+.stoa-app-header {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--stoa-space-3);
+  padding: var(--stoa-space-3) var(--stoa-space-4);
+  border-block-end: 1px solid var(--stoa-color-border);
+  background: var(--stoa-color-surface);
+  color: var(--stoa-color-text);
+}
+.stoa-app-header__title { margin: 0; font-size: var(--stoa-font-size-lg); font-weight: var(--stoa-font-weight-semibold); }
+.stoa-app-header__subtitle,
+.stoa-app-header__note { color: var(--stoa-color-text-muted); font-size: var(--stoa-font-size-sm); }
+.stoa-app-header__note a { color: inherit; }
+.stoa-app-header__spacer { flex: 1; }
+.stoa-app-header__actions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--stoa-space-3); align-self: center; }
+
 .stoa-ladder, .stoa-heatmap { margin: 0; }
 .stoa-ladder__canvas, .stoa-heatmap__canvas { display: block; inline-size: 100%; }
 
