@@ -221,4 +221,12 @@ describe("ToastRegion", () => {
     // The live region said the text once; the description is not news.
     expect(screen.getByRole("status").textContent).toBe("Note: Step deleted.");
   });
+
+  it("draws an Arabic description under an Arabic text, right to left", () => {
+    const { queue } = setup("ar-u-nu-arab");
+    add(queue, { text: "حُذفت الخطوة ٣.", description: "يمكن التراجع خلال ٣٠ ثانية", timeout: null });
+    const toast = screen.getByRole("alertdialog", { name: "ملاحظة: حُذفت الخطوة ٣." });
+    expect(document.getElementById(toast.getAttribute("aria-describedby")!)?.textContent).toBe("يمكن التراجع خلال ٣٠ ثانية");
+    expect(screen.getByRole("region", { name: "الإشعارات" }).getAttribute("dir")).toBe("rtl");
+  });
 });
