@@ -18,6 +18,7 @@ export {
   type ToggleProps,
 } from "./Controls";
 export { Panel, StatBar } from "./Panel";
+export { AppHeader, type AppHeaderProps } from "./AppHeader";
 export { Chevron } from "./Chevron";
 export { Disclosure, type DisclosureProps } from "./Disclosure";
 export { parseBook, ladderRows, describeBook, type Book, type Level, type LadderRow } from "./book";

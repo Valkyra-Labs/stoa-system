@@ -2,7 +2,7 @@
 // Button, Panel and StatBar, and the empty states of the data views.
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { act, cleanup, fireEvent, render, screen } from "@testing-library/react";
-import { Button, Heatmap, I18nProvider, Ladder, Panel, StatBar, TradeTable } from "./index";
+import { AppHeader, Button, Heatmap, I18nProvider, Ladder, Panel, StatBar, TradeTable } from "./index";
 
 afterEach(() => {
   cleanup();
@@ -135,5 +135,35 @@ describe("the ladder's text alternative", () => {
     act(() => vi.advanceTimersByTime(4000));
     expect(caption()).toContain("best bid 98.00");
     vi.useRealTimers();
+  });
+});
+
+describe("AppHeader", () => {
+  it("is the banner, with the name as the only first-level heading, and its parts in order", () => {
+    render(
+      <AppHeader
+        title="Tyche Replay"
+        subtitle="AAPL on IEX"
+        note="Data provided by IEX."
+        actions={<button type="button">Dark</button>}
+      />,
+    );
+    const banner = screen.getByRole("banner");
+    expect(screen.getByRole("heading", { level: 1, name: "Tyche Replay" })).toBeTruthy();
+    expect([...banner.children].map((child) => child.className)).toEqual([
+      "stoa-app-header__title",
+      "stoa-app-header__subtitle",
+      "stoa-app-header__spacer",
+      "stoa-app-header__note",
+      "stoa-app-header__actions",
+    ]);
+    expect(screen.getByRole("button", { name: "Dark" }).closest(".stoa-app-header__actions")).toBeTruthy();
+  });
+
+  it("leaves out the parts it is not given", () => {
+    const { container } = render(<AppHeader title="Themis Steps" />);
+    expect(container.querySelector(".stoa-app-header__subtitle")).toBeNull();
+    expect(container.querySelector(".stoa-app-header__note")).toBeNull();
+    expect(container.querySelector(".stoa-app-header__actions")).toBeNull();
   });
 });

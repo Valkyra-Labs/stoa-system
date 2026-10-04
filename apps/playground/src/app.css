@@ -60,20 +60,6 @@ code {
   padding-inline-end: var(--stoa-space-3);
 }
 
-/* The frames have a 1px border their header sits inside, so the name bar
-   starts 1px lower to share the frames' centre line; its text starts where
-   a side panel's content does. */
-.pg-side__header {
-  display: flex;
-  align-items: center;
-  min-block-size: var(--pg-bar);
-  margin-block-start: 1px;
-  /* The first side panel starts where a frame's first panel does: a frame
-     body has space-2 above its panels, the side column a space-3 gap. */
-  margin-block-end: calc(var(--stoa-space-2) - var(--stoa-space-3));
-  padding-inline: calc(var(--stoa-space-3) + 1px);
-}
-
 /* Six tabs in one row down to the panel's narrowest width (360 px): the
    selected tab is marked by its underline, so the tabs can touch. */
 .pg-side .stoa-tabs__list {
@@ -82,14 +68,6 @@ code {
 
 .pg-side .stoa-tabs__tab {
   padding-inline: calc(var(--stoa-space-1) * 1.5);
-}
-
-.pg-side__header h1 {
-  margin: 0;
-  font-size: var(--stoa-font-size-lg);
-  font-weight: var(--stoa-font-weight-medium);
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
 }
 
 .pg-note {

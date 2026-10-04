@@ -1,4 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { useState } from "react";
+import { AppHeader } from "./AppHeader";
+import { ChoiceGroup } from "./Controls";
 import { Disclosure } from "./Disclosure";
 import { StatusBadge } from "./Form";
 import { Panel, StatBar } from "./Panel";
@@ -34,4 +37,45 @@ export const Sections: StoryObj = {
       </Disclosure>
     </Panel>
   ),
+};
+
+/** The bar at the top of an application: name, subtitle, a note and the
+ * theme and language switches. */
+export const Header: StoryObj = {
+  render: () => {
+    const [theme, setTheme] = useState("light");
+    const [lang, setLang] = useState("en");
+    return (
+      <AppHeader
+        title="Tyche Replay"
+        subtitle="AAPL on IEX"
+        note="Data provided for free by IEX."
+        actions={
+          <>
+            <ChoiceGroup
+              label="Theme"
+              size="small"
+              value={theme}
+              onChange={setTheme}
+              choices={[
+                { id: "light", label: "Light" },
+                { id: "dark", label: "Dark" },
+              ]}
+            />
+            <ChoiceGroup
+              label="Language"
+              size="small"
+              value={lang}
+              onChange={setLang}
+              choices={[
+                { id: "en", label: "EN" },
+                { id: "ar", label: "AR" },
+              ]}
+            />
+          </>
+        }
+      />
+    );
+  },
+  parameters: { layout: "fullscreen" },
 };

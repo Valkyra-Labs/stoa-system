@@ -196,6 +196,29 @@ test("nothing scrolls sideways, in any side panel tab or frame", async ({ page }
   }
 });
 
+test("the header's switch sets the playground's own theme and remembers it", async ({ page }) => {
+  await page.goto("/");
+  const html = page.locator("html");
+  const switcher = page.getByRole("radiogroup", { name: "Playground theme" });
+  // System is the default: no data-theme, the chrome follows the scheme.
+  await expect(switcher.getByRole("radio", { name: "System" })).toHaveAttribute("aria-checked", "true");
+  expect(await html.getAttribute("data-theme")).toBeNull();
+  await switcher.getByRole("radio", { name: "Dark" }).click();
+  await expect(html).toHaveAttribute("data-theme", "dark");
+  await page.reload();
+  await expect(html).toHaveAttribute("data-theme", "dark");
+  await expect(page.getByRole("radiogroup", { name: "Playground theme" }).getByRole("radio", { name: "Dark" })).toHaveAttribute("aria-checked", "true");
+  // The frames keep their own views: the first frame is still light.
+  await expect(page.locator('[data-slot="1"] [data-frame]')).toHaveAttribute("data-theme", "light");
+  await page.getByRole("radiogroup", { name: "Playground theme" }).getByRole("radio", { name: "Light" }).click();
+  await expect(html).toHaveAttribute("data-theme", "light");
+  // System forgets the choice.
+  await page.getByRole("radiogroup", { name: "Playground theme" }).getByRole("radio", { name: "System" }).click();
+  expect(await html.getAttribute("data-theme")).toBeNull();
+  await page.reload();
+  await expect(page.getByRole("radiogroup", { name: "Playground theme" }).getByRole("radio", { name: "System" })).toHaveAttribute("aria-checked", "true");
+});
+
 test("saving refuses to write over the committed baseline", async ({ page }) => {
   await page.goto("/");
   await openTab(page, "Snapshot");
