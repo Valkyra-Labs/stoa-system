@@ -259,3 +259,36 @@
 /* Panels kept mounted while inactive are inert; they keep their state
    (a running worker, a filled form) but take no space. */
 .stoa-tabs__panel[inert] { display: none; }
+
+/* ==== Table and charts ==== */
+
+/* Table: a table larger than its box scrolls inside this region, never
+   the page; the region is a tab stop only while it scrolls (Table.tsx). */
+.stoa-table-region { overflow: auto; max-inline-size: 100%; }
+.stoa-table-region:focus-visible {
+  outline: var(--stoa-focus-width) solid var(--stoa-color-focus);
+  outline-offset: calc(-1 * var(--stoa-focus-width));
+}
+.stoa-table__caption {
+  caption-side: top; text-align: start;
+  padding-block-end: var(--stoa-space-2); padding-inline: var(--stoa-density-cell-padding-x);
+  font-size: var(--stoa-font-size-sm); font-weight: var(--stoa-font-weight-medium);
+  color: var(--stoa-color-text);
+}
+/* A row header names its row, so it stays on one line; a table too wide
+   for that scrolls inside its region. */
+.stoa-table th[scope="row"] { color: var(--stoa-color-text); border-block-end: 0; white-space: nowrap; }
+.stoa-table__cell--center, .stoa-table th.stoa-table__cell--center { text-align: center; }
+.stoa-table__cell--end, .stoa-table th.stoa-table__cell--end { text-align: end; }
+.stoa-table td.stoa-num, .stoa-table th.stoa-num { white-space: nowrap; }
+/* Sticky cells need an opaque fill or the rows scrolling under them show
+   through. A table sits on a panel's surface. */
+.stoa-table--sticky-header thead th {
+  position: sticky; inset-block-start: 0; z-index: 1;
+  background: var(--stoa-color-surface);
+}
+.stoa-table--sticky-first th:first-child, .stoa-table--sticky-first td:first-child {
+  position: sticky; inset-inline-start: 0; white-space: nowrap;
+  background: var(--stoa-color-surface);
+}
+.stoa-table--sticky-header.stoa-table--sticky-first thead th:first-child { z-index: 2; }

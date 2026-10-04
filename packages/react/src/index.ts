@@ -27,3 +27,5 @@ export { readCanvasTokens, fitCanvas, useTokenSignal, useInvalidateOnTokensVersi
 export { messagesFor, stoaFormat, useStoaFormat, type StoaFormat, type StoaMessages } from "./locale";
 export { I18nProvider } from "react-aria-components";
 export { TextField, StatusBadge, Tabs, type TextFieldProps, type StatusTone, type TabItem } from "./Form";
+// Table and charts.
+export { Table, type TableColumn, type TableProps } from "./Table";
