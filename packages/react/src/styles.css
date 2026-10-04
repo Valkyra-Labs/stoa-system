@@ -259,3 +259,174 @@
 /* Panels kept mounted while inactive are inert; they keep their state
    (a running worker, a filled form) but take no space. */
 .stoa-tabs__panel[inert] { display: none; }
+
+/* ==== Feedback and layout ==== */
+
+/* A live region drawn on the page, for a value that also reads out. */
+.stoa-live-region { font-variant-numeric: tabular-nums; }
+
+/* Skeleton: lines one text line apart at the current size, and blocks.
+   The pulse runs on the flash duration; under reduced motion every
+   duration token is zero and the shapes stand still. */
+.stoa-skeleton__shapes { display: grid; gap: var(--stoa-space-3); }
+.stoa-skeleton__lines { display: grid; row-gap: calc(1em * (var(--stoa-font-line-height-normal) - 1)); }
+.stoa-skeleton__line, .stoa-skeleton__block {
+  display: block;
+  background: var(--stoa-color-border);
+  border-radius: var(--stoa-radius-sm);
+  animation: stoa-skeleton-pulse calc(var(--stoa-motion-duration-flash) * 2) var(--stoa-motion-easing-standard) infinite alternate;
+}
+.stoa-skeleton__line { block-size: 1em; }
+.stoa-skeleton__line:last-child:not(:first-child) { inline-size: 60%; }
+@keyframes stoa-skeleton-pulse { to { opacity: 0.4; } }
+
+/* ProgressBar: label and value text above a track. The track is outlined
+   in border-strong and filled in the accent, both checked against the
+   surface. Indeterminate, a segment slides from start to end; under
+   reduced motion it stands in the middle. */
+.stoa-progress {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: baseline;
+  gap: var(--stoa-space-1) var(--stoa-space-2);
+}
+.stoa-progress__label { font-size: var(--stoa-font-size-xs); color: var(--stoa-color-text-muted); }
+.stoa-progress__value { font-family: var(--stoa-font-family-mono); font-size: var(--stoa-font-size-xs); font-variant-numeric: tabular-nums; color: var(--stoa-color-text); }
+.stoa-progress__track {
+  grid-column: 1 / -1; position: relative; display: block; overflow: hidden;
+  block-size: var(--stoa-space-2);
+  background: var(--stoa-color-surface);
+  border: 1px solid var(--stoa-color-border-strong);
+  border-radius: var(--stoa-radius-full);
+}
+.stoa-progress__fill {
+  position: absolute; inset-block: 0; inset-inline-start: 0;
+  background: var(--stoa-color-accent);
+  transition: inline-size var(--stoa-motion-duration-base) var(--stoa-motion-easing-standard);
+}
+.stoa-progress--indeterminate .stoa-progress__fill {
+  inline-size: 40%; inset-inline-start: 30%;
+  animation: stoa-progress-slide calc(var(--stoa-motion-duration-flash) * 2) var(--stoa-motion-easing-standard) infinite;
+}
+@keyframes stoa-progress-slide {
+  from { inset-inline-start: -40%; }
+  to { inset-inline-start: 100%; }
+}
+
+/* The tone symbol of a callout or a toast, in the tone's colour: each
+   colour is checked as text on surface and on bg in pairs.mjs (info uses
+   the accent). */
+.stoa-tone-symbol {
+  inline-size: var(--stoa-space-4); flex: none;
+  text-align: center; font-weight: var(--stoa-font-weight-semibold);
+}
+.stoa-tone-symbol--info { color: var(--stoa-color-accent); }
+.stoa-tone-symbol--positive { color: var(--stoa-color-up); }
+.stoa-tone-symbol--warning { color: var(--stoa-color-warning); }
+.stoa-tone-symbol--negative { color: var(--stoa-color-down); }
+
+/* A close button: a small square Stoa button, still 24 px (WCAG 2.5.8). */
+.stoa-dismiss {
+  flex: none; display: inline-grid; place-items: center;
+  min-inline-size: var(--stoa-space-6); min-block-size: var(--stoa-space-6);
+  padding: 0; line-height: var(--stoa-font-line-height-tight);
+}
+
+/* Callout: on the surface, with a thick start border in the tone's colour
+   beside the symbol. No tinted fill, so its text stays on a checked pair. */
+.stoa-callout {
+  display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: start;
+  gap: var(--stoa-space-2);
+  padding: var(--stoa-space-2) var(--stoa-space-3);
+  background: var(--stoa-color-surface); color: var(--stoa-color-text);
+  border: 1px solid var(--stoa-color-border); border-inline-start-width: var(--stoa-space-1);
+  border-radius: var(--stoa-radius-md);
+  font-size: var(--stoa-font-size-sm); line-height: var(--stoa-font-line-height-normal);
+}
+.stoa-callout__body { min-inline-size: 0; }
+.stoa-callout__title { margin: 0; font-weight: var(--stoa-font-weight-semibold); }
+.stoa-callout__text > :first-child { margin-block-start: 0; }
+.stoa-callout__text > :last-child { margin-block-end: 0; }
+.stoa-callout__action { display: flex; flex-wrap: wrap; gap: var(--stoa-space-2); margin-block-start: var(--stoa-space-2); }
+
+/* EmptyState: centred in the space the content will take. */
+.stoa-empty-state {
+  display: grid; justify-items: center; gap: var(--stoa-space-2);
+  padding: var(--stoa-space-8) var(--stoa-space-4);
+  text-align: center;
+}
+.stoa-empty-state__title { margin: 0; font-size: var(--stoa-font-size-md); font-weight: var(--stoa-font-weight-medium); color: var(--stoa-color-text); }
+.stoa-empty-state__description { margin: 0; font-size: var(--stoa-font-size-sm); color: var(--stoa-color-text-muted); }
+.stoa-empty-state__action { margin-block-start: var(--stoa-space-2); }
+
+/* Toasts: a column at the end corner of the viewport, newest first. The
+   region is portalled to the body, so it takes the document's tokens. */
+.stoa-toast-region {
+  position: fixed; z-index: 100;
+  inset-block-end: var(--stoa-space-4); inset-inline-end: var(--stoa-space-4);
+  display: flex; flex-direction: column; gap: var(--stoa-space-2);
+  max-inline-size: calc(100% - 2 * var(--stoa-space-4));
+  font-family: var(--stoa-font-family-sans);
+  outline: none;
+}
+.stoa-toast-region[data-focus-visible] {
+  outline: var(--stoa-focus-width) solid var(--stoa-color-focus);
+  outline-offset: var(--stoa-focus-offset);
+}
+.stoa-toast {
+  display: flex; align-items: center; gap: var(--stoa-space-2);
+  inline-size: calc(var(--stoa-space-12) * 8); max-inline-size: 100%;
+  padding: var(--stoa-space-2) var(--stoa-space-3);
+  background: var(--stoa-color-surface); color: var(--stoa-color-text);
+  border: 1px solid var(--stoa-color-border-strong); border-inline-start-width: var(--stoa-space-1);
+  border-radius: var(--stoa-radius-md);
+  font-size: var(--stoa-font-size-sm); line-height: var(--stoa-font-line-height-normal);
+  animation: stoa-toast-in var(--stoa-motion-duration-base) var(--stoa-motion-easing-enter);
+}
+.stoa-toast[data-focus-visible] {
+  outline: var(--stoa-focus-width) solid var(--stoa-color-focus);
+  outline-offset: var(--stoa-focus-offset);
+}
+.stoa-toast__text { flex: 1; min-inline-size: 0; }
+.stoa-toast__action { flex: none; }
+@keyframes stoa-toast-in { from { opacity: 0; } }
+
+/* The start border of a callout or a toast in the tone's colour. After both
+   components' rules, whose `border` shorthand would reset the colour. */
+.stoa-callout--info, .stoa-toast--info { border-inline-start-color: var(--stoa-color-accent); }
+.stoa-callout--positive, .stoa-toast--positive { border-inline-start-color: var(--stoa-color-up); }
+.stoa-callout--warning, .stoa-toast--warning { border-inline-start-color: var(--stoa-color-warning); }
+.stoa-callout--negative, .stoa-toast--negative { border-inline-start-color: var(--stoa-color-down); }
+
+/* PageShell: header, main and footer in a column; the skip link sits over
+   the header's start corner while it has focus, and is hidden otherwise. */
+.stoa-page-shell {
+  position: relative; display: flex; flex-direction: column; min-block-size: 100%;
+  background: var(--stoa-color-bg); color: var(--stoa-color-text);
+}
+.stoa-page-shell__main { flex: 1; padding: var(--stoa-space-4); }
+/* Focus lands here from the skip link; the ring shows that it did. */
+.stoa-page-shell__main:focus { outline: none; }
+.stoa-page-shell__main:focus-visible {
+  outline: var(--stoa-focus-width) solid var(--stoa-color-focus);
+  outline-offset: calc(-1 * var(--stoa-focus-width));
+}
+.stoa-page-shell__footer {
+  padding: var(--stoa-space-3) var(--stoa-space-4);
+  border-block-start: 1px solid var(--stoa-color-border);
+  font-size: var(--stoa-font-size-xs); color: var(--stoa-color-text-muted);
+}
+.stoa-skip-link {
+  position: absolute; z-index: 1;
+  inset-block-start: var(--stoa-space-2); inset-inline-start: var(--stoa-space-2);
+  padding: var(--stoa-space-1) var(--stoa-space-2);
+  background: var(--stoa-color-surface); color: var(--stoa-color-text);
+  border: 1px solid var(--stoa-color-border-strong); border-radius: var(--stoa-radius-sm);
+  font-size: var(--stoa-font-size-sm);
+}
+.stoa-skip-link:focus-visible {
+  outline: var(--stoa-focus-width) solid var(--stoa-color-focus);
+  outline-offset: var(--stoa-focus-offset);
+}
+.stoa-skip-link:not(:focus) {
+  inline-size: 1px; block-size: 1px; margin: -1px; padding: 0; border: 0;
+  overflow: hidden; clip-path: inset(50%); white-space: nowrap;
+}

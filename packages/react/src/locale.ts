@@ -32,6 +32,22 @@ export type StoaMessages = {
   spread: (value: string) => string;
   /** One sentence from the bid part, the ask part and the spread, if any. */
   book: (bid: string, ask: string, spread: string | null) => string;
+  /** What a loading placeholder says to assistive technology. */
+  loading: string;
+  /** A progress bar's value as an amount out of a total ("1.2 MB of 4.8 MB"). */
+  progressOf: (value: string, max: string) => string;
+  /** The tone of a callout or a toast as a word, read before its text, so
+   * the tone is never told by colour alone. */
+  toneInfo: string;
+  tonePositive: string;
+  toneWarning: string;
+  toneNegative: string;
+  /** The name of a button that closes a callout or a toast. */
+  dismiss: string;
+  /** The name of the region that holds the toasts. */
+  notifications: string;
+  /** The link that moves focus past the header to the main content. */
+  skipToMain: string;
 };
 
 const EN: StoaMessages = {
@@ -52,6 +68,15 @@ const EN: StoaMessages = {
   noAsks: "no asks",
   spread: (value) => `spread ${value}`,
   book: (bid, ask, spread) => `${bid}, ${ask}${spread ? `, ${spread}` : ""}.`,
+  loading: "Loading…",
+  progressOf: (value, max) => `${value} of ${max}`,
+  toneInfo: "Note",
+  tonePositive: "Success",
+  toneWarning: "Warning",
+  toneNegative: "Error",
+  dismiss: "Dismiss",
+  notifications: "Notifications",
+  skipToMain: "Skip to main content",
 };
 
 const AR: StoaMessages = {
@@ -72,6 +97,15 @@ const AR: StoaMessages = {
   noAsks: "لا أوامر بيع",
   spread: (value) => `الفارق ${value}`,
   book: (bid, ask, spread) => `${bid}، ${ask}${spread ? `، ${spread}` : ""}.`,
+  loading: "جارٍ التحميل…",
+  progressOf: (value, max) => `${value} من ${max}`,
+  toneInfo: "ملاحظة",
+  tonePositive: "تم بنجاح",
+  toneWarning: "تحذير",
+  toneNegative: "خطأ",
+  dismiss: "إغلاق",
+  notifications: "الإشعارات",
+  skipToMain: "انتقل إلى المحتوى الرئيسي",
 };
 
 /** Stoa's words for a locale: Arabic for any "ar" tag, English otherwise. */
