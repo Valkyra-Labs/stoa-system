@@ -43,8 +43,9 @@ export const TEXT_PAIRS = [
   { fg: "text", bg: "bg", min: TEXT_AAA, reason: "Body text on the page background; the preview stylesheet sets both on `body`." },
   { fg: "text", bg: "surface", min: TEXT_AAA, reason: "Body text inside a panel, a table cell or the ladder." },
   { fg: "text", bg: "surface-hover", min: TEXT_AA, reason: "Button label while the pointer is over the button." },
-  { fg: "text", bg: "surface-sunken", min: TEXT_AA, reason: "Body text in a sunken well." },
-  { fg: "surface", bg: "accent", min: TEXT_AA, reason: "Label of a primary button or a selected choice: the surface colour reversed out of the accent fill." },
+  { fg: "text", bg: "surface-sunken", min: TEXT_AA, reason: "Body text in a sunken well, the label of a secondary button, and a key drawn by Kbd." },
+  { fg: "surface", bg: "accent", min: TEXT_AA, reason: "Label of a primary button, a selected choice or filter chip, or an accent Tag: the surface colour reversed out of the accent fill. The check mark of a checkbox and the thumb of a switch that is on are the same colour on the same fill; they are non-text marks, held here to the stricter text ratio." },
+  { fg: "surface", bg: "down", min: TEXT_AA, reason: "Label of a danger button: the surface colour reversed out of the danger fill, which is the falling colour." },
   { fg: "text-muted", bg: "surface", min: TEXT_AA, reason: "Panel title, field label, table header, statbar term, and the heatmap price labels on their surface plates." },
   { fg: "text-muted", bg: "bg", min: TEXT_AA, reason: "The same muted labels when a table or statbar sits straight on the page background." },
   { fg: "text-muted", bg: "surface-sunken", min: TEXT_AA, reason: "Muted labels in a sunken well." },
@@ -53,7 +54,7 @@ export const TEXT_PAIRS = [
   { fg: "accent", bg: "surface", min: TEXT_AA, reason: "Accent used as text or an icon inside a panel." },
   { fg: "accent", bg: "bg", min: TEXT_AA, reason: "The same, on the page background." },
   { fg: "up", bg: "surface", min: TEXT_AA, reason: "A rising price or change, in a table cell or a badge." },
-  { fg: "down", bg: "surface", min: TEXT_AA, reason: "A falling price or change, in a table cell or a badge." },
+  { fg: "down", bg: "surface", min: TEXT_AA, reason: "A falling price or change, in a table cell or a badge; the danger colour as text, in a Tag of negative tone." },
   { fg: "up", bg: "bg", min: TEXT_AA, reason: "The same badge in a toolbar on the page background." },
   { fg: "down", bg: "bg", min: TEXT_AA, reason: "The same badge in a toolbar on the page background." },
   { fg: "bid", bg: "surface", min: TEXT_AA, reason: "Bid prices and the B marker the ladder draws over its own surface fill." },
@@ -85,11 +86,11 @@ export const TEXT_PAIRS = [
  * pairs are repeated, because the selected tab is a different promise from
  * accent used as text and Stage 2 may want to move only one of them. */
 export const NON_TEXT_PAIRS = [
-  { fg: "border-strong", bg: "surface", min: NON_TEXT, reason: "Boundary of a text field, a button and the slider track inside a panel: it is what identifies the control, so 1.4.11 applies." },
+  { fg: "border-strong", bg: "surface", min: NON_TEXT, reason: "Boundary of a text field, a button, a checkbox, the track of a switch and the slider track inside a panel: it is what identifies the control, so 1.4.11 applies." },
   { fg: "border-strong", bg: "bg", min: NON_TEXT, reason: "The same controls when they sit straight on the page background." },
   { fg: "focus", bg: "surface", min: NON_TEXT, reason: "Focus ring around a control inside a panel." },
   { fg: "focus", bg: "bg", min: NON_TEXT, reason: "Focus ring around a control on the page background." },
-  { fg: "accent", bg: "surface", min: NON_TEXT, reason: "Underline of the selected tab, which is how the selected state is shown." },
+  { fg: "accent", bg: "surface", min: NON_TEXT, reason: "Underline of the selected tab, the fill of a checked checkbox and of a switch that is on, and the filled part of a slider track: how the selected state or the value is shown." },
   { fg: "accent", bg: "bg", min: NON_TEXT, reason: "The same tab indicator when the tab list sits straight on the page background." },
   {
     fg: "up-wash",
