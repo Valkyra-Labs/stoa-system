@@ -341,6 +341,7 @@ export function App() {
             value={chromeTheme}
             onChange={setChromeTheme}
             choices={[
+              { id: "system", label: "System" },
               { id: "light", label: "Light" },
               { id: "dark", label: "Dark" },
             ]}

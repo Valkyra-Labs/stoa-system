@@ -200,6 +200,9 @@ test("the header's switch sets the playground's own theme and remembers it", asy
   await page.goto("/");
   const html = page.locator("html");
   const switcher = page.getByRole("radiogroup", { name: "Playground theme" });
+  // System is the default: no data-theme, the chrome follows the scheme.
+  await expect(switcher.getByRole("radio", { name: "System" })).toHaveAttribute("aria-checked", "true");
+  expect(await html.getAttribute("data-theme")).toBeNull();
   await switcher.getByRole("radio", { name: "Dark" }).click();
   await expect(html).toHaveAttribute("data-theme", "dark");
   await page.reload();
@@ -209,6 +212,11 @@ test("the header's switch sets the playground's own theme and remembers it", asy
   await expect(page.locator('[data-slot="1"] [data-frame]')).toHaveAttribute("data-theme", "light");
   await page.getByRole("radiogroup", { name: "Playground theme" }).getByRole("radio", { name: "Light" }).click();
   await expect(html).toHaveAttribute("data-theme", "light");
+  // System forgets the choice.
+  await page.getByRole("radiogroup", { name: "Playground theme" }).getByRole("radio", { name: "System" }).click();
+  expect(await html.getAttribute("data-theme")).toBeNull();
+  await page.reload();
+  await expect(page.getByRole("radiogroup", { name: "Playground theme" }).getByRole("radio", { name: "System" })).toHaveAttribute("aria-checked", "true");
 });
 
 test("saving refuses to write over the committed baseline", async ({ page }) => {

@@ -1,49 +1,39 @@
-// The playground's own light or dark chrome: the side panel and the frame
-// headers. The frames keep their own views; this only sets data-theme on
-// the document, which tokens.css follows. With no choice made it follows
-// the system, and a choice is remembered in this browser.
+// The playground's own chrome: the side panel and the frame headers. The
+// frames keep their own views; this only sets data-theme on the document,
+// which tokens.css follows. System, the default, sets nothing, so the
+// chrome follows the system's scheme; Light or Dark is remembered in this
+// browser, and choosing System forgets it.
 import { useEffect, useState } from "react";
 
-export type ChromeTheme = "light" | "dark";
+export type ChromeTheme = "system" | "light" | "dark";
 
 const KEY = "stoa-playground-theme";
 
-function stored(): ChromeTheme | null {
+function stored(): ChromeTheme {
   try {
     const value = localStorage.getItem(KEY);
-    return value === "light" || value === "dark" ? value : null;
+    return value === "light" || value === "dark" ? value : "system";
   } catch {
-    return null;
+    return "system";
   }
 }
 
-const systemTheme = (): ChromeTheme =>
-  typeof matchMedia === "function" && matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-
 export function useChromeTheme(): [ChromeTheme, (theme: ChromeTheme) => void] {
-  const [chosen, setChosen] = useState<ChromeTheme | null>(stored);
-  const [system, setSystem] = useState<ChromeTheme>(systemTheme);
+  const [theme, setTheme] = useState<ChromeTheme>(stored);
 
   useEffect(() => {
-    if (typeof matchMedia !== "function") return;
-    const query = matchMedia("(prefers-color-scheme: dark)");
-    const follow = () => setSystem(query.matches ? "dark" : "light");
-    query.addEventListener("change", follow);
-    return () => query.removeEventListener("change", follow);
-  }, []);
+    if (theme === "system") delete document.documentElement.dataset.theme;
+    else document.documentElement.dataset.theme = theme;
+  }, [theme]);
 
-  useEffect(() => {
-    if (chosen) document.documentElement.dataset.theme = chosen;
-    else delete document.documentElement.dataset.theme;
-  }, [chosen]);
-
-  const choose = (theme: ChromeTheme) => {
-    setChosen(theme);
+  const choose = (next: ChromeTheme) => {
+    setTheme(next);
     try {
-      localStorage.setItem(KEY, theme);
+      if (next === "system") localStorage.removeItem(KEY);
+      else localStorage.setItem(KEY, next);
     } catch {
       // Storage blocked: the choice lasts for this page only.
     }
   };
-  return [chosen ?? system, choose];
+  return [theme, choose];
 }
