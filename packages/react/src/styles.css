@@ -427,3 +427,22 @@
 .stoa-range[data-disabled] .stoa-range__fill,
 .stoa-range[data-disabled] .stoa-range__thumb { background: var(--stoa-color-border-strong); }
 .stoa-range--small .stoa-range__label, .stoa-range--small .stoa-range__output { font-size: var(--stoa-font-size-2xs); }
+
+/* Toolbar: one row of controls that wraps on a narrow screen, with a rule
+   between groups. A button group joins its buttons as the choice group
+   joins its options, with the same overlapping borders. */
+.stoa-toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: var(--stoa-space-2); min-inline-size: 0; }
+.stoa-toolbar__separator {
+  align-self: stretch; inline-size: 1px; margin: 0 var(--stoa-space-1); border: 0;
+  background: var(--stoa-color-border-strong);
+}
+.stoa-button-group { display: inline-flex; padding-inline-start: 1px; }
+.stoa-button-group > .stoa-button { position: relative; border-radius: 0; margin-inline-start: -1px; }
+.stoa-button-group > .stoa-button:first-child {
+  border-start-start-radius: var(--stoa-radius-sm); border-end-start-radius: var(--stoa-radius-sm);
+}
+.stoa-button-group > .stoa-button:last-child {
+  border-start-end-radius: var(--stoa-radius-sm); border-end-end-radius: var(--stoa-radius-sm);
+}
+.stoa-button-group > .stoa-button[data-hovered] { z-index: 1; }
+.stoa-button-group > .stoa-button[data-focus-visible] { z-index: 2; }

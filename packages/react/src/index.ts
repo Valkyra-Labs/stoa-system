@@ -50,3 +50,4 @@ export {
   type SwitchProps,
 } from "./Toggles";
 export { Slider, type SliderProps } from "./Slider";
+export { ButtonGroup, Toolbar, ToolbarSeparator, type ButtonGroupProps, type ToolbarProps } from "./Toolbar";

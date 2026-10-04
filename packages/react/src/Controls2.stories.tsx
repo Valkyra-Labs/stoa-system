@@ -3,6 +3,7 @@ import { useState } from "react";
 import { FilterChip, FilterChipGroup, Tag } from "./Chips";
 import { Button } from "./Controls";
 import { Slider } from "./Slider";
+import { ButtonGroup, Toolbar, ToolbarSeparator } from "./Toolbar";
 import { Checkbox, CheckboxGroup, Switch } from "./Toggles";
 
 const meta: Meta = { title: "Controls/Inputs" };
@@ -281,4 +282,41 @@ export const SliderSmall: StoryObj = {
       </div>
     );
   },
+};
+
+/** One Tab stop: Tab enters at the control used last and leaves in one
+ * press; the arrow keys move through every enabled control, groups
+ * included, reversed in a right-to-left page; Home and End go to the
+ * ends. A separator stands between groups. */
+export const ToolbarTransport: StoryObj = {
+  render: () => {
+    const [playing, setPlaying] = useState(false);
+    return (
+      <Toolbar label="Playback">
+        <Button variant="primary" onPress={() => setPlaying((p) => !p)}>
+          {playing ? "Pause" : "Play"}
+        </Button>
+        <ToolbarSeparator />
+        <ButtonGroup label="Step">
+          <Button>Back 1 min</Button>
+          <Button isDisabled>Forward 1 min</Button>
+          <Button>Live</Button>
+        </ButtonGroup>
+        <ToolbarSeparator />
+        <Button variant="ghost">Reset view</Button>
+      </Toolbar>
+    );
+  },
+};
+
+/** A button group on its own, outside a toolbar: each button is its own
+ * Tab stop. */
+export const ButtonGroupAlone: StoryObj = {
+  render: () => (
+    <ButtonGroup label="Zoom">
+      <Button>Zoom in</Button>
+      <Button>Fit</Button>
+      <Button>Zoom out</Button>
+    </ButtonGroup>
+  ),
 };

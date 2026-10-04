@@ -208,6 +208,7 @@
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Controls/Inputs > ButtonGroupAlone",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
           "Controls/Inputs > CheckboxGroupWithAll",
@@ -223,6 +224,7 @@
           "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
           "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ToolbarTransport",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -279,6 +281,7 @@
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Controls/Inputs > ButtonGroupAlone",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
           "Controls/Inputs > CheckboxGroupWithAll",
@@ -294,6 +297,7 @@
           "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
           "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ToolbarTransport",
           "Layout/Panel > Header",
           "Layout/Panel > Sections",
           "Layout/Panel > Titled"
@@ -339,6 +343,7 @@
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Controls/Inputs > ButtonGroupAlone",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
           "Controls/Inputs > CheckboxGroupWithAll",
@@ -354,6 +359,7 @@
           "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
           "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ToolbarTransport",
           "Layout/Panel > Header",
           "Layout/Panel > Sections",
           "Layout/Panel > Titled"
@@ -845,6 +851,7 @@
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Controls/Inputs > ButtonGroupAlone",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
           "Controls/Inputs > CheckboxGroupWithAll",
@@ -860,6 +867,7 @@
           "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
           "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ToolbarTransport",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -1003,6 +1011,7 @@
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Controls/Inputs > ButtonGroupAlone",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
           "Controls/Inputs > CheckboxGroupWithAll",
@@ -1018,6 +1027,7 @@
           "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
           "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ToolbarTransport",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -1279,6 +1289,7 @@
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Controls/Inputs > ButtonGroupAlone",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
           "Controls/Inputs > CheckboxGroupWithAll",
@@ -1294,6 +1305,7 @@
           "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
           "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ToolbarTransport",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -1429,6 +1441,7 @@
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Controls/Inputs > ButtonGroupAlone",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
           "Controls/Inputs > CheckboxGroupWithAll",
@@ -1444,6 +1457,7 @@
           "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
           "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ToolbarTransport",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -1568,12 +1582,18 @@
             "component": "Toggle",
             "file": "packages/react/src/styles.css",
             "line": 63
+          },
+          {
+            "component": "ToolbarSeparator",
+            "file": "packages/react/src/styles.css",
+            "line": 437
           }
         ],
         "stories": [
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Controls/Inputs > ButtonGroupAlone",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
           "Controls/Inputs > CheckboxGroupWithAll",
@@ -1589,6 +1609,7 @@
           "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
           "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ToolbarTransport",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -1672,6 +1693,7 @@
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Controls/Inputs > ButtonGroupAlone",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
           "Controls/Inputs > CheckboxGroupWithAll",
@@ -1687,6 +1709,7 @@
           "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
           "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ToolbarTransport",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -1862,6 +1885,7 @@
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Controls/Inputs > ButtonGroupAlone",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
           "Controls/Inputs > CheckboxGroupWithAll",
@@ -1877,6 +1901,7 @@
           "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
           "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ToolbarTransport",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -2058,6 +2083,7 @@
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Controls/Inputs > ButtonGroupAlone",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
           "Controls/Inputs > CheckboxGroupWithAll",
@@ -2073,6 +2099,7 @@
           "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
           "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ToolbarTransport",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -2503,6 +2530,7 @@
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Controls/Inputs > ButtonGroupAlone",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
           "Controls/Inputs > CheckboxGroupWithAll",
@@ -2518,6 +2546,7 @@
           "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
           "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ToolbarTransport",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -2697,6 +2726,7 @@
           }
         ],
         "stories": [
+          "Controls/Inputs > ButtonGroupAlone",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
           "Controls/Inputs > CheckboxGroupWithAll",
@@ -2712,6 +2742,7 @@
           "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
           "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ToolbarTransport",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -2846,6 +2877,7 @@
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Controls/Inputs > ButtonGroupAlone",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
           "Controls/Inputs > CheckboxGroupWithAll",
@@ -2861,6 +2893,7 @@
           "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
           "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ToolbarTransport",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -3067,6 +3100,7 @@
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Controls/Inputs > ButtonGroupAlone",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
           "Controls/Inputs > CheckboxGroupWithAll",
@@ -3082,6 +3116,7 @@
           "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
           "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ToolbarTransport",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -3284,12 +3319,19 @@
             "file": "packages/react/src/styles.css",
             "line": 96,
             "via": "--stoa-color-text-subtle"
+          },
+          {
+            "component": "ToolbarSeparator",
+            "file": "packages/react/src/styles.css",
+            "line": 437,
+            "via": "--stoa-color-border-strong"
           }
         ],
         "stories": [
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Controls/Inputs > ButtonGroupAlone",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
           "Controls/Inputs > CheckboxGroupWithAll",
@@ -3305,6 +3347,7 @@
           "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
           "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ToolbarTransport",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -3533,12 +3576,19 @@
             "file": "packages/react/src/styles.css",
             "line": 96,
             "via": "--stoa-color-text-subtle"
+          },
+          {
+            "component": "ToolbarSeparator",
+            "file": "packages/react/src/styles.css",
+            "line": 437,
+            "via": "--stoa-color-border-strong"
           }
         ],
         "stories": [
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Controls/Inputs > ButtonGroupAlone",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
           "Controls/Inputs > CheckboxGroupWithAll",
@@ -3554,6 +3604,7 @@
           "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
           "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ToolbarTransport",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -3732,6 +3783,7 @@
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Controls/Inputs > ButtonGroupAlone",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
           "Controls/Inputs > CheckboxGroupWithAll",
@@ -3747,6 +3799,7 @@
           "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
           "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ToolbarTransport",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -3935,6 +3988,7 @@
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Controls/Inputs > ButtonGroupAlone",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
           "Controls/Inputs > CheckboxGroupWithAll",
@@ -3950,6 +4004,7 @@
           "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
           "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ToolbarTransport",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -4094,6 +4149,7 @@
           }
         ],
         "stories": [
+          "Controls/Inputs > ButtonGroupAlone",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
           "Controls/Inputs > CheckboxGroupWithAll",
@@ -4109,6 +4165,7 @@
           "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
           "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ToolbarTransport",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -4615,6 +4672,7 @@
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Controls/Inputs > ButtonGroupAlone",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
           "Controls/Inputs > CheckboxGroupWithAll",
@@ -4630,6 +4688,7 @@
           "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
           "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ToolbarTransport",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -4738,6 +4797,7 @@
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Controls/Inputs > ButtonGroupAlone",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
           "Controls/Inputs > CheckboxGroupWithAll",
@@ -4753,6 +4813,7 @@
           "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
           "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ToolbarTransport",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -4860,6 +4921,7 @@
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Controls/Inputs > ButtonGroupAlone",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
           "Controls/Inputs > CheckboxGroupWithAll",
@@ -4875,6 +4937,7 @@
           "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
           "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ToolbarTransport",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -5099,6 +5162,7 @@
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Controls/Inputs > ButtonGroupAlone",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
           "Controls/Inputs > CheckboxGroupWithAll",
@@ -5114,6 +5178,7 @@
           "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
           "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ToolbarTransport",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -5247,6 +5312,7 @@
           }
         ],
         "stories": [
+          "Controls/Inputs > ButtonGroupAlone",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
           "Controls/Inputs > CheckboxGroupWithAll",
@@ -5262,6 +5328,7 @@
           "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
           "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ToolbarTransport",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -5352,6 +5419,7 @@
           }
         ],
         "stories": [
+          "Controls/Inputs > ButtonGroupAlone",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
           "Controls/Inputs > CheckboxGroupWithAll",
@@ -5367,6 +5435,7 @@
           "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
           "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ToolbarTransport",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -5433,6 +5502,7 @@
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Controls/Inputs > ButtonGroupAlone",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
           "Controls/Inputs > CheckboxGroupWithAll",
@@ -5448,6 +5518,7 @@
           "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
           "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ToolbarTransport",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -5525,6 +5596,7 @@
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Controls/Inputs > ButtonGroupAlone",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
           "Controls/Inputs > CheckboxGroupWithAll",
@@ -5540,6 +5612,7 @@
           "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
           "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ToolbarTransport",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -5914,6 +5987,7 @@
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Controls/Inputs > ButtonGroupAlone",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
           "Controls/Inputs > CheckboxGroupWithAll",
@@ -5929,6 +6003,7 @@
           "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
           "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ToolbarTransport",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -6097,6 +6172,7 @@
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Controls/Inputs > ButtonGroupAlone",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
           "Controls/Inputs > CheckboxGroupWithAll",
@@ -6112,6 +6188,7 @@
           "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
           "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ToolbarTransport",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -6215,6 +6292,7 @@
           }
         ],
         "stories": [
+          "Controls/Inputs > ButtonGroupAlone",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
           "Controls/Inputs > CheckboxGroupWithAll",
@@ -6230,6 +6308,7 @@
           "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
           "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ToolbarTransport",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -6288,6 +6367,7 @@
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Controls/Inputs > ButtonGroupAlone",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
           "Controls/Inputs > CheckboxGroupWithAll",
@@ -6303,6 +6383,7 @@
           "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
           "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ToolbarTransport",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -6408,6 +6489,7 @@
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Controls/Inputs > ButtonGroupAlone",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
           "Controls/Inputs > CheckboxGroupWithAll",
@@ -6423,6 +6505,7 @@
           "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
           "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ToolbarTransport",
           "Layout/Panel > Header",
           "Layout/Panel > Sections",
           "Layout/Panel > Titled"
@@ -6682,6 +6765,7 @@
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Controls/Inputs > ButtonGroupAlone",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
           "Controls/Inputs > CheckboxGroupWithAll",
@@ -6697,6 +6781,7 @@
           "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
           "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ToolbarTransport",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -6818,6 +6903,7 @@
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Controls/Inputs > ButtonGroupAlone",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
           "Controls/Inputs > CheckboxGroupWithAll",
@@ -6833,6 +6919,7 @@
           "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
           "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ToolbarTransport",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -6921,6 +7008,7 @@
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Controls/Inputs > ButtonGroupAlone",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
           "Controls/Inputs > CheckboxGroupWithAll",
@@ -6936,6 +7024,7 @@
           "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
           "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ToolbarTransport",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -7026,6 +7115,7 @@
           }
         ],
         "stories": [
+          "Controls/Inputs > ButtonGroupAlone",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
           "Controls/Inputs > CheckboxGroupWithAll",
@@ -7040,7 +7130,8 @@
           "Controls/Inputs > SwitchSmall",
           "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
-          "Controls/Inputs > TagsSmall"
+          "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ToolbarTransport"
         ]
       },
       "reachedByTheme": {
@@ -7155,6 +7246,7 @@
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Controls/Inputs > ButtonGroupAlone",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
           "Controls/Inputs > CheckboxGroupWithAll",
@@ -7170,6 +7262,7 @@
           "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
           "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ToolbarTransport",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -7433,6 +7526,7 @@
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Controls/Inputs > ButtonGroupAlone",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
           "Controls/Inputs > CheckboxGroupWithAll",
@@ -7448,6 +7542,7 @@
           "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
           "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ToolbarTransport",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -7509,6 +7604,7 @@
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Controls/Inputs > ButtonGroupAlone",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
           "Controls/Inputs > CheckboxGroupWithAll",
@@ -7524,6 +7620,7 @@
           "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
           "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ToolbarTransport",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -7693,6 +7790,7 @@
           }
         ],
         "stories": [
+          "Controls/Inputs > ButtonGroupAlone",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
           "Controls/Inputs > CheckboxGroupWithAll",
@@ -7708,6 +7806,7 @@
           "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
           "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ToolbarTransport",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -7901,6 +8000,7 @@
           }
         ],
         "stories": [
+          "Controls/Inputs > ButtonGroupAlone",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
           "Controls/Inputs > CheckboxGroupWithAll",
@@ -7916,6 +8016,7 @@
           "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
           "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ToolbarTransport",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -7994,6 +8095,7 @@
           }
         ],
         "stories": [
+          "Controls/Inputs > ButtonGroupAlone",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
           "Controls/Inputs > CheckboxGroupWithAll",
@@ -8009,6 +8111,7 @@
           "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
           "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ToolbarTransport",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -8130,6 +8233,26 @@
             "line": 64
           },
           {
+            "component": "Button",
+            "file": "packages/react/src/styles.css",
+            "line": 442
+          },
+          {
+            "component": "Button",
+            "file": "packages/react/src/styles.css",
+            "line": 445
+          },
+          {
+            "component": "ButtonGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 442
+          },
+          {
+            "component": "ButtonGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 445
+          },
+          {
             "component": "Checkbox",
             "file": "packages/react/src/styles.css",
             "line": 400
@@ -8148,6 +8271,16 @@
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
             "line": 121
+          },
+          {
+            "component": "ChoiceGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 442
+          },
+          {
+            "component": "ChoiceGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 445
           },
           {
             "component": "Disclosure",
@@ -8170,6 +8303,16 @@
             "line": 121
           },
           {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 442
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 445
+          },
+          {
             "component": "FilterChipGroup",
             "file": "packages/react/src/styles.css",
             "line": 64
@@ -8185,6 +8328,16 @@
             "line": 121
           },
           {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 442
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 445
+          },
+          {
             "component": "NumberField",
             "file": "packages/react/src/styles.css",
             "line": 228
@@ -8198,6 +8351,16 @@
             "component": "Select",
             "file": "packages/react/src/styles.css",
             "line": 148
+          },
+          {
+            "component": "Select",
+            "file": "packages/react/src/styles.css",
+            "line": 442
+          },
+          {
+            "component": "Select",
+            "file": "packages/react/src/styles.css",
+            "line": 445
           },
           {
             "component": "Tabs",
@@ -8228,12 +8391,23 @@
             "component": "Toggle",
             "file": "packages/react/src/styles.css",
             "line": 121
+          },
+          {
+            "component": "Toggle",
+            "file": "packages/react/src/styles.css",
+            "line": 442
+          },
+          {
+            "component": "Toggle",
+            "file": "packages/react/src/styles.css",
+            "line": 445
           }
         ],
         "stories": [
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Controls/Inputs > ButtonGroupAlone",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
           "Controls/Inputs > CheckboxGroupWithAll",
@@ -8249,6 +8423,7 @@
           "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
           "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ToolbarTransport",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -8341,6 +8516,7 @@
           }
         ],
         "stories": [
+          "Controls/Inputs > ButtonGroupAlone",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
           "Controls/Inputs > CheckboxGroupWithAll",
@@ -8355,7 +8531,8 @@
           "Controls/Inputs > SwitchSmall",
           "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
-          "Controls/Inputs > TagsSmall"
+          "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ToolbarTransport"
         ]
       },
       "reachedByTheme": {
@@ -8588,12 +8765,18 @@
             "component": "Toggle",
             "file": "packages/react/src/styles.css",
             "line": 132
+          },
+          {
+            "component": "ToolbarSeparator",
+            "file": "packages/react/src/styles.css",
+            "line": 436
           }
         ],
         "stories": [
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Controls/Inputs > ButtonGroupAlone",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
           "Controls/Inputs > CheckboxGroupWithAll",
@@ -8609,6 +8792,7 @@
           "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
           "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ToolbarTransport",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -8762,12 +8946,18 @@
             "component": "Toggle",
             "file": "packages/react/src/styles.css",
             "line": 62
+          },
+          {
+            "component": "Toolbar",
+            "file": "packages/react/src/styles.css",
+            "line": 434
           }
         ],
         "stories": [
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Controls/Inputs > ButtonGroupAlone",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
           "Controls/Inputs > CheckboxGroupWithAll",
@@ -8783,6 +8973,7 @@
           "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
           "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ToolbarTransport",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -8884,6 +9075,7 @@
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Controls/Inputs > ButtonGroupAlone",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
           "Controls/Inputs > CheckboxGroupWithAll",
@@ -8899,6 +9091,7 @@
           "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
           "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ToolbarTransport",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -8970,6 +9163,7 @@
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Controls/Inputs > ButtonGroupAlone",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
           "Controls/Inputs > CheckboxGroupWithAll",
@@ -8985,6 +9179,7 @@
           "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
           "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ToolbarTransport",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -9086,6 +9281,7 @@
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Controls/Inputs > ButtonGroupAlone",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
           "Controls/Inputs > CheckboxGroupWithAll",
@@ -9101,6 +9297,7 @@
           "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
           "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ToolbarTransport",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -9144,6 +9341,7 @@
           }
         ],
         "stories": [
+          "Controls/Inputs > ButtonGroupAlone",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
           "Controls/Inputs > CheckboxGroupWithAll",
@@ -9158,7 +9356,8 @@
           "Controls/Inputs > SwitchSmall",
           "Controls/Inputs > SwitchStates",
           "Controls/Inputs > TagTones",
-          "Controls/Inputs > TagsSmall"
+          "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ToolbarTransport"
         ]
       },
       "reachedByTheme": {
