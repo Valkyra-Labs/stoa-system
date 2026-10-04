@@ -148,6 +148,7 @@
 .stoa-group-field { display: grid; gap: var(--stoa-space-1); justify-items: start; min-inline-size: 0; }
 
 /* The small size, for toolbars and headers. */
+.stoa-button--small,
 .stoa-choice-group--small > .stoa-choice,
 .stoa-toggle--small,
 .stoa-select--small .stoa-select__button {

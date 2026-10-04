@@ -29,10 +29,16 @@ import {
  * (in a toolbar, for example); `danger` an action that destroys or cannot
  * be undone, on the falling colour. Say what the danger is in the label
  * ("Delete 3 orders"): the colour is not the only sign. */
-export type ButtonProps = AriaButtonProps & { variant?: "default" | "primary" | "secondary" | "ghost" | "danger" };
+export type ButtonProps = AriaButtonProps & {
+  variant?: "default" | "primary" | "secondary" | "ghost" | "danger";
+  /** "small" matches the small ChoiceGroup, Select and FilterChip, for a
+   * toolbar or a header; still at least 24 px tall (WCAG 2.5.8). */
+  size?: ControlSize;
+};
 
-export function Button({ variant = "default", className, ...rest }: ButtonProps) {
-  return <AriaButton {...rest} className={`stoa-button stoa-button--${variant} ${className ?? ""}`.trim()} />;
+export function Button({ variant = "default", size = "regular", className, ...rest }: ButtonProps) {
+  const sized = size === "small" ? " stoa-button--small" : "";
+  return <AriaButton {...rest} className={`stoa-button stoa-button--${variant}${sized} ${className ?? ""}`.trim()} />;
 }
 
 export type Choice<T extends Key> = { id: T; label: ReactNode };

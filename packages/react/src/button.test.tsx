@@ -1,6 +1,8 @@
 // @vitest-environment jsdom
 // Button variants: every variant is a button in every state, and the state
 // is on the element for the stylesheet to draw.
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { act, cleanup, fireEvent, render, screen } from "@testing-library/react";
 import { Button, I18nProvider, type ButtonProps } from "./index";
@@ -75,5 +77,19 @@ describe("Button in a right-to-left page", () => {
       </I18nProvider>,
     );
     expect(screen.getByRole("button", { name: "حذف" }).className).toContain("stoa-button--danger");
+  });
+});
+
+describe("Button, small", () => {
+  it("adds the small size's class, which the stylesheet sizes with the other small controls", () => {
+    render(
+      <Button variant="ghost" size="small">
+        Export
+      </Button>,
+    );
+    expect(screen.getByRole("button", { name: "Export" }).className.split(" ")).toEqual(["stoa-button", "stoa-button--ghost", "stoa-button--small"]);
+    const css = readFileSync(join(__dirname, "styles.css"), "utf8");
+    const rule = css.slice(css.indexOf("/* The small size, for toolbars and headers. */"));
+    expect(rule.slice(0, rule.indexOf("{"))).toContain(".stoa-button--small");
   });
 });
