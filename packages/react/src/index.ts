@@ -35,6 +35,7 @@ export { Callout, type CalloutProps, type FeedbackTone } from "./Callout";
 export { EmptyState, type EmptyStateProps } from "./EmptyState";
 export { DEFAULT_TOAST_TIMEOUT, ToastQueue, ToastRegion, type ToastAction, type ToastOptions, type ToastRegionProps } from "./Toast";
 export { PageShell, type PageShellProps } from "./PageShell";
+export { ScrollArea, type ScrollAreaProps } from "./ScrollArea";
 
 // Controls: tags and filter chips, switches and checkboxes, the general
 // slider, the toolbar, keyboard shortcuts, and the theme and language

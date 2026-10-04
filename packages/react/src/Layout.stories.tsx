@@ -5,6 +5,7 @@ import { ChoiceGroup } from "./Controls";
 import { Disclosure } from "./Disclosure";
 import { StatusBadge } from "./Form";
 import { Panel, StatBar } from "./Panel";
+import { ScrollArea } from "./ScrollArea";
 
 const meta: Meta = { title: "Layout/Panel" };
 export default meta;
@@ -78,4 +79,22 @@ export const Header: StoryObj = {
     );
   },
   parameters: { layout: "fullscreen" },
+};
+
+/** A scrolling box with nothing focusable inside: the label makes it a
+ * region and a Tab stop, so the keyboard can scroll it. Its scrollbar is
+ * drawn like every other one, in a reserved lane. */
+export const Scrolling: StoryObj = {
+  render: () => (
+    <Panel title="Event log">
+      <ScrollArea label="Event log" className="story-scroll">
+        {Array.from({ length: 40 }, (_, i) => (
+          <div key={i}>
+            09:30:{String(i).padStart(2, "0")} order {1000 + i} accepted
+          </div>
+        ))}
+      </ScrollArea>
+      <style>{".story-scroll { max-block-size: calc(var(--stoa-space-12) * 3); }"}</style>
+    </Panel>
+  ),
 };

@@ -52,10 +52,11 @@ follow as the products need them.
   the current numbers, and any failure that is accepted for a while is
   recorded in `packages/tokens/known-violations.json`, which is empty:
   every enforced check passes in both themes and every density. Body
-  text meets 7:1 on both surfaces. Eighteen measurements are reported but
-  not enforced, each with its reason in `pairs.mjs`; ten of them are
+  text meets 7:1 on both surfaces. Twenty measurements are reported but
+  not enforced, each with its reason in `pairs.mjs`; twelve of them are
   below their threshold: the decorative `border` rule, the translucent
-  depth bars (their sizes are printed beside them), and the lightness gap
+  depth bars (their sizes are printed beside them), the scrollbar thumb
+  (kept quiet on purpose), and the lightness gap
   between up and down (told apart by sign and shape, and by hue for every
   colour-vision model checked).
 - **Motion explains a change of state** and follows the user's
