@@ -6,6 +6,26 @@
   overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; padding: 0;
 }
 
+/* Scrollbars: every scrollbar on a Stoa page alike, thin, a quiet thumb
+   on the page background. Set on every box rather than inherited, so a
+   box under its own data-theme (a preview frame, a dark panel) draws its
+   own theme's colours; :where keeps the rule at zero specificity, so a
+   page can still restyle one scrollbar. */
+:where(:root), :where(:root) * {
+  scrollbar-color: var(--stoa-color-scrollbar-thumb) var(--stoa-color-scrollbar-track);
+  scrollbar-width: thin;
+}
+
+/* ScrollArea: a box that scrolls with its scrollbar in a reserved lane, so
+   content does not move when it starts or stops overflowing. Its size
+   comes from the parent or a class. */
+.stoa-scroll-area { min-inline-size: 0; min-block-size: 0; overflow: auto; scrollbar-gutter: stable; }
+.stoa-scroll-area:focus { outline: none; }
+.stoa-scroll-area:focus-visible {
+  outline: var(--stoa-focus-width) solid var(--stoa-color-focus);
+  outline-offset: calc(-1 * var(--stoa-focus-width));
+}
+
 .stoa-panel {
   background: var(--stoa-color-surface);
   border: 1px solid var(--stoa-color-border);
@@ -402,6 +422,16 @@
   position: relative; display: flex; flex-direction: column; min-block-size: 100%;
   background: var(--stoa-color-bg); color: var(--stoa-color-text);
 }
+/* The region under the header: main and the footer. With a fixed header
+   the shell is the height of the window and this region scrolls, so the
+   header never moves, the scrollbar starts below it, and the scrollbar's
+   lane is reserved whether or not the page overflows. */
+.stoa-page-shell__scroll { flex: 1; display: flex; flex-direction: column; min-block-size: 0; }
+.stoa-page-shell--fixed-header { block-size: 100dvh; min-block-size: 0; }
+.stoa-page-shell--fixed-header > .stoa-page-shell__scroll { overflow-y: auto; scrollbar-gutter: stable; }
+/* Focused only by script, for the scroll keys; the page itself is not a
+   control, so it shows no ring. */
+.stoa-page-shell__scroll:focus { outline: none; }
 .stoa-page-shell__main { flex: 1; padding: var(--stoa-space-4); }
 /* Focus lands here from the skip link; the ring shows that it did. */
 .stoa-page-shell__main:focus { outline: none; }

@@ -251,3 +251,23 @@ export const PageShellFrame: StoryObj = {
   ),
   parameters: { layout: "fullscreen" },
 };
+
+/** A long page: the header stays at the top, the page scrolls under it,
+ * and the scrollbar starts below the header in its own lane. */
+export const PageShellLongPage: StoryObj = {
+  render: () => (
+    <PageShell
+      header={<AppHeader title="Tyche Replay" subtitle="AAPL on IEX" actions={<Button>Settings</Button>} />}
+      footer="Data provided for free by IEX."
+    >
+      <Column>
+        {Array.from({ length: 24 }, (_, i) => (
+          <Panel key={i} title={`Session ${i + 1}`}>
+            AAPL on IEX, one trading day replayed from the recorded messages.
+          </Panel>
+        ))}
+      </Column>
+    </PageShell>
+  ),
+  parameters: { layout: "fullscreen" },
+};
