@@ -31,7 +31,7 @@ const preview: Preview = {
     },
     lang: {
       description: "Language of Stoa's words, and its digits",
-      toolbar: { title: "Language", items: ["en", "ar"], dynamicTitle: true },
+      toolbar: { title: "Language", items: ["en", "ru", "ar"], dynamicTitle: true },
     },
   },
   initialGlobals: { theme: "light", density: "regular", dir: "ltr", lang: "en" },
@@ -45,7 +45,7 @@ const preview: Preview = {
       // Arabic states its numbering system: "ar" alone formats with Latin
       // digits in current ICU data.
       return (
-        <I18nProvider locale={ctx.globals.lang === "ar" ? "ar-u-nu-arab" : "en-US"}>
+        <I18nProvider locale={ctx.globals.lang === "ar" ? "ar-u-nu-arab" : ctx.globals.lang === "ru" ? "ru-RU" : "en-US"}>
           <Story />
         </I18nProvider>
       );
