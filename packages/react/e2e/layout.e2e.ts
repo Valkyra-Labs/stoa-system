@@ -100,3 +100,37 @@ test("a key an application claims does not scroll the page", async ({ page }) =>
   await page.keyboard.press("PageDown");
   await expect.poll(() => scroll.evaluate((el) => el.scrollTop)).toBeGreaterThan(0);
 });
+
+test("a long page with nothing to focus makes the region a Tab stop, and a control in it removes the stop", async ({ page }) => {
+  const scroll = await openLongPage(page);
+  await expect(scroll).toHaveAttribute("tabindex", "0");
+  await page.keyboard.press("Tab"); // the skip link
+  await page.keyboard.press("Tab"); // the header's button
+  await expect(page.getByRole("button", { name: "Settings" })).toBeFocused();
+  await page.keyboard.press("Tab");
+  await expect(scroll).toBeFocused();
+  await page.keyboard.press("PageDown");
+  await expect.poll(() => scroll.evaluate((el) => el.scrollTop)).toBeGreaterThan(0);
+  await page.evaluate(() => {
+    const button = document.createElement("button");
+    button.textContent = "Open session";
+    document.querySelector("main")!.prepend(button);
+  });
+  await expect(scroll).not.toHaveAttribute("tabindex");
+});
+
+test("the page keys scroll the page while a control in the header has focus", async ({ page }) => {
+  const scroll = await openLongPage(page);
+  await page.getByRole("button", { name: "Settings" }).focus();
+  await page.keyboard.press("PageDown");
+  await expect.poll(() => scroll.evaluate((el) => el.scrollTop)).toBeGreaterThan(0);
+  await page.keyboard.press("Home");
+  await expect.poll(() => scroll.evaluate((el) => el.scrollTop)).toBe(0);
+  await expect(page.getByRole("button", { name: "Settings" })).toBeFocused();
+});
+
+test("a short page gets no extra Tab stop", async ({ page }) => {
+  await page.goto(story("feedback-feedback-and-layout--page-shell-frame"));
+  await expect(page.getByRole("banner")).toBeVisible();
+  await expect(page.locator(".stoa-page-shell__scroll")).not.toHaveAttribute("tabindex");
+});
