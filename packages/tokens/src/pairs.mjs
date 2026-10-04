@@ -125,6 +125,13 @@ export const NON_TEXT_PAIRS = [
     enforced: false,
     reason: "The same rules on the page background; reported for the same reason.",
   },
+  {
+    fg: "scrollbar-thumb",
+    bg: "scrollbar-track",
+    min: NON_TEXT,
+    enforced: false,
+    reason: "The thumb of every scrollbar on a Stoa page. Stoa sets its colour, so the exemption 1.4.11 gives unmodified browser controls does not apply; the thumb is kept quiet on purpose and 3:1 is not claimed. Reported so the shortfall stays visible.",
+  },
 ];
 
 /** The rising and falling colours, which have to stay apart under every

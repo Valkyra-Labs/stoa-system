@@ -68,7 +68,7 @@ test("the rule set covers the pair lists in both themes and every density", () =
   // One luminance ratio plus one CIEDE2000 per colour-vision model, per theme.
   assert.equal(perRule(RULES.upDown).length, (1 + CVD_MODELS.length) * 2);
   assert.equal(perRule(RULES.targetSize).length, TARGETS.length * 3);
-  assert.equal(results.length, 79);
+  assert.equal(results.length, 81);
 });
 
 test("a pair whose background is a wash is measured over the colour behind it", () => {

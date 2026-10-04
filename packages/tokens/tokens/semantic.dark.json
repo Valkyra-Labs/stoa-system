@@ -18,6 +18,8 @@
     "ask": { "$value": "{color.red.400}" },
     "up-wash": { "$value": "{color.teal.wash}" },
     "down-wash": { "$value": "{color.red.wash}" },
-    "warning": { "$value": "{color.amber.500}" }
+    "warning": { "$value": "{color.amber.500}" },
+    "scrollbar-thumb": { "$value": "{color.neutral.800}" },
+    "scrollbar-track": { "$value": "{color.bg}" }
   }
 }
