@@ -333,7 +333,7 @@ export function App() {
     <div className="pg-page">
       <AppHeader
         title="Stoa playground"
-        subtitle="stoa-default, light and dark, against two dense screens"
+        subtitle="Dense components on stoa-default"
         actions={
           <ChoiceGroup<ChromeTheme>
             label="Playground theme"
