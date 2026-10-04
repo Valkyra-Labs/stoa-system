@@ -7,7 +7,7 @@
     "Empty: stoa-default passes every enforced rule. Nothing here is a reported-only measurement:",
     "those are in dist/verify.json and never fail a test."
   ],
-  "measuredOn": "4b1fad061853b2a20df0366d0e4c7af0bb7db8a8",
+  "measuredOn": "a51f3645b883942f67169b5865387634e7e6325a",
   "measuredOnNote": "The list was emptied on the commit after this one, which changes the token values that failed.",
   "tolerance": 0.02,
   "violations": []

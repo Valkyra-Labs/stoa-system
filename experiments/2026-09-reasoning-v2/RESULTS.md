@@ -4,8 +4,8 @@
 coder.** The pre-registered check (the owner's blind coding of 72 files,
 Cohen's kappa of at least 0.6) was not carried out, for the reason in
 "The archetype variable" below; see the dated deviation in PROTOCOL.md. Run 2026-09-27, protocol `PROTOCOL.md`
-(registered in 73b1574), generations merged in PR 7 (6475c3f), analysis
-on 33c41ab.
+(registered in 73b1574), generations merged in PR 7 (67d1846), analysis
+on 4dc3620.
 
 ## Run
 

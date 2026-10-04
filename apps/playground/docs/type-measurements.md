@@ -2,7 +2,7 @@
 
 Everything here was measured with the font engine in
 `apps/playground/src/type/`, at commit
-`7ef6f8499ef8127666da4efc26d1a7870f78d4df`, with HarfBuzz 14.5.0 as
+`0577dcf7fd9be752abd61e3f8e7b9423dabd57e4`, with HarfBuzz 14.5.0 as
 `harfbuzzjs@1.6.2` reports it. The tables were produced by
 
 ```
@@ -82,7 +82,7 @@ What the brief states, and what this says:
   a contextual alternate gives U+0667 a 481-unit form among other digits
   and a 531-unit form on its own. Both are reported: the verdict is about
   the glyphs' own advances, and the run is recorded beside it. The run was
-  re-measured at commit `1de80ba99e44a8a1664d8134b13dc25d8e3f5151`, in the
+  re-measured at commit `139b3143afc548b08e6cce8501fa5662ecf0f0aa`, in the
   full release and in the Fontsource subset, after the engine began putting
   a right-to-left run back in logical order; HarfBuzz returns it in visual
   order, and the earlier reading listed it back to front.

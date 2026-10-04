@@ -19,10 +19,10 @@ as overrides on top of it, once the base passes every rule.
 
 1. **Base theme.** Tune stoa-default's light and dark in the playground
    and write the result back to the token files. Every enforced check
-   passes since d014714; what is left is taste, not compliance.
+   passes since 75bf53f; what is left is taste, not compliance.
 2. **Migration.** Done: `known-violations.json` emptied by fixing, not by
-   loosening (d014714); tabular Arabic-Indic digits in the numeric face
-   (555e82d); components read the motion and line-height tokens, with no
+   loosening (75bf53f); tabular Arabic-Indic digits in the numeric face
+   (afaabb2); components read the motion and line-height tokens, with no
    hard-coded literals left in the token map. Open: token sources to
    DTCG 2025.10; light/dark times density in the build; Heatmap height
    from the density tokens (the Tyche demo derives it itself for now).

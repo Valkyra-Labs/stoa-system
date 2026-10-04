@@ -1,7 +1,7 @@
 {
   "name": "stoa-default",
   "savedAt": "2026-10-03T17:35:04.000Z",
-  "commit": "bec55003b331786ae21742bf1b44fb824c6c909f",
+  "commit": "1013a82dd2b9c52c6595cbf852b5fe86cbe32f0e",
   "dirty": false,
   "base": "stoa-default: the token files of packages/tokens at this commit",
   "overrides": {},
