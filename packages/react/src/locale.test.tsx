@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 import { afterEach, describe, expect, it } from "vitest";
 import { cleanup, render, screen } from "@testing-library/react";
-import { I18nProvider, TradeTable, describeBook, parseBook, stoaFormat } from "./index";
+import { I18nProvider, Metric, TradeTable, describeBook, parseBook, stoaFormat } from "./index";
 
 afterEach(cleanup);
 
@@ -17,6 +17,16 @@ describe("stoaFormat", () => {
   it("rewrites the digits and the decimal point of a preformatted time", () => {
     expect(stoaFormat(ARABIC).digits("14:30:17.200")).toBe("١٤:٣٠:١٧٫٢٠٠");
     expect(stoaFormat("en-US").digits("14:30:17.200")).toBe("14:30:17.200");
+  });
+
+  it("rewrites only numbers in preformatted text: a full stop after a word, or between parts of a date, stays", () => {
+    const russian = stoaFormat("ru-RU");
+    expect(russian.digits("4 сент. 2026 г.")).toBe("4 сент. 2026 г.");
+    expect(russian.digits("1.5 ч.")).toBe("1,5 ч.");
+    expect(russian.digits("04.09.2026")).toBe("04.09.2026");
+    const arabic = stoaFormat(ARABIC);
+    expect(arabic.digits("v1.2.3")).toBe("v١.٢.٣");
+    expect(arabic.digits("Done. 2.5 s.")).toBe("Done. ٢٫٥ s.");
   });
 
   it("describes the book in the locale's words and digits", () => {
@@ -39,5 +49,16 @@ describe("TradeTable under a locale", () => {
     expect(screen.getByText("بيع").className).toBe("stoa-down");
     expect(screen.getByText("١٬٢٠٠")).toBeTruthy();
     expect(screen.getByText("١٠:٠٠:٠١٫٥٠٠")).toBeTruthy();
+  });
+});
+
+describe("Metric with preformatted text", () => {
+  it("keeps the full stops of a Russian date", () => {
+    render(
+      <I18nProvider locale="ru-RU">
+        <Metric label="Погашение" value="4 сент. 2026 г." />
+      </I18nProvider>,
+    );
+    expect(screen.getByText("4 сент. 2026 г.").className).toBe("stoa-metric__number");
   });
 });

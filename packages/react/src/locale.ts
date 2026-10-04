@@ -385,11 +385,18 @@ export type StoaFormat = {
   /** A whole number with the locale's grouping and digits. */
   integer(value: number): string;
   /** A preformatted string (a time of day, for example) with its Latin
-   * digits and decimal point rewritten in the locale's. */
+   * digits rewritten in the locale's, and the decimal point of each
+   * decimal number ("17.200", "2.5") in the locale's decimal separator.
+   * Any other full stop stays: one after a word ("сент."), and those of a
+   * dotted sequence of numbers ("04.09.2026", "1.2.3"). */
   digits(text: string): string;
 };
 
 const formats = new Map<string, StoaFormat>();
+
+/** A decimal number in Latin digits: digits, one full stop, digits, and
+ * not part of a longer dotted sequence. */
+const DECIMAL_NUMBER = /(?<![\d.])\d+\.\d+(?!\.?\d)/g;
 
 /** The formats for a locale, built once per locale. */
 export function stoaFormat(locale: string): StoaFormat {
@@ -408,13 +415,13 @@ export function stoaFormat(locale: string): StoaFormat {
   const plain = new Intl.NumberFormat(locale, { useGrouping: false });
   const digitMap = new Map<string, string>(Array.from({ length: 10 }, (_, d) => [String(d), plain.format(d)]));
   const point = decimalFormat(1).formatToParts(1.5).find((part) => part.type === "decimal")?.value ?? ".";
-  digitMap.set(".", point);
   const format: StoaFormat = {
     locale,
     messages: messagesFor(locale),
     decimal: (value, fractionDigits) => decimalFormat(fractionDigits).format(value),
     integer: (value) => integer.format(value),
-    digits: (text) => text.replace(/[0-9.]/g, (character) => digitMap.get(character) ?? character),
+    digits: (text) =>
+      text.replace(DECIMAL_NUMBER, (number) => number.replace(".", point)).replace(/[0-9]/g, (digit) => digitMap.get(digit) ?? digit),
   };
   formats.set(locale, format);
   return format;

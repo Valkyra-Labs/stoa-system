@@ -11,8 +11,9 @@ export type MetricThreshold = {
 
 export type MetricProps = {
   label: string;
-  /** A number, formatted in the locale's digits, or text whose digits are
-   * rewritten in them. */
+  /** A number, formatted in the locale's digits, or preformatted text
+   * whose numbers are rewritten in them (`digits`): a date such as "4 сент.
+   * 2026 г." keeps its full stops. */
   value: number | string;
   /** Decimals shown for a numeric value; 0 by default. */
   fractionDigits?: number;
