@@ -1,10 +1,10 @@
 // @vitest-environment jsdom
-import React from "react";
+import React, { createRef } from "react";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { cleanup, fireEvent, render, screen } from "@testing-library/react";
 
 afterEach(cleanup);
-import { StatusBadge, Tabs, TextField } from "./index";
+import { I18nProvider, StatusBadge, Tabs, TextField } from "./index";
 
 describe("StatusBadge", () => {
   it("carries a symbol and a word, not only a colour", () => {
@@ -35,6 +35,48 @@ describe("TextField", () => {
     const ids = screen.getByLabelText("Colour").getAttribute("aria-describedby")?.split(" ") ?? [];
     expect(ids).toContain("field-notes");
     expect(ids.map((id) => document.getElementById(id)?.textContent)).toContain("--stoa-color-text");
+  });
+});
+
+describe("TextField: ref, invalid state and search", () => {
+  it("hands its input to a ref, so a caller can focus it", () => {
+    const ref = createRef<HTMLInputElement>();
+    render(<TextField ref={ref} label="Symbol" value="" onChange={() => {}} />);
+    expect(ref.current).toBe(screen.getByRole("textbox", { name: "Symbol" }));
+    ref.current!.focus();
+    expect(document.activeElement).toBe(ref.current);
+  });
+
+  it("marks the input invalid and reads the error message as its description, after its own", () => {
+    const { rerender } = render(<TextField label="View name" value="" onChange={() => {}} description="Up to 40 letters" />);
+    const input = screen.getByRole("textbox", { name: "View name" });
+    expect(input.getAttribute("aria-invalid")).toBeNull();
+    expect(screen.queryByText("A view needs a name.")).toBeNull();
+    rerender(<TextField label="View name" value="" onChange={() => {}} description="Up to 40 letters" isInvalid errorMessage="A view needs a name." />);
+    expect(input.getAttribute("aria-invalid")).toBe("true");
+    const error = screen.getByText("A view needs a name.");
+    expect(error.className).toBe("stoa-field__error");
+    const described = (input.getAttribute("aria-describedby") ?? "").split(" ").map((id) => document.getElementById(id)?.textContent);
+    expect(described).toEqual(["Up to 40 letters", "A view needs a name."]);
+    expect(input.closest(".stoa-field")?.hasAttribute("data-invalid")).toBe(true);
+  });
+
+  it("is a search box with type search", () => {
+    render(<TextField type="search" label="Find an issue" value="" onChange={() => {}} />);
+    const box = screen.getByRole("searchbox", { name: "Find an issue" });
+    expect(box.getAttribute("type")).toBe("search");
+  });
+
+  it("reads its error in Arabic in a right-to-left page", () => {
+    render(
+      <I18nProvider locale="ar-u-nu-arab">
+        <div dir="rtl">
+          <TextField label="اسم العرض" value="" onChange={() => {}} isInvalid errorMessage="يحتاج العرض إلى اسم." />
+        </div>
+      </I18nProvider>,
+    );
+    const input = screen.getByRole("textbox", { name: "اسم العرض" });
+    expect(document.getElementById(input.getAttribute("aria-describedby")!)?.textContent).toBe("يحتاج العرض إلى اسم.");
   });
 });
 

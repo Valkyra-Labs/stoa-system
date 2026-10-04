@@ -249,6 +249,8 @@
 }
 .stoa-field__input[data-focused] { outline: var(--stoa-focus-width) solid var(--stoa-color-focus); outline-offset: 0; }
 .stoa-field__description { font-size: var(--stoa-font-size-2xs); color: var(--stoa-color-text-muted); }
+.stoa-field__input[data-invalid] { border-color: var(--stoa-color-down); }
+.stoa-field__error { font-size: var(--stoa-font-size-xs); color: var(--stoa-color-down); }
 
 .stoa-badge { display: inline-flex; gap: var(--stoa-space-1); align-items: baseline; font-size: var(--stoa-font-size-xs); font-weight: var(--stoa-font-weight-medium); }
 .stoa-badge--positive { color: var(--stoa-color-up); }

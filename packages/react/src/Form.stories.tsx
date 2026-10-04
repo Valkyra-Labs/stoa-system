@@ -25,6 +25,38 @@ export const Fields: StoryObj = {
   },
 };
 
+/** An invalid value: the input is marked invalid and the message under
+ * it says what is wrong, read after the description. */
+export const TextFieldInvalid: StoryObj = {
+  render: () => {
+    const [name, setName] = useState("");
+    return (
+      <div style={{ display: "grid", gap: "var(--stoa-space-3)", maxInlineSize: 320 }}>
+        <TextField
+          label="View name"
+          value={name}
+          onChange={setName}
+          description="Up to 40 letters"
+          isInvalid={name.trim() === ""}
+          errorMessage="A view needs a name."
+        />
+      </div>
+    );
+  },
+};
+
+/** A search box (role searchbox). */
+export const TextFieldSearch: StoryObj = {
+  render: () => {
+    const [query, setQuery] = useState("");
+    return (
+      <div style={{ display: "grid", gap: "var(--stoa-space-3)", maxInlineSize: 320 }}>
+        <TextField type="search" label="Find an issue" value={query} onChange={setQuery} placeholder="ISIN or name" />
+      </div>
+    );
+  },
+};
+
 /** A typed value is rounded to the step by default, as React Aria does;
  * with `keepTypedValue` it is kept as typed (still within the range),
  * while the arrow keys move by the step. Under the Arabic locale, digits
