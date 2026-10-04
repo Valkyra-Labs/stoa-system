@@ -55,6 +55,9 @@ const COMPONENTS: Record<ScreenKey, Record<string, string>> = {
     LogView: ".stoa-code--log",
     CodeView: ".stoa-code--numbered",
     Kbd: ".stoa-kbd",
+    RecordList: ".stoa-record-list[role=listbox]",
+    DescriptionList: ".stoa-description-list",
+    Tooltip: ".stoa-tooltip-term",
   },
   charts: {
     StatBar: ".stoa-statbar",
@@ -116,7 +119,7 @@ const STATE_MARKS: Record<Exclude<ScreenKey, "market">, Record<Exclude<StateKey,
   },
   overlays: {
     loading: [".stoa-skeleton"],
-    empty: [".stoa-empty-state", ".stoa-reorder__empty"],
+    empty: [".stoa-empty-state", ".stoa-reorder__empty", ".stoa-record-list__empty"],
     error: [".stoa-callout--negative[role=alert]", ".stoa-step--error"],
   },
   charts: {
@@ -130,6 +133,33 @@ const STATE_MARKS: Record<Exclude<ScreenKey, "market">, Record<Exclude<StateKey,
     error: [".stoa-callout--negative[role=alert]"],
   },
 };
+
+test("today's orders show the picked order's details, and its time in force is explained in a tooltip", async ({ page }) => {
+  await page.goto("/");
+  await showScreen(page, "overlays");
+  const first = frames(page)[0]!;
+  const list = first.getByRole("listbox", { name: "Today's orders" });
+  const options = list.getByRole("option");
+  await expect(options).toHaveCount(5);
+  await expect(options.first()).toHaveAttribute("aria-selected", "true");
+  const second = options.nth(1);
+  const id = (await second.locator(".stoa-record-list__label").textContent())!;
+  await second.click();
+  await expect(second).toHaveAttribute("aria-selected", "true");
+  await page.keyboard.press("ArrowUp");
+  await expect(options.first()).toBeFocused();
+  // The details follow the pick, not the focus.
+  const details = first.locator(".pg-master-detail .stoa-description-list");
+  await expect(details).toBeVisible();
+  expect(id).toMatch(/^ORD-/);
+  const term = first.getByRole("button", { name: "Time in force" });
+  await term.focus();
+  await expect(page.getByRole("tooltip")).toHaveText(/until the close of today's session/);
+  await page.keyboard.press("Escape");
+  await expect(page.getByRole("tooltip")).toHaveCount(0);
+  // The other frame keeps its own pick.
+  await expect(frames(page)[1]!.getByRole("listbox", { name: "Today's orders" }).getByRole("option").first()).toHaveAttribute("aria-selected", "true");
+});
 
 test("State switches what every component screen shows, in both frames, and Retry brings the data back", async ({ page }) => {
   await page.goto("/");

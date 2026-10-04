@@ -150,6 +150,12 @@ export type ComponentWords = {
     watchlistTitle: string;
     watchlistLabel: string;
     watchlistEmptyText: string;
+    ordersTitle: string;
+    ordersLabel: string;
+    ordersEmptyText: string;
+    tifTerm: string;
+    tifText: string;
+    tifDay: string;
     sectors: { technology: string; energy: string; banks: string; retail: string; staples: string };
     stepsTitle: string;
     stepsLabel: string;
@@ -363,6 +369,12 @@ const EN: ComponentWords = {
     watchlistTitle: "Watchlist",
     watchlistLabel: "Watchlist order",
     watchlistEmptyText: "No symbols on the watchlist.",
+    ordersTitle: "Today's orders",
+    ordersLabel: "Today's orders",
+    ordersEmptyText: "No orders today.",
+    tifTerm: "Time in force",
+    tifText: "How long the order stays working: until the close of today's session.",
+    tifDay: "Day",
     sectors: { technology: "Technology", energy: "Energy", banks: "Banks", retail: "Retail", staples: "Consumer staples" },
     stepsTitle: "Settlement",
     stepsLabel: "Settlement steps",
@@ -588,6 +600,12 @@ const RU: ComponentWords = {
     watchlistTitle: "Список наблюдения",
     watchlistLabel: "Порядок списка наблюдения",
     watchlistEmptyText: "В списке наблюдения нет тикеров.",
+    ordersTitle: "Заявки за день",
+    ordersLabel: "Заявки за день",
+    ordersEmptyText: "Сегодня заявок нет.",
+    tifTerm: "Срок действия",
+    tifText: "Сколько заявка остаётся активной: до конца сегодняшней сессии.",
+    tifDay: "День",
     sectors: { technology: "Технологии", energy: "Энергетика", banks: "Банки", retail: "Розница", staples: "Товары первой необходимости" },
     stepsTitle: "Расчёты",
     stepsLabel: "Шаги расчётов",
@@ -813,6 +831,12 @@ const AR: ComponentWords = {
     watchlistTitle: "قائمة المتابعة",
     watchlistLabel: "ترتيب قائمة المتابعة",
     watchlistEmptyText: "لا رموز في قائمة المتابعة.",
+    ordersTitle: "أوامر اليوم",
+    ordersLabel: "أوامر اليوم",
+    ordersEmptyText: "لا أوامر اليوم.",
+    tifTerm: "مدة السريان",
+    tifText: "المدة التي يبقى فيها الأمر قائمًا: حتى نهاية جلسة اليوم.",
+    tifDay: "يوم",
     sectors: { technology: "التقنية", energy: "الطاقة", banks: "المصارف", retail: "التجزئة", staples: "السلع الأساسية" },
     stepsTitle: "التسوية",
     stepsLabel: "خطوات التسوية",

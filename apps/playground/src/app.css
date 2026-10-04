@@ -394,6 +394,15 @@ code {
 }
 
 /* A watchlist row: the symbol, its sector taking the room, the price. */
+/* Today's orders: the list and the picked order's details side by side,
+   one under the other where the column is narrow. */
+.pg-master-detail {
+  display: grid;
+  gap: var(--stoa-space-3);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, calc(var(--stoa-space-12) * 4)), 1fr));
+  align-items: start;
+}
+
 .pg-watch {
   display: flex;
   align-items: baseline;

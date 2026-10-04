@@ -37,7 +37,9 @@ pnpm --filter playground dev   # http://localhost:5173
     and Skeleton and EmptyState in their states.
   - Overlays and lists: Dialog, Sheet, AlertDialog and ShortcutsDialog
     from a toolbar or a key, a ReorderableList watchlist, a StepList of
-    settlement steps, a LogView and a CodeView.
+    settlement steps, today's orders as a RecordList with the picked
+    order in a DescriptionList (its time in force explained in a
+    Tooltip), a LogView and a CodeView.
   - Charts and tables: a StatBar of Metrics, a Metric with a threshold, a
     LineChart with its data table, an EventStrip and a Table.
   - Data grid: a DataGrid of orders with selection, sorting, an editable
@@ -45,7 +47,7 @@ pnpm --filter playground dev   # http://localhost:5173
 - The State setting (Live, Loading, Empty, Error) drives every component
   screen at once: skeletons and progress while loading, empty states
   (EmptyState, and the empty texts of Table, LineChart, EventStrip,
-  ReorderableList and DataGrid), and a negative Callout with a Retry that
+  ReorderableList, RecordList and DataGrid), and a negative Callout with a Retry that
   goes back to Live. Grid rows (300, 5,000, 50,000) shows on the data grid
   screen only. Market follows the stream in every state. A snapshot
   records the screen settings beside the panels' state.
