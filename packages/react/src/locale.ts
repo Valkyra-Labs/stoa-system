@@ -36,6 +36,14 @@ export type StoaMessages = {
   loading: string;
   /** A progress bar's value as an amount out of a total ("1.2 MB of 4.8 MB"). */
   progressOf: (value: string, max: string) => string;
+  /** The tone of a callout or a toast as a word, read before its text, so
+   * the tone is never told by colour alone. */
+  toneInfo: string;
+  tonePositive: string;
+  toneWarning: string;
+  toneNegative: string;
+  /** The name of a button that closes a callout or a toast. */
+  dismiss: string;
 };
 
 const EN: StoaMessages = {
@@ -58,6 +66,11 @@ const EN: StoaMessages = {
   book: (bid, ask, spread) => `${bid}, ${ask}${spread ? `, ${spread}` : ""}.`,
   loading: "Loading…",
   progressOf: (value, max) => `${value} of ${max}`,
+  toneInfo: "Note",
+  tonePositive: "Success",
+  toneWarning: "Warning",
+  toneNegative: "Error",
+  dismiss: "Dismiss",
 };
 
 const AR: StoaMessages = {
@@ -80,6 +93,11 @@ const AR: StoaMessages = {
   book: (bid, ask, spread) => `${bid}، ${ask}${spread ? `، ${spread}` : ""}.`,
   loading: "جارٍ التحميل…",
   progressOf: (value, max) => `${value} من ${max}`,
+  toneInfo: "ملاحظة",
+  tonePositive: "تم بنجاح",
+  toneWarning: "تحذير",
+  toneNegative: "خطأ",
+  dismiss: "إغلاق",
 };
 
 /** Stoa's words for a locale: Arabic for any "ar" tag, English otherwise. */

@@ -310,3 +310,56 @@
   from { inset-inline-start: -40%; }
   to { inset-inline-start: 100%; }
 }
+
+/* The tone symbol of a callout or a toast, in the tone's colour: each
+   colour is checked as text on surface and on bg in pairs.mjs (info uses
+   the accent). */
+.stoa-tone-symbol {
+  inline-size: var(--stoa-space-4); flex: none;
+  text-align: center; font-weight: var(--stoa-font-weight-semibold);
+}
+.stoa-tone-symbol--info { color: var(--stoa-color-accent); }
+.stoa-tone-symbol--positive { color: var(--stoa-color-up); }
+.stoa-tone-symbol--warning { color: var(--stoa-color-warning); }
+.stoa-tone-symbol--negative { color: var(--stoa-color-down); }
+
+/* A close button: a small square Stoa button, still 24 px (WCAG 2.5.8). */
+.stoa-dismiss {
+  flex: none; display: inline-grid; place-items: center;
+  min-inline-size: var(--stoa-space-6); min-block-size: var(--stoa-space-6);
+  padding: 0; line-height: var(--stoa-font-line-height-tight);
+}
+
+/* Callout: on the surface, with a thick start border in the tone's colour
+   beside the symbol. No tinted fill, so its text stays on a checked pair. */
+.stoa-callout {
+  display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: start;
+  gap: var(--stoa-space-2);
+  padding: var(--stoa-space-2) var(--stoa-space-3);
+  background: var(--stoa-color-surface); color: var(--stoa-color-text);
+  border: 1px solid var(--stoa-color-border); border-inline-start-width: var(--stoa-space-1);
+  border-radius: var(--stoa-radius-md);
+  font-size: var(--stoa-font-size-sm); line-height: var(--stoa-font-line-height-normal);
+}
+.stoa-callout__body { min-inline-size: 0; }
+.stoa-callout__title { margin: 0; font-weight: var(--stoa-font-weight-semibold); }
+.stoa-callout__text > :first-child { margin-block-start: 0; }
+.stoa-callout__text > :last-child { margin-block-end: 0; }
+.stoa-callout__action { display: flex; flex-wrap: wrap; gap: var(--stoa-space-2); margin-block-start: var(--stoa-space-2); }
+
+/* EmptyState: centred in the space the content will take. */
+.stoa-empty-state {
+  display: grid; justify-items: center; gap: var(--stoa-space-2);
+  padding: var(--stoa-space-8) var(--stoa-space-4);
+  text-align: center;
+}
+.stoa-empty-state__title { margin: 0; font-size: var(--stoa-font-size-md); font-weight: var(--stoa-font-weight-medium); color: var(--stoa-color-text); }
+.stoa-empty-state__description { margin: 0; font-size: var(--stoa-font-size-sm); color: var(--stoa-color-text-muted); }
+.stoa-empty-state__action { margin-block-start: var(--stoa-space-2); }
+
+/* The start border of a callout in the tone's colour. After the
+   callout's rules, whose `border` shorthand would reset the colour. */
+.stoa-callout--info { border-inline-start-color: var(--stoa-color-accent); }
+.stoa-callout--positive { border-inline-start-color: var(--stoa-color-up); }
+.stoa-callout--warning { border-inline-start-color: var(--stoa-color-warning); }
+.stoa-callout--negative { border-inline-start-color: var(--stoa-color-down); }
