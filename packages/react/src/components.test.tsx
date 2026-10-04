@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { act, cleanup, fireEvent, render, screen } from "@testing-library/react";
-import { ChoiceGroup, Disclosure, NumberField, Select, TimeSlider, Toggle, TradeTable } from "./index";
+import { ChoiceGroup, Disclosure, I18nProvider, NumberField, Select, TimeSlider, Toggle, TradeTable } from "./index";
 
 afterEach(cleanup);
 
@@ -124,6 +124,60 @@ describe("NumberField", () => {
     fireEvent.keyDown(input, { key: "ArrowUp" });
     expect(onChange).toHaveBeenCalledTimes(2);
     expect(screen.getByText("px").getAttribute("aria-hidden")).toBe("true");
+  });
+
+  it("takes digits typed in Latin under a locale that writes Arabic-Indic digits, and shows them in the locale's", () => {
+    const onChange = vi.fn();
+    render(
+      <I18nProvider locale="ar-u-nu-arab">
+        <NumberField label="x" value={1} onChange={onChange} />
+      </I18nProvider>,
+    );
+    const input = screen.getByRole("textbox", { name: "x" }) as HTMLInputElement;
+    expect(input.value).toBe("١");
+    fireEvent.change(input, { target: { value: "500" } });
+    expect(input.value).toBe("٥٠٠");
+    fireEvent.keyDown(input, { key: "Enter" });
+    expect(onChange).toHaveBeenLastCalledWith(500);
+    // A decimal point typed as "." is the locale's decimal separator.
+    fireEvent.change(input, { target: { value: "2.5" } });
+    expect(input.value).toBe("٢٫٥");
+    fireEvent.keyDown(input, { key: "Enter" });
+    expect(onChange).toHaveBeenLastCalledWith(2.5);
+    // Arabic-Indic digits are taken as they are, and letters still are not.
+    fireEvent.change(input, { target: { value: "٧" } });
+    expect(input.value).toBe("٧");
+    fireEvent.change(input, { target: { value: "7a" } });
+    expect(input.value).toBe("٧");
+  });
+
+  it("rounds a typed value to the step by default, as React Aria does", () => {
+    const onChange = vi.fn();
+    render(<NumberField label="amount" value={20000} minValue={0} step={10000} onChange={onChange} />);
+    const input = screen.getByRole("textbox", { name: "amount" });
+    fireEvent.change(input, { target: { value: "500" } });
+    fireEvent.keyDown(input, { key: "Enter" });
+    expect(onChange).toHaveBeenLastCalledWith(0);
+  });
+
+  it("keeps a typed value with keepTypedValue, clamped to the range, while the arrow keys still step", () => {
+    const onChange = vi.fn();
+    const { rerender } = render(
+      <NumberField label="amount" value={0} minValue={0} maxValue={50000} step={10000} keepTypedValue onChange={onChange} />,
+    );
+    const input = screen.getByRole("textbox", { name: "amount" }) as HTMLInputElement;
+    fireEvent.change(input, { target: { value: "500" } });
+    fireEvent.keyDown(input, { key: "Enter" });
+    expect(onChange).toHaveBeenLastCalledWith(500);
+    rerender(<NumberField label="amount" value={500} minValue={0} maxValue={50000} step={10000} keepTypedValue onChange={onChange} />);
+    expect(input.value).toBe("500");
+    // Off the step is not an error: the step is the arrow keys' stride.
+    expect(input.getAttribute("aria-invalid")).toBeNull();
+    fireEvent.keyDown(input, { key: "ArrowUp" });
+    expect(onChange).toHaveBeenLastCalledWith(10000);
+    fireEvent.change(input, { target: { value: "90000" } });
+    fireEvent.keyDown(input, { key: "Enter" });
+    expect(onChange).toHaveBeenLastCalledWith(50000);
   });
 
   it("reports nothing for an emptied field", () => {

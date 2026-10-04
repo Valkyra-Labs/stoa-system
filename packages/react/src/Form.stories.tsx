@@ -25,6 +25,25 @@ export const Fields: StoryObj = {
   },
 };
 
+/** A typed value is rounded to the step by default, as React Aria does;
+ * with `keepTypedValue` it is kept as typed (still within the range),
+ * while the arrow keys move by the step. Under the Arabic locale, digits
+ * typed on a Latin keyboard layout are written in Arabic-Indic digits. */
+export const NumberFieldSteps: StoryObj = {
+  render: () => {
+    const [rounded, setRounded] = useState(20000);
+    const [kept, setKept] = useState(20000);
+    return (
+      <Panel title="Amounts">
+        <div style={{ display: "grid", gap: "var(--stoa-space-3)", maxInlineSize: 320 }}>
+          <NumberField label="Rounded to 10,000" value={rounded} onChange={setRounded} minValue={0} maxValue={1000000} step={10000} />
+          <NumberField label="Kept as typed" value={kept} onChange={setKept} minValue={0} maxValue={1000000} step={10000} keepTypedValue />
+        </div>
+      </Panel>
+    );
+  },
+};
+
 /** Every tone carries a symbol and a word, never colour alone. */
 export const Badges: StoryObj = {
   render: () => (
