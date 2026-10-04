@@ -216,6 +216,8 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > ShortcutList",
           "Controls/Inputs > SliderDisabled",
           "Controls/Inputs > SliderSmall",
           "Controls/Inputs > SliderStates",
@@ -289,6 +291,8 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > ShortcutList",
           "Controls/Inputs > SliderDisabled",
           "Controls/Inputs > SliderSmall",
           "Controls/Inputs > SliderStates",
@@ -351,6 +355,8 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > ShortcutList",
           "Controls/Inputs > SliderDisabled",
           "Controls/Inputs > SliderSmall",
           "Controls/Inputs > SliderStates",
@@ -859,6 +865,8 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > ShortcutList",
           "Controls/Inputs > SliderDisabled",
           "Controls/Inputs > SliderSmall",
           "Controls/Inputs > SliderStates",
@@ -1019,6 +1027,8 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > ShortcutList",
           "Controls/Inputs > SliderDisabled",
           "Controls/Inputs > SliderSmall",
           "Controls/Inputs > SliderStates",
@@ -1297,6 +1307,8 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > ShortcutList",
           "Controls/Inputs > SliderDisabled",
           "Controls/Inputs > SliderSmall",
           "Controls/Inputs > SliderStates",
@@ -1449,6 +1461,8 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > ShortcutList",
           "Controls/Inputs > SliderDisabled",
           "Controls/Inputs > SliderSmall",
           "Controls/Inputs > SliderStates",
@@ -1529,6 +1543,11 @@
             "line": 63
           },
           {
+            "component": "Kbd",
+            "file": "packages/react/src/styles.css",
+            "line": 454
+          },
+          {
             "component": "NumberField",
             "file": "packages/react/src/styles.css",
             "line": 227
@@ -1601,6 +1620,8 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > ShortcutList",
           "Controls/Inputs > SliderDisabled",
           "Controls/Inputs > SliderSmall",
           "Controls/Inputs > SliderStates",
@@ -1701,6 +1722,8 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > ShortcutList",
           "Controls/Inputs > SliderDisabled",
           "Controls/Inputs > SliderSmall",
           "Controls/Inputs > SliderStates",
@@ -1893,6 +1916,8 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > ShortcutList",
           "Controls/Inputs > SliderDisabled",
           "Controls/Inputs > SliderSmall",
           "Controls/Inputs > SliderStates",
@@ -2091,6 +2116,8 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > ShortcutList",
           "Controls/Inputs > SliderDisabled",
           "Controls/Inputs > SliderSmall",
           "Controls/Inputs > SliderStates",
@@ -2394,6 +2421,18 @@
             "via": "--stoa-color-text"
           },
           {
+            "component": "Kbd",
+            "file": "packages/react/src/styles.css",
+            "line": 455,
+            "via": "--stoa-color-surface-sunken"
+          },
+          {
+            "component": "Kbd",
+            "file": "packages/react/src/styles.css",
+            "line": 455,
+            "via": "--stoa-color-text"
+          },
+          {
             "component": "Ladder",
             "file": "packages/react/src/Ladder.tsx",
             "line": 28,
@@ -2538,6 +2577,8 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > ShortcutList",
           "Controls/Inputs > SliderDisabled",
           "Controls/Inputs > SliderSmall",
           "Controls/Inputs > SliderStates",
@@ -2734,6 +2775,8 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > ShortcutList",
           "Controls/Inputs > SliderDisabled",
           "Controls/Inputs > SliderSmall",
           "Controls/Inputs > SliderStates",
@@ -2885,6 +2928,8 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > ShortcutList",
           "Controls/Inputs > SliderDisabled",
           "Controls/Inputs > SliderSmall",
           "Controls/Inputs > SliderStates",
@@ -2991,6 +3036,12 @@
             "component": "Heatmap",
             "file": "packages/react/src/Heatmap.tsx",
             "line": 29,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "Kbd",
+            "file": "packages/react/src/styles.css",
+            "line": 460,
             "via": "--stoa-color-text-muted"
           },
           {
@@ -3108,6 +3159,8 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > ShortcutList",
           "Controls/Inputs > SliderDisabled",
           "Controls/Inputs > SliderSmall",
           "Controls/Inputs > SliderStates",
@@ -3231,6 +3284,12 @@
             "via": "--stoa-color-text-subtle"
           },
           {
+            "component": "Kbd",
+            "file": "packages/react/src/styles.css",
+            "line": 454,
+            "via": "--stoa-color-border-strong"
+          },
+          {
             "component": "NumberField",
             "file": "packages/react/src/styles.css",
             "line": 227,
@@ -3339,6 +3398,8 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > ShortcutList",
           "Controls/Inputs > SliderDisabled",
           "Controls/Inputs > SliderSmall",
           "Controls/Inputs > SliderStates",
@@ -3488,6 +3549,12 @@
             "via": "--stoa-color-text-subtle"
           },
           {
+            "component": "Kbd",
+            "file": "packages/react/src/styles.css",
+            "line": 454,
+            "via": "--stoa-color-border-strong"
+          },
+          {
             "component": "NumberField",
             "file": "packages/react/src/styles.css",
             "line": 227,
@@ -3596,6 +3663,8 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > ShortcutList",
           "Controls/Inputs > SliderDisabled",
           "Controls/Inputs > SliderSmall",
           "Controls/Inputs > SliderStates",
@@ -3674,6 +3743,12 @@
             "component": "Heatmap",
             "file": "packages/react/src/Heatmap.tsx",
             "line": 29,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "Kbd",
+            "file": "packages/react/src/styles.css",
+            "line": 460,
             "via": "--stoa-color-text-muted"
           },
           {
@@ -3791,6 +3866,8 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > ShortcutList",
           "Controls/Inputs > SliderDisabled",
           "Controls/Inputs > SliderSmall",
           "Controls/Inputs > SliderStates",
@@ -3996,6 +4073,8 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > ShortcutList",
           "Controls/Inputs > SliderDisabled",
           "Controls/Inputs > SliderSmall",
           "Controls/Inputs > SliderStates",
@@ -4157,6 +4236,8 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > ShortcutList",
           "Controls/Inputs > SliderDisabled",
           "Controls/Inputs > SliderSmall",
           "Controls/Inputs > SliderStates",
@@ -4482,6 +4563,12 @@
             "via": "--stoa-color-text"
           },
           {
+            "component": "Kbd",
+            "file": "packages/react/src/styles.css",
+            "line": 455,
+            "via": "--stoa-color-text"
+          },
+          {
             "component": "Ladder",
             "file": "packages/react/src/Ladder.tsx",
             "line": 27,
@@ -4680,6 +4767,8 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > ShortcutList",
           "Controls/Inputs > SliderDisabled",
           "Controls/Inputs > SliderSmall",
           "Controls/Inputs > SliderStates",
@@ -4805,6 +4894,8 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > ShortcutList",
           "Controls/Inputs > SliderDisabled",
           "Controls/Inputs > SliderSmall",
           "Controls/Inputs > SliderStates",
@@ -4929,6 +5020,8 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > ShortcutList",
           "Controls/Inputs > SliderDisabled",
           "Controls/Inputs > SliderSmall",
           "Controls/Inputs > SliderStates",
@@ -5170,6 +5263,8 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > ShortcutList",
           "Controls/Inputs > SliderDisabled",
           "Controls/Inputs > SliderSmall",
           "Controls/Inputs > SliderStates",
@@ -5320,6 +5415,8 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > ShortcutList",
           "Controls/Inputs > SliderDisabled",
           "Controls/Inputs > SliderSmall",
           "Controls/Inputs > SliderStates",
@@ -5403,6 +5500,11 @@
             "line": 94
           },
           {
+            "component": "Kbd",
+            "file": "packages/react/src/styles.css",
+            "line": 455
+          },
+          {
             "component": "Select",
             "file": "packages/react/src/styles.css",
             "line": 94
@@ -5427,6 +5529,8 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > ShortcutList",
           "Controls/Inputs > SliderDisabled",
           "Controls/Inputs > SliderSmall",
           "Controls/Inputs > SliderStates",
@@ -5510,6 +5614,8 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > ShortcutList",
           "Controls/Inputs > SliderDisabled",
           "Controls/Inputs > SliderSmall",
           "Controls/Inputs > SliderStates",
@@ -5604,6 +5710,8 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > ShortcutList",
           "Controls/Inputs > SliderDisabled",
           "Controls/Inputs > SliderSmall",
           "Controls/Inputs > SliderStates",
@@ -5887,6 +5995,11 @@
             "via": "readCanvasTokens"
           },
           {
+            "component": "Kbd",
+            "file": "packages/react/src/styles.css",
+            "line": 455
+          },
+          {
             "component": "Ladder",
             "file": "packages/react/src/Ladder.tsx",
             "line": 28,
@@ -5995,6 +6108,8 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > ShortcutList",
           "Controls/Inputs > SliderDisabled",
           "Controls/Inputs > SliderSmall",
           "Controls/Inputs > SliderStates",
@@ -6080,6 +6195,11 @@
             "file": "packages/react/src/Heatmap.tsx",
             "line": 29,
             "via": "readCanvasTokens"
+          },
+          {
+            "component": "Kbd",
+            "file": "packages/react/src/styles.css",
+            "line": 460
           },
           {
             "component": "Ladder",
@@ -6180,6 +6300,8 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > ShortcutList",
           "Controls/Inputs > SliderDisabled",
           "Controls/Inputs > SliderSmall",
           "Controls/Inputs > SliderStates",
@@ -6300,6 +6422,8 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > ShortcutList",
           "Controls/Inputs > SliderDisabled",
           "Controls/Inputs > SliderSmall",
           "Controls/Inputs > SliderStates",
@@ -6375,6 +6499,8 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > ShortcutList",
           "Controls/Inputs > SliderDisabled",
           "Controls/Inputs > SliderSmall",
           "Controls/Inputs > SliderStates",
@@ -6497,6 +6623,8 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > ShortcutList",
           "Controls/Inputs > SliderDisabled",
           "Controls/Inputs > SliderSmall",
           "Controls/Inputs > SliderStates",
@@ -6773,6 +6901,8 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > ShortcutList",
           "Controls/Inputs > SliderDisabled",
           "Controls/Inputs > SliderSmall",
           "Controls/Inputs > SliderStates",
@@ -6911,6 +7041,8 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > ShortcutList",
           "Controls/Inputs > SliderDisabled",
           "Controls/Inputs > SliderSmall",
           "Controls/Inputs > SliderStates",
@@ -6961,6 +7093,11 @@
             "file": "packages/react/src/Heatmap.tsx",
             "line": 38,
             "via": "readCanvasTokens"
+          },
+          {
+            "component": "Kbd",
+            "file": "packages/react/src/styles.css",
+            "line": 456
           },
           {
             "component": "Ladder",
@@ -7016,6 +7153,8 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > ShortcutList",
           "Controls/Inputs > SliderDisabled",
           "Controls/Inputs > SliderSmall",
           "Controls/Inputs > SliderStates",
@@ -7109,6 +7248,11 @@
       "readBy": {
         "components": [
           {
+            "component": "Kbd",
+            "file": "packages/react/src/styles.css",
+            "line": 457
+          },
+          {
             "component": "Tag",
             "file": "packages/react/src/styles.css",
             "line": 300
@@ -7123,6 +7267,8 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > ShortcutList",
           "Controls/Inputs > SliderDisabled",
           "Controls/Inputs > SliderSmall",
           "Controls/Inputs > SliderStates",
@@ -7212,6 +7358,16 @@
             "line": 231
           },
           {
+            "component": "Kbd",
+            "file": "packages/react/src/styles.css",
+            "line": 456
+          },
+          {
+            "component": "Kbd",
+            "file": "packages/react/src/styles.css",
+            "line": 460
+          },
+          {
             "component": "Slider",
             "file": "packages/react/src/styles.css",
             "line": 231
@@ -7254,6 +7410,8 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > ShortcutList",
           "Controls/Inputs > SliderDisabled",
           "Controls/Inputs > SliderSmall",
           "Controls/Inputs > SliderStates",
@@ -7534,6 +7692,8 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > ShortcutList",
           "Controls/Inputs > SliderDisabled",
           "Controls/Inputs > SliderSmall",
           "Controls/Inputs > SliderStates",
@@ -7580,6 +7740,11 @@
             "line": 170
           },
           {
+            "component": "Kbd",
+            "file": "packages/react/src/styles.css",
+            "line": 456
+          },
+          {
             "component": "Panel",
             "file": "packages/react/src/styles.css",
             "line": 19
@@ -7612,6 +7777,8 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > ShortcutList",
           "Controls/Inputs > SliderDisabled",
           "Controls/Inputs > SliderSmall",
           "Controls/Inputs > SliderStates",
@@ -7798,6 +7965,8 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > ShortcutList",
           "Controls/Inputs > SliderDisabled",
           "Controls/Inputs > SliderSmall",
           "Controls/Inputs > SliderStates",
@@ -8008,6 +8177,8 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > ShortcutList",
           "Controls/Inputs > SliderDisabled",
           "Controls/Inputs > SliderSmall",
           "Controls/Inputs > SliderStates",
@@ -8103,6 +8274,8 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > ShortcutList",
           "Controls/Inputs > SliderDisabled",
           "Controls/Inputs > SliderSmall",
           "Controls/Inputs > SliderStates",
@@ -8338,6 +8511,11 @@
             "line": 445
           },
           {
+            "component": "Kbd",
+            "file": "packages/react/src/styles.css",
+            "line": 454
+          },
+          {
             "component": "NumberField",
             "file": "packages/react/src/styles.css",
             "line": 228
@@ -8415,6 +8593,8 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > ShortcutList",
           "Controls/Inputs > SliderDisabled",
           "Controls/Inputs > SliderSmall",
           "Controls/Inputs > SliderStates",
@@ -8480,6 +8660,11 @@
       "readBy": {
         "components": [
           {
+            "component": "Kbd",
+            "file": "packages/react/src/styles.css",
+            "line": 459
+          },
+          {
             "component": "Switch",
             "file": "packages/react/src/styles.css",
             "line": 347
@@ -8524,6 +8709,8 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > ShortcutList",
           "Controls/Inputs > SliderDisabled",
           "Controls/Inputs > SliderSmall",
           "Controls/Inputs > SliderStates",
@@ -8640,6 +8827,11 @@
             "component": "FilterChipGroup",
             "file": "packages/react/src/styles.css",
             "line": 331
+          },
+          {
+            "component": "Kbd",
+            "file": "packages/react/src/styles.css",
+            "line": 453
           },
           {
             "component": "NumberField",
@@ -8784,6 +8976,8 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > ShortcutList",
           "Controls/Inputs > SliderDisabled",
           "Controls/Inputs > SliderSmall",
           "Controls/Inputs > SliderStates",
@@ -8965,6 +9159,8 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > ShortcutList",
           "Controls/Inputs > SliderDisabled",
           "Controls/Inputs > SliderSmall",
           "Controls/Inputs > SliderStates",
@@ -9083,6 +9279,8 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > ShortcutList",
           "Controls/Inputs > SliderDisabled",
           "Controls/Inputs > SliderSmall",
           "Controls/Inputs > SliderStates",
@@ -9171,6 +9369,8 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > ShortcutList",
           "Controls/Inputs > SliderDisabled",
           "Controls/Inputs > SliderSmall",
           "Controls/Inputs > SliderStates",
@@ -9289,6 +9489,8 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > ShortcutList",
           "Controls/Inputs > SliderDisabled",
           "Controls/Inputs > SliderSmall",
           "Controls/Inputs > SliderStates",
@@ -9349,6 +9551,8 @@
           "Controls/Inputs > FilterChipStates",
           "Controls/Inputs > FilterChipsClearAll",
           "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > ShortcutList",
           "Controls/Inputs > SliderDisabled",
           "Controls/Inputs > SliderSmall",
           "Controls/Inputs > SliderStates",

@@ -51,3 +51,15 @@ export {
 } from "./Toggles";
 export { Slider, type SliderProps } from "./Slider";
 export { ButtonGroup, Toolbar, ToolbarSeparator, type ButtonGroupProps, type ToolbarProps } from "./Toolbar";
+export {
+  Kbd,
+  isApplePlatform,
+  isTypingTarget,
+  matchesShortcut,
+  shortcutKeys,
+  useShortcuts,
+  type KbdProps,
+  type Shortcut,
+  type ShortcutHelp,
+  type ShortcutModifier,
+} from "./Shortcuts";

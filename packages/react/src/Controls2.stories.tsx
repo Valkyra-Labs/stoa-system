@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useState } from "react";
 import { FilterChip, FilterChipGroup, Tag } from "./Chips";
 import { Button } from "./Controls";
+import { Kbd, useShortcuts } from "./Shortcuts";
 import { Slider } from "./Slider";
 import { ButtonGroup, Toolbar, ToolbarSeparator } from "./Toolbar";
 import { Checkbox, CheckboxGroup, Switch } from "./Toggles";
@@ -319,4 +320,58 @@ export const ButtonGroupAlone: StoryObj = {
       <Button>Zoom out</Button>
     </ButtonGroup>
   ),
+};
+
+/** One key, and combinations. A combination stays left to right in a
+ * right-to-left page. */
+export const KbdKeys: StoryObj = {
+  render: () => (
+    <div style={row}>
+      <Kbd>Esc</Kbd>
+      <Kbd>?</Kbd>
+      <Kbd keys={["Ctrl", "K"]} />
+      <Kbd keys={["⇧", "⌘", "P"]} />
+    </div>
+  ),
+};
+
+/** Shortcuts running on this page, and the list useShortcuts returns for a
+ * help dialog, drawn here as a plain list. Typing in the field does not
+ * trigger them; the disabled one is listed but does not run. */
+export const ShortcutList: StoryObj = {
+  render: () => {
+    const [playing, setPlaying] = useState(false);
+    const [minute, setMinute] = useState(570);
+    const [note, setNote] = useState("");
+    const help = useShortcuts([
+      { key: " ", description: "Play or pause", group: "Playback", onTrigger: () => setPlaying((p) => !p) },
+      { key: "j", description: "Back one minute", group: "Playback", onTrigger: () => setMinute((m) => m - 1) },
+      { key: "l", description: "Forward one minute", group: "Playback", onTrigger: () => setMinute((m) => m + 1) },
+      { key: "g", modifiers: ["mod"], description: "Go live", group: "Playback", onTrigger: () => {}, isDisabled: true },
+    ]);
+    return (
+      <div style={column}>
+        <p style={{ margin: 0 }} aria-live="polite">
+          {playing ? "Playing" : "Paused"} at minute {minute}
+        </p>
+        <label style={{ display: "grid", gap: "var(--stoa-space-1)" }}>
+          <span className="stoa-field__label">Note (shortcuts do not fire here)</span>
+          <input className="stoa-field__input" value={note} onChange={(e) => setNote(e.target.value)} />
+        </label>
+        <dl style={{ display: "grid", gridTemplateColumns: "auto 1fr", gap: "var(--stoa-space-2) var(--stoa-space-4)", margin: 0 }}>
+          {help.map((line) => (
+            <div key={line.description} style={{ display: "contents" }}>
+              <dt>
+                <Kbd keys={line.keys} />
+              </dt>
+              <dd style={{ margin: 0, color: line.isDisabled ? "var(--stoa-color-text-muted)" : undefined }}>
+                {line.description}
+                {line.isDisabled ? " (not available in a replay)" : ""}
+              </dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    );
+  },
 };

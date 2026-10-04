@@ -446,3 +446,15 @@
 }
 .stoa-button-group > .stoa-button[data-hovered] { z-index: 1; }
 .stoa-button-group > .stoa-button[data-focus-visible] { z-index: 2; }
+
+/* Kbd: a key cap on the sunken surface, in the numeric face; a
+   combination sets its keys in a row with a muted plus between them. */
+.stoa-kbd {
+  display: inline-block; min-inline-size: 1.6em; padding: 0 var(--stoa-space-1);
+  border: 1px solid var(--stoa-color-border-strong); border-block-end-width: 2px; border-radius: var(--stoa-radius-sm);
+  background: var(--stoa-color-surface-sunken); color: var(--stoa-color-text);
+  font-family: var(--stoa-font-family-mono); font-size: var(--stoa-font-size-2xs); font-weight: var(--stoa-font-weight-medium);
+  line-height: var(--stoa-font-line-height-normal); text-align: center; white-space: nowrap;
+}
+.stoa-kbd-combo { display: inline-flex; align-items: baseline; gap: var(--stoa-space-0-5); font: inherit; }
+.stoa-kbd-combo__plus { color: var(--stoa-color-text-muted); font-size: var(--stoa-font-size-2xs); }
