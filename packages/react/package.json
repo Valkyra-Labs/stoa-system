@@ -25,7 +25,8 @@
   "scripts": {
     "build": "tsc -p tsconfig.json && cp src/styles.css dist/styles.css",
     "typecheck": "tsc -p tsconfig.json --noEmit",
-    "test": "vitest run"
+    "test": "vitest run",
+    "test:stories": "playwright test"
   },
   "peerDependencies": {
     "react": "^19.0.0",
@@ -35,6 +36,7 @@
     "react-aria-components": "1.21.1"
   },
   "devDependencies": {
+    "@playwright/test": "1.63.0",
     "@testing-library/react": "^16.3.3",
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
