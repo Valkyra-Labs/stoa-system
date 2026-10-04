@@ -37,6 +37,10 @@ export type StoaMessages = {
   close: string;
   /** The safe action of a confirmation. */
   cancel: string;
+  copy: string;
+  /** Announced, politely, after the text was copied. */
+  copied: string;
+  copyFailed: string;
   /** Names of an item's own buttons in a reorderable list. */
   moveUp: (item: string) => string;
   moveDown: (item: string) => string;
@@ -72,6 +76,9 @@ const EN: StoaMessages = {
   book: (bid, ask, spread) => `${bid}, ${ask}${spread ? `, ${spread}` : ""}.`,
   close: "Close",
   cancel: "Cancel",
+  copy: "Copy",
+  copied: "Copied",
+  copyFailed: "Copy failed",
   moveUp: (item) => `Move up: ${item}`,
   moveDown: (item) => `Move down: ${item}`,
   remove: (item) => `Remove: ${item}`,
@@ -109,6 +116,9 @@ const AR: StoaMessages = {
   book: (bid, ask, spread) => `${bid}، ${ask}${spread ? `، ${spread}` : ""}.`,
   close: "إغلاق",
   cancel: "إلغاء",
+  copy: "نسخ",
+  copied: "تم النسخ",
+  copyFailed: "تعذر النسخ",
   moveUp: (item) => `تحريك للأعلى: ${item}`,
   moveDown: (item) => `تحريك للأسفل: ${item}`,
   remove: (item) => `إزالة: ${item}`,

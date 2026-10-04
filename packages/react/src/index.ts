@@ -32,3 +32,6 @@ export { Dialog, Sheet, AlertDialog, type DialogProps, type SheetProps, type Ale
 export { ShortcutList, ShortcutsDialog, type Shortcut, type ShortcutGroup, type ShortcutsDialogProps } from "./Shortcuts";
 export { ReorderableList, type ReorderableItem, type ReorderableListProps } from "./ReorderableList";
 export { StepList, type Step, type StepStatus, type StepListProps } from "./StepList";
+export { LogView, CodeView, type LogLine, type LogViewProps, type CodeViewProps } from "./Code";
+export { Metric, type MetricProps, type MetricThreshold } from "./Metric";
+export { type StatBarItem } from "./Panel";

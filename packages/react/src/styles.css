@@ -476,3 +476,53 @@
   color: var(--stoa-color-text-muted);
 }
 .stoa-step__actions { display: flex; flex-wrap: wrap; gap: var(--stoa-space-2); }
+
+/* LogView and CodeView: a label, the Copy button and its status, and a
+   scroll area as tall as `--code-lines` lines (set by the component). The
+   area is always left to right; its start is the left edge. */
+.stoa-code { --code-lines: 20; --code-digits: 2; display: grid; gap: var(--stoa-space-1); min-inline-size: 0; }
+.stoa-code__bar { display: flex; align-items: center; gap: var(--stoa-space-2); }
+.stoa-code__label { font-size: var(--stoa-font-size-xs); color: var(--stoa-color-text-muted); }
+.stoa-code__status { flex: 1; text-align: end; font-size: var(--stoa-font-size-xs); color: var(--stoa-color-text-muted); }
+.stoa-code__copy {
+  font-size: var(--stoa-font-size-xs);
+  min-block-size: var(--stoa-space-6);
+  padding: calc(var(--stoa-space-1) / 2) calc(var(--stoa-space-1) * 1.5);
+}
+.stoa-code__scroll {
+  margin: 0;
+  padding: var(--stoa-space-2) var(--stoa-space-3);
+  max-block-size: calc(var(--code-lines) * var(--stoa-font-line-height-normal) * 1em + 2 * var(--stoa-space-2));
+  overflow: auto;
+  font-family: var(--stoa-font-family-mono); font-size: var(--stoa-font-size-xs);
+  line-height: var(--stoa-font-line-height-normal);
+  text-align: start;
+  background: var(--stoa-color-surface-sunken); color: var(--stoa-color-text);
+  border: 1px solid var(--stoa-color-border); border-radius: var(--stoa-radius-md);
+}
+.stoa-code__scroll:focus-visible {
+  outline: var(--stoa-focus-width) solid var(--stoa-color-focus);
+  outline-offset: var(--stoa-focus-offset);
+}
+.stoa-code__number {
+  display: inline-block; min-inline-size: calc(var(--code-digits) * 1ch);
+  margin-inline-end: var(--stoa-space-3);
+  text-align: end; color: var(--stoa-color-text-muted);
+  user-select: none;
+}
+.stoa-code__time, .stoa-code__level { color: var(--stoa-color-text-muted); }
+
+/* Metric: label, value with its unit, threshold and basis. Numbers are in
+   the numeric face, whose Arabic-Indic digits are tabular too. Inside a
+   StatBar it takes the bar's size. */
+.stoa-metric { display: grid; gap: var(--stoa-space-1); margin: 0; }
+.stoa-metric dd { margin: 0; }
+.stoa-metric__label { font-size: var(--stoa-font-size-xs); color: var(--stoa-color-text-muted); }
+.stoa-metric__number { font-family: var(--stoa-font-family-mono); font-size: var(--stoa-font-size-xl); font-variant-numeric: tabular-nums; }
+.stoa-metric__unit { font-size: var(--stoa-font-size-sm); color: var(--stoa-color-text-muted); }
+.stoa-metric__basis { font-size: var(--stoa-font-size-2xs); color: var(--stoa-color-text-muted); }
+.stoa-statbar__item--metric .stoa-metric__label,
+.stoa-statbar__item--metric .stoa-metric__number,
+.stoa-statbar__item--metric .stoa-metric__unit,
+.stoa-statbar__item--metric .stoa-metric__basis,
+.stoa-statbar__item--metric .stoa-badge { font-size: inherit; }

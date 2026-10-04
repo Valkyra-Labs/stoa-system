@@ -408,6 +408,12 @@
       "readBy": {
         "components": [
           {
+            "component": "(css) .stoa-code__scroll:focus-visible",
+            "file": "packages/react/src/styles.css",
+            "line": 504,
+            "via": "--stoa-color-focus"
+          },
+          {
             "component": "(css) .stoa-step__fill",
             "file": "packages/react/src/styles.css",
             "line": 470,
@@ -676,6 +682,12 @@
       "aliasOf": null,
       "readBy": {
         "components": [
+          {
+            "component": "(css) .stoa-code__scroll:focus-visible",
+            "file": "packages/react/src/styles.css",
+            "line": 504,
+            "via": "--stoa-color-focus"
+          },
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
@@ -990,6 +1002,11 @@
       },
       "readBy": {
         "components": [
+          {
+            "component": "(css) .stoa-code__scroll",
+            "file": "packages/react/src/styles.css",
+            "line": 501
+          },
           {
             "component": "AppHeader",
             "file": "packages/react/src/styles.css",
@@ -1361,6 +1378,11 @@
       "readBy": {
         "components": [
           {
+            "component": "(css) .stoa-code__scroll:focus-visible",
+            "file": "packages/react/src/styles.css",
+            "line": 504
+          },
+          {
             "component": "Button",
             "file": "packages/react/src/styles.css",
             "line": 100
@@ -1627,6 +1649,18 @@
       "aliasOf": null,
       "readBy": {
         "components": [
+          {
+            "component": "(css) .stoa-code__scroll",
+            "file": "packages/react/src/styles.css",
+            "line": 500,
+            "via": "--stoa-color-surface-sunken"
+          },
+          {
+            "component": "(css) .stoa-code__scroll",
+            "file": "packages/react/src/styles.css",
+            "line": 500,
+            "via": "--stoa-color-text"
+          },
           {
             "component": "(css) .stoa-kbd",
             "file": "packages/react/src/styles.css",
@@ -2084,6 +2118,12 @@
       "readBy": {
         "components": [
           {
+            "component": "(css) .stoa-code__scroll",
+            "file": "packages/react/src/styles.css",
+            "line": 501,
+            "via": "--stoa-color-border"
+          },
+          {
             "component": "AppHeader",
             "file": "packages/react/src/styles.css",
             "line": 32,
@@ -2218,6 +2258,36 @@
       "readBy": {
         "components": [
           {
+            "component": "(css) .stoa-code__label",
+            "file": "packages/react/src/styles.css",
+            "line": 485,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "(css) .stoa-code__status",
+            "file": "packages/react/src/styles.css",
+            "line": 486,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "(css) .stoa-metric__basis",
+            "file": "packages/react/src/styles.css",
+            "line": 523,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "(css) .stoa-metric__label",
+            "file": "packages/react/src/styles.css",
+            "line": 520,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "(css) .stoa-metric__unit",
+            "file": "packages/react/src/styles.css",
+            "line": 522,
+            "via": "--stoa-color-text-muted"
+          },
+          {
             "component": "(css) .stoa-shortcuts__plus",
             "file": "packages/react/src/styles.css",
             "line": 377,
@@ -2260,6 +2330,12 @@
             "via": "--stoa-color-text-muted"
           },
           {
+            "component": "CodeView",
+            "file": "packages/react/src/styles.css",
+            "line": 510,
+            "via": "--stoa-color-text-muted"
+          },
+          {
             "component": "Disclosure",
             "file": "packages/react/src/styles.css",
             "line": 182,
@@ -2275,6 +2351,12 @@
             "component": "Ladder",
             "file": "packages/react/src/Ladder.tsx",
             "line": 29,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "LogView",
+            "file": "packages/react/src/styles.css",
+            "line": 513,
             "via": "--stoa-color-text-muted"
           },
           {
@@ -2718,6 +2800,36 @@
       "readBy": {
         "components": [
           {
+            "component": "(css) .stoa-code__label",
+            "file": "packages/react/src/styles.css",
+            "line": 485,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "(css) .stoa-code__status",
+            "file": "packages/react/src/styles.css",
+            "line": 486,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "(css) .stoa-metric__basis",
+            "file": "packages/react/src/styles.css",
+            "line": 523,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "(css) .stoa-metric__label",
+            "file": "packages/react/src/styles.css",
+            "line": 520,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "(css) .stoa-metric__unit",
+            "file": "packages/react/src/styles.css",
+            "line": 522,
+            "via": "--stoa-color-text-muted"
+          },
+          {
             "component": "(css) .stoa-shortcuts__plus",
             "file": "packages/react/src/styles.css",
             "line": 377,
@@ -2760,6 +2872,12 @@
             "via": "--stoa-color-text-muted"
           },
           {
+            "component": "CodeView",
+            "file": "packages/react/src/styles.css",
+            "line": 510,
+            "via": "--stoa-color-text-muted"
+          },
+          {
             "component": "Disclosure",
             "file": "packages/react/src/styles.css",
             "line": 182,
@@ -2775,6 +2893,12 @@
             "component": "Ladder",
             "file": "packages/react/src/Ladder.tsx",
             "line": 29,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "LogView",
+            "file": "packages/react/src/styles.css",
+            "line": 513,
             "via": "--stoa-color-text-muted"
           },
           {
@@ -2959,6 +3083,12 @@
       "aliasOf": null,
       "readBy": {
         "components": [
+          {
+            "component": "(css) .stoa-code__scroll",
+            "file": "packages/react/src/styles.css",
+            "line": 501,
+            "via": "--stoa-color-border"
+          },
           {
             "component": "AppHeader",
             "file": "packages/react/src/styles.css",
@@ -3159,6 +3289,12 @@
       "aliasOf": null,
       "readBy": {
         "components": [
+          {
+            "component": "(css) .stoa-code__scroll",
+            "file": "packages/react/src/styles.css",
+            "line": 500,
+            "via": "--stoa-color-text"
+          },
           {
             "component": "(css) .stoa-kbd",
             "file": "packages/react/src/styles.css",
@@ -4136,6 +4272,11 @@
       "readBy": {
         "components": [
           {
+            "component": "(css) .stoa-code__scroll",
+            "file": "packages/react/src/styles.css",
+            "line": 500
+          },
+          {
             "component": "(css) .stoa-kbd",
             "file": "packages/react/src/styles.css",
             "line": 383
@@ -4403,6 +4544,11 @@
       "readBy": {
         "components": [
           {
+            "component": "(css) .stoa-code__scroll",
+            "file": "packages/react/src/styles.css",
+            "line": 500
+          },
+          {
             "component": "(css) .stoa-kbd",
             "file": "packages/react/src/styles.css",
             "line": 383
@@ -4666,6 +4812,31 @@
       "readBy": {
         "components": [
           {
+            "component": "(css) .stoa-code__label",
+            "file": "packages/react/src/styles.css",
+            "line": 485
+          },
+          {
+            "component": "(css) .stoa-code__status",
+            "file": "packages/react/src/styles.css",
+            "line": 486
+          },
+          {
+            "component": "(css) .stoa-metric__basis",
+            "file": "packages/react/src/styles.css",
+            "line": 523
+          },
+          {
+            "component": "(css) .stoa-metric__label",
+            "file": "packages/react/src/styles.css",
+            "line": 520
+          },
+          {
+            "component": "(css) .stoa-metric__unit",
+            "file": "packages/react/src/styles.css",
+            "line": 522
+          },
+          {
             "component": "(css) .stoa-shortcuts__plus",
             "file": "packages/react/src/styles.css",
             "line": 377
@@ -4701,6 +4872,11 @@
             "line": 38
           },
           {
+            "component": "CodeView",
+            "file": "packages/react/src/styles.css",
+            "line": 510
+          },
+          {
             "component": "Disclosure",
             "file": "packages/react/src/styles.css",
             "line": 182
@@ -4716,6 +4892,11 @@
             "file": "packages/react/src/Ladder.tsx",
             "line": 29,
             "via": "readCanvasTokens"
+          },
+          {
+            "component": "LogView",
+            "file": "packages/react/src/styles.css",
+            "line": 513
           },
           {
             "component": "NumberField",
@@ -5218,6 +5399,11 @@
       "readBy": {
         "components": [
           {
+            "component": "(css) .stoa-code__scroll:focus-visible",
+            "file": "packages/react/src/styles.css",
+            "line": 505
+          },
+          {
             "component": "Button",
             "file": "packages/react/src/styles.css",
             "line": 101
@@ -5293,6 +5479,11 @@
       "aliasOf": null,
       "readBy": {
         "components": [
+          {
+            "component": "(css) .stoa-code__scroll:focus-visible",
+            "file": "packages/react/src/styles.css",
+            "line": 504
+          },
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
@@ -5410,9 +5601,19 @@
       "readBy": {
         "components": [
           {
+            "component": "(css) .stoa-code__scroll",
+            "file": "packages/react/src/styles.css",
+            "line": 497
+          },
+          {
             "component": "(css) .stoa-kbd",
             "file": "packages/react/src/styles.css",
             "line": 379
+          },
+          {
+            "component": "(css) .stoa-metric__number",
+            "file": "packages/react/src/styles.css",
+            "line": 521
           },
           {
             "component": "(css) .stoa-step__number",
@@ -5560,6 +5761,16 @@
       "readBy": {
         "components": [
           {
+            "component": "(css) .stoa-code__scroll",
+            "file": "packages/react/src/styles.css",
+            "line": 495
+          },
+          {
+            "component": "(css) .stoa-code__scroll",
+            "file": "packages/react/src/styles.css",
+            "line": 498
+          },
+          {
             "component": "AlertDialog",
             "file": "packages/react/src/styles.css",
             "line": 312
@@ -5650,6 +5861,11 @@
       "aliasOf": null,
       "readBy": {
         "components": [
+          {
+            "component": "(css) .stoa-metric__basis",
+            "file": "packages/react/src/styles.css",
+            "line": 523
+          },
           {
             "component": "StatBar",
             "file": "packages/react/src/styles.css",
@@ -5759,6 +5975,11 @@
       "readBy": {
         "components": [
           {
+            "component": "(css) .stoa-metric__unit",
+            "file": "packages/react/src/styles.css",
+            "line": 522
+          },
+          {
             "component": "(css) .stoa-modal",
             "file": "packages/react/src/styles.css",
             "line": 288
@@ -5810,20 +6031,26 @@
       "resolvedValue": "20px",
       "aliasOf": null,
       "readBy": {
-        "components": [],
+        "components": [
+          {
+            "component": "(css) .stoa-metric__number",
+            "file": "packages/react/src/styles.css",
+            "line": 521
+          }
+        ],
         "stories": []
       },
       "reachedByTheme": {
         "light": {
-          "direct": false,
+          "direct": true,
           "via": []
         },
         "dark": {
-          "direct": false,
+          "direct": true,
           "via": []
         }
       },
-      "unused": true
+      "unused": false
     },
     {
       "name": "--stoa-font-size-xs",
@@ -5835,9 +6062,34 @@
       "readBy": {
         "components": [
           {
+            "component": "(css) .stoa-code__copy",
+            "file": "packages/react/src/styles.css",
+            "line": 488
+          },
+          {
+            "component": "(css) .stoa-code__label",
+            "file": "packages/react/src/styles.css",
+            "line": 485
+          },
+          {
+            "component": "(css) .stoa-code__scroll",
+            "file": "packages/react/src/styles.css",
+            "line": 497
+          },
+          {
+            "component": "(css) .stoa-code__status",
+            "file": "packages/react/src/styles.css",
+            "line": 486
+          },
+          {
             "component": "(css) .stoa-kbd",
             "file": "packages/react/src/styles.css",
             "line": 379
+          },
+          {
+            "component": "(css) .stoa-metric__label",
+            "file": "packages/react/src/styles.css",
+            "line": 520
           },
           {
             "component": "(css) .stoa-shortcuts__title",
@@ -6487,6 +6739,11 @@
       "readBy": {
         "components": [
           {
+            "component": "(css) .stoa-code__scroll",
+            "file": "packages/react/src/styles.css",
+            "line": 501
+          },
+          {
             "component": "Panel",
             "file": "packages/react/src/styles.css",
             "line": 12
@@ -6719,6 +6976,11 @@
       "readBy": {
         "components": [
           {
+            "component": "(css) .stoa-code__copy",
+            "file": "packages/react/src/styles.css",
+            "line": 490
+          },
+          {
             "component": "(css) .stoa-kbd",
             "file": "packages/react/src/styles.css",
             "line": 380
@@ -6737,6 +6999,11 @@
             "component": "(css) .stoa-step__status",
             "file": "packages/react/src/styles.css",
             "line": 446
+          },
+          {
+            "component": "(css) /* LogView and CodeView: a label, the Copy button and its status, and a\n   scroll area as tall as `--code-lines` lines (set by the component). The\n   area is always left to right; its start is the left edge. */\n.stoa-code",
+            "file": "packages/react/src/styles.css",
+            "line": 483
           },
           {
             "component": "Button",
@@ -6762,6 +7029,11 @@
             "component": "Disclosure",
             "file": "packages/react/src/styles.css",
             "line": 187
+          },
+          {
+            "component": "Metric",
+            "file": "packages/react/src/styles.css",
+            "line": 518
           },
           {
             "component": "NumberField",
@@ -6924,6 +7196,21 @@
       "readBy": {
         "components": [
           {
+            "component": "(css) .stoa-code__bar",
+            "file": "packages/react/src/styles.css",
+            "line": 484
+          },
+          {
+            "component": "(css) .stoa-code__scroll",
+            "file": "packages/react/src/styles.css",
+            "line": 494
+          },
+          {
+            "component": "(css) .stoa-code__scroll",
+            "file": "packages/react/src/styles.css",
+            "line": 495
+          },
+          {
             "component": "(css) .stoa-shortcuts__list",
             "file": "packages/react/src/styles.css",
             "line": 372
@@ -7065,6 +7352,11 @@
       "readBy": {
         "components": [
           {
+            "component": "(css) .stoa-code__scroll",
+            "file": "packages/react/src/styles.css",
+            "line": 494
+          },
+          {
             "component": "AlertDialog",
             "file": "packages/react/src/styles.css",
             "line": 297
@@ -7088,6 +7380,11 @@
             "component": "AppHeader",
             "file": "packages/react/src/styles.css",
             "line": 41
+          },
+          {
+            "component": "CodeView",
+            "file": "packages/react/src/styles.css",
+            "line": 509
           },
           {
             "component": "Panel",
@@ -7222,6 +7519,11 @@
       "readBy": {
         "components": [
           {
+            "component": "(css) .stoa-code__copy",
+            "file": "packages/react/src/styles.css",
+            "line": 489
+          },
+          {
             "component": "(css) .stoa-dialog__close",
             "file": "packages/react/src/styles.css",
             "line": 309
@@ -7322,7 +7624,6 @@
     "--stoa-color-neutral-700",
     "--stoa-color-neutral-800",
     "--stoa-font-size-2xl",
-    "--stoa-font-size-xl",
     "--stoa-motion-duration-instant",
     "--stoa-motion-easing-exit",
     "--stoa-radius-none",
@@ -7340,7 +7641,7 @@
   ],
   "summary": {
     "tokenCount": 86,
-    "unusedCount": 11,
+    "unusedCount": 10,
     "hardcodedLiteralCount": 0,
     "undefinedCount": 1
   }

@@ -1,4 +1,5 @@
 import { useId, type ReactNode } from "react";
+import { MetricParts, type MetricProps } from "./Metric";
 
 /** A titled region: a section with a heading that labels it. */
 export function Panel({ title, children, className }: { title: string; children: ReactNode; className?: string }) {
@@ -13,16 +14,26 @@ export function Panel({ title, children, className }: { title: string; children:
   );
 }
 
+/** One value of a StatBar: a label and preformatted text, or a Metric
+ * (`kind: "metric"`) with its unit, basis and threshold. */
+export type StatBarItem = { label: string; value: string } | (MetricProps & { kind: "metric" });
+
 /** A row of small labelled values (for example performance counters). */
-export function StatBar({ items, label }: { items: { label: string; value: string }[]; label: string }) {
+export function StatBar({ items, label }: { items: StatBarItem[]; label: string }) {
   return (
     <dl className="stoa-statbar" aria-label={label}>
-      {items.map((i) => (
-        <div key={i.label} className="stoa-statbar__item">
-          <dt>{i.label}</dt>
-          <dd>{i.value}</dd>
-        </div>
-      ))}
+      {items.map((i) =>
+        "kind" in i ? (
+          <div key={i.label} className="stoa-statbar__item stoa-statbar__item--metric">
+            <MetricParts {...i} />
+          </div>
+        ) : (
+          <div key={i.label} className="stoa-statbar__item">
+            <dt>{i.label}</dt>
+            <dd>{i.value}</dd>
+          </div>
+        ),
+      )}
     </dl>
   );
 }
