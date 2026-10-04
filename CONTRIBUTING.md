@@ -23,6 +23,8 @@ pnpm test
 node scripts/token-map.mjs --check
 node scripts/check-text.mjs origin/main
 pnpm test:e2e
+pnpm build-storybook
+pnpm --filter @valkyra-labs/stoa-react test:stories
 ```
 
 Tests are the acceptance gate. A failed check is not flaky until the

@@ -8,6 +8,9 @@ on:
     types: [opened, synchronize, reopened, edited]
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
@@ -23,13 +26,89 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm build
       - run: pnpm -r typecheck
-      - run: pnpm test
+      - name: Unit tests
+        shell: bash
+        run: pnpm test 2>&1 | tee "$RUNNER_TEMP/unit.log"
       - run: node scripts/token-map.mjs --check
-      - name: Chromium for the playground smoke test
+      - name: Contrast checks (writes packages/tokens/dist/verify.json)
+        run: pnpm --filter @valkyra-labs/stoa-tokens verify
+      - name: Chromium for the browser tests
         run: pnpm --filter playground exec playwright install --with-deps chromium
-      - name: Browser tests
-        run: pnpm test:e2e
+      - name: Browser tests (playground)
+        env:
+          PLAYWRIGHT_JSON_OUTPUT_FILE: ${{ runner.temp }}/playground-e2e.json
+        run: pnpm --filter playground test:e2e --reporter=list,json
+      - name: Storybook build
+        run: pnpm build-storybook
+      - name: Browser tests (stories, with the axe sweep over every story)
+        env:
+          PLAYWRIGHT_JSON_OUTPUT_FILE: ${{ runner.temp }}/stories-e2e.json
+        run: pnpm --filter @valkyra-labs/stoa-react test:stories --reporter=list,json
       - name: House style (emoji, attribution)
         env:
           PR_BODY: ${{ github.event.pull_request.body }}
         run: node scripts/check-text.mjs ${{ github.event_name == 'pull_request' && format('origin/{0}', github.base_ref) || 'HEAD~1' }}
+      # Every run builds the badges, so a value that can no longer be read
+      # fails here, on the pull request; only main publishes them.
+      - name: Badge values
+        run: >-
+          node scripts/badges.mjs --out "$RUNNER_TEMP/badges"
+          --unit "$RUNNER_TEMP/unit.log"
+          --browser "$RUNNER_TEMP/playground-e2e.json"
+          --browser "$RUNNER_TEMP/stories-e2e.json"
+          --verify packages/tokens/dist/verify.json
+          --known packages/tokens/known-violations.json
+          --css packages/react/dist/styles.css
+          --css packages/tokens/dist/tokens.css
+      - if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        uses: actions/upload-artifact@v4
+        with:
+          name: badges
+          path: ${{ runner.temp }}/badges
+          if-no-files-found: error
+          retention-days: 7
+
+  # Commits the badge JSON to the orphan branch `badges`, which the README's
+  # img.shields.io/endpoint badges read. Only after a green run on main.
+  publish-badges:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: build-and-test
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    concurrency:
+      group: publish-badges
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: badges
+          path: ${{ runner.temp }}/badges
+      - name: Commit to the badges branch
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          branch="$RUNNER_TEMP/badges-branch"
+          status=0
+          git ls-remote --exit-code origin refs/heads/badges > /dev/null || status=$?
+          if [ "$status" -eq 0 ]; then
+            git fetch --depth=1 origin badges
+            git worktree add -B badges "$branch" FETCH_HEAD
+          elif [ "$status" -eq 2 ]; then
+            git worktree add --detach "$branch"
+            git -C "$branch" switch --orphan badges
+          else
+            exit "$status"
+          fi
+          find "$branch" -maxdepth 1 -name '*.json' -delete
+          cp "$RUNNER_TEMP"/badges/*.json "$branch"/
+          cd "$branch"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "The badges are unchanged."
+            exit 0
+          fi
+          git commit -q -m "Badges measured on ${GITHUB_SHA}"
+          git push origin HEAD:refs/heads/badges

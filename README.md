@@ -1,5 +1,16 @@
 # Stoa
 
+[![CI](https://github.com/Valkyra-Labs/stoa-system/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/Valkyra-Labs/stoa-system/actions/workflows/ci.yml)
+[![License: MIT OR Apache-2.0](https://img.shields.io/badge/License-MIT%20OR%20Apache--2.0-blue.svg)](#license)
+[![Unit tests](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/Valkyra-Labs/stoa-system/badges/unit-tests.json)](#badges)
+[![Browser tests](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/Valkyra-Labs/stoa-system/badges/browser-tests.json)](#badges)
+[![axe](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/Valkyra-Labs/stoa-system/badges/axe.json)](#badges)
+[![WCAG 2 contrast](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/Valkyra-Labs/stoa-system/badges/contrast.json)](#badges)
+[![CSS gzip](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/Valkyra-Labs/stoa-system/badges/css-size.json)](#badges)
+
+The test, axe, contrast and size badges are measured and published by CI
+from `main`; what each one counts is under [Badges](#badges).
+
 A design system for dense data: trading screens, ledgers, gradebooks,
 anything with many live values, many states and little room. It is
 built in the open alongside two products that use it,
@@ -90,9 +101,34 @@ pnpm test
 Chromium that `pnpm --filter playground exec playwright install chromium`
 downloads), `node scripts/token-map.mjs --check` fails when the token map
 in `docs/generated/` is stale, and `pnpm storybook` serves the stories.
+`pnpm build-storybook` builds the stories into `storybook-static/`, and
+`pnpm --filter @valkyra-labs/stoa-react test:stories` runs the browser
+tests against that build, the axe sweep over every story among them.
 The playground, the tool the tokens are tuned in, is described in
 [apps/playground/README.md](apps/playground/README.md). How to contribute,
 and what every change has to pass: [CONTRIBUTING.md](CONTRIBUTING.md).
+
+### Badges
+
+CI publishes the dynamic badges from each green run on `main` to the
+`badges` branch, as JSON that img.shields.io reads; `scripts/badges.mjs`
+builds them from that run's own output and stops, publishing nothing,
+when a value cannot be read.
+
+- Unit tests: tests passed, summed over Vitest and node:test in every
+  package and the root scripts (`pnpm test`).
+- Browser tests: Playwright tests passed in Chromium, the playground's
+  (`pnpm test:e2e`) and the stories' against the built Storybook
+  (`test:stories`).
+- axe: axe-core 4.13.0 over every story in the built Storybook's index,
+  in four modes: light and dark, each left to right in English and right
+  to left in Arabic. A serious or critical violation fails the run;
+  moderate and minor ones are not counted.
+- WCAG 2 contrast: enforced text and non-text contrast checks passing,
+  out of all enforced ones (`verify`, `dist/verify.json`), and how many
+  failures `known-violations.json` accepts. Reported-only measurements
+  are not in it.
+- CSS gzip: the built `styles.css` and `tokens.css`, gzip level 9.
 
 ## License
 
