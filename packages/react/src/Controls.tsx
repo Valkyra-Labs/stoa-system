@@ -1,4 +1,4 @@
-import { useContext, useEffect, useLayoutEffect, useMemo, useRef, type ChangeEvent, type ReactNode } from "react";
+import { useContext, useEffect, useId, useLayoutEffect, useMemo, useRef, type ChangeEvent, type ReactElement, type ReactNode } from "react";
 import { Chevron } from "./Chevron";
 import {
   Button as AriaButton,
@@ -41,8 +41,52 @@ export type Choice<T extends Key> = { id: T; label: ReactNode };
  * at least 24 px tall (WCAG 2.5.8). */
 export type ControlSize = "regular" | "small";
 
+/** The visible label and description of a group of buttons, and the
+ * attributes that tie them to it. Without either, the label names the
+ * group for assistive technology only. */
+export function useGroupLabel(label: string, showLabel: boolean, description: ReactNode | undefined) {
+  const labelId = useId();
+  const descriptionId = useId();
+  const hasDescription = description !== undefined && description !== null && description !== "";
+  return {
+    groupProps: {
+      "aria-label": showLabel ? undefined : label,
+      "aria-labelledby": showLabel ? labelId : undefined,
+      "aria-describedby": hasDescription ? descriptionId : undefined,
+    },
+    /** The group, inside its label and description when it has them. */
+    frame: (group: ReactElement) =>
+      !showLabel && !hasDescription ? (
+        group
+      ) : (
+        <div className="stoa-group-field">
+          {showLabel && (
+            <span id={labelId} className="stoa-field__label">
+              {label}
+            </span>
+          )}
+          {group}
+          {hasDescription && (
+            <span id={descriptionId} className="stoa-field__description">
+              {description}
+            </span>
+          )}
+        </div>
+      ),
+  };
+}
+
 export type ChoiceGroupProps<T extends Key> = {
+  /** Names the group; shown above it with `showLabel`, otherwise read by
+   * assistive technology only (where the options name themselves, as in
+   * a header). */
   label: string;
+  showLabel?: boolean;
+  /** A line under the group, read as its description: what the choice
+   * changes, or why it is disabled. */
+  description?: ReactNode;
+  /** No option can be chosen; the chosen one stays shown. */
+  isDisabled?: boolean;
   choices: Choice<T>[];
   value: T;
   onChange: (value: T) => void;
@@ -51,10 +95,21 @@ export type ChoiceGroupProps<T extends Key> = {
 
 /** One of a few options (for example a playback speed): a toggle group
  * with single selection, arrow keys moving between options. */
-export function ChoiceGroup<T extends Key>({ label, choices, value, onChange, size = "regular" }: ChoiceGroupProps<T>) {
-  return (
+export function ChoiceGroup<T extends Key>({
+  label,
+  showLabel = false,
+  description,
+  isDisabled,
+  choices,
+  value,
+  onChange,
+  size = "regular",
+}: ChoiceGroupProps<T>) {
+  const { groupProps, frame } = useGroupLabel(label, showLabel, description);
+  return frame(
     <ToggleButtonGroup
-      aria-label={label}
+      {...groupProps}
+      isDisabled={isDisabled}
       selectionMode="single"
       disallowEmptySelection
       selectedKeys={[value]}

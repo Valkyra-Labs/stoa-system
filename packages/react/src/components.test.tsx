@@ -37,6 +37,57 @@ describe("ChoiceGroup", () => {
   });
 });
 
+describe("ChoiceGroup with a visible label, a description, or disabled", () => {
+  const ENGINES = [
+    { id: "wasm", label: "WebAssembly" },
+    { id: "js", label: "JavaScript" },
+  ];
+
+  it("keeps its label for assistive technology only by default", () => {
+    const { container } = render(<ChoiceGroup label="Engine" choices={ENGINES} value="js" onChange={() => {}} />);
+    expect(screen.getByRole("radiogroup", { name: "Engine" })).toBeTruthy();
+    expect(container.querySelector(".stoa-field__label")).toBeNull();
+  });
+
+  it("shows its label, which names the group, and a description read with it", () => {
+    render(<ChoiceGroup label="Engine" showLabel description="Both give the same yields." choices={ENGINES} value="js" onChange={() => {}} />);
+    const group = screen.getByRole("radiogroup", { name: "Engine" });
+    const label = screen.getByText("Engine");
+    expect(label.className).toBe("stoa-field__label");
+    expect(group.getAttribute("aria-labelledby")).toBe(label.id);
+    expect(group.hasAttribute("aria-label")).toBe(false);
+    expect(document.getElementById(group.getAttribute("aria-describedby")!)?.textContent).toBe("Both give the same yields.");
+  });
+
+  it("is disabled as a whole: no option can be chosen, and the description can say why", () => {
+    const onChange = vi.fn();
+    render(
+      <ChoiceGroup label="Engine" description="WebAssembly is not available here." isDisabled choices={ENGINES} value="js" onChange={onChange} />,
+    );
+    const wasm = screen.getByRole("radio", { name: "WebAssembly" });
+    expect(wasm.hasAttribute("disabled")).toBe(true);
+    fireEvent.click(wasm);
+    expect(onChange).not.toHaveBeenCalled();
+    expect(screen.getByRole("radio", { name: "JavaScript" }).getAttribute("aria-checked")).toBe("true");
+  });
+
+  it("moves with the arrow keys, mirrored in a right-to-left locale", () => {
+    const onChange = vi.fn();
+    render(
+      <I18nProvider locale="ar-u-nu-arab">
+        <div dir="rtl">
+          <ChoiceGroup label="المحرك" showLabel choices={ENGINES} value="wasm" onChange={onChange} />
+        </div>
+      </I18nProvider>,
+    );
+    expect(screen.getByRole("radiogroup", { name: "المحرك" })).toBeTruthy();
+    const wasm = screen.getByRole("radio", { name: "WebAssembly" });
+    act(() => wasm.focus());
+    fireEvent.keyDown(wasm, { key: "ArrowLeft" });
+    expect(document.activeElement).toBe(screen.getByRole("radio", { name: "JavaScript" }));
+  });
+});
+
 describe("TimeSlider", () => {
   it("announces the formatted time, not the raw number", () => {
     render(<TimeSlider label="Time" min={0} max={100} step={1} value={42} onChange={() => {}} format={(v) => `t=${v}`} />);

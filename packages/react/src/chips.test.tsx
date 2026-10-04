@@ -169,4 +169,12 @@ describe("FilterChipGroup", () => {
     render(<Status overflow="scroll" />);
     expect(screen.getByRole("toolbar", { name: "Order status" }).className).toContain("stoa-filter-chips--scroll");
   });
+
+  it("can show its label, which then names the toolbar", () => {
+    render(<FilterChipGroup label="Order status" showLabel chips={STATUS} value={[]} onChange={() => {}} />);
+    const toolbar = screen.getByRole("toolbar", { name: "Order status" });
+    const label = screen.getByText("Order status");
+    expect(label.className).toBe("stoa-field__label");
+    expect(toolbar.getAttribute("aria-labelledby")).toBe(label.id);
+  });
 });

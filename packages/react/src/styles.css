@@ -143,6 +143,10 @@
 .stoa-choice-group > .stoa-choice[data-hovered], .stoa-choice-group > .stoa-choice[data-selected] { z-index: 1; }
 .stoa-choice-group > .stoa-choice[data-focus-visible] { z-index: 2; }
 
+/* A group of buttons with a visible label above it and a description
+   under it. */
+.stoa-group-field { display: grid; gap: var(--stoa-space-1); justify-items: start; min-inline-size: 0; }
+
 /* The small size, for toolbars and headers. */
 .stoa-choice-group--small > .stoa-choice,
 .stoa-toggle--small,

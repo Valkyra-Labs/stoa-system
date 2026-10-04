@@ -146,6 +146,26 @@ const column = { display: "grid", gap: "var(--stoa-space-3)", justifyItems: "sta
 
 /** Off and on, with and without a description. Space toggles a focused
  * switch. */
+/** The group's label shown above the chips. */
+export const FilterChipsLabelled: StoryObj = {
+  render: () => {
+    const [value, setValue] = useState<string[]>(["working"]);
+    return (
+      <FilterChipGroup
+        label="Order status"
+        showLabel
+        value={value}
+        onChange={setValue}
+        chips={[
+          { id: "working", label: "Working", count: 12 },
+          { id: "filled", label: "Filled", count: 31 },
+          { id: "rejected", label: "Rejected", count: 2 },
+        ]}
+      />
+    );
+  },
+};
+
 export const SwitchStates: StoryObj = {
   render: () => {
     const [live, setLive] = useState(true);
