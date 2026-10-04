@@ -99,6 +99,28 @@ export const AlertNeutral: StoryObj = {
   ),
 };
 
+/** The answer told apart without a flag: onConfirm for the primary
+ * action, onCancel for the safe action or Escape. */
+export const AlertAnswer: StoryObj = {
+  render: () => {
+    const [answer, setAnswer] = useState("No answer yet.");
+    return (
+      <div style={{ display: "grid", gap: "var(--stoa-space-3)", justifyItems: "start" }}>
+        <AlertDialog
+          title="Allow the agent to write files?"
+          confirmLabel="Allow writing"
+          trigger={<Button>Ask for permission</Button>}
+          onConfirm={() => setAnswer("Allowed.")}
+          onCancel={() => setAnswer("Denied.")}
+        >
+          <p>The agent asks to write to three files in the workspace.</p>
+        </AlertDialog>
+        <p>{answer}</p>
+      </div>
+    );
+  },
+};
+
 const SHORTCUTS: ShortcutGroup[] = [
   {
     title: "Playback",

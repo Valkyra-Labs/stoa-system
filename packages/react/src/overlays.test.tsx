@@ -224,7 +224,17 @@ describe("Sheet", () => {
 });
 
 describe("AlertDialog", () => {
-  function Confirm({ onConfirm = () => {}, tone, autoFocus }: { onConfirm?: () => void; tone?: "destructive" | "neutral"; autoFocus?: "cancel" | "confirm" }) {
+  function Confirm({
+    onConfirm = () => {},
+    onCancel,
+    tone,
+    autoFocus,
+  }: {
+    onConfirm?: () => void;
+    onCancel?: () => void;
+    tone?: "destructive" | "neutral";
+    autoFocus?: "cancel" | "confirm";
+  }) {
     return (
       <AlertDialog
         title="Delete this run?"
@@ -232,6 +242,7 @@ describe("AlertDialog", () => {
         tone={tone}
         autoFocus={autoFocus}
         onConfirm={onConfirm}
+        onCancel={onCancel}
         trigger={<Button>Delete</Button>}
       >
         <p>Its history cannot be restored.</p>
@@ -286,6 +297,65 @@ describe("AlertDialog", () => {
     fireEvent.keyDown(document.activeElement!, { key: "Escape" });
     expect(screen.queryByRole("alertdialog")).toBeNull();
     expect(onConfirm).not.toHaveBeenCalled();
+  });
+
+  it("calls onCancel on the safe action and on Escape, and only onConfirm on the primary action", () => {
+    const onConfirm = vi.fn();
+    const onCancel = vi.fn();
+    render(<Confirm onConfirm={onConfirm} onCancel={onCancel} />);
+    const trigger = screen.getByRole("button", { name: "Delete" });
+    pressWithKeyboard(trigger);
+    fireEvent.click(screen.getByRole("button", { name: "Cancel" }));
+    expect(onCancel).toHaveBeenCalledTimes(1);
+    pressWithKeyboard(trigger);
+    fireEvent.keyDown(document.activeElement!, { key: "Escape" });
+    expect(onCancel).toHaveBeenCalledTimes(2);
+    pressWithKeyboard(trigger);
+    fireEvent.click(screen.getByRole("button", { name: "Delete run" }));
+    expect(onConfirm).toHaveBeenCalledOnce();
+    expect(onCancel).toHaveBeenCalledTimes(2);
+    // A confirmation earlier does not count for the next opening.
+    pressWithKeyboard(trigger);
+    fireEvent.keyDown(document.activeElement!, { key: "Escape" });
+    expect(onCancel).toHaveBeenCalledTimes(3);
+  });
+
+  it("calls onCancel when opened by state, and not when the caller closes it", () => {
+    const onCancel = vi.fn();
+    const onOpenChange = vi.fn();
+    function Controlled() {
+      const [open, setOpen] = useState(true);
+      return (
+        <>
+          <button type="button" onClick={() => setOpen(false)}>
+            Close from outside
+          </button>
+          <AlertDialog
+            title="Leave the run?"
+            confirmLabel="Leave"
+            onConfirm={() => {}}
+            onCancel={onCancel}
+            isOpen={open}
+            onOpenChange={(next) => {
+              onOpenChange(next);
+              setOpen(next);
+            }}
+          >
+            <p>Unsaved marks are lost.</p>
+          </AlertDialog>
+        </>
+      );
+    }
+    const { unmount } = render(<Controlled />);
+    fireEvent.keyDown(document.activeElement!, { key: "Escape" });
+    expect(onCancel).toHaveBeenCalledOnce();
+    expect(onOpenChange).toHaveBeenCalledWith(false);
+    unmount();
+    onCancel.mockClear();
+    render(<Controlled />);
+    act(() => screen.getByRole("button", { name: "Close from outside", hidden: true }).click());
+    expect(screen.queryByRole("alertdialog")).toBeNull();
+    expect(onCancel).not.toHaveBeenCalled();
   });
 
   it("does not close on a press outside it", () => {

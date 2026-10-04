@@ -1,4 +1,4 @@
-import type { ReactElement, ReactNode } from "react";
+import { useRef, type ReactElement, type ReactNode } from "react";
 import { Dialog as AriaDialog, DialogTrigger, Heading, Modal, ModalOverlay } from "react-aria-components";
 import { Button } from "./Controls";
 import { useStoaFormat } from "./locale";
@@ -137,6 +137,10 @@ export type AlertDialogProps = OverlayOpenProps & {
    * not "OK". */
   confirmLabel: string;
   onConfirm: () => void;
+  /** Called when the person declines: the safe action or Escape. Not when
+   * the primary action closes the dialog, and not when the caller closes
+   * it by setting `isOpen`. */
+  onCancel?: () => void;
   /** "destructive" draws the primary action in the negative colour, for an
    * action that loses work; "neutral" in the accent. */
   tone?: "destructive" | "neutral";
@@ -149,20 +153,31 @@ export type AlertDialogProps = OverlayOpenProps & {
 
 /** A confirmation that interrupts: role alertdialog, a safe action and a
  * primary one, focus on the safe action by default. A press outside does
- * not close it; Escape and the safe action do. */
+ * not close it; Escape and the safe action do, and call `onCancel`. */
 export function AlertDialog({
   title,
   children,
   confirmLabel,
   onConfirm,
+  onCancel,
   tone = "neutral",
   cancelLabel,
   autoFocus = "cancel",
   ...open
 }: AlertDialogProps) {
   const { messages } = useStoaFormat();
+  // Set by the primary action just before it closes the dialog, so the
+  // close that follows is not taken for a cancel.
+  const confirmed = useRef(false);
+  const onOpenChange = (isOpen: boolean) => {
+    if (!isOpen) {
+      if (!confirmed.current) onCancel?.();
+      confirmed.current = false;
+    }
+    open.onOpenChange?.(isOpen);
+  };
   return (
-    <Overlay {...open} isDismissable={false} modalClassName="stoa-modal stoa-modal--alert">
+    <Overlay {...open} onOpenChange={onOpenChange} isDismissable={false} modalClassName="stoa-modal stoa-modal--alert">
       <AriaDialog className="stoa-dialog" role="alertdialog">
         {({ close }) => (
           <>
@@ -180,6 +195,7 @@ export function AlertDialog({
                 variant={tone === "destructive" ? "danger" : "primary"}
                 autoFocus={autoFocus === "confirm"}
                 onPress={() => {
+                  confirmed.current = true;
                   onConfirm();
                   close();
                 }}
