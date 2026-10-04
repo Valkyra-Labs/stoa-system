@@ -259,3 +259,126 @@
 /* Panels kept mounted while inactive are inert; they keep their state
    (a running worker, a filled form) but take no space. */
 .stoa-tabs__panel[inert] { display: none; }
+
+/* ==== Overlays, lists and content ==== */
+
+/* Overlays: Dialog, Sheet, AlertDialog. React Aria portals them to the end
+   of the document, so they take the document's tokens. The scrim mixes
+   the darkest neutral into transparency, which darkens the page in both
+   themes; there is no semantic scrim token yet. Widths are multiples of
+   the space scale, as there are no dimension tokens. The z-index lifts the
+   overlay over the raised options of a choice group. */
+.stoa-overlay {
+  position: fixed; inset: 0; z-index: 10;
+  display: flex; align-items: center; justify-content: center;
+  padding: var(--stoa-space-4);
+  background: color-mix(in oklch, var(--stoa-color-neutral-1000) 50%, transparent);
+}
+.stoa-overlay[data-entering] { animation: stoa-fade-in var(--stoa-motion-duration-base) var(--stoa-motion-easing-enter); }
+@keyframes stoa-fade-in { from { opacity: 0; } }
+.stoa-modal {
+  display: flex;
+  inline-size: min(100%, calc(var(--stoa-space-12) * 12));
+  max-block-size: 100%;
+  background: var(--stoa-color-surface);
+  color: var(--stoa-color-text);
+  border: 1px solid var(--stoa-color-border-strong);
+  border-radius: var(--stoa-radius-lg);
+  font-family: var(--stoa-font-family-sans);
+  font-size: var(--stoa-font-size-sm);
+  outline: none;
+}
+.stoa-modal--alert { inline-size: min(100%, calc(var(--stoa-space-12) * 9)); }
+/* The whole dialog scrolls when it is taller than the screen; it holds the
+   close button or the actions, so the scrolling area is reachable by
+   keyboard. */
+.stoa-dialog {
+  flex: 1; min-inline-size: 0;
+  display: flex; flex-direction: column; gap: var(--stoa-space-3);
+  padding: var(--stoa-space-4);
+  overflow: auto; outline: none;
+}
+.stoa-dialog__header { display: flex; align-items: start; gap: var(--stoa-space-3); }
+.stoa-dialog__title {
+  flex: 1; margin: 0;
+  font-size: var(--stoa-font-size-md); font-weight: var(--stoa-font-weight-semibold);
+  line-height: var(--stoa-font-line-height-tight);
+}
+.stoa-dialog__close {
+  flex: none; display: inline-grid; place-items: center;
+  min-inline-size: var(--stoa-space-6); min-block-size: var(--stoa-space-6); padding: 0;
+  line-height: var(--stoa-font-line-height-tight);
+}
+.stoa-dialog__body { line-height: var(--stoa-font-line-height-normal); }
+.stoa-dialog__body > :first-child { margin-block-start: 0; }
+.stoa-dialog__body > :last-child { margin-block-end: 0; }
+.stoa-dialog__actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: var(--stoa-space-2); }
+
+/* Sheet: from the inline end, full height; or from the bottom, full
+   width. "auto" is the side panel on a wide screen and the bottom sheet on
+   a narrow one. */
+.stoa-overlay--sheet { padding: 0; justify-content: flex-end; align-items: stretch; }
+.stoa-sheet {
+  inline-size: min(100%, calc(var(--stoa-space-12) * 8));
+  border-radius: 0; border-block-width: 0; border-inline-end-width: 0;
+}
+.stoa-sheet[data-entering] { animation: stoa-slide-from-end var(--stoa-motion-duration-slow) var(--stoa-motion-easing-enter); }
+.stoa-sheet[data-entering]:dir(rtl) { animation-name: stoa-slide-from-start; }
+@keyframes stoa-slide-from-end { from { transform: translateX(100%); } }
+@keyframes stoa-slide-from-start { from { transform: translateX(-100%); } }
+@keyframes stoa-slide-from-bottom { from { transform: translateY(100%); } }
+.stoa-overlay--bottom { align-items: flex-end; }
+.stoa-sheet--bottom {
+  inline-size: 100%; max-block-size: 85%;
+  border-width: 1px 0 0;
+  border-start-start-radius: var(--stoa-radius-lg); border-start-end-radius: var(--stoa-radius-lg);
+}
+.stoa-sheet--bottom[data-entering],
+.stoa-sheet--bottom[data-entering]:dir(rtl) { animation-name: stoa-slide-from-bottom; }
+@media (max-width: 40rem) {
+  .stoa-overlay--auto { align-items: flex-end; }
+  .stoa-sheet--auto {
+    inline-size: 100%; max-block-size: 85%;
+    border-width: 1px 0 0;
+    border-start-start-radius: var(--stoa-radius-lg); border-start-end-radius: var(--stoa-radius-lg);
+  }
+  .stoa-sheet--auto[data-entering],
+  .stoa-sheet--auto[data-entering]:dir(rtl) { animation-name: stoa-slide-from-bottom; }
+}
+
+/* An action that loses work: the primary button in the negative colour.
+   Its label is the surface colour on the down fill, the same two colours
+   as the checked down-on-surface text pair. Hover and press move toward
+   the text colour, as the primary button's do. */
+.stoa-button--destructive { background: var(--stoa-color-down); border-color: var(--stoa-color-down); color: var(--stoa-color-surface); }
+.stoa-button--destructive[data-hovered] {
+  background: color-mix(in oklch, var(--stoa-color-down), var(--stoa-color-text) 14%);
+  border-color: color-mix(in oklch, var(--stoa-color-down), var(--stoa-color-text) 14%);
+}
+.stoa-button--destructive[data-pressed] {
+  background: color-mix(in oklch, var(--stoa-color-down), var(--stoa-color-text) 26%);
+  border-color: color-mix(in oklch, var(--stoa-color-down), var(--stoa-color-text) 26%);
+}
+
+/* Keyboard shortcuts: one two-column grid per group, keys in the first. */
+.stoa-shortcuts { display: grid; gap: var(--stoa-space-4); }
+.stoa-shortcuts__title {
+  margin: 0 0 var(--stoa-space-2);
+  font-size: var(--stoa-font-size-xs); font-weight: var(--stoa-font-weight-medium);
+  color: var(--stoa-color-text-muted);
+}
+.stoa-shortcuts__list {
+  display: grid; grid-template-columns: auto 1fr; align-items: baseline;
+  gap: var(--stoa-space-2) var(--stoa-space-4); margin: 0;
+}
+.stoa-shortcuts__row { display: contents; }
+.stoa-shortcuts__row dd { margin: 0; }
+.stoa-shortcuts__keys { display: inline-flex; flex-wrap: wrap; align-items: baseline; gap: var(--stoa-space-1); font: inherit; }
+.stoa-shortcuts__plus { color: var(--stoa-color-text-muted); }
+.stoa-kbd {
+  font-family: var(--stoa-font-family-mono); font-size: var(--stoa-font-size-xs);
+  padding: 0 var(--stoa-space-1);
+  border: 1px solid var(--stoa-color-border-strong); border-block-end-width: 2px;
+  border-radius: var(--stoa-radius-sm);
+  background: var(--stoa-color-surface-sunken); color: var(--stoa-color-text);
+}
