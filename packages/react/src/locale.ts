@@ -82,6 +82,36 @@ export type StoaMessages = {
   /** The word for each step status, shown beside its symbol (StepList's
    * `StepStatus` is this record's keys). */
   stepStatus: Record<"waiting" | "running" | "done" | "awaiting" | "skipped" | "undone" | "error", string>;
+  // Table and charts.
+  /** A line chart with nothing to draw. */
+  noChartData: string;
+  /** The note under a chart whose value axis leaves zero out. */
+  axisNotZero: (from: string, to: string) => string;
+  /** The summary row that opens a chart's data table. */
+  dataTable: string;
+  /** One series in a line chart's text alternative: its first and last
+   * values with where they fall on the time axis, and its range. */
+  seriesSummary: (name: string, first: string, firstAt: string, last: string, lastAt: string, low: string, high: string) => string;
+  /** The series sentences of a chart's text alternative, joined. */
+  seriesList: (parts: string[]) => string;
+  /** Which way time runs on a chart's time axis. */
+  timeLeftToRight: string;
+  timeRightToLeft: string;
+  /** Kinds of event on an event strip. */
+  coupon: string;
+  amortisation: string;
+  offer: string;
+  maturity: string;
+  /** A kind of event that happens more than once, with its count. */
+  eventCount: (kind: string, count: string) => string;
+  /** A kind of event that happens once, with its date. */
+  eventOn: (kind: string, date: string) => string;
+  /** An event strip's summary: its range and one part per kind. */
+  eventSummary: (from: string, to: string, parts: string[]) => string;
+  /** One event in an event strip's list alternative. */
+  eventItem: (date: string, kind: string) => string;
+  /** An event strip with no events. */
+  noEvents: string;
 };
 
 const EN: StoaMessages = {
@@ -137,6 +167,23 @@ const EN: StoaMessages = {
     undone: "Undone",
     error: "Error",
   },
+  noChartData: "No data to show.",
+  axisNotZero: (from, to) => `The value axis does not start at zero: it shows ${from} to ${to}.`,
+  dataTable: "Data table",
+  seriesSummary: (name, first, firstAt, last, lastAt, low, high) =>
+    `${name}: from ${first} on ${firstAt} to ${last} on ${lastAt}, low ${low}, high ${high}`,
+  seriesList: (parts) => `${parts.join("; ")}.`,
+  timeLeftToRight: "Time runs from left to right.",
+  timeRightToLeft: "Time runs from right to left.",
+  coupon: "Coupon",
+  amortisation: "Amortisation",
+  offer: "Offer",
+  maturity: "Maturity",
+  eventCount: (kind, count) => `${kind}: ${count}`,
+  eventOn: (kind, date) => `${kind} on ${date}`,
+  eventSummary: (from, to, parts) => `From ${from} to ${to}: ${parts.join("; ")}.`,
+  eventItem: (date, kind) => `${date}: ${kind}`,
+  noEvents: "No events to show.",
 };
 
 const AR: StoaMessages = {
@@ -192,6 +239,23 @@ const AR: StoaMessages = {
     undone: "تم التراجع",
     error: "خطأ",
   },
+  noChartData: "لا بيانات لعرضها.",
+  axisNotZero: (from, to) => `محور القيم لا يبدأ من الصفر: يعرض من ${from} إلى ${to}.`,
+  dataTable: "جدول البيانات",
+  seriesSummary: (name, first, firstAt, last, lastAt, low, high) =>
+    `${name}: من ${first} في ${firstAt} إلى ${last} في ${lastAt}، الأدنى ${low}، الأعلى ${high}`,
+  seriesList: (parts) => `${parts.join("؛ ")}.`,
+  timeLeftToRight: "يسير الزمن من اليسار إلى اليمين.",
+  timeRightToLeft: "يسير الزمن من اليمين إلى اليسار.",
+  coupon: "كوبون",
+  amortisation: "إطفاء جزئي",
+  offer: "عرض إعادة الشراء",
+  maturity: "الاستحقاق",
+  eventCount: (kind, count) => `${kind}: ${count}`,
+  eventOn: (kind, date) => `${kind} في ${date}`,
+  eventSummary: (from, to, parts) => `من ${from} إلى ${to}: ${parts.join("؛ ")}.`,
+  eventItem: (date, kind) => `${date}: ${kind}`,
+  noEvents: "لا أحداث لعرضها.",
 };
 
 const RU: StoaMessages = {
@@ -248,6 +312,23 @@ const RU: StoaMessages = {
     undone: "Отменено",
     error: "Ошибка",
   },
+  noChartData: "Данных для показа нет.",
+  axisNotZero: (from, to) => `Ось значений начинается не с нуля: от ${from} до ${to}.`,
+  dataTable: "Таблица данных",
+  seriesSummary: (name, first, firstAt, last, lastAt, low, high) =>
+    `${name}: от ${first} (${firstAt}) до ${last} (${lastAt}), минимум ${low}, максимум ${high}`,
+  seriesList: (parts) => `${parts.join("; ")}.`,
+  timeLeftToRight: "Время идёт слева направо.",
+  timeRightToLeft: "Время идёт справа налево.",
+  coupon: "Купон",
+  amortisation: "Амортизация",
+  offer: "Оферта",
+  maturity: "Погашение",
+  eventCount: (kind, count) => `${kind}: ${count}`,
+  eventOn: (kind, date) => `${kind}: ${date}`,
+  eventSummary: (from, to, parts) => `С ${from} по ${to}: ${parts.join("; ")}.`,
+  eventItem: (date, kind) => `${date}: ${kind}`,
+  noEvents: "Событий для показа нет.",
 };
 
 /** Stoa's words for a locale: Arabic for any "ar" tag, Russian for any

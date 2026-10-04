@@ -92,6 +92,11 @@
             "line": 88
           },
           {
+            "component": "EventStrip",
+            "file": "packages/react/src/styles.css",
+            "line": 946
+          },
+          {
             "component": "FilterChip",
             "file": "packages/react/src/styles.css",
             "line": 80
@@ -152,6 +157,16 @@
             "file": "packages/react/src/Ladder.tsx",
             "line": 35,
             "via": "readCanvasTokens"
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 920
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 925
           },
           {
             "component": "ProgressBar",
@@ -275,6 +290,15 @@
           "Controls/Playback > Trades",
           "Controls/Playback > TradesEmpty",
           "Controls/Playback > Transport",
+          "Data/Charts > LineDataTable",
+          "Data/Charts > LineEmpty",
+          "Data/Charts > LineFromZero",
+          "Data/Charts > LineScenarios",
+          "Data/Charts > LineTimeFollowsLocale",
+          "Data/Charts > StripCouponsOnly",
+          "Data/Charts > StripEmpty",
+          "Data/Charts > StripPayments",
+          "Data/Charts > StripTimeFollowsLocale",
           "Data/Heatmap > Empty",
           "Data/Heatmap > Liquidity",
           "Data/Heatmap > Sparse",
@@ -366,6 +390,24 @@
             "via": "--stoa-color-warning"
           },
           {
+            "component": "EventStrip",
+            "file": "packages/react/src/styles.css",
+            "line": 947,
+            "via": "--stoa-color-warning"
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 922,
+            "via": "--stoa-color-warning"
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 927,
+            "via": "--stoa-color-warning"
+          },
+          {
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
             "line": 237,
@@ -416,6 +458,15 @@
           "Controls/Inputs > TagsSmall",
           "Controls/Inputs > ThemeSwitchStates",
           "Controls/Inputs > ToolbarTransport",
+          "Data/Charts > LineDataTable",
+          "Data/Charts > LineEmpty",
+          "Data/Charts > LineFromZero",
+          "Data/Charts > LineScenarios",
+          "Data/Charts > LineTimeFollowsLocale",
+          "Data/Charts > StripCouponsOnly",
+          "Data/Charts > StripEmpty",
+          "Data/Charts > StripPayments",
+          "Data/Charts > StripTimeFollowsLocale",
           "Feedback/Feedback and layout > CalloutDismissible",
           "Feedback/Feedback and layout > CalloutInfo",
           "Feedback/Feedback and layout > CalloutNegativeWithRetry",
@@ -481,6 +532,24 @@
             "via": "--stoa-color-warning"
           },
           {
+            "component": "EventStrip",
+            "file": "packages/react/src/styles.css",
+            "line": 947,
+            "via": "--stoa-color-warning"
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 922,
+            "via": "--stoa-color-warning"
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 927,
+            "via": "--stoa-color-warning"
+          },
+          {
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
             "line": 237,
@@ -531,6 +600,15 @@
           "Controls/Inputs > TagsSmall",
           "Controls/Inputs > ThemeSwitchStates",
           "Controls/Inputs > ToolbarTransport",
+          "Data/Charts > LineDataTable",
+          "Data/Charts > LineEmpty",
+          "Data/Charts > LineFromZero",
+          "Data/Charts > LineScenarios",
+          "Data/Charts > LineTimeFollowsLocale",
+          "Data/Charts > StripCouponsOnly",
+          "Data/Charts > StripEmpty",
+          "Data/Charts > StripPayments",
+          "Data/Charts > StripTimeFollowsLocale",
           "Feedback/Feedback and layout > CalloutDismissible",
           "Feedback/Feedback and layout > CalloutInfo",
           "Feedback/Feedback and layout > CalloutNegativeWithRetry",
@@ -862,6 +940,12 @@
             "via": "--stoa-color-focus"
           },
           {
+            "component": "EventStrip",
+            "file": "packages/react/src/styles.css",
+            "line": 946,
+            "via": "--stoa-color-accent"
+          },
+          {
             "component": "FilterChip",
             "file": "packages/react/src/styles.css",
             "line": 80,
@@ -943,6 +1027,18 @@
             "component": "Ladder",
             "file": "packages/react/src/Ladder.tsx",
             "line": 35,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 920,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 925,
             "via": "--stoa-color-accent"
           },
           {
@@ -1045,6 +1141,12 @@
             "component": "Switch",
             "file": "packages/react/src/styles.css",
             "line": 542,
+            "via": "--stoa-color-focus"
+          },
+          {
+            "component": "Table",
+            "file": "packages/react/src/styles.css",
+            "line": 878,
             "via": "--stoa-color-focus"
           },
           {
@@ -1187,6 +1289,15 @@
           "Controls/Playback > Trades",
           "Controls/Playback > TradesEmpty",
           "Controls/Playback > Transport",
+          "Data/Charts > LineDataTable",
+          "Data/Charts > LineEmpty",
+          "Data/Charts > LineFromZero",
+          "Data/Charts > LineScenarios",
+          "Data/Charts > LineTimeFollowsLocale",
+          "Data/Charts > StripCouponsOnly",
+          "Data/Charts > StripEmpty",
+          "Data/Charts > StripPayments",
+          "Data/Charts > StripTimeFollowsLocale",
           "Data/Heatmap > Empty",
           "Data/Heatmap > Liquidity",
           "Data/Heatmap > Sparse",
@@ -1194,6 +1305,14 @@
           "Data/Ladder > Live",
           "Data/Ladder > Static",
           "Data/Ladder > TwoThemes",
+          "Data/Table > Basic",
+          "Data/Table > Compact",
+          "Data/Table > Empty",
+          "Data/Table > HiddenCaption",
+          "Data/Table > RowHeaders",
+          "Data/Table > StickyFirstColumn",
+          "Data/Table > StickyHeader",
+          "Data/Table > Trades",
           "Feedback/Feedback and layout > CalloutDismissible",
           "Feedback/Feedback and layout > CalloutInfo",
           "Feedback/Feedback and layout > CalloutNegativeWithRetry",
@@ -1365,6 +1484,12 @@
             "via": "--stoa-color-focus"
           },
           {
+            "component": "Table",
+            "file": "packages/react/src/styles.css",
+            "line": 878,
+            "via": "--stoa-color-focus"
+          },
+          {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
             "line": 250,
@@ -1438,6 +1563,14 @@
           "Controls/Playback > Trades",
           "Controls/Playback > TradesEmpty",
           "Controls/Playback > Transport",
+          "Data/Table > Basic",
+          "Data/Table > Compact",
+          "Data/Table > Empty",
+          "Data/Table > HiddenCaption",
+          "Data/Table > RowHeaders",
+          "Data/Table > StickyFirstColumn",
+          "Data/Table > StickyHeader",
+          "Data/Table > Trades",
           "Feedback/Feedback and layout > CalloutDismissible",
           "Feedback/Feedback and layout > CalloutInfo",
           "Feedback/Feedback and layout > CalloutNegativeWithRetry",
@@ -1596,6 +1729,12 @@
             "via": "--stoa-color-accent"
           },
           {
+            "component": "EventStrip",
+            "file": "packages/react/src/styles.css",
+            "line": 946,
+            "via": "--stoa-color-accent"
+          },
+          {
             "component": "FilterChip",
             "file": "packages/react/src/styles.css",
             "line": 80,
@@ -1665,6 +1804,18 @@
             "component": "Ladder",
             "file": "packages/react/src/Ladder.tsx",
             "line": 35,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 920,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 925,
             "via": "--stoa-color-accent"
           },
           {
@@ -1807,6 +1958,15 @@
           "Controls/Playback > Trades",
           "Controls/Playback > TradesEmpty",
           "Controls/Playback > Transport",
+          "Data/Charts > LineDataTable",
+          "Data/Charts > LineEmpty",
+          "Data/Charts > LineFromZero",
+          "Data/Charts > LineScenarios",
+          "Data/Charts > LineTimeFollowsLocale",
+          "Data/Charts > StripCouponsOnly",
+          "Data/Charts > StripEmpty",
+          "Data/Charts > StripPayments",
+          "Data/Charts > StripTimeFollowsLocale",
           "Data/Heatmap > Empty",
           "Data/Heatmap > Liquidity",
           "Data/Heatmap > Sparse",
@@ -1946,6 +2106,11 @@
             "via": "readCanvasTokens"
           },
           {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 917
+          },
+          {
             "component": "PageShell",
             "file": "packages/react/src/styles.css",
             "line": 414
@@ -1986,6 +2151,11 @@
             "line": 550
           },
           {
+            "component": "Table",
+            "file": "packages/react/src/styles.css",
+            "line": 50
+          },
+          {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
             "line": 242
@@ -1994,11 +2164,6 @@
             "component": "Toggle",
             "file": "packages/react/src/styles.css",
             "line": 95
-          },
-          {
-            "component": "TradeTable",
-            "file": "packages/react/src/styles.css",
-            "line": 50
           }
         ],
         "stories": [
@@ -2032,6 +2197,15 @@
           "Controls/Playback > Trades",
           "Controls/Playback > TradesEmpty",
           "Controls/Playback > Transport",
+          "Data/Charts > LineDataTable",
+          "Data/Charts > LineEmpty",
+          "Data/Charts > LineFromZero",
+          "Data/Charts > LineScenarios",
+          "Data/Charts > LineTimeFollowsLocale",
+          "Data/Charts > StripCouponsOnly",
+          "Data/Charts > StripEmpty",
+          "Data/Charts > StripPayments",
+          "Data/Charts > StripTimeFollowsLocale",
           "Data/Heatmap > Empty",
           "Data/Heatmap > Liquidity",
           "Data/Heatmap > Sparse",
@@ -2039,6 +2213,14 @@
           "Data/Ladder > Live",
           "Data/Ladder > Static",
           "Data/Ladder > TwoThemes",
+          "Data/Table > Basic",
+          "Data/Table > Compact",
+          "Data/Table > Empty",
+          "Data/Table > HiddenCaption",
+          "Data/Table > RowHeaders",
+          "Data/Table > StickyFirstColumn",
+          "Data/Table > StickyHeader",
+          "Data/Table > Trades",
           "Feedback/Feedback and layout > CalloutDismissible",
           "Feedback/Feedback and layout > CalloutInfo",
           "Feedback/Feedback and layout > CalloutNegativeWithRetry",
@@ -2141,6 +2323,11 @@
             "line": 63
           },
           {
+            "component": "EventStrip",
+            "file": "packages/react/src/styles.css",
+            "line": 918
+          },
+          {
             "component": "FilterChip",
             "file": "packages/react/src/styles.css",
             "line": 63
@@ -2154,6 +2341,11 @@
             "component": "Kbd",
             "file": "packages/react/src/styles.css",
             "line": 624
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 918
           },
           {
             "component": "NumberField",
@@ -2262,6 +2454,15 @@
           "Controls/Playback > Trades",
           "Controls/Playback > TradesEmpty",
           "Controls/Playback > Transport",
+          "Data/Charts > LineDataTable",
+          "Data/Charts > LineEmpty",
+          "Data/Charts > LineFromZero",
+          "Data/Charts > LineScenarios",
+          "Data/Charts > LineTimeFollowsLocale",
+          "Data/Charts > StripCouponsOnly",
+          "Data/Charts > StripEmpty",
+          "Data/Charts > StripPayments",
+          "Data/Charts > StripTimeFollowsLocale",
           "Feedback/Feedback and layout > CalloutDismissible",
           "Feedback/Feedback and layout > CalloutInfo",
           "Feedback/Feedback and layout > CalloutNegativeWithRetry",
@@ -2374,6 +2575,16 @@
             "line": 397
           },
           {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 924
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 929
+          },
+          {
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
             "line": 235
@@ -2430,6 +2641,23 @@
           "Controls/Playback > Trades",
           "Controls/Playback > TradesEmpty",
           "Controls/Playback > Transport",
+          "Data/Charts > LineDataTable",
+          "Data/Charts > LineEmpty",
+          "Data/Charts > LineFromZero",
+          "Data/Charts > LineScenarios",
+          "Data/Charts > LineTimeFollowsLocale",
+          "Data/Charts > StripCouponsOnly",
+          "Data/Charts > StripEmpty",
+          "Data/Charts > StripPayments",
+          "Data/Charts > StripTimeFollowsLocale",
+          "Data/Table > Basic",
+          "Data/Table > Compact",
+          "Data/Table > Empty",
+          "Data/Table > HiddenCaption",
+          "Data/Table > RowHeaders",
+          "Data/Table > StickyFirstColumn",
+          "Data/Table > StickyHeader",
+          "Data/Table > Trades",
           "Feedback/Feedback and layout > CalloutDismissible",
           "Feedback/Feedback and layout > CalloutInfo",
           "Feedback/Feedback and layout > CalloutNegativeWithRetry",
@@ -2639,6 +2867,11 @@
             "line": 542
           },
           {
+            "component": "Table",
+            "file": "packages/react/src/styles.css",
+            "line": 878
+          },
+          {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
             "line": 250
@@ -2705,6 +2938,14 @@
           "Controls/Playback > Trades",
           "Controls/Playback > TradesEmpty",
           "Controls/Playback > Transport",
+          "Data/Table > Basic",
+          "Data/Table > Compact",
+          "Data/Table > Empty",
+          "Data/Table > HiddenCaption",
+          "Data/Table > RowHeaders",
+          "Data/Table > StickyFirstColumn",
+          "Data/Table > StickyHeader",
+          "Data/Table > Trades",
           "Feedback/Feedback and layout > CalloutDismissible",
           "Feedback/Feedback and layout > CalloutInfo",
           "Feedback/Feedback and layout > CalloutNegativeWithRetry",
@@ -2927,6 +3168,18 @@
             "via": "--stoa-color-surface"
           },
           {
+            "component": "Table",
+            "file": "packages/react/src/styles.css",
+            "line": 897,
+            "via": "--stoa-color-surface"
+          },
+          {
+            "component": "Table",
+            "file": "packages/react/src/styles.css",
+            "line": 901,
+            "via": "--stoa-color-surface"
+          },
+          {
             "component": "Tag",
             "file": "packages/react/src/styles.css",
             "line": 478,
@@ -2988,6 +3241,15 @@
           "Controls/Playback > Trades",
           "Controls/Playback > TradesEmpty",
           "Controls/Playback > Transport",
+          "Data/Charts > LineDataTable",
+          "Data/Charts > LineEmpty",
+          "Data/Charts > LineFromZero",
+          "Data/Charts > LineScenarios",
+          "Data/Charts > LineTimeFollowsLocale",
+          "Data/Charts > StripCouponsOnly",
+          "Data/Charts > StripEmpty",
+          "Data/Charts > StripPayments",
+          "Data/Charts > StripTimeFollowsLocale",
           "Data/Heatmap > Empty",
           "Data/Heatmap > Liquidity",
           "Data/Heatmap > Sparse",
@@ -2995,6 +3257,14 @@
           "Data/Ladder > Live",
           "Data/Ladder > Static",
           "Data/Ladder > TwoThemes",
+          "Data/Table > Basic",
+          "Data/Table > Compact",
+          "Data/Table > Empty",
+          "Data/Table > HiddenCaption",
+          "Data/Table > RowHeaders",
+          "Data/Table > StickyFirstColumn",
+          "Data/Table > StickyHeader",
+          "Data/Table > Trades",
           "Feedback/Feedback and layout > CalloutDismissible",
           "Feedback/Feedback and layout > CalloutInfo",
           "Feedback/Feedback and layout > CalloutNegativeWithRetry",
@@ -3255,6 +3525,18 @@
             "via": "--stoa-color-text"
           },
           {
+            "component": "EventStrip",
+            "file": "packages/react/src/styles.css",
+            "line": 937,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "EventStrip",
+            "file": "packages/react/src/styles.css",
+            "line": 948,
+            "via": "--stoa-color-text"
+          },
+          {
             "component": "FilterChip",
             "file": "packages/react/src/styles.css",
             "line": 66,
@@ -3363,6 +3645,12 @@
             "via": "--stoa-color-text"
           },
           {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 937,
+            "via": "--stoa-color-text"
+          },
+          {
             "component": "NumberField",
             "file": "packages/react/src/styles.css",
             "line": 228,
@@ -3439,6 +3727,18 @@
             "file": "packages/react/src/styles.css",
             "line": 548,
             "via": "--stoa-color-surface-sunken"
+          },
+          {
+            "component": "Table",
+            "file": "packages/react/src/styles.css",
+            "line": 885,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "Table",
+            "file": "packages/react/src/styles.css",
+            "line": 889,
+            "via": "--stoa-color-text"
           },
           {
             "component": "Tabs",
@@ -3544,6 +3844,15 @@
           "Controls/Playback > Trades",
           "Controls/Playback > TradesEmpty",
           "Controls/Playback > Transport",
+          "Data/Charts > LineDataTable",
+          "Data/Charts > LineEmpty",
+          "Data/Charts > LineFromZero",
+          "Data/Charts > LineScenarios",
+          "Data/Charts > LineTimeFollowsLocale",
+          "Data/Charts > StripCouponsOnly",
+          "Data/Charts > StripEmpty",
+          "Data/Charts > StripPayments",
+          "Data/Charts > StripTimeFollowsLocale",
           "Data/Heatmap > Empty",
           "Data/Heatmap > Liquidity",
           "Data/Heatmap > Sparse",
@@ -3551,6 +3860,14 @@
           "Data/Ladder > Live",
           "Data/Ladder > Static",
           "Data/Ladder > TwoThemes",
+          "Data/Table > Basic",
+          "Data/Table > Compact",
+          "Data/Table > Empty",
+          "Data/Table > HiddenCaption",
+          "Data/Table > RowHeaders",
+          "Data/Table > StickyFirstColumn",
+          "Data/Table > StickyHeader",
+          "Data/Table > Trades",
           "Feedback/Feedback and layout > CalloutDismissible",
           "Feedback/Feedback and layout > CalloutInfo",
           "Feedback/Feedback and layout > CalloutNegativeWithRetry",
@@ -3946,6 +4263,12 @@
             "via": "--stoa-color-border"
           },
           {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 917,
+            "via": "--stoa-color-border"
+          },
+          {
             "component": "PageShell",
             "file": "packages/react/src/styles.css",
             "line": 414,
@@ -3994,6 +4317,12 @@
             "via": "--stoa-color-border"
           },
           {
+            "component": "Table",
+            "file": "packages/react/src/styles.css",
+            "line": 50,
+            "via": "--stoa-color-border"
+          },
+          {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
             "line": 242,
@@ -4003,12 +4332,6 @@
             "component": "Toggle",
             "file": "packages/react/src/styles.css",
             "line": 95,
-            "via": "--stoa-color-border"
-          },
-          {
-            "component": "TradeTable",
-            "file": "packages/react/src/styles.css",
-            "line": 50,
             "via": "--stoa-color-border"
           }
         ],
@@ -4043,6 +4366,15 @@
           "Controls/Playback > Trades",
           "Controls/Playback > TradesEmpty",
           "Controls/Playback > Transport",
+          "Data/Charts > LineDataTable",
+          "Data/Charts > LineEmpty",
+          "Data/Charts > LineFromZero",
+          "Data/Charts > LineScenarios",
+          "Data/Charts > LineTimeFollowsLocale",
+          "Data/Charts > StripCouponsOnly",
+          "Data/Charts > StripEmpty",
+          "Data/Charts > StripPayments",
+          "Data/Charts > StripTimeFollowsLocale",
           "Data/Heatmap > Empty",
           "Data/Heatmap > Liquidity",
           "Data/Heatmap > Sparse",
@@ -4050,6 +4382,14 @@
           "Data/Ladder > Live",
           "Data/Ladder > Static",
           "Data/Ladder > TwoThemes",
+          "Data/Table > Basic",
+          "Data/Table > Compact",
+          "Data/Table > Empty",
+          "Data/Table > HiddenCaption",
+          "Data/Table > RowHeaders",
+          "Data/Table > StickyFirstColumn",
+          "Data/Table > StickyHeader",
+          "Data/Table > Trades",
           "Feedback/Feedback and layout > CalloutDismissible",
           "Feedback/Feedback and layout > CalloutInfo",
           "Feedback/Feedback and layout > CalloutNegativeWithRetry",
@@ -4242,6 +4582,24 @@
             "via": "--stoa-color-text-muted"
           },
           {
+            "component": "EventStrip",
+            "file": "packages/react/src/styles.css",
+            "line": 916,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "EventStrip",
+            "file": "packages/react/src/styles.css",
+            "line": 932,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "EventStrip",
+            "file": "packages/react/src/styles.css",
+            "line": 945,
+            "via": "--stoa-color-text-muted"
+          },
+          {
             "component": "Heatmap",
             "file": "packages/react/src/Heatmap.tsx",
             "line": 29,
@@ -4257,6 +4615,42 @@
             "component": "Ladder",
             "file": "packages/react/src/Ladder.tsx",
             "line": 29,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 914,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 916,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 921,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 926,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 932,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 941,
             "via": "--stoa-color-text-muted"
           },
           {
@@ -4356,6 +4750,18 @@
             "via": "--stoa-color-text-muted"
           },
           {
+            "component": "Table",
+            "file": "packages/react/src/styles.css",
+            "line": 50,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "Table",
+            "file": "packages/react/src/styles.css",
+            "line": 55,
+            "via": "--stoa-color-text-muted"
+          },
+          {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
             "line": 245,
@@ -4377,18 +4783,6 @@
             "component": "TextField",
             "file": "packages/react/src/styles.css",
             "line": 231,
-            "via": "--stoa-color-text-muted"
-          },
-          {
-            "component": "TradeTable",
-            "file": "packages/react/src/styles.css",
-            "line": 50,
-            "via": "--stoa-color-text-muted"
-          },
-          {
-            "component": "TradeTable",
-            "file": "packages/react/src/styles.css",
-            "line": 55,
             "via": "--stoa-color-text-muted"
           }
         ],
@@ -4423,6 +4817,15 @@
           "Controls/Playback > Trades",
           "Controls/Playback > TradesEmpty",
           "Controls/Playback > Transport",
+          "Data/Charts > LineDataTable",
+          "Data/Charts > LineEmpty",
+          "Data/Charts > LineFromZero",
+          "Data/Charts > LineScenarios",
+          "Data/Charts > LineTimeFollowsLocale",
+          "Data/Charts > StripCouponsOnly",
+          "Data/Charts > StripEmpty",
+          "Data/Charts > StripPayments",
+          "Data/Charts > StripTimeFollowsLocale",
           "Data/Heatmap > Empty",
           "Data/Heatmap > Liquidity",
           "Data/Heatmap > Sparse",
@@ -4430,6 +4833,14 @@
           "Data/Ladder > Live",
           "Data/Ladder > Static",
           "Data/Ladder > TwoThemes",
+          "Data/Table > Basic",
+          "Data/Table > Compact",
+          "Data/Table > Empty",
+          "Data/Table > HiddenCaption",
+          "Data/Table > RowHeaders",
+          "Data/Table > StickyFirstColumn",
+          "Data/Table > StickyHeader",
+          "Data/Table > Trades",
           "Feedback/Feedback and layout > CalloutDismissible",
           "Feedback/Feedback and layout > CalloutInfo",
           "Feedback/Feedback and layout > CalloutNegativeWithRetry",
@@ -4570,6 +4981,12 @@
             "via": "--stoa-color-text-subtle"
           },
           {
+            "component": "EventStrip",
+            "file": "packages/react/src/styles.css",
+            "line": 918,
+            "via": "--stoa-color-border-strong"
+          },
+          {
             "component": "FilterChip",
             "file": "packages/react/src/styles.css",
             "line": 63,
@@ -4597,6 +5014,12 @@
             "component": "Kbd",
             "file": "packages/react/src/styles.css",
             "line": 624,
+            "via": "--stoa-color-border-strong"
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 918,
             "via": "--stoa-color-border-strong"
           },
           {
@@ -4745,6 +5168,15 @@
           "Controls/Playback > Trades",
           "Controls/Playback > TradesEmpty",
           "Controls/Playback > Transport",
+          "Data/Charts > LineDataTable",
+          "Data/Charts > LineEmpty",
+          "Data/Charts > LineFromZero",
+          "Data/Charts > LineScenarios",
+          "Data/Charts > LineTimeFollowsLocale",
+          "Data/Charts > StripCouponsOnly",
+          "Data/Charts > StripEmpty",
+          "Data/Charts > StripPayments",
+          "Data/Charts > StripTimeFollowsLocale",
           "Feedback/Feedback and layout > CalloutDismissible",
           "Feedback/Feedback and layout > CalloutInfo",
           "Feedback/Feedback and layout > CalloutNegativeWithRetry",
@@ -4943,6 +5375,12 @@
             "via": "--stoa-color-text-subtle"
           },
           {
+            "component": "EventStrip",
+            "file": "packages/react/src/styles.css",
+            "line": 918,
+            "via": "--stoa-color-border-strong"
+          },
+          {
             "component": "FilterChip",
             "file": "packages/react/src/styles.css",
             "line": 63,
@@ -4970,6 +5408,12 @@
             "component": "Kbd",
             "file": "packages/react/src/styles.css",
             "line": 624,
+            "via": "--stoa-color-border-strong"
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 918,
             "via": "--stoa-color-border-strong"
           },
           {
@@ -5118,6 +5562,15 @@
           "Controls/Playback > Trades",
           "Controls/Playback > TradesEmpty",
           "Controls/Playback > Transport",
+          "Data/Charts > LineDataTable",
+          "Data/Charts > LineEmpty",
+          "Data/Charts > LineFromZero",
+          "Data/Charts > LineScenarios",
+          "Data/Charts > LineTimeFollowsLocale",
+          "Data/Charts > StripCouponsOnly",
+          "Data/Charts > StripEmpty",
+          "Data/Charts > StripPayments",
+          "Data/Charts > StripTimeFollowsLocale",
           "Feedback/Feedback and layout > CalloutDismissible",
           "Feedback/Feedback and layout > CalloutInfo",
           "Feedback/Feedback and layout > CalloutNegativeWithRetry",
@@ -5289,6 +5742,24 @@
             "via": "--stoa-color-text-muted"
           },
           {
+            "component": "EventStrip",
+            "file": "packages/react/src/styles.css",
+            "line": 916,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "EventStrip",
+            "file": "packages/react/src/styles.css",
+            "line": 932,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "EventStrip",
+            "file": "packages/react/src/styles.css",
+            "line": 945,
+            "via": "--stoa-color-text-muted"
+          },
+          {
             "component": "Heatmap",
             "file": "packages/react/src/Heatmap.tsx",
             "line": 29,
@@ -5304,6 +5775,42 @@
             "component": "Ladder",
             "file": "packages/react/src/Ladder.tsx",
             "line": 29,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 914,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 916,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 921,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 926,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 932,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 941,
             "via": "--stoa-color-text-muted"
           },
           {
@@ -5403,6 +5910,18 @@
             "via": "--stoa-color-text-muted"
           },
           {
+            "component": "Table",
+            "file": "packages/react/src/styles.css",
+            "line": 50,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "Table",
+            "file": "packages/react/src/styles.css",
+            "line": 55,
+            "via": "--stoa-color-text-muted"
+          },
+          {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
             "line": 245,
@@ -5424,18 +5943,6 @@
             "component": "TextField",
             "file": "packages/react/src/styles.css",
             "line": 231,
-            "via": "--stoa-color-text-muted"
-          },
-          {
-            "component": "TradeTable",
-            "file": "packages/react/src/styles.css",
-            "line": 50,
-            "via": "--stoa-color-text-muted"
-          },
-          {
-            "component": "TradeTable",
-            "file": "packages/react/src/styles.css",
-            "line": 55,
             "via": "--stoa-color-text-muted"
           }
         ],
@@ -5470,6 +5977,15 @@
           "Controls/Playback > Trades",
           "Controls/Playback > TradesEmpty",
           "Controls/Playback > Transport",
+          "Data/Charts > LineDataTable",
+          "Data/Charts > LineEmpty",
+          "Data/Charts > LineFromZero",
+          "Data/Charts > LineScenarios",
+          "Data/Charts > LineTimeFollowsLocale",
+          "Data/Charts > StripCouponsOnly",
+          "Data/Charts > StripEmpty",
+          "Data/Charts > StripPayments",
+          "Data/Charts > StripTimeFollowsLocale",
           "Data/Heatmap > Empty",
           "Data/Heatmap > Liquidity",
           "Data/Heatmap > Sparse",
@@ -5477,6 +5993,14 @@
           "Data/Ladder > Live",
           "Data/Ladder > Static",
           "Data/Ladder > TwoThemes",
+          "Data/Table > Basic",
+          "Data/Table > Compact",
+          "Data/Table > Empty",
+          "Data/Table > HiddenCaption",
+          "Data/Table > RowHeaders",
+          "Data/Table > StickyFirstColumn",
+          "Data/Table > StickyHeader",
+          "Data/Table > Trades",
           "Feedback/Feedback and layout > CalloutDismissible",
           "Feedback/Feedback and layout > CalloutInfo",
           "Feedback/Feedback and layout > CalloutNegativeWithRetry",
@@ -5657,6 +6181,12 @@
             "via": "--stoa-color-border"
           },
           {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 917,
+            "via": "--stoa-color-border"
+          },
+          {
             "component": "PageShell",
             "file": "packages/react/src/styles.css",
             "line": 414,
@@ -5705,6 +6235,12 @@
             "via": "--stoa-color-border"
           },
           {
+            "component": "Table",
+            "file": "packages/react/src/styles.css",
+            "line": 50,
+            "via": "--stoa-color-border"
+          },
+          {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
             "line": 242,
@@ -5714,12 +6250,6 @@
             "component": "Toggle",
             "file": "packages/react/src/styles.css",
             "line": 95,
-            "via": "--stoa-color-border"
-          },
-          {
-            "component": "TradeTable",
-            "file": "packages/react/src/styles.css",
-            "line": 50,
             "via": "--stoa-color-border"
           }
         ],
@@ -5754,6 +6284,15 @@
           "Controls/Playback > Trades",
           "Controls/Playback > TradesEmpty",
           "Controls/Playback > Transport",
+          "Data/Charts > LineDataTable",
+          "Data/Charts > LineEmpty",
+          "Data/Charts > LineFromZero",
+          "Data/Charts > LineScenarios",
+          "Data/Charts > LineTimeFollowsLocale",
+          "Data/Charts > StripCouponsOnly",
+          "Data/Charts > StripEmpty",
+          "Data/Charts > StripPayments",
+          "Data/Charts > StripTimeFollowsLocale",
           "Data/Heatmap > Empty",
           "Data/Heatmap > Liquidity",
           "Data/Heatmap > Sparse",
@@ -5761,6 +6300,14 @@
           "Data/Ladder > Live",
           "Data/Ladder > Static",
           "Data/Ladder > TwoThemes",
+          "Data/Table > Basic",
+          "Data/Table > Compact",
+          "Data/Table > Empty",
+          "Data/Table > HiddenCaption",
+          "Data/Table > RowHeaders",
+          "Data/Table > StickyFirstColumn",
+          "Data/Table > StickyHeader",
+          "Data/Table > Trades",
           "Feedback/Feedback and layout > CalloutDismissible",
           "Feedback/Feedback and layout > CalloutInfo",
           "Feedback/Feedback and layout > CalloutNegativeWithRetry",
@@ -6241,6 +6788,18 @@
             "via": "--stoa-color-text"
           },
           {
+            "component": "EventStrip",
+            "file": "packages/react/src/styles.css",
+            "line": 937,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "EventStrip",
+            "file": "packages/react/src/styles.css",
+            "line": 948,
+            "via": "--stoa-color-text"
+          },
+          {
             "component": "FilterChip",
             "file": "packages/react/src/styles.css",
             "line": 65,
@@ -6367,6 +6926,12 @@
             "via": "--stoa-color-text"
           },
           {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 937,
+            "via": "--stoa-color-text"
+          },
+          {
             "component": "NumberField",
             "file": "packages/react/src/styles.css",
             "line": 228,
@@ -6490,6 +7055,30 @@
             "component": "Switch",
             "file": "packages/react/src/styles.css",
             "line": 536,
+            "via": "--stoa-color-surface"
+          },
+          {
+            "component": "Table",
+            "file": "packages/react/src/styles.css",
+            "line": 885,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "Table",
+            "file": "packages/react/src/styles.css",
+            "line": 889,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "Table",
+            "file": "packages/react/src/styles.css",
+            "line": 897,
+            "via": "--stoa-color-surface"
+          },
+          {
+            "component": "Table",
+            "file": "packages/react/src/styles.css",
+            "line": 901,
             "via": "--stoa-color-surface"
           },
           {
@@ -6620,6 +7209,15 @@
           "Controls/Playback > Trades",
           "Controls/Playback > TradesEmpty",
           "Controls/Playback > Transport",
+          "Data/Charts > LineDataTable",
+          "Data/Charts > LineEmpty",
+          "Data/Charts > LineFromZero",
+          "Data/Charts > LineScenarios",
+          "Data/Charts > LineTimeFollowsLocale",
+          "Data/Charts > StripCouponsOnly",
+          "Data/Charts > StripEmpty",
+          "Data/Charts > StripPayments",
+          "Data/Charts > StripTimeFollowsLocale",
           "Data/Heatmap > Empty",
           "Data/Heatmap > Liquidity",
           "Data/Heatmap > Sparse",
@@ -6627,6 +7225,14 @@
           "Data/Ladder > Live",
           "Data/Ladder > Static",
           "Data/Ladder > TwoThemes",
+          "Data/Table > Basic",
+          "Data/Table > Compact",
+          "Data/Table > Empty",
+          "Data/Table > HiddenCaption",
+          "Data/Table > RowHeaders",
+          "Data/Table > StickyFirstColumn",
+          "Data/Table > StickyHeader",
+          "Data/Table > Trades",
           "Feedback/Feedback and layout > CalloutDismissible",
           "Feedback/Feedback and layout > CalloutInfo",
           "Feedback/Feedback and layout > CalloutNegativeWithRetry",
@@ -6757,6 +7363,18 @@
             "via": "--stoa-color-ask"
           },
           {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 924,
+            "via": "--stoa-color-down"
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 929,
+            "via": "--stoa-color-down"
+          },
+          {
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
             "line": 235,
@@ -6818,6 +7436,15 @@
           "Controls/Playback > Trades",
           "Controls/Playback > TradesEmpty",
           "Controls/Playback > Transport",
+          "Data/Charts > LineDataTable",
+          "Data/Charts > LineEmpty",
+          "Data/Charts > LineFromZero",
+          "Data/Charts > LineScenarios",
+          "Data/Charts > LineTimeFollowsLocale",
+          "Data/Charts > StripCouponsOnly",
+          "Data/Charts > StripEmpty",
+          "Data/Charts > StripPayments",
+          "Data/Charts > StripTimeFollowsLocale",
           "Data/Heatmap > Empty",
           "Data/Heatmap > Liquidity",
           "Data/Heatmap > Sparse",
@@ -6825,6 +7452,14 @@
           "Data/Ladder > Live",
           "Data/Ladder > Static",
           "Data/Ladder > TwoThemes",
+          "Data/Table > Basic",
+          "Data/Table > Compact",
+          "Data/Table > Empty",
+          "Data/Table > HiddenCaption",
+          "Data/Table > RowHeaders",
+          "Data/Table > StickyFirstColumn",
+          "Data/Table > StickyHeader",
+          "Data/Table > Trades",
           "Feedback/Feedback and layout > CalloutDismissible",
           "Feedback/Feedback and layout > CalloutInfo",
           "Feedback/Feedback and layout > CalloutNegativeWithRetry",
@@ -6954,6 +7589,18 @@
             "via": "--stoa-color-ask"
           },
           {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 924,
+            "via": "--stoa-color-down"
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 929,
+            "via": "--stoa-color-down"
+          },
+          {
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
             "line": 235,
@@ -7015,6 +7662,15 @@
           "Controls/Playback > Trades",
           "Controls/Playback > TradesEmpty",
           "Controls/Playback > Transport",
+          "Data/Charts > LineDataTable",
+          "Data/Charts > LineEmpty",
+          "Data/Charts > LineFromZero",
+          "Data/Charts > LineScenarios",
+          "Data/Charts > LineTimeFollowsLocale",
+          "Data/Charts > StripCouponsOnly",
+          "Data/Charts > StripEmpty",
+          "Data/Charts > StripPayments",
+          "Data/Charts > StripTimeFollowsLocale",
           "Data/Heatmap > Empty",
           "Data/Heatmap > Liquidity",
           "Data/Heatmap > Sparse",
@@ -7022,6 +7678,14 @@
           "Data/Ladder > Live",
           "Data/Ladder > Static",
           "Data/Ladder > TwoThemes",
+          "Data/Table > Basic",
+          "Data/Table > Compact",
+          "Data/Table > Empty",
+          "Data/Table > HiddenCaption",
+          "Data/Table > RowHeaders",
+          "Data/Table > StickyFirstColumn",
+          "Data/Table > StickyHeader",
+          "Data/Table > Trades",
           "Feedback/Feedback and layout > CalloutDismissible",
           "Feedback/Feedback and layout > CalloutInfo",
           "Feedback/Feedback and layout > CalloutNegativeWithRetry",
@@ -7278,6 +7942,16 @@
             "line": 536
           },
           {
+            "component": "Table",
+            "file": "packages/react/src/styles.css",
+            "line": 897
+          },
+          {
+            "component": "Table",
+            "file": "packages/react/src/styles.css",
+            "line": 901
+          },
+          {
             "component": "Tag",
             "file": "packages/react/src/styles.css",
             "line": 478
@@ -7334,6 +8008,15 @@
           "Controls/Playback > Trades",
           "Controls/Playback > TradesEmpty",
           "Controls/Playback > Transport",
+          "Data/Charts > LineDataTable",
+          "Data/Charts > LineEmpty",
+          "Data/Charts > LineFromZero",
+          "Data/Charts > LineScenarios",
+          "Data/Charts > LineTimeFollowsLocale",
+          "Data/Charts > StripCouponsOnly",
+          "Data/Charts > StripEmpty",
+          "Data/Charts > StripPayments",
+          "Data/Charts > StripTimeFollowsLocale",
           "Data/Heatmap > Empty",
           "Data/Heatmap > Liquidity",
           "Data/Heatmap > Sparse",
@@ -7341,6 +8024,14 @@
           "Data/Ladder > Live",
           "Data/Ladder > Static",
           "Data/Ladder > TwoThemes",
+          "Data/Table > Basic",
+          "Data/Table > Compact",
+          "Data/Table > Empty",
+          "Data/Table > HiddenCaption",
+          "Data/Table > RowHeaders",
+          "Data/Table > StickyFirstColumn",
+          "Data/Table > StickyHeader",
+          "Data/Table > Trades",
           "Feedback/Feedback and layout > CalloutDismissible",
           "Feedback/Feedback and layout > CalloutInfo",
           "Feedback/Feedback and layout > CalloutNegativeWithRetry",
@@ -7782,6 +8473,18 @@
             "via": "--stoa-color-bid"
           },
           {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 923,
+            "via": "--stoa-color-up"
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 928,
+            "via": "--stoa-color-up"
+          },
+          {
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
             "line": 234,
@@ -7843,6 +8546,15 @@
           "Controls/Playback > Trades",
           "Controls/Playback > TradesEmpty",
           "Controls/Playback > Transport",
+          "Data/Charts > LineDataTable",
+          "Data/Charts > LineEmpty",
+          "Data/Charts > LineFromZero",
+          "Data/Charts > LineScenarios",
+          "Data/Charts > LineTimeFollowsLocale",
+          "Data/Charts > StripCouponsOnly",
+          "Data/Charts > StripEmpty",
+          "Data/Charts > StripPayments",
+          "Data/Charts > StripTimeFollowsLocale",
           "Data/Heatmap > Empty",
           "Data/Heatmap > Liquidity",
           "Data/Heatmap > Sparse",
@@ -7850,6 +8562,14 @@
           "Data/Ladder > Live",
           "Data/Ladder > Static",
           "Data/Ladder > TwoThemes",
+          "Data/Table > Basic",
+          "Data/Table > Compact",
+          "Data/Table > Empty",
+          "Data/Table > HiddenCaption",
+          "Data/Table > RowHeaders",
+          "Data/Table > StickyFirstColumn",
+          "Data/Table > StickyHeader",
+          "Data/Table > Trades",
           "Feedback/Feedback and layout > CalloutDismissible",
           "Feedback/Feedback and layout > CalloutInfo",
           "Feedback/Feedback and layout > CalloutNegativeWithRetry",
@@ -7929,6 +8649,18 @@
             "via": "--stoa-color-bid"
           },
           {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 923,
+            "via": "--stoa-color-up"
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 928,
+            "via": "--stoa-color-up"
+          },
+          {
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
             "line": 234,
@@ -7990,6 +8722,15 @@
           "Controls/Playback > Trades",
           "Controls/Playback > TradesEmpty",
           "Controls/Playback > Transport",
+          "Data/Charts > LineDataTable",
+          "Data/Charts > LineEmpty",
+          "Data/Charts > LineFromZero",
+          "Data/Charts > LineScenarios",
+          "Data/Charts > LineTimeFollowsLocale",
+          "Data/Charts > StripCouponsOnly",
+          "Data/Charts > StripEmpty",
+          "Data/Charts > StripPayments",
+          "Data/Charts > StripTimeFollowsLocale",
           "Data/Heatmap > Empty",
           "Data/Heatmap > Liquidity",
           "Data/Heatmap > Sparse",
@@ -7997,6 +8738,14 @@
           "Data/Ladder > Live",
           "Data/Ladder > Static",
           "Data/Ladder > TwoThemes",
+          "Data/Table > Basic",
+          "Data/Table > Compact",
+          "Data/Table > Empty",
+          "Data/Table > HiddenCaption",
+          "Data/Table > RowHeaders",
+          "Data/Table > StickyFirstColumn",
+          "Data/Table > StickyHeader",
+          "Data/Table > Trades",
           "Feedback/Feedback and layout > CalloutDismissible",
           "Feedback/Feedback and layout > CalloutInfo",
           "Feedback/Feedback and layout > CalloutNegativeWithRetry",
@@ -8231,6 +8980,16 @@
             "line": 356
           },
           {
+            "component": "EventStrip",
+            "file": "packages/react/src/styles.css",
+            "line": 937
+          },
+          {
+            "component": "EventStrip",
+            "file": "packages/react/src/styles.css",
+            "line": 948
+          },
+          {
             "component": "FilterChip",
             "file": "packages/react/src/styles.css",
             "line": 66
@@ -8308,6 +9067,11 @@
             "via": "readCanvasTokens"
           },
           {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 937
+          },
+          {
             "component": "NumberField",
             "file": "packages/react/src/styles.css",
             "line": 228
@@ -8361,6 +9125,16 @@
             "component": "Switch",
             "file": "packages/react/src/styles.css",
             "line": 533
+          },
+          {
+            "component": "Table",
+            "file": "packages/react/src/styles.css",
+            "line": 885
+          },
+          {
+            "component": "Table",
+            "file": "packages/react/src/styles.css",
+            "line": 889
           },
           {
             "component": "Tabs",
@@ -8449,6 +9223,15 @@
           "Controls/Playback > Trades",
           "Controls/Playback > TradesEmpty",
           "Controls/Playback > Transport",
+          "Data/Charts > LineDataTable",
+          "Data/Charts > LineEmpty",
+          "Data/Charts > LineFromZero",
+          "Data/Charts > LineScenarios",
+          "Data/Charts > LineTimeFollowsLocale",
+          "Data/Charts > StripCouponsOnly",
+          "Data/Charts > StripEmpty",
+          "Data/Charts > StripPayments",
+          "Data/Charts > StripTimeFollowsLocale",
           "Data/Heatmap > Empty",
           "Data/Heatmap > Liquidity",
           "Data/Heatmap > Sparse",
@@ -8456,6 +9239,14 @@
           "Data/Ladder > Live",
           "Data/Ladder > Static",
           "Data/Ladder > TwoThemes",
+          "Data/Table > Basic",
+          "Data/Table > Compact",
+          "Data/Table > Empty",
+          "Data/Table > HiddenCaption",
+          "Data/Table > RowHeaders",
+          "Data/Table > StickyFirstColumn",
+          "Data/Table > StickyHeader",
+          "Data/Table > Trades",
           "Feedback/Feedback and layout > CalloutDismissible",
           "Feedback/Feedback and layout > CalloutInfo",
           "Feedback/Feedback and layout > CalloutNegativeWithRetry",
@@ -8614,6 +9405,21 @@
             "line": 357
           },
           {
+            "component": "EventStrip",
+            "file": "packages/react/src/styles.css",
+            "line": 916
+          },
+          {
+            "component": "EventStrip",
+            "file": "packages/react/src/styles.css",
+            "line": 932
+          },
+          {
+            "component": "EventStrip",
+            "file": "packages/react/src/styles.css",
+            "line": 945
+          },
+          {
             "component": "Heatmap",
             "file": "packages/react/src/Heatmap.tsx",
             "line": 29,
@@ -8629,6 +9435,36 @@
             "file": "packages/react/src/Ladder.tsx",
             "line": 29,
             "via": "readCanvasTokens"
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 914
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 916
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 921
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 926
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 932
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 941
           },
           {
             "component": "LogView",
@@ -8711,6 +9547,16 @@
             "line": 231
           },
           {
+            "component": "Table",
+            "file": "packages/react/src/styles.css",
+            "line": 50
+          },
+          {
+            "component": "Table",
+            "file": "packages/react/src/styles.css",
+            "line": 55
+          },
+          {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
             "line": 245
@@ -8729,16 +9575,6 @@
             "component": "TextField",
             "file": "packages/react/src/styles.css",
             "line": 231
-          },
-          {
-            "component": "TradeTable",
-            "file": "packages/react/src/styles.css",
-            "line": 50
-          },
-          {
-            "component": "TradeTable",
-            "file": "packages/react/src/styles.css",
-            "line": 55
           }
         ],
         "stories": [
@@ -8772,6 +9608,15 @@
           "Controls/Playback > Trades",
           "Controls/Playback > TradesEmpty",
           "Controls/Playback > Transport",
+          "Data/Charts > LineDataTable",
+          "Data/Charts > LineEmpty",
+          "Data/Charts > LineFromZero",
+          "Data/Charts > LineScenarios",
+          "Data/Charts > LineTimeFollowsLocale",
+          "Data/Charts > StripCouponsOnly",
+          "Data/Charts > StripEmpty",
+          "Data/Charts > StripPayments",
+          "Data/Charts > StripTimeFollowsLocale",
           "Data/Heatmap > Empty",
           "Data/Heatmap > Liquidity",
           "Data/Heatmap > Sparse",
@@ -8779,6 +9624,14 @@
           "Data/Ladder > Live",
           "Data/Ladder > Static",
           "Data/Ladder > TwoThemes",
+          "Data/Table > Basic",
+          "Data/Table > Compact",
+          "Data/Table > Empty",
+          "Data/Table > HiddenCaption",
+          "Data/Table > RowHeaders",
+          "Data/Table > StickyFirstColumn",
+          "Data/Table > StickyHeader",
+          "Data/Table > Trades",
           "Feedback/Feedback and layout > CalloutDismissible",
           "Feedback/Feedback and layout > CalloutInfo",
           "Feedback/Feedback and layout > CalloutNegativeWithRetry",
@@ -9027,6 +9880,16 @@
             "line": 395
           },
           {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 923
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 928
+          },
+          {
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
             "line": 234
@@ -9083,6 +9946,23 @@
           "Controls/Playback > Trades",
           "Controls/Playback > TradesEmpty",
           "Controls/Playback > Transport",
+          "Data/Charts > LineDataTable",
+          "Data/Charts > LineEmpty",
+          "Data/Charts > LineFromZero",
+          "Data/Charts > LineScenarios",
+          "Data/Charts > LineTimeFollowsLocale",
+          "Data/Charts > StripCouponsOnly",
+          "Data/Charts > StripEmpty",
+          "Data/Charts > StripPayments",
+          "Data/Charts > StripTimeFollowsLocale",
+          "Data/Table > Basic",
+          "Data/Table > Compact",
+          "Data/Table > Empty",
+          "Data/Table > HiddenCaption",
+          "Data/Table > RowHeaders",
+          "Data/Table > StickyFirstColumn",
+          "Data/Table > StickyHeader",
+          "Data/Table > Trades",
           "Feedback/Feedback and layout > CalloutDismissible",
           "Feedback/Feedback and layout > CalloutInfo",
           "Feedback/Feedback and layout > CalloutNegativeWithRetry",
@@ -9202,6 +10082,21 @@
             "line": 396
           },
           {
+            "component": "EventStrip",
+            "file": "packages/react/src/styles.css",
+            "line": 947
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 922
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 927
+          },
+          {
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
             "line": 237
@@ -9248,6 +10143,15 @@
           "Controls/Inputs > TagsSmall",
           "Controls/Inputs > ThemeSwitchStates",
           "Controls/Inputs > ToolbarTransport",
+          "Data/Charts > LineDataTable",
+          "Data/Charts > LineEmpty",
+          "Data/Charts > LineFromZero",
+          "Data/Charts > LineScenarios",
+          "Data/Charts > LineTimeFollowsLocale",
+          "Data/Charts > StripCouponsOnly",
+          "Data/Charts > StripEmpty",
+          "Data/Charts > StripPayments",
+          "Data/Charts > StripTimeFollowsLocale",
           "Feedback/Feedback and layout > CalloutDismissible",
           "Feedback/Feedback and layout > CalloutInfo",
           "Feedback/Feedback and layout > CalloutNegativeWithRetry",
@@ -9298,17 +10202,25 @@
       "readBy": {
         "components": [
           {
-            "component": "TradeTable",
+            "component": "Table",
             "file": "packages/react/src/styles.css",
             "line": 52
+          },
+          {
+            "component": "Table",
+            "file": "packages/react/src/styles.css",
+            "line": 883
           }
         ],
         "stories": [
-          "Controls/Playback > Choices",
-          "Controls/Playback > Counters",
-          "Controls/Playback > Trades",
-          "Controls/Playback > TradesEmpty",
-          "Controls/Playback > Transport"
+          "Data/Table > Basic",
+          "Data/Table > Compact",
+          "Data/Table > Empty",
+          "Data/Table > HiddenCaption",
+          "Data/Table > RowHeaders",
+          "Data/Table > StickyFirstColumn",
+          "Data/Table > StickyHeader",
+          "Data/Table > Trades"
         ]
       },
       "reachedByTheme": {
@@ -9343,6 +10255,11 @@
             "line": 5
           },
           {
+            "component": "EventStrip",
+            "file": "packages/react/src/styles.css",
+            "line": 932
+          },
+          {
             "component": "Heatmap",
             "file": "packages/react/src/Heatmap.tsx",
             "line": 38,
@@ -9355,24 +10272,41 @@
             "via": "readCanvasTokens"
           },
           {
-            "component": "TradeTable",
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 932
+          },
+          {
+            "component": "Table",
             "file": "packages/react/src/styles.css",
             "line": 46
           }
         ],
         "stories": [
-          "Controls/Playback > Choices",
-          "Controls/Playback > Counters",
-          "Controls/Playback > Trades",
-          "Controls/Playback > TradesEmpty",
-          "Controls/Playback > Transport",
+          "Data/Charts > LineDataTable",
+          "Data/Charts > LineEmpty",
+          "Data/Charts > LineFromZero",
+          "Data/Charts > LineScenarios",
+          "Data/Charts > LineTimeFollowsLocale",
+          "Data/Charts > StripCouponsOnly",
+          "Data/Charts > StripEmpty",
+          "Data/Charts > StripPayments",
+          "Data/Charts > StripTimeFollowsLocale",
           "Data/Heatmap > Empty",
           "Data/Heatmap > Liquidity",
           "Data/Heatmap > Sparse",
           "Data/Ladder > Empty",
           "Data/Ladder > Live",
           "Data/Ladder > Static",
-          "Data/Ladder > TwoThemes"
+          "Data/Ladder > TwoThemes",
+          "Data/Table > Basic",
+          "Data/Table > Compact",
+          "Data/Table > Empty",
+          "Data/Table > HiddenCaption",
+          "Data/Table > RowHeaders",
+          "Data/Table > StickyFirstColumn",
+          "Data/Table > StickyHeader",
+          "Data/Table > Trades"
         ]
       },
       "reachedByTheme": {
@@ -9414,24 +10348,27 @@
             "via": "readCanvasTokens"
           },
           {
-            "component": "TradeTable",
+            "component": "Table",
             "file": "packages/react/src/styles.css",
             "line": 52
           }
         ],
         "stories": [
-          "Controls/Playback > Choices",
-          "Controls/Playback > Counters",
-          "Controls/Playback > Trades",
-          "Controls/Playback > TradesEmpty",
-          "Controls/Playback > Transport",
           "Data/Heatmap > Empty",
           "Data/Heatmap > Liquidity",
           "Data/Heatmap > Sparse",
           "Data/Ladder > Empty",
           "Data/Ladder > Live",
           "Data/Ladder > Static",
-          "Data/Ladder > TwoThemes"
+          "Data/Ladder > TwoThemes",
+          "Data/Table > Basic",
+          "Data/Table > Compact",
+          "Data/Table > Empty",
+          "Data/Table > HiddenCaption",
+          "Data/Table > RowHeaders",
+          "Data/Table > StickyFirstColumn",
+          "Data/Table > StickyHeader",
+          "Data/Table > Trades"
         ]
       },
       "reachedByTheme": {
@@ -9747,6 +10684,16 @@
             "line": 542
           },
           {
+            "component": "Table",
+            "file": "packages/react/src/styles.css",
+            "line": 878
+          },
+          {
+            "component": "Table",
+            "file": "packages/react/src/styles.css",
+            "line": 879
+          },
+          {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
             "line": 250
@@ -9813,6 +10760,14 @@
           "Controls/Playback > Trades",
           "Controls/Playback > TradesEmpty",
           "Controls/Playback > Transport",
+          "Data/Table > Basic",
+          "Data/Table > Compact",
+          "Data/Table > Empty",
+          "Data/Table > HiddenCaption",
+          "Data/Table > RowHeaders",
+          "Data/Table > StickyFirstColumn",
+          "Data/Table > StickyHeader",
+          "Data/Table > Trades",
           "Feedback/Feedback and layout > CalloutDismissible",
           "Feedback/Feedback and layout > CalloutInfo",
           "Feedback/Feedback and layout > CalloutNegativeWithRetry",
@@ -9903,6 +10858,11 @@
             "line": 818
           },
           {
+            "component": "EventStrip",
+            "file": "packages/react/src/styles.css",
+            "line": 916
+          },
+          {
             "component": "Heatmap",
             "file": "packages/react/src/Heatmap.tsx",
             "line": 38,
@@ -9918,6 +10878,11 @@
             "file": "packages/react/src/Ladder.tsx",
             "line": 38,
             "via": "readCanvasTokens"
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 916
           },
           {
             "component": "NumberField",
@@ -9945,6 +10910,11 @@
             "line": 214
           },
           {
+            "component": "Table",
+            "file": "packages/react/src/styles.css",
+            "line": 47
+          },
+          {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
             "line": 226
@@ -9953,11 +10923,6 @@
             "component": "TimeSlider",
             "file": "packages/react/src/styles.css",
             "line": 190
-          },
-          {
-            "component": "TradeTable",
-            "file": "packages/react/src/styles.css",
-            "line": 47
           }
         ],
         "stories": [
@@ -9991,6 +10956,15 @@
           "Controls/Playback > Trades",
           "Controls/Playback > TradesEmpty",
           "Controls/Playback > Transport",
+          "Data/Charts > LineDataTable",
+          "Data/Charts > LineEmpty",
+          "Data/Charts > LineFromZero",
+          "Data/Charts > LineScenarios",
+          "Data/Charts > LineTimeFollowsLocale",
+          "Data/Charts > StripCouponsOnly",
+          "Data/Charts > StripEmpty",
+          "Data/Charts > StripPayments",
+          "Data/Charts > StripTimeFollowsLocale",
           "Data/Heatmap > Empty",
           "Data/Heatmap > Liquidity",
           "Data/Heatmap > Sparse",
@@ -9998,6 +10972,14 @@
           "Data/Ladder > Live",
           "Data/Ladder > Static",
           "Data/Ladder > TwoThemes",
+          "Data/Table > Basic",
+          "Data/Table > Compact",
+          "Data/Table > Empty",
+          "Data/Table > HiddenCaption",
+          "Data/Table > RowHeaders",
+          "Data/Table > StickyFirstColumn",
+          "Data/Table > StickyHeader",
+          "Data/Table > Trades",
           "Feedback/Feedback and layout > CalloutDismissible",
           "Feedback/Feedback and layout > CalloutInfo",
           "Feedback/Feedback and layout > CalloutNegativeWithRetry",
@@ -10078,14 +11060,14 @@
             "line": 149
           },
           {
+            "component": "Table",
+            "file": "packages/react/src/styles.css",
+            "line": 55
+          },
+          {
             "component": "ToastRegion",
             "file": "packages/react/src/styles.css",
             "line": 367
-          },
-          {
-            "component": "TradeTable",
-            "file": "packages/react/src/styles.css",
-            "line": 55
           }
         ],
         "stories": [
@@ -10094,6 +11076,14 @@
           "Controls/Playback > Trades",
           "Controls/Playback > TradesEmpty",
           "Controls/Playback > Transport",
+          "Data/Table > Basic",
+          "Data/Table > Compact",
+          "Data/Table > Empty",
+          "Data/Table > HiddenCaption",
+          "Data/Table > RowHeaders",
+          "Data/Table > StickyFirstColumn",
+          "Data/Table > StickyHeader",
+          "Data/Table > Trades",
           "Feedback/Feedback and layout > CalloutDismissible",
           "Feedback/Feedback and layout > CalloutInfo",
           "Feedback/Feedback and layout > CalloutNegativeWithRetry",
@@ -10387,6 +11377,16 @@
             "line": 231
           },
           {
+            "component": "EventStrip",
+            "file": "packages/react/src/styles.css",
+            "line": 910
+          },
+          {
+            "component": "EventStrip",
+            "file": "packages/react/src/styles.css",
+            "line": 916
+          },
+          {
             "component": "Kbd",
             "file": "packages/react/src/styles.css",
             "line": 626
@@ -10395,6 +11395,21 @@
             "component": "Kbd",
             "file": "packages/react/src/styles.css",
             "line": 630
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 910
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 914
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 916
           },
           {
             "component": "Slider",
@@ -10458,6 +11473,15 @@
           "Controls/Playback > Trades",
           "Controls/Playback > TradesEmpty",
           "Controls/Playback > Transport",
+          "Data/Charts > LineDataTable",
+          "Data/Charts > LineEmpty",
+          "Data/Charts > LineFromZero",
+          "Data/Charts > LineScenarios",
+          "Data/Charts > LineTimeFollowsLocale",
+          "Data/Charts > StripCouponsOnly",
+          "Data/Charts > StripEmpty",
+          "Data/Charts > StripPayments",
+          "Data/Charts > StripTimeFollowsLocale",
           "Layout/Panel > Header",
           "Layout/Panel > Sections",
           "Layout/Panel > Titled",
@@ -10691,6 +11715,11 @@
             "line": 150
           },
           {
+            "component": "Table",
+            "file": "packages/react/src/styles.css",
+            "line": 884
+          },
+          {
             "component": "ToastRegion",
             "file": "packages/react/src/styles.css",
             "line": 381
@@ -10724,6 +11753,14 @@
           "Controls/Playback > Trades",
           "Controls/Playback > TradesEmpty",
           "Controls/Playback > Transport",
+          "Data/Table > Basic",
+          "Data/Table > Compact",
+          "Data/Table > Empty",
+          "Data/Table > HiddenCaption",
+          "Data/Table > RowHeaders",
+          "Data/Table > StickyFirstColumn",
+          "Data/Table > StickyHeader",
+          "Data/Table > Trades",
           "Feedback/Feedback and layout > CalloutDismissible",
           "Feedback/Feedback and layout > CalloutInfo",
           "Feedback/Feedback and layout > CalloutNegativeWithRetry",
@@ -10858,6 +11895,11 @@
             "line": 170
           },
           {
+            "component": "EventStrip",
+            "file": "packages/react/src/styles.css",
+            "line": 937
+          },
+          {
             "component": "FilterChip",
             "file": "packages/react/src/styles.css",
             "line": 130
@@ -10876,6 +11918,16 @@
             "component": "FilterChipGroup",
             "file": "packages/react/src/styles.css",
             "line": 499
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 937
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 941
           },
           {
             "component": "NumberField",
@@ -10994,6 +12046,23 @@
           "Controls/Playback > Trades",
           "Controls/Playback > TradesEmpty",
           "Controls/Playback > Transport",
+          "Data/Charts > LineDataTable",
+          "Data/Charts > LineEmpty",
+          "Data/Charts > LineFromZero",
+          "Data/Charts > LineScenarios",
+          "Data/Charts > LineTimeFollowsLocale",
+          "Data/Charts > StripCouponsOnly",
+          "Data/Charts > StripEmpty",
+          "Data/Charts > StripPayments",
+          "Data/Charts > StripTimeFollowsLocale",
+          "Data/Table > Basic",
+          "Data/Table > Compact",
+          "Data/Table > Empty",
+          "Data/Table > HiddenCaption",
+          "Data/Table > RowHeaders",
+          "Data/Table > StickyFirstColumn",
+          "Data/Table > StickyHeader",
+          "Data/Table > Trades",
           "Feedback/Feedback and layout > CalloutDismissible",
           "Feedback/Feedback and layout > CalloutInfo",
           "Feedback/Feedback and layout > CalloutNegativeWithRetry",
@@ -11099,6 +12168,11 @@
             "line": 233
           },
           {
+            "component": "Table",
+            "file": "packages/react/src/styles.css",
+            "line": 884
+          },
+          {
             "component": "Tag",
             "file": "packages/react/src/styles.css",
             "line": 469
@@ -11135,6 +12209,23 @@
           "Controls/Playback > Trades",
           "Controls/Playback > TradesEmpty",
           "Controls/Playback > Transport",
+          "Data/Charts > LineDataTable",
+          "Data/Charts > LineEmpty",
+          "Data/Charts > LineFromZero",
+          "Data/Charts > LineScenarios",
+          "Data/Charts > LineTimeFollowsLocale",
+          "Data/Charts > StripCouponsOnly",
+          "Data/Charts > StripEmpty",
+          "Data/Charts > StripPayments",
+          "Data/Charts > StripTimeFollowsLocale",
+          "Data/Table > Basic",
+          "Data/Table > Compact",
+          "Data/Table > Empty",
+          "Data/Table > HiddenCaption",
+          "Data/Table > RowHeaders",
+          "Data/Table > StickyFirstColumn",
+          "Data/Table > StickyHeader",
+          "Data/Table > Trades",
           "Feedback/Feedback and layout > CalloutDismissible",
           "Feedback/Feedback and layout > CalloutInfo",
           "Feedback/Feedback and layout > CalloutNegativeWithRetry",
@@ -11205,17 +12296,20 @@
             "line": 791
           },
           {
-            "component": "TradeTable",
+            "component": "Table",
             "file": "packages/react/src/styles.css",
             "line": 49
           }
         ],
         "stories": [
-          "Controls/Playback > Choices",
-          "Controls/Playback > Counters",
-          "Controls/Playback > Trades",
-          "Controls/Playback > TradesEmpty",
-          "Controls/Playback > Transport",
+          "Data/Table > Basic",
+          "Data/Table > Compact",
+          "Data/Table > Empty",
+          "Data/Table > HiddenCaption",
+          "Data/Table > RowHeaders",
+          "Data/Table > StickyFirstColumn",
+          "Data/Table > StickyHeader",
+          "Data/Table > Trades",
           "Report > AlertDestructive",
           "Report > AlertNeutral",
           "Report > Code",
@@ -12146,6 +13240,23 @@
           "Controls/Playback > Trades",
           "Controls/Playback > TradesEmpty",
           "Controls/Playback > Transport",
+          "Data/Charts > LineDataTable",
+          "Data/Charts > LineEmpty",
+          "Data/Charts > LineFromZero",
+          "Data/Charts > LineScenarios",
+          "Data/Charts > LineTimeFollowsLocale",
+          "Data/Charts > StripCouponsOnly",
+          "Data/Charts > StripEmpty",
+          "Data/Charts > StripPayments",
+          "Data/Charts > StripTimeFollowsLocale",
+          "Data/Table > Basic",
+          "Data/Table > Compact",
+          "Data/Table > Empty",
+          "Data/Table > HiddenCaption",
+          "Data/Table > RowHeaders",
+          "Data/Table > StickyFirstColumn",
+          "Data/Table > StickyHeader",
+          "Data/Table > Trades",
           "Feedback/Feedback and layout > CalloutDismissible",
           "Feedback/Feedback and layout > CalloutInfo",
           "Feedback/Feedback and layout > CalloutNegativeWithRetry",
@@ -12706,6 +13817,16 @@
             "line": 187
           },
           {
+            "component": "EventStrip",
+            "file": "packages/react/src/styles.css",
+            "line": 935
+          },
+          {
+            "component": "EventStrip",
+            "file": "packages/react/src/styles.css",
+            "line": 939
+          },
+          {
             "component": "FilterChip",
             "file": "packages/react/src/styles.css",
             "line": 62
@@ -12754,6 +13875,26 @@
             "component": "Kbd",
             "file": "packages/react/src/styles.css",
             "line": 623
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 913
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 935
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 939
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 941
           },
           {
             "component": "Metric",
@@ -12952,6 +14093,15 @@
           "Controls/Playback > Trades",
           "Controls/Playback > TradesEmpty",
           "Controls/Playback > Transport",
+          "Data/Charts > LineDataTable",
+          "Data/Charts > LineEmpty",
+          "Data/Charts > LineFromZero",
+          "Data/Charts > LineScenarios",
+          "Data/Charts > LineTimeFollowsLocale",
+          "Data/Charts > StripCouponsOnly",
+          "Data/Charts > StripEmpty",
+          "Data/Charts > StripPayments",
+          "Data/Charts > StripTimeFollowsLocale",
           "Feedback/Feedback and layout > CalloutDismissible",
           "Feedback/Feedback and layout > CalloutInfo",
           "Feedback/Feedback and layout > CalloutNegativeWithRetry",
@@ -13180,6 +14330,11 @@
             "line": 358
           },
           {
+            "component": "EventStrip",
+            "file": "packages/react/src/styles.css",
+            "line": 936
+          },
+          {
             "component": "FilterChip",
             "file": "packages/react/src/styles.css",
             "line": 62
@@ -13198,6 +14353,16 @@
             "component": "FilterChipGroup",
             "file": "packages/react/src/styles.css",
             "line": 501
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 936
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 942
           },
           {
             "component": "NumberField",
@@ -13280,6 +14445,11 @@
             "line": 561
           },
           {
+            "component": "Table",
+            "file": "packages/react/src/styles.css",
+            "line": 883
+          },
+          {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
             "line": 245
@@ -13346,6 +14516,23 @@
           "Controls/Playback > Trades",
           "Controls/Playback > TradesEmpty",
           "Controls/Playback > Transport",
+          "Data/Charts > LineDataTable",
+          "Data/Charts > LineEmpty",
+          "Data/Charts > LineFromZero",
+          "Data/Charts > LineScenarios",
+          "Data/Charts > LineTimeFollowsLocale",
+          "Data/Charts > StripCouponsOnly",
+          "Data/Charts > StripEmpty",
+          "Data/Charts > StripPayments",
+          "Data/Charts > StripTimeFollowsLocale",
+          "Data/Table > Basic",
+          "Data/Table > Compact",
+          "Data/Table > Empty",
+          "Data/Table > HiddenCaption",
+          "Data/Table > RowHeaders",
+          "Data/Table > StickyFirstColumn",
+          "Data/Table > StickyHeader",
+          "Data/Table > Trades",
           "Feedback/Feedback and layout > CalloutDismissible",
           "Feedback/Feedback and layout > CalloutInfo",
           "Feedback/Feedback and layout > CalloutNegativeWithRetry",
@@ -13552,6 +14739,23 @@
           "Controls/Playback > Trades",
           "Controls/Playback > TradesEmpty",
           "Controls/Playback > Transport",
+          "Data/Charts > LineDataTable",
+          "Data/Charts > LineEmpty",
+          "Data/Charts > LineFromZero",
+          "Data/Charts > LineScenarios",
+          "Data/Charts > LineTimeFollowsLocale",
+          "Data/Charts > StripCouponsOnly",
+          "Data/Charts > StripEmpty",
+          "Data/Charts > StripPayments",
+          "Data/Charts > StripTimeFollowsLocale",
+          "Data/Table > Basic",
+          "Data/Table > Compact",
+          "Data/Table > Empty",
+          "Data/Table > HiddenCaption",
+          "Data/Table > RowHeaders",
+          "Data/Table > StickyFirstColumn",
+          "Data/Table > StickyHeader",
+          "Data/Table > Trades",
           "Feedback/Feedback and layout > CalloutDismissible",
           "Feedback/Feedback and layout > CalloutInfo",
           "Feedback/Feedback and layout > CalloutNegativeWithRetry",
@@ -13657,6 +14861,16 @@
             "line": 353
           },
           {
+            "component": "EventStrip",
+            "file": "packages/react/src/styles.css",
+            "line": 935
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 935
+          },
+          {
             "component": "PageShell",
             "file": "packages/react/src/styles.css",
             "line": 405
@@ -13738,6 +14952,15 @@
           "Controls/Playback > Trades",
           "Controls/Playback > TradesEmpty",
           "Controls/Playback > Transport",
+          "Data/Charts > LineDataTable",
+          "Data/Charts > LineEmpty",
+          "Data/Charts > LineFromZero",
+          "Data/Charts > LineScenarios",
+          "Data/Charts > LineTimeFollowsLocale",
+          "Data/Charts > StripCouponsOnly",
+          "Data/Charts > StripEmpty",
+          "Data/Charts > StripPayments",
+          "Data/Charts > StripTimeFollowsLocale",
           "Feedback/Feedback and layout > CalloutDismissible",
           "Feedback/Feedback and layout > CalloutInfo",
           "Feedback/Feedback and layout > CalloutNegativeWithRetry",

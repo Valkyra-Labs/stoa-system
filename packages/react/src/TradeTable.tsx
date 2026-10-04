@@ -1,4 +1,5 @@
 import { useStoaFormat } from "./locale";
+import { Table, type TableColumn } from "./Table";
 
 export type Trade = {
   /** Stable key. */
@@ -19,39 +20,33 @@ export type TradeTableProps = {
   formatPrice?: (p: number) => string;
 };
 
-/** Recent trades, newest first. Side is a word and a colour; numbers are
- * tabular and right-aligned. Headers, side words and digits follow the
- * locale (see `locale.ts`); `formatPrice` overrides the price format. */
+/** Recent trades, newest first, on `Table`. Side is a word and a colour;
+ * numbers are tabular and right-aligned. Headers, side words and digits
+ * follow the locale (see `locale.ts`); `formatPrice` overrides the price
+ * format. */
 export function TradeTable({ trades, caption, formatPrice, emptyText }: TradeTableProps) {
   const locale = useStoaFormat();
   const words = locale.messages;
   const price = formatPrice ?? ((p: number) => locale.decimal(p, 2));
+  const columns: TableColumn<Trade>[] = [
+    { id: "time", header: words.time, cell: (t) => locale.digits(t.time) },
+    {
+      id: "side",
+      header: words.side,
+      cell: (t) => <span className={t.side === "buy" ? "stoa-up" : "stoa-down"}>{t.side === "buy" ? words.buy : words.sell}</span>,
+    },
+    { id: "price", header: words.price, numeric: true, cell: (t) => price(t.price) },
+    { id: "size", header: words.size, numeric: true, cell: (t) => locale.integer(t.size) },
+  ];
   return (
-    <table className="stoa-table stoa-table--numeric">
-      <caption className="stoa-visually-hidden">{caption}</caption>
-      <thead>
-        <tr>
-          <th scope="col">{words.time}</th>
-          <th scope="col">{words.side}</th>
-          <th scope="col" className="stoa-num">{words.price}</th>
-          <th scope="col" className="stoa-num">{words.size}</th>
-        </tr>
-      </thead>
-      <tbody>
-        {trades.length === 0 && (
-          <tr className="stoa-table__empty">
-            <td colSpan={4}>{emptyText ?? words.noTrades}</td>
-          </tr>
-        )}
-        {trades.map((t) => (
-          <tr key={t.id}>
-            <td>{locale.digits(t.time)}</td>
-            <td className={t.side === "buy" ? "stoa-up" : "stoa-down"}>{t.side === "buy" ? words.buy : words.sell}</td>
-            <td className="stoa-num">{price(t.price)}</td>
-            <td className="stoa-num">{locale.integer(t.size)}</td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
+    <Table
+      columns={columns}
+      rows={trades}
+      rowKey={(t) => t.id}
+      caption={caption}
+      captionHidden
+      emptyText={emptyText ?? words.noTrades}
+      mono
+    />
   );
 }

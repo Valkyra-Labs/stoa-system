@@ -869,3 +869,80 @@
 .stoa-statbar__item--metric .stoa-metric__unit,
 .stoa-statbar__item--metric .stoa-metric__basis,
 .stoa-statbar__item--metric .stoa-badge { font-size: inherit; }
+/* ==== Table and charts ==== */
+
+/* Table: a table larger than its box scrolls inside this region, never
+   the page; the region is a tab stop only while it scrolls (Table.tsx). */
+.stoa-table-region { overflow: auto; max-inline-size: 100%; }
+.stoa-table-region:focus-visible {
+  outline: var(--stoa-focus-width) solid var(--stoa-color-focus);
+  outline-offset: calc(-1 * var(--stoa-focus-width));
+}
+.stoa-table__caption {
+  caption-side: top; text-align: start;
+  padding-block-end: var(--stoa-space-2); padding-inline: var(--stoa-density-cell-padding-x);
+  font-size: var(--stoa-font-size-sm); font-weight: var(--stoa-font-weight-medium);
+  color: var(--stoa-color-text);
+}
+/* A row header names its row, so it stays on one line; a table too wide
+   for that scrolls inside its region. */
+.stoa-table th[scope="row"] { color: var(--stoa-color-text); border-block-end: 0; white-space: nowrap; }
+.stoa-table__cell--center, .stoa-table th.stoa-table__cell--center { text-align: center; }
+.stoa-table__cell--end, .stoa-table th.stoa-table__cell--end { text-align: end; }
+.stoa-table td.stoa-num, .stoa-table th.stoa-num { white-space: nowrap; }
+/* Sticky cells need an opaque fill or the rows scrolling under them show
+   through. A table sits on a panel's surface. */
+.stoa-table--sticky-header thead th {
+  position: sticky; inset-block-start: 0; z-index: 1;
+  background: var(--stoa-color-surface);
+}
+.stoa-table--sticky-first th:first-child, .stoa-table--sticky-first td:first-child {
+  position: sticky; inset-inline-start: 0; white-space: nowrap;
+  background: var(--stoa-color-surface);
+}
+.stoa-table--sticky-header.stoa-table--sticky-first thead th:first-child { z-index: 2; }
+
+/* Charts: SVG drawn in CSS pixels at the element's real width. Strokes and
+   fills come from the semantic colour tokens, so the theme switches them
+   without a redraw. The SVG's own direction is left to right because its
+   coordinates are; the time axis direction is a prop (LineChart.tsx). */
+.stoa-chart, .stoa-event-strip { margin: 0; min-inline-size: 0; }
+.stoa-chart__plot, .stoa-event-strip__plot { position: relative; font-size: var(--stoa-font-size-2xs); }
+.stoa-chart__svg { display: block; inline-size: 100%; overflow: visible; direction: ltr; }
+.stoa-chart__axis-label {
+  margin: 0 0 var(--stoa-space-1);
+  font-size: var(--stoa-font-size-2xs); color: var(--stoa-color-text-muted);
+}
+.stoa-chart__tick { fill: var(--stoa-color-text-muted); font-family: var(--stoa-font-family-mono); font-size: var(--stoa-font-size-2xs); }
+.stoa-chart__grid { stroke: var(--stoa-color-border); stroke-width: 1; }
+.stoa-chart__axis { stroke: var(--stoa-color-border-strong); stroke-width: 1; }
+.stoa-chart__line { fill: none; stroke-width: 2; stroke-linejoin: round; stroke-linecap: butt; }
+.stoa-chart__line--accent { stroke: var(--stoa-color-accent); }
+.stoa-chart__line--neutral { stroke: var(--stoa-color-text-muted); }
+.stoa-chart__line--warning { stroke: var(--stoa-color-warning); }
+.stoa-chart__line--up { stroke: var(--stoa-color-up); }
+.stoa-chart__line--down { stroke: var(--stoa-color-down); }
+.stoa-chart__dot--accent { fill: var(--stoa-color-accent); }
+.stoa-chart__dot--neutral { fill: var(--stoa-color-text-muted); }
+.stoa-chart__dot--warning { fill: var(--stoa-color-warning); }
+.stoa-chart__dot--up { fill: var(--stoa-color-up); }
+.stoa-chart__dot--down { fill: var(--stoa-color-down); }
+.stoa-chart__empty {
+  display: grid; place-items: center; block-size: 100%; margin: 0;
+  color: var(--stoa-color-text-muted); font-size: var(--stoa-density-font-size);
+}
+.stoa-chart__legend {
+  display: flex; flex-wrap: wrap; gap: var(--stoa-space-1) var(--stoa-space-4);
+  margin: var(--stoa-space-2) 0 0; padding: 0; list-style: none;
+  font-size: var(--stoa-font-size-xs); color: var(--stoa-color-text);
+}
+.stoa-chart__legend-item { display: inline-flex; align-items: center; gap: var(--stoa-space-1); }
+.stoa-chart__swatch, .stoa-event-strip__swatch { flex: none; }
+.stoa-chart__note { margin: var(--stoa-space-1) 0 0; font-size: var(--stoa-font-size-xs); color: var(--stoa-color-text-muted); }
+.stoa-chart__data { margin-block-start: var(--stoa-space-2); }
+
+/* EventStrip markers: shape tells the kind, the legend names it. */
+.stoa-event-strip__mark--coupon { stroke: var(--stoa-color-text-muted); stroke-width: 1.5; }
+.stoa-event-strip__mark--amortisation { fill: var(--stoa-color-accent); }
+.stoa-event-strip__mark--offer { fill: var(--stoa-color-warning); }
+.stoa-event-strip__mark--maturity { fill: var(--stoa-color-text); }

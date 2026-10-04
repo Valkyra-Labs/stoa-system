@@ -103,3 +103,8 @@ export { StepList, type Step, type StepStatus, type StepListProps } from "./Step
 export { LogView, CodeView, type LogLine, type LogViewProps, type CodeViewProps } from "./Code";
 export { Metric, type MetricProps, type MetricThreshold } from "./Metric";
 export { type StatBarItem } from "./Panel";
+// Table and charts.
+export { Table, type TableColumn, type TableProps } from "./Table";
+export { LineChart, type ChartPoint, type ChartTone, type LineChartProps, type LineSeries } from "./LineChart";
+export { EventStrip, type EventKind, type EventStripProps, type StripEvent } from "./EventStrip";
+export { niceTicks, formatDate, type Ticks } from "./chartScale";
