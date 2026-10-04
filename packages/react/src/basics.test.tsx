@@ -48,6 +48,21 @@ describe("Panel", () => {
     expect(region.querySelector("h2")?.textContent).toBe("Order book");
     expect(region.textContent).toContain("levels");
   });
+
+  it("takes its heading level, drawn the same at every level", () => {
+    render(
+      <Panel title="Issue" level={2}>
+        <Panel title="Cash flows" level={3}>
+          <p>rows</p>
+        </Panel>
+      </Panel>,
+    );
+    const inner = screen.getByRole("region", { name: "Cash flows" });
+    const heading = screen.getByRole("heading", { name: "Cash flows", level: 3 });
+    expect(inner.contains(heading)).toBe(true);
+    expect(heading.className).toBe("stoa-panel__title");
+    expect(screen.getByRole("heading", { name: "Issue", level: 2 })).toBeTruthy();
+  });
 });
 
 describe("StatBar", () => {

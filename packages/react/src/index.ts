@@ -17,7 +17,7 @@ export {
   type TimeSliderProps,
   type ToggleProps,
 } from "./Controls";
-export { Panel, StatBar } from "./Panel";
+export { Panel, StatBar, type PanelProps } from "./Panel";
 export { AppHeader, type AppHeaderProps } from "./AppHeader";
 export { Chevron } from "./Chevron";
 export { Disclosure, type DisclosureProps } from "./Disclosure";

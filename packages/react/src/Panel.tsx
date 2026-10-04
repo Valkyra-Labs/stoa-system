@@ -1,14 +1,25 @@
 import { useId, type ReactNode } from "react";
 import { MetricParts, type MetricProps } from "./Metric";
 
+export type PanelProps = {
+  title: string;
+  children: ReactNode;
+  className?: string;
+  /** The heading's level in the page's outline: 2 by default, for a panel
+   * of the page; 3 or deeper for a panel inside another section. The
+   * heading is drawn the same at every level. */
+  level?: 2 | 3 | 4 | 5 | 6;
+};
+
 /** A titled region: a section with a heading that labels it. */
-export function Panel({ title, children, className }: { title: string; children: ReactNode; className?: string }) {
+export function Panel({ title, children, className, level = 2 }: PanelProps) {
   const id = useId();
+  const Heading = `h${level}` as const;
   return (
     <section className={`stoa-panel ${className ?? ""}`.trim()} aria-labelledby={id}>
-      <h2 id={id} className="stoa-panel__title">
+      <Heading id={id} className="stoa-panel__title">
         {title}
-      </h2>
+      </Heading>
       {children}
     </section>
   );
