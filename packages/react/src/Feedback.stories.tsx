@@ -9,6 +9,7 @@ import { PageShell } from "./PageShell";
 import { Panel } from "./Panel";
 import { ProgressBar, Skeleton, SkeletonBlock, SkeletonLines } from "./Progress";
 import { ToastQueue, ToastRegion } from "./Toast";
+import { useStoaFormat } from "./locale";
 
 const meta: Meta = { title: "Feedback/Feedback and layout" };
 export default meta;
@@ -206,6 +207,37 @@ export const ToastTones: StoryObj = {
         queue.add({ tone: "negative", text: "Order 1044 rejected.", timeout: null, action: { label: "Retry", onAction: () => {} } }),
       ];
       return () => keys.forEach((key) => queue.close(key));
+    }, [queue]);
+    return <ToastRegion queue={queue} />;
+  },
+};
+
+/** The seconds left until a deadline, updated every second. */
+function SecondsLeft({ until }: { until: number }) {
+  const { integer } = useStoaFormat();
+  const [now, setNow] = useState(() => Date.now());
+  useEffect(() => {
+    const timer = setInterval(() => setNow(Date.now()), 1000);
+    return () => clearInterval(timer);
+  }, []);
+  return <>Undo possible for {integer(Math.max(0, Math.ceil((until - now) / 1000)))} s</>;
+}
+
+/** A toast whose description updates itself while it is shown: the time
+ * left to undo. The text is announced once; the description is the
+ * toast's description for assistive technology, not news. */
+export const ToastWithCountdown: StoryObj = {
+  render: () => {
+    const [queue] = useState(() => new ToastQueue());
+    useEffect(() => {
+      const until = Date.now() + 60_000;
+      const key = queue.add({
+        text: "Step 3 deleted.",
+        description: <SecondsLeft until={until} />,
+        action: { label: "Undo", onAction: () => {} },
+        timeout: null,
+      });
+      return () => queue.close(key);
     }, [queue]);
     return <ToastRegion queue={queue} />;
   },

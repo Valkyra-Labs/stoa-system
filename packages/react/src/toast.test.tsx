@@ -1,8 +1,9 @@
 // @vitest-environment jsdom
 // ToastQueue and ToastRegion: announcement, expiry, pausing, the action.
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import { act, cleanup, fireEvent, render, screen } from "@testing-library/react";
-import { DEFAULT_TOAST_TIMEOUT, I18nProvider, ToastQueue, ToastRegion } from "./index";
+import { useEffect, useState } from "react";
+import { act, cleanup, fireEvent, render, screen, within } from "@testing-library/react";
+import { AlertDialog, DEFAULT_TOAST_TIMEOUT, I18nProvider, ToastQueue, ToastRegion } from "./index";
 
 beforeEach(() => {
   vi.useFakeTimers();
@@ -178,5 +179,46 @@ describe("ToastRegion", () => {
     render(<ToastRegion queue={queue} label="Order updates" />);
     add(queue, { text: "Filled." });
     expect(screen.getByRole("region", { name: "Order updates" })).toBeTruthy();
+  });
+
+  it("is an alertdialog that is not modal, as React Aria makes it, told from an AlertDialog by its region and aria-modal", () => {
+    const queue = new ToastQueue();
+    render(
+      <>
+        <ToastRegion queue={queue} />
+        <AlertDialog isOpen title="Delete the run?" confirmLabel="Delete run" onConfirm={() => {}}>
+          It cannot be undone.
+        </AlertDialog>
+      </>,
+    );
+    add(queue, { text: "Run saved." });
+    const confirmation = screen.getByRole("alertdialog", { name: "Delete the run?" });
+    expect(confirmation.getAttribute("aria-modal")).not.toBe("false");
+    // The modal hides the page behind it, the toasts too; hidden: true finds them.
+    const region = screen.getByRole("region", { name: "Notifications", hidden: true });
+    const toast = within(region).getByRole("alertdialog", { name: "Note: Run saved.", hidden: true });
+    expect(toast.getAttribute("aria-modal")).toBe("false");
+    expect(region.contains(confirmation)).toBe(false);
+  });
+
+  it("draws a description under its text that can update itself while shown, without announcing it", () => {
+    function Countdown({ from }: { from: number }) {
+      const [left, setLeft] = useState(from);
+      useEffect(() => {
+        const timer = setInterval(() => setLeft((n) => Math.max(0, n - 1)), 1000);
+        return () => clearInterval(timer);
+      }, []);
+      return <>Undo possible for {left} s</>;
+    }
+    const { queue } = setup();
+    add(queue, { text: "Step deleted.", description: <Countdown from={30} />, timeout: null });
+    const toast = screen.getByRole("alertdialog", { name: "Note: Step deleted." });
+    const description = document.getElementById(toast.getAttribute("aria-describedby")!)!;
+    expect(description.textContent).toBe("Undo possible for 30 s");
+    expect(description.className).toBe("stoa-toast__description");
+    advance(3000);
+    expect(description.textContent).toBe("Undo possible for 27 s");
+    // The live region said the text once; the description is not news.
+    expect(screen.getByRole("status").textContent).toBe("Note: Step deleted.");
   });
 });

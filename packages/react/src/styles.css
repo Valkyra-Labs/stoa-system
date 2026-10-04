@@ -405,7 +405,8 @@
   outline: var(--stoa-focus-width) solid var(--stoa-color-focus);
   outline-offset: var(--stoa-focus-offset);
 }
-.stoa-toast__text { flex: 1; min-inline-size: 0; }
+.stoa-toast__body { flex: 1; min-inline-size: 0; display: grid; gap: var(--stoa-space-1); }
+.stoa-toast__description { color: var(--stoa-color-text-muted); font-size: var(--stoa-font-size-xs); }
 .stoa-toast__action { flex: none; }
 @keyframes stoa-toast-in { from { opacity: 0; } }
 
