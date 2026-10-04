@@ -104,7 +104,8 @@ node apps/playground/scripts/font-report.mjs "IBM Plex Sans=path/to/IBMPlexSans-
 `pnpm test` stays browser-free so that the acceptance commands in
 `CONTRIBUTING.md` run on a fresh machine. The smoke test is its own script,
 `test:e2e`, and CI runs it in a step of its own. It starts its own dev
-server on port 5174 and needs the Chromium that the pinned Playwright
+server on port 5190 (`PLAYGROUND_E2E_PORT` moves it), apart from the
+playground's and the demos' dev servers, and needs the Chromium that the pinned Playwright
 version downloads: `pnpm --filter playground exec playwright install
 chromium`.
 
