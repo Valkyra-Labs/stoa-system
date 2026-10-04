@@ -3,7 +3,9 @@
 // A choice lives in a URL parameter, so a reload or a shared link keeps
 // it, and in localStorage, so the next visit does too; the URL wins.
 // Storage can be blocked (a private window, a sandbox), so every access is
-// wrapped and a blocked store just remembers nothing.
+// wrapped and a blocked store just remembers nothing. A hook given
+// `persist: false` keeps its choice in its own state only, for a preview
+// frame that must not change the page's URL or the next visit.
 //
 // Before first paint: call `applyTheme(readThemeChoice())` and
 // `applyLanguage(readLanguage(languages))` before rendering (in main.tsx,
@@ -71,11 +73,14 @@ const isThemeChoice = (value: string | null): value is ThemeChoice => value === 
 
 /** The theme chosen in the URL, else in storage, else "system". */
 export function readThemeChoice(store: PreferenceStore = {}): ThemeChoice {
-  const { param, storageKey } = withDefaults(THEME_STORE, store);
+  return storedTheme(withDefaults(THEME_STORE, store)) ?? "system";
+}
+
+function storedTheme({ param, storageKey }: Required<PreferenceStore>): ThemeChoice | null {
   const asked = readParam(param);
   if (isThemeChoice(asked)) return asked;
   const stored = readStored(storageKey);
-  return isThemeChoice(stored) ? stored : "system";
+  return isThemeChoice(stored) ? stored : null;
 }
 
 /** The system's colour scheme now. */
@@ -99,12 +104,32 @@ export type ThemePreference = {
   setChoice: (choice: ThemeChoice) => void;
 };
 
+/** Whether a preference hook touches the document, the URL and storage. */
+export type PreferenceOptions = {
+  /** Set the choice on <html>. Off for a host that sets it itself
+   * (Storybook's toolbar, for example) or for a frame inside a page. */
+  apply?: boolean;
+  /** Read the choice from the URL and storage, and keep each change
+   * there. Off for a choice that lives only as long as the component, a
+   * preview frame's for example: nothing is read, written or removed. */
+  persist?: boolean;
+};
+
 /** The theme preference, applied to <html data-theme>. With `apply`
- * false the document is left alone, for a host that sets the theme itself
- * (Storybook's toolbar, for example). */
-export function useThemePreference({ apply = true, ...store }: PreferenceStore & { apply?: boolean } = {}): ThemePreference {
+ * false the document is left alone; with `persist` false the URL and
+ * storage are too. */
+export function useThemePreference({
+  apply = true,
+  persist = true,
+  defaultChoice = "system",
+  ...store
+}: PreferenceStore &
+  PreferenceOptions & {
+    /** The choice when none is stored, or always without `persist`. */
+    defaultChoice?: ThemeChoice;
+  } = {}): ThemePreference {
   const resolved = withDefaults(THEME_STORE, store);
-  const [choice, setChoiceState] = useState<ThemeChoice>(() => readThemeChoice(resolved));
+  const [choice, setChoiceState] = useState<ThemeChoice>(() => (persist ? storedTheme(resolved) : null) ?? defaultChoice);
   const [system, setSystem] = useState<Theme>(systemTheme);
   useEffect(() => {
     if (!hasWindow() || typeof window.matchMedia !== "function") return;
@@ -121,7 +146,7 @@ export function useThemePreference({ apply = true, ...store }: PreferenceStore &
     choice,
     theme: choice === "system" ? system : choice,
     setChoice: (next) => {
-      writeChoice(resolved, next === "system" ? null : next);
+      if (persist) writeChoice(resolved, next === "system" ? null : next);
       setChoiceState(next);
     },
   };
@@ -138,12 +163,14 @@ export function directionOf(language: string): "ltr" | "rtl" {
 /** The language chosen in the URL, else in storage, if it is one of
  * `languages`; else the first of them. */
 export function readLanguage(languages: string[], store: PreferenceStore = {}): string {
-  const { param, storageKey } = withDefaults(LANGUAGE_STORE, store);
+  return storedLanguage(languages, withDefaults(LANGUAGE_STORE, store)) ?? languages[0] ?? "en";
+}
+
+function storedLanguage(languages: string[], { param, storageKey }: Required<PreferenceStore>): string | null {
   const asked = readParam(param);
   if (asked && languages.includes(asked)) return asked;
   const stored = readStored(storageKey);
-  if (stored && languages.includes(stored)) return stored;
-  return languages[0] ?? "en";
+  return stored && languages.includes(stored) ? stored : null;
 }
 
 /** Sets <html lang> and <html dir> for a language. */
@@ -160,14 +187,26 @@ export type LanguagePreference = {
 
 /** The language preference, applied to <html lang dir>. The language is a
  * code from `languages` ("en", "ru", "ar"); the application maps it to the
- * locale it gives I18nProvider ("ar-u-nu-arab" for Arabic-Indic digits). */
+ * locale it gives I18nProvider ("ar-u-nu-arab" for Arabic-Indic digits).
+ * With `apply` false the document is left alone; with `persist` false the
+ * URL and storage are too. */
 export function useLanguagePreference({
   languages,
   apply = true,
+  persist = true,
+  defaultLanguage,
   ...store
-}: PreferenceStore & { languages: string[]; apply?: boolean }): LanguagePreference {
+}: PreferenceStore &
+  PreferenceOptions & {
+    languages: string[];
+    /** The language when none is stored, or always without `persist`;
+     * the first of `languages` by default. */
+    defaultLanguage?: string;
+  }): LanguagePreference {
   const resolved = withDefaults(LANGUAGE_STORE, store);
-  const [language, setLanguageState] = useState(() => readLanguage(languages, resolved));
+  const [language, setLanguageState] = useState(
+    () => (persist ? storedLanguage(languages, resolved) : null) ?? defaultLanguage ?? languages[0] ?? "en",
+  );
   useLayoutEffect(() => {
     if (apply) applyLanguage(language);
   }, [apply, language]);
@@ -175,7 +214,7 @@ export function useLanguagePreference({
     language,
     dir: directionOf(language),
     setLanguage: (next) => {
-      writeChoice(resolved, next);
+      if (persist) writeChoice(resolved, next);
       setLanguageState(next);
     },
   };

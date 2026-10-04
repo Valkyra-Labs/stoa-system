@@ -246,3 +246,47 @@ describe("the language", () => {
     expect(screen.getByRole("radiogroup", { name: "اللغة" })).toBeTruthy();
   });
 });
+
+describe("preferences without persistence, for a preview frame", () => {
+  it("neither reads nor writes the URL or storage, and starts from the given choice", () => {
+    goTo("?theme=dark&lang=ru");
+    localStorage.setItem("stoa-theme", "dark");
+    localStorage.setItem("stoa-lang", "ru");
+    function Frame() {
+      const theme = useThemePreference({ apply: false, persist: false, defaultChoice: "light" });
+      const language = useLanguagePreference({ languages: ["en", "ru", "ar"], apply: false, persist: false, defaultLanguage: "ar" });
+      return (
+        <>
+          <ThemeSwitch value={theme.choice} onChange={theme.setChoice} />
+          <LanguageSwitch languages={["en", "ru", "ar"]} value={language.language} onChange={language.setLanguage} />
+          <output>{`${theme.theme} ${language.dir}`}</output>
+        </>
+      );
+    }
+    render(<Frame />);
+    expect(checked("Light")).toBe(true);
+    expect(checked("AR")).toBe(true);
+    expect(screen.getByRole("status").textContent).toBe("light rtl");
+    fireEvent.click(radio("System"));
+    fireEvent.click(radio("EN"));
+    expect(checked("System")).toBe(true);
+    expect(checked("EN")).toBe(true);
+    expect(screen.getByRole("status").textContent).toBe("light ltr");
+    // Nothing persisted, and nothing removed.
+    expect(window.location.search).toBe("?theme=dark&lang=ru");
+    expect(localStorage.getItem("stoa-theme")).toBe("dark");
+    expect(localStorage.getItem("stoa-lang")).toBe("ru");
+    expect(html.dataset.theme).toBeUndefined();
+  });
+
+  it("starts from the default choice when nothing is stored, and persists by default", () => {
+    function Header() {
+      const { choice, setChoice } = useThemePreference({ defaultChoice: "dark" });
+      return <ThemeSwitch value={choice} onChange={setChoice} />;
+    }
+    render(<Header />);
+    expect(checked("Dark")).toBe(true);
+    fireEvent.click(radio("Light"));
+    expect(param("theme")).toBe("light");
+  });
+});

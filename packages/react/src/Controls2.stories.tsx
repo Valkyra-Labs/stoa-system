@@ -438,3 +438,22 @@ export const HeaderWithSwitches: StoryObj = {
   },
   parameters: { layout: "fullscreen" },
 };
+
+/** The switches of a preview frame, wired to hooks that neither apply nor
+ * persist (`apply: false, persist: false`): the choice lives in the
+ * frame's own state, and the page's URL and storage stay as they are. */
+export const SwitchesWithoutPersistence: StoryObj = {
+  render: () => {
+    const theme = useThemePreference({ apply: false, persist: false, defaultChoice: "dark" });
+    const language = useLanguagePreference({ apply: false, persist: false, languages: ["en", "ru", "ar"], defaultLanguage: "ar" });
+    return (
+      <div style={column}>
+        <ThemeSwitch value={theme.choice} onChange={theme.setChoice} label="Theme of the preview" />
+        <LanguageSwitch languages={["en", "ru", "ar"]} value={language.language} onChange={language.setLanguage} label="Language of the preview" />
+        <p>
+          Preview: {theme.theme}, {language.language}, {language.dir}
+        </p>
+      </div>
+    );
+  },
+};
