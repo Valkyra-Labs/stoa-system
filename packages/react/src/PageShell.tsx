@@ -16,6 +16,10 @@ export type PageShellProps = {
 };
 
 const SCROLL_KEYS = new Set(["PageDown", "PageUp", " ", "Home", "End", "ArrowDown", "ArrowUp"]);
+/** How far a page key moves, as a share of the region's height, and how
+ * far an arrow key moves, in pixels: close to what browsers do for a page. */
+const PAGE_FRACTION = 0.875;
+const LINE = 40;
 
 /** The frame of an application page: a skip link, the header, the main
  * region and an optional footer, as landmarks. The skip link is the first
@@ -33,17 +37,32 @@ export function PageShell({ header, children, footer, headerPosition = "fixed" }
     if (!fixed) return;
     // The page scrolls in the region under the header, not the document, and
     // a browser sends a scroll key pressed with nothing focused to the
-    // document. Focusing the region first lets the browser's own scrolling
-    // run on it: the same keys, distances and smoothness as a page.
+    // document, which cannot scroll. So the region scrolls itself by the
+    // distances a page would, once every listener has seen the key: an
+    // application's own shortcut (Space to play) claims it by preventing
+    // the default, and focus never moves.
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.defaultPrevented || event.ctrlKey || event.metaKey || event.altKey) return;
       if (!SCROLL_KEYS.has(event.key)) return;
       const active = document.activeElement;
       if (active && active !== document.body && active !== document.documentElement) return;
-      scroll.current?.focus({ preventScroll: true });
+      setTimeout(() => {
+        const region = scroll.current;
+        if (event.defaultPrevented || !region) return;
+        const page = region.clientHeight * PAGE_FRACTION;
+        const back = event.key === "PageUp" || event.key === "ArrowUp" || (event.key === " " && event.shiftKey);
+        const by =
+          event.key === "Home"
+            ? -region.scrollTop
+            : event.key === "End"
+              ? region.scrollHeight
+              : (event.key.startsWith("Arrow") ? LINE : page) * (back ? -1 : 1);
+        const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        region.scrollBy({ top: by, behavior: reduce ? "auto" : "smooth" });
+      });
     };
-    document.addEventListener("keydown", onKeyDown);
-    return () => document.removeEventListener("keydown", onKeyDown);
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
   }, [fixed]);
   return (
     <div className={`stoa-page-shell${fixed ? " stoa-page-shell--fixed-header" : ""}`}>
@@ -60,8 +79,7 @@ export function PageShell({ header, children, footer, headerPosition = "fixed" }
         {messages.skipToMain}
       </a>
       {header}
-      {/* Focusable from script only, for the scroll keys; never a Tab stop. */}
-      <div ref={scroll} className="stoa-page-shell__scroll" tabIndex={fixed ? -1 : undefined}>
+      <div ref={scroll} className="stoa-page-shell__scroll">
         <main ref={main} id={id} tabIndex={-1} className="stoa-page-shell__main">
           {children}
         </main>
