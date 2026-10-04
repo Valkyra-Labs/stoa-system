@@ -1,4 +1,4 @@
-import { useEffect, useId, useRef, useState, type ReactNode } from "react";
+import { useEffect, useId, useLayoutEffect, useRef, useState, type ReactNode } from "react";
 import { useStoaFormat } from "./locale";
 import { isTypingTarget } from "./Shortcuts";
 
@@ -69,7 +69,9 @@ export function PageShell({ header, children, footer, headerPosition = "fixed" }
       sizes?.disconnect();
     };
   }, [fixed]);
-  useEffect(() => {
+  // A layout effect, so the listener is in place before the page is first
+  // painted: a scroll key pressed as soon as the page shows is not lost.
+  useLayoutEffect(() => {
     if (!fixed) return;
     // The page scrolls in the region under the header, not the document, and
     // a browser sends a scroll key to the document when nothing is focused,
