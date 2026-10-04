@@ -41,25 +41,25 @@ export const UP_DOWN_MIN_CONTRAST = NON_TEXT;
 /** Text-role colours against the surfaces they sit on. */
 export const TEXT_PAIRS = [
   { fg: "text", bg: "bg", min: TEXT_AAA, reason: "Body text on the page background; the preview stylesheet sets both on `body`." },
-  { fg: "text", bg: "surface", min: TEXT_AAA, reason: "Body text inside a panel, a table cell or the ladder." },
+  { fg: "text", bg: "surface", min: TEXT_AAA, reason: "Body text inside a panel, a table cell or the ladder; also a chart legend and the maturity marker of an event strip." },
   { fg: "text", bg: "surface-hover", min: TEXT_AA, reason: "Button label while the pointer is over the button." },
   { fg: "text", bg: "surface-sunken", min: TEXT_AA, reason: "Body text in a sunken well." },
   { fg: "surface", bg: "accent", min: TEXT_AA, reason: "Label of a primary button or a selected choice: the surface colour reversed out of the accent fill." },
-  { fg: "text-muted", bg: "surface", min: TEXT_AA, reason: "Panel title, field label, table header, statbar term, and the heatmap price labels on their surface plates." },
-  { fg: "text-muted", bg: "bg", min: TEXT_AA, reason: "The same muted labels when a table or statbar sits straight on the page background." },
+  { fg: "text-muted", bg: "surface", min: TEXT_AA, reason: "Panel title, field label, table header, statbar term, and the heatmap price labels on their surface plates; also chart axis labels and notes, the neutral series line of a line chart and the coupon marker of an event strip." },
+  { fg: "text-muted", bg: "bg", min: TEXT_AA, reason: "The same muted labels, chart lines and markers when a table, chart or statbar sits straight on the page background." },
   { fg: "text-muted", bg: "surface-sunken", min: TEXT_AA, reason: "Muted labels in a sunken well." },
   { fg: "text-subtle", bg: "surface", min: TEXT_AA, reason: "The third text role. No component uses it yet; checked so the name keeps its promise." },
   { fg: "text-subtle", bg: "bg", min: TEXT_AA, reason: "The same, on the page background." },
-  { fg: "accent", bg: "surface", min: TEXT_AA, reason: "Accent used as text or an icon inside a panel." },
+  { fg: "accent", bg: "surface", min: TEXT_AA, reason: "Accent used as text or an icon inside a panel; also the accent series line of a line chart and the amortisation marker of an event strip." },
   { fg: "accent", bg: "bg", min: TEXT_AA, reason: "The same, on the page background." },
-  { fg: "up", bg: "surface", min: TEXT_AA, reason: "A rising price or change, in a table cell or a badge." },
-  { fg: "down", bg: "surface", min: TEXT_AA, reason: "A falling price or change, in a table cell or a badge." },
+  { fg: "up", bg: "surface", min: TEXT_AA, reason: "A rising price or change, in a table cell or a badge, or a rising series line in a chart." },
+  { fg: "down", bg: "surface", min: TEXT_AA, reason: "A falling price or change, in a table cell or a badge, or a falling series line in a chart." },
   { fg: "up", bg: "bg", min: TEXT_AA, reason: "The same badge in a toolbar on the page background." },
   { fg: "down", bg: "bg", min: TEXT_AA, reason: "The same badge in a toolbar on the page background." },
   { fg: "bid", bg: "surface", min: TEXT_AA, reason: "Bid prices and the B marker the ladder draws over its own surface fill." },
   { fg: "ask", bg: "surface", min: TEXT_AA, reason: "Ask prices and the A marker the ladder draws over its own surface fill." },
-  { fg: "warning", bg: "surface", min: TEXT_AA, reason: "The warning glyph of a status badge; the badge draws it as a character, so it is text." },
-  { fg: "warning", bg: "bg", min: TEXT_AA, reason: "The same glyph on the page background." },
+  { fg: "warning", bg: "surface", min: TEXT_AA, reason: "The warning glyph of a status badge; the badge draws it as a character, so it is text. Also the warning series line of a line chart and the offer marker of an event strip." },
+  { fg: "warning", bg: "bg", min: TEXT_AA, reason: "The same glyph, line and marker on the page background." },
   {
     fg: "text",
     bg: "up-wash",
@@ -81,12 +81,17 @@ export const TEXT_PAIRS = [
  * The up, down, bid and ask marks against a surface are the same colour
  * pairs the text rule already measures at 4.5:1, which is the stricter of
  * the two, so they are not repeated here. What is listed is the part of
- * those marks the text rule cannot see: the translucent washes. The accent
+ * those marks the text rule cannot see: the translucent washes. The same
+ * holds for chart marks: a line chart's series lines (accent, text-muted,
+ * warning, up, down) and an event strip's markers (text-muted, accent,
+ * warning, text) are measured by the text pairs above at 4.5:1 or more,
+ * which is stricter than 1.4.11's 3:1, so they are named in those reasons
+ * rather than repeated here. The accent
  * pairs are repeated, because the selected tab is a different promise from
  * accent used as text and Stage 2 may want to move only one of them. */
 export const NON_TEXT_PAIRS = [
-  { fg: "border-strong", bg: "surface", min: NON_TEXT, reason: "Boundary of a text field, a button and the slider track inside a panel: it is what identifies the control, so 1.4.11 applies." },
-  { fg: "border-strong", bg: "bg", min: NON_TEXT, reason: "The same controls when they sit straight on the page background." },
+  { fg: "border-strong", bg: "surface", min: NON_TEXT, reason: "Boundary of a text field, a button and the slider track inside a panel: it is what identifies the control, so 1.4.11 applies. Also the time axis of a line chart and an event strip, which the markers and lines are read against." },
+  { fg: "border-strong", bg: "bg", min: NON_TEXT, reason: "The same controls and axes when they sit straight on the page background." },
   { fg: "focus", bg: "surface", min: NON_TEXT, reason: "Focus ring around a control inside a panel." },
   { fg: "focus", bg: "bg", min: NON_TEXT, reason: "Focus ring around a control on the page background." },
   { fg: "accent", bg: "surface", min: NON_TEXT, reason: "Underline of the selected tab, which is how the selected state is shown." },
@@ -110,7 +115,7 @@ export const NON_TEXT_PAIRS = [
     bg: "surface",
     min: NON_TEXT,
     enforced: false,
-    reason: "Panel boundary, table header rule and tab-list rule. They identify no control and carry no state, so 1.4.11 does not require 3:1; reported because a boundary nobody can see still costs scanning speed.",
+    reason: "Panel boundary, table header rule, tab-list rule and the gridlines of a line chart. They identify no control and carry no state, so 1.4.11 does not require 3:1; reported because a boundary nobody can see still costs scanning speed.",
   },
   {
     fg: "border",
