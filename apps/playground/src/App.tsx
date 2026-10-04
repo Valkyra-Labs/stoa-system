@@ -4,9 +4,19 @@
 // override is shown as one. The area panels (src/panels.tsx) sit in the
 // same list and contribute variables and content to every preview frame.
 import { Fragment, useCallback, useEffect, useMemo, useState, type CSSProperties } from "react";
-import { AppHeader, Button, ChoiceGroup, PageShell, Panel, StatusBadge, Tabs, TextField } from "@valkyra-labs/stoa-react";
+import { AppHeader, Button, ChoiceGroup, PageShell, Panel, Select, StatusBadge, Tabs, TextField } from "@valkyra-labs/stoa-react";
 import { useChromeTheme, type ChromeTheme } from "./chromeTheme";
 import { useRegionBlockSize } from "./region";
+import {
+  DATA_STATES,
+  DEFAULT_SCREEN_SETTINGS,
+  GRID_ROW_COUNTS,
+  SCREENS,
+  type DataState,
+  type GridRowCount,
+  type ScreenId,
+  type ScreenSettings,
+} from "./screens/model";
 import { ControlPanel } from "./ControlPanel";
 import { OverrideList } from "./OverrideList";
 import { PreviewGrid } from "./PreviewGrid";
@@ -52,6 +62,10 @@ export function App() {
   const [history, setHistory] = useState(emptyHistory);
   const [chromeTheme, setChromeTheme] = useChromeTheme();
   const [density, setDensity] = useState<DensityMode>("regular");
+  const [screenSettings, setScreenSettings] = useState<ScreenSettings>(DEFAULT_SCREEN_SETTINGS);
+  // Retry on a screen's error brings its data back; stable, so the
+  // component screens do not re-render with every stream frame.
+  const retry = useCallback(() => setScreenSettings((settings) => ({ ...settings, state: "live" })), []);
   const [running, setRunning] = useState(true);
   const [speed, setSpeed] = useState("1");
   // Empty: the server stamps an unnamed save with the time it was written,
@@ -156,7 +170,10 @@ export function App() {
         name,
         files,
         overrides,
-        panels: panelSnapshots(contributions),
+        // What the frames were showing, beside what each area panel
+        // records, so a snapshot says which screen and state it was tuned
+        // against. Loading a snapshot restores its overrides only.
+        panels: { ...panelSnapshots(contributions), screen: screenSettings },
         overwrite,
       });
       setTaken(false);
@@ -210,6 +227,43 @@ export function App() {
             value={density}
             onChange={setDensity}
           />
+          {/* What both frames show: one screen, in one data state, so a
+              look takes in both themes and directions of it. */}
+          <Select<ScreenId>
+            label="Screen"
+            options={SCREENS}
+            value={screenSettings.screen}
+            onChange={(screen) => setScreenSettings((settings) => ({ ...settings, screen }))}
+          />
+          <div className="pg-setting">
+            <span className="pg-token__label" aria-hidden="true">
+              State
+            </span>
+            <ChoiceGroup<DataState>
+              label="State"
+              size="small"
+              choices={DATA_STATES}
+              value={screenSettings.state}
+              onChange={(state) => setScreenSettings((settings) => ({ ...settings, state }))}
+            />
+          </div>
+          {screenSettings.screen === "market" && (
+            <p className="pg-note">Market follows the stream in every state; State applies to the component screens.</p>
+          )}
+          {screenSettings.screen === "grid" && (
+            <div className="pg-setting">
+              <span className="pg-token__label" aria-hidden="true">
+                Grid rows
+              </span>
+              <ChoiceGroup<GridRowCount>
+                label="Grid rows"
+                size="small"
+                choices={GRID_ROW_COUNTS.map((count) => ({ id: count, label: count.toLocaleString("en-US") }))}
+                value={screenSettings.gridRows}
+                onChange={(gridRows) => setScreenSettings((settings) => ({ ...settings, gridRows }))}
+              />
+            </div>
+          )}
         </div>
       ),
     },
@@ -394,6 +448,8 @@ export function App() {
             onRenderTime={setRenderMs}
             panelVariables={panelVariables}
             panelContent={panelContent}
+            settings={screenSettings}
+            onRetry={retry}
           />
         </div>
       </div>

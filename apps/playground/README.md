@@ -11,15 +11,50 @@ pnpm --filter playground dev   # http://localhost:5173
 
 ## What it does
 
-- Two preview frames at once, each running the same dense screen
-  (Ladder, Heatmap, TradeTable, the controls and the form fields) off one
-  synthetic stream that can be paused and resumed. Each frame header picks
-  the frame's view (light or dark by left to right or right to left), its
-  language (English or Arabic: the screen's words, Stoa's own words and
-  Arabic-Indic digits, through React Aria's `I18nProvider`), a reduced
-  motion switch (`data-motion="reduce"` on the frame, every duration token
-  at zero), and a colour-vision preview. The replay slider under the heatmap scrubs back
-  over the stream's last window of frames.
+- Two preview frames at once, each running the same screen. Each frame
+  header picks the frame's view (light or dark by left to right or right
+  to left), its language (English, Russian or Arabic: the screen's words,
+  Stoa's own words and the language's digits and separators, through
+  React Aria's `I18nProvider`), a reduced motion switch
+  (`data-motion="reduce"` on the frame, every duration token at zero),
+  and a colour-vision preview.
+- The side panel's Screen setting picks what both frames show. Market is
+  the dense screen (Ladder, Heatmap, TradeTable, the controls and the form
+  fields) off one synthetic stream that can be paused and resumed; the
+  replay slider under the heatmap scrubs back over the stream's last
+  window of frames. The component screens put every Stoa component to
+  work (`src/screens/`, words in `src/screens/words.ts`):
+  - Controls: the blotter's Toolbar with a ButtonGroup, separators and
+    the four Button variants, a FilterChipGroup with counts, a FilterChip,
+    Tags, Switches (one disabled with its reason), Checkbox and
+    CheckboxGroup with a mixed "all" box, two Sliders, ThemeSwitch and
+    LanguageSwitch with `directionOf`, and the keyboard shortcuts
+    (`useShortcuts`, `groupShortcuts`, ShortcutList, Kbd).
+  - Feedback: a PageShell with an AppHeader and a footer, ProgressBars
+    (an amount and an indeterminate one), Callouts in every tone (one
+    dismissible), toasts raised from buttons (ToastQueue, ToastRegion),
+    the last trade as a visible LiveRegion with a VisuallyHidden currency,
+    and Skeleton and EmptyState in their states.
+  - Overlays and lists: Dialog, Sheet, AlertDialog and ShortcutsDialog
+    from a toolbar or a key, a ReorderableList watchlist, a StepList of
+    settlement steps, a LogView and a CodeView.
+  - Charts and tables: a StatBar of Metrics, a Metric with a threshold, a
+    LineChart with its data table, an EventStrip and a Table.
+  - Data grid: a DataGrid of orders with selection, sorting, an editable
+    status with validation, and a search that marks what it finds.
+- The State setting (Live, Loading, Empty, Error) drives every component
+  screen at once: skeletons and progress while loading, empty states
+  (EmptyState, and the empty texts of Table, LineChart, EventStrip,
+  ReorderableList and DataGrid), and a negative Callout with a Retry that
+  goes back to Live. Grid rows (300, 5,000, 50,000) shows on the data grid
+  screen only. Market follows the stream in every state. A snapshot
+  records the screen settings beside the panels' state.
+- Overlays open inside the frame they were opened from: each frame gives
+  React Aria a portal container of its own (`UNSAFE_PortalProvider`), so
+  a dialog, a sheet or a toast takes that frame's theme, direction,
+  density, motion, filter and locale. The container sticks to the part
+  of the frame in view. A screen's keyboard shortcuts run only while the
+  focus is inside its frame.
 - The page is a Stoa PageShell with a fixed header: the header stays at
   the top and the page scrolls in the region under it, whose scrollbar
   lane is reserved; the side panel sticks inside that region. Every
@@ -35,7 +70,8 @@ pnpm --filter playground dev   # http://localhost:5173
   listed in a tooltip beside the side panel; length tokens take a typed
   value as well as the slider. The Stats tab holds the session counters.
 - Above the side tabs: undo, redo, pause or resume, the stream speed
-  (1x, 2x, 4x) and the density mode both frames use. The side tabs are
+  (1x, 2x, 4x), the density mode both frames use, and the Screen, State
+  and Grid rows settings. The side tabs are
   Tokens, Overrides, Checks, Type, Snapshot and Stats.
 - Every edit in the tokens panel is an override against stoa-default,
   listed with the value the token files give, resettable one by one or all
@@ -112,7 +148,10 @@ node apps/playground/scripts/font-report.mjs "IBM Plex Sans=path/to/IBMPlexSans-
 server on port 5190 (`PLAYGROUND_E2E_PORT` moves it), apart from the
 playground's and the demos' dev servers, and needs the Chromium that the pinned Playwright
 version downloads: `pnpm --filter playground exec playwright install
-chromium`.
+chromium`. `tests/axe.spec.ts` runs axe-core (a pinned dev dependency)
+over every screen in both initial views and every language, and over
+every data state; it fails on any serious or critical violation and
+logs the rest.
 
 `node apps/playground/scripts/screenshot.mjs [url] [out]` photographs the
 frames against a dev server that is already running.
