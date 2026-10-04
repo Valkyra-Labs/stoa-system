@@ -96,6 +96,11 @@ describe("Table", () => {
     expect(region.style.maxBlockSize).toBe("160px");
   });
 
+  it("takes its maximum height as a CSS length too, so it can be set in tokens", () => {
+    const { container } = renderTable({ maxHeight: "calc(var(--stoa-space-12) * 6)" });
+    expect(container.querySelector<HTMLElement>(".stoa-table-region")!.style.maxBlockSize).toBe("calc(var(--stoa-space-12) * 6)");
+  });
+
   it("is not a tab stop or a landmark while it fits", () => {
     const { container } = renderTable({ maxHeight: 160 });
     const region = container.querySelector(".stoa-table-region")!;

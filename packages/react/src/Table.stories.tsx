@@ -84,13 +84,13 @@ export const RowHeaders: StoryObj = { render: () => <Payments rowHeader="date" /
 /** No rows: one muted row across every column says so. */
 export const Empty: StoryObj = { render: () => <Payments rows={[]} /> };
 
-/** Taller than its maximum height: the table scrolls inside its own
- * region, which is a tab stop named by the caption, and the header row
- * stays in view. */
+/** Taller than its maximum height, given in tokens: the table scrolls
+ * inside its own region, which is a tab stop named by the caption, and
+ * the header row stays in view. */
 export const StickyHeader: StoryObj = {
   render: () => (
     <Panel title="Schedule">
-      <Payments rows={payments(16)} maxHeight={200} stickyHeader rowHeader="date" />
+      <Payments rows={payments(16)} maxHeight="calc(var(--stoa-space-12) * 4)" stickyHeader rowHeader="date" />
     </Panel>
   ),
 };
