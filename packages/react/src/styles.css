@@ -259,3 +259,8 @@
 /* Panels kept mounted while inactive are inert; they keep their state
    (a running worker, a filled form) but take no space. */
 .stoa-tabs__panel[inert] { display: none; }
+
+/* ==== Feedback and layout ==== */
+
+/* A live region drawn on the page, for a value that also reads out. */
+.stoa-live-region { font-variant-numeric: tabular-nums; }
