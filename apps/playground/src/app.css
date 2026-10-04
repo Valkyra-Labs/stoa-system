@@ -31,17 +31,6 @@ code {
   gap: var(--stoa-space-4);
 }
 
-/* PageShell's scrolling region is not a containing block, so an
-   absolutely positioned box inside it with no positioned ancestor of its
-   own (Stoa's visually hidden text, the tooltips' rule lists) is laid out
-   against the shell and not clipped by the region: the document grows by
-   the page's height and scrolls behind the header. Positioning the region
-   keeps those boxes inside it. Reported as a PageShell gap; until Stoa
-   decides, the playground sets it here. */
-.stoa-page-shell__scroll {
-  position: relative;
-}
-
 /* The page scrolls in PageShell's region under the header, and the side
    panel sticks inside that region: its block size is the region's
    (measured into --pg-region, src/region.ts) less the main region's
