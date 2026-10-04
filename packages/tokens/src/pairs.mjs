@@ -49,7 +49,7 @@ export const TEXT_PAIRS = [
   { fg: "text-muted", bg: "surface", min: TEXT_AA, reason: "Panel title, field label, table header, statbar term, and the heatmap price labels on their surface plates; also chart axis labels and notes, the neutral series line of a line chart and the coupon marker of an event strip." },
   { fg: "text-muted", bg: "bg", min: TEXT_AA, reason: "The same muted labels, chart lines and markers when a table, chart or statbar sits straight on the page background." },
   { fg: "text-muted", bg: "surface-sunken", min: TEXT_AA, reason: "Muted labels in a sunken well." },
-  { fg: "text-subtle", bg: "surface", min: TEXT_AA, reason: "The third text role. No component uses it yet; checked so the name keeps its promise." },
+  { fg: "text-subtle", bg: "surface", min: TEXT_AA, reason: "The third text role: the description of a disabled shortcut in ShortcutList and ShortcutsDialog." },
   { fg: "text-subtle", bg: "bg", min: TEXT_AA, reason: "The same, on the page background." },
   { fg: "accent", bg: "surface", min: TEXT_AA, reason: "Accent used as text or an icon inside a panel; also the accent series line of a line chart and the amortisation marker of an event strip." },
   { fg: "accent", bg: "bg", min: TEXT_AA, reason: "The same, on the page background." },

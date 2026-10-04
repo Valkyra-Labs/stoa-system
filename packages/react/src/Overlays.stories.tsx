@@ -142,6 +142,34 @@ export const ShortcutsWithDisabled: StoryObj = {
   ),
 };
 
+/** The dialog with a disabled line over a page longer than the window,
+ * scrolled: the muted description is measured on the dialog's surface,
+ * not on whatever is behind the overlay. */
+export const ShortcutsOverLongPage: StoryObj = {
+  render: () => (
+    <div>
+      {Array.from({ length: 40 }, (_, i) => (
+        <p key={i}>Row {i + 1} of the blotter: an order, its venue and its state.</p>
+      ))}
+      <ShortcutsDialog
+        title="Keyboard shortcuts"
+        groups={[
+          {
+            title: "Orders",
+            shortcuts: [
+              { keys: ["E"], description: "Export the view as CSV", isDisabled: true },
+              { keys: ["N"], description: "New order" },
+              { keys: ["?"], description: "Show these shortcuts" },
+            ],
+          },
+        ]}
+        defaultOpen
+        trigger={<Button>Shortcuts</Button>}
+      />
+    </div>
+  ),
+};
+
 /** The same list outside a dialog, for example on a help page. */
 export const ShortcutsInline: StoryObj = {
   render: () => (
