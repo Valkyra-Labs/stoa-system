@@ -1,5 +1,7 @@
 // @vitest-environment jsdom
 // The feedback and layout components; the toasts have their own file.
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 import type { ReactNode } from "react";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { act, cleanup, fireEvent, render, screen } from "@testing-library/react";
@@ -349,5 +351,33 @@ describe("PageShell", () => {
     const skip = screen.getByRole("link", { name: "انتقل إلى المحتوى الرئيسي" });
     fireEvent.click(skip);
     expect(document.activeElement).toBe(screen.getByRole("main"));
+  });
+});
+
+describe("the feedback and layout styles", () => {
+  // jsdom applies no stylesheet, so these rules are read as text: the
+  // block appended for this group, from its marker to the end of the file.
+  const css = readFileSync(join(import.meta.dirname, "styles.css"), "utf8");
+  const block = css.slice(css.indexOf("/* ==== Feedback and layout ==== */"));
+
+  it("is in the stylesheet", () => {
+    expect(block.length).toBeGreaterThan(100);
+  });
+
+  it("uses logical properties only, so right-to-left needs no overrides", () => {
+    const physical = /(^|[\s;{])(margin|padding|border|inset)-(left|right|top|bottom)\b|(^|[\s;{])(left|right|top|bottom)\s*:|text-align:\s*(left|right)|float:\s*(left|right)/m;
+    expect(block.match(physical)).toBeNull();
+  });
+
+  it("sets the tone's border colour after the rules whose border shorthand would reset it", () => {
+    const tone = block.indexOf(".stoa-callout--info, .stoa-toast--info {");
+    expect(tone).toBeGreaterThan(block.indexOf(".stoa-callout {"));
+    expect(tone).toBeGreaterThan(block.indexOf(".stoa-toast {"));
+  });
+
+  it("animates and transitions only on the motion duration tokens, which reduced motion sets to zero", () => {
+    const declarations = [...block.matchAll(/(?:^|[\s;{])(animation|transition)\s*:\s*([^;]+);/g)];
+    expect(declarations.length).toBeGreaterThan(0);
+    for (const [, , value] of declarations) expect(value).toMatch(/var\(--stoa-motion-duration-[a-z]+\)/);
   });
 });
