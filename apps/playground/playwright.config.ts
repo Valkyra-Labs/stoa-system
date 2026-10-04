@@ -1,9 +1,11 @@
 import { defineConfig } from "@playwright/test";
 
 // The smoke test drives the real dev server, because the endpoints under
-// test are the dev server's. The port is not the default one, so a session
-// already running `pnpm --filter playground dev` is not disturbed.
-const PORT = 5174;
+// test are the dev server's. The port is the tests' own, apart from the
+// playground's and the demos' dev servers, so a session running any of
+// them is not disturbed and a test never reuses another app's server.
+// PLAYGROUND_E2E_PORT moves it.
+const PORT = Number(process.env.PLAYGROUND_E2E_PORT ?? 5190);
 
 export default defineConfig({
   testDir: "tests",
