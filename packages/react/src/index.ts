@@ -110,6 +110,9 @@ export { ReorderableList, type ReorderableItem, type ReorderableListProps } from
 export { StepList, type Step, type StepStatus, type StepListProps } from "./StepList";
 export { LogView, CodeView, type LogLine, type LogViewProps, type CodeViewProps } from "./Code";
 export { Metric, type MetricProps, type MetricThreshold } from "./Metric";
+export { Tooltip, type TooltipProps } from "./Tooltip";
+export { DescriptionList, type DescriptionItem, type DescriptionListProps } from "./DescriptionList";
+export { RecordList, type RecordListItem, type RecordListProps } from "./RecordList";
 export { type StatBarItem } from "./Panel";
 // Table and charts.
 export { Table, type TableColumn, type TableProps } from "./Table";

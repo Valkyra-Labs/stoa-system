@@ -3,11 +3,14 @@ import { useState } from "react";
 import { CodeView, LogView } from "./Code";
 import { Button } from "./Controls";
 import { AlertDialog, Dialog, Sheet } from "./Dialog";
+import { DescriptionList, type DescriptionItem } from "./DescriptionList";
 import { Metric } from "./Metric";
 import { Panel, StatBar } from "./Panel";
 import { ReorderableList, type ReorderableItem } from "./ReorderableList";
 import { ShortcutList, ShortcutsDialog, type ShortcutGroup } from "./Shortcuts";
+import { RecordList, type RecordListItem } from "./RecordList";
 import { StepList, type Step } from "./StepList";
+import { Tooltip } from "./Tooltip";
 
 const meta: Meta = { title: "Overlays, lists and content" };
 export default meta;
@@ -359,4 +362,103 @@ export const StatBarWithMetrics: StoryObj = {
       ]}
     />
   ),
+};
+
+/** A term explained in a tooltip, closed: Tab to the term, hover it or
+ * press it to open the explanation. */
+export const TooltipClosed: StoryObj = {
+  render: () => (
+    <p>
+      The <Tooltip content="Yield to maturity: the return if the bond is held until it is repaid.">YTM</Tooltip> of this
+      bond is 7.52%.
+    </p>
+  ),
+};
+
+/** The tooltip open, below its term. */
+export const TooltipOpen: StoryObj = {
+  render: () => (
+    <p style={{ paddingBlockEnd: "var(--stoa-space-12)" }}>
+      Accrued interest uses the{" "}
+      <Tooltip content="Actual/365: the days actually elapsed, over a 365-day year." placement="bottom" defaultOpen>
+        day count
+      </Tooltip>{" "}
+      of the issue.
+    </p>
+  ),
+};
+
+const BOND: DescriptionItem[] = [
+  { term: "ISIN", description: "RU000A1001" },
+  { term: "Issuer", description: "Gazprom Capital" },
+  { term: "Coupon", description: "7.50%", numeric: true },
+  { term: "Maturity", description: "4 Sep 2027" },
+  { term: "Yield to maturity", description: "7.52%", numeric: true },
+];
+
+/** A read-only record: terms in one column, values beside them. */
+export const DescriptionColumns: StoryObj = {
+  render: () => (
+    <Panel title="RU000A1001">
+      <DescriptionList items={BOND} />
+    </Panel>
+  ),
+};
+
+/** The same record stacked, for a narrow pane. */
+export const DescriptionStacked: StoryObj = {
+  render: () => (
+    <div style={{ maxInlineSize: "calc(var(--stoa-space-12) * 5)" }}>
+      <Panel title="RU000A1001">
+        <DescriptionList items={BOND} layout="stacked" />
+      </Panel>
+    </div>
+  ),
+};
+
+const RECORDS: RecordListItem[] = [
+  { id: "a", label: "RU000A1001", description: "Gazprom Capital, 2027", meta: "7.52%" },
+  { id: "b", label: "RU000A1002", description: "Sberbank, 2026", meta: "8.10%" },
+  { id: "c", label: "RU000A1003", description: "Matured, no longer traded", isDisabled: true },
+  { id: "d", label: "XS0000004", description: "Lukoil, 2030", meta: "6.95%" },
+];
+
+/** A master-detail view: pick a record in the list (the arrows move,
+ * Enter or a click picks), its details show beside it. One record is
+ * disabled. */
+export const RecordListWithDetail: StoryObj = {
+  render: () => {
+    const [picked, setPicked] = useState<string | null>("a");
+    const record = RECORDS.find((item) => item.id === picked);
+    return (
+      <div style={{ display: "grid", gap: "var(--stoa-space-4)", gridTemplateColumns: "repeat(auto-fit, minmax(14rem, 1fr))" }}>
+        <Panel title="Bonds">
+          <RecordList label="Bonds" items={RECORDS} value={picked} onChange={setPicked} />
+        </Panel>
+        <Panel title={record?.label ?? "No bond picked"}>
+          {record && (
+            <DescriptionList
+              items={[
+                { term: "Issuer", description: record.description },
+                { term: <Tooltip content="Yield to maturity: the return if the bond is held until it is repaid.">YTM</Tooltip>, id: "ytm", description: record.meta, numeric: true },
+              ]}
+            />
+          )}
+        </Panel>
+      </div>
+    );
+  },
+};
+
+/** No record picked yet. */
+export const RecordListNothingPicked: StoryObj = {
+  render: () => {
+    const [picked, setPicked] = useState<string | null>(null);
+    return <RecordList label="Bonds" items={RECORDS} value={picked} onChange={setPicked} />;
+  },
+};
+
+/** No records: the list says so, in the locale's words. */
+export const RecordListEmpty: StoryObj = {
+  render: () => <RecordList label="Bonds" items={[]} value={null} onChange={() => {}} />,
 };
