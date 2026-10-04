@@ -61,6 +61,9 @@ export { Slider, type SliderProps } from "./Slider";
 export { ButtonGroup, Toolbar, ToolbarSeparator, type ButtonGroupProps, type ToolbarProps } from "./Toolbar";
 export {
   Kbd,
+  ShortcutList,
+  ShortcutsDialog,
+  groupShortcuts,
   isApplePlatform,
   isTypingTarget,
   matchesShortcut,
@@ -68,8 +71,11 @@ export {
   useShortcuts,
   type KbdProps,
   type Shortcut,
+  type ShortcutGroup,
   type ShortcutHelp,
+  type ShortcutListItem,
   type ShortcutModifier,
+  type ShortcutsDialogProps,
 } from "./Shortcuts";
 export {
   LanguageSwitch,
@@ -90,3 +96,10 @@ export {
   type ThemePreference,
   type ThemeSwitchProps,
 } from "./Preferences";
+// Overlays, lists and content.
+export { Dialog, Sheet, AlertDialog, type DialogProps, type SheetProps, type AlertDialogProps, type OverlayOpenProps } from "./Dialog";
+export { ReorderableList, type ReorderableItem, type ReorderableListProps } from "./ReorderableList";
+export { StepList, type Step, type StepStatus, type StepListProps } from "./StepList";
+export { LogView, CodeView, type LogLine, type LogViewProps, type CodeViewProps } from "./Code";
+export { Metric, type MetricProps, type MetricThreshold } from "./Metric";
+export { type StatBarItem } from "./Panel";

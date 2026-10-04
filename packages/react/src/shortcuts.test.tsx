@@ -2,7 +2,7 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { cleanup, fireEvent, render, renderHook, screen } from "@testing-library/react";
 import type { ReactNode } from "react";
-import { I18nProvider, Kbd, matchesShortcut, shortcutKeys, useShortcuts, type Shortcut } from "./index";
+import { I18nProvider, Kbd, ShortcutList, groupShortcuts, matchesShortcut, shortcutKeys, useShortcuts, type Shortcut, type ShortcutHelp } from "./index";
 
 afterEach(() => {
   cleanup();
@@ -178,5 +178,29 @@ describe("useShortcuts", () => {
       { keys: ["مسافة"], description: "تشغيل أو إيقاف", group: "التشغيل", isDisabled: false },
       { keys: ["Ctrl", "K"], description: "بحث", group: undefined, isDisabled: true },
     ]);
+  });
+});
+
+describe("groupShortcuts and ShortcutList", () => {
+  const help: ShortcutHelp[] = [
+    { keys: ["?"], description: "Show shortcuts", isDisabled: false },
+    { keys: ["Space"], description: "Play or pause", group: "Playback", isDisabled: false },
+    { keys: ["Ctrl", "K"], description: "Search", group: "Find", isDisabled: true },
+    { keys: ["→"], description: "Step forward", group: "Playback", isDisabled: false },
+  ];
+
+  it("groups help lines in the order each group first appears, ungrouped lines last", () => {
+    const groups = groupShortcuts(help, "Other");
+    expect(groups.map((g) => g.title)).toEqual(["Playback", "Find", "Other"]);
+    expect(groups[0]!.shortcuts.map((s) => s.description)).toEqual(["Play or pause", "Step forward"]);
+    expect(groupShortcuts(help.slice(1), "Other").map((g) => g.title)).toEqual(["Playback", "Find"]);
+  });
+
+  it("draws the help lines with Kbd and marks a disabled shortcut", () => {
+    const { container } = render(<ShortcutList groups={groupShortcuts(help, "Other")} />);
+    const find = screen.getByRole("region", { name: "Find" });
+    expect(find.querySelector("dt kbd")!.className).toBe("stoa-kbd-combo");
+    expect(find.querySelector(".stoa-shortcuts__row")!.hasAttribute("data-disabled")).toBe(true);
+    expect(container.querySelectorAll(".stoa-shortcuts__row[data-disabled]")).toHaveLength(1);
   });
 });

@@ -17,6 +17,16 @@
       "readBy": {
         "components": [
           {
+            "component": "(css) .stoa-step__fill",
+            "file": "packages/react/src/styles.css",
+            "line": 813
+          },
+          {
+            "component": "(css) .stoa-step__status--running .stoa-step__symbol",
+            "file": "packages/react/src/styles.css",
+            "line": 794
+          },
+          {
             "component": "Button",
             "file": "packages/react/src/styles.css",
             "line": 80
@@ -147,6 +157,11 @@
             "component": "ProgressBar",
             "file": "packages/react/src/styles.css",
             "line": 302
+          },
+          {
+            "component": "ReorderableList",
+            "file": "packages/react/src/styles.css",
+            "line": 753
           },
           {
             "component": "Select",
@@ -288,7 +303,27 @@
           "Foundations/Colour > SemanticColours",
           "Layout/Panel > Header",
           "Layout/Panel > Sections",
-          "Layout/Panel > Titled"
+          "Layout/Panel > Titled",
+          "Report > AlertDestructive",
+          "Report > AlertNeutral",
+          "Report > Code",
+          "Report > CodeNumbered",
+          "Report > DialogClosed",
+          "Report > DialogOpen",
+          "Report > Log",
+          "Report > LogMixed",
+          "Report > Metrics",
+          "Report > Reorderable",
+          "Report > ReorderableButtonsOnly",
+          "Report > ReorderableEmpty",
+          "Report > SheetAuto",
+          "Report > SheetBottom",
+          "Report > SheetEnd",
+          "Report > ShortcutsInline",
+          "Report > ShortcutsOpen",
+          "Report > StatBarWithMetrics",
+          "Report > StepsAllStatuses",
+          "Report > StepsReorderable"
         ]
       },
       "reachedByTheme": {
@@ -312,6 +347,12 @@
       "aliasOf": null,
       "readBy": {
         "components": [
+          {
+            "component": "(css) .stoa-step__status--awaiting .stoa-step__symbol",
+            "file": "packages/react/src/styles.css",
+            "line": 796,
+            "via": "--stoa-color-warning"
+          },
           {
             "component": "Callout",
             "file": "packages/react/src/styles.css",
@@ -421,6 +462,12 @@
       "aliasOf": null,
       "readBy": {
         "components": [
+          {
+            "component": "(css) .stoa-step__status--awaiting .stoa-step__symbol",
+            "file": "packages/react/src/styles.css",
+            "line": 796,
+            "via": "--stoa-color-warning"
+          },
           {
             "component": "Callout",
             "file": "packages/react/src/styles.css",
@@ -695,6 +742,24 @@
       "readBy": {
         "components": [
           {
+            "component": "(css) .stoa-code__scroll:focus-visible",
+            "file": "packages/react/src/styles.css",
+            "line": 847,
+            "via": "--stoa-color-focus"
+          },
+          {
+            "component": "(css) .stoa-step__fill",
+            "file": "packages/react/src/styles.css",
+            "line": 813,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "(css) .stoa-step__status--running .stoa-step__symbol",
+            "file": "packages/react/src/styles.css",
+            "line": 794,
+            "via": "--stoa-color-accent"
+          },
+          {
             "component": "Button",
             "file": "packages/react/src/styles.css",
             "line": 80,
@@ -903,6 +968,30 @@
             "file": "packages/react/src/styles.css",
             "line": 302,
             "via": "--stoa-color-accent"
+          },
+          {
+            "component": "ReorderableList",
+            "file": "packages/react/src/styles.css",
+            "line": 736,
+            "via": "--stoa-color-focus"
+          },
+          {
+            "component": "ReorderableList",
+            "file": "packages/react/src/styles.css",
+            "line": 749,
+            "via": "--stoa-color-focus"
+          },
+          {
+            "component": "ReorderableList",
+            "file": "packages/react/src/styles.css",
+            "line": 753,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "ReorderableList",
+            "file": "packages/react/src/styles.css",
+            "line": 762,
+            "via": "--stoa-color-focus"
           },
           {
             "component": "Select",
@@ -1126,7 +1215,27 @@
           "Foundations/Colour > SemanticColours",
           "Layout/Panel > Header",
           "Layout/Panel > Sections",
-          "Layout/Panel > Titled"
+          "Layout/Panel > Titled",
+          "Report > AlertDestructive",
+          "Report > AlertNeutral",
+          "Report > Code",
+          "Report > CodeNumbered",
+          "Report > DialogClosed",
+          "Report > DialogOpen",
+          "Report > Log",
+          "Report > LogMixed",
+          "Report > Metrics",
+          "Report > Reorderable",
+          "Report > ReorderableButtonsOnly",
+          "Report > ReorderableEmpty",
+          "Report > SheetAuto",
+          "Report > SheetBottom",
+          "Report > SheetEnd",
+          "Report > ShortcutsInline",
+          "Report > ShortcutsOpen",
+          "Report > StatBarWithMetrics",
+          "Report > StepsAllStatuses",
+          "Report > StepsReorderable"
         ]
       },
       "reachedByTheme": {
@@ -1154,6 +1263,12 @@
       "readBy": {
         "components": [
           {
+            "component": "(css) .stoa-code__scroll:focus-visible",
+            "file": "packages/react/src/styles.css",
+            "line": 847,
+            "via": "--stoa-color-focus"
+          },
+          {
             "component": "Button",
             "file": "packages/react/src/styles.css",
             "line": 100,
@@ -1205,6 +1320,24 @@
             "component": "PageShell",
             "file": "packages/react/src/styles.css",
             "line": 426,
+            "via": "--stoa-color-focus"
+          },
+          {
+            "component": "ReorderableList",
+            "file": "packages/react/src/styles.css",
+            "line": 736,
+            "via": "--stoa-color-focus"
+          },
+          {
+            "component": "ReorderableList",
+            "file": "packages/react/src/styles.css",
+            "line": 749,
+            "via": "--stoa-color-focus"
+          },
+          {
+            "component": "ReorderableList",
+            "file": "packages/react/src/styles.css",
+            "line": 762,
             "via": "--stoa-color-focus"
           },
           {
@@ -1326,7 +1459,27 @@
           "Foundations/Colour > SemanticColours",
           "Layout/Panel > Header",
           "Layout/Panel > Sections",
-          "Layout/Panel > Titled"
+          "Layout/Panel > Titled",
+          "Report > AlertDestructive",
+          "Report > AlertNeutral",
+          "Report > Code",
+          "Report > CodeNumbered",
+          "Report > DialogClosed",
+          "Report > DialogOpen",
+          "Report > Log",
+          "Report > LogMixed",
+          "Report > Metrics",
+          "Report > Reorderable",
+          "Report > ReorderableButtonsOnly",
+          "Report > ReorderableEmpty",
+          "Report > SheetAuto",
+          "Report > SheetBottom",
+          "Report > SheetEnd",
+          "Report > ShortcutsInline",
+          "Report > ShortcutsOpen",
+          "Report > StatBarWithMetrics",
+          "Report > StepsAllStatuses",
+          "Report > StepsReorderable"
         ]
       },
       "reachedByTheme": {
@@ -1352,6 +1505,18 @@
       "aliasOf": null,
       "readBy": {
         "components": [
+          {
+            "component": "(css) .stoa-step__fill",
+            "file": "packages/react/src/styles.css",
+            "line": 813,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "(css) .stoa-step__status--running .stoa-step__symbol",
+            "file": "packages/react/src/styles.css",
+            "line": 794,
+            "via": "--stoa-color-accent"
+          },
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
@@ -1506,6 +1671,12 @@
             "component": "ProgressBar",
             "file": "packages/react/src/styles.css",
             "line": 302,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "ReorderableList",
+            "file": "packages/react/src/styles.css",
+            "line": 753,
             "via": "--stoa-color-accent"
           },
           {
@@ -1664,7 +1835,27 @@
           "Foundations/Colour > SemanticColours",
           "Layout/Panel > Header",
           "Layout/Panel > Sections",
-          "Layout/Panel > Titled"
+          "Layout/Panel > Titled",
+          "Report > AlertDestructive",
+          "Report > AlertNeutral",
+          "Report > Code",
+          "Report > CodeNumbered",
+          "Report > DialogClosed",
+          "Report > DialogOpen",
+          "Report > Log",
+          "Report > LogMixed",
+          "Report > Metrics",
+          "Report > Reorderable",
+          "Report > ReorderableButtonsOnly",
+          "Report > ReorderableEmpty",
+          "Report > SheetAuto",
+          "Report > SheetBottom",
+          "Report > SheetEnd",
+          "Report > ShortcutsInline",
+          "Report > ShortcutsOpen",
+          "Report > StatBarWithMetrics",
+          "Report > StepsAllStatuses",
+          "Report > StepsReorderable"
         ]
       },
       "reachedByTheme": {
@@ -1697,6 +1888,11 @@
       },
       "readBy": {
         "components": [
+          {
+            "component": "(css) .stoa-code__scroll",
+            "file": "packages/react/src/styles.css",
+            "line": 844
+          },
           {
             "component": "AppHeader",
             "file": "packages/react/src/styles.css",
@@ -1758,6 +1954,11 @@
             "component": "Panel",
             "file": "packages/react/src/styles.css",
             "line": 11
+          },
+          {
+            "component": "ReorderableList",
+            "file": "packages/react/src/styles.css",
+            "line": 744
           },
           {
             "component": "Select",
@@ -1858,7 +2059,27 @@
           "Feedback/Feedback and layout > VisuallyHiddenText",
           "Layout/Panel > Header",
           "Layout/Panel > Sections",
-          "Layout/Panel > Titled"
+          "Layout/Panel > Titled",
+          "Report > AlertDestructive",
+          "Report > AlertNeutral",
+          "Report > Code",
+          "Report > CodeNumbered",
+          "Report > DialogClosed",
+          "Report > DialogOpen",
+          "Report > Log",
+          "Report > LogMixed",
+          "Report > Metrics",
+          "Report > Reorderable",
+          "Report > ReorderableButtonsOnly",
+          "Report > ReorderableEmpty",
+          "Report > SheetAuto",
+          "Report > SheetBottom",
+          "Report > SheetEnd",
+          "Report > ShortcutsInline",
+          "Report > ShortcutsOpen",
+          "Report > StatBarWithMetrics",
+          "Report > StepsAllStatuses",
+          "Report > StepsReorderable"
         ]
       },
       "reachedByTheme": {
@@ -1889,6 +2110,21 @@
       },
       "readBy": {
         "components": [
+          {
+            "component": "(css) .stoa-modal",
+            "file": "packages/react/src/styles.css",
+            "line": 653
+          },
+          {
+            "component": "(css) .stoa-step__number",
+            "file": "packages/react/src/styles.css",
+            "line": 784
+          },
+          {
+            "component": "(css) .stoa-step__track",
+            "file": "packages/react/src/styles.css",
+            "line": 810
+          },
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
@@ -2046,7 +2282,27 @@
           "Feedback/Feedback and layout > VisuallyHiddenText",
           "Layout/Panel > Header",
           "Layout/Panel > Sections",
-          "Layout/Panel > Titled"
+          "Layout/Panel > Titled",
+          "Report > AlertDestructive",
+          "Report > AlertNeutral",
+          "Report > Code",
+          "Report > CodeNumbered",
+          "Report > DialogClosed",
+          "Report > DialogOpen",
+          "Report > Log",
+          "Report > LogMixed",
+          "Report > Metrics",
+          "Report > Reorderable",
+          "Report > ReorderableButtonsOnly",
+          "Report > ReorderableEmpty",
+          "Report > SheetAuto",
+          "Report > SheetBottom",
+          "Report > SheetEnd",
+          "Report > ShortcutsInline",
+          "Report > ShortcutsOpen",
+          "Report > StatBarWithMetrics",
+          "Report > StepsAllStatuses",
+          "Report > StepsReorderable"
         ]
       },
       "reachedByTheme": {
@@ -2077,6 +2333,11 @@
       },
       "readBy": {
         "components": [
+          {
+            "component": "(css) .stoa-step__status--error",
+            "file": "packages/react/src/styles.css",
+            "line": 797
+          },
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
@@ -2190,7 +2451,27 @@
           "Foundations/Colour > SemanticColours",
           "Layout/Panel > Header",
           "Layout/Panel > Sections",
-          "Layout/Panel > Titled"
+          "Layout/Panel > Titled",
+          "Report > AlertDestructive",
+          "Report > AlertNeutral",
+          "Report > Code",
+          "Report > CodeNumbered",
+          "Report > DialogClosed",
+          "Report > DialogOpen",
+          "Report > Log",
+          "Report > LogMixed",
+          "Report > Metrics",
+          "Report > Reorderable",
+          "Report > ReorderableButtonsOnly",
+          "Report > ReorderableEmpty",
+          "Report > SheetAuto",
+          "Report > SheetBottom",
+          "Report > SheetEnd",
+          "Report > ShortcutsInline",
+          "Report > ShortcutsOpen",
+          "Report > StatBarWithMetrics",
+          "Report > StepsAllStatuses",
+          "Report > StepsReorderable"
         ]
       },
       "reachedByTheme": {
@@ -2273,6 +2554,11 @@
       "readBy": {
         "components": [
           {
+            "component": "(css) .stoa-code__scroll:focus-visible",
+            "file": "packages/react/src/styles.css",
+            "line": 847
+          },
+          {
             "component": "Button",
             "file": "packages/react/src/styles.css",
             "line": 100
@@ -2316,6 +2602,21 @@
             "component": "PageShell",
             "file": "packages/react/src/styles.css",
             "line": 426
+          },
+          {
+            "component": "ReorderableList",
+            "file": "packages/react/src/styles.css",
+            "line": 736
+          },
+          {
+            "component": "ReorderableList",
+            "file": "packages/react/src/styles.css",
+            "line": 749
+          },
+          {
+            "component": "ReorderableList",
+            "file": "packages/react/src/styles.css",
+            "line": 762
           },
           {
             "component": "Select",
@@ -2425,7 +2726,27 @@
           "Foundations/Colour > SemanticColours",
           "Layout/Panel > Header",
           "Layout/Panel > Sections",
-          "Layout/Panel > Titled"
+          "Layout/Panel > Titled",
+          "Report > AlertDestructive",
+          "Report > AlertNeutral",
+          "Report > Code",
+          "Report > CodeNumbered",
+          "Report > DialogClosed",
+          "Report > DialogOpen",
+          "Report > Log",
+          "Report > LogMixed",
+          "Report > Metrics",
+          "Report > Reorderable",
+          "Report > ReorderableButtonsOnly",
+          "Report > ReorderableEmpty",
+          "Report > SheetAuto",
+          "Report > SheetBottom",
+          "Report > SheetEnd",
+          "Report > ShortcutsInline",
+          "Report > ShortcutsOpen",
+          "Report > StatBarWithMetrics",
+          "Report > StepsAllStatuses",
+          "Report > StepsReorderable"
         ]
       },
       "reachedByTheme": {
@@ -2449,6 +2770,18 @@
       "aliasOf": null,
       "readBy": {
         "components": [
+          {
+            "component": "(css) .stoa-modal",
+            "file": "packages/react/src/styles.css",
+            "line": 651,
+            "via": "--stoa-color-surface"
+          },
+          {
+            "component": "(css) .stoa-step__track",
+            "file": "packages/react/src/styles.css",
+            "line": 809,
+            "via": "--stoa-color-surface"
+          },
           {
             "component": "AppHeader",
             "file": "packages/react/src/styles.css",
@@ -2555,6 +2888,12 @@
             "component": "ProgressBar",
             "file": "packages/react/src/styles.css",
             "line": 296,
+            "via": "--stoa-color-surface"
+          },
+          {
+            "component": "ReorderableList",
+            "file": "packages/react/src/styles.css",
+            "line": 743,
             "via": "--stoa-color-surface"
           },
           {
@@ -2677,7 +3016,27 @@
           "Foundations/Colour > SemanticColours",
           "Layout/Panel > Header",
           "Layout/Panel > Sections",
-          "Layout/Panel > Titled"
+          "Layout/Panel > Titled",
+          "Report > AlertDestructive",
+          "Report > AlertNeutral",
+          "Report > Code",
+          "Report > CodeNumbered",
+          "Report > DialogClosed",
+          "Report > DialogOpen",
+          "Report > Log",
+          "Report > LogMixed",
+          "Report > Metrics",
+          "Report > Reorderable",
+          "Report > ReorderableButtonsOnly",
+          "Report > ReorderableEmpty",
+          "Report > SheetAuto",
+          "Report > SheetBottom",
+          "Report > SheetEnd",
+          "Report > ShortcutsInline",
+          "Report > ShortcutsOpen",
+          "Report > StatBarWithMetrics",
+          "Report > StepsAllStatuses",
+          "Report > StepsReorderable"
         ]
       },
       "reachedByTheme": {
@@ -2703,6 +3062,24 @@
       "aliasOf": null,
       "readBy": {
         "components": [
+          {
+            "component": "(css) .stoa-code__scroll",
+            "file": "packages/react/src/styles.css",
+            "line": 843,
+            "via": "--stoa-color-surface-sunken"
+          },
+          {
+            "component": "(css) .stoa-code__scroll",
+            "file": "packages/react/src/styles.css",
+            "line": 843,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "(css) .stoa-modal",
+            "file": "packages/react/src/styles.css",
+            "line": 652,
+            "via": "--stoa-color-text"
+          },
           {
             "component": "(css) body",
             "file": ".storybook/preview.css",
@@ -3195,7 +3572,27 @@
           "Foundations/Colour > SemanticColours",
           "Layout/Panel > Header",
           "Layout/Panel > Sections",
-          "Layout/Panel > Titled"
+          "Layout/Panel > Titled",
+          "Report > AlertDestructive",
+          "Report > AlertNeutral",
+          "Report > Code",
+          "Report > CodeNumbered",
+          "Report > DialogClosed",
+          "Report > DialogOpen",
+          "Report > Log",
+          "Report > LogMixed",
+          "Report > Metrics",
+          "Report > Reorderable",
+          "Report > ReorderableButtonsOnly",
+          "Report > ReorderableEmpty",
+          "Report > SheetAuto",
+          "Report > SheetBottom",
+          "Report > SheetEnd",
+          "Report > ShortcutsInline",
+          "Report > ShortcutsOpen",
+          "Report > StatBarWithMetrics",
+          "Report > StepsAllStatuses",
+          "Report > StepsReorderable"
         ]
       },
       "reachedByTheme": {
@@ -3223,6 +3620,11 @@
       "aliasOf": null,
       "readBy": {
         "components": [
+          {
+            "component": "(css) /* ==== Overlays, lists and content ==== */\n\n/* Overlays: Dialog, Sheet, AlertDialog. React Aria portals them to the end\n   of the document, so they take the document's tokens. The scrim mixes\n   the darkest neutral into transparency, which darkens the page in both\n   themes; there is no semantic scrim token yet. Widths are multiples of\n   the space scale, as there are no dimension tokens. The z-index lifts the\n   overlay over the raised options of a choice group. */\n.stoa-overlay",
+            "file": "packages/react/src/styles.css",
+            "line": 643
+          },
           {
             "component": "(css) body",
             "file": ".storybook/preview.css",
@@ -3259,11 +3661,11 @@
       },
       "reachedByTheme": {
         "light": {
-          "direct": false,
+          "direct": true,
           "via": []
         },
         "dark": {
-          "direct": false,
+          "direct": true,
           "via": [
             "--stoa-color-bg"
           ]
@@ -3431,7 +3833,27 @@
           "Feedback/Feedback and layout > VisuallyHiddenText",
           "Layout/Panel > Header",
           "Layout/Panel > Sections",
-          "Layout/Panel > Titled"
+          "Layout/Panel > Titled",
+          "Report > AlertDestructive",
+          "Report > AlertNeutral",
+          "Report > Code",
+          "Report > CodeNumbered",
+          "Report > DialogClosed",
+          "Report > DialogOpen",
+          "Report > Log",
+          "Report > LogMixed",
+          "Report > Metrics",
+          "Report > Reorderable",
+          "Report > ReorderableButtonsOnly",
+          "Report > ReorderableEmpty",
+          "Report > SheetAuto",
+          "Report > SheetBottom",
+          "Report > SheetEnd",
+          "Report > ShortcutsInline",
+          "Report > ShortcutsOpen",
+          "Report > StatBarWithMetrics",
+          "Report > StepsAllStatuses",
+          "Report > StepsReorderable"
         ]
       },
       "reachedByTheme": {
@@ -3457,6 +3879,12 @@
       "aliasOf": null,
       "readBy": {
         "components": [
+          {
+            "component": "(css) .stoa-code__scroll",
+            "file": "packages/react/src/styles.css",
+            "line": 844,
+            "via": "--stoa-color-border"
+          },
           {
             "component": "AppHeader",
             "file": "packages/react/src/styles.css",
@@ -3527,6 +3955,12 @@
             "component": "Panel",
             "file": "packages/react/src/styles.css",
             "line": 11,
+            "via": "--stoa-color-border"
+          },
+          {
+            "component": "ReorderableList",
+            "file": "packages/react/src/styles.css",
+            "line": 744,
             "via": "--stoa-color-border"
           },
           {
@@ -3636,7 +4070,27 @@
           "Feedback/Feedback and layout > VisuallyHiddenText",
           "Layout/Panel > Header",
           "Layout/Panel > Sections",
-          "Layout/Panel > Titled"
+          "Layout/Panel > Titled",
+          "Report > AlertDestructive",
+          "Report > AlertNeutral",
+          "Report > Code",
+          "Report > CodeNumbered",
+          "Report > DialogClosed",
+          "Report > DialogOpen",
+          "Report > Log",
+          "Report > LogMixed",
+          "Report > Metrics",
+          "Report > Reorderable",
+          "Report > ReorderableButtonsOnly",
+          "Report > ReorderableEmpty",
+          "Report > SheetAuto",
+          "Report > SheetBottom",
+          "Report > SheetEnd",
+          "Report > ShortcutsInline",
+          "Report > ShortcutsOpen",
+          "Report > StatBarWithMetrics",
+          "Report > StepsAllStatuses",
+          "Report > StepsReorderable"
         ]
       },
       "reachedByTheme": {
@@ -3686,6 +4140,66 @@
       "readBy": {
         "components": [
           {
+            "component": "(css) .stoa-code__label",
+            "file": "packages/react/src/styles.css",
+            "line": 828,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "(css) .stoa-code__status",
+            "file": "packages/react/src/styles.css",
+            "line": 829,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "(css) .stoa-metric__basis",
+            "file": "packages/react/src/styles.css",
+            "line": 866,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "(css) .stoa-metric__label",
+            "file": "packages/react/src/styles.css",
+            "line": 863,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "(css) .stoa-metric__unit",
+            "file": "packages/react/src/styles.css",
+            "line": 865,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "(css) .stoa-shortcuts__title",
+            "file": "packages/react/src/styles.css",
+            "line": 722,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "(css) .stoa-step__explanation",
+            "file": "packages/react/src/styles.css",
+            "line": 805,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "(css) .stoa-step__number",
+            "file": "packages/react/src/styles.css",
+            "line": 786,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "(css) .stoa-step__status",
+            "file": "packages/react/src/styles.css",
+            "line": 792,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "(css) .stoa-step__value",
+            "file": "packages/react/src/styles.css",
+            "line": 819,
+            "via": "--stoa-color-text-muted"
+          },
+          {
             "component": "AppHeader",
             "file": "packages/react/src/styles.css",
             "line": 38,
@@ -3707,6 +4221,12 @@
             "component": "CheckboxGroup",
             "file": "packages/react/src/styles.css",
             "line": 231,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "CodeView",
+            "file": "packages/react/src/styles.css",
+            "line": 853,
             "via": "--stoa-color-text-muted"
           },
           {
@@ -3740,6 +4260,12 @@
             "via": "--stoa-color-text-muted"
           },
           {
+            "component": "LogView",
+            "file": "packages/react/src/styles.css",
+            "line": 856,
+            "via": "--stoa-color-text-muted"
+          },
+          {
             "component": "NumberField",
             "file": "packages/react/src/styles.css",
             "line": 207,
@@ -3767,6 +4293,18 @@
             "component": "ProgressBar",
             "file": "packages/react/src/styles.css",
             "line": 291,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "ReorderableList",
+            "file": "packages/react/src/styles.css",
+            "line": 757,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "ReorderableList",
+            "file": "packages/react/src/styles.css",
+            "line": 773,
             "via": "--stoa-color-text-muted"
           },
           {
@@ -3803,6 +4341,12 @@
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
             "line": 238,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "StepList",
+            "file": "packages/react/src/styles.css",
+            "line": 791,
             "via": "--stoa-color-text-muted"
           },
           {
@@ -3907,7 +4451,27 @@
           "Foundations/Colour > SemanticColours",
           "Layout/Panel > Header",
           "Layout/Panel > Sections",
-          "Layout/Panel > Titled"
+          "Layout/Panel > Titled",
+          "Report > AlertDestructive",
+          "Report > AlertNeutral",
+          "Report > Code",
+          "Report > CodeNumbered",
+          "Report > DialogClosed",
+          "Report > DialogOpen",
+          "Report > Log",
+          "Report > LogMixed",
+          "Report > Metrics",
+          "Report > Reorderable",
+          "Report > ReorderableButtonsOnly",
+          "Report > ReorderableEmpty",
+          "Report > SheetAuto",
+          "Report > SheetBottom",
+          "Report > SheetEnd",
+          "Report > ShortcutsInline",
+          "Report > ShortcutsOpen",
+          "Report > StatBarWithMetrics",
+          "Report > StepsAllStatuses",
+          "Report > StepsReorderable"
         ]
       },
       "reachedByTheme": {
@@ -3933,6 +4497,30 @@
       "aliasOf": null,
       "readBy": {
         "components": [
+          {
+            "component": "(css) .stoa-modal",
+            "file": "packages/react/src/styles.css",
+            "line": 653,
+            "via": "--stoa-color-border-strong"
+          },
+          {
+            "component": "(css) .stoa-shortcuts__row[data-disabled] dd",
+            "file": "packages/react/src/styles.css",
+            "line": 730,
+            "via": "--stoa-color-text-subtle"
+          },
+          {
+            "component": "(css) .stoa-step__number",
+            "file": "packages/react/src/styles.css",
+            "line": 784,
+            "via": "--stoa-color-border-strong"
+          },
+          {
+            "component": "(css) .stoa-step__track",
+            "file": "packages/react/src/styles.css",
+            "line": 810,
+            "via": "--stoa-color-border-strong"
+          },
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
@@ -4177,7 +4765,27 @@
           "Feedback/Feedback and layout > VisuallyHiddenText",
           "Layout/Panel > Header",
           "Layout/Panel > Sections",
-          "Layout/Panel > Titled"
+          "Layout/Panel > Titled",
+          "Report > AlertDestructive",
+          "Report > AlertNeutral",
+          "Report > Code",
+          "Report > CodeNumbered",
+          "Report > DialogClosed",
+          "Report > DialogOpen",
+          "Report > Log",
+          "Report > LogMixed",
+          "Report > Metrics",
+          "Report > Reorderable",
+          "Report > ReorderableButtonsOnly",
+          "Report > ReorderableEmpty",
+          "Report > SheetAuto",
+          "Report > SheetBottom",
+          "Report > SheetEnd",
+          "Report > ShortcutsInline",
+          "Report > ShortcutsOpen",
+          "Report > StatBarWithMetrics",
+          "Report > StepsAllStatuses",
+          "Report > StepsReorderable"
         ]
       },
       "reachedByTheme": {
@@ -4263,6 +4871,30 @@
       "readBy": {
         "components": [
           {
+            "component": "(css) .stoa-modal",
+            "file": "packages/react/src/styles.css",
+            "line": 653,
+            "via": "--stoa-color-border-strong"
+          },
+          {
+            "component": "(css) .stoa-shortcuts__row[data-disabled] dd",
+            "file": "packages/react/src/styles.css",
+            "line": 730,
+            "via": "--stoa-color-text-subtle"
+          },
+          {
+            "component": "(css) .stoa-step__number",
+            "file": "packages/react/src/styles.css",
+            "line": 784,
+            "via": "--stoa-color-border-strong"
+          },
+          {
+            "component": "(css) .stoa-step__track",
+            "file": "packages/react/src/styles.css",
+            "line": 810,
+            "via": "--stoa-color-border-strong"
+          },
+          {
             "component": "Button",
             "file": "packages/react/src/styles.css",
             "line": 63,
@@ -4506,7 +5138,27 @@
           "Feedback/Feedback and layout > VisuallyHiddenText",
           "Layout/Panel > Header",
           "Layout/Panel > Sections",
-          "Layout/Panel > Titled"
+          "Layout/Panel > Titled",
+          "Report > AlertDestructive",
+          "Report > AlertNeutral",
+          "Report > Code",
+          "Report > CodeNumbered",
+          "Report > DialogClosed",
+          "Report > DialogOpen",
+          "Report > Log",
+          "Report > LogMixed",
+          "Report > Metrics",
+          "Report > Reorderable",
+          "Report > ReorderableButtonsOnly",
+          "Report > ReorderableEmpty",
+          "Report > SheetAuto",
+          "Report > SheetBottom",
+          "Report > SheetEnd",
+          "Report > ShortcutsInline",
+          "Report > ShortcutsOpen",
+          "Report > StatBarWithMetrics",
+          "Report > StepsAllStatuses",
+          "Report > StepsReorderable"
         ]
       },
       "reachedByTheme": {
@@ -4535,6 +5187,66 @@
       "readBy": {
         "components": [
           {
+            "component": "(css) .stoa-code__label",
+            "file": "packages/react/src/styles.css",
+            "line": 828,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "(css) .stoa-code__status",
+            "file": "packages/react/src/styles.css",
+            "line": 829,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "(css) .stoa-metric__basis",
+            "file": "packages/react/src/styles.css",
+            "line": 866,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "(css) .stoa-metric__label",
+            "file": "packages/react/src/styles.css",
+            "line": 863,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "(css) .stoa-metric__unit",
+            "file": "packages/react/src/styles.css",
+            "line": 865,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "(css) .stoa-shortcuts__title",
+            "file": "packages/react/src/styles.css",
+            "line": 722,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "(css) .stoa-step__explanation",
+            "file": "packages/react/src/styles.css",
+            "line": 805,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "(css) .stoa-step__number",
+            "file": "packages/react/src/styles.css",
+            "line": 786,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "(css) .stoa-step__status",
+            "file": "packages/react/src/styles.css",
+            "line": 792,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "(css) .stoa-step__value",
+            "file": "packages/react/src/styles.css",
+            "line": 819,
+            "via": "--stoa-color-text-muted"
+          },
+          {
             "component": "AppHeader",
             "file": "packages/react/src/styles.css",
             "line": 38,
@@ -4556,6 +5268,12 @@
             "component": "CheckboxGroup",
             "file": "packages/react/src/styles.css",
             "line": 231,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "CodeView",
+            "file": "packages/react/src/styles.css",
+            "line": 853,
             "via": "--stoa-color-text-muted"
           },
           {
@@ -4589,6 +5307,12 @@
             "via": "--stoa-color-text-muted"
           },
           {
+            "component": "LogView",
+            "file": "packages/react/src/styles.css",
+            "line": 856,
+            "via": "--stoa-color-text-muted"
+          },
+          {
             "component": "NumberField",
             "file": "packages/react/src/styles.css",
             "line": 207,
@@ -4616,6 +5340,18 @@
             "component": "ProgressBar",
             "file": "packages/react/src/styles.css",
             "line": 291,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "ReorderableList",
+            "file": "packages/react/src/styles.css",
+            "line": 757,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "ReorderableList",
+            "file": "packages/react/src/styles.css",
+            "line": 773,
             "via": "--stoa-color-text-muted"
           },
           {
@@ -4652,6 +5388,12 @@
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
             "line": 238,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "StepList",
+            "file": "packages/react/src/styles.css",
+            "line": 791,
             "via": "--stoa-color-text-muted"
           },
           {
@@ -4756,7 +5498,27 @@
           "Foundations/Colour > SemanticColours",
           "Layout/Panel > Header",
           "Layout/Panel > Sections",
-          "Layout/Panel > Titled"
+          "Layout/Panel > Titled",
+          "Report > AlertDestructive",
+          "Report > AlertNeutral",
+          "Report > Code",
+          "Report > CodeNumbered",
+          "Report > DialogClosed",
+          "Report > DialogOpen",
+          "Report > Log",
+          "Report > LogMixed",
+          "Report > Metrics",
+          "Report > Reorderable",
+          "Report > ReorderableButtonsOnly",
+          "Report > ReorderableEmpty",
+          "Report > SheetAuto",
+          "Report > SheetBottom",
+          "Report > SheetEnd",
+          "Report > ShortcutsInline",
+          "Report > ShortcutsOpen",
+          "Report > StatBarWithMetrics",
+          "Report > StepsAllStatuses",
+          "Report > StepsReorderable"
         ]
       },
       "reachedByTheme": {
@@ -4829,6 +5591,12 @@
       "readBy": {
         "components": [
           {
+            "component": "(css) .stoa-code__scroll",
+            "file": "packages/react/src/styles.css",
+            "line": 844,
+            "via": "--stoa-color-border"
+          },
+          {
             "component": "AppHeader",
             "file": "packages/react/src/styles.css",
             "line": 32,
@@ -4898,6 +5666,12 @@
             "component": "Panel",
             "file": "packages/react/src/styles.css",
             "line": 11,
+            "via": "--stoa-color-border"
+          },
+          {
+            "component": "ReorderableList",
+            "file": "packages/react/src/styles.css",
+            "line": 744,
             "via": "--stoa-color-border"
           },
           {
@@ -5007,7 +5781,27 @@
           "Feedback/Feedback and layout > VisuallyHiddenText",
           "Layout/Panel > Header",
           "Layout/Panel > Sections",
-          "Layout/Panel > Titled"
+          "Layout/Panel > Titled",
+          "Report > AlertDestructive",
+          "Report > AlertNeutral",
+          "Report > Code",
+          "Report > CodeNumbered",
+          "Report > DialogClosed",
+          "Report > DialogOpen",
+          "Report > Log",
+          "Report > LogMixed",
+          "Report > Metrics",
+          "Report > Reorderable",
+          "Report > ReorderableButtonsOnly",
+          "Report > ReorderableEmpty",
+          "Report > SheetAuto",
+          "Report > SheetBottom",
+          "Report > SheetEnd",
+          "Report > ShortcutsInline",
+          "Report > ShortcutsOpen",
+          "Report > StatBarWithMetrics",
+          "Report > StepsAllStatuses",
+          "Report > StepsReorderable"
         ]
       },
       "reachedByTheme": {
@@ -5184,7 +5978,27 @@
           "Feedback/Feedback and layout > VisuallyHiddenText",
           "Layout/Panel > Header",
           "Layout/Panel > Sections",
-          "Layout/Panel > Titled"
+          "Layout/Panel > Titled",
+          "Report > AlertDestructive",
+          "Report > AlertNeutral",
+          "Report > Code",
+          "Report > CodeNumbered",
+          "Report > DialogClosed",
+          "Report > DialogOpen",
+          "Report > Log",
+          "Report > LogMixed",
+          "Report > Metrics",
+          "Report > Reorderable",
+          "Report > ReorderableButtonsOnly",
+          "Report > ReorderableEmpty",
+          "Report > SheetAuto",
+          "Report > SheetBottom",
+          "Report > SheetEnd",
+          "Report > ShortcutsInline",
+          "Report > ShortcutsOpen",
+          "Report > StatBarWithMetrics",
+          "Report > StepsAllStatuses",
+          "Report > StepsReorderable"
         ]
       },
       "reachedByTheme": {
@@ -5210,6 +6024,30 @@
       "aliasOf": null,
       "readBy": {
         "components": [
+          {
+            "component": "(css) .stoa-code__scroll",
+            "file": "packages/react/src/styles.css",
+            "line": 843,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "(css) .stoa-modal",
+            "file": "packages/react/src/styles.css",
+            "line": 651,
+            "via": "--stoa-color-surface"
+          },
+          {
+            "component": "(css) .stoa-modal",
+            "file": "packages/react/src/styles.css",
+            "line": 652,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "(css) .stoa-step__track",
+            "file": "packages/react/src/styles.css",
+            "line": 809,
+            "via": "--stoa-color-surface"
+          },
           {
             "component": "(css) body",
             "file": ".storybook/preview.css",
@@ -5577,6 +6415,12 @@
             "via": "--stoa-color-surface"
           },
           {
+            "component": "ReorderableList",
+            "file": "packages/react/src/styles.css",
+            "line": 743,
+            "via": "--stoa-color-surface"
+          },
+          {
             "component": "Select",
             "file": "packages/react/src/styles.css",
             "line": 65,
@@ -5804,7 +6648,27 @@
           "Foundations/Colour > SemanticColours",
           "Layout/Panel > Header",
           "Layout/Panel > Sections",
-          "Layout/Panel > Titled"
+          "Layout/Panel > Titled",
+          "Report > AlertDestructive",
+          "Report > AlertNeutral",
+          "Report > Code",
+          "Report > CodeNumbered",
+          "Report > DialogClosed",
+          "Report > DialogOpen",
+          "Report > Log",
+          "Report > LogMixed",
+          "Report > Metrics",
+          "Report > Reorderable",
+          "Report > ReorderableButtonsOnly",
+          "Report > ReorderableEmpty",
+          "Report > SheetAuto",
+          "Report > SheetBottom",
+          "Report > SheetEnd",
+          "Report > ShortcutsInline",
+          "Report > ShortcutsOpen",
+          "Report > StatBarWithMetrics",
+          "Report > StepsAllStatuses",
+          "Report > StepsReorderable"
         ]
       },
       "reachedByTheme": {
@@ -5833,6 +6697,12 @@
       "readBy": {
         "components": [
           {
+            "component": "(css) .stoa-step__status--error",
+            "file": "packages/react/src/styles.css",
+            "line": 797,
+            "via": "--stoa-color-down"
+          },
+          {
             "component": "Button",
             "file": "packages/react/src/styles.css",
             "line": 443,
@@ -5976,7 +6846,27 @@
           "Foundations/Colour > SemanticColours",
           "Layout/Panel > Header",
           "Layout/Panel > Sections",
-          "Layout/Panel > Titled"
+          "Layout/Panel > Titled",
+          "Report > AlertDestructive",
+          "Report > AlertNeutral",
+          "Report > Code",
+          "Report > CodeNumbered",
+          "Report > DialogClosed",
+          "Report > DialogOpen",
+          "Report > Log",
+          "Report > LogMixed",
+          "Report > Metrics",
+          "Report > Reorderable",
+          "Report > ReorderableButtonsOnly",
+          "Report > ReorderableEmpty",
+          "Report > SheetAuto",
+          "Report > SheetBottom",
+          "Report > SheetEnd",
+          "Report > ShortcutsInline",
+          "Report > ShortcutsOpen",
+          "Report > StatBarWithMetrics",
+          "Report > StepsAllStatuses",
+          "Report > StepsReorderable"
         ]
       },
       "reachedByTheme": {
@@ -6004,6 +6894,12 @@
       "readBy": {
         "components": [
           {
+            "component": "(css) .stoa-step__status--error",
+            "file": "packages/react/src/styles.css",
+            "line": 797,
+            "via": "--stoa-color-down"
+          },
+          {
             "component": "Button",
             "file": "packages/react/src/styles.css",
             "line": 443,
@@ -6147,7 +7043,27 @@
           "Foundations/Colour > SemanticColours",
           "Layout/Panel > Header",
           "Layout/Panel > Sections",
-          "Layout/Panel > Titled"
+          "Layout/Panel > Titled",
+          "Report > AlertDestructive",
+          "Report > AlertNeutral",
+          "Report > Code",
+          "Report > CodeNumbered",
+          "Report > DialogClosed",
+          "Report > DialogOpen",
+          "Report > Log",
+          "Report > LogMixed",
+          "Report > Metrics",
+          "Report > Reorderable",
+          "Report > ReorderableButtonsOnly",
+          "Report > ReorderableEmpty",
+          "Report > SheetAuto",
+          "Report > SheetBottom",
+          "Report > SheetEnd",
+          "Report > ShortcutsInline",
+          "Report > ShortcutsOpen",
+          "Report > StatBarWithMetrics",
+          "Report > StepsAllStatuses",
+          "Report > StepsReorderable"
         ]
       },
       "reachedByTheme": {
@@ -6229,6 +7145,16 @@
       },
       "readBy": {
         "components": [
+          {
+            "component": "(css) .stoa-modal",
+            "file": "packages/react/src/styles.css",
+            "line": 651
+          },
+          {
+            "component": "(css) .stoa-step__track",
+            "file": "packages/react/src/styles.css",
+            "line": 809
+          },
           {
             "component": "AppHeader",
             "file": "packages/react/src/styles.css",
@@ -6320,6 +7246,11 @@
             "component": "ProgressBar",
             "file": "packages/react/src/styles.css",
             "line": 296
+          },
+          {
+            "component": "ReorderableList",
+            "file": "packages/react/src/styles.css",
+            "line": 743
           },
           {
             "component": "Select",
@@ -6431,7 +7362,27 @@
           "Foundations/Colour > SemanticColours",
           "Layout/Panel > Header",
           "Layout/Panel > Sections",
-          "Layout/Panel > Titled"
+          "Layout/Panel > Titled",
+          "Report > AlertDestructive",
+          "Report > AlertNeutral",
+          "Report > Code",
+          "Report > CodeNumbered",
+          "Report > DialogClosed",
+          "Report > DialogOpen",
+          "Report > Log",
+          "Report > LogMixed",
+          "Report > Metrics",
+          "Report > Reorderable",
+          "Report > ReorderableButtonsOnly",
+          "Report > ReorderableEmpty",
+          "Report > SheetAuto",
+          "Report > SheetBottom",
+          "Report > SheetEnd",
+          "Report > ShortcutsInline",
+          "Report > ShortcutsOpen",
+          "Report > StatBarWithMetrics",
+          "Report > StepsAllStatuses",
+          "Report > StepsReorderable"
         ]
       },
       "reachedByTheme": {
@@ -6596,7 +7547,27 @@
           "Feedback/Feedback and layout > VisuallyHiddenText",
           "Layout/Panel > Header",
           "Layout/Panel > Sections",
-          "Layout/Panel > Titled"
+          "Layout/Panel > Titled",
+          "Report > AlertDestructive",
+          "Report > AlertNeutral",
+          "Report > Code",
+          "Report > CodeNumbered",
+          "Report > DialogClosed",
+          "Report > DialogOpen",
+          "Report > Log",
+          "Report > LogMixed",
+          "Report > Metrics",
+          "Report > Reorderable",
+          "Report > ReorderableButtonsOnly",
+          "Report > ReorderableEmpty",
+          "Report > SheetAuto",
+          "Report > SheetBottom",
+          "Report > SheetEnd",
+          "Report > ShortcutsInline",
+          "Report > ShortcutsOpen",
+          "Report > StatBarWithMetrics",
+          "Report > StepsAllStatuses",
+          "Report > StepsReorderable"
         ]
       },
       "reachedByTheme": {
@@ -6627,6 +7598,11 @@
       },
       "readBy": {
         "components": [
+          {
+            "component": "(css) .stoa-code__scroll",
+            "file": "packages/react/src/styles.css",
+            "line": 843
+          },
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
@@ -6731,7 +7707,27 @@
           "Feedback/Feedback and layout > VisuallyHiddenText",
           "Layout/Panel > Header",
           "Layout/Panel > Sections",
-          "Layout/Panel > Titled"
+          "Layout/Panel > Titled",
+          "Report > AlertDestructive",
+          "Report > AlertNeutral",
+          "Report > Code",
+          "Report > CodeNumbered",
+          "Report > DialogClosed",
+          "Report > DialogOpen",
+          "Report > Log",
+          "Report > LogMixed",
+          "Report > Metrics",
+          "Report > Reorderable",
+          "Report > ReorderableButtonsOnly",
+          "Report > ReorderableEmpty",
+          "Report > SheetAuto",
+          "Report > SheetBottom",
+          "Report > SheetEnd",
+          "Report > ShortcutsInline",
+          "Report > ShortcutsOpen",
+          "Report > StatBarWithMetrics",
+          "Report > StepsAllStatuses",
+          "Report > StepsReorderable"
         ]
       },
       "reachedByTheme": {
@@ -6755,6 +7751,12 @@
       "aliasOf": null,
       "readBy": {
         "components": [
+          {
+            "component": "(css) .stoa-step__status--done .stoa-step__symbol",
+            "file": "packages/react/src/styles.css",
+            "line": 795,
+            "via": "--stoa-color-up"
+          },
           {
             "component": "Callout",
             "file": "packages/react/src/styles.css",
@@ -6896,6 +7898,12 @@
       "aliasOf": null,
       "readBy": {
         "components": [
+          {
+            "component": "(css) .stoa-step__status--done .stoa-step__symbol",
+            "file": "packages/react/src/styles.css",
+            "line": 795,
+            "via": "--stoa-color-up"
+          },
           {
             "component": "Callout",
             "file": "packages/react/src/styles.css",
@@ -7092,6 +8100,16 @@
       },
       "readBy": {
         "components": [
+          {
+            "component": "(css) .stoa-code__scroll",
+            "file": "packages/react/src/styles.css",
+            "line": 843
+          },
+          {
+            "component": "(css) .stoa-modal",
+            "file": "packages/react/src/styles.css",
+            "line": 652
+          },
           {
             "component": "(css) body",
             "file": ".storybook/preview.css",
@@ -7459,7 +8477,27 @@
           "Foundations/Colour > SemanticColours",
           "Layout/Panel > Header",
           "Layout/Panel > Sections",
-          "Layout/Panel > Titled"
+          "Layout/Panel > Titled",
+          "Report > AlertDestructive",
+          "Report > AlertNeutral",
+          "Report > Code",
+          "Report > CodeNumbered",
+          "Report > DialogClosed",
+          "Report > DialogOpen",
+          "Report > Log",
+          "Report > LogMixed",
+          "Report > Metrics",
+          "Report > Reorderable",
+          "Report > ReorderableButtonsOnly",
+          "Report > ReorderableEmpty",
+          "Report > SheetAuto",
+          "Report > SheetBottom",
+          "Report > SheetEnd",
+          "Report > ShortcutsInline",
+          "Report > ShortcutsOpen",
+          "Report > StatBarWithMetrics",
+          "Report > StepsAllStatuses",
+          "Report > StepsReorderable"
         ]
       },
       "reachedByTheme": {
@@ -7491,6 +8529,56 @@
       "readBy": {
         "components": [
           {
+            "component": "(css) .stoa-code__label",
+            "file": "packages/react/src/styles.css",
+            "line": 828
+          },
+          {
+            "component": "(css) .stoa-code__status",
+            "file": "packages/react/src/styles.css",
+            "line": 829
+          },
+          {
+            "component": "(css) .stoa-metric__basis",
+            "file": "packages/react/src/styles.css",
+            "line": 866
+          },
+          {
+            "component": "(css) .stoa-metric__label",
+            "file": "packages/react/src/styles.css",
+            "line": 863
+          },
+          {
+            "component": "(css) .stoa-metric__unit",
+            "file": "packages/react/src/styles.css",
+            "line": 865
+          },
+          {
+            "component": "(css) .stoa-shortcuts__title",
+            "file": "packages/react/src/styles.css",
+            "line": 722
+          },
+          {
+            "component": "(css) .stoa-step__explanation",
+            "file": "packages/react/src/styles.css",
+            "line": 805
+          },
+          {
+            "component": "(css) .stoa-step__number",
+            "file": "packages/react/src/styles.css",
+            "line": 786
+          },
+          {
+            "component": "(css) .stoa-step__status",
+            "file": "packages/react/src/styles.css",
+            "line": 792
+          },
+          {
+            "component": "(css) .stoa-step__value",
+            "file": "packages/react/src/styles.css",
+            "line": 819
+          },
+          {
             "component": "AppHeader",
             "file": "packages/react/src/styles.css",
             "line": 38
@@ -7509,6 +8597,11 @@
             "component": "CheckboxGroup",
             "file": "packages/react/src/styles.css",
             "line": 231
+          },
+          {
+            "component": "CodeView",
+            "file": "packages/react/src/styles.css",
+            "line": 853
           },
           {
             "component": "Disclosure",
@@ -7538,6 +8631,11 @@
             "via": "readCanvasTokens"
           },
           {
+            "component": "LogView",
+            "file": "packages/react/src/styles.css",
+            "line": 856
+          },
+          {
             "component": "NumberField",
             "file": "packages/react/src/styles.css",
             "line": 207
@@ -7561,6 +8659,16 @@
             "component": "ProgressBar",
             "file": "packages/react/src/styles.css",
             "line": 291
+          },
+          {
+            "component": "ReorderableList",
+            "file": "packages/react/src/styles.css",
+            "line": 757
+          },
+          {
+            "component": "ReorderableList",
+            "file": "packages/react/src/styles.css",
+            "line": 773
           },
           {
             "component": "Select",
@@ -7591,6 +8699,11 @@
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
             "line": 238
+          },
+          {
+            "component": "StepList",
+            "file": "packages/react/src/styles.css",
+            "line": 791
           },
           {
             "component": "Switch",
@@ -7687,7 +8800,27 @@
           "Foundations/Colour > SemanticColours",
           "Layout/Panel > Header",
           "Layout/Panel > Sections",
-          "Layout/Panel > Titled"
+          "Layout/Panel > Titled",
+          "Report > AlertDestructive",
+          "Report > AlertNeutral",
+          "Report > Code",
+          "Report > CodeNumbered",
+          "Report > DialogClosed",
+          "Report > DialogOpen",
+          "Report > Log",
+          "Report > LogMixed",
+          "Report > Metrics",
+          "Report > Reorderable",
+          "Report > ReorderableButtonsOnly",
+          "Report > ReorderableEmpty",
+          "Report > SheetAuto",
+          "Report > SheetBottom",
+          "Report > SheetEnd",
+          "Report > ShortcutsInline",
+          "Report > ShortcutsOpen",
+          "Report > StatBarWithMetrics",
+          "Report > StepsAllStatuses",
+          "Report > StepsReorderable"
         ]
       },
       "reachedByTheme": {
@@ -7718,6 +8851,11 @@
       },
       "readBy": {
         "components": [
+          {
+            "component": "(css) .stoa-shortcuts__row[data-disabled] dd",
+            "file": "packages/react/src/styles.css",
+            "line": 730
+          },
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
@@ -7822,7 +8960,27 @@
           "Feedback/Feedback and layout > VisuallyHiddenText",
           "Layout/Panel > Header",
           "Layout/Panel > Sections",
-          "Layout/Panel > Titled"
+          "Layout/Panel > Titled",
+          "Report > AlertDestructive",
+          "Report > AlertNeutral",
+          "Report > Code",
+          "Report > CodeNumbered",
+          "Report > DialogClosed",
+          "Report > DialogOpen",
+          "Report > Log",
+          "Report > LogMixed",
+          "Report > Metrics",
+          "Report > Reorderable",
+          "Report > ReorderableButtonsOnly",
+          "Report > ReorderableEmpty",
+          "Report > SheetAuto",
+          "Report > SheetBottom",
+          "Report > SheetEnd",
+          "Report > ShortcutsInline",
+          "Report > ShortcutsOpen",
+          "Report > StatBarWithMetrics",
+          "Report > StepsAllStatuses",
+          "Report > StepsReorderable"
         ]
       },
       "reachedByTheme": {
@@ -7853,6 +9011,11 @@
       },
       "readBy": {
         "components": [
+          {
+            "component": "(css) .stoa-step__status--done .stoa-step__symbol",
+            "file": "packages/react/src/styles.css",
+            "line": 795
+          },
           {
             "component": "Callout",
             "file": "packages/react/src/styles.css",
@@ -8023,6 +9186,11 @@
       },
       "readBy": {
         "components": [
+          {
+            "component": "(css) .stoa-step__status--awaiting .stoa-step__symbol",
+            "file": "packages/react/src/styles.css",
+            "line": 796
+          },
           {
             "component": "Callout",
             "file": "packages/react/src/styles.css",
@@ -8288,6 +9456,11 @@
       "readBy": {
         "components": [
           {
+            "component": "(css) .stoa-code__scroll:focus-visible",
+            "file": "packages/react/src/styles.css",
+            "line": 848
+          },
+          {
             "component": "Button",
             "file": "packages/react/src/styles.css",
             "line": 101
@@ -8326,6 +9499,11 @@
             "component": "PageShell",
             "file": "packages/react/src/styles.css",
             "line": 427
+          },
+          {
+            "component": "ReorderableList",
+            "file": "packages/react/src/styles.css",
+            "line": 737
           },
           {
             "component": "Select",
@@ -8419,7 +9597,27 @@
           "Feedback/Feedback and layout > VisuallyHiddenText",
           "Layout/Panel > Header",
           "Layout/Panel > Sections",
-          "Layout/Panel > Titled"
+          "Layout/Panel > Titled",
+          "Report > AlertDestructive",
+          "Report > AlertNeutral",
+          "Report > Code",
+          "Report > CodeNumbered",
+          "Report > DialogClosed",
+          "Report > DialogOpen",
+          "Report > Log",
+          "Report > LogMixed",
+          "Report > Metrics",
+          "Report > Reorderable",
+          "Report > ReorderableButtonsOnly",
+          "Report > ReorderableEmpty",
+          "Report > SheetAuto",
+          "Report > SheetBottom",
+          "Report > SheetEnd",
+          "Report > ShortcutsInline",
+          "Report > ShortcutsOpen",
+          "Report > StatBarWithMetrics",
+          "Report > StepsAllStatuses",
+          "Report > StepsReorderable"
         ]
       },
       "reachedByTheme": {
@@ -8443,6 +9641,11 @@
       "aliasOf": null,
       "readBy": {
         "components": [
+          {
+            "component": "(css) .stoa-code__scroll:focus-visible",
+            "file": "packages/react/src/styles.css",
+            "line": 847
+          },
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
@@ -8497,6 +9700,31 @@
             "component": "PageShell",
             "file": "packages/react/src/styles.css",
             "line": 426
+          },
+          {
+            "component": "ReorderableList",
+            "file": "packages/react/src/styles.css",
+            "line": 736
+          },
+          {
+            "component": "ReorderableList",
+            "file": "packages/react/src/styles.css",
+            "line": 749
+          },
+          {
+            "component": "ReorderableList",
+            "file": "packages/react/src/styles.css",
+            "line": 750
+          },
+          {
+            "component": "ReorderableList",
+            "file": "packages/react/src/styles.css",
+            "line": 762
+          },
+          {
+            "component": "ReorderableList",
+            "file": "packages/react/src/styles.css",
+            "line": 763
           },
           {
             "component": "Select",
@@ -8605,7 +9833,27 @@
           "Feedback/Feedback and layout > VisuallyHiddenText",
           "Layout/Panel > Header",
           "Layout/Panel > Sections",
-          "Layout/Panel > Titled"
+          "Layout/Panel > Titled",
+          "Report > AlertDestructive",
+          "Report > AlertNeutral",
+          "Report > Code",
+          "Report > CodeNumbered",
+          "Report > DialogClosed",
+          "Report > DialogOpen",
+          "Report > Log",
+          "Report > LogMixed",
+          "Report > Metrics",
+          "Report > Reorderable",
+          "Report > ReorderableButtonsOnly",
+          "Report > ReorderableEmpty",
+          "Report > SheetAuto",
+          "Report > SheetBottom",
+          "Report > SheetEnd",
+          "Report > ShortcutsInline",
+          "Report > ShortcutsOpen",
+          "Report > StatBarWithMetrics",
+          "Report > StepsAllStatuses",
+          "Report > StepsReorderable"
         ]
       },
       "reachedByTheme": {
@@ -8630,9 +9878,29 @@
       "readBy": {
         "components": [
           {
+            "component": "(css) .stoa-code__scroll",
+            "file": "packages/react/src/styles.css",
+            "line": 840
+          },
+          {
             "component": "(css) .stoa-filter-chip__count",
             "file": "packages/react/src/styles.css",
             "line": 497
+          },
+          {
+            "component": "(css) .stoa-metric__number",
+            "file": "packages/react/src/styles.css",
+            "line": 864
+          },
+          {
+            "component": "(css) .stoa-step__number",
+            "file": "packages/react/src/styles.css",
+            "line": 785
+          },
+          {
+            "component": "(css) .stoa-step__value",
+            "file": "packages/react/src/styles.css",
+            "line": 818
           },
           {
             "component": "Heatmap",
@@ -8750,7 +10018,27 @@
           "Feedback/Feedback and layout > VisuallyHiddenText",
           "Layout/Panel > Header",
           "Layout/Panel > Sections",
-          "Layout/Panel > Titled"
+          "Layout/Panel > Titled",
+          "Report > AlertDestructive",
+          "Report > AlertNeutral",
+          "Report > Code",
+          "Report > CodeNumbered",
+          "Report > DialogClosed",
+          "Report > DialogOpen",
+          "Report > Log",
+          "Report > LogMixed",
+          "Report > Metrics",
+          "Report > Reorderable",
+          "Report > ReorderableButtonsOnly",
+          "Report > ReorderableEmpty",
+          "Report > SheetAuto",
+          "Report > SheetBottom",
+          "Report > SheetEnd",
+          "Report > ShortcutsInline",
+          "Report > ShortcutsOpen",
+          "Report > StatBarWithMetrics",
+          "Report > StepsAllStatuses",
+          "Report > StepsReorderable"
         ]
       },
       "reachedByTheme": {
@@ -8774,6 +10062,11 @@
       "aliasOf": null,
       "readBy": {
         "components": [
+          {
+            "component": "(css) .stoa-modal",
+            "file": "packages/react/src/styles.css",
+            "line": 655
+          },
           {
             "component": "(css) body",
             "file": ".storybook/preview.css",
@@ -8843,6 +10136,21 @@
       "readBy": {
         "components": [
           {
+            "component": "(css) .stoa-code__scroll",
+            "file": "packages/react/src/styles.css",
+            "line": 838
+          },
+          {
+            "component": "(css) .stoa-code__scroll",
+            "file": "packages/react/src/styles.css",
+            "line": 841
+          },
+          {
+            "component": "AlertDialog",
+            "file": "packages/react/src/styles.css",
+            "line": 680
+          },
+          {
             "component": "Callout",
             "file": "packages/react/src/styles.css",
             "line": 342
@@ -8908,7 +10216,27 @@
           "Feedback/Feedback and layout > SkeletonText",
           "Feedback/Feedback and layout > ToastTones",
           "Feedback/Feedback and layout > ToastWithUndo",
-          "Feedback/Feedback and layout > VisuallyHiddenText"
+          "Feedback/Feedback and layout > VisuallyHiddenText",
+          "Report > AlertDestructive",
+          "Report > AlertNeutral",
+          "Report > Code",
+          "Report > CodeNumbered",
+          "Report > DialogClosed",
+          "Report > DialogOpen",
+          "Report > Log",
+          "Report > LogMixed",
+          "Report > Metrics",
+          "Report > Reorderable",
+          "Report > ReorderableButtonsOnly",
+          "Report > ReorderableEmpty",
+          "Report > SheetAuto",
+          "Report > SheetBottom",
+          "Report > SheetEnd",
+          "Report > ShortcutsInline",
+          "Report > ShortcutsOpen",
+          "Report > StatBarWithMetrics",
+          "Report > StepsAllStatuses",
+          "Report > StepsReorderable"
         ]
       },
       "reachedByTheme": {
@@ -8933,9 +10261,24 @@
       "readBy": {
         "components": [
           {
+            "component": "(css) .stoa-dialog__close",
+            "file": "packages/react/src/styles.css",
+            "line": 678
+          },
+          {
+            "component": "AlertDialog",
+            "file": "packages/react/src/styles.css",
+            "line": 673
+          },
+          {
             "component": "Callout",
             "file": "packages/react/src/styles.css",
             "line": 330
+          },
+          {
+            "component": "ReorderableList",
+            "file": "packages/react/src/styles.css",
+            "line": 770
           },
           {
             "component": "ToastRegion",
@@ -8961,7 +10304,27 @@
           "Feedback/Feedback and layout > SkeletonText",
           "Feedback/Feedback and layout > ToastTones",
           "Feedback/Feedback and layout > ToastWithUndo",
-          "Feedback/Feedback and layout > VisuallyHiddenText"
+          "Feedback/Feedback and layout > VisuallyHiddenText",
+          "Report > AlertDestructive",
+          "Report > AlertNeutral",
+          "Report > Code",
+          "Report > CodeNumbered",
+          "Report > DialogClosed",
+          "Report > DialogOpen",
+          "Report > Log",
+          "Report > LogMixed",
+          "Report > Metrics",
+          "Report > Reorderable",
+          "Report > ReorderableButtonsOnly",
+          "Report > ReorderableEmpty",
+          "Report > SheetAuto",
+          "Report > SheetBottom",
+          "Report > SheetEnd",
+          "Report > ShortcutsInline",
+          "Report > ShortcutsOpen",
+          "Report > StatBarWithMetrics",
+          "Report > StepsAllStatuses",
+          "Report > StepsReorderable"
         ]
       },
       "reachedByTheme": {
@@ -9008,6 +10371,11 @@
       "aliasOf": null,
       "readBy": {
         "components": [
+          {
+            "component": "(css) .stoa-metric__basis",
+            "file": "packages/react/src/styles.css",
+            "line": 866
+          },
           {
             "component": "Checkbox",
             "file": "packages/react/src/styles.css",
@@ -9092,7 +10460,27 @@
           "Controls/Playback > Transport",
           "Layout/Panel > Header",
           "Layout/Panel > Sections",
-          "Layout/Panel > Titled"
+          "Layout/Panel > Titled",
+          "Report > AlertDestructive",
+          "Report > AlertNeutral",
+          "Report > Code",
+          "Report > CodeNumbered",
+          "Report > DialogClosed",
+          "Report > DialogOpen",
+          "Report > Log",
+          "Report > LogMixed",
+          "Report > Metrics",
+          "Report > Reorderable",
+          "Report > ReorderableButtonsOnly",
+          "Report > ReorderableEmpty",
+          "Report > SheetAuto",
+          "Report > SheetBottom",
+          "Report > SheetEnd",
+          "Report > ShortcutsInline",
+          "Report > ShortcutsOpen",
+          "Report > StatBarWithMetrics",
+          "Report > StepsAllStatuses",
+          "Report > StepsReorderable"
         ]
       },
       "reachedByTheme": {
@@ -9190,6 +10578,11 @@
       "readBy": {
         "components": [
           {
+            "component": "AlertDialog",
+            "file": "packages/react/src/styles.css",
+            "line": 672
+          },
+          {
             "component": "EmptyState",
             "file": "packages/react/src/styles.css",
             "line": 356
@@ -9213,7 +10606,27 @@
           "Feedback/Feedback and layout > SkeletonText",
           "Feedback/Feedback and layout > ToastTones",
           "Feedback/Feedback and layout > ToastWithUndo",
-          "Feedback/Feedback and layout > VisuallyHiddenText"
+          "Feedback/Feedback and layout > VisuallyHiddenText",
+          "Report > AlertDestructive",
+          "Report > AlertNeutral",
+          "Report > Code",
+          "Report > CodeNumbered",
+          "Report > DialogClosed",
+          "Report > DialogOpen",
+          "Report > Log",
+          "Report > LogMixed",
+          "Report > Metrics",
+          "Report > Reorderable",
+          "Report > ReorderableButtonsOnly",
+          "Report > ReorderableEmpty",
+          "Report > SheetAuto",
+          "Report > SheetBottom",
+          "Report > SheetEnd",
+          "Report > ShortcutsInline",
+          "Report > ShortcutsOpen",
+          "Report > StatBarWithMetrics",
+          "Report > StepsAllStatuses",
+          "Report > StepsReorderable"
         ]
       },
       "reachedByTheme": {
@@ -9237,6 +10650,21 @@
       "aliasOf": null,
       "readBy": {
         "components": [
+          {
+            "component": "(css) .stoa-metric__unit",
+            "file": "packages/react/src/styles.css",
+            "line": 865
+          },
+          {
+            "component": "(css) .stoa-modal",
+            "file": "packages/react/src/styles.css",
+            "line": 656
+          },
+          {
+            "component": "(css) .stoa-step__explanation",
+            "file": "packages/react/src/styles.css",
+            "line": 805
+          },
           {
             "component": "AppHeader",
             "file": "packages/react/src/styles.css",
@@ -9339,20 +10767,26 @@
       "resolvedValue": "20px",
       "aliasOf": null,
       "readBy": {
-        "components": [],
+        "components": [
+          {
+            "component": "(css) .stoa-metric__number",
+            "file": "packages/react/src/styles.css",
+            "line": 864
+          }
+        ],
         "stories": []
       },
       "reachedByTheme": {
         "light": {
-          "direct": false,
+          "direct": true,
           "via": []
         },
         "dark": {
-          "direct": false,
+          "direct": true,
           "via": []
         }
       },
-      "unused": true
+      "unused": false
     },
     {
       "name": "--stoa-font-size-xs",
@@ -9363,6 +10797,51 @@
       "aliasOf": null,
       "readBy": {
         "components": [
+          {
+            "component": "(css) .stoa-code__copy",
+            "file": "packages/react/src/styles.css",
+            "line": 831
+          },
+          {
+            "component": "(css) .stoa-code__label",
+            "file": "packages/react/src/styles.css",
+            "line": 828
+          },
+          {
+            "component": "(css) .stoa-code__scroll",
+            "file": "packages/react/src/styles.css",
+            "line": 840
+          },
+          {
+            "component": "(css) .stoa-code__status",
+            "file": "packages/react/src/styles.css",
+            "line": 829
+          },
+          {
+            "component": "(css) .stoa-metric__label",
+            "file": "packages/react/src/styles.css",
+            "line": 863
+          },
+          {
+            "component": "(css) .stoa-shortcuts__title",
+            "file": "packages/react/src/styles.css",
+            "line": 721
+          },
+          {
+            "component": "(css) .stoa-step__number",
+            "file": "packages/react/src/styles.css",
+            "line": 785
+          },
+          {
+            "component": "(css) .stoa-step__status",
+            "file": "packages/react/src/styles.css",
+            "line": 792
+          },
+          {
+            "component": "(css) .stoa-step__value",
+            "file": "packages/react/src/styles.css",
+            "line": 818
+          },
           {
             "component": "CheckboxGroup",
             "file": "packages/react/src/styles.css",
@@ -9535,7 +11014,27 @@
           "Feedback/Feedback and layout > VisuallyHiddenText",
           "Layout/Panel > Header",
           "Layout/Panel > Sections",
-          "Layout/Panel > Titled"
+          "Layout/Panel > Titled",
+          "Report > AlertDestructive",
+          "Report > AlertNeutral",
+          "Report > Code",
+          "Report > CodeNumbered",
+          "Report > DialogClosed",
+          "Report > DialogOpen",
+          "Report > Log",
+          "Report > LogMixed",
+          "Report > Metrics",
+          "Report > Reorderable",
+          "Report > ReorderableButtonsOnly",
+          "Report > ReorderableEmpty",
+          "Report > SheetAuto",
+          "Report > SheetBottom",
+          "Report > SheetEnd",
+          "Report > ShortcutsInline",
+          "Report > ShortcutsOpen",
+          "Report > StatBarWithMetrics",
+          "Report > StepsAllStatuses",
+          "Report > StepsReorderable"
         ]
       },
       "reachedByTheme": {
@@ -9559,6 +11058,16 @@
       "aliasOf": null,
       "readBy": {
         "components": [
+          {
+            "component": "(css) .stoa-shortcuts__title",
+            "file": "packages/react/src/styles.css",
+            "line": 721
+          },
+          {
+            "component": "(css) .stoa-step__title",
+            "file": "packages/react/src/styles.css",
+            "line": 790
+          },
           {
             "component": "Disclosure",
             "file": "packages/react/src/styles.css",
@@ -9646,7 +11155,27 @@
           "Feedback/Feedback and layout > VisuallyHiddenText",
           "Layout/Panel > Header",
           "Layout/Panel > Sections",
-          "Layout/Panel > Titled"
+          "Layout/Panel > Titled",
+          "Report > AlertDestructive",
+          "Report > AlertNeutral",
+          "Report > Code",
+          "Report > CodeNumbered",
+          "Report > DialogClosed",
+          "Report > DialogOpen",
+          "Report > Log",
+          "Report > LogMixed",
+          "Report > Metrics",
+          "Report > Reorderable",
+          "Report > ReorderableButtonsOnly",
+          "Report > ReorderableEmpty",
+          "Report > SheetAuto",
+          "Report > SheetBottom",
+          "Report > SheetEnd",
+          "Report > ShortcutsInline",
+          "Report > ShortcutsOpen",
+          "Report > StatBarWithMetrics",
+          "Report > StepsAllStatuses",
+          "Report > StepsReorderable"
         ]
       },
       "reachedByTheme": {
@@ -9671,6 +11200,11 @@
       "readBy": {
         "components": [
           {
+            "component": "StepList",
+            "file": "packages/react/src/styles.css",
+            "line": 791
+          },
+          {
             "component": "TradeTable",
             "file": "packages/react/src/styles.css",
             "line": 49
@@ -9681,7 +11215,27 @@
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
           "Controls/Playback > TradesEmpty",
-          "Controls/Playback > Transport"
+          "Controls/Playback > Transport",
+          "Report > AlertDestructive",
+          "Report > AlertNeutral",
+          "Report > Code",
+          "Report > CodeNumbered",
+          "Report > DialogClosed",
+          "Report > DialogOpen",
+          "Report > Log",
+          "Report > LogMixed",
+          "Report > Metrics",
+          "Report > Reorderable",
+          "Report > ReorderableButtonsOnly",
+          "Report > ReorderableEmpty",
+          "Report > SheetAuto",
+          "Report > SheetBottom",
+          "Report > SheetEnd",
+          "Report > ShortcutsInline",
+          "Report > ShortcutsOpen",
+          "Report > StatBarWithMetrics",
+          "Report > StepsAllStatuses",
+          "Report > StepsReorderable"
         ]
       },
       "reachedByTheme": {
@@ -9705,6 +11259,11 @@
       "aliasOf": null,
       "readBy": {
         "components": [
+          {
+            "component": "AlertDialog",
+            "file": "packages/react/src/styles.css",
+            "line": 672
+          },
           {
             "component": "AppHeader",
             "file": "packages/react/src/styles.css",
@@ -9769,7 +11328,27 @@
           "Feedback/Feedback and layout > VisuallyHiddenText",
           "Layout/Panel > Header",
           "Layout/Panel > Sections",
-          "Layout/Panel > Titled"
+          "Layout/Panel > Titled",
+          "Report > AlertDestructive",
+          "Report > AlertNeutral",
+          "Report > Code",
+          "Report > CodeNumbered",
+          "Report > DialogClosed",
+          "Report > DialogOpen",
+          "Report > Log",
+          "Report > LogMixed",
+          "Report > Metrics",
+          "Report > Reorderable",
+          "Report > ReorderableButtonsOnly",
+          "Report > ReorderableEmpty",
+          "Report > SheetAuto",
+          "Report > SheetBottom",
+          "Report > SheetEnd",
+          "Report > ShortcutsInline",
+          "Report > ShortcutsOpen",
+          "Report > StatBarWithMetrics",
+          "Report > StepsAllStatuses",
+          "Report > StepsReorderable"
         ]
       },
       "reachedByTheme": {
@@ -9793,6 +11372,16 @@
       "aliasOf": null,
       "readBy": {
         "components": [
+          {
+            "component": "(css) .stoa-overlay[data-entering]",
+            "file": "packages/react/src/styles.css",
+            "line": 645
+          },
+          {
+            "component": "(css) .stoa-step__fill",
+            "file": "packages/react/src/styles.css",
+            "line": 814
+          },
           {
             "component": "ProgressBar",
             "file": "packages/react/src/styles.css",
@@ -9940,7 +11529,27 @@
           "Feedback/Feedback and layout > VisuallyHiddenText",
           "Layout/Panel > Header",
           "Layout/Panel > Sections",
-          "Layout/Panel > Titled"
+          "Layout/Panel > Titled",
+          "Report > AlertDestructive",
+          "Report > AlertNeutral",
+          "Report > Code",
+          "Report > CodeNumbered",
+          "Report > DialogClosed",
+          "Report > DialogOpen",
+          "Report > Log",
+          "Report > LogMixed",
+          "Report > Metrics",
+          "Report > Reorderable",
+          "Report > ReorderableButtonsOnly",
+          "Report > ReorderableEmpty",
+          "Report > SheetAuto",
+          "Report > SheetBottom",
+          "Report > SheetEnd",
+          "Report > ShortcutsInline",
+          "Report > ShortcutsOpen",
+          "Report > StatBarWithMetrics",
+          "Report > StepsAllStatuses",
+          "Report > StepsReorderable"
         ]
       },
       "reachedByTheme": {
@@ -9964,6 +11573,11 @@
       "aliasOf": null,
       "readBy": {
         "components": [
+          {
+            "component": "(css) /* A running step's symbol breathes in size, not in opacity, so its\n   contrast never drops; it stands still under reduced motion, which sets\n   the duration token to zero. */\n.stoa-step__status--running .stoa-step__symbol",
+            "file": "packages/react/src/styles.css",
+            "line": 802
+          },
           {
             "component": "ProgressBar",
             "file": "packages/react/src/styles.css",
@@ -10044,20 +11658,26 @@
       "resolvedValue": "240ms",
       "aliasOf": null,
       "readBy": {
-        "components": [],
+        "components": [
+          {
+            "component": "(css) .stoa-sheet[data-entering]",
+            "file": "packages/react/src/styles.css",
+            "line": 693
+          }
+        ],
         "stories": []
       },
       "reachedByTheme": {
         "light": {
-          "direct": false,
+          "direct": true,
           "via": []
         },
         "dark": {
-          "direct": false,
+          "direct": true,
           "via": []
         }
       },
-      "unused": true
+      "unused": false
     },
     {
       "name": "--stoa-motion-easing-enter",
@@ -10068,6 +11688,16 @@
       "aliasOf": null,
       "readBy": {
         "components": [
+          {
+            "component": "(css) .stoa-overlay[data-entering]",
+            "file": "packages/react/src/styles.css",
+            "line": 645
+          },
+          {
+            "component": "(css) .stoa-sheet[data-entering]",
+            "file": "packages/react/src/styles.css",
+            "line": 693
+          },
           {
             "component": "ToastRegion",
             "file": "packages/react/src/styles.css",
@@ -10139,6 +11769,16 @@
       "aliasOf": null,
       "readBy": {
         "components": [
+          {
+            "component": "(css) .stoa-step__fill",
+            "file": "packages/react/src/styles.css",
+            "line": 814
+          },
+          {
+            "component": "(css) /* A running step's symbol breathes in size, not in opacity, so its\n   contrast never drops; it stands still under reduced motion, which sets\n   the duration token to zero. */\n.stoa-step__status--running .stoa-step__symbol",
+            "file": "packages/react/src/styles.css",
+            "line": 802
+          },
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
@@ -10253,7 +11893,27 @@
           "Feedback/Feedback and layout > VisuallyHiddenText",
           "Layout/Panel > Header",
           "Layout/Panel > Sections",
-          "Layout/Panel > Titled"
+          "Layout/Panel > Titled",
+          "Report > AlertDestructive",
+          "Report > AlertNeutral",
+          "Report > Code",
+          "Report > CodeNumbered",
+          "Report > DialogClosed",
+          "Report > DialogOpen",
+          "Report > Log",
+          "Report > LogMixed",
+          "Report > Metrics",
+          "Report > Reorderable",
+          "Report > ReorderableButtonsOnly",
+          "Report > ReorderableEmpty",
+          "Report > SheetAuto",
+          "Report > SheetBottom",
+          "Report > SheetEnd",
+          "Report > ShortcutsInline",
+          "Report > ShortcutsOpen",
+          "Report > StatBarWithMetrics",
+          "Report > StepsAllStatuses",
+          "Report > StepsReorderable"
         ]
       },
       "reachedByTheme": {
@@ -10277,6 +11937,16 @@
       "aliasOf": null,
       "readBy": {
         "components": [
+          {
+            "component": "(css) .stoa-step__number",
+            "file": "packages/react/src/styles.css",
+            "line": 784
+          },
+          {
+            "component": "(css) .stoa-step__track",
+            "file": "packages/react/src/styles.css",
+            "line": 810
+          },
           {
             "component": "FilterChip",
             "file": "packages/react/src/styles.css",
@@ -10396,20 +12066,36 @@
       "resolvedValue": "8px",
       "aliasOf": null,
       "readBy": {
-        "components": [],
+        "components": [
+          {
+            "component": "(css) .stoa-modal",
+            "file": "packages/react/src/styles.css",
+            "line": 654
+          },
+          {
+            "component": "(css) .stoa-sheet--auto",
+            "file": "packages/react/src/styles.css",
+            "line": 711
+          },
+          {
+            "component": "(css) .stoa-sheet--bottom",
+            "file": "packages/react/src/styles.css",
+            "line": 702
+          }
+        ],
         "stories": []
       },
       "reachedByTheme": {
         "light": {
-          "direct": false,
+          "direct": true,
           "via": []
         },
         "dark": {
-          "direct": false,
+          "direct": true,
           "via": []
         }
       },
-      "unused": true
+      "unused": false
     },
     {
       "name": "--stoa-radius-md",
@@ -10421,6 +12107,11 @@
       "readBy": {
         "components": [
           {
+            "component": "(css) .stoa-code__scroll",
+            "file": "packages/react/src/styles.css",
+            "line": 844
+          },
+          {
             "component": "Callout",
             "file": "packages/react/src/styles.css",
             "line": 341
@@ -10429,6 +12120,16 @@
             "component": "Panel",
             "file": "packages/react/src/styles.css",
             "line": 12
+          },
+          {
+            "component": "ReorderableList",
+            "file": "packages/react/src/styles.css",
+            "line": 738
+          },
+          {
+            "component": "ReorderableList",
+            "file": "packages/react/src/styles.css",
+            "line": 745
           },
           {
             "component": "ToastRegion",
@@ -10465,7 +12166,27 @@
           "Feedback/Feedback and layout > VisuallyHiddenText",
           "Layout/Panel > Header",
           "Layout/Panel > Sections",
-          "Layout/Panel > Titled"
+          "Layout/Panel > Titled",
+          "Report > AlertDestructive",
+          "Report > AlertNeutral",
+          "Report > Code",
+          "Report > CodeNumbered",
+          "Report > DialogClosed",
+          "Report > DialogOpen",
+          "Report > Log",
+          "Report > LogMixed",
+          "Report > Metrics",
+          "Report > Reorderable",
+          "Report > ReorderableButtonsOnly",
+          "Report > ReorderableEmpty",
+          "Report > SheetAuto",
+          "Report > SheetBottom",
+          "Report > SheetEnd",
+          "Report > ShortcutsInline",
+          "Report > ShortcutsOpen",
+          "Report > StatBarWithMetrics",
+          "Report > StepsAllStatuses",
+          "Report > StepsReorderable"
         ]
       },
       "reachedByTheme": {
@@ -10638,6 +12359,11 @@
             "line": 422
           },
           {
+            "component": "ReorderableList",
+            "file": "packages/react/src/styles.css",
+            "line": 758
+          },
+          {
             "component": "Select",
             "file": "packages/react/src/styles.css",
             "line": 64
@@ -10760,7 +12486,27 @@
           "Foundations/Colour > SemanticColours",
           "Layout/Panel > Header",
           "Layout/Panel > Sections",
-          "Layout/Panel > Titled"
+          "Layout/Panel > Titled",
+          "Report > AlertDestructive",
+          "Report > AlertNeutral",
+          "Report > Code",
+          "Report > CodeNumbered",
+          "Report > DialogClosed",
+          "Report > DialogOpen",
+          "Report > Log",
+          "Report > LogMixed",
+          "Report > Metrics",
+          "Report > Reorderable",
+          "Report > ReorderableButtonsOnly",
+          "Report > ReorderableEmpty",
+          "Report > SheetAuto",
+          "Report > SheetBottom",
+          "Report > SheetEnd",
+          "Report > ShortcutsInline",
+          "Report > ShortcutsOpen",
+          "Report > StatBarWithMetrics",
+          "Report > StepsAllStatuses",
+          "Report > StepsReorderable"
         ]
       },
       "reachedByTheme": {
@@ -10895,6 +12641,26 @@
       "readBy": {
         "components": [
           {
+            "component": "(css) .stoa-code__copy",
+            "file": "packages/react/src/styles.css",
+            "line": 833
+          },
+          {
+            "component": "(css) .stoa-step__main",
+            "file": "packages/react/src/styles.css",
+            "line": 788
+          },
+          {
+            "component": "(css) .stoa-step__status",
+            "file": "packages/react/src/styles.css",
+            "line": 792
+          },
+          {
+            "component": "(css) /* LogView and CodeView: a label, the Copy button and its status, and a\n   scroll area as tall as `--code-lines` lines (set by the component). The\n   area is always left to right; its start is the left edge. */\n.stoa-code",
+            "file": "packages/react/src/styles.css",
+            "line": 826
+          },
+          {
             "component": "Button",
             "file": "packages/react/src/styles.css",
             "line": 62
@@ -10990,6 +12756,11 @@
             "line": 623
           },
           {
+            "component": "Metric",
+            "file": "packages/react/src/styles.css",
+            "line": 861
+          },
+          {
             "component": "NumberField",
             "file": "packages/react/src/styles.css",
             "line": 204
@@ -11013,6 +12784,21 @@
             "component": "ProgressBar",
             "file": "packages/react/src/styles.css",
             "line": 289
+          },
+          {
+            "component": "ReorderableList",
+            "file": "packages/react/src/styles.css",
+            "line": 734
+          },
+          {
+            "component": "ReorderableList",
+            "file": "packages/react/src/styles.css",
+            "line": 742
+          },
+          {
+            "component": "ReorderableList",
+            "file": "packages/react/src/styles.css",
+            "line": 766
           },
           {
             "component": "Select",
@@ -11186,7 +12972,27 @@
           "Feedback/Feedback and layout > VisuallyHiddenText",
           "Layout/Panel > Header",
           "Layout/Panel > Sections",
-          "Layout/Panel > Titled"
+          "Layout/Panel > Titled",
+          "Report > AlertDestructive",
+          "Report > AlertNeutral",
+          "Report > Code",
+          "Report > CodeNumbered",
+          "Report > DialogClosed",
+          "Report > DialogOpen",
+          "Report > Log",
+          "Report > LogMixed",
+          "Report > Metrics",
+          "Report > Reorderable",
+          "Report > ReorderableButtonsOnly",
+          "Report > ReorderableEmpty",
+          "Report > SheetAuto",
+          "Report > SheetBottom",
+          "Report > SheetEnd",
+          "Report > ShortcutsInline",
+          "Report > ShortcutsOpen",
+          "Report > StatBarWithMetrics",
+          "Report > StepsAllStatuses",
+          "Report > StepsReorderable"
         ]
       },
       "reachedByTheme": {
@@ -11210,6 +13016,21 @@
       "aliasOf": null,
       "readBy": {
         "components": [
+          {
+            "component": "(css) .stoa-modal",
+            "file": "packages/react/src/styles.css",
+            "line": 649
+          },
+          {
+            "component": "(css) .stoa-modal--alert",
+            "file": "packages/react/src/styles.css",
+            "line": 659
+          },
+          {
+            "component": "(css) .stoa-sheet",
+            "file": "packages/react/src/styles.css",
+            "line": 690
+          },
           {
             "component": "ToastRegion",
             "file": "packages/react/src/styles.css",
@@ -11258,6 +13079,56 @@
       "aliasOf": null,
       "readBy": {
         "components": [
+          {
+            "component": "(css) .stoa-code__bar",
+            "file": "packages/react/src/styles.css",
+            "line": 827
+          },
+          {
+            "component": "(css) .stoa-code__scroll",
+            "file": "packages/react/src/styles.css",
+            "line": 837
+          },
+          {
+            "component": "(css) .stoa-code__scroll",
+            "file": "packages/react/src/styles.css",
+            "line": 838
+          },
+          {
+            "component": "(css) .stoa-shortcuts__list",
+            "file": "packages/react/src/styles.css",
+            "line": 726
+          },
+          {
+            "component": "(css) .stoa-shortcuts__title",
+            "file": "packages/react/src/styles.css",
+            "line": 720
+          },
+          {
+            "component": "(css) .stoa-step__actions",
+            "file": "packages/react/src/styles.css",
+            "line": 821
+          },
+          {
+            "component": "(css) .stoa-step__head",
+            "file": "packages/react/src/styles.css",
+            "line": 789
+          },
+          {
+            "component": "(css) .stoa-step__progress",
+            "file": "packages/react/src/styles.css",
+            "line": 806
+          },
+          {
+            "component": "(css) .stoa-step__track",
+            "file": "packages/react/src/styles.css",
+            "line": 808
+          },
+          {
+            "component": "AlertDialog",
+            "file": "packages/react/src/styles.css",
+            "line": 683
+          },
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
@@ -11359,6 +13230,21 @@
             "line": 295
           },
           {
+            "component": "ReorderableList",
+            "file": "packages/react/src/styles.css",
+            "line": 741
+          },
+          {
+            "component": "ReorderableList",
+            "file": "packages/react/src/styles.css",
+            "line": 742
+          },
+          {
+            "component": "ReorderableList",
+            "file": "packages/react/src/styles.css",
+            "line": 773
+          },
+          {
             "component": "Select",
             "file": "packages/react/src/styles.css",
             "line": 62
@@ -11367,6 +13253,11 @@
             "component": "Select",
             "file": "packages/react/src/styles.css",
             "line": 137
+          },
+          {
+            "component": "StepList",
+            "file": "packages/react/src/styles.css",
+            "line": 778
           },
           {
             "component": "Switch",
@@ -11475,7 +13366,27 @@
           "Feedback/Feedback and layout > VisuallyHiddenText",
           "Layout/Panel > Header",
           "Layout/Panel > Sections",
-          "Layout/Panel > Titled"
+          "Layout/Panel > Titled",
+          "Report > AlertDestructive",
+          "Report > AlertNeutral",
+          "Report > Code",
+          "Report > CodeNumbered",
+          "Report > DialogClosed",
+          "Report > DialogOpen",
+          "Report > Log",
+          "Report > LogMixed",
+          "Report > Metrics",
+          "Report > Reorderable",
+          "Report > ReorderableButtonsOnly",
+          "Report > ReorderableEmpty",
+          "Report > SheetAuto",
+          "Report > SheetBottom",
+          "Report > SheetEnd",
+          "Report > ShortcutsInline",
+          "Report > ShortcutsOpen",
+          "Report > StatBarWithMetrics",
+          "Report > StepsAllStatuses",
+          "Report > StepsReorderable"
         ]
       },
       "reachedByTheme": {
@@ -11500,6 +13411,21 @@
       "readBy": {
         "components": [
           {
+            "component": "(css) .stoa-code__scroll",
+            "file": "packages/react/src/styles.css",
+            "line": 837
+          },
+          {
+            "component": "AlertDialog",
+            "file": "packages/react/src/styles.css",
+            "line": 665
+          },
+          {
+            "component": "AlertDialog",
+            "file": "packages/react/src/styles.css",
+            "line": 669
+          },
+          {
             "component": "AppHeader",
             "file": "packages/react/src/styles.css",
             "line": 30
@@ -11518,6 +13444,11 @@
             "component": "Callout",
             "file": "packages/react/src/styles.css",
             "line": 338
+          },
+          {
+            "component": "CodeView",
+            "file": "packages/react/src/styles.css",
+            "line": 852
           },
           {
             "component": "FilterChip",
@@ -11553,6 +13484,11 @@
             "component": "Slider",
             "file": "packages/react/src/styles.css",
             "line": 586
+          },
+          {
+            "component": "StepList",
+            "file": "packages/react/src/styles.css",
+            "line": 779
           },
           {
             "component": "Switch",
@@ -11636,7 +13572,27 @@
           "Feedback/Feedback and layout > VisuallyHiddenText",
           "Layout/Panel > Header",
           "Layout/Panel > Sections",
-          "Layout/Panel > Titled"
+          "Layout/Panel > Titled",
+          "Report > AlertDestructive",
+          "Report > AlertNeutral",
+          "Report > Code",
+          "Report > CodeNumbered",
+          "Report > DialogClosed",
+          "Report > DialogOpen",
+          "Report > Log",
+          "Report > LogMixed",
+          "Report > Metrics",
+          "Report > Reorderable",
+          "Report > ReorderableButtonsOnly",
+          "Report > ReorderableEmpty",
+          "Report > SheetAuto",
+          "Report > SheetBottom",
+          "Report > SheetEnd",
+          "Report > ShortcutsInline",
+          "Report > ShortcutsOpen",
+          "Report > StatBarWithMetrics",
+          "Report > StepsAllStatuses",
+          "Report > StepsReorderable"
         ]
       },
       "reachedByTheme": {
@@ -11660,6 +13616,21 @@
       "aliasOf": null,
       "readBy": {
         "components": [
+          {
+            "component": "(css) .stoa-shortcuts__list",
+            "file": "packages/react/src/styles.css",
+            "line": 726
+          },
+          {
+            "component": "(css) /* ==== Overlays, lists and content ==== */\n\n/* Overlays: Dialog, Sheet, AlertDialog. React Aria portals them to the end\n   of the document, so they take the document's tokens. The scrim mixes\n   the darkest neutral into transparency, which darkens the page in both\n   themes; there is no semantic scrim token yet. Widths are multiples of\n   the space scale, as there are no dimension tokens. The z-index lifts the\n   overlay over the raised options of a choice group. */\n.stoa-overlay",
+            "file": "packages/react/src/styles.css",
+            "line": 642
+          },
+          {
+            "component": "AlertDialog",
+            "file": "packages/react/src/styles.css",
+            "line": 666
+          },
           {
             "component": "AppHeader",
             "file": "packages/react/src/styles.css",
@@ -11694,6 +13665,11 @@
             "component": "PageShell",
             "file": "packages/react/src/styles.css",
             "line": 413
+          },
+          {
+            "component": "ShortcutList",
+            "file": "packages/react/src/styles.css",
+            "line": 718
           },
           {
             "component": "StatBar",
@@ -11782,7 +13758,27 @@
           "Feedback/Feedback and layout > VisuallyHiddenText",
           "Layout/Panel > Header",
           "Layout/Panel > Sections",
-          "Layout/Panel > Titled"
+          "Layout/Panel > Titled",
+          "Report > AlertDestructive",
+          "Report > AlertNeutral",
+          "Report > Code",
+          "Report > CodeNumbered",
+          "Report > DialogClosed",
+          "Report > DialogOpen",
+          "Report > Log",
+          "Report > LogMixed",
+          "Report > Metrics",
+          "Report > Reorderable",
+          "Report > ReorderableButtonsOnly",
+          "Report > ReorderableEmpty",
+          "Report > SheetAuto",
+          "Report > SheetBottom",
+          "Report > SheetEnd",
+          "Report > ShortcutsInline",
+          "Report > ShortcutsOpen",
+          "Report > StatBarWithMetrics",
+          "Report > StepsAllStatuses",
+          "Report > StepsReorderable"
         ]
       },
       "reachedByTheme": {
@@ -11806,6 +13802,26 @@
       "aliasOf": null,
       "readBy": {
         "components": [
+          {
+            "component": "(css) .stoa-code__copy",
+            "file": "packages/react/src/styles.css",
+            "line": 832
+          },
+          {
+            "component": "(css) .stoa-dialog__close",
+            "file": "packages/react/src/styles.css",
+            "line": 677
+          },
+          {
+            "component": "(css) .stoa-step__head",
+            "file": "packages/react/src/styles.css",
+            "line": 789
+          },
+          {
+            "component": "(css) .stoa-step__number",
+            "file": "packages/react/src/styles.css",
+            "line": 783
+          },
           {
             "component": "Callout",
             "file": "packages/react/src/styles.css",
@@ -11845,6 +13861,16 @@
             "component": "NumberField",
             "file": "packages/react/src/styles.css",
             "line": 210
+          },
+          {
+            "component": "ReorderableList",
+            "file": "packages/react/src/styles.css",
+            "line": 756
+          },
+          {
+            "component": "ReorderableList",
+            "file": "packages/react/src/styles.css",
+            "line": 769
           },
           {
             "component": "Select",
@@ -11933,7 +13959,27 @@
           "Feedback/Feedback and layout > VisuallyHiddenText",
           "Layout/Panel > Header",
           "Layout/Panel > Sections",
-          "Layout/Panel > Titled"
+          "Layout/Panel > Titled",
+          "Report > AlertDestructive",
+          "Report > AlertNeutral",
+          "Report > Code",
+          "Report > CodeNumbered",
+          "Report > DialogClosed",
+          "Report > DialogOpen",
+          "Report > Log",
+          "Report > LogMixed",
+          "Report > Metrics",
+          "Report > Reorderable",
+          "Report > ReorderableButtonsOnly",
+          "Report > ReorderableEmpty",
+          "Report > SheetAuto",
+          "Report > SheetBottom",
+          "Report > SheetEnd",
+          "Report > ShortcutsInline",
+          "Report > ShortcutsOpen",
+          "Report > StatBarWithMetrics",
+          "Report > StepsAllStatuses",
+          "Report > StepsReorderable"
         ]
       },
       "reachedByTheme": {
@@ -12034,11 +14080,8 @@
     "--stoa-color-neutral-700",
     "--stoa-color-neutral-800",
     "--stoa-font-size-2xl",
-    "--stoa-font-size-xl",
     "--stoa-motion-duration-instant",
-    "--stoa-motion-duration-slow",
     "--stoa-motion-easing-exit",
-    "--stoa-radius-lg",
     "--stoa-radius-none",
     "--stoa-space-0"
   ],
@@ -12052,7 +14095,7 @@
   ],
   "summary": {
     "tokenCount": 86,
-    "unusedCount": 11,
+    "unusedCount": 8,
     "hardcodedLiteralCount": 0,
     "undefinedCount": 1
   }

@@ -60,6 +60,28 @@ export type StoaMessages = {
   /** The theme switch's first option: no theme chosen, follow the
    * system's light or dark setting. */
   themeSystem: string;
+  // Overlays, lists and content.
+  /** The close button of a dialog or a sheet. */
+  close: string;
+  /** The safe action of a confirmation. */
+  cancel: string;
+  copy: string;
+  /** Announced, politely, after the text was copied. */
+  copied: string;
+  copyFailed: string;
+  /** Names of an item's own buttons in a reorderable list. */
+  moveUp: (item: string) => string;
+  moveDown: (item: string) => string;
+  remove: (item: string) => string;
+  /** Announced after an item moved; position and total in the locale's
+   * digits. */
+  moved: (item: string, position: string, total: string) => string;
+  removed: (item: string) => string;
+  /** A reorderable list with no items. */
+  listEmpty: string;
+  /** The word for each step status, shown beside its symbol (StepList's
+   * `StepStatus` is this record's keys). */
+  stepStatus: Record<"waiting" | "running" | "done" | "awaiting" | "skipped" | "undone" | "error", string>;
 };
 
 const EN: StoaMessages = {
@@ -95,6 +117,26 @@ const EN: StoaMessages = {
   language: "Language",
   keySpace: "Space",
   themeSystem: "System",
+  close: "Close",
+  cancel: "Cancel",
+  copy: "Copy",
+  copied: "Copied",
+  copyFailed: "Copy failed",
+  moveUp: (item) => `Move up: ${item}`,
+  moveDown: (item) => `Move down: ${item}`,
+  remove: (item) => `Remove: ${item}`,
+  moved: (item, position, total) => `${item} moved to position ${position} of ${total}.`,
+  removed: (item) => `${item} removed.`,
+  listEmpty: "No items.",
+  stepStatus: {
+    waiting: "Waiting",
+    running: "Running",
+    done: "Done",
+    awaiting: "Awaiting decision",
+    skipped: "Skipped",
+    undone: "Undone",
+    error: "Error",
+  },
 };
 
 const AR: StoaMessages = {
@@ -130,6 +172,26 @@ const AR: StoaMessages = {
   language: "اللغة",
   keySpace: "مسافة",
   themeSystem: "النظام",
+  close: "إغلاق",
+  cancel: "إلغاء",
+  copy: "نسخ",
+  copied: "تم النسخ",
+  copyFailed: "تعذر النسخ",
+  moveUp: (item) => `تحريك للأعلى: ${item}`,
+  moveDown: (item) => `تحريك للأسفل: ${item}`,
+  remove: (item) => `إزالة: ${item}`,
+  moved: (item, position, total) => `نُقل ${item} إلى الموضع ${position} من ${total}.`,
+  removed: (item) => `أزيل ${item}.`,
+  listEmpty: "لا عناصر.",
+  stepStatus: {
+    waiting: "في الانتظار",
+    running: "قيد التنفيذ",
+    done: "تم",
+    awaiting: "بانتظار قرار",
+    skipped: "تم التخطي",
+    undone: "تم التراجع",
+    error: "خطأ",
+  },
 };
 
 const RU: StoaMessages = {
@@ -166,6 +228,26 @@ const RU: StoaMessages = {
   language: "Язык",
   keySpace: "Пробел",
   themeSystem: "Системная",
+  close: "Закрыть",
+  cancel: "Отмена",
+  copy: "Копировать",
+  copied: "Скопировано",
+  copyFailed: "Не удалось скопировать",
+  moveUp: (item) => `Переместить выше: ${item}`,
+  moveDown: (item) => `Переместить ниже: ${item}`,
+  remove: (item) => `Удалить: ${item}`,
+  moved: (item, position, total) => `${item}: позиция ${position} из ${total}.`,
+  removed: (item) => `${item}: удалено.`,
+  listEmpty: "Элементов нет.",
+  stepStatus: {
+    waiting: "Ожидает",
+    running: "Выполняется",
+    done: "Готово",
+    awaiting: "Ждёт решения",
+    skipped: "Пропущено",
+    undone: "Отменено",
+    error: "Ошибка",
+  },
 };
 
 /** Stoa's words for a locale: Arabic for any "ar" tag, Russian for any

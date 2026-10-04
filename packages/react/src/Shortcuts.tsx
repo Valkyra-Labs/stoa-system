@@ -1,6 +1,8 @@
 // Keyboard shortcuts: Kbd draws keys, useShortcuts runs shortcuts and
-// lists them for a help dialog (the dialog itself is not here).
-import { Fragment, useEffect, useLayoutEffect, useRef, type ReactNode } from "react";
+// lists them as help lines, ShortcutList and ShortcutsDialog show those
+// lines in titled groups.
+import { Fragment, useEffect, useId, useLayoutEffect, useRef, type ReactNode } from "react";
+import { Dialog, type OverlayOpenProps } from "./Dialog";
 import { useStoaFormat, type StoaMessages } from "./locale";
 
 export type KbdProps = {
@@ -155,4 +157,87 @@ export function useShortcuts(shortcuts: Shortcut[], { enabled = true }: { enable
     group: s.group,
     isDisabled: s.isDisabled ?? false,
   }));
+}
+
+/** One line of a shortcut list. A `ShortcutHelp` from useShortcuts fits
+ * as it is. */
+export type ShortcutListItem = {
+  /** The keys pressed together, in order: ["Ctrl", "K"]. */
+  keys: string[];
+  /** What the shortcut does. */
+  description: ReactNode;
+  /** Shown, but muted: the control it stands for is disabled. */
+  isDisabled?: boolean;
+};
+
+export type ShortcutGroup = {
+  /** The group's heading ("Playback"). */
+  title: string;
+  shortcuts: ShortcutListItem[];
+};
+
+/** Help lines in groups, by their `group`, in the order each group first
+ * appears; lines with no group go under `otherTitle`, last. */
+export function groupShortcuts(help: ShortcutHelp[], otherTitle: string): ShortcutGroup[] {
+  const groups = new Map<string, ShortcutListItem[]>();
+  const other: ShortcutListItem[] = [];
+  for (const line of help) {
+    if (line.group === undefined) {
+      other.push(line);
+      continue;
+    }
+    const lines = groups.get(line.group) ?? [];
+    lines.push(line);
+    groups.set(line.group, lines);
+  }
+  const result = [...groups].map(([title, shortcuts]) => ({ title, shortcuts }));
+  return other.length > 0 ? [...result, { title: otherTitle, shortcuts: other }] : result;
+}
+
+function Group({ group }: { group: ShortcutGroup }) {
+  const id = useId();
+  return (
+    <section className="stoa-shortcuts__group" aria-labelledby={id}>
+      <h3 id={id} className="stoa-shortcuts__title">
+        {group.title}
+      </h3>
+      <dl className="stoa-shortcuts__list">
+        {group.shortcuts.map((shortcut) => (
+          <div key={shortcut.keys.join("+")} className="stoa-shortcuts__row" data-disabled={shortcut.isDisabled || undefined}>
+            <dt>
+              <Kbd keys={shortcut.keys} />
+            </dt>
+            <dd>{shortcut.description}</dd>
+          </div>
+        ))}
+      </dl>
+    </section>
+  );
+}
+
+/** Keyboard shortcuts in titled groups: each shortcut's keys under its
+ * term, its description beside them. */
+export function ShortcutList({ groups }: { groups: ShortcutGroup[] }) {
+  return (
+    <div className="stoa-shortcuts">
+      {groups.map((group) => (
+        <Group key={group.title} group={group} />
+      ))}
+    </div>
+  );
+}
+
+export type ShortcutsDialogProps = OverlayOpenProps & {
+  /** The dialog's title ("Keyboard shortcuts"). */
+  title: ReactNode;
+  groups: ShortcutGroup[];
+};
+
+/** A Dialog that lists keyboard shortcuts (ShortcutList). */
+export function ShortcutsDialog({ title, groups, ...open }: ShortcutsDialogProps) {
+  return (
+    <Dialog {...open} title={title}>
+      <ShortcutList groups={groups} />
+    </Dialog>
+  );
 }
