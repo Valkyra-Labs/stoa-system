@@ -382,3 +382,97 @@
   border-radius: var(--stoa-radius-sm);
   background: var(--stoa-color-surface-sunken); color: var(--stoa-color-text);
 }
+
+/* ReorderableList: rows with a drag handle, the content and the move and
+   remove buttons, each at least 24 px square (WCAG 2.5.8). */
+.stoa-reorder__list { display: grid; gap: var(--stoa-space-1); outline: none; }
+.stoa-reorder__list[data-focus-visible] {
+  outline: var(--stoa-focus-width) solid var(--stoa-color-focus);
+  outline-offset: var(--stoa-focus-offset);
+  border-radius: var(--stoa-radius-md);
+}
+.stoa-reorder__item {
+  display: flex; align-items: center; gap: var(--stoa-space-2);
+  padding: var(--stoa-space-1) var(--stoa-space-2);
+  background: var(--stoa-color-surface);
+  border: 1px solid var(--stoa-color-border);
+  border-radius: var(--stoa-radius-md);
+  outline: none;
+}
+.stoa-reorder__item[data-focus-visible] {
+  outline: var(--stoa-focus-width) solid var(--stoa-color-focus);
+  outline-offset: calc(-1 * var(--stoa-focus-width));
+}
+.stoa-reorder__item[data-dragging] { opacity: 0.5; }
+.stoa-reorder__drop[data-drop-target] { outline: 1px solid var(--stoa-color-accent); }
+.stoa-reorder__handle {
+  flex: none; align-self: stretch;
+  min-inline-size: var(--stoa-space-6); padding: 0;
+  font: inherit; color: var(--stoa-color-text-muted);
+  background: transparent; border: 0; border-radius: var(--stoa-radius-sm);
+  cursor: grab;
+}
+.stoa-reorder__handle[data-focus-visible] {
+  outline: var(--stoa-focus-width) solid var(--stoa-color-focus);
+  outline-offset: calc(-1 * var(--stoa-focus-width));
+}
+.stoa-reorder__content { flex: 1; min-inline-size: 0; }
+.stoa-reorder__controls { flex: none; display: flex; gap: var(--stoa-space-1); }
+.stoa-reorder__move, .stoa-reorder__remove {
+  display: inline-grid; place-items: center;
+  min-inline-size: var(--stoa-space-6); min-block-size: var(--stoa-space-6); padding: 0;
+  line-height: var(--stoa-font-line-height-tight);
+}
+.stoa-reorder__move--up .stoa-chevron { transform: rotate(180deg); }
+.stoa-reorder__empty { display: block; padding: var(--stoa-space-2); color: var(--stoa-color-text-muted); }
+
+/* StepList: a number, then the title with its status, and an optional
+   explanation, progress bar and actions. The status symbol takes the
+   tone's colour; the word stays muted, except for an error. */
+.stoa-steps { display: grid; gap: var(--stoa-space-2); margin: 0; padding: 0; list-style: none; }
+.stoa-step, .stoa-steps__row { display: flex; align-items: start; gap: var(--stoa-space-3); }
+.stoa-steps__row { flex: 1; }
+.stoa-step__number {
+  flex: none; display: inline-grid; place-items: center;
+  min-inline-size: var(--stoa-space-6); block-size: var(--stoa-space-6);
+  border: 1px solid var(--stoa-color-border-strong); border-radius: var(--stoa-radius-full);
+  font-family: var(--stoa-font-family-mono); font-size: var(--stoa-font-size-xs); font-variant-numeric: tabular-nums;
+  color: var(--stoa-color-text-muted);
+}
+.stoa-step__main { flex: 1; min-inline-size: 0; display: grid; gap: var(--stoa-space-1); }
+.stoa-step__head { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--stoa-space-2); min-block-size: var(--stoa-space-6); }
+.stoa-step__title { font-weight: var(--stoa-font-weight-medium); }
+.stoa-step--skipped .stoa-step__title, .stoa-step--undone .stoa-step__title { color: var(--stoa-color-text-muted); font-weight: var(--stoa-font-weight-regular); }
+.stoa-step__status { display: inline-flex; align-items: baseline; gap: var(--stoa-space-1); font-size: var(--stoa-font-size-xs); color: var(--stoa-color-text-muted); }
+.stoa-step__symbol { display: inline-block; }
+.stoa-step__status--running .stoa-step__symbol { color: var(--stoa-color-accent); }
+.stoa-step__status--done .stoa-step__symbol { color: var(--stoa-color-up); }
+.stoa-step__status--awaiting .stoa-step__symbol { color: var(--stoa-color-warning); }
+.stoa-step__status--error { color: var(--stoa-color-down); }
+/* A running step's symbol breathes in size, not in opacity, so its
+   contrast never drops; it stands still under reduced motion. */
+.stoa-step__status--running .stoa-step__symbol {
+  animation: stoa-pulse var(--stoa-motion-duration-flash) var(--stoa-motion-easing-standard) infinite alternate;
+}
+@keyframes stoa-pulse { to { transform: scale(0.75); } }
+@media (prefers-reduced-motion: reduce) {
+  .stoa-step__status--running .stoa-step__symbol { animation: none; }
+}
+[data-motion="reduce"] .stoa-step__status--running .stoa-step__symbol { animation: none; }
+.stoa-step__explanation { font-size: var(--stoa-font-size-sm); color: var(--stoa-color-text-muted); }
+.stoa-step__progress { display: flex; align-items: center; gap: var(--stoa-space-2); }
+.stoa-step__track {
+  flex: 1; block-size: var(--stoa-space-2); overflow: hidden;
+  background: var(--stoa-color-surface);
+  border: 1px solid var(--stoa-color-border-strong); border-radius: var(--stoa-radius-full);
+}
+.stoa-step__fill {
+  display: block; block-size: 100%; background: var(--stoa-color-accent);
+  transition: inline-size var(--stoa-motion-duration-base) var(--stoa-motion-easing-standard);
+}
+.stoa-step__value {
+  min-inline-size: 5ch; text-align: end;
+  font-family: var(--stoa-font-family-mono); font-size: var(--stoa-font-size-xs); font-variant-numeric: tabular-nums;
+  color: var(--stoa-color-text-muted);
+}
+.stoa-step__actions { display: flex; flex-wrap: wrap; gap: var(--stoa-space-2); }

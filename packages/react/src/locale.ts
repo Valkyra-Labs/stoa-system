@@ -37,6 +37,19 @@ export type StoaMessages = {
   close: string;
   /** The safe action of a confirmation. */
   cancel: string;
+  /** Names of an item's own buttons in a reorderable list. */
+  moveUp: (item: string) => string;
+  moveDown: (item: string) => string;
+  remove: (item: string) => string;
+  /** Announced after an item moved; position and total in the locale's
+   * digits. */
+  moved: (item: string, position: string, total: string) => string;
+  removed: (item: string) => string;
+  /** A reorderable list with no items. */
+  listEmpty: string;
+  /** The word for each step status, shown beside its symbol (StepList's
+   * `StepStatus` is this record's keys). */
+  stepStatus: Record<"waiting" | "running" | "done" | "awaiting" | "skipped" | "undone" | "error", string>;
 };
 
 const EN: StoaMessages = {
@@ -59,6 +72,21 @@ const EN: StoaMessages = {
   book: (bid, ask, spread) => `${bid}, ${ask}${spread ? `, ${spread}` : ""}.`,
   close: "Close",
   cancel: "Cancel",
+  moveUp: (item) => `Move up: ${item}`,
+  moveDown: (item) => `Move down: ${item}`,
+  remove: (item) => `Remove: ${item}`,
+  moved: (item, position, total) => `${item} moved to position ${position} of ${total}.`,
+  removed: (item) => `${item} removed.`,
+  listEmpty: "No items.",
+  stepStatus: {
+    waiting: "Waiting",
+    running: "Running",
+    done: "Done",
+    awaiting: "Awaiting decision",
+    skipped: "Skipped",
+    undone: "Undone",
+    error: "Error",
+  },
 };
 
 const AR: StoaMessages = {
@@ -81,6 +109,21 @@ const AR: StoaMessages = {
   book: (bid, ask, spread) => `${bid}، ${ask}${spread ? `، ${spread}` : ""}.`,
   close: "إغلاق",
   cancel: "إلغاء",
+  moveUp: (item) => `تحريك للأعلى: ${item}`,
+  moveDown: (item) => `تحريك للأسفل: ${item}`,
+  remove: (item) => `إزالة: ${item}`,
+  moved: (item, position, total) => `نُقل ${item} إلى الموضع ${position} من ${total}.`,
+  removed: (item) => `أزيل ${item}.`,
+  listEmpty: "لا عناصر.",
+  stepStatus: {
+    waiting: "في الانتظار",
+    running: "قيد التنفيذ",
+    done: "تم",
+    awaiting: "بانتظار قرار",
+    skipped: "تم التخطي",
+    undone: "تم التراجع",
+    error: "خطأ",
+  },
 };
 
 /** Stoa's words for a locale: Arabic for any "ar" tag, English otherwise. */

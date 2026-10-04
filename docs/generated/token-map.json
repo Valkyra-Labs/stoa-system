@@ -17,6 +17,16 @@
       "readBy": {
         "components": [
           {
+            "component": "(css) .stoa-step__fill",
+            "file": "packages/react/src/styles.css",
+            "line": 470
+          },
+          {
+            "component": "(css) .stoa-step__status--running .stoa-step__symbol",
+            "file": "packages/react/src/styles.css",
+            "line": 448
+          },
+          {
             "component": "Button",
             "file": "packages/react/src/styles.css",
             "line": 80
@@ -77,6 +87,11 @@
             "file": "packages/react/src/Ladder.tsx",
             "line": 35,
             "via": "readCanvasTokens"
+          },
+          {
+            "component": "ReorderableList",
+            "file": "packages/react/src/styles.css",
+            "line": 407
           },
           {
             "component": "Select",
@@ -163,6 +178,12 @@
       "readBy": {
         "components": [
           {
+            "component": "(css) .stoa-step__status--awaiting .stoa-step__symbol",
+            "file": "packages/react/src/styles.css",
+            "line": 450,
+            "via": "--stoa-color-warning"
+          },
+          {
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
             "line": 237,
@@ -201,6 +222,12 @@
       "aliasOf": null,
       "readBy": {
         "components": [
+          {
+            "component": "(css) .stoa-step__status--awaiting .stoa-step__symbol",
+            "file": "packages/react/src/styles.css",
+            "line": 450,
+            "via": "--stoa-color-warning"
+          },
           {
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
@@ -381,6 +408,18 @@
       "readBy": {
         "components": [
           {
+            "component": "(css) .stoa-step__fill",
+            "file": "packages/react/src/styles.css",
+            "line": 470,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "(css) .stoa-step__status--running .stoa-step__symbol",
+            "file": "packages/react/src/styles.css",
+            "line": 448,
+            "via": "--stoa-color-accent"
+          },
+          {
             "component": "Button",
             "file": "packages/react/src/styles.css",
             "line": 80,
@@ -474,6 +513,30 @@
             "component": "NumberField",
             "file": "packages/react/src/styles.css",
             "line": 230,
+            "via": "--stoa-color-focus"
+          },
+          {
+            "component": "ReorderableList",
+            "file": "packages/react/src/styles.css",
+            "line": 390,
+            "via": "--stoa-color-focus"
+          },
+          {
+            "component": "ReorderableList",
+            "file": "packages/react/src/styles.css",
+            "line": 403,
+            "via": "--stoa-color-focus"
+          },
+          {
+            "component": "ReorderableList",
+            "file": "packages/react/src/styles.css",
+            "line": 407,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "ReorderableList",
+            "file": "packages/react/src/styles.css",
+            "line": 416,
             "via": "--stoa-color-focus"
           },
           {
@@ -638,6 +701,24 @@
             "via": "--stoa-color-focus"
           },
           {
+            "component": "ReorderableList",
+            "file": "packages/react/src/styles.css",
+            "line": 390,
+            "via": "--stoa-color-focus"
+          },
+          {
+            "component": "ReorderableList",
+            "file": "packages/react/src/styles.css",
+            "line": 403,
+            "via": "--stoa-color-focus"
+          },
+          {
+            "component": "ReorderableList",
+            "file": "packages/react/src/styles.css",
+            "line": 416,
+            "via": "--stoa-color-focus"
+          },
+          {
             "component": "Select",
             "file": "packages/react/src/styles.css",
             "line": 100,
@@ -719,6 +800,18 @@
       "readBy": {
         "components": [
           {
+            "component": "(css) .stoa-step__fill",
+            "file": "packages/react/src/styles.css",
+            "line": 470,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "(css) .stoa-step__status--running .stoa-step__symbol",
+            "file": "packages/react/src/styles.css",
+            "line": 448,
+            "via": "--stoa-color-accent"
+          },
+          {
             "component": "Button",
             "file": "packages/react/src/styles.css",
             "line": 80,
@@ -788,6 +881,12 @@
             "component": "Ladder",
             "file": "packages/react/src/Ladder.tsx",
             "line": 35,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "ReorderableList",
+            "file": "packages/react/src/styles.css",
+            "line": 407,
             "via": "--stoa-color-accent"
           },
           {
@@ -924,6 +1023,11 @@
             "line": 11
           },
           {
+            "component": "ReorderableList",
+            "file": "packages/react/src/styles.css",
+            "line": 398
+          },
+          {
             "component": "Select",
             "file": "packages/react/src/styles.css",
             "line": 95
@@ -1002,6 +1106,16 @@
             "component": "(css) .stoa-modal",
             "file": "packages/react/src/styles.css",
             "line": 285
+          },
+          {
+            "component": "(css) .stoa-step__number",
+            "file": "packages/react/src/styles.css",
+            "line": 438
+          },
+          {
+            "component": "(css) .stoa-step__track",
+            "file": "packages/react/src/styles.css",
+            "line": 467
           },
           {
             "component": "Button",
@@ -1086,6 +1200,11 @@
       },
       "readBy": {
         "components": [
+          {
+            "component": "(css) .stoa-step__status--error",
+            "file": "packages/react/src/styles.css",
+            "line": 451
+          },
           {
             "component": "AlertDialog",
             "file": "packages/react/src/styles.css",
@@ -1262,6 +1381,21 @@
             "line": 230
           },
           {
+            "component": "ReorderableList",
+            "file": "packages/react/src/styles.css",
+            "line": 390
+          },
+          {
+            "component": "ReorderableList",
+            "file": "packages/react/src/styles.css",
+            "line": 403
+          },
+          {
+            "component": "ReorderableList",
+            "file": "packages/react/src/styles.css",
+            "line": 416
+          },
+          {
             "component": "Select",
             "file": "packages/react/src/styles.css",
             "line": 100
@@ -1340,6 +1474,12 @@
             "via": "--stoa-color-surface"
           },
           {
+            "component": "(css) .stoa-step__track",
+            "file": "packages/react/src/styles.css",
+            "line": 466,
+            "via": "--stoa-color-surface"
+          },
+          {
             "component": "AlertDialog",
             "file": "packages/react/src/styles.css",
             "line": 353,
@@ -1403,6 +1543,12 @@
             "component": "Panel",
             "file": "packages/react/src/styles.css",
             "line": 10,
+            "via": "--stoa-color-surface"
+          },
+          {
+            "component": "ReorderableList",
+            "file": "packages/react/src/styles.css",
+            "line": 397,
             "via": "--stoa-color-surface"
           },
           {
@@ -1974,6 +2120,12 @@
             "via": "--stoa-color-border"
           },
           {
+            "component": "ReorderableList",
+            "file": "packages/react/src/styles.css",
+            "line": 398,
+            "via": "--stoa-color-border"
+          },
+          {
             "component": "Select",
             "file": "packages/react/src/styles.css",
             "line": 95,
@@ -2078,6 +2230,30 @@
             "via": "--stoa-color-text-muted"
           },
           {
+            "component": "(css) .stoa-step__explanation",
+            "file": "packages/react/src/styles.css",
+            "line": 462,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "(css) .stoa-step__number",
+            "file": "packages/react/src/styles.css",
+            "line": 440,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "(css) .stoa-step__status",
+            "file": "packages/react/src/styles.css",
+            "line": 446,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "(css) .stoa-step__value",
+            "file": "packages/react/src/styles.css",
+            "line": 476,
+            "via": "--stoa-color-text-muted"
+          },
+          {
             "component": "AppHeader",
             "file": "packages/react/src/styles.css",
             "line": 38,
@@ -2120,6 +2296,18 @@
             "via": "--stoa-color-text-muted"
           },
           {
+            "component": "ReorderableList",
+            "file": "packages/react/src/styles.css",
+            "line": 411,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "ReorderableList",
+            "file": "packages/react/src/styles.css",
+            "line": 427,
+            "via": "--stoa-color-text-muted"
+          },
+          {
             "component": "Select",
             "file": "packages/react/src/styles.css",
             "line": 138,
@@ -2141,6 +2329,12 @@
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
             "line": 238,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "StepList",
+            "file": "packages/react/src/styles.css",
+            "line": 445,
             "via": "--stoa-color-text-muted"
           },
           {
@@ -2229,6 +2423,18 @@
             "component": "(css) .stoa-modal",
             "file": "packages/react/src/styles.css",
             "line": 285,
+            "via": "--stoa-color-border-strong"
+          },
+          {
+            "component": "(css) .stoa-step__number",
+            "file": "packages/react/src/styles.css",
+            "line": 438,
+            "via": "--stoa-color-border-strong"
+          },
+          {
+            "component": "(css) .stoa-step__track",
+            "file": "packages/react/src/styles.css",
+            "line": 467,
             "via": "--stoa-color-border-strong"
           },
           {
@@ -2388,6 +2594,18 @@
             "via": "--stoa-color-border-strong"
           },
           {
+            "component": "(css) .stoa-step__number",
+            "file": "packages/react/src/styles.css",
+            "line": 438,
+            "via": "--stoa-color-border-strong"
+          },
+          {
+            "component": "(css) .stoa-step__track",
+            "file": "packages/react/src/styles.css",
+            "line": 467,
+            "via": "--stoa-color-border-strong"
+          },
+          {
             "component": "Button",
             "file": "packages/react/src/styles.css",
             "line": 63,
@@ -2512,6 +2730,30 @@
             "via": "--stoa-color-text-muted"
           },
           {
+            "component": "(css) .stoa-step__explanation",
+            "file": "packages/react/src/styles.css",
+            "line": 462,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "(css) .stoa-step__number",
+            "file": "packages/react/src/styles.css",
+            "line": 440,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "(css) .stoa-step__status",
+            "file": "packages/react/src/styles.css",
+            "line": 446,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "(css) .stoa-step__value",
+            "file": "packages/react/src/styles.css",
+            "line": 476,
+            "via": "--stoa-color-text-muted"
+          },
+          {
             "component": "AppHeader",
             "file": "packages/react/src/styles.css",
             "line": 38,
@@ -2554,6 +2796,18 @@
             "via": "--stoa-color-text-muted"
           },
           {
+            "component": "ReorderableList",
+            "file": "packages/react/src/styles.css",
+            "line": 411,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "ReorderableList",
+            "file": "packages/react/src/styles.css",
+            "line": 427,
+            "via": "--stoa-color-text-muted"
+          },
+          {
             "component": "Select",
             "file": "packages/react/src/styles.css",
             "line": 138,
@@ -2575,6 +2829,12 @@
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
             "line": 238,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "StepList",
+            "file": "packages/react/src/styles.css",
+            "line": 445,
             "via": "--stoa-color-text-muted"
           },
           {
@@ -2733,6 +2993,12 @@
             "component": "Panel",
             "file": "packages/react/src/styles.css",
             "line": 11,
+            "via": "--stoa-color-border"
+          },
+          {
+            "component": "ReorderableList",
+            "file": "packages/react/src/styles.css",
+            "line": 398,
             "via": "--stoa-color-border"
           },
           {
@@ -2910,6 +3176,12 @@
             "file": "packages/react/src/styles.css",
             "line": 284,
             "via": "--stoa-color-text"
+          },
+          {
+            "component": "(css) .stoa-step__track",
+            "file": "packages/react/src/styles.css",
+            "line": 466,
+            "via": "--stoa-color-surface"
           },
           {
             "component": "(css) body",
@@ -3140,6 +3412,12 @@
             "via": "--stoa-color-surface"
           },
           {
+            "component": "ReorderableList",
+            "file": "packages/react/src/styles.css",
+            "line": 397,
+            "via": "--stoa-color-surface"
+          },
+          {
             "component": "Select",
             "file": "packages/react/src/styles.css",
             "line": 65,
@@ -3296,6 +3574,12 @@
       "readBy": {
         "components": [
           {
+            "component": "(css) .stoa-step__status--error",
+            "file": "packages/react/src/styles.css",
+            "line": 451,
+            "via": "--stoa-color-down"
+          },
+          {
             "component": "AlertDialog",
             "file": "packages/react/src/styles.css",
             "line": 353,
@@ -3426,6 +3710,12 @@
       "aliasOf": null,
       "readBy": {
         "components": [
+          {
+            "component": "(css) .stoa-step__status--error",
+            "file": "packages/react/src/styles.css",
+            "line": 451,
+            "via": "--stoa-color-down"
+          },
           {
             "component": "AlertDialog",
             "file": "packages/react/src/styles.css",
@@ -3618,6 +3908,11 @@
             "line": 283
           },
           {
+            "component": "(css) .stoa-step__track",
+            "file": "packages/react/src/styles.css",
+            "line": 466
+          },
+          {
             "component": "AlertDialog",
             "file": "packages/react/src/styles.css",
             "line": 353
@@ -3673,6 +3968,11 @@
             "component": "Panel",
             "file": "packages/react/src/styles.css",
             "line": 10
+          },
+          {
+            "component": "ReorderableList",
+            "file": "packages/react/src/styles.css",
+            "line": 397
           },
           {
             "component": "Select",
@@ -3894,6 +4194,12 @@
       "readBy": {
         "components": [
           {
+            "component": "(css) .stoa-step__status--done .stoa-step__symbol",
+            "file": "packages/react/src/styles.css",
+            "line": 449,
+            "via": "--stoa-color-up"
+          },
+          {
             "component": "Heatmap",
             "file": "packages/react/src/Heatmap.tsx",
             "line": 31,
@@ -3964,6 +4270,12 @@
       "aliasOf": null,
       "readBy": {
         "components": [
+          {
+            "component": "(css) .stoa-step__status--done .stoa-step__symbol",
+            "file": "packages/react/src/styles.css",
+            "line": 449,
+            "via": "--stoa-color-up"
+          },
           {
             "component": "Heatmap",
             "file": "packages/react/src/Heatmap.tsx",
@@ -4364,6 +4676,26 @@
             "line": 368
           },
           {
+            "component": "(css) .stoa-step__explanation",
+            "file": "packages/react/src/styles.css",
+            "line": 462
+          },
+          {
+            "component": "(css) .stoa-step__number",
+            "file": "packages/react/src/styles.css",
+            "line": 440
+          },
+          {
+            "component": "(css) .stoa-step__status",
+            "file": "packages/react/src/styles.css",
+            "line": 446
+          },
+          {
+            "component": "(css) .stoa-step__value",
+            "file": "packages/react/src/styles.css",
+            "line": 476
+          },
+          {
             "component": "AppHeader",
             "file": "packages/react/src/styles.css",
             "line": 38
@@ -4401,6 +4733,16 @@
             "line": 22
           },
           {
+            "component": "ReorderableList",
+            "file": "packages/react/src/styles.css",
+            "line": 411
+          },
+          {
+            "component": "ReorderableList",
+            "file": "packages/react/src/styles.css",
+            "line": 427
+          },
+          {
             "component": "Select",
             "file": "packages/react/src/styles.css",
             "line": 138
@@ -4419,6 +4761,11 @@
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
             "line": 238
+          },
+          {
+            "component": "StepList",
+            "file": "packages/react/src/styles.css",
+            "line": 445
           },
           {
             "component": "Tabs",
@@ -4557,6 +4904,11 @@
       "readBy": {
         "components": [
           {
+            "component": "(css) .stoa-step__status--done .stoa-step__symbol",
+            "file": "packages/react/src/styles.css",
+            "line": 449
+          },
+          {
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
             "line": 234
@@ -4661,6 +5013,11 @@
       },
       "readBy": {
         "components": [
+          {
+            "component": "(css) .stoa-step__status--awaiting .stoa-step__symbol",
+            "file": "packages/react/src/styles.css",
+            "line": 450
+          },
           {
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
@@ -4876,6 +5233,11 @@
             "line": 178
           },
           {
+            "component": "ReorderableList",
+            "file": "packages/react/src/styles.css",
+            "line": 391
+          },
+          {
             "component": "Select",
             "file": "packages/react/src/styles.css",
             "line": 101
@@ -4952,6 +5314,31 @@
             "line": 230
           },
           {
+            "component": "ReorderableList",
+            "file": "packages/react/src/styles.css",
+            "line": 390
+          },
+          {
+            "component": "ReorderableList",
+            "file": "packages/react/src/styles.css",
+            "line": 403
+          },
+          {
+            "component": "ReorderableList",
+            "file": "packages/react/src/styles.css",
+            "line": 404
+          },
+          {
+            "component": "ReorderableList",
+            "file": "packages/react/src/styles.css",
+            "line": 416
+          },
+          {
+            "component": "ReorderableList",
+            "file": "packages/react/src/styles.css",
+            "line": 417
+          },
+          {
             "component": "Select",
             "file": "packages/react/src/styles.css",
             "line": 100
@@ -5026,6 +5413,16 @@
             "component": "(css) .stoa-kbd",
             "file": "packages/react/src/styles.css",
             "line": 379
+          },
+          {
+            "component": "(css) .stoa-step__number",
+            "file": "packages/react/src/styles.css",
+            "line": 439
+          },
+          {
+            "component": "(css) .stoa-step__value",
+            "file": "packages/react/src/styles.css",
+            "line": 475
           },
           {
             "component": "Heatmap",
@@ -5200,6 +5597,11 @@
             "component": "AlertDialog",
             "file": "packages/react/src/styles.css",
             "line": 305
+          },
+          {
+            "component": "ReorderableList",
+            "file": "packages/react/src/styles.css",
+            "line": 424
           }
         ],
         "stories": []
@@ -5362,6 +5764,11 @@
             "line": 288
           },
           {
+            "component": "(css) .stoa-step__explanation",
+            "file": "packages/react/src/styles.css",
+            "line": 462
+          },
+          {
             "component": "AppHeader",
             "file": "packages/react/src/styles.css",
             "line": 38
@@ -5436,6 +5843,21 @@
             "component": "(css) .stoa-shortcuts__title",
             "file": "packages/react/src/styles.css",
             "line": 367
+          },
+          {
+            "component": "(css) .stoa-step__number",
+            "file": "packages/react/src/styles.css",
+            "line": 439
+          },
+          {
+            "component": "(css) .stoa-step__status",
+            "file": "packages/react/src/styles.css",
+            "line": 446
+          },
+          {
+            "component": "(css) .stoa-step__value",
+            "file": "packages/react/src/styles.css",
+            "line": 475
           },
           {
             "component": "ChoiceGroup",
@@ -5539,6 +5961,11 @@
             "line": 367
           },
           {
+            "component": "(css) .stoa-step__title",
+            "file": "packages/react/src/styles.css",
+            "line": 444
+          },
+          {
             "component": "Disclosure",
             "file": "packages/react/src/styles.css",
             "line": 170
@@ -5594,6 +6021,11 @@
       "aliasOf": null,
       "readBy": {
         "components": [
+          {
+            "component": "StepList",
+            "file": "packages/react/src/styles.css",
+            "line": 445
+          },
           {
             "component": "TradeTable",
             "file": "packages/react/src/styles.css",
@@ -5671,6 +6103,11 @@
             "component": "(css) .stoa-overlay[data-entering]",
             "file": "packages/react/src/styles.css",
             "line": 277
+          },
+          {
+            "component": "(css) .stoa-step__fill",
+            "file": "packages/react/src/styles.css",
+            "line": 471
           }
         ],
         "stories": []
@@ -5753,20 +6190,26 @@
       "resolvedValue": "600ms",
       "aliasOf": null,
       "readBy": {
-        "components": [],
+        "components": [
+          {
+            "component": "(css) /* A running step's symbol breathes in size, not in opacity, so its\n   contrast never drops; it stands still under reduced motion. */\n.stoa-step__status--running .stoa-step__symbol",
+            "file": "packages/react/src/styles.css",
+            "line": 455
+          }
+        ],
         "stories": []
       },
       "reachedByTheme": {
         "light": {
-          "direct": false,
+          "direct": true,
           "via": []
         },
         "dark": {
-          "direct": false,
+          "direct": true,
           "via": []
         }
       },
-      "unused": true
+      "unused": false
     },
     {
       "name": "--stoa-motion-duration-instant",
@@ -5887,6 +6330,16 @@
       "readBy": {
         "components": [
           {
+            "component": "(css) .stoa-step__fill",
+            "file": "packages/react/src/styles.css",
+            "line": 471
+          },
+          {
+            "component": "(css) /* A running step's symbol breathes in size, not in opacity, so its\n   contrast never drops; it stands still under reduced motion. */\n.stoa-step__status--running .stoa-step__symbol",
+            "file": "packages/react/src/styles.css",
+            "line": 455
+          },
+          {
             "component": "Button",
             "file": "packages/react/src/styles.css",
             "line": 68
@@ -5944,6 +6397,16 @@
       "aliasOf": null,
       "readBy": {
         "components": [
+          {
+            "component": "(css) .stoa-step__number",
+            "file": "packages/react/src/styles.css",
+            "line": 438
+          },
+          {
+            "component": "(css) .stoa-step__track",
+            "file": "packages/react/src/styles.css",
+            "line": 467
+          },
           {
             "component": "TimeSlider",
             "file": "packages/react/src/styles.css",
@@ -6027,6 +6490,16 @@
             "component": "Panel",
             "file": "packages/react/src/styles.css",
             "line": 12
+          },
+          {
+            "component": "ReorderableList",
+            "file": "packages/react/src/styles.css",
+            "line": 392
+          },
+          {
+            "component": "ReorderableList",
+            "file": "packages/react/src/styles.css",
+            "line": 399
           }
         ],
         "stories": [
@@ -6121,6 +6594,11 @@
             "component": "NumberField",
             "file": "packages/react/src/styles.css",
             "line": 228
+          },
+          {
+            "component": "ReorderableList",
+            "file": "packages/react/src/styles.css",
+            "line": 412
           },
           {
             "component": "Select",
@@ -6251,6 +6729,16 @@
             "line": 376
           },
           {
+            "component": "(css) .stoa-step__main",
+            "file": "packages/react/src/styles.css",
+            "line": 442
+          },
+          {
+            "component": "(css) .stoa-step__status",
+            "file": "packages/react/src/styles.css",
+            "line": 446
+          },
+          {
             "component": "Button",
             "file": "packages/react/src/styles.css",
             "line": 62
@@ -6289,6 +6777,21 @@
             "component": "NumberField",
             "file": "packages/react/src/styles.css",
             "line": 211
+          },
+          {
+            "component": "ReorderableList",
+            "file": "packages/react/src/styles.css",
+            "line": 388
+          },
+          {
+            "component": "ReorderableList",
+            "file": "packages/react/src/styles.css",
+            "line": 396
+          },
+          {
+            "component": "ReorderableList",
+            "file": "packages/react/src/styles.css",
+            "line": 420
           },
           {
             "component": "Select",
@@ -6431,6 +6934,26 @@
             "line": 366
           },
           {
+            "component": "(css) .stoa-step__actions",
+            "file": "packages/react/src/styles.css",
+            "line": 478
+          },
+          {
+            "component": "(css) .stoa-step__head",
+            "file": "packages/react/src/styles.css",
+            "line": 443
+          },
+          {
+            "component": "(css) .stoa-step__progress",
+            "file": "packages/react/src/styles.css",
+            "line": 463
+          },
+          {
+            "component": "(css) .stoa-step__track",
+            "file": "packages/react/src/styles.css",
+            "line": 465
+          },
+          {
             "component": "AlertDialog",
             "file": "packages/react/src/styles.css",
             "line": 315
@@ -6461,6 +6984,21 @@
             "line": 17
           },
           {
+            "component": "ReorderableList",
+            "file": "packages/react/src/styles.css",
+            "line": 395
+          },
+          {
+            "component": "ReorderableList",
+            "file": "packages/react/src/styles.css",
+            "line": 396
+          },
+          {
+            "component": "ReorderableList",
+            "file": "packages/react/src/styles.css",
+            "line": 427
+          },
+          {
             "component": "Select",
             "file": "packages/react/src/styles.css",
             "line": 62
@@ -6469,6 +7007,11 @@
             "component": "Select",
             "file": "packages/react/src/styles.css",
             "line": 137
+          },
+          {
+            "component": "StepList",
+            "file": "packages/react/src/styles.css",
+            "line": 432
           },
           {
             "component": "Tabs",
@@ -6555,6 +7098,11 @@
             "component": "Select",
             "file": "packages/react/src/styles.css",
             "line": 155
+          },
+          {
+            "component": "StepList",
+            "file": "packages/react/src/styles.css",
+            "line": 433
           },
           {
             "component": "Tabs",
@@ -6679,6 +7227,16 @@
             "line": 309
           },
           {
+            "component": "(css) .stoa-step__head",
+            "file": "packages/react/src/styles.css",
+            "line": 443
+          },
+          {
+            "component": "(css) .stoa-step__number",
+            "file": "packages/react/src/styles.css",
+            "line": 437
+          },
+          {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
             "line": 131
@@ -6687,6 +7245,16 @@
             "component": "NumberField",
             "file": "packages/react/src/styles.css",
             "line": 210
+          },
+          {
+            "component": "ReorderableList",
+            "file": "packages/react/src/styles.css",
+            "line": 410
+          },
+          {
+            "component": "ReorderableList",
+            "file": "packages/react/src/styles.css",
+            "line": 423
           },
           {
             "component": "Select",
@@ -6755,7 +7323,6 @@
     "--stoa-color-neutral-800",
     "--stoa-font-size-2xl",
     "--stoa-font-size-xl",
-    "--stoa-motion-duration-flash",
     "--stoa-motion-duration-instant",
     "--stoa-motion-easing-exit",
     "--stoa-radius-none",
@@ -6773,7 +7340,7 @@
   ],
   "summary": {
     "tokenCount": 86,
-    "unusedCount": 12,
+    "unusedCount": 11,
     "hardcodedLiteralCount": 0,
     "undefinedCount": 1
   }
