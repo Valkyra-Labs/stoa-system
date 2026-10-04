@@ -83,6 +83,20 @@ test("the scroll keys scroll the page on load, with nothing focused", async ({ p
   await expect.poll(() => scroll.evaluate((el) => el.scrollTop)).toBeGreaterThan(0);
   await page.keyboard.press("End");
   await expect(page.getByRole("contentinfo")).toBeInViewport();
-  // The region took focus for the keys but is not a Tab stop.
-  await expect(scroll).toHaveAttribute("tabindex", "-1");
+  // Focus did not move: the keys scrolled the region, nothing took focus.
+  expect(await page.evaluate(() => document.activeElement === document.body)).toBe(true);
+});
+
+test("a key an application claims does not scroll the page", async ({ page }) => {
+  const scroll = await openLongPage(page);
+  await page.evaluate(() =>
+    document.addEventListener("keydown", (e) => {
+      if (e.key === " ") e.preventDefault();
+    }),
+  );
+  await page.keyboard.press("Space");
+  await page.waitForTimeout(300);
+  expect(await scroll.evaluate((el) => el.scrollTop)).toBe(0);
+  await page.keyboard.press("PageDown");
+  await expect.poll(() => scroll.evaluate((el) => el.scrollTop)).toBeGreaterThan(0);
 });

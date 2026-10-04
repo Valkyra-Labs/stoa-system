@@ -19,12 +19,12 @@
           {
             "component": "(css) .stoa-step__fill",
             "file": "packages/react/src/styles.css",
-            "line": 843
+            "line": 844
           },
           {
             "component": "(css) .stoa-step__status--running .stoa-step__symbol",
             "file": "packages/react/src/styles.css",
-            "line": 824
+            "line": 825
           },
           {
             "component": "Button",
@@ -64,7 +64,7 @@
           {
             "component": "Checkbox",
             "file": "packages/react/src/styles.css",
-            "line": 606
+            "line": 607
           },
           {
             "component": "ChoiceGroup",
@@ -94,32 +94,32 @@
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1035
+            "line": 1036
           },
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1042
+            "line": 1043
           },
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1044
+            "line": 1045
           },
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1049
+            "line": 1050
           },
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1083
+            "line": 1084
           },
           {
             "component": "EventStrip",
             "file": "packages/react/src/styles.css",
-            "line": 976
+            "line": 977
           },
           {
             "component": "FilterChip",
@@ -186,12 +186,12 @@
           {
             "component": "LineChart",
             "file": "packages/react/src/styles.css",
-            "line": 950
+            "line": 951
           },
           {
             "component": "LineChart",
             "file": "packages/react/src/styles.css",
-            "line": 955
+            "line": 956
           },
           {
             "component": "ProgressBar",
@@ -201,7 +201,7 @@
           {
             "component": "ReorderableList",
             "file": "packages/react/src/styles.css",
-            "line": 783
+            "line": 784
           },
           {
             "component": "Select",
@@ -216,17 +216,17 @@
           {
             "component": "Slider",
             "file": "packages/react/src/styles.css",
-            "line": 622
+            "line": 623
           },
           {
             "component": "Switch",
             "file": "packages/react/src/styles.css",
-            "line": 561
+            "line": 562
           },
           {
             "component": "Switch",
             "file": "packages/react/src/styles.css",
-            "line": 563
+            "line": 564
           },
           {
             "component": "Tabs",
@@ -236,12 +236,12 @@
           {
             "component": "Tag",
             "file": "packages/react/src/styles.css",
-            "line": 504
+            "line": 505
           },
           {
             "component": "Tag",
             "file": "packages/react/src/styles.css",
-            "line": 508
+            "line": 509
           },
           {
             "component": "TimeSlider",
@@ -406,7 +406,7 @@
           {
             "component": "(css) .stoa-step__status--awaiting .stoa-step__symbol",
             "file": "packages/react/src/styles.css",
-            "line": 826,
+            "line": 827,
             "via": "--stoa-color-warning"
           },
           {
@@ -424,19 +424,19 @@
           {
             "component": "EventStrip",
             "file": "packages/react/src/styles.css",
-            "line": 977,
+            "line": 978,
             "via": "--stoa-color-warning"
           },
           {
             "component": "LineChart",
             "file": "packages/react/src/styles.css",
-            "line": 952,
+            "line": 953,
             "via": "--stoa-color-warning"
           },
           {
             "component": "LineChart",
             "file": "packages/react/src/styles.css",
-            "line": 957,
+            "line": 958,
             "via": "--stoa-color-warning"
           },
           {
@@ -448,7 +448,7 @@
           {
             "component": "Tag",
             "file": "packages/react/src/styles.css",
-            "line": 506,
+            "line": 507,
             "via": "--stoa-color-warning"
           },
           {
@@ -550,7 +550,7 @@
           {
             "component": "(css) .stoa-step__status--awaiting .stoa-step__symbol",
             "file": "packages/react/src/styles.css",
-            "line": 826,
+            "line": 827,
             "via": "--stoa-color-warning"
           },
           {
@@ -568,19 +568,19 @@
           {
             "component": "EventStrip",
             "file": "packages/react/src/styles.css",
-            "line": 977,
+            "line": 978,
             "via": "--stoa-color-warning"
           },
           {
             "component": "LineChart",
             "file": "packages/react/src/styles.css",
-            "line": 952,
+            "line": 953,
             "via": "--stoa-color-warning"
           },
           {
             "component": "LineChart",
             "file": "packages/react/src/styles.css",
-            "line": 957,
+            "line": 958,
             "via": "--stoa-color-warning"
           },
           {
@@ -592,7 +592,7 @@
           {
             "component": "Tag",
             "file": "packages/react/src/styles.css",
-            "line": 506,
+            "line": 507,
             "via": "--stoa-color-warning"
           },
           {
@@ -869,19 +869,19 @@
           {
             "component": "(css) .stoa-code__scroll:focus-visible",
             "file": "packages/react/src/styles.css",
-            "line": 877,
+            "line": 878,
             "via": "--stoa-color-focus"
           },
           {
             "component": "(css) .stoa-step__fill",
             "file": "packages/react/src/styles.css",
-            "line": 843,
+            "line": 844,
             "via": "--stoa-color-accent"
           },
           {
             "component": "(css) .stoa-step__status--running .stoa-step__symbol",
             "file": "packages/react/src/styles.css",
-            "line": 824,
+            "line": 825,
             "via": "--stoa-color-accent"
           },
           {
@@ -935,13 +935,13 @@
           {
             "component": "Checkbox",
             "file": "packages/react/src/styles.css",
-            "line": 572,
+            "line": 573,
             "via": "--stoa-color-focus"
           },
           {
             "component": "Checkbox",
             "file": "packages/react/src/styles.css",
-            "line": 606,
+            "line": 607,
             "via": "--stoa-color-accent"
           },
           {
@@ -983,49 +983,49 @@
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1023,
+            "line": 1024,
             "via": "--stoa-color-focus"
           },
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1035,
+            "line": 1036,
             "via": "--stoa-color-accent"
           },
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1042,
+            "line": 1043,
             "via": "--stoa-color-accent"
           },
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1044,
+            "line": 1045,
             "via": "--stoa-color-accent"
           },
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1049,
+            "line": 1050,
             "via": "--stoa-color-accent"
           },
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1059,
+            "line": 1060,
             "via": "--stoa-color-focus"
           },
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1074,
+            "line": 1075,
             "via": "--stoa-color-focus"
           },
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1083,
+            "line": 1084,
             "via": "--stoa-color-accent"
           },
           {
@@ -1037,7 +1037,7 @@
           {
             "component": "EventStrip",
             "file": "packages/react/src/styles.css",
-            "line": 976,
+            "line": 977,
             "via": "--stoa-color-accent"
           },
           {
@@ -1127,13 +1127,13 @@
           {
             "component": "LineChart",
             "file": "packages/react/src/styles.css",
-            "line": 950,
+            "line": 951,
             "via": "--stoa-color-accent"
           },
           {
             "component": "LineChart",
             "file": "packages/react/src/styles.css",
-            "line": 955,
+            "line": 956,
             "via": "--stoa-color-accent"
           },
           {
@@ -1151,7 +1151,7 @@
           {
             "component": "PageShell",
             "file": "packages/react/src/styles.css",
-            "line": 456,
+            "line": 457,
             "via": "--stoa-color-focus"
           },
           {
@@ -1163,25 +1163,25 @@
           {
             "component": "ReorderableList",
             "file": "packages/react/src/styles.css",
-            "line": 766,
+            "line": 767,
             "via": "--stoa-color-focus"
           },
           {
             "component": "ReorderableList",
             "file": "packages/react/src/styles.css",
-            "line": 779,
+            "line": 780,
             "via": "--stoa-color-focus"
           },
           {
             "component": "ReorderableList",
             "file": "packages/react/src/styles.css",
-            "line": 783,
+            "line": 784,
             "via": "--stoa-color-accent"
           },
           {
             "component": "ReorderableList",
             "file": "packages/react/src/styles.css",
-            "line": 792,
+            "line": 793,
             "via": "--stoa-color-focus"
           },
           {
@@ -1223,31 +1223,31 @@
           {
             "component": "Slider",
             "file": "packages/react/src/styles.css",
-            "line": 622,
+            "line": 623,
             "via": "--stoa-color-accent"
           },
           {
             "component": "Switch",
             "file": "packages/react/src/styles.css",
-            "line": 561,
+            "line": 562,
             "via": "--stoa-color-accent"
           },
           {
             "component": "Switch",
             "file": "packages/react/src/styles.css",
-            "line": 563,
+            "line": 564,
             "via": "--stoa-color-accent"
           },
           {
             "component": "Switch",
             "file": "packages/react/src/styles.css",
-            "line": 572,
+            "line": 573,
             "via": "--stoa-color-focus"
           },
           {
             "component": "Table",
             "file": "packages/react/src/styles.css",
-            "line": 908,
+            "line": 909,
             "via": "--stoa-color-focus"
           },
           {
@@ -1271,13 +1271,13 @@
           {
             "component": "Tag",
             "file": "packages/react/src/styles.css",
-            "line": 504,
+            "line": 505,
             "via": "--stoa-color-accent"
           },
           {
             "component": "Tag",
             "file": "packages/react/src/styles.css",
-            "line": 508,
+            "line": 509,
             "via": "--stoa-color-accent"
           },
           {
@@ -1492,7 +1492,7 @@
           {
             "component": "(css) .stoa-code__scroll:focus-visible",
             "file": "packages/react/src/styles.css",
-            "line": 877,
+            "line": 878,
             "via": "--stoa-color-focus"
           },
           {
@@ -1504,7 +1504,7 @@
           {
             "component": "Checkbox",
             "file": "packages/react/src/styles.css",
-            "line": 572,
+            "line": 573,
             "via": "--stoa-color-focus"
           },
           {
@@ -1516,19 +1516,19 @@
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1023,
+            "line": 1024,
             "via": "--stoa-color-focus"
           },
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1059,
+            "line": 1060,
             "via": "--stoa-color-focus"
           },
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1074,
+            "line": 1075,
             "via": "--stoa-color-focus"
           },
           {
@@ -1564,25 +1564,25 @@
           {
             "component": "PageShell",
             "file": "packages/react/src/styles.css",
-            "line": 456,
+            "line": 457,
             "via": "--stoa-color-focus"
           },
           {
             "component": "ReorderableList",
             "file": "packages/react/src/styles.css",
-            "line": 766,
+            "line": 767,
             "via": "--stoa-color-focus"
           },
           {
             "component": "ReorderableList",
             "file": "packages/react/src/styles.css",
-            "line": 779,
+            "line": 780,
             "via": "--stoa-color-focus"
           },
           {
             "component": "ReorderableList",
             "file": "packages/react/src/styles.css",
-            "line": 792,
+            "line": 793,
             "via": "--stoa-color-focus"
           },
           {
@@ -1612,13 +1612,13 @@
           {
             "component": "Switch",
             "file": "packages/react/src/styles.css",
-            "line": 572,
+            "line": 573,
             "via": "--stoa-color-focus"
           },
           {
             "component": "Table",
             "file": "packages/react/src/styles.css",
-            "line": 908,
+            "line": 909,
             "via": "--stoa-color-focus"
           },
           {
@@ -1780,13 +1780,13 @@
           {
             "component": "(css) .stoa-step__fill",
             "file": "packages/react/src/styles.css",
-            "line": 843,
+            "line": 844,
             "via": "--stoa-color-accent"
           },
           {
             "component": "(css) .stoa-step__status--running .stoa-step__symbol",
             "file": "packages/react/src/styles.css",
-            "line": 824,
+            "line": 825,
             "via": "--stoa-color-accent"
           },
           {
@@ -1834,7 +1834,7 @@
           {
             "component": "Checkbox",
             "file": "packages/react/src/styles.css",
-            "line": 606,
+            "line": 607,
             "via": "--stoa-color-accent"
           },
           {
@@ -1870,37 +1870,37 @@
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1035,
+            "line": 1036,
             "via": "--stoa-color-accent"
           },
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1042,
+            "line": 1043,
             "via": "--stoa-color-accent"
           },
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1044,
+            "line": 1045,
             "via": "--stoa-color-accent"
           },
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1049,
+            "line": 1050,
             "via": "--stoa-color-accent"
           },
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1083,
+            "line": 1084,
             "via": "--stoa-color-accent"
           },
           {
             "component": "EventStrip",
             "file": "packages/react/src/styles.css",
-            "line": 976,
+            "line": 977,
             "via": "--stoa-color-accent"
           },
           {
@@ -1978,13 +1978,13 @@
           {
             "component": "LineChart",
             "file": "packages/react/src/styles.css",
-            "line": 950,
+            "line": 951,
             "via": "--stoa-color-accent"
           },
           {
             "component": "LineChart",
             "file": "packages/react/src/styles.css",
-            "line": 955,
+            "line": 956,
             "via": "--stoa-color-accent"
           },
           {
@@ -1996,7 +1996,7 @@
           {
             "component": "ReorderableList",
             "file": "packages/react/src/styles.css",
-            "line": 783,
+            "line": 784,
             "via": "--stoa-color-accent"
           },
           {
@@ -2014,19 +2014,19 @@
           {
             "component": "Slider",
             "file": "packages/react/src/styles.css",
-            "line": 622,
+            "line": 623,
             "via": "--stoa-color-accent"
           },
           {
             "component": "Switch",
             "file": "packages/react/src/styles.css",
-            "line": 561,
+            "line": 562,
             "via": "--stoa-color-accent"
           },
           {
             "component": "Switch",
             "file": "packages/react/src/styles.css",
-            "line": 563,
+            "line": 564,
             "via": "--stoa-color-accent"
           },
           {
@@ -2038,13 +2038,13 @@
           {
             "component": "Tag",
             "file": "packages/react/src/styles.css",
-            "line": 504,
+            "line": 505,
             "via": "--stoa-color-accent"
           },
           {
             "component": "Tag",
             "file": "packages/react/src/styles.css",
-            "line": 508,
+            "line": 509,
             "via": "--stoa-color-accent"
           },
           {
@@ -2227,7 +2227,7 @@
           {
             "component": "(css) .stoa-code__scroll",
             "file": "packages/react/src/styles.css",
-            "line": 874
+            "line": 875
           },
           {
             "component": "AppHeader",
@@ -2242,7 +2242,7 @@
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
-            "line": 488
+            "line": 489
           },
           {
             "component": "Callout",
@@ -2252,7 +2252,7 @@
           {
             "component": "Checkbox",
             "file": "packages/react/src/styles.css",
-            "line": 578
+            "line": 579
           },
           {
             "component": "ChoiceGroup",
@@ -2262,17 +2262,17 @@
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 990
+            "line": 991
           },
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1011
+            "line": 1012
           },
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1089
+            "line": 1090
           },
           {
             "component": "FilterChip",
@@ -2299,7 +2299,7 @@
           {
             "component": "LineChart",
             "file": "packages/react/src/styles.css",
-            "line": 947
+            "line": 948
           },
           {
             "component": "PageShell",
@@ -2314,7 +2314,7 @@
           {
             "component": "ReorderableList",
             "file": "packages/react/src/styles.css",
-            "line": 774
+            "line": 775
           },
           {
             "component": "Select",
@@ -2334,12 +2334,12 @@
           {
             "component": "Switch",
             "file": "packages/react/src/styles.css",
-            "line": 578
+            "line": 579
           },
           {
             "component": "Switch",
             "file": "packages/react/src/styles.css",
-            "line": 580
+            "line": 581
           },
           {
             "component": "Table",
@@ -2493,17 +2493,17 @@
           {
             "component": "(css) .stoa-modal",
             "file": "packages/react/src/styles.css",
-            "line": 683
+            "line": 684
           },
           {
             "component": "(css) .stoa-step__number",
             "file": "packages/react/src/styles.css",
-            "line": 814
+            "line": 815
           },
           {
             "component": "(css) .stoa-step__track",
             "file": "packages/react/src/styles.css",
-            "line": 840
+            "line": 841
           },
           {
             "component": "Button",
@@ -2513,7 +2513,7 @@
           {
             "component": "Checkbox",
             "file": "packages/react/src/styles.css",
-            "line": 600
+            "line": 601
           },
           {
             "component": "ChoiceGroup",
@@ -2523,32 +2523,32 @@
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1017
+            "line": 1018
           },
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1032
+            "line": 1033
           },
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1057
+            "line": 1058
           },
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1067
+            "line": 1068
           },
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1097
+            "line": 1098
           },
           {
             "component": "EventStrip",
             "file": "packages/react/src/styles.css",
-            "line": 948
+            "line": 949
           },
           {
             "component": "FilterChip",
@@ -2563,12 +2563,12 @@
           {
             "component": "Kbd",
             "file": "packages/react/src/styles.css",
-            "line": 654
+            "line": 655
           },
           {
             "component": "LineChart",
             "file": "packages/react/src/styles.css",
-            "line": 948
+            "line": 949
           },
           {
             "component": "NumberField",
@@ -2578,7 +2578,7 @@
           {
             "component": "PageShell",
             "file": "packages/react/src/styles.css",
-            "line": 452
+            "line": 453
           },
           {
             "component": "ProgressBar",
@@ -2603,22 +2603,22 @@
           {
             "component": "Slider",
             "file": "packages/react/src/styles.css",
-            "line": 628
+            "line": 629
           },
           {
             "component": "Switch",
             "file": "packages/react/src/styles.css",
-            "line": 548
+            "line": 549
           },
           {
             "component": "Switch",
             "file": "packages/react/src/styles.css",
-            "line": 557
+            "line": 558
           },
           {
             "component": "Tag",
             "file": "packages/react/src/styles.css",
-            "line": 498
+            "line": 499
           },
           {
             "component": "TextField",
@@ -2643,7 +2643,7 @@
           {
             "component": "ToolbarSeparator",
             "file": "packages/react/src/styles.css",
-            "line": 637
+            "line": 638
           }
         ],
         "stories": [
@@ -2767,17 +2767,12 @@
           {
             "component": "(css) .stoa-step__status--error",
             "file": "packages/react/src/styles.css",
-            "line": 827
+            "line": 828
           },
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
-            "line": 473
-          },
-          {
-            "component": "Button",
-            "file": "packages/react/src/styles.css",
-            "line": 479
+            "line": 474
           },
           {
             "component": "Button",
@@ -2787,12 +2782,17 @@
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
-            "line": 483
+            "line": 481
           },
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
             "line": 484
+          },
+          {
+            "component": "Button",
+            "file": "packages/react/src/styles.css",
+            "line": 485
           },
           {
             "component": "Callout",
@@ -2807,22 +2807,22 @@
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1062
+            "line": 1063
           },
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1090
+            "line": 1091
           },
           {
             "component": "LineChart",
             "file": "packages/react/src/styles.css",
-            "line": 954
+            "line": 955
           },
           {
             "component": "LineChart",
             "file": "packages/react/src/styles.css",
-            "line": 959
+            "line": 960
           },
           {
             "component": "StatusBadge",
@@ -2832,7 +2832,7 @@
           {
             "component": "Tag",
             "file": "packages/react/src/styles.css",
-            "line": 507
+            "line": 508
           },
           {
             "component": "ToastRegion",
@@ -3031,7 +3031,7 @@
           {
             "component": "(css) .stoa-code__scroll:focus-visible",
             "file": "packages/react/src/styles.css",
-            "line": 877
+            "line": 878
           },
           {
             "component": "Button",
@@ -3041,7 +3041,7 @@
           {
             "component": "Checkbox",
             "file": "packages/react/src/styles.css",
-            "line": 572
+            "line": 573
           },
           {
             "component": "ChoiceGroup",
@@ -3051,17 +3051,17 @@
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1023
+            "line": 1024
           },
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1059
+            "line": 1060
           },
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1074
+            "line": 1075
           },
           {
             "component": "Disclosure",
@@ -3091,22 +3091,22 @@
           {
             "component": "PageShell",
             "file": "packages/react/src/styles.css",
-            "line": 456
+            "line": 457
           },
           {
             "component": "ReorderableList",
             "file": "packages/react/src/styles.css",
-            "line": 766
+            "line": 767
           },
           {
             "component": "ReorderableList",
             "file": "packages/react/src/styles.css",
-            "line": 779
+            "line": 780
           },
           {
             "component": "ReorderableList",
             "file": "packages/react/src/styles.css",
-            "line": 792
+            "line": 793
           },
           {
             "component": "ScrollArea",
@@ -3131,12 +3131,12 @@
           {
             "component": "Switch",
             "file": "packages/react/src/styles.css",
-            "line": 572
+            "line": 573
           },
           {
             "component": "Table",
             "file": "packages/react/src/styles.css",
-            "line": 908
+            "line": 909
           },
           {
             "component": "Tabs",
@@ -3288,13 +3288,13 @@
           {
             "component": "(css) .stoa-modal",
             "file": "packages/react/src/styles.css",
-            "line": 681,
+            "line": 682,
             "via": "--stoa-color-surface"
           },
           {
             "component": "(css) .stoa-step__track",
             "file": "packages/react/src/styles.css",
-            "line": 839,
+            "line": 840,
             "via": "--stoa-color-surface"
           },
           {
@@ -3318,7 +3318,7 @@
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
-            "line": 473,
+            "line": 474,
             "via": "--stoa-color-surface"
           },
           {
@@ -3330,7 +3330,7 @@
           {
             "component": "Checkbox",
             "file": "packages/react/src/styles.css",
-            "line": 601,
+            "line": 602,
             "via": "--stoa-color-surface"
           },
           {
@@ -3348,31 +3348,31 @@
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 993,
+            "line": 994,
             "via": "--stoa-color-surface"
           },
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1012,
+            "line": 1013,
             "via": "--stoa-color-surface"
           },
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1058,
+            "line": 1059,
             "via": "--stoa-color-surface"
           },
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1066,
+            "line": 1067,
             "via": "--stoa-color-surface"
           },
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1088,
+            "line": 1089,
             "via": "--stoa-color-surface"
           },
           {
@@ -3420,7 +3420,7 @@
           {
             "component": "PageShell",
             "file": "packages/react/src/styles.css",
-            "line": 451,
+            "line": 452,
             "via": "--stoa-color-surface"
           },
           {
@@ -3438,7 +3438,7 @@
           {
             "component": "ReorderableList",
             "file": "packages/react/src/styles.css",
-            "line": 773,
+            "line": 774,
             "via": "--stoa-color-surface"
           },
           {
@@ -3456,37 +3456,37 @@
           {
             "component": "Slider",
             "file": "packages/react/src/styles.css",
-            "line": 624,
+            "line": 625,
             "via": "--stoa-color-surface"
           },
           {
             "component": "Switch",
             "file": "packages/react/src/styles.css",
-            "line": 549,
+            "line": 550,
             "via": "--stoa-color-surface"
           },
           {
             "component": "Switch",
             "file": "packages/react/src/styles.css",
-            "line": 566,
+            "line": 567,
             "via": "--stoa-color-surface"
           },
           {
             "component": "Table",
             "file": "packages/react/src/styles.css",
-            "line": 927,
+            "line": 928,
             "via": "--stoa-color-surface"
           },
           {
             "component": "Table",
             "file": "packages/react/src/styles.css",
-            "line": 931,
+            "line": 932,
             "via": "--stoa-color-surface"
           },
           {
             "component": "Tag",
             "file": "packages/react/src/styles.css",
-            "line": 508,
+            "line": 509,
             "via": "--stoa-color-surface"
           },
           {
@@ -3646,19 +3646,19 @@
           {
             "component": "(css) .stoa-code__scroll",
             "file": "packages/react/src/styles.css",
-            "line": 873,
+            "line": 874,
             "via": "--stoa-color-surface-sunken"
           },
           {
             "component": "(css) .stoa-code__scroll",
             "file": "packages/react/src/styles.css",
-            "line": 873,
+            "line": 874,
             "via": "--stoa-color-text"
           },
           {
             "component": "(css) .stoa-modal",
             "file": "packages/react/src/styles.css",
-            "line": 682,
+            "line": 683,
             "via": "--stoa-color-text"
           },
           {
@@ -3718,19 +3718,13 @@
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
-            "line": 471,
+            "line": 472,
             "via": "--stoa-color-surface-sunken"
           },
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
-            "line": 476,
-            "via": "--stoa-color-text"
-          },
-          {
-            "component": "Button",
-            "file": "packages/react/src/styles.css",
-            "line": 479,
+            "line": 477,
             "via": "--stoa-color-text"
           },
           {
@@ -3742,7 +3736,7 @@
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
-            "line": 483,
+            "line": 481,
             "via": "--stoa-color-text"
           },
           {
@@ -3754,7 +3748,13 @@
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
-            "line": 487,
+            "line": 485,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "Button",
+            "file": "packages/react/src/styles.css",
+            "line": 488,
             "via": "--stoa-color-surface-sunken"
           },
           {
@@ -3766,13 +3766,13 @@
           {
             "component": "Checkbox",
             "file": "packages/react/src/styles.css",
-            "line": 541,
+            "line": 542,
             "via": "--stoa-color-text"
           },
           {
             "component": "Checkbox",
             "file": "packages/react/src/styles.css",
-            "line": 578,
+            "line": 579,
             "via": "--stoa-color-surface-sunken"
           },
           {
@@ -3820,19 +3820,19 @@
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 994,
+            "line": 995,
             "via": "--stoa-color-text"
           },
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1029,
+            "line": 1030,
             "via": "--stoa-color-surface-sunken"
           },
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1058,
+            "line": 1059,
             "via": "--stoa-color-text"
           },
           {
@@ -3856,13 +3856,13 @@
           {
             "component": "EventStrip",
             "file": "packages/react/src/styles.css",
-            "line": 967,
+            "line": 968,
             "via": "--stoa-color-text"
           },
           {
             "component": "EventStrip",
             "file": "packages/react/src/styles.css",
-            "line": 978,
+            "line": 979,
             "via": "--stoa-color-text"
           },
           {
@@ -3958,13 +3958,13 @@
           {
             "component": "Kbd",
             "file": "packages/react/src/styles.css",
-            "line": 655,
+            "line": 656,
             "via": "--stoa-color-surface-sunken"
           },
           {
             "component": "Kbd",
             "file": "packages/react/src/styles.css",
-            "line": 655,
+            "line": 656,
             "via": "--stoa-color-text"
           },
           {
@@ -3976,7 +3976,7 @@
           {
             "component": "LineChart",
             "file": "packages/react/src/styles.css",
-            "line": 967,
+            "line": 968,
             "via": "--stoa-color-text"
           },
           {
@@ -3994,7 +3994,7 @@
           {
             "component": "PageShell",
             "file": "packages/react/src/styles.css",
-            "line": 451,
+            "line": 452,
             "via": "--stoa-color-text"
           },
           {
@@ -4030,7 +4030,7 @@
           {
             "component": "Slider",
             "file": "packages/react/src/styles.css",
-            "line": 617,
+            "line": 618,
             "via": "--stoa-color-text"
           },
           {
@@ -4042,31 +4042,31 @@
           {
             "component": "Switch",
             "file": "packages/react/src/styles.css",
-            "line": 541,
+            "line": 542,
             "via": "--stoa-color-text"
           },
           {
             "component": "Switch",
             "file": "packages/react/src/styles.css",
-            "line": 563,
+            "line": 564,
             "via": "--stoa-color-text"
           },
           {
             "component": "Switch",
             "file": "packages/react/src/styles.css",
-            "line": 578,
+            "line": 579,
             "via": "--stoa-color-surface-sunken"
           },
           {
             "component": "Table",
             "file": "packages/react/src/styles.css",
-            "line": 915,
+            "line": 916,
             "via": "--stoa-color-text"
           },
           {
             "component": "Table",
             "file": "packages/react/src/styles.css",
-            "line": 919,
+            "line": 920,
             "via": "--stoa-color-text"
           },
           {
@@ -4084,7 +4084,7 @@
           {
             "component": "Tag",
             "file": "packages/react/src/styles.css",
-            "line": 506,
+            "line": 507,
             "via": "--stoa-color-text"
           },
           {
@@ -4276,7 +4276,7 @@
           {
             "component": "(css) /* ==== Overlays, lists and content ==== */\n\n/* Overlays: Dialog, Sheet, AlertDialog. React Aria portals them to the end\n   of the document, so they take the document's tokens. The scrim mixes\n   the darkest neutral into transparency, which darkens the page in both\n   themes; there is no semantic scrim token yet. Widths are multiples of\n   the space scale, as there are no dimension tokens. The z-index lifts the\n   overlay over the raised options of a choice group. */\n.stoa-overlay",
             "file": "packages/react/src/styles.css",
-            "line": 673
+            "line": 674
           },
           {
             "component": "(css) body",
@@ -4351,19 +4351,19 @@
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
-            "line": 474,
+            "line": 475,
             "via": "--stoa-color-surface-hover"
           },
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
-            "line": 476,
+            "line": 477,
             "via": "--stoa-color-surface-hover"
           },
           {
             "component": "Checkbox",
             "file": "packages/react/src/styles.css",
-            "line": 604,
+            "line": 605,
             "via": "--stoa-color-surface-hover"
           },
           {
@@ -4381,19 +4381,19 @@
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1040,
+            "line": 1041,
             "via": "--stoa-color-surface-hover"
           },
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1082,
+            "line": 1083,
             "via": "--stoa-color-surface-hover"
           },
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1110,
+            "line": 1111,
             "via": "--stoa-color-surface-hover"
           },
           {
@@ -4441,7 +4441,7 @@
           {
             "component": "Switch",
             "file": "packages/react/src/styles.css",
-            "line": 560,
+            "line": 561,
             "via": "--stoa-color-surface-hover"
           },
           {
@@ -4561,7 +4561,7 @@
           {
             "component": "(css) .stoa-code__scroll",
             "file": "packages/react/src/styles.css",
-            "line": 874,
+            "line": 875,
             "via": "--stoa-color-border"
           },
           {
@@ -4579,7 +4579,7 @@
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
-            "line": 488,
+            "line": 489,
             "via": "--stoa-color-border"
           },
           {
@@ -4591,7 +4591,7 @@
           {
             "component": "Checkbox",
             "file": "packages/react/src/styles.css",
-            "line": 578,
+            "line": 579,
             "via": "--stoa-color-border"
           },
           {
@@ -4603,19 +4603,19 @@
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 990,
+            "line": 991,
             "via": "--stoa-color-border"
           },
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1011,
+            "line": 1012,
             "via": "--stoa-color-border"
           },
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1089,
+            "line": 1090,
             "via": "--stoa-color-border"
           },
           {
@@ -4645,7 +4645,7 @@
           {
             "component": "LineChart",
             "file": "packages/react/src/styles.css",
-            "line": 947,
+            "line": 948,
             "via": "--stoa-color-border"
           },
           {
@@ -4663,7 +4663,7 @@
           {
             "component": "ReorderableList",
             "file": "packages/react/src/styles.css",
-            "line": 774,
+            "line": 775,
             "via": "--stoa-color-border"
           },
           {
@@ -4687,13 +4687,13 @@
           {
             "component": "Switch",
             "file": "packages/react/src/styles.css",
-            "line": 578,
+            "line": 579,
             "via": "--stoa-color-border"
           },
           {
             "component": "Switch",
             "file": "packages/react/src/styles.css",
-            "line": 580,
+            "line": 581,
             "via": "--stoa-color-border"
           },
           {
@@ -4878,61 +4878,61 @@
           {
             "component": "(css) .stoa-code__label",
             "file": "packages/react/src/styles.css",
-            "line": 858,
+            "line": 859,
             "via": "--stoa-color-text-muted"
           },
           {
             "component": "(css) .stoa-code__status",
             "file": "packages/react/src/styles.css",
-            "line": 859,
+            "line": 860,
             "via": "--stoa-color-text-muted"
           },
           {
             "component": "(css) .stoa-metric__basis",
             "file": "packages/react/src/styles.css",
-            "line": 896,
+            "line": 897,
             "via": "--stoa-color-text-muted"
           },
           {
             "component": "(css) .stoa-metric__label",
             "file": "packages/react/src/styles.css",
-            "line": 893,
+            "line": 894,
             "via": "--stoa-color-text-muted"
           },
           {
             "component": "(css) .stoa-metric__unit",
             "file": "packages/react/src/styles.css",
-            "line": 895,
+            "line": 896,
             "via": "--stoa-color-text-muted"
           },
           {
             "component": "(css) .stoa-shortcuts__title",
             "file": "packages/react/src/styles.css",
-            "line": 752,
+            "line": 753,
             "via": "--stoa-color-text-muted"
           },
           {
             "component": "(css) .stoa-step__explanation",
             "file": "packages/react/src/styles.css",
-            "line": 835,
+            "line": 836,
             "via": "--stoa-color-text-muted"
           },
           {
             "component": "(css) .stoa-step__number",
             "file": "packages/react/src/styles.css",
-            "line": 816,
+            "line": 817,
             "via": "--stoa-color-text-muted"
           },
           {
             "component": "(css) .stoa-step__status",
             "file": "packages/react/src/styles.css",
-            "line": 822,
+            "line": 823,
             "via": "--stoa-color-text-muted"
           },
           {
             "component": "(css) .stoa-step__value",
             "file": "packages/react/src/styles.css",
-            "line": 849,
+            "line": 850,
             "via": "--stoa-color-text-muted"
           },
           {
@@ -4962,19 +4962,19 @@
           {
             "component": "CodeView",
             "file": "packages/react/src/styles.css",
-            "line": 883,
+            "line": 884,
             "via": "--stoa-color-text-muted"
           },
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1030,
+            "line": 1031,
             "via": "--stoa-color-text-muted"
           },
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1106,
+            "line": 1107,
             "via": "--stoa-color-text-muted"
           },
           {
@@ -4992,19 +4992,19 @@
           {
             "component": "EventStrip",
             "file": "packages/react/src/styles.css",
-            "line": 946,
+            "line": 947,
             "via": "--stoa-color-text-muted"
           },
           {
             "component": "EventStrip",
             "file": "packages/react/src/styles.css",
-            "line": 962,
+            "line": 963,
             "via": "--stoa-color-text-muted"
           },
           {
             "component": "EventStrip",
             "file": "packages/react/src/styles.css",
-            "line": 975,
+            "line": 976,
             "via": "--stoa-color-text-muted"
           },
           {
@@ -5016,7 +5016,7 @@
           {
             "component": "Kbd",
             "file": "packages/react/src/styles.css",
-            "line": 660,
+            "line": 661,
             "via": "--stoa-color-text-muted"
           },
           {
@@ -5028,43 +5028,43 @@
           {
             "component": "LineChart",
             "file": "packages/react/src/styles.css",
-            "line": 944,
+            "line": 945,
             "via": "--stoa-color-text-muted"
           },
           {
             "component": "LineChart",
             "file": "packages/react/src/styles.css",
-            "line": 946,
+            "line": 947,
             "via": "--stoa-color-text-muted"
           },
           {
             "component": "LineChart",
             "file": "packages/react/src/styles.css",
-            "line": 951,
+            "line": 952,
             "via": "--stoa-color-text-muted"
           },
           {
             "component": "LineChart",
             "file": "packages/react/src/styles.css",
-            "line": 956,
+            "line": 957,
             "via": "--stoa-color-text-muted"
           },
           {
             "component": "LineChart",
             "file": "packages/react/src/styles.css",
-            "line": 962,
+            "line": 963,
             "via": "--stoa-color-text-muted"
           },
           {
             "component": "LineChart",
             "file": "packages/react/src/styles.css",
-            "line": 971,
+            "line": 972,
             "via": "--stoa-color-text-muted"
           },
           {
             "component": "LogView",
             "file": "packages/react/src/styles.css",
-            "line": 886,
+            "line": 887,
             "via": "--stoa-color-text-muted"
           },
           {
@@ -5100,13 +5100,13 @@
           {
             "component": "ReorderableList",
             "file": "packages/react/src/styles.css",
-            "line": 787,
+            "line": 788,
             "via": "--stoa-color-text-muted"
           },
           {
             "component": "ReorderableList",
             "file": "packages/react/src/styles.css",
-            "line": 803,
+            "line": 804,
             "via": "--stoa-color-text-muted"
           },
           {
@@ -5148,7 +5148,7 @@
           {
             "component": "StepList",
             "file": "packages/react/src/styles.css",
-            "line": 821,
+            "line": 822,
             "via": "--stoa-color-text-muted"
           },
           {
@@ -5178,7 +5178,7 @@
           {
             "component": "Tag",
             "file": "packages/react/src/styles.css",
-            "line": 501,
+            "line": 502,
             "via": "--stoa-color-text-muted"
           },
           {
@@ -5326,25 +5326,25 @@
           {
             "component": "(css) .stoa-modal",
             "file": "packages/react/src/styles.css",
-            "line": 683,
+            "line": 684,
             "via": "--stoa-color-border-strong"
           },
           {
             "component": "(css) .stoa-shortcuts__row[data-disabled] dd",
             "file": "packages/react/src/styles.css",
-            "line": 760,
+            "line": 761,
             "via": "--stoa-color-text-subtle"
           },
           {
             "component": "(css) .stoa-step__number",
             "file": "packages/react/src/styles.css",
-            "line": 814,
+            "line": 815,
             "via": "--stoa-color-border-strong"
           },
           {
             "component": "(css) .stoa-step__track",
             "file": "packages/react/src/styles.css",
-            "line": 840,
+            "line": 841,
             "via": "--stoa-color-border-strong"
           },
           {
@@ -5362,25 +5362,25 @@
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
-            "line": 489,
+            "line": 490,
             "via": "--stoa-color-text-subtle"
           },
           {
             "component": "Checkbox",
             "file": "packages/react/src/styles.css",
-            "line": 575,
+            "line": 576,
             "via": "--stoa-color-text-subtle"
           },
           {
             "component": "Checkbox",
             "file": "packages/react/src/styles.css",
-            "line": 600,
+            "line": 601,
             "via": "--stoa-color-border-strong"
           },
           {
             "component": "Checkbox",
             "file": "packages/react/src/styles.css",
-            "line": 607,
+            "line": 608,
             "via": "--stoa-color-text-subtle"
           },
           {
@@ -5398,37 +5398,37 @@
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1017,
+            "line": 1018,
             "via": "--stoa-color-border-strong"
           },
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1032,
+            "line": 1033,
             "via": "--stoa-color-border-strong"
           },
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1057,
+            "line": 1058,
             "via": "--stoa-color-border-strong"
           },
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1067,
+            "line": 1068,
             "via": "--stoa-color-border-strong"
           },
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1097,
+            "line": 1098,
             "via": "--stoa-color-border-strong"
           },
           {
             "component": "EventStrip",
             "file": "packages/react/src/styles.css",
-            "line": 948,
+            "line": 949,
             "via": "--stoa-color-border-strong"
           },
           {
@@ -5458,13 +5458,13 @@
           {
             "component": "Kbd",
             "file": "packages/react/src/styles.css",
-            "line": 654,
+            "line": 655,
             "via": "--stoa-color-border-strong"
           },
           {
             "component": "LineChart",
             "file": "packages/react/src/styles.css",
-            "line": 948,
+            "line": 949,
             "via": "--stoa-color-border-strong"
           },
           {
@@ -5476,7 +5476,7 @@
           {
             "component": "PageShell",
             "file": "packages/react/src/styles.css",
-            "line": 452,
+            "line": 453,
             "via": "--stoa-color-border-strong"
           },
           {
@@ -5512,37 +5512,37 @@
           {
             "component": "Slider",
             "file": "packages/react/src/styles.css",
-            "line": 626,
+            "line": 627,
             "via": "--stoa-color-text-subtle"
           },
           {
             "component": "Slider",
             "file": "packages/react/src/styles.css",
-            "line": 628,
+            "line": 629,
             "via": "--stoa-color-border-strong"
           },
           {
             "component": "Switch",
             "file": "packages/react/src/styles.css",
-            "line": 548,
+            "line": 549,
             "via": "--stoa-color-border-strong"
           },
           {
             "component": "Switch",
             "file": "packages/react/src/styles.css",
-            "line": 557,
+            "line": 558,
             "via": "--stoa-color-border-strong"
           },
           {
             "component": "Switch",
             "file": "packages/react/src/styles.css",
-            "line": 575,
+            "line": 576,
             "via": "--stoa-color-text-subtle"
           },
           {
             "component": "Tag",
             "file": "packages/react/src/styles.css",
-            "line": 498,
+            "line": 499,
             "via": "--stoa-color-border-strong"
           },
           {
@@ -5578,7 +5578,7 @@
           {
             "component": "ToolbarSeparator",
             "file": "packages/react/src/styles.css",
-            "line": 637,
+            "line": 638,
             "via": "--stoa-color-border-strong"
           }
         ],
@@ -5758,25 +5758,25 @@
           {
             "component": "(css) .stoa-modal",
             "file": "packages/react/src/styles.css",
-            "line": 683,
+            "line": 684,
             "via": "--stoa-color-border-strong"
           },
           {
             "component": "(css) .stoa-shortcuts__row[data-disabled] dd",
             "file": "packages/react/src/styles.css",
-            "line": 760,
+            "line": 761,
             "via": "--stoa-color-text-subtle"
           },
           {
             "component": "(css) .stoa-step__number",
             "file": "packages/react/src/styles.css",
-            "line": 814,
+            "line": 815,
             "via": "--stoa-color-border-strong"
           },
           {
             "component": "(css) .stoa-step__track",
             "file": "packages/react/src/styles.css",
-            "line": 840,
+            "line": 841,
             "via": "--stoa-color-border-strong"
           },
           {
@@ -5794,25 +5794,25 @@
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
-            "line": 489,
+            "line": 490,
             "via": "--stoa-color-text-subtle"
           },
           {
             "component": "Checkbox",
             "file": "packages/react/src/styles.css",
-            "line": 575,
+            "line": 576,
             "via": "--stoa-color-text-subtle"
           },
           {
             "component": "Checkbox",
             "file": "packages/react/src/styles.css",
-            "line": 600,
+            "line": 601,
             "via": "--stoa-color-border-strong"
           },
           {
             "component": "Checkbox",
             "file": "packages/react/src/styles.css",
-            "line": 607,
+            "line": 608,
             "via": "--stoa-color-text-subtle"
           },
           {
@@ -5830,37 +5830,37 @@
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1017,
+            "line": 1018,
             "via": "--stoa-color-border-strong"
           },
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1032,
+            "line": 1033,
             "via": "--stoa-color-border-strong"
           },
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1057,
+            "line": 1058,
             "via": "--stoa-color-border-strong"
           },
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1067,
+            "line": 1068,
             "via": "--stoa-color-border-strong"
           },
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1097,
+            "line": 1098,
             "via": "--stoa-color-border-strong"
           },
           {
             "component": "EventStrip",
             "file": "packages/react/src/styles.css",
-            "line": 948,
+            "line": 949,
             "via": "--stoa-color-border-strong"
           },
           {
@@ -5890,13 +5890,13 @@
           {
             "component": "Kbd",
             "file": "packages/react/src/styles.css",
-            "line": 654,
+            "line": 655,
             "via": "--stoa-color-border-strong"
           },
           {
             "component": "LineChart",
             "file": "packages/react/src/styles.css",
-            "line": 948,
+            "line": 949,
             "via": "--stoa-color-border-strong"
           },
           {
@@ -5908,7 +5908,7 @@
           {
             "component": "PageShell",
             "file": "packages/react/src/styles.css",
-            "line": 452,
+            "line": 453,
             "via": "--stoa-color-border-strong"
           },
           {
@@ -5944,37 +5944,37 @@
           {
             "component": "Slider",
             "file": "packages/react/src/styles.css",
-            "line": 626,
+            "line": 627,
             "via": "--stoa-color-text-subtle"
           },
           {
             "component": "Slider",
             "file": "packages/react/src/styles.css",
-            "line": 628,
+            "line": 629,
             "via": "--stoa-color-border-strong"
           },
           {
             "component": "Switch",
             "file": "packages/react/src/styles.css",
-            "line": 548,
+            "line": 549,
             "via": "--stoa-color-border-strong"
           },
           {
             "component": "Switch",
             "file": "packages/react/src/styles.css",
-            "line": 557,
+            "line": 558,
             "via": "--stoa-color-border-strong"
           },
           {
             "component": "Switch",
             "file": "packages/react/src/styles.css",
-            "line": 575,
+            "line": 576,
             "via": "--stoa-color-text-subtle"
           },
           {
             "component": "Tag",
             "file": "packages/react/src/styles.css",
-            "line": 498,
+            "line": 499,
             "via": "--stoa-color-border-strong"
           },
           {
@@ -6010,7 +6010,7 @@
           {
             "component": "ToolbarSeparator",
             "file": "packages/react/src/styles.css",
-            "line": 637,
+            "line": 638,
             "via": "--stoa-color-border-strong"
           }
         ],
@@ -6132,61 +6132,61 @@
           {
             "component": "(css) .stoa-code__label",
             "file": "packages/react/src/styles.css",
-            "line": 858,
+            "line": 859,
             "via": "--stoa-color-text-muted"
           },
           {
             "component": "(css) .stoa-code__status",
             "file": "packages/react/src/styles.css",
-            "line": 859,
+            "line": 860,
             "via": "--stoa-color-text-muted"
           },
           {
             "component": "(css) .stoa-metric__basis",
             "file": "packages/react/src/styles.css",
-            "line": 896,
+            "line": 897,
             "via": "--stoa-color-text-muted"
           },
           {
             "component": "(css) .stoa-metric__label",
             "file": "packages/react/src/styles.css",
-            "line": 893,
+            "line": 894,
             "via": "--stoa-color-text-muted"
           },
           {
             "component": "(css) .stoa-metric__unit",
             "file": "packages/react/src/styles.css",
-            "line": 895,
+            "line": 896,
             "via": "--stoa-color-text-muted"
           },
           {
             "component": "(css) .stoa-shortcuts__title",
             "file": "packages/react/src/styles.css",
-            "line": 752,
+            "line": 753,
             "via": "--stoa-color-text-muted"
           },
           {
             "component": "(css) .stoa-step__explanation",
             "file": "packages/react/src/styles.css",
-            "line": 835,
+            "line": 836,
             "via": "--stoa-color-text-muted"
           },
           {
             "component": "(css) .stoa-step__number",
             "file": "packages/react/src/styles.css",
-            "line": 816,
+            "line": 817,
             "via": "--stoa-color-text-muted"
           },
           {
             "component": "(css) .stoa-step__status",
             "file": "packages/react/src/styles.css",
-            "line": 822,
+            "line": 823,
             "via": "--stoa-color-text-muted"
           },
           {
             "component": "(css) .stoa-step__value",
             "file": "packages/react/src/styles.css",
-            "line": 849,
+            "line": 850,
             "via": "--stoa-color-text-muted"
           },
           {
@@ -6216,19 +6216,19 @@
           {
             "component": "CodeView",
             "file": "packages/react/src/styles.css",
-            "line": 883,
+            "line": 884,
             "via": "--stoa-color-text-muted"
           },
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1030,
+            "line": 1031,
             "via": "--stoa-color-text-muted"
           },
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1106,
+            "line": 1107,
             "via": "--stoa-color-text-muted"
           },
           {
@@ -6246,19 +6246,19 @@
           {
             "component": "EventStrip",
             "file": "packages/react/src/styles.css",
-            "line": 946,
+            "line": 947,
             "via": "--stoa-color-text-muted"
           },
           {
             "component": "EventStrip",
             "file": "packages/react/src/styles.css",
-            "line": 962,
+            "line": 963,
             "via": "--stoa-color-text-muted"
           },
           {
             "component": "EventStrip",
             "file": "packages/react/src/styles.css",
-            "line": 975,
+            "line": 976,
             "via": "--stoa-color-text-muted"
           },
           {
@@ -6270,7 +6270,7 @@
           {
             "component": "Kbd",
             "file": "packages/react/src/styles.css",
-            "line": 660,
+            "line": 661,
             "via": "--stoa-color-text-muted"
           },
           {
@@ -6282,43 +6282,43 @@
           {
             "component": "LineChart",
             "file": "packages/react/src/styles.css",
-            "line": 944,
+            "line": 945,
             "via": "--stoa-color-text-muted"
           },
           {
             "component": "LineChart",
             "file": "packages/react/src/styles.css",
-            "line": 946,
+            "line": 947,
             "via": "--stoa-color-text-muted"
           },
           {
             "component": "LineChart",
             "file": "packages/react/src/styles.css",
-            "line": 951,
+            "line": 952,
             "via": "--stoa-color-text-muted"
           },
           {
             "component": "LineChart",
             "file": "packages/react/src/styles.css",
-            "line": 956,
+            "line": 957,
             "via": "--stoa-color-text-muted"
           },
           {
             "component": "LineChart",
             "file": "packages/react/src/styles.css",
-            "line": 962,
+            "line": 963,
             "via": "--stoa-color-text-muted"
           },
           {
             "component": "LineChart",
             "file": "packages/react/src/styles.css",
-            "line": 971,
+            "line": 972,
             "via": "--stoa-color-text-muted"
           },
           {
             "component": "LogView",
             "file": "packages/react/src/styles.css",
-            "line": 886,
+            "line": 887,
             "via": "--stoa-color-text-muted"
           },
           {
@@ -6354,13 +6354,13 @@
           {
             "component": "ReorderableList",
             "file": "packages/react/src/styles.css",
-            "line": 787,
+            "line": 788,
             "via": "--stoa-color-text-muted"
           },
           {
             "component": "ReorderableList",
             "file": "packages/react/src/styles.css",
-            "line": 803,
+            "line": 804,
             "via": "--stoa-color-text-muted"
           },
           {
@@ -6402,7 +6402,7 @@
           {
             "component": "StepList",
             "file": "packages/react/src/styles.css",
-            "line": 821,
+            "line": 822,
             "via": "--stoa-color-text-muted"
           },
           {
@@ -6432,7 +6432,7 @@
           {
             "component": "Tag",
             "file": "packages/react/src/styles.css",
-            "line": 501,
+            "line": 502,
             "via": "--stoa-color-text-muted"
           },
           {
@@ -6635,7 +6635,7 @@
           {
             "component": "(css) .stoa-code__scroll",
             "file": "packages/react/src/styles.css",
-            "line": 874,
+            "line": 875,
             "via": "--stoa-color-border"
           },
           {
@@ -6653,7 +6653,7 @@
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
-            "line": 488,
+            "line": 489,
             "via": "--stoa-color-border"
           },
           {
@@ -6665,7 +6665,7 @@
           {
             "component": "Checkbox",
             "file": "packages/react/src/styles.css",
-            "line": 578,
+            "line": 579,
             "via": "--stoa-color-border"
           },
           {
@@ -6677,19 +6677,19 @@
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 990,
+            "line": 991,
             "via": "--stoa-color-border"
           },
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1011,
+            "line": 1012,
             "via": "--stoa-color-border"
           },
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1089,
+            "line": 1090,
             "via": "--stoa-color-border"
           },
           {
@@ -6719,7 +6719,7 @@
           {
             "component": "LineChart",
             "file": "packages/react/src/styles.css",
-            "line": 947,
+            "line": 948,
             "via": "--stoa-color-border"
           },
           {
@@ -6737,7 +6737,7 @@
           {
             "component": "ReorderableList",
             "file": "packages/react/src/styles.css",
-            "line": 774,
+            "line": 775,
             "via": "--stoa-color-border"
           },
           {
@@ -6761,13 +6761,13 @@
           {
             "component": "Switch",
             "file": "packages/react/src/styles.css",
-            "line": 578,
+            "line": 579,
             "via": "--stoa-color-border"
           },
           {
             "component": "Switch",
             "file": "packages/react/src/styles.css",
-            "line": 580,
+            "line": 581,
             "via": "--stoa-color-border"
           },
           {
@@ -6932,19 +6932,19 @@
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
-            "line": 474,
+            "line": 475,
             "via": "--stoa-color-surface-hover"
           },
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
-            "line": 476,
+            "line": 477,
             "via": "--stoa-color-surface-hover"
           },
           {
             "component": "Checkbox",
             "file": "packages/react/src/styles.css",
-            "line": 604,
+            "line": 605,
             "via": "--stoa-color-surface-hover"
           },
           {
@@ -6962,19 +6962,19 @@
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1040,
+            "line": 1041,
             "via": "--stoa-color-surface-hover"
           },
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1082,
+            "line": 1083,
             "via": "--stoa-color-surface-hover"
           },
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1110,
+            "line": 1111,
             "via": "--stoa-color-surface-hover"
           },
           {
@@ -7022,7 +7022,7 @@
           {
             "component": "Switch",
             "file": "packages/react/src/styles.css",
-            "line": 560,
+            "line": 561,
             "via": "--stoa-color-surface-hover"
           },
           {
@@ -7142,25 +7142,25 @@
           {
             "component": "(css) .stoa-code__scroll",
             "file": "packages/react/src/styles.css",
-            "line": 873,
+            "line": 874,
             "via": "--stoa-color-text"
-          },
-          {
-            "component": "(css) .stoa-modal",
-            "file": "packages/react/src/styles.css",
-            "line": 681,
-            "via": "--stoa-color-surface"
           },
           {
             "component": "(css) .stoa-modal",
             "file": "packages/react/src/styles.css",
             "line": 682,
+            "via": "--stoa-color-surface"
+          },
+          {
+            "component": "(css) .stoa-modal",
+            "file": "packages/react/src/styles.css",
+            "line": 683,
             "via": "--stoa-color-text"
           },
           {
             "component": "(css) .stoa-step__track",
             "file": "packages/react/src/styles.css",
-            "line": 839,
+            "line": 840,
             "via": "--stoa-color-surface"
           },
           {
@@ -7232,19 +7232,13 @@
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
-            "line": 473,
+            "line": 474,
             "via": "--stoa-color-surface"
           },
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
-            "line": 476,
-            "via": "--stoa-color-text"
-          },
-          {
-            "component": "Button",
-            "file": "packages/react/src/styles.css",
-            "line": 479,
+            "line": 477,
             "via": "--stoa-color-text"
           },
           {
@@ -7256,13 +7250,19 @@
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
-            "line": 483,
+            "line": 481,
             "via": "--stoa-color-text"
           },
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
             "line": 484,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "Button",
+            "file": "packages/react/src/styles.css",
+            "line": 485,
             "via": "--stoa-color-text"
           },
           {
@@ -7280,13 +7280,13 @@
           {
             "component": "Checkbox",
             "file": "packages/react/src/styles.css",
-            "line": 541,
+            "line": 542,
             "via": "--stoa-color-text"
           },
           {
             "component": "Checkbox",
             "file": "packages/react/src/styles.css",
-            "line": 601,
+            "line": 602,
             "via": "--stoa-color-surface"
           },
           {
@@ -7340,43 +7340,43 @@
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 993,
-            "via": "--stoa-color-surface"
-          },
-          {
-            "component": "DataGrid",
-            "file": "packages/react/src/styles.css",
             "line": 994,
+            "via": "--stoa-color-surface"
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 995,
             "via": "--stoa-color-text"
           },
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1012,
+            "line": 1013,
             "via": "--stoa-color-surface"
           },
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1058,
+            "line": 1059,
             "via": "--stoa-color-surface"
           },
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1058,
+            "line": 1059,
             "via": "--stoa-color-text"
           },
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1066,
+            "line": 1067,
             "via": "--stoa-color-surface"
           },
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1088,
+            "line": 1089,
             "via": "--stoa-color-surface"
           },
           {
@@ -7400,13 +7400,13 @@
           {
             "component": "EventStrip",
             "file": "packages/react/src/styles.css",
-            "line": 967,
+            "line": 968,
             "via": "--stoa-color-text"
           },
           {
             "component": "EventStrip",
             "file": "packages/react/src/styles.css",
-            "line": 978,
+            "line": 979,
             "via": "--stoa-color-text"
           },
           {
@@ -7520,7 +7520,7 @@
           {
             "component": "Kbd",
             "file": "packages/react/src/styles.css",
-            "line": 655,
+            "line": 656,
             "via": "--stoa-color-text"
           },
           {
@@ -7538,7 +7538,7 @@
           {
             "component": "LineChart",
             "file": "packages/react/src/styles.css",
-            "line": 967,
+            "line": 968,
             "via": "--stoa-color-text"
           },
           {
@@ -7562,13 +7562,13 @@
           {
             "component": "PageShell",
             "file": "packages/react/src/styles.css",
-            "line": 451,
+            "line": 452,
             "via": "--stoa-color-surface"
           },
           {
             "component": "PageShell",
             "file": "packages/react/src/styles.css",
-            "line": 451,
+            "line": 452,
             "via": "--stoa-color-text"
           },
           {
@@ -7592,7 +7592,7 @@
           {
             "component": "ReorderableList",
             "file": "packages/react/src/styles.css",
-            "line": 773,
+            "line": 774,
             "via": "--stoa-color-surface"
           },
           {
@@ -7628,13 +7628,13 @@
           {
             "component": "Slider",
             "file": "packages/react/src/styles.css",
-            "line": 617,
+            "line": 618,
             "via": "--stoa-color-text"
           },
           {
             "component": "Slider",
             "file": "packages/react/src/styles.css",
-            "line": 624,
+            "line": 625,
             "via": "--stoa-color-surface"
           },
           {
@@ -7646,49 +7646,49 @@
           {
             "component": "Switch",
             "file": "packages/react/src/styles.css",
-            "line": 541,
+            "line": 542,
             "via": "--stoa-color-text"
           },
           {
             "component": "Switch",
             "file": "packages/react/src/styles.css",
-            "line": 549,
+            "line": 550,
             "via": "--stoa-color-surface"
           },
           {
             "component": "Switch",
             "file": "packages/react/src/styles.css",
-            "line": 563,
+            "line": 564,
             "via": "--stoa-color-text"
           },
           {
             "component": "Switch",
             "file": "packages/react/src/styles.css",
-            "line": 566,
+            "line": 567,
             "via": "--stoa-color-surface"
           },
           {
             "component": "Table",
             "file": "packages/react/src/styles.css",
-            "line": 915,
+            "line": 916,
             "via": "--stoa-color-text"
           },
           {
             "component": "Table",
             "file": "packages/react/src/styles.css",
-            "line": 919,
+            "line": 920,
             "via": "--stoa-color-text"
           },
           {
             "component": "Table",
             "file": "packages/react/src/styles.css",
-            "line": 927,
+            "line": 928,
             "via": "--stoa-color-surface"
           },
           {
             "component": "Table",
             "file": "packages/react/src/styles.css",
-            "line": 931,
+            "line": 932,
             "via": "--stoa-color-surface"
           },
           {
@@ -7706,13 +7706,13 @@
           {
             "component": "Tag",
             "file": "packages/react/src/styles.css",
-            "line": 506,
+            "line": 507,
             "via": "--stoa-color-text"
           },
           {
             "component": "Tag",
             "file": "packages/react/src/styles.css",
-            "line": 508,
+            "line": 509,
             "via": "--stoa-color-surface"
           },
           {
@@ -7922,19 +7922,13 @@
           {
             "component": "(css) .stoa-step__status--error",
             "file": "packages/react/src/styles.css",
-            "line": 827,
+            "line": 828,
             "via": "--stoa-color-down"
           },
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
-            "line": 473,
-            "via": "--stoa-color-down"
-          },
-          {
-            "component": "Button",
-            "file": "packages/react/src/styles.css",
-            "line": 479,
+            "line": 474,
             "via": "--stoa-color-down"
           },
           {
@@ -7946,13 +7940,19 @@
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
-            "line": 483,
+            "line": 481,
             "via": "--stoa-color-down"
           },
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
             "line": 484,
+            "via": "--stoa-color-down"
+          },
+          {
+            "component": "Button",
+            "file": "packages/react/src/styles.css",
+            "line": 485,
             "via": "--stoa-color-down"
           },
           {
@@ -7970,13 +7970,13 @@
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1062,
+            "line": 1063,
             "via": "--stoa-color-down"
           },
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1090,
+            "line": 1091,
             "via": "--stoa-color-down"
           },
           {
@@ -7994,13 +7994,13 @@
           {
             "component": "LineChart",
             "file": "packages/react/src/styles.css",
-            "line": 954,
+            "line": 955,
             "via": "--stoa-color-down"
           },
           {
             "component": "LineChart",
             "file": "packages/react/src/styles.css",
-            "line": 959,
+            "line": 960,
             "via": "--stoa-color-down"
           },
           {
@@ -8012,7 +8012,7 @@
           {
             "component": "Tag",
             "file": "packages/react/src/styles.css",
-            "line": 507,
+            "line": 508,
             "via": "--stoa-color-down"
           },
           {
@@ -8167,19 +8167,13 @@
           {
             "component": "(css) .stoa-step__status--error",
             "file": "packages/react/src/styles.css",
-            "line": 827,
+            "line": 828,
             "via": "--stoa-color-down"
           },
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
-            "line": 473,
-            "via": "--stoa-color-down"
-          },
-          {
-            "component": "Button",
-            "file": "packages/react/src/styles.css",
-            "line": 479,
+            "line": 474,
             "via": "--stoa-color-down"
           },
           {
@@ -8191,13 +8185,19 @@
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
-            "line": 483,
+            "line": 481,
             "via": "--stoa-color-down"
           },
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
             "line": 484,
+            "via": "--stoa-color-down"
+          },
+          {
+            "component": "Button",
+            "file": "packages/react/src/styles.css",
+            "line": 485,
             "via": "--stoa-color-down"
           },
           {
@@ -8215,13 +8215,13 @@
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1062,
+            "line": 1063,
             "via": "--stoa-color-down"
           },
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1090,
+            "line": 1091,
             "via": "--stoa-color-down"
           },
           {
@@ -8239,13 +8239,13 @@
           {
             "component": "LineChart",
             "file": "packages/react/src/styles.css",
-            "line": 954,
+            "line": 955,
             "via": "--stoa-color-down"
           },
           {
             "component": "LineChart",
             "file": "packages/react/src/styles.css",
-            "line": 959,
+            "line": 960,
             "via": "--stoa-color-down"
           },
           {
@@ -8257,7 +8257,7 @@
           {
             "component": "Tag",
             "file": "packages/react/src/styles.css",
-            "line": 507,
+            "line": 508,
             "via": "--stoa-color-down"
           },
           {
@@ -8539,12 +8539,12 @@
           {
             "component": "(css) .stoa-modal",
             "file": "packages/react/src/styles.css",
-            "line": 681
+            "line": 682
           },
           {
             "component": "(css) .stoa-step__track",
             "file": "packages/react/src/styles.css",
-            "line": 839
+            "line": 840
           },
           {
             "component": "AppHeader",
@@ -8564,7 +8564,7 @@
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
-            "line": 473
+            "line": 474
           },
           {
             "component": "Callout",
@@ -8574,7 +8574,7 @@
           {
             "component": "Checkbox",
             "file": "packages/react/src/styles.css",
-            "line": 601
+            "line": 602
           },
           {
             "component": "ChoiceGroup",
@@ -8589,27 +8589,27 @@
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 993
+            "line": 994
           },
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1012
+            "line": 1013
           },
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1058
+            "line": 1059
           },
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1066
+            "line": 1067
           },
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1088
+            "line": 1089
           },
           {
             "component": "FilterChip",
@@ -8651,7 +8651,7 @@
           {
             "component": "PageShell",
             "file": "packages/react/src/styles.css",
-            "line": 451
+            "line": 452
           },
           {
             "component": "Panel",
@@ -8666,7 +8666,7 @@
           {
             "component": "ReorderableList",
             "file": "packages/react/src/styles.css",
-            "line": 773
+            "line": 774
           },
           {
             "component": "Select",
@@ -8681,32 +8681,32 @@
           {
             "component": "Slider",
             "file": "packages/react/src/styles.css",
-            "line": 624
+            "line": 625
           },
           {
             "component": "Switch",
             "file": "packages/react/src/styles.css",
-            "line": 549
+            "line": 550
           },
           {
             "component": "Switch",
             "file": "packages/react/src/styles.css",
-            "line": 566
+            "line": 567
           },
           {
             "component": "Table",
             "file": "packages/react/src/styles.css",
-            "line": 927
+            "line": 928
           },
           {
             "component": "Table",
             "file": "packages/react/src/styles.css",
-            "line": 931
+            "line": 932
           },
           {
             "component": "Tag",
             "file": "packages/react/src/styles.css",
-            "line": 508
+            "line": 509
           },
           {
             "component": "TextField",
@@ -8876,17 +8876,17 @@
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
-            "line": 474
+            "line": 475
           },
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
-            "line": 476
+            "line": 477
           },
           {
             "component": "Checkbox",
             "file": "packages/react/src/styles.css",
-            "line": 604
+            "line": 605
           },
           {
             "component": "ChoiceGroup",
@@ -8901,17 +8901,17 @@
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1040
+            "line": 1041
           },
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1082
+            "line": 1083
           },
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1110
+            "line": 1111
           },
           {
             "component": "FilterChip",
@@ -8951,7 +8951,7 @@
           {
             "component": "Switch",
             "file": "packages/react/src/styles.css",
-            "line": 560
+            "line": 561
           },
           {
             "component": "Toggle",
@@ -9073,7 +9073,7 @@
           {
             "component": "(css) .stoa-code__scroll",
             "file": "packages/react/src/styles.css",
-            "line": 873
+            "line": 874
           },
           {
             "component": "Button",
@@ -9083,17 +9083,17 @@
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
-            "line": 471
+            "line": 472
           },
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
-            "line": 487
+            "line": 488
           },
           {
             "component": "Checkbox",
             "file": "packages/react/src/styles.css",
-            "line": 578
+            "line": 579
           },
           {
             "component": "ChoiceGroup",
@@ -9103,7 +9103,7 @@
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1029
+            "line": 1030
           },
           {
             "component": "FilterChip",
@@ -9118,7 +9118,7 @@
           {
             "component": "Kbd",
             "file": "packages/react/src/styles.css",
-            "line": 655
+            "line": 656
           },
           {
             "component": "Select",
@@ -9128,7 +9128,7 @@
           {
             "component": "Switch",
             "file": "packages/react/src/styles.css",
-            "line": 578
+            "line": 579
           },
           {
             "component": "Toggle",
@@ -9238,7 +9238,7 @@
           {
             "component": "(css) .stoa-step__status--done .stoa-step__symbol",
             "file": "packages/react/src/styles.css",
-            "line": 825,
+            "line": 826,
             "via": "--stoa-color-up"
           },
           {
@@ -9268,13 +9268,13 @@
           {
             "component": "LineChart",
             "file": "packages/react/src/styles.css",
-            "line": 953,
+            "line": 954,
             "via": "--stoa-color-up"
           },
           {
             "component": "LineChart",
             "file": "packages/react/src/styles.css",
-            "line": 958,
+            "line": 959,
             "via": "--stoa-color-up"
           },
           {
@@ -9286,7 +9286,7 @@
           {
             "component": "Tag",
             "file": "packages/react/src/styles.css",
-            "line": 505,
+            "line": 506,
             "via": "--stoa-color-up"
           },
           {
@@ -9416,7 +9416,7 @@
           {
             "component": "(css) .stoa-step__status--done .stoa-step__symbol",
             "file": "packages/react/src/styles.css",
-            "line": 825,
+            "line": 826,
             "via": "--stoa-color-up"
           },
           {
@@ -9446,13 +9446,13 @@
           {
             "component": "LineChart",
             "file": "packages/react/src/styles.css",
-            "line": 953,
+            "line": 954,
             "via": "--stoa-color-up"
           },
           {
             "component": "LineChart",
             "file": "packages/react/src/styles.css",
-            "line": 958,
+            "line": 959,
             "via": "--stoa-color-up"
           },
           {
@@ -9464,7 +9464,7 @@
           {
             "component": "Tag",
             "file": "packages/react/src/styles.css",
-            "line": 505,
+            "line": 506,
             "via": "--stoa-color-up"
           },
           {
@@ -9649,12 +9649,12 @@
           {
             "component": "(css) .stoa-code__scroll",
             "file": "packages/react/src/styles.css",
-            "line": 873
+            "line": 874
           },
           {
             "component": "(css) .stoa-modal",
             "file": "packages/react/src/styles.css",
-            "line": 682
+            "line": 683
           },
           {
             "component": "(css) body",
@@ -9699,12 +9699,7 @@
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
-            "line": 476
-          },
-          {
-            "component": "Button",
-            "file": "packages/react/src/styles.css",
-            "line": 479
+            "line": 477
           },
           {
             "component": "Button",
@@ -9714,12 +9709,17 @@
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
-            "line": 483
+            "line": 481
           },
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
             "line": 484
+          },
+          {
+            "component": "Button",
+            "file": "packages/react/src/styles.css",
+            "line": 485
           },
           {
             "component": "Callout",
@@ -9729,7 +9729,7 @@
           {
             "component": "Checkbox",
             "file": "packages/react/src/styles.css",
-            "line": 541
+            "line": 542
           },
           {
             "component": "ChoiceGroup",
@@ -9764,12 +9764,12 @@
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 994
+            "line": 995
           },
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1058
+            "line": 1059
           },
           {
             "component": "Disclosure",
@@ -9789,12 +9789,12 @@
           {
             "component": "EventStrip",
             "file": "packages/react/src/styles.css",
-            "line": 967
+            "line": 968
           },
           {
             "component": "EventStrip",
             "file": "packages/react/src/styles.css",
-            "line": 978
+            "line": 979
           },
           {
             "component": "FilterChip",
@@ -9865,7 +9865,7 @@
           {
             "component": "Kbd",
             "file": "packages/react/src/styles.css",
-            "line": 655
+            "line": 656
           },
           {
             "component": "Ladder",
@@ -9876,7 +9876,7 @@
           {
             "component": "LineChart",
             "file": "packages/react/src/styles.css",
-            "line": 967
+            "line": 968
           },
           {
             "component": "NumberField",
@@ -9891,7 +9891,7 @@
           {
             "component": "PageShell",
             "file": "packages/react/src/styles.css",
-            "line": 451
+            "line": 452
           },
           {
             "component": "ProgressBar",
@@ -9916,7 +9916,7 @@
           {
             "component": "Slider",
             "file": "packages/react/src/styles.css",
-            "line": 617
+            "line": 618
           },
           {
             "component": "StatusBadge",
@@ -9926,22 +9926,22 @@
           {
             "component": "Switch",
             "file": "packages/react/src/styles.css",
-            "line": 541
+            "line": 542
           },
           {
             "component": "Switch",
             "file": "packages/react/src/styles.css",
-            "line": 563
+            "line": 564
           },
           {
             "component": "Table",
             "file": "packages/react/src/styles.css",
-            "line": 915
+            "line": 916
           },
           {
             "component": "Table",
             "file": "packages/react/src/styles.css",
-            "line": 919
+            "line": 920
           },
           {
             "component": "Tabs",
@@ -9956,7 +9956,7 @@
           {
             "component": "Tag",
             "file": "packages/react/src/styles.css",
-            "line": 506
+            "line": 507
           },
           {
             "component": "TextField",
@@ -10136,52 +10136,52 @@
           {
             "component": "(css) .stoa-code__label",
             "file": "packages/react/src/styles.css",
-            "line": 858
+            "line": 859
           },
           {
             "component": "(css) .stoa-code__status",
             "file": "packages/react/src/styles.css",
-            "line": 859
+            "line": 860
           },
           {
             "component": "(css) .stoa-metric__basis",
             "file": "packages/react/src/styles.css",
-            "line": 896
+            "line": 897
           },
           {
             "component": "(css) .stoa-metric__label",
             "file": "packages/react/src/styles.css",
-            "line": 893
+            "line": 894
           },
           {
             "component": "(css) .stoa-metric__unit",
             "file": "packages/react/src/styles.css",
-            "line": 895
+            "line": 896
           },
           {
             "component": "(css) .stoa-shortcuts__title",
             "file": "packages/react/src/styles.css",
-            "line": 752
+            "line": 753
           },
           {
             "component": "(css) .stoa-step__explanation",
             "file": "packages/react/src/styles.css",
-            "line": 835
+            "line": 836
           },
           {
             "component": "(css) .stoa-step__number",
             "file": "packages/react/src/styles.css",
-            "line": 816
+            "line": 817
           },
           {
             "component": "(css) .stoa-step__status",
             "file": "packages/react/src/styles.css",
-            "line": 822
+            "line": 823
           },
           {
             "component": "(css) .stoa-step__value",
             "file": "packages/react/src/styles.css",
-            "line": 849
+            "line": 850
           },
           {
             "component": "AppHeader",
@@ -10206,17 +10206,17 @@
           {
             "component": "CodeView",
             "file": "packages/react/src/styles.css",
-            "line": 883
+            "line": 884
           },
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1030
+            "line": 1031
           },
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1106
+            "line": 1107
           },
           {
             "component": "Disclosure",
@@ -10231,17 +10231,17 @@
           {
             "component": "EventStrip",
             "file": "packages/react/src/styles.css",
-            "line": 946
+            "line": 947
           },
           {
             "component": "EventStrip",
             "file": "packages/react/src/styles.css",
-            "line": 962
+            "line": 963
           },
           {
             "component": "EventStrip",
             "file": "packages/react/src/styles.css",
-            "line": 975
+            "line": 976
           },
           {
             "component": "Heatmap",
@@ -10252,7 +10252,7 @@
           {
             "component": "Kbd",
             "file": "packages/react/src/styles.css",
-            "line": 660
+            "line": 661
           },
           {
             "component": "Ladder",
@@ -10263,37 +10263,37 @@
           {
             "component": "LineChart",
             "file": "packages/react/src/styles.css",
-            "line": 944
+            "line": 945
           },
           {
             "component": "LineChart",
             "file": "packages/react/src/styles.css",
-            "line": 946
+            "line": 947
           },
           {
             "component": "LineChart",
             "file": "packages/react/src/styles.css",
-            "line": 951
+            "line": 952
           },
           {
             "component": "LineChart",
             "file": "packages/react/src/styles.css",
-            "line": 956
+            "line": 957
           },
           {
             "component": "LineChart",
             "file": "packages/react/src/styles.css",
-            "line": 962
+            "line": 963
           },
           {
             "component": "LineChart",
             "file": "packages/react/src/styles.css",
-            "line": 971
+            "line": 972
           },
           {
             "component": "LogView",
             "file": "packages/react/src/styles.css",
-            "line": 886
+            "line": 887
           },
           {
             "component": "NumberField",
@@ -10323,12 +10323,12 @@
           {
             "component": "ReorderableList",
             "file": "packages/react/src/styles.css",
-            "line": 787
+            "line": 788
           },
           {
             "component": "ReorderableList",
             "file": "packages/react/src/styles.css",
-            "line": 803
+            "line": 804
           },
           {
             "component": "Select",
@@ -10363,7 +10363,7 @@
           {
             "component": "StepList",
             "file": "packages/react/src/styles.css",
-            "line": 821
+            "line": 822
           },
           {
             "component": "Switch",
@@ -10388,7 +10388,7 @@
           {
             "component": "Tag",
             "file": "packages/react/src/styles.css",
-            "line": 501
+            "line": 502
           },
           {
             "component": "TextField",
@@ -10538,7 +10538,7 @@
           {
             "component": "(css) .stoa-shortcuts__row[data-disabled] dd",
             "file": "packages/react/src/styles.css",
-            "line": 760
+            "line": 761
           },
           {
             "component": "Button",
@@ -10548,17 +10548,17 @@
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
-            "line": 489
+            "line": 490
           },
           {
             "component": "Checkbox",
             "file": "packages/react/src/styles.css",
-            "line": 575
+            "line": 576
           },
           {
             "component": "Checkbox",
             "file": "packages/react/src/styles.css",
-            "line": 607
+            "line": 608
           },
           {
             "component": "ChoiceGroup",
@@ -10583,12 +10583,12 @@
           {
             "component": "Slider",
             "file": "packages/react/src/styles.css",
-            "line": 626
+            "line": 627
           },
           {
             "component": "Switch",
             "file": "packages/react/src/styles.css",
-            "line": 575
+            "line": 576
           },
           {
             "component": "Toggle",
@@ -10700,7 +10700,7 @@
           {
             "component": "(css) .stoa-step__status--done .stoa-step__symbol",
             "file": "packages/react/src/styles.css",
-            "line": 825
+            "line": 826
           },
           {
             "component": "Callout",
@@ -10715,12 +10715,12 @@
           {
             "component": "LineChart",
             "file": "packages/react/src/styles.css",
-            "line": 953
+            "line": 954
           },
           {
             "component": "LineChart",
             "file": "packages/react/src/styles.css",
-            "line": 958
+            "line": 959
           },
           {
             "component": "StatusBadge",
@@ -10730,7 +10730,7 @@
           {
             "component": "Tag",
             "file": "packages/react/src/styles.css",
-            "line": 505
+            "line": 506
           },
           {
             "component": "ToastRegion",
@@ -10904,7 +10904,7 @@
           {
             "component": "(css) .stoa-step__status--awaiting .stoa-step__symbol",
             "file": "packages/react/src/styles.css",
-            "line": 826
+            "line": 827
           },
           {
             "component": "Callout",
@@ -10919,17 +10919,17 @@
           {
             "component": "EventStrip",
             "file": "packages/react/src/styles.css",
-            "line": 977
+            "line": 978
           },
           {
             "component": "LineChart",
             "file": "packages/react/src/styles.css",
-            "line": 952
+            "line": 953
           },
           {
             "component": "LineChart",
             "file": "packages/react/src/styles.css",
-            "line": 957
+            "line": 958
           },
           {
             "component": "StatusBadge",
@@ -10939,7 +10939,7 @@
           {
             "component": "Tag",
             "file": "packages/react/src/styles.css",
-            "line": 506
+            "line": 507
           },
           {
             "component": "ToastRegion",
@@ -11041,17 +11041,17 @@
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1009
+            "line": 1010
           },
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1053
+            "line": 1054
           },
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1056
+            "line": 1057
           },
           {
             "component": "Table",
@@ -11061,7 +11061,7 @@
           {
             "component": "Table",
             "file": "packages/react/src/styles.css",
-            "line": 913
+            "line": 914
           }
         ],
         "stories": [
@@ -11114,12 +11114,12 @@
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 995
+            "line": 996
           },
           {
             "component": "EventStrip",
             "file": "packages/react/src/styles.css",
-            "line": 962
+            "line": 963
           },
           {
             "component": "Heatmap",
@@ -11136,7 +11136,7 @@
           {
             "component": "LineChart",
             "file": "packages/react/src/styles.css",
-            "line": 962
+            "line": 963
           },
           {
             "component": "Table",
@@ -11205,22 +11205,22 @@
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 989
+            "line": 990
           },
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1002
+            "line": 1003
           },
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1102
+            "line": 1103
           },
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1108
+            "line": 1109
           },
           {
             "component": "Heatmap",
@@ -11287,7 +11287,7 @@
           {
             "component": "(css) .stoa-code__scroll:focus-visible",
             "file": "packages/react/src/styles.css",
-            "line": 878
+            "line": 879
           },
           {
             "component": "Button",
@@ -11297,7 +11297,7 @@
           {
             "component": "Checkbox",
             "file": "packages/react/src/styles.css",
-            "line": 573
+            "line": 574
           },
           {
             "component": "ChoiceGroup",
@@ -11322,17 +11322,17 @@
           {
             "component": "FilterChipGroup",
             "file": "packages/react/src/styles.css",
-            "line": 520
+            "line": 521
           },
           {
             "component": "PageShell",
             "file": "packages/react/src/styles.css",
-            "line": 457
+            "line": 458
           },
           {
             "component": "ReorderableList",
             "file": "packages/react/src/styles.css",
-            "line": 767
+            "line": 768
           },
           {
             "component": "Select",
@@ -11347,7 +11347,7 @@
           {
             "component": "Switch",
             "file": "packages/react/src/styles.css",
-            "line": 573
+            "line": 574
           },
           {
             "component": "Tabs",
@@ -11475,7 +11475,7 @@
           {
             "component": "(css) .stoa-code__scroll:focus-visible",
             "file": "packages/react/src/styles.css",
-            "line": 877
+            "line": 878
           },
           {
             "component": "Button",
@@ -11485,7 +11485,7 @@
           {
             "component": "Checkbox",
             "file": "packages/react/src/styles.css",
-            "line": 572
+            "line": 573
           },
           {
             "component": "ChoiceGroup",
@@ -11495,27 +11495,22 @@
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1023
-          },
-          {
-            "component": "DataGrid",
-            "file": "packages/react/src/styles.css",
             "line": 1024
           },
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1042
+            "line": 1025
           },
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1049
+            "line": 1043
           },
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1059
+            "line": 1050
           },
           {
             "component": "DataGrid",
@@ -11525,7 +11520,7 @@
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1074
+            "line": 1061
           },
           {
             "component": "DataGrid",
@@ -11535,7 +11530,12 @@
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1079
+            "line": 1076
+          },
+          {
+            "component": "DataGrid",
+            "file": "packages/react/src/styles.css",
+            "line": 1080
           },
           {
             "component": "Disclosure",
@@ -11555,7 +11555,7 @@
           {
             "component": "FilterChipGroup",
             "file": "packages/react/src/styles.css",
-            "line": 520
+            "line": 521
           },
           {
             "component": "NumberField",
@@ -11575,17 +11575,12 @@
           {
             "component": "PageShell",
             "file": "packages/react/src/styles.css",
-            "line": 456
+            "line": 457
           },
           {
             "component": "ReorderableList",
             "file": "packages/react/src/styles.css",
-            "line": 766
-          },
-          {
-            "component": "ReorderableList",
-            "file": "packages/react/src/styles.css",
-            "line": 779
+            "line": 767
           },
           {
             "component": "ReorderableList",
@@ -11595,12 +11590,17 @@
           {
             "component": "ReorderableList",
             "file": "packages/react/src/styles.css",
-            "line": 792
+            "line": 781
           },
           {
             "component": "ReorderableList",
             "file": "packages/react/src/styles.css",
             "line": 793
+          },
+          {
+            "component": "ReorderableList",
+            "file": "packages/react/src/styles.css",
+            "line": 794
           },
           {
             "component": "ScrollArea",
@@ -11630,17 +11630,17 @@
           {
             "component": "Switch",
             "file": "packages/react/src/styles.css",
-            "line": 572
-          },
-          {
-            "component": "Table",
-            "file": "packages/react/src/styles.css",
-            "line": 908
+            "line": 573
           },
           {
             "component": "Table",
             "file": "packages/react/src/styles.css",
             "line": 909
+          },
+          {
+            "component": "Table",
+            "file": "packages/react/src/styles.css",
+            "line": 910
           },
           {
             "component": "Tabs",
@@ -11791,37 +11791,37 @@
           {
             "component": "(css) .stoa-code__scroll",
             "file": "packages/react/src/styles.css",
-            "line": 870
+            "line": 871
           },
           {
             "component": "(css) .stoa-filter-chip__count",
             "file": "packages/react/src/styles.css",
-            "line": 527
+            "line": 528
           },
           {
             "component": "(css) .stoa-metric__number",
             "file": "packages/react/src/styles.css",
-            "line": 894
+            "line": 895
           },
           {
             "component": "(css) .stoa-step__number",
             "file": "packages/react/src/styles.css",
-            "line": 815
+            "line": 816
           },
           {
             "component": "(css) .stoa-step__value",
             "file": "packages/react/src/styles.css",
-            "line": 848
+            "line": 849
           },
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1019
+            "line": 1020
           },
           {
             "component": "EventStrip",
             "file": "packages/react/src/styles.css",
-            "line": 946
+            "line": 947
           },
           {
             "component": "Heatmap",
@@ -11832,7 +11832,7 @@
           {
             "component": "Kbd",
             "file": "packages/react/src/styles.css",
-            "line": 656
+            "line": 657
           },
           {
             "component": "Ladder",
@@ -11843,7 +11843,7 @@
           {
             "component": "LineChart",
             "file": "packages/react/src/styles.css",
-            "line": 946
+            "line": 947
           },
           {
             "component": "NumberField",
@@ -11863,7 +11863,7 @@
           {
             "component": "Slider",
             "file": "packages/react/src/styles.css",
-            "line": 617
+            "line": 618
           },
           {
             "component": "StatBar",
@@ -12015,7 +12015,7 @@
           {
             "component": "(css) .stoa-modal",
             "file": "packages/react/src/styles.css",
-            "line": 685
+            "line": 686
           },
           {
             "component": "(css) body",
@@ -12025,12 +12025,12 @@
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1069
+            "line": 1070
           },
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1091
+            "line": 1092
           },
           {
             "component": "Select",
@@ -12112,17 +12112,17 @@
           {
             "component": "(css) .stoa-code__scroll",
             "file": "packages/react/src/styles.css",
-            "line": 868
+            "line": 869
           },
           {
             "component": "(css) .stoa-code__scroll",
             "file": "packages/react/src/styles.css",
-            "line": 871
+            "line": 872
           },
           {
             "component": "AlertDialog",
             "file": "packages/react/src/styles.css",
-            "line": 710
+            "line": 711
           },
           {
             "component": "Callout",
@@ -12132,7 +12132,7 @@
           {
             "component": "Kbd",
             "file": "packages/react/src/styles.css",
-            "line": 657
+            "line": 658
           },
           {
             "component": "SkeletonLines",
@@ -12142,7 +12142,7 @@
           {
             "component": "Tag",
             "file": "packages/react/src/styles.css",
-            "line": 500
+            "line": 501
           },
           {
             "component": "ToastRegion",
@@ -12238,12 +12238,12 @@
           {
             "component": "(css) .stoa-dialog__close",
             "file": "packages/react/src/styles.css",
-            "line": 708
+            "line": 709
           },
           {
             "component": "AlertDialog",
             "file": "packages/react/src/styles.css",
-            "line": 703
+            "line": 704
           },
           {
             "component": "Callout",
@@ -12253,7 +12253,7 @@
           {
             "component": "ReorderableList",
             "file": "packages/react/src/styles.css",
-            "line": 800
+            "line": 801
           },
           {
             "component": "ToastRegion",
@@ -12350,7 +12350,7 @@
           {
             "component": "(css) .stoa-metric__basis",
             "file": "packages/react/src/styles.css",
-            "line": 896
+            "line": 897
           },
           {
             "component": "Checkbox",
@@ -12365,37 +12365,37 @@
           {
             "component": "EventStrip",
             "file": "packages/react/src/styles.css",
-            "line": 940
+            "line": 941
           },
           {
             "component": "EventStrip",
             "file": "packages/react/src/styles.css",
-            "line": 946
+            "line": 947
           },
           {
             "component": "Kbd",
             "file": "packages/react/src/styles.css",
-            "line": 656
+            "line": 657
           },
           {
             "component": "Kbd",
             "file": "packages/react/src/styles.css",
-            "line": 660
+            "line": 661
           },
           {
             "component": "LineChart",
             "file": "packages/react/src/styles.css",
-            "line": 940
+            "line": 941
           },
           {
             "component": "LineChart",
             "file": "packages/react/src/styles.css",
-            "line": 944
+            "line": 945
           },
           {
             "component": "LineChart",
             "file": "packages/react/src/styles.css",
-            "line": 946
+            "line": 947
           },
           {
             "component": "Slider",
@@ -12405,7 +12405,7 @@
           {
             "component": "Slider",
             "file": "packages/react/src/styles.css",
-            "line": 629
+            "line": 630
           },
           {
             "component": "StatBar",
@@ -12420,7 +12420,7 @@
           {
             "component": "Tag",
             "file": "packages/react/src/styles.css",
-            "line": 503
+            "line": 504
           },
           {
             "component": "TextField",
@@ -12598,7 +12598,7 @@
           {
             "component": "AlertDialog",
             "file": "packages/react/src/styles.css",
-            "line": 702
+            "line": 703
           },
           {
             "component": "EmptyState",
@@ -12672,17 +12672,17 @@
           {
             "component": "(css) .stoa-metric__unit",
             "file": "packages/react/src/styles.css",
-            "line": 895
+            "line": 896
           },
           {
             "component": "(css) .stoa-modal",
             "file": "packages/react/src/styles.css",
-            "line": 686
+            "line": 687
           },
           {
             "component": "(css) .stoa-step__explanation",
             "file": "packages/react/src/styles.css",
-            "line": 835
+            "line": 836
           },
           {
             "component": "AppHeader",
@@ -12702,7 +12702,7 @@
           {
             "component": "PageShell",
             "file": "packages/react/src/styles.css",
-            "line": 453
+            "line": 454
           },
           {
             "component": "Select",
@@ -12712,7 +12712,7 @@
           {
             "component": "Table",
             "file": "packages/react/src/styles.css",
-            "line": 914
+            "line": 915
           },
           {
             "component": "ToastRegion",
@@ -12805,7 +12805,7 @@
           {
             "component": "(css) .stoa-metric__number",
             "file": "packages/react/src/styles.css",
-            "line": 894
+            "line": 895
           }
         ],
         "stories": []
@@ -12834,47 +12834,47 @@
           {
             "component": "(css) .stoa-code__copy",
             "file": "packages/react/src/styles.css",
-            "line": 861
+            "line": 862
           },
           {
             "component": "(css) .stoa-code__label",
             "file": "packages/react/src/styles.css",
-            "line": 858
+            "line": 859
           },
           {
             "component": "(css) .stoa-code__scroll",
             "file": "packages/react/src/styles.css",
-            "line": 870
+            "line": 871
           },
           {
             "component": "(css) .stoa-code__status",
             "file": "packages/react/src/styles.css",
-            "line": 859
+            "line": 860
           },
           {
             "component": "(css) .stoa-metric__label",
             "file": "packages/react/src/styles.css",
-            "line": 893
+            "line": 894
           },
           {
             "component": "(css) .stoa-shortcuts__title",
             "file": "packages/react/src/styles.css",
-            "line": 751
+            "line": 752
           },
           {
             "component": "(css) .stoa-step__number",
             "file": "packages/react/src/styles.css",
-            "line": 815
+            "line": 816
           },
           {
             "component": "(css) .stoa-step__status",
             "file": "packages/react/src/styles.css",
-            "line": 822
+            "line": 823
           },
           {
             "component": "(css) .stoa-step__value",
             "file": "packages/react/src/styles.css",
-            "line": 848
+            "line": 849
           },
           {
             "component": "CheckboxGroup",
@@ -12889,7 +12889,7 @@
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1092
+            "line": 1093
           },
           {
             "component": "Disclosure",
@@ -12899,7 +12899,7 @@
           {
             "component": "EventStrip",
             "file": "packages/react/src/styles.css",
-            "line": 967
+            "line": 968
           },
           {
             "component": "FilterChip",
@@ -12909,7 +12909,7 @@
           {
             "component": "FilterChip",
             "file": "packages/react/src/styles.css",
-            "line": 529
+            "line": 530
           },
           {
             "component": "FilterChipGroup",
@@ -12919,17 +12919,17 @@
           {
             "component": "FilterChipGroup",
             "file": "packages/react/src/styles.css",
-            "line": 529
+            "line": 530
           },
           {
             "component": "LineChart",
             "file": "packages/react/src/styles.css",
-            "line": 967
+            "line": 968
           },
           {
             "component": "LineChart",
             "file": "packages/react/src/styles.css",
-            "line": 971
+            "line": 972
           },
           {
             "component": "NumberField",
@@ -12989,7 +12989,7 @@
           {
             "component": "Slider",
             "file": "packages/react/src/styles.css",
-            "line": 617
+            "line": 618
           },
           {
             "component": "StatusBadge",
@@ -12999,12 +12999,12 @@
           {
             "component": "Switch",
             "file": "packages/react/src/styles.css",
-            "line": 581
+            "line": 582
           },
           {
             "component": "Tag",
             "file": "packages/react/src/styles.css",
-            "line": 499
+            "line": 500
           },
           {
             "component": "TextField",
@@ -13139,22 +13139,22 @@
           {
             "component": "(css) .stoa-shortcuts__title",
             "file": "packages/react/src/styles.css",
-            "line": 751
+            "line": 752
           },
           {
             "component": "(css) .stoa-step__title",
             "file": "packages/react/src/styles.css",
-            "line": 820
+            "line": 821
           },
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1031
+            "line": 1032
           },
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1084
+            "line": 1085
           },
           {
             "component": "Disclosure",
@@ -13169,7 +13169,7 @@
           {
             "component": "Kbd",
             "file": "packages/react/src/styles.css",
-            "line": 656
+            "line": 657
           },
           {
             "component": "Panel",
@@ -13189,12 +13189,12 @@
           {
             "component": "Table",
             "file": "packages/react/src/styles.css",
-            "line": 914
+            "line": 915
           },
           {
             "component": "Tag",
             "file": "packages/react/src/styles.css",
-            "line": 499
+            "line": 500
           }
         ],
         "stories": [
@@ -13319,7 +13319,7 @@
           {
             "component": "StepList",
             "file": "packages/react/src/styles.css",
-            "line": 821
+            "line": 822
           },
           {
             "component": "Table",
@@ -13382,7 +13382,7 @@
           {
             "component": "AlertDialog",
             "file": "packages/react/src/styles.css",
-            "line": 702
+            "line": 703
           },
           {
             "component": "AppHeader",
@@ -13402,7 +13402,7 @@
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1048
+            "line": 1049
           },
           {
             "component": "ToastRegion",
@@ -13507,12 +13507,12 @@
           {
             "component": "(css) .stoa-overlay[data-entering]",
             "file": "packages/react/src/styles.css",
-            "line": 675
+            "line": 676
           },
           {
             "component": "(css) .stoa-step__fill",
             "file": "packages/react/src/styles.css",
-            "line": 844
+            "line": 845
           },
           {
             "component": "ProgressBar",
@@ -13601,12 +13601,12 @@
           {
             "component": "Switch",
             "file": "packages/react/src/styles.css",
-            "line": 550
+            "line": 551
           },
           {
             "component": "Switch",
             "file": "packages/react/src/styles.css",
-            "line": 558
+            "line": 559
           },
           {
             "component": "Toggle",
@@ -13711,7 +13711,7 @@
           {
             "component": "(css) /* A running step's symbol breathes in size, not in opacity, so its\n   contrast never drops; it stands still under reduced motion, which sets\n   the duration token to zero. */\n.stoa-step__status--running .stoa-step__symbol",
             "file": "packages/react/src/styles.css",
-            "line": 832
+            "line": 833
           },
           {
             "component": "ProgressBar",
@@ -13798,12 +13798,12 @@
           {
             "component": "(css) .stoa-sheet[data-entering]",
             "file": "packages/react/src/styles.css",
-            "line": 723
+            "line": 724
           },
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1111
+            "line": 1112
           }
         ],
         "stories": [
@@ -13838,12 +13838,12 @@
           {
             "component": "(css) .stoa-overlay[data-entering]",
             "file": "packages/react/src/styles.css",
-            "line": 675
+            "line": 676
           },
           {
             "component": "(css) .stoa-sheet[data-entering]",
             "file": "packages/react/src/styles.css",
-            "line": 723
+            "line": 724
           },
           {
             "component": "ToastRegion",
@@ -13920,12 +13920,12 @@
           {
             "component": "(css) .stoa-step__fill",
             "file": "packages/react/src/styles.css",
-            "line": 844
+            "line": 845
           },
           {
             "component": "(css) /* A running step's symbol breathes in size, not in opacity, so its\n   contrast never drops; it stands still under reduced motion, which sets\n   the duration token to zero. */\n.stoa-step__status--running .stoa-step__symbol",
             "file": "packages/react/src/styles.css",
-            "line": 832
+            "line": 833
           },
           {
             "component": "Button",
@@ -13940,7 +13940,7 @@
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1111
+            "line": 1112
           },
           {
             "component": "Disclosure",
@@ -13985,12 +13985,12 @@
           {
             "component": "Switch",
             "file": "packages/react/src/styles.css",
-            "line": 550
+            "line": 551
           },
           {
             "component": "Switch",
             "file": "packages/react/src/styles.css",
-            "line": 558
+            "line": 559
           },
           {
             "component": "Toggle",
@@ -14100,22 +14100,22 @@
           {
             "component": "(css) .stoa-step__number",
             "file": "packages/react/src/styles.css",
-            "line": 814
+            "line": 815
           },
           {
             "component": "(css) .stoa-step__track",
             "file": "packages/react/src/styles.css",
-            "line": 840
+            "line": 841
           },
           {
             "component": "FilterChip",
             "file": "packages/react/src/styles.css",
-            "line": 524
+            "line": 525
           },
           {
             "component": "FilterChipGroup",
             "file": "packages/react/src/styles.css",
-            "line": 524
+            "line": 525
           },
           {
             "component": "ProgressBar",
@@ -14135,17 +14135,17 @@
           {
             "component": "Slider",
             "file": "packages/react/src/styles.css",
-            "line": 622
+            "line": 623
           },
           {
             "component": "Switch",
             "file": "packages/react/src/styles.css",
-            "line": 548
+            "line": 549
           },
           {
             "component": "Switch",
             "file": "packages/react/src/styles.css",
-            "line": 556
+            "line": 557
           },
           {
             "component": "TimeSlider",
@@ -14231,17 +14231,17 @@
           {
             "component": "(css) .stoa-modal",
             "file": "packages/react/src/styles.css",
-            "line": 684
+            "line": 685
           },
           {
             "component": "(css) .stoa-sheet--auto",
             "file": "packages/react/src/styles.css",
-            "line": 741
+            "line": 742
           },
           {
             "component": "(css) .stoa-sheet--bottom",
             "file": "packages/react/src/styles.css",
-            "line": 732
+            "line": 733
           }
         ],
         "stories": []
@@ -14270,7 +14270,7 @@
           {
             "component": "(css) .stoa-code__scroll",
             "file": "packages/react/src/styles.css",
-            "line": 874
+            "line": 875
           },
           {
             "component": "Callout",
@@ -14280,7 +14280,7 @@
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 991
+            "line": 992
           },
           {
             "component": "Panel",
@@ -14290,12 +14290,12 @@
           {
             "component": "ReorderableList",
             "file": "packages/react/src/styles.css",
-            "line": 768
+            "line": 769
           },
           {
             "component": "ReorderableList",
             "file": "packages/react/src/styles.css",
-            "line": 775
+            "line": 776
           },
           {
             "component": "ToastRegion",
@@ -14431,27 +14431,27 @@
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
-            "line": 642
+            "line": 643
           },
           {
             "component": "Button",
             "file": "packages/react/src/styles.css",
-            "line": 645
+            "line": 646
           },
           {
             "component": "ButtonGroup",
             "file": "packages/react/src/styles.css",
-            "line": 642
+            "line": 643
           },
           {
             "component": "ButtonGroup",
             "file": "packages/react/src/styles.css",
-            "line": 645
+            "line": 646
           },
           {
             "component": "Checkbox",
             "file": "packages/react/src/styles.css",
-            "line": 600
+            "line": 601
           },
           {
             "component": "ChoiceGroup",
@@ -14471,27 +14471,27 @@
           {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
-            "line": 642
+            "line": 643
           },
           {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
-            "line": 645
+            "line": 646
           },
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1068
+            "line": 1069
           },
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1097
+            "line": 1098
           },
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1109
+            "line": 1110
           },
           {
             "component": "Disclosure",
@@ -14516,12 +14516,12 @@
           {
             "component": "FilterChip",
             "file": "packages/react/src/styles.css",
-            "line": 642
+            "line": 643
           },
           {
             "component": "FilterChip",
             "file": "packages/react/src/styles.css",
-            "line": 645
+            "line": 646
           },
           {
             "component": "FilterChipGroup",
@@ -14541,17 +14541,17 @@
           {
             "component": "FilterChipGroup",
             "file": "packages/react/src/styles.css",
-            "line": 642
+            "line": 643
           },
           {
             "component": "FilterChipGroup",
             "file": "packages/react/src/styles.css",
-            "line": 645
+            "line": 646
           },
           {
             "component": "Kbd",
             "file": "packages/react/src/styles.css",
-            "line": 654
+            "line": 655
           },
           {
             "component": "NumberField",
@@ -14561,12 +14561,12 @@
           {
             "component": "PageShell",
             "file": "packages/react/src/styles.css",
-            "line": 452
+            "line": 453
           },
           {
             "component": "ReorderableList",
             "file": "packages/react/src/styles.css",
-            "line": 788
+            "line": 789
           },
           {
             "component": "Select",
@@ -14581,12 +14581,12 @@
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 642
+            "line": 643
           },
           {
             "component": "Select",
             "file": "packages/react/src/styles.css",
-            "line": 645
+            "line": 646
           },
           {
             "component": "SkeletonBlock",
@@ -14606,7 +14606,7 @@
           {
             "component": "Tag",
             "file": "packages/react/src/styles.css",
-            "line": 498
+            "line": 499
           },
           {
             "component": "TextField",
@@ -14631,12 +14631,12 @@
           {
             "component": "Toggle",
             "file": "packages/react/src/styles.css",
-            "line": 642
+            "line": 643
           },
           {
             "component": "Toggle",
             "file": "packages/react/src/styles.css",
-            "line": 645
+            "line": 646
           }
         ],
         "stories": [
@@ -14768,22 +14768,17 @@
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1050
+            "line": 1051
           },
           {
             "component": "Kbd",
             "file": "packages/react/src/styles.css",
-            "line": 659
+            "line": 660
           },
           {
             "component": "Switch",
             "file": "packages/react/src/styles.css",
-            "line": 547
-          },
-          {
-            "component": "Switch",
-            "file": "packages/react/src/styles.css",
-            "line": 554
+            "line": 548
           },
           {
             "component": "Switch",
@@ -14793,22 +14788,27 @@
           {
             "component": "Switch",
             "file": "packages/react/src/styles.css",
-            "line": 567
+            "line": 556
           },
           {
             "component": "Switch",
             "file": "packages/react/src/styles.css",
-            "line": 586
+            "line": 568
           },
           {
             "component": "Switch",
             "file": "packages/react/src/styles.css",
-            "line": 588
+            "line": 587
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 589
           },
           {
             "component": "Tag",
             "file": "packages/react/src/styles.css",
-            "line": 503
+            "line": 504
           }
         ],
         "stories": [
@@ -14865,22 +14865,22 @@
           {
             "component": "(css) .stoa-code__copy",
             "file": "packages/react/src/styles.css",
-            "line": 863
+            "line": 864
           },
           {
             "component": "(css) .stoa-step__main",
             "file": "packages/react/src/styles.css",
-            "line": 818
+            "line": 819
           },
           {
             "component": "(css) .stoa-step__status",
             "file": "packages/react/src/styles.css",
-            "line": 822
+            "line": 823
           },
           {
             "component": "(css) /* LogView and CodeView: a label, the Copy button and its status, and a\n   scroll area as tall as `--code-lines` lines (set by the component). The\n   area is always left to right; its start is the left edge. */\n.stoa-code",
             "file": "packages/react/src/styles.css",
-            "line": 856
+            "line": 857
           },
           {
             "component": "Button",
@@ -14895,17 +14895,17 @@
           {
             "component": "Checkbox",
             "file": "packages/react/src/styles.css",
-            "line": 538
-          },
-          {
-            "component": "CheckboxGroup",
-            "file": "packages/react/src/styles.css",
-            "line": 608
+            "line": 539
           },
           {
             "component": "CheckboxGroup",
             "file": "packages/react/src/styles.css",
             "line": 609
+          },
+          {
+            "component": "CheckboxGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 610
           },
           {
             "component": "ChoiceGroup",
@@ -14920,22 +14920,22 @@
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1028
+            "line": 1029
           },
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1072
+            "line": 1073
           },
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1078
+            "line": 1079
           },
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1087
+            "line": 1088
           },
           {
             "component": "Disclosure",
@@ -14950,12 +14950,12 @@
           {
             "component": "EventStrip",
             "file": "packages/react/src/styles.css",
-            "line": 965
+            "line": 966
           },
           {
             "component": "EventStrip",
             "file": "packages/react/src/styles.css",
-            "line": 969
+            "line": 970
           },
           {
             "component": "FilterChip",
@@ -14970,12 +14970,12 @@
           {
             "component": "FilterChip",
             "file": "packages/react/src/styles.css",
-            "line": 523
+            "line": 524
           },
           {
             "component": "FilterChip",
             "file": "packages/react/src/styles.css",
-            "line": 531
+            "line": 532
           },
           {
             "component": "FilterChipGroup",
@@ -14990,47 +14990,47 @@
           {
             "component": "FilterChipGroup",
             "file": "packages/react/src/styles.css",
-            "line": 515
+            "line": 516
           },
           {
             "component": "FilterChipGroup",
             "file": "packages/react/src/styles.css",
-            "line": 523
+            "line": 524
           },
           {
             "component": "FilterChipGroup",
             "file": "packages/react/src/styles.css",
-            "line": 531
+            "line": 532
           },
           {
             "component": "Kbd",
             "file": "packages/react/src/styles.css",
-            "line": 653
+            "line": 654
           },
           {
             "component": "LineChart",
             "file": "packages/react/src/styles.css",
-            "line": 943
+            "line": 944
           },
           {
             "component": "LineChart",
             "file": "packages/react/src/styles.css",
-            "line": 965
+            "line": 966
           },
           {
             "component": "LineChart",
             "file": "packages/react/src/styles.css",
-            "line": 969
+            "line": 970
           },
           {
             "component": "LineChart",
             "file": "packages/react/src/styles.css",
-            "line": 971
+            "line": 972
           },
           {
             "component": "Metric",
             "file": "packages/react/src/styles.css",
-            "line": 891
+            "line": 892
           },
           {
             "component": "NumberField",
@@ -15050,7 +15050,7 @@
           {
             "component": "PageShell",
             "file": "packages/react/src/styles.css",
-            "line": 450
+            "line": 451
           },
           {
             "component": "ProgressBar",
@@ -15060,17 +15060,17 @@
           {
             "component": "ReorderableList",
             "file": "packages/react/src/styles.css",
-            "line": 764
+            "line": 765
           },
           {
             "component": "ReorderableList",
             "file": "packages/react/src/styles.css",
-            "line": 772
+            "line": 773
           },
           {
             "component": "ReorderableList",
             "file": "packages/react/src/styles.css",
-            "line": 796
+            "line": 797
           },
           {
             "component": "Select",
@@ -15100,12 +15100,12 @@
           {
             "component": "Slider",
             "file": "packages/react/src/styles.css",
-            "line": 615
+            "line": 616
           },
           {
             "component": "Slider",
             "file": "packages/react/src/styles.css",
-            "line": 621
+            "line": 622
           },
           {
             "component": "StatBar",
@@ -15120,12 +15120,7 @@
           {
             "component": "Switch",
             "file": "packages/react/src/styles.css",
-            "line": 538
-          },
-          {
-            "component": "Switch",
-            "file": "packages/react/src/styles.css",
-            "line": 545
+            "line": 539
           },
           {
             "component": "Switch",
@@ -15135,22 +15130,27 @@
           {
             "component": "Switch",
             "file": "packages/react/src/styles.css",
-            "line": 581
+            "line": 547
           },
           {
             "component": "Switch",
             "file": "packages/react/src/styles.css",
-            "line": 583
+            "line": 582
           },
           {
             "component": "Switch",
             "file": "packages/react/src/styles.css",
-            "line": 591
+            "line": 584
           },
           {
             "component": "Switch",
             "file": "packages/react/src/styles.css",
             "line": 592
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 593
           },
           {
             "component": "Tabs",
@@ -15160,12 +15160,12 @@
           {
             "component": "Tag",
             "file": "packages/react/src/styles.css",
-            "line": 496
+            "line": 497
           },
           {
             "component": "Tag",
             "file": "packages/react/src/styles.css",
-            "line": 497
+            "line": 498
           },
           {
             "component": "TextField",
@@ -15190,7 +15190,7 @@
           {
             "component": "ToolbarSeparator",
             "file": "packages/react/src/styles.css",
-            "line": 636
+            "line": 637
           }
         ],
         "stories": [
@@ -15307,17 +15307,17 @@
           {
             "component": "(css) .stoa-modal",
             "file": "packages/react/src/styles.css",
-            "line": 679
+            "line": 680
           },
           {
             "component": "(css) .stoa-modal--alert",
             "file": "packages/react/src/styles.css",
-            "line": 689
+            "line": 690
           },
           {
             "component": "(css) .stoa-sheet",
             "file": "packages/react/src/styles.css",
-            "line": 720
+            "line": 721
           },
           {
             "component": "ToastRegion",
@@ -15371,12 +15371,7 @@
           {
             "component": "(css) .stoa-code__bar",
             "file": "packages/react/src/styles.css",
-            "line": 857
-          },
-          {
-            "component": "(css) .stoa-code__scroll",
-            "file": "packages/react/src/styles.css",
-            "line": 867
+            "line": 858
           },
           {
             "component": "(css) .stoa-code__scroll",
@@ -15384,39 +15379,44 @@
             "line": 868
           },
           {
+            "component": "(css) .stoa-code__scroll",
+            "file": "packages/react/src/styles.css",
+            "line": 869
+          },
+          {
             "component": "(css) .stoa-shortcuts__list",
             "file": "packages/react/src/styles.css",
-            "line": 756
+            "line": 757
           },
           {
             "component": "(css) .stoa-shortcuts__title",
             "file": "packages/react/src/styles.css",
-            "line": 750
+            "line": 751
           },
           {
             "component": "(css) .stoa-step__actions",
             "file": "packages/react/src/styles.css",
-            "line": 851
+            "line": 852
           },
           {
             "component": "(css) .stoa-step__head",
             "file": "packages/react/src/styles.css",
-            "line": 819
+            "line": 820
           },
           {
             "component": "(css) .stoa-step__progress",
             "file": "packages/react/src/styles.css",
-            "line": 836
+            "line": 837
           },
           {
             "component": "(css) .stoa-step__track",
             "file": "packages/react/src/styles.css",
-            "line": 838
+            "line": 839
           },
           {
             "component": "AlertDialog",
             "file": "packages/react/src/styles.css",
-            "line": 713
+            "line": 714
           },
           {
             "component": "Button",
@@ -15441,12 +15441,12 @@
           {
             "component": "Checkbox",
             "file": "packages/react/src/styles.css",
-            "line": 540
+            "line": 541
           },
           {
             "component": "Checkbox",
             "file": "packages/react/src/styles.css",
-            "line": 593
+            "line": 594
           },
           {
             "component": "ChoiceGroup",
@@ -15456,12 +15456,12 @@
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1087
+            "line": 1088
           },
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1103
+            "line": 1104
           },
           {
             "component": "Disclosure",
@@ -15481,7 +15481,7 @@
           {
             "component": "EventStrip",
             "file": "packages/react/src/styles.css",
-            "line": 966
+            "line": 967
           },
           {
             "component": "FilterChip",
@@ -15491,7 +15491,7 @@
           {
             "component": "FilterChip",
             "file": "packages/react/src/styles.css",
-            "line": 531
+            "line": 532
           },
           {
             "component": "FilterChipGroup",
@@ -15501,17 +15501,17 @@
           {
             "component": "FilterChipGroup",
             "file": "packages/react/src/styles.css",
-            "line": 531
+            "line": 532
           },
           {
             "component": "LineChart",
             "file": "packages/react/src/styles.css",
-            "line": 966
+            "line": 967
           },
           {
             "component": "LineChart",
             "file": "packages/react/src/styles.css",
-            "line": 972
+            "line": 973
           },
           {
             "component": "NumberField",
@@ -15521,12 +15521,12 @@
           {
             "component": "PageShell",
             "file": "packages/react/src/styles.css",
-            "line": 449
+            "line": 450
           },
           {
             "component": "PageShell",
             "file": "packages/react/src/styles.css",
-            "line": 450
+            "line": 451
           },
           {
             "component": "Panel",
@@ -15546,17 +15546,17 @@
           {
             "component": "ReorderableList",
             "file": "packages/react/src/styles.css",
-            "line": 771
-          },
-          {
-            "component": "ReorderableList",
-            "file": "packages/react/src/styles.css",
             "line": 772
           },
           {
             "component": "ReorderableList",
             "file": "packages/react/src/styles.css",
-            "line": 803
+            "line": 773
+          },
+          {
+            "component": "ReorderableList",
+            "file": "packages/react/src/styles.css",
+            "line": 804
           },
           {
             "component": "Select",
@@ -15571,32 +15571,32 @@
           {
             "component": "StepList",
             "file": "packages/react/src/styles.css",
-            "line": 808
+            "line": 809
           },
           {
             "component": "Switch",
             "file": "packages/react/src/styles.css",
-            "line": 540
+            "line": 541
           },
           {
             "component": "Switch",
             "file": "packages/react/src/styles.css",
-            "line": 586
+            "line": 587
           },
           {
             "component": "Switch",
             "file": "packages/react/src/styles.css",
-            "line": 588
+            "line": 589
           },
           {
             "component": "Switch",
             "file": "packages/react/src/styles.css",
-            "line": 591
+            "line": 592
           },
           {
             "component": "Table",
             "file": "packages/react/src/styles.css",
-            "line": 913
+            "line": 914
           },
           {
             "component": "Tabs",
@@ -15631,7 +15631,7 @@
           {
             "component": "Toolbar",
             "file": "packages/react/src/styles.css",
-            "line": 634
+            "line": 635
           }
         ],
         "stories": [
@@ -15756,17 +15756,17 @@
           {
             "component": "(css) .stoa-code__scroll",
             "file": "packages/react/src/styles.css",
-            "line": 867
+            "line": 868
           },
           {
             "component": "AlertDialog",
             "file": "packages/react/src/styles.css",
-            "line": 695
+            "line": 696
           },
           {
             "component": "AlertDialog",
             "file": "packages/react/src/styles.css",
-            "line": 699
+            "line": 700
           },
           {
             "component": "AppHeader",
@@ -15791,27 +15791,27 @@
           {
             "component": "CodeView",
             "file": "packages/react/src/styles.css",
-            "line": 882
+            "line": 883
           },
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1078
+            "line": 1079
           },
           {
             "component": "DataGrid",
             "file": "packages/react/src/styles.css",
-            "line": 1104
+            "line": 1105
           },
           {
             "component": "FilterChip",
             "file": "packages/react/src/styles.css",
-            "line": 525
+            "line": 526
           },
           {
             "component": "FilterChipGroup",
             "file": "packages/react/src/styles.css",
-            "line": 525
+            "line": 526
           },
           {
             "component": "PageShell",
@@ -15836,17 +15836,12 @@
           {
             "component": "Slider",
             "file": "packages/react/src/styles.css",
-            "line": 616
+            "line": 617
           },
           {
             "component": "StepList",
             "file": "packages/react/src/styles.css",
-            "line": 809
-          },
-          {
-            "component": "Switch",
-            "file": "packages/react/src/styles.css",
-            "line": 554
+            "line": 810
           },
           {
             "component": "Switch",
@@ -15856,7 +15851,12 @@
           {
             "component": "Switch",
             "file": "packages/react/src/styles.css",
-            "line": 567
+            "line": 556
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 568
           },
           {
             "component": "Tabs",
@@ -15996,17 +15996,17 @@
           {
             "component": "(css) .stoa-shortcuts__list",
             "file": "packages/react/src/styles.css",
-            "line": 756
+            "line": 757
           },
           {
             "component": "(css) /* ==== Overlays, lists and content ==== */\n\n/* Overlays: Dialog, Sheet, AlertDialog. React Aria portals them to the end\n   of the document, so they take the document's tokens. The scrim mixes\n   the darkest neutral into transparency, which darkens the page in both\n   themes; there is no semantic scrim token yet. Widths are multiples of\n   the space scale, as there are no dimension tokens. The z-index lifts the\n   overlay over the raised options of a choice group. */\n.stoa-overlay",
             "file": "packages/react/src/styles.css",
-            "line": 672
+            "line": 673
           },
           {
             "component": "AlertDialog",
             "file": "packages/react/src/styles.css",
-            "line": 696
+            "line": 697
           },
           {
             "component": "AppHeader",
@@ -16021,12 +16021,12 @@
           {
             "component": "Checkbox",
             "file": "packages/react/src/styles.css",
-            "line": 593
+            "line": 594
           },
           {
             "component": "Checkbox",
             "file": "packages/react/src/styles.css",
-            "line": 599
+            "line": 600
           },
           {
             "component": "EmptyState",
@@ -16036,12 +16036,12 @@
           {
             "component": "EventStrip",
             "file": "packages/react/src/styles.css",
-            "line": 965
+            "line": 966
           },
           {
             "component": "LineChart",
             "file": "packages/react/src/styles.css",
-            "line": 965
+            "line": 966
           },
           {
             "component": "PageShell",
@@ -16056,7 +16056,7 @@
           {
             "component": "ShortcutList",
             "file": "packages/react/src/styles.css",
-            "line": 748
+            "line": 749
           },
           {
             "component": "StatBar",
@@ -16066,12 +16066,12 @@
           {
             "component": "Switch",
             "file": "packages/react/src/styles.css",
-            "line": 546
+            "line": 547
           },
           {
             "component": "Switch",
             "file": "packages/react/src/styles.css",
-            "line": 584
+            "line": 585
           },
           {
             "component": "Tabs",
@@ -16203,22 +16203,22 @@
           {
             "component": "(css) .stoa-code__copy",
             "file": "packages/react/src/styles.css",
-            "line": 862
+            "line": 863
           },
           {
             "component": "(css) .stoa-dialog__close",
             "file": "packages/react/src/styles.css",
-            "line": 707
+            "line": 708
           },
           {
             "component": "(css) .stoa-step__head",
             "file": "packages/react/src/styles.css",
-            "line": 819
+            "line": 820
           },
           {
             "component": "(css) .stoa-step__number",
             "file": "packages/react/src/styles.css",
-            "line": 813
+            "line": 814
           },
           {
             "component": "Callout",
@@ -16228,7 +16228,7 @@
           {
             "component": "Checkbox",
             "file": "packages/react/src/styles.css",
-            "line": 541
+            "line": 542
           },
           {
             "component": "ChoiceGroup",
@@ -16243,7 +16243,7 @@
           {
             "component": "FilterChip",
             "file": "packages/react/src/styles.css",
-            "line": 530
+            "line": 531
           },
           {
             "component": "FilterChipGroup",
@@ -16253,7 +16253,7 @@
           {
             "component": "FilterChipGroup",
             "file": "packages/react/src/styles.css",
-            "line": 530
+            "line": 531
           },
           {
             "component": "NumberField",
@@ -16263,12 +16263,12 @@
           {
             "component": "ReorderableList",
             "file": "packages/react/src/styles.css",
-            "line": 786
+            "line": 787
           },
           {
             "component": "ReorderableList",
             "file": "packages/react/src/styles.css",
-            "line": 799
+            "line": 800
           },
           {
             "component": "Select",
@@ -16278,22 +16278,22 @@
           {
             "component": "Slider",
             "file": "packages/react/src/styles.css",
-            "line": 618
+            "line": 619
           },
           {
             "component": "Switch",
             "file": "packages/react/src/styles.css",
-            "line": 541
+            "line": 542
           },
           {
             "component": "Switch",
             "file": "packages/react/src/styles.css",
-            "line": 583
+            "line": 584
           },
           {
             "component": "Switch",
             "file": "packages/react/src/styles.css",
-            "line": 592
+            "line": 593
           },
           {
             "component": "ToastRegion",
@@ -16411,12 +16411,12 @@
           {
             "component": "Switch",
             "file": "packages/react/src/styles.css",
-            "line": 545
+            "line": 546
           },
           {
             "component": "Switch",
             "file": "packages/react/src/styles.css",
-            "line": 591
+            "line": 592
           }
         ],
         "stories": [
