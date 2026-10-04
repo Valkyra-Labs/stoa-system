@@ -44,6 +44,8 @@ export type StoaMessages = {
   toneNegative: string;
   /** The name of a button that closes a callout or a toast. */
   dismiss: string;
+  /** The name of the region that holds the toasts. */
+  notifications: string;
 };
 
 const EN: StoaMessages = {
@@ -71,6 +73,7 @@ const EN: StoaMessages = {
   toneWarning: "Warning",
   toneNegative: "Error",
   dismiss: "Dismiss",
+  notifications: "Notifications",
 };
 
 const AR: StoaMessages = {
@@ -98,6 +101,7 @@ const AR: StoaMessages = {
   toneWarning: "تحذير",
   toneNegative: "خطأ",
   dismiss: "إغلاق",
+  notifications: "الإشعارات",
 };
 
 /** Stoa's words for a locale: Arabic for any "ar" tag, English otherwise. */

@@ -357,9 +357,41 @@
 .stoa-empty-state__description { margin: 0; font-size: var(--stoa-font-size-sm); color: var(--stoa-color-text-muted); }
 .stoa-empty-state__action { margin-block-start: var(--stoa-space-2); }
 
-/* The start border of a callout in the tone's colour. After the
-   callout's rules, whose `border` shorthand would reset the colour. */
-.stoa-callout--info { border-inline-start-color: var(--stoa-color-accent); }
-.stoa-callout--positive { border-inline-start-color: var(--stoa-color-up); }
-.stoa-callout--warning { border-inline-start-color: var(--stoa-color-warning); }
-.stoa-callout--negative { border-inline-start-color: var(--stoa-color-down); }
+/* Toasts: a column at the end corner of the viewport, newest first. The
+   region is portalled to the body, so it takes the document's tokens. */
+.stoa-toast-region {
+  position: fixed; z-index: 100;
+  inset-block-end: var(--stoa-space-4); inset-inline-end: var(--stoa-space-4);
+  display: flex; flex-direction: column; gap: var(--stoa-space-2);
+  max-inline-size: calc(100% - 2 * var(--stoa-space-4));
+  font-family: var(--stoa-font-family-sans);
+  outline: none;
+}
+.stoa-toast-region[data-focus-visible] {
+  outline: var(--stoa-focus-width) solid var(--stoa-color-focus);
+  outline-offset: var(--stoa-focus-offset);
+}
+.stoa-toast {
+  display: flex; align-items: center; gap: var(--stoa-space-2);
+  inline-size: calc(var(--stoa-space-12) * 8); max-inline-size: 100%;
+  padding: var(--stoa-space-2) var(--stoa-space-3);
+  background: var(--stoa-color-surface); color: var(--stoa-color-text);
+  border: 1px solid var(--stoa-color-border-strong); border-inline-start-width: var(--stoa-space-1);
+  border-radius: var(--stoa-radius-md);
+  font-size: var(--stoa-font-size-sm); line-height: var(--stoa-font-line-height-normal);
+  animation: stoa-toast-in var(--stoa-motion-duration-base) var(--stoa-motion-easing-enter);
+}
+.stoa-toast[data-focus-visible] {
+  outline: var(--stoa-focus-width) solid var(--stoa-color-focus);
+  outline-offset: var(--stoa-focus-offset);
+}
+.stoa-toast__text { flex: 1; min-inline-size: 0; }
+.stoa-toast__action { flex: none; }
+@keyframes stoa-toast-in { from { opacity: 0; } }
+
+/* The start border of a callout or a toast in the tone's colour. After both
+   components' rules, whose `border` shorthand would reset the colour. */
+.stoa-callout--info, .stoa-toast--info { border-inline-start-color: var(--stoa-color-accent); }
+.stoa-callout--positive, .stoa-toast--positive { border-inline-start-color: var(--stoa-color-up); }
+.stoa-callout--warning, .stoa-toast--warning { border-inline-start-color: var(--stoa-color-warning); }
+.stoa-callout--negative, .stoa-toast--negative { border-inline-start-color: var(--stoa-color-down); }
