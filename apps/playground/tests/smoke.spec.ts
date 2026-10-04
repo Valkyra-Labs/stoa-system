@@ -121,7 +121,9 @@ test("the replay slider scrubs the heatmap back, and its end is live again", asy
   expect(await value()).toBe(replayed);
 
   await page.keyboard.press("End");
-  await expect.poll(async () => (await value()) === (await live())).toBe(true);
+  // The value and the live end read together, in one call: read one after
+  // the other, the stream can move between the two reads on a slow machine.
+  await expect.poll(() => slider.evaluate((el: HTMLInputElement) => el.value === el.max)).toBe(true);
 });
 
 test("a frame switches its screen to Arabic words and digits, and back", async ({ page }) => {
