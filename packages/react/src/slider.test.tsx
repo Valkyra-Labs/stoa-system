@@ -100,6 +100,8 @@ describe("Slider", () => {
     );
     const input = screen.getByRole("slider", { name: "العمق" });
     expect(document.querySelector(".stoa-range__output")?.textContent).toBe("٢٠");
+    // The fill is laid out in the direction React Aria places the thumb by.
+    expect(document.querySelector(".stoa-range__track")?.getAttribute("dir")).toBe("rtl");
     act(() => input.focus());
     fireEvent.keyDown(input, { key: "ArrowLeft" });
     expect(onValue).toHaveBeenLastCalledWith(21);

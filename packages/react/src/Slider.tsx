@@ -1,5 +1,5 @@
 import { useId, useLayoutEffect, useRef, type ReactNode } from "react";
-import { Label, Slider as AriaSlider, SliderOutput, SliderThumb, SliderTrack } from "react-aria-components";
+import { Label, Slider as AriaSlider, SliderOutput, SliderThumb, SliderTrack, useLocale } from "react-aria-components";
 import type { ControlSize } from "./Controls";
 
 export type SliderProps = {
@@ -45,6 +45,7 @@ export function Slider({
 }: SliderProps) {
   const input = useRef<HTMLInputElement>(null);
   const hintId = useId();
+  const { direction } = useLocale();
   useLayoutEffect(() => {
     if (format) input.current?.setAttribute("aria-valuetext", format(value));
   });
@@ -66,7 +67,11 @@ export function Slider({
           {({ state }) => (format ? format(state.getThumbValue(0)) : state.getThumbValueLabel(0))}
         </SliderOutput>
       </div>
-      <SliderTrack className="stoa-slider__track stoa-range__track">
+      {/* React Aria places the thumb by the locale's direction, not the
+          page's. The track takes the locale's direction too, so the fill
+          (placed by logical properties against the track) meets the thumb
+          even where the page and the locale disagree. */}
+      <SliderTrack className="stoa-slider__track stoa-range__track" dir={direction}>
         {({ state }) => (
           <>
             <span className="stoa-range__fill" style={{ inlineSize: `${state.getThumbPercent(0) * 100}%` }} />
