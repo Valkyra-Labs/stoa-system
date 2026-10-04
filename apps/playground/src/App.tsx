@@ -4,7 +4,8 @@
 // override is shown as one. The area panels (src/panels.tsx) sit in the
 // same list and contribute variables and content to every preview frame.
 import { Fragment, useCallback, useEffect, useMemo, useState } from "react";
-import { Button, ChoiceGroup, Panel, StatusBadge, Tabs, TextField } from "@valkyra-labs/stoa-react";
+import { AppHeader, Button, ChoiceGroup, Panel, StatusBadge, Tabs, TextField } from "@valkyra-labs/stoa-react";
+import { useChromeTheme, type ChromeTheme } from "./chromeTheme";
 import { ControlPanel } from "./ControlPanel";
 import { OverrideList } from "./OverrideList";
 import { PreviewGrid } from "./PreviewGrid";
@@ -48,6 +49,7 @@ const SPEEDS = [
 
 export function App() {
   const [history, setHistory] = useState(emptyHistory);
+  const [chromeTheme, setChromeTheme] = useChromeTheme();
   const [density, setDensity] = useState<DensityMode>("regular");
   const [running, setRunning] = useState(true);
   const [speed, setSpeed] = useState("1");
@@ -328,45 +330,59 @@ export function App() {
   ];
 
   return (
-    <div className="pg-app">
-      <aside className="pg-side">
-        <header className="pg-side__header">
-          <h1>Stoa playground</h1>
-        </header>
+    <div className="pg-page">
+      <AppHeader
+        title="Stoa playground"
+        subtitle="stoa-default, light and dark, against two dense screens"
+        actions={
+          <ChoiceGroup<ChromeTheme>
+            label="Playground theme"
+            size="small"
+            value={chromeTheme}
+            onChange={setChromeTheme}
+            choices={[
+              { id: "light", label: "Light" },
+              { id: "dark", label: "Dark" },
+            ]}
+          />
+        }
+      />
+      <div className="pg-app">
+        <aside className="pg-side">
+          {panels
+            .filter((panel) => panel.id === "session")
+            .map((panel) => (
+              <Panel key={panel.id} title={panel.title}>
+                {panel.content}
+              </Panel>
+            ))}
 
-        {panels
-          .filter((panel) => panel.id === "session")
-          .map((panel) => (
-            <Panel key={panel.id} title={panel.title}>
-              {panel.content}
-            </Panel>
-          ))}
+          <Tabs
+            label="Playground panels"
+            keepMounted
+            selected={sideTab}
+            onChange={setSideTab}
+            items={panels
+              .filter((panel) => panel.id !== "session")
+              .map((panel) => ({
+                id: panel.id,
+                label: "tab" in panel && typeof panel.tab === "string" ? panel.tab : panel.title,
+                content: <Panel title={panel.title}>{panel.content}</Panel>,
+              }))}
+          />
+        </aside>
 
-        <Tabs
-          label="Playground panels"
-          keepMounted
-          selected={sideTab}
-          onChange={setSideTab}
-          items={panels
-            .filter((panel) => panel.id !== "session")
-            .map((panel) => ({
-              id: panel.id,
-              label: "tab" in panel && typeof panel.tab === "string" ? panel.tab : panel.title,
-              content: <Panel title={panel.title}>{panel.content}</Panel>,
-            }))}
-        />
-      </aside>
-
-      <main className="pg-main">
-        <PreviewGrid
-          stream={stream}
-          tokens={tokens}
-          revision={revision}
-          onRenderTime={setRenderMs}
-          panelVariables={panelVariables}
-          panelContent={panelContent}
-        />
-      </main>
+        <main className="pg-main">
+          <PreviewGrid
+            stream={stream}
+            tokens={tokens}
+            revision={revision}
+            onRenderTime={setRenderMs}
+            panelVariables={panelVariables}
+            panelContent={panelContent}
+          />
+        </main>
+      </div>
     </div>
   );
 }
