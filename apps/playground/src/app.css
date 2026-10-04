@@ -1,22 +1,8 @@
 /* The playground's own chrome. It uses Stoa's tokens from the document
    root; the preview frames get their own values on their container, so
-   nothing here changes when a token is edited. */
-
-/* Every scrollbar in the tool alike: thin, a light neutral thumb on the
-   page background. The colour is its own, not border-strong: the
-   boundary of a control has to reach 3:1, a scrollbar of the tool's own
-   chrome does not, and it should stay quiet. Set on every box rather
-   than inherited, with an opaque track, so the page's scrollbar and the
-   side panel's are drawn the same. */
-:root {
-  --pg-scrollbar-thumb: var(--stoa-color-neutral-300);
-}
-
-:root,
-:root * {
-  scrollbar-color: var(--pg-scrollbar-thumb) var(--stoa-color-bg);
-  scrollbar-width: thin;
-}
+   nothing here changes when a token is edited. Scrollbars are Stoa's
+   own (styles.css): thin, in the scrollbar tokens of the box's theme, so
+   a dark frame draws a dark one. */
 
 body {
   margin: 0;
@@ -43,16 +29,31 @@ code {
   grid-template-columns: clamp(360px, 25vw, 480px) minmax(0, 1fr);
   align-items: start;
   gap: var(--stoa-space-4);
-  padding: var(--stoa-space-4);
 }
 
+/* PageShell's scrolling region is not a containing block, so an
+   absolutely positioned box inside it with no positioned ancestor of its
+   own (Stoa's visually hidden text, the tooltips' rule lists) is laid out
+   against the shell and not clipped by the region: the document grows by
+   the page's height and scrolls behind the header. Positioning the region
+   keeps those boxes inside it. Reported as a PageShell gap; until Stoa
+   decides, the playground sets it here. */
+.stoa-page-shell__scroll {
+  position: relative;
+}
+
+/* The page scrolls in PageShell's region under the header, and the side
+   panel sticks inside that region: its block size is the region's
+   (measured into --pg-region, src/region.ts) less the main region's
+   padding above and below it. Before the first measurement it falls back
+   to the window's height. */
 .pg-side {
   min-inline-size: 0;
   position: sticky;
   inset-block-start: var(--stoa-space-4);
   display: grid;
   gap: var(--stoa-space-3);
-  max-block-size: calc(100vh - var(--stoa-space-8));
+  max-block-size: calc(var(--pg-region, 100dvh) - var(--stoa-space-8));
   overflow-y: auto;
   /* The scrollbar keeps its own lane and a gap from the panels, whether
      or not the content is long enough to scroll. */

@@ -3,9 +3,10 @@
 // of this working tree; on top of it sits the override layer, and every
 // override is shown as one. The area panels (src/panels.tsx) sit in the
 // same list and contribute variables and content to every preview frame.
-import { Fragment, useCallback, useEffect, useMemo, useState } from "react";
-import { AppHeader, Button, ChoiceGroup, Panel, StatusBadge, Tabs, TextField } from "@valkyra-labs/stoa-react";
+import { Fragment, useCallback, useEffect, useMemo, useState, type CSSProperties } from "react";
+import { AppHeader, Button, ChoiceGroup, PageShell, Panel, StatusBadge, Tabs, TextField } from "@valkyra-labs/stoa-react";
 import { useChromeTheme, type ChromeTheme } from "./chromeTheme";
+import { useRegionBlockSize } from "./region";
 import { ControlPanel } from "./ControlPanel";
 import { OverrideList } from "./OverrideList";
 import { PreviewGrid } from "./PreviewGrid";
@@ -71,6 +72,13 @@ export function App() {
   const [highlighted, setHighlighted] = useState<string[]>([]);
   /** What each area panel contributes, by panel id. */
   const [contributions, setContributions] = useState<Record<string, Contribution>>({});
+
+  // The side panel is sized against the shell's scrolling region, not the
+  // window: the header takes part of the window's height.
+  const [app, regionBlockSize] = useRegionBlockSize();
+  const regionStyle = (regionBlockSize > 0 ? { "--pg-region": `${regionBlockSize}px` } : undefined) as
+    | CSSProperties
+    | undefined;
 
   const overrides = history.present;
   const stream = useMemo(() => createStream(7), []);
@@ -330,25 +338,30 @@ export function App() {
   ];
 
   return (
-    <div className="pg-page">
-      <AppHeader
-        title="Stoa playground"
-        subtitle="Dense components on stoa-default"
-        actions={
-          <ChoiceGroup<ChromeTheme>
-            label="Playground theme"
-            size="small"
-            value={chromeTheme}
-            onChange={setChromeTheme}
-            choices={[
-              { id: "system", label: "System" },
-              { id: "light", label: "Light" },
-              { id: "dark", label: "Dark" },
-            ]}
-          />
-        }
-      />
-      <div className="pg-app">
+    // The header stays at the top of the window; the page scrolls in the
+    // shell's region under it, whose scrollbar lane is reserved.
+    <PageShell
+      header={
+        <AppHeader
+          title="Stoa playground"
+          subtitle="Dense components on stoa-default"
+          actions={
+            <ChoiceGroup<ChromeTheme>
+              label="Playground theme"
+              size="small"
+              value={chromeTheme}
+              onChange={setChromeTheme}
+              choices={[
+                { id: "system", label: "System" },
+                { id: "light", label: "Light" },
+                { id: "dark", label: "Dark" },
+              ]}
+            />
+          }
+        />
+      }
+    >
+      <div className="pg-app" ref={app} style={regionStyle}>
         <aside className="pg-side">
           {panels
             .filter((panel) => panel.id === "session")
@@ -373,7 +386,7 @@ export function App() {
           />
         </aside>
 
-        <main className="pg-main">
+        <div className="pg-main">
           <PreviewGrid
             stream={stream}
             tokens={tokens}
@@ -382,8 +395,8 @@ export function App() {
             panelVariables={panelVariables}
             panelContent={panelContent}
           />
-        </main>
+        </div>
       </div>
-    </div>
+    </PageShell>
   );
 }
