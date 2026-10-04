@@ -67,6 +67,11 @@
             "line": 88
           },
           {
+            "component": "EventStrip",
+            "file": "packages/react/src/styles.css",
+            "line": 337
+          },
+          {
             "component": "Heatmap",
             "file": "packages/react/src/Heatmap.tsx",
             "line": 35,
@@ -77,6 +82,16 @@
             "file": "packages/react/src/Ladder.tsx",
             "line": 35,
             "via": "readCanvasTokens"
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 311
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 316
           },
           {
             "component": "Select",
@@ -128,6 +143,15 @@
           "Controls/Playback > Trades",
           "Controls/Playback > TradesEmpty",
           "Controls/Playback > Transport",
+          "Data/Charts > LineDataTable",
+          "Data/Charts > LineEmpty",
+          "Data/Charts > LineFromZero",
+          "Data/Charts > LineScenarios",
+          "Data/Charts > LineTimeFollowsLocale",
+          "Data/Charts > StripCouponsOnly",
+          "Data/Charts > StripEmpty",
+          "Data/Charts > StripPayments",
+          "Data/Charts > StripTimeFollowsLocale",
           "Data/Heatmap > Empty",
           "Data/Heatmap > Liquidity",
           "Data/Heatmap > Sparse",
@@ -163,6 +187,24 @@
       "readBy": {
         "components": [
           {
+            "component": "EventStrip",
+            "file": "packages/react/src/styles.css",
+            "line": 338,
+            "via": "--stoa-color-warning"
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 313,
+            "via": "--stoa-color-warning"
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 318,
+            "via": "--stoa-color-warning"
+          },
+          {
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
             "line": 237,
@@ -173,6 +215,15 @@
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Data/Charts > LineDataTable",
+          "Data/Charts > LineEmpty",
+          "Data/Charts > LineFromZero",
+          "Data/Charts > LineScenarios",
+          "Data/Charts > LineTimeFollowsLocale",
+          "Data/Charts > StripCouponsOnly",
+          "Data/Charts > StripEmpty",
+          "Data/Charts > StripPayments",
+          "Data/Charts > StripTimeFollowsLocale",
           "Layout/Panel > Header",
           "Layout/Panel > Sections",
           "Layout/Panel > Titled"
@@ -202,6 +253,24 @@
       "readBy": {
         "components": [
           {
+            "component": "EventStrip",
+            "file": "packages/react/src/styles.css",
+            "line": 338,
+            "via": "--stoa-color-warning"
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 313,
+            "via": "--stoa-color-warning"
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 318,
+            "via": "--stoa-color-warning"
+          },
+          {
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
             "line": 237,
@@ -212,6 +281,15 @@
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Data/Charts > LineDataTable",
+          "Data/Charts > LineEmpty",
+          "Data/Charts > LineFromZero",
+          "Data/Charts > LineScenarios",
+          "Data/Charts > LineTimeFollowsLocale",
+          "Data/Charts > StripCouponsOnly",
+          "Data/Charts > StripEmpty",
+          "Data/Charts > StripPayments",
+          "Data/Charts > StripTimeFollowsLocale",
           "Layout/Panel > Header",
           "Layout/Panel > Sections",
           "Layout/Panel > Titled"
@@ -459,6 +537,12 @@
             "via": "--stoa-color-focus"
           },
           {
+            "component": "EventStrip",
+            "file": "packages/react/src/styles.css",
+            "line": 337,
+            "via": "--stoa-color-accent"
+          },
+          {
             "component": "Heatmap",
             "file": "packages/react/src/Heatmap.tsx",
             "line": 35,
@@ -468,6 +552,18 @@
             "component": "Ladder",
             "file": "packages/react/src/Ladder.tsx",
             "line": 35,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 311,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 316,
             "via": "--stoa-color-accent"
           },
           {
@@ -492,6 +588,12 @@
             "component": "Select",
             "file": "packages/react/src/styles.css",
             "line": 160,
+            "via": "--stoa-color-focus"
+          },
+          {
+            "component": "Table",
+            "file": "packages/react/src/styles.css",
+            "line": 269,
             "via": "--stoa-color-focus"
           },
           {
@@ -576,6 +678,15 @@
           "Controls/Playback > Trades",
           "Controls/Playback > TradesEmpty",
           "Controls/Playback > Transport",
+          "Data/Charts > LineDataTable",
+          "Data/Charts > LineEmpty",
+          "Data/Charts > LineFromZero",
+          "Data/Charts > LineScenarios",
+          "Data/Charts > LineTimeFollowsLocale",
+          "Data/Charts > StripCouponsOnly",
+          "Data/Charts > StripEmpty",
+          "Data/Charts > StripPayments",
+          "Data/Charts > StripTimeFollowsLocale",
           "Data/Heatmap > Empty",
           "Data/Heatmap > Liquidity",
           "Data/Heatmap > Sparse",
@@ -583,6 +694,14 @@
           "Data/Ladder > Live",
           "Data/Ladder > Static",
           "Data/Ladder > TwoThemes",
+          "Data/Table > Basic",
+          "Data/Table > Compact",
+          "Data/Table > Empty",
+          "Data/Table > HiddenCaption",
+          "Data/Table > RowHeaders",
+          "Data/Table > StickyFirstColumn",
+          "Data/Table > StickyHeader",
+          "Data/Table > Trades",
           "Foundations/Colour > SemanticColours",
           "Layout/Panel > Header",
           "Layout/Panel > Sections",
@@ -650,6 +769,12 @@
             "via": "--stoa-color-focus"
           },
           {
+            "component": "Table",
+            "file": "packages/react/src/styles.css",
+            "line": 269,
+            "via": "--stoa-color-focus"
+          },
+          {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
             "line": 250,
@@ -689,6 +814,14 @@
           "Controls/Playback > Trades",
           "Controls/Playback > TradesEmpty",
           "Controls/Playback > Transport",
+          "Data/Table > Basic",
+          "Data/Table > Compact",
+          "Data/Table > Empty",
+          "Data/Table > HiddenCaption",
+          "Data/Table > RowHeaders",
+          "Data/Table > StickyFirstColumn",
+          "Data/Table > StickyHeader",
+          "Data/Table > Trades",
           "Foundations/Colour > SemanticColours",
           "Layout/Panel > Header",
           "Layout/Panel > Sections",
@@ -779,6 +912,12 @@
             "via": "--stoa-color-accent"
           },
           {
+            "component": "EventStrip",
+            "file": "packages/react/src/styles.css",
+            "line": 337,
+            "via": "--stoa-color-accent"
+          },
+          {
             "component": "Heatmap",
             "file": "packages/react/src/Heatmap.tsx",
             "line": 35,
@@ -788,6 +927,18 @@
             "component": "Ladder",
             "file": "packages/react/src/Ladder.tsx",
             "line": 35,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 311,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 316,
             "via": "--stoa-color-accent"
           },
           {
@@ -848,6 +999,15 @@
           "Controls/Playback > Trades",
           "Controls/Playback > TradesEmpty",
           "Controls/Playback > Transport",
+          "Data/Charts > LineDataTable",
+          "Data/Charts > LineEmpty",
+          "Data/Charts > LineFromZero",
+          "Data/Charts > LineScenarios",
+          "Data/Charts > LineTimeFollowsLocale",
+          "Data/Charts > StripCouponsOnly",
+          "Data/Charts > StripEmpty",
+          "Data/Charts > StripPayments",
+          "Data/Charts > StripTimeFollowsLocale",
           "Data/Heatmap > Empty",
           "Data/Heatmap > Liquidity",
           "Data/Heatmap > Sparse",
@@ -919,6 +1079,11 @@
             "via": "readCanvasTokens"
           },
           {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 308
+          },
+          {
             "component": "Panel",
             "file": "packages/react/src/styles.css",
             "line": 11
@@ -929,6 +1094,11 @@
             "line": 95
           },
           {
+            "component": "Table",
+            "file": "packages/react/src/styles.css",
+            "line": 50
+          },
+          {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
             "line": 242
@@ -937,11 +1107,6 @@
             "component": "Toggle",
             "file": "packages/react/src/styles.css",
             "line": 95
-          },
-          {
-            "component": "TradeTable",
-            "file": "packages/react/src/styles.css",
-            "line": 50
           }
         ],
         "stories": [
@@ -953,6 +1118,15 @@
           "Controls/Playback > Trades",
           "Controls/Playback > TradesEmpty",
           "Controls/Playback > Transport",
+          "Data/Charts > LineDataTable",
+          "Data/Charts > LineEmpty",
+          "Data/Charts > LineFromZero",
+          "Data/Charts > LineScenarios",
+          "Data/Charts > LineTimeFollowsLocale",
+          "Data/Charts > StripCouponsOnly",
+          "Data/Charts > StripEmpty",
+          "Data/Charts > StripPayments",
+          "Data/Charts > StripTimeFollowsLocale",
           "Data/Heatmap > Empty",
           "Data/Heatmap > Liquidity",
           "Data/Heatmap > Sparse",
@@ -960,6 +1134,14 @@
           "Data/Ladder > Live",
           "Data/Ladder > Static",
           "Data/Ladder > TwoThemes",
+          "Data/Table > Basic",
+          "Data/Table > Compact",
+          "Data/Table > Empty",
+          "Data/Table > HiddenCaption",
+          "Data/Table > RowHeaders",
+          "Data/Table > StickyFirstColumn",
+          "Data/Table > StickyHeader",
+          "Data/Table > Trades",
           "Layout/Panel > Header",
           "Layout/Panel > Sections",
           "Layout/Panel > Titled"
@@ -1004,6 +1186,16 @@
             "line": 63
           },
           {
+            "component": "EventStrip",
+            "file": "packages/react/src/styles.css",
+            "line": 309
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 309
+          },
+          {
             "component": "NumberField",
             "file": "packages/react/src/styles.css",
             "line": 227
@@ -1043,6 +1235,15 @@
           "Controls/Playback > Trades",
           "Controls/Playback > TradesEmpty",
           "Controls/Playback > Transport",
+          "Data/Charts > LineDataTable",
+          "Data/Charts > LineEmpty",
+          "Data/Charts > LineFromZero",
+          "Data/Charts > LineScenarios",
+          "Data/Charts > LineTimeFollowsLocale",
+          "Data/Charts > StripCouponsOnly",
+          "Data/Charts > StripEmpty",
+          "Data/Charts > StripPayments",
+          "Data/Charts > StripTimeFollowsLocale",
           "Layout/Panel > Header",
           "Layout/Panel > Sections",
           "Layout/Panel > Titled"
@@ -1077,6 +1278,16 @@
       "readBy": {
         "components": [
           {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 315
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 320
+          },
+          {
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
             "line": 235
@@ -1096,6 +1307,23 @@
           "Controls/Playback > Trades",
           "Controls/Playback > TradesEmpty",
           "Controls/Playback > Transport",
+          "Data/Charts > LineDataTable",
+          "Data/Charts > LineEmpty",
+          "Data/Charts > LineFromZero",
+          "Data/Charts > LineScenarios",
+          "Data/Charts > LineTimeFollowsLocale",
+          "Data/Charts > StripCouponsOnly",
+          "Data/Charts > StripEmpty",
+          "Data/Charts > StripPayments",
+          "Data/Charts > StripTimeFollowsLocale",
+          "Data/Table > Basic",
+          "Data/Table > Compact",
+          "Data/Table > Empty",
+          "Data/Table > HiddenCaption",
+          "Data/Table > RowHeaders",
+          "Data/Table > StickyFirstColumn",
+          "Data/Table > StickyHeader",
+          "Data/Table > Trades",
           "Foundations/Colour > SemanticColours",
           "Layout/Panel > Header",
           "Layout/Panel > Sections",
@@ -1212,6 +1440,11 @@
             "line": 160
           },
           {
+            "component": "Table",
+            "file": "packages/react/src/styles.css",
+            "line": 269
+          },
+          {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
             "line": 250
@@ -1246,6 +1479,14 @@
           "Controls/Playback > Trades",
           "Controls/Playback > TradesEmpty",
           "Controls/Playback > Transport",
+          "Data/Table > Basic",
+          "Data/Table > Compact",
+          "Data/Table > Empty",
+          "Data/Table > HiddenCaption",
+          "Data/Table > RowHeaders",
+          "Data/Table > StickyFirstColumn",
+          "Data/Table > StickyHeader",
+          "Data/Table > Trades",
           "Foundations/Colour > SemanticColours",
           "Layout/Panel > Header",
           "Layout/Panel > Sections",
@@ -1340,6 +1581,18 @@
             "via": "--stoa-color-surface"
           },
           {
+            "component": "Table",
+            "file": "packages/react/src/styles.css",
+            "line": 288,
+            "via": "--stoa-color-surface"
+          },
+          {
+            "component": "Table",
+            "file": "packages/react/src/styles.css",
+            "line": 292,
+            "via": "--stoa-color-surface"
+          },
+          {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
             "line": 228,
@@ -1367,6 +1620,15 @@
           "Controls/Playback > Trades",
           "Controls/Playback > TradesEmpty",
           "Controls/Playback > Transport",
+          "Data/Charts > LineDataTable",
+          "Data/Charts > LineEmpty",
+          "Data/Charts > LineFromZero",
+          "Data/Charts > LineScenarios",
+          "Data/Charts > LineTimeFollowsLocale",
+          "Data/Charts > StripCouponsOnly",
+          "Data/Charts > StripEmpty",
+          "Data/Charts > StripPayments",
+          "Data/Charts > StripTimeFollowsLocale",
           "Data/Heatmap > Empty",
           "Data/Heatmap > Liquidity",
           "Data/Heatmap > Sparse",
@@ -1374,6 +1636,14 @@
           "Data/Ladder > Live",
           "Data/Ladder > Static",
           "Data/Ladder > TwoThemes",
+          "Data/Table > Basic",
+          "Data/Table > Compact",
+          "Data/Table > Empty",
+          "Data/Table > HiddenCaption",
+          "Data/Table > RowHeaders",
+          "Data/Table > StickyFirstColumn",
+          "Data/Table > StickyHeader",
+          "Data/Table > Trades",
           "Foundations/Colour > SemanticColours",
           "Layout/Panel > Header",
           "Layout/Panel > Sections",
@@ -1512,6 +1782,18 @@
             "via": "--stoa-color-text"
           },
           {
+            "component": "EventStrip",
+            "file": "packages/react/src/styles.css",
+            "line": 328,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "EventStrip",
+            "file": "packages/react/src/styles.css",
+            "line": 339,
+            "via": "--stoa-color-text"
+          },
+          {
             "component": "Heatmap",
             "file": "packages/react/src/Heatmap.tsx",
             "line": 28,
@@ -1521,6 +1803,12 @@
             "component": "Ladder",
             "file": "packages/react/src/Ladder.tsx",
             "line": 28,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 328,
             "via": "--stoa-color-text"
           },
           {
@@ -1557,6 +1845,18 @@
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
             "line": 236,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "Table",
+            "file": "packages/react/src/styles.css",
+            "line": 276,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "Table",
+            "file": "packages/react/src/styles.css",
+            "line": 280,
             "via": "--stoa-color-text"
           },
           {
@@ -1629,6 +1929,15 @@
           "Controls/Playback > Trades",
           "Controls/Playback > TradesEmpty",
           "Controls/Playback > Transport",
+          "Data/Charts > LineDataTable",
+          "Data/Charts > LineEmpty",
+          "Data/Charts > LineFromZero",
+          "Data/Charts > LineScenarios",
+          "Data/Charts > LineTimeFollowsLocale",
+          "Data/Charts > StripCouponsOnly",
+          "Data/Charts > StripEmpty",
+          "Data/Charts > StripPayments",
+          "Data/Charts > StripTimeFollowsLocale",
           "Data/Heatmap > Empty",
           "Data/Heatmap > Liquidity",
           "Data/Heatmap > Sparse",
@@ -1636,6 +1945,14 @@
           "Data/Ladder > Live",
           "Data/Ladder > Static",
           "Data/Ladder > TwoThemes",
+          "Data/Table > Basic",
+          "Data/Table > Compact",
+          "Data/Table > Empty",
+          "Data/Table > HiddenCaption",
+          "Data/Table > RowHeaders",
+          "Data/Table > StickyFirstColumn",
+          "Data/Table > StickyHeader",
+          "Data/Table > Trades",
           "Foundations/Colour > SemanticColours",
           "Layout/Panel > Header",
           "Layout/Panel > Sections",
@@ -1819,6 +2136,12 @@
             "via": "--stoa-color-border"
           },
           {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 308,
+            "via": "--stoa-color-border"
+          },
+          {
             "component": "Panel",
             "file": "packages/react/src/styles.css",
             "line": 11,
@@ -1828,6 +2151,12 @@
             "component": "Select",
             "file": "packages/react/src/styles.css",
             "line": 95,
+            "via": "--stoa-color-border"
+          },
+          {
+            "component": "Table",
+            "file": "packages/react/src/styles.css",
+            "line": 50,
             "via": "--stoa-color-border"
           },
           {
@@ -1841,12 +2170,6 @@
             "file": "packages/react/src/styles.css",
             "line": 95,
             "via": "--stoa-color-border"
-          },
-          {
-            "component": "TradeTable",
-            "file": "packages/react/src/styles.css",
-            "line": 50,
-            "via": "--stoa-color-border"
           }
         ],
         "stories": [
@@ -1858,6 +2181,15 @@
           "Controls/Playback > Trades",
           "Controls/Playback > TradesEmpty",
           "Controls/Playback > Transport",
+          "Data/Charts > LineDataTable",
+          "Data/Charts > LineEmpty",
+          "Data/Charts > LineFromZero",
+          "Data/Charts > LineScenarios",
+          "Data/Charts > LineTimeFollowsLocale",
+          "Data/Charts > StripCouponsOnly",
+          "Data/Charts > StripEmpty",
+          "Data/Charts > StripPayments",
+          "Data/Charts > StripTimeFollowsLocale",
           "Data/Heatmap > Empty",
           "Data/Heatmap > Liquidity",
           "Data/Heatmap > Sparse",
@@ -1865,6 +2197,14 @@
           "Data/Ladder > Live",
           "Data/Ladder > Static",
           "Data/Ladder > TwoThemes",
+          "Data/Table > Basic",
+          "Data/Table > Compact",
+          "Data/Table > Empty",
+          "Data/Table > HiddenCaption",
+          "Data/Table > RowHeaders",
+          "Data/Table > StickyFirstColumn",
+          "Data/Table > StickyHeader",
+          "Data/Table > Trades",
           "Layout/Panel > Header",
           "Layout/Panel > Sections",
           "Layout/Panel > Titled"
@@ -1929,6 +2269,24 @@
             "via": "--stoa-color-text-muted"
           },
           {
+            "component": "EventStrip",
+            "file": "packages/react/src/styles.css",
+            "line": 307,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "EventStrip",
+            "file": "packages/react/src/styles.css",
+            "line": 323,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "EventStrip",
+            "file": "packages/react/src/styles.css",
+            "line": 336,
+            "via": "--stoa-color-text-muted"
+          },
+          {
             "component": "Heatmap",
             "file": "packages/react/src/Heatmap.tsx",
             "line": 29,
@@ -1938,6 +2296,42 @@
             "component": "Ladder",
             "file": "packages/react/src/Ladder.tsx",
             "line": 29,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 305,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 307,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 312,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 317,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 323,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 332,
             "via": "--stoa-color-text-muted"
           },
           {
@@ -1983,6 +2377,18 @@
             "via": "--stoa-color-text-muted"
           },
           {
+            "component": "Table",
+            "file": "packages/react/src/styles.css",
+            "line": 50,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "Table",
+            "file": "packages/react/src/styles.css",
+            "line": 55,
+            "via": "--stoa-color-text-muted"
+          },
+          {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
             "line": 245,
@@ -1999,18 +2405,6 @@
             "file": "packages/react/src/styles.css",
             "line": 231,
             "via": "--stoa-color-text-muted"
-          },
-          {
-            "component": "TradeTable",
-            "file": "packages/react/src/styles.css",
-            "line": 50,
-            "via": "--stoa-color-text-muted"
-          },
-          {
-            "component": "TradeTable",
-            "file": "packages/react/src/styles.css",
-            "line": 55,
-            "via": "--stoa-color-text-muted"
           }
         ],
         "stories": [
@@ -2022,6 +2416,15 @@
           "Controls/Playback > Trades",
           "Controls/Playback > TradesEmpty",
           "Controls/Playback > Transport",
+          "Data/Charts > LineDataTable",
+          "Data/Charts > LineEmpty",
+          "Data/Charts > LineFromZero",
+          "Data/Charts > LineScenarios",
+          "Data/Charts > LineTimeFollowsLocale",
+          "Data/Charts > StripCouponsOnly",
+          "Data/Charts > StripEmpty",
+          "Data/Charts > StripPayments",
+          "Data/Charts > StripTimeFollowsLocale",
           "Data/Heatmap > Empty",
           "Data/Heatmap > Liquidity",
           "Data/Heatmap > Sparse",
@@ -2029,6 +2432,14 @@
           "Data/Ladder > Live",
           "Data/Ladder > Static",
           "Data/Ladder > TwoThemes",
+          "Data/Table > Basic",
+          "Data/Table > Compact",
+          "Data/Table > Empty",
+          "Data/Table > HiddenCaption",
+          "Data/Table > RowHeaders",
+          "Data/Table > StickyFirstColumn",
+          "Data/Table > StickyHeader",
+          "Data/Table > Trades",
           "Foundations/Colour > SemanticColours",
           "Layout/Panel > Header",
           "Layout/Panel > Sections",
@@ -2081,6 +2492,18 @@
             "file": "packages/react/src/styles.css",
             "line": 96,
             "via": "--stoa-color-text-subtle"
+          },
+          {
+            "component": "EventStrip",
+            "file": "packages/react/src/styles.css",
+            "line": 309,
+            "via": "--stoa-color-border-strong"
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 309,
+            "via": "--stoa-color-border-strong"
           },
           {
             "component": "NumberField",
@@ -2140,6 +2563,15 @@
           "Controls/Playback > Trades",
           "Controls/Playback > TradesEmpty",
           "Controls/Playback > Transport",
+          "Data/Charts > LineDataTable",
+          "Data/Charts > LineEmpty",
+          "Data/Charts > LineFromZero",
+          "Data/Charts > LineScenarios",
+          "Data/Charts > LineTimeFollowsLocale",
+          "Data/Charts > StripCouponsOnly",
+          "Data/Charts > StripEmpty",
+          "Data/Charts > StripPayments",
+          "Data/Charts > StripTimeFollowsLocale",
           "Layout/Panel > Header",
           "Layout/Panel > Sections",
           "Layout/Panel > Titled"
@@ -2227,6 +2659,18 @@
             "via": "--stoa-color-text-subtle"
           },
           {
+            "component": "EventStrip",
+            "file": "packages/react/src/styles.css",
+            "line": 309,
+            "via": "--stoa-color-border-strong"
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 309,
+            "via": "--stoa-color-border-strong"
+          },
+          {
             "component": "NumberField",
             "file": "packages/react/src/styles.css",
             "line": 227,
@@ -2284,6 +2728,15 @@
           "Controls/Playback > Trades",
           "Controls/Playback > TradesEmpty",
           "Controls/Playback > Transport",
+          "Data/Charts > LineDataTable",
+          "Data/Charts > LineEmpty",
+          "Data/Charts > LineFromZero",
+          "Data/Charts > LineScenarios",
+          "Data/Charts > LineTimeFollowsLocale",
+          "Data/Charts > StripCouponsOnly",
+          "Data/Charts > StripEmpty",
+          "Data/Charts > StripPayments",
+          "Data/Charts > StripTimeFollowsLocale",
           "Layout/Panel > Header",
           "Layout/Panel > Sections",
           "Layout/Panel > Titled"
@@ -2327,6 +2780,24 @@
             "via": "--stoa-color-text-muted"
           },
           {
+            "component": "EventStrip",
+            "file": "packages/react/src/styles.css",
+            "line": 307,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "EventStrip",
+            "file": "packages/react/src/styles.css",
+            "line": 323,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "EventStrip",
+            "file": "packages/react/src/styles.css",
+            "line": 336,
+            "via": "--stoa-color-text-muted"
+          },
+          {
             "component": "Heatmap",
             "file": "packages/react/src/Heatmap.tsx",
             "line": 29,
@@ -2336,6 +2807,42 @@
             "component": "Ladder",
             "file": "packages/react/src/Ladder.tsx",
             "line": 29,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 305,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 307,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 312,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 317,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 323,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 332,
             "via": "--stoa-color-text-muted"
           },
           {
@@ -2381,6 +2888,18 @@
             "via": "--stoa-color-text-muted"
           },
           {
+            "component": "Table",
+            "file": "packages/react/src/styles.css",
+            "line": 50,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "Table",
+            "file": "packages/react/src/styles.css",
+            "line": 55,
+            "via": "--stoa-color-text-muted"
+          },
+          {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
             "line": 245,
@@ -2397,18 +2916,6 @@
             "file": "packages/react/src/styles.css",
             "line": 231,
             "via": "--stoa-color-text-muted"
-          },
-          {
-            "component": "TradeTable",
-            "file": "packages/react/src/styles.css",
-            "line": 50,
-            "via": "--stoa-color-text-muted"
-          },
-          {
-            "component": "TradeTable",
-            "file": "packages/react/src/styles.css",
-            "line": 55,
-            "via": "--stoa-color-text-muted"
           }
         ],
         "stories": [
@@ -2420,6 +2927,15 @@
           "Controls/Playback > Trades",
           "Controls/Playback > TradesEmpty",
           "Controls/Playback > Transport",
+          "Data/Charts > LineDataTable",
+          "Data/Charts > LineEmpty",
+          "Data/Charts > LineFromZero",
+          "Data/Charts > LineScenarios",
+          "Data/Charts > LineTimeFollowsLocale",
+          "Data/Charts > StripCouponsOnly",
+          "Data/Charts > StripEmpty",
+          "Data/Charts > StripPayments",
+          "Data/Charts > StripTimeFollowsLocale",
           "Data/Heatmap > Empty",
           "Data/Heatmap > Liquidity",
           "Data/Heatmap > Sparse",
@@ -2427,6 +2943,14 @@
           "Data/Ladder > Live",
           "Data/Ladder > Static",
           "Data/Ladder > TwoThemes",
+          "Data/Table > Basic",
+          "Data/Table > Compact",
+          "Data/Table > Empty",
+          "Data/Table > HiddenCaption",
+          "Data/Table > RowHeaders",
+          "Data/Table > StickyFirstColumn",
+          "Data/Table > StickyHeader",
+          "Data/Table > Trades",
           "Foundations/Colour > SemanticColours",
           "Layout/Panel > Header",
           "Layout/Panel > Sections",
@@ -2533,6 +3057,12 @@
             "via": "--stoa-color-border"
           },
           {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 308,
+            "via": "--stoa-color-border"
+          },
+          {
             "component": "Panel",
             "file": "packages/react/src/styles.css",
             "line": 11,
@@ -2542,6 +3072,12 @@
             "component": "Select",
             "file": "packages/react/src/styles.css",
             "line": 95,
+            "via": "--stoa-color-border"
+          },
+          {
+            "component": "Table",
+            "file": "packages/react/src/styles.css",
+            "line": 50,
             "via": "--stoa-color-border"
           },
           {
@@ -2555,12 +3091,6 @@
             "file": "packages/react/src/styles.css",
             "line": 95,
             "via": "--stoa-color-border"
-          },
-          {
-            "component": "TradeTable",
-            "file": "packages/react/src/styles.css",
-            "line": 50,
-            "via": "--stoa-color-border"
           }
         ],
         "stories": [
@@ -2572,6 +3102,15 @@
           "Controls/Playback > Trades",
           "Controls/Playback > TradesEmpty",
           "Controls/Playback > Transport",
+          "Data/Charts > LineDataTable",
+          "Data/Charts > LineEmpty",
+          "Data/Charts > LineFromZero",
+          "Data/Charts > LineScenarios",
+          "Data/Charts > LineTimeFollowsLocale",
+          "Data/Charts > StripCouponsOnly",
+          "Data/Charts > StripEmpty",
+          "Data/Charts > StripPayments",
+          "Data/Charts > StripTimeFollowsLocale",
           "Data/Heatmap > Empty",
           "Data/Heatmap > Liquidity",
           "Data/Heatmap > Sparse",
@@ -2579,6 +3118,14 @@
           "Data/Ladder > Live",
           "Data/Ladder > Static",
           "Data/Ladder > TwoThemes",
+          "Data/Table > Basic",
+          "Data/Table > Compact",
+          "Data/Table > Empty",
+          "Data/Table > HiddenCaption",
+          "Data/Table > RowHeaders",
+          "Data/Table > StickyFirstColumn",
+          "Data/Table > StickyHeader",
+          "Data/Table > Trades",
           "Layout/Panel > Header",
           "Layout/Panel > Sections",
           "Layout/Panel > Titled"
@@ -2823,6 +3370,18 @@
             "via": "--stoa-color-text"
           },
           {
+            "component": "EventStrip",
+            "file": "packages/react/src/styles.css",
+            "line": 328,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "EventStrip",
+            "file": "packages/react/src/styles.css",
+            "line": 339,
+            "via": "--stoa-color-text"
+          },
+          {
             "component": "Heatmap",
             "file": "packages/react/src/Heatmap.tsx",
             "line": 27,
@@ -2844,6 +3403,12 @@
             "component": "Ladder",
             "file": "packages/react/src/Ladder.tsx",
             "line": 28,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 328,
             "via": "--stoa-color-text"
           },
           {
@@ -2899,6 +3464,30 @@
             "file": "packages/react/src/styles.css",
             "line": 236,
             "via": "--stoa-color-text"
+          },
+          {
+            "component": "Table",
+            "file": "packages/react/src/styles.css",
+            "line": 276,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "Table",
+            "file": "packages/react/src/styles.css",
+            "line": 280,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "Table",
+            "file": "packages/react/src/styles.css",
+            "line": 288,
+            "via": "--stoa-color-surface"
+          },
+          {
+            "component": "Table",
+            "file": "packages/react/src/styles.css",
+            "line": 292,
+            "via": "--stoa-color-surface"
           },
           {
             "component": "Tabs",
@@ -2982,6 +3571,15 @@
           "Controls/Playback > Trades",
           "Controls/Playback > TradesEmpty",
           "Controls/Playback > Transport",
+          "Data/Charts > LineDataTable",
+          "Data/Charts > LineEmpty",
+          "Data/Charts > LineFromZero",
+          "Data/Charts > LineScenarios",
+          "Data/Charts > LineTimeFollowsLocale",
+          "Data/Charts > StripCouponsOnly",
+          "Data/Charts > StripEmpty",
+          "Data/Charts > StripPayments",
+          "Data/Charts > StripTimeFollowsLocale",
           "Data/Heatmap > Empty",
           "Data/Heatmap > Liquidity",
           "Data/Heatmap > Sparse",
@@ -2989,6 +3587,14 @@
           "Data/Ladder > Live",
           "Data/Ladder > Static",
           "Data/Ladder > TwoThemes",
+          "Data/Table > Basic",
+          "Data/Table > Compact",
+          "Data/Table > Empty",
+          "Data/Table > HiddenCaption",
+          "Data/Table > RowHeaders",
+          "Data/Table > StickyFirstColumn",
+          "Data/Table > StickyHeader",
+          "Data/Table > Trades",
           "Foundations/Colour > SemanticColours",
           "Layout/Panel > Header",
           "Layout/Panel > Sections",
@@ -3033,6 +3639,18 @@
             "via": "--stoa-color-ask"
           },
           {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 315,
+            "via": "--stoa-color-down"
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 320,
+            "via": "--stoa-color-down"
+          },
+          {
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
             "line": 235,
@@ -3054,6 +3672,15 @@
           "Controls/Playback > Trades",
           "Controls/Playback > TradesEmpty",
           "Controls/Playback > Transport",
+          "Data/Charts > LineDataTable",
+          "Data/Charts > LineEmpty",
+          "Data/Charts > LineFromZero",
+          "Data/Charts > LineScenarios",
+          "Data/Charts > LineTimeFollowsLocale",
+          "Data/Charts > StripCouponsOnly",
+          "Data/Charts > StripEmpty",
+          "Data/Charts > StripPayments",
+          "Data/Charts > StripTimeFollowsLocale",
           "Data/Heatmap > Empty",
           "Data/Heatmap > Liquidity",
           "Data/Heatmap > Sparse",
@@ -3061,6 +3688,14 @@
           "Data/Ladder > Live",
           "Data/Ladder > Static",
           "Data/Ladder > TwoThemes",
+          "Data/Table > Basic",
+          "Data/Table > Compact",
+          "Data/Table > Empty",
+          "Data/Table > HiddenCaption",
+          "Data/Table > RowHeaders",
+          "Data/Table > StickyFirstColumn",
+          "Data/Table > StickyHeader",
+          "Data/Table > Trades",
           "Foundations/Colour > SemanticColours",
           "Layout/Panel > Header",
           "Layout/Panel > Sections",
@@ -3104,6 +3739,18 @@
             "via": "--stoa-color-ask"
           },
           {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 315,
+            "via": "--stoa-color-down"
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 320,
+            "via": "--stoa-color-down"
+          },
+          {
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
             "line": 235,
@@ -3125,6 +3772,15 @@
           "Controls/Playback > Trades",
           "Controls/Playback > TradesEmpty",
           "Controls/Playback > Transport",
+          "Data/Charts > LineDataTable",
+          "Data/Charts > LineEmpty",
+          "Data/Charts > LineFromZero",
+          "Data/Charts > LineScenarios",
+          "Data/Charts > LineTimeFollowsLocale",
+          "Data/Charts > StripCouponsOnly",
+          "Data/Charts > StripEmpty",
+          "Data/Charts > StripPayments",
+          "Data/Charts > StripTimeFollowsLocale",
           "Data/Heatmap > Empty",
           "Data/Heatmap > Liquidity",
           "Data/Heatmap > Sparse",
@@ -3132,6 +3788,14 @@
           "Data/Ladder > Live",
           "Data/Ladder > Static",
           "Data/Ladder > TwoThemes",
+          "Data/Table > Basic",
+          "Data/Table > Compact",
+          "Data/Table > Empty",
+          "Data/Table > HiddenCaption",
+          "Data/Table > RowHeaders",
+          "Data/Table > StickyFirstColumn",
+          "Data/Table > StickyHeader",
+          "Data/Table > Trades",
           "Foundations/Colour > SemanticColours",
           "Layout/Panel > Header",
           "Layout/Panel > Sections",
@@ -3275,6 +3939,16 @@
             "line": 146
           },
           {
+            "component": "Table",
+            "file": "packages/react/src/styles.css",
+            "line": 288
+          },
+          {
+            "component": "Table",
+            "file": "packages/react/src/styles.css",
+            "line": 292
+          },
+          {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
             "line": 228
@@ -3299,6 +3973,15 @@
           "Controls/Playback > Trades",
           "Controls/Playback > TradesEmpty",
           "Controls/Playback > Transport",
+          "Data/Charts > LineDataTable",
+          "Data/Charts > LineEmpty",
+          "Data/Charts > LineFromZero",
+          "Data/Charts > LineScenarios",
+          "Data/Charts > LineTimeFollowsLocale",
+          "Data/Charts > StripCouponsOnly",
+          "Data/Charts > StripEmpty",
+          "Data/Charts > StripPayments",
+          "Data/Charts > StripTimeFollowsLocale",
           "Data/Heatmap > Empty",
           "Data/Heatmap > Liquidity",
           "Data/Heatmap > Sparse",
@@ -3306,6 +3989,14 @@
           "Data/Ladder > Live",
           "Data/Ladder > Static",
           "Data/Ladder > TwoThemes",
+          "Data/Table > Basic",
+          "Data/Table > Compact",
+          "Data/Table > Empty",
+          "Data/Table > HiddenCaption",
+          "Data/Table > RowHeaders",
+          "Data/Table > StickyFirstColumn",
+          "Data/Table > StickyHeader",
+          "Data/Table > Trades",
           "Foundations/Colour > SemanticColours",
           "Layout/Panel > Header",
           "Layout/Panel > Sections",
@@ -3491,6 +4182,18 @@
             "via": "--stoa-color-bid"
           },
           {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 314,
+            "via": "--stoa-color-up"
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 319,
+            "via": "--stoa-color-up"
+          },
+          {
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
             "line": 234,
@@ -3512,6 +4215,15 @@
           "Controls/Playback > Trades",
           "Controls/Playback > TradesEmpty",
           "Controls/Playback > Transport",
+          "Data/Charts > LineDataTable",
+          "Data/Charts > LineEmpty",
+          "Data/Charts > LineFromZero",
+          "Data/Charts > LineScenarios",
+          "Data/Charts > LineTimeFollowsLocale",
+          "Data/Charts > StripCouponsOnly",
+          "Data/Charts > StripEmpty",
+          "Data/Charts > StripPayments",
+          "Data/Charts > StripTimeFollowsLocale",
           "Data/Heatmap > Empty",
           "Data/Heatmap > Liquidity",
           "Data/Heatmap > Sparse",
@@ -3519,6 +4231,14 @@
           "Data/Ladder > Live",
           "Data/Ladder > Static",
           "Data/Ladder > TwoThemes",
+          "Data/Table > Basic",
+          "Data/Table > Compact",
+          "Data/Table > Empty",
+          "Data/Table > HiddenCaption",
+          "Data/Table > RowHeaders",
+          "Data/Table > StickyFirstColumn",
+          "Data/Table > StickyHeader",
+          "Data/Table > Trades",
           "Foundations/Colour > SemanticColours",
           "Layout/Panel > Header",
           "Layout/Panel > Sections",
@@ -3562,6 +4282,18 @@
             "via": "--stoa-color-bid"
           },
           {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 314,
+            "via": "--stoa-color-up"
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 319,
+            "via": "--stoa-color-up"
+          },
+          {
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
             "line": 234,
@@ -3583,6 +4315,15 @@
           "Controls/Playback > Trades",
           "Controls/Playback > TradesEmpty",
           "Controls/Playback > Transport",
+          "Data/Charts > LineDataTable",
+          "Data/Charts > LineEmpty",
+          "Data/Charts > LineFromZero",
+          "Data/Charts > LineScenarios",
+          "Data/Charts > LineTimeFollowsLocale",
+          "Data/Charts > StripCouponsOnly",
+          "Data/Charts > StripEmpty",
+          "Data/Charts > StripPayments",
+          "Data/Charts > StripTimeFollowsLocale",
           "Data/Heatmap > Empty",
           "Data/Heatmap > Liquidity",
           "Data/Heatmap > Sparse",
@@ -3590,6 +4331,14 @@
           "Data/Ladder > Live",
           "Data/Ladder > Static",
           "Data/Ladder > TwoThemes",
+          "Data/Table > Basic",
+          "Data/Table > Compact",
+          "Data/Table > Empty",
+          "Data/Table > HiddenCaption",
+          "Data/Table > RowHeaders",
+          "Data/Table > StickyFirstColumn",
+          "Data/Table > StickyHeader",
+          "Data/Table > Trades",
           "Foundations/Colour > SemanticColours",
           "Layout/Panel > Header",
           "Layout/Panel > Sections",
@@ -3756,6 +4505,16 @@
             "line": 175
           },
           {
+            "component": "EventStrip",
+            "file": "packages/react/src/styles.css",
+            "line": 328
+          },
+          {
+            "component": "EventStrip",
+            "file": "packages/react/src/styles.css",
+            "line": 339
+          },
+          {
             "component": "Heatmap",
             "file": "packages/react/src/Heatmap.tsx",
             "line": 28,
@@ -3766,6 +4525,11 @@
             "file": "packages/react/src/Ladder.tsx",
             "line": 28,
             "via": "readCanvasTokens"
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 328
           },
           {
             "component": "NumberField",
@@ -3791,6 +4555,16 @@
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
             "line": 236
+          },
+          {
+            "component": "Table",
+            "file": "packages/react/src/styles.css",
+            "line": 276
+          },
+          {
+            "component": "Table",
+            "file": "packages/react/src/styles.css",
+            "line": 280
           },
           {
             "component": "Tabs",
@@ -3847,6 +4621,15 @@
           "Controls/Playback > Trades",
           "Controls/Playback > TradesEmpty",
           "Controls/Playback > Transport",
+          "Data/Charts > LineDataTable",
+          "Data/Charts > LineEmpty",
+          "Data/Charts > LineFromZero",
+          "Data/Charts > LineScenarios",
+          "Data/Charts > LineTimeFollowsLocale",
+          "Data/Charts > StripCouponsOnly",
+          "Data/Charts > StripEmpty",
+          "Data/Charts > StripPayments",
+          "Data/Charts > StripTimeFollowsLocale",
           "Data/Heatmap > Empty",
           "Data/Heatmap > Liquidity",
           "Data/Heatmap > Sparse",
@@ -3854,6 +4637,14 @@
           "Data/Ladder > Live",
           "Data/Ladder > Static",
           "Data/Ladder > TwoThemes",
+          "Data/Table > Basic",
+          "Data/Table > Compact",
+          "Data/Table > Empty",
+          "Data/Table > HiddenCaption",
+          "Data/Table > RowHeaders",
+          "Data/Table > StickyFirstColumn",
+          "Data/Table > StickyHeader",
+          "Data/Table > Trades",
           "Foundations/Colour > SemanticColours",
           "Layout/Panel > Header",
           "Layout/Panel > Sections",
@@ -3899,6 +4690,21 @@
             "line": 182
           },
           {
+            "component": "EventStrip",
+            "file": "packages/react/src/styles.css",
+            "line": 307
+          },
+          {
+            "component": "EventStrip",
+            "file": "packages/react/src/styles.css",
+            "line": 323
+          },
+          {
+            "component": "EventStrip",
+            "file": "packages/react/src/styles.css",
+            "line": 336
+          },
+          {
             "component": "Heatmap",
             "file": "packages/react/src/Heatmap.tsx",
             "line": 29,
@@ -3909,6 +4715,36 @@
             "file": "packages/react/src/Ladder.tsx",
             "line": 29,
             "via": "readCanvasTokens"
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 305
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 307
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 312
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 317
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 323
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 332
           },
           {
             "component": "NumberField",
@@ -3946,6 +4782,16 @@
             "line": 238
           },
           {
+            "component": "Table",
+            "file": "packages/react/src/styles.css",
+            "line": 50
+          },
+          {
+            "component": "Table",
+            "file": "packages/react/src/styles.css",
+            "line": 55
+          },
+          {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
             "line": 245
@@ -3959,16 +4805,6 @@
             "component": "TextField",
             "file": "packages/react/src/styles.css",
             "line": 231
-          },
-          {
-            "component": "TradeTable",
-            "file": "packages/react/src/styles.css",
-            "line": 50
-          },
-          {
-            "component": "TradeTable",
-            "file": "packages/react/src/styles.css",
-            "line": 55
           }
         ],
         "stories": [
@@ -3980,6 +4816,15 @@
           "Controls/Playback > Trades",
           "Controls/Playback > TradesEmpty",
           "Controls/Playback > Transport",
+          "Data/Charts > LineDataTable",
+          "Data/Charts > LineEmpty",
+          "Data/Charts > LineFromZero",
+          "Data/Charts > LineScenarios",
+          "Data/Charts > LineTimeFollowsLocale",
+          "Data/Charts > StripCouponsOnly",
+          "Data/Charts > StripEmpty",
+          "Data/Charts > StripPayments",
+          "Data/Charts > StripTimeFollowsLocale",
           "Data/Heatmap > Empty",
           "Data/Heatmap > Liquidity",
           "Data/Heatmap > Sparse",
@@ -3987,6 +4832,14 @@
           "Data/Ladder > Live",
           "Data/Ladder > Static",
           "Data/Ladder > TwoThemes",
+          "Data/Table > Basic",
+          "Data/Table > Compact",
+          "Data/Table > Empty",
+          "Data/Table > HiddenCaption",
+          "Data/Table > RowHeaders",
+          "Data/Table > StickyFirstColumn",
+          "Data/Table > StickyHeader",
+          "Data/Table > Trades",
           "Foundations/Colour > SemanticColours",
           "Layout/Panel > Header",
           "Layout/Panel > Sections",
@@ -4082,6 +4935,16 @@
       "readBy": {
         "components": [
           {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 314
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 319
+          },
+          {
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
             "line": 234
@@ -4101,6 +4964,23 @@
           "Controls/Playback > Trades",
           "Controls/Playback > TradesEmpty",
           "Controls/Playback > Transport",
+          "Data/Charts > LineDataTable",
+          "Data/Charts > LineEmpty",
+          "Data/Charts > LineFromZero",
+          "Data/Charts > LineScenarios",
+          "Data/Charts > LineTimeFollowsLocale",
+          "Data/Charts > StripCouponsOnly",
+          "Data/Charts > StripEmpty",
+          "Data/Charts > StripPayments",
+          "Data/Charts > StripTimeFollowsLocale",
+          "Data/Table > Basic",
+          "Data/Table > Compact",
+          "Data/Table > Empty",
+          "Data/Table > HiddenCaption",
+          "Data/Table > RowHeaders",
+          "Data/Table > StickyFirstColumn",
+          "Data/Table > StickyHeader",
+          "Data/Table > Trades",
           "Foundations/Colour > SemanticColours",
           "Layout/Panel > Header",
           "Layout/Panel > Sections",
@@ -4187,6 +5067,21 @@
       "readBy": {
         "components": [
           {
+            "component": "EventStrip",
+            "file": "packages/react/src/styles.css",
+            "line": 338
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 313
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 318
+          },
+          {
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
             "line": 237
@@ -4196,6 +5091,15 @@
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Data/Charts > LineDataTable",
+          "Data/Charts > LineEmpty",
+          "Data/Charts > LineFromZero",
+          "Data/Charts > LineScenarios",
+          "Data/Charts > LineTimeFollowsLocale",
+          "Data/Charts > StripCouponsOnly",
+          "Data/Charts > StripEmpty",
+          "Data/Charts > StripPayments",
+          "Data/Charts > StripTimeFollowsLocale",
           "Layout/Panel > Header",
           "Layout/Panel > Sections",
           "Layout/Panel > Titled"
@@ -4228,17 +5132,25 @@
       "readBy": {
         "components": [
           {
-            "component": "TradeTable",
+            "component": "Table",
             "file": "packages/react/src/styles.css",
             "line": 52
+          },
+          {
+            "component": "Table",
+            "file": "packages/react/src/styles.css",
+            "line": 274
           }
         ],
         "stories": [
-          "Controls/Playback > Choices",
-          "Controls/Playback > Counters",
-          "Controls/Playback > Trades",
-          "Controls/Playback > TradesEmpty",
-          "Controls/Playback > Transport"
+          "Data/Table > Basic",
+          "Data/Table > Compact",
+          "Data/Table > Empty",
+          "Data/Table > HiddenCaption",
+          "Data/Table > RowHeaders",
+          "Data/Table > StickyFirstColumn",
+          "Data/Table > StickyHeader",
+          "Data/Table > Trades"
         ]
       },
       "reachedByTheme": {
@@ -4273,6 +5185,11 @@
             "line": 5
           },
           {
+            "component": "EventStrip",
+            "file": "packages/react/src/styles.css",
+            "line": 323
+          },
+          {
             "component": "Heatmap",
             "file": "packages/react/src/Heatmap.tsx",
             "line": 38,
@@ -4285,24 +5202,41 @@
             "via": "readCanvasTokens"
           },
           {
-            "component": "TradeTable",
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 323
+          },
+          {
+            "component": "Table",
             "file": "packages/react/src/styles.css",
             "line": 46
           }
         ],
         "stories": [
-          "Controls/Playback > Choices",
-          "Controls/Playback > Counters",
-          "Controls/Playback > Trades",
-          "Controls/Playback > TradesEmpty",
-          "Controls/Playback > Transport",
+          "Data/Charts > LineDataTable",
+          "Data/Charts > LineEmpty",
+          "Data/Charts > LineFromZero",
+          "Data/Charts > LineScenarios",
+          "Data/Charts > LineTimeFollowsLocale",
+          "Data/Charts > StripCouponsOnly",
+          "Data/Charts > StripEmpty",
+          "Data/Charts > StripPayments",
+          "Data/Charts > StripTimeFollowsLocale",
           "Data/Heatmap > Empty",
           "Data/Heatmap > Liquidity",
           "Data/Heatmap > Sparse",
           "Data/Ladder > Empty",
           "Data/Ladder > Live",
           "Data/Ladder > Static",
-          "Data/Ladder > TwoThemes"
+          "Data/Ladder > TwoThemes",
+          "Data/Table > Basic",
+          "Data/Table > Compact",
+          "Data/Table > Empty",
+          "Data/Table > HiddenCaption",
+          "Data/Table > RowHeaders",
+          "Data/Table > StickyFirstColumn",
+          "Data/Table > StickyHeader",
+          "Data/Table > Trades"
         ]
       },
       "reachedByTheme": {
@@ -4344,24 +5278,27 @@
             "via": "readCanvasTokens"
           },
           {
-            "component": "TradeTable",
+            "component": "Table",
             "file": "packages/react/src/styles.css",
             "line": 52
           }
         ],
         "stories": [
-          "Controls/Playback > Choices",
-          "Controls/Playback > Counters",
-          "Controls/Playback > Trades",
-          "Controls/Playback > TradesEmpty",
-          "Controls/Playback > Transport",
           "Data/Heatmap > Empty",
           "Data/Heatmap > Liquidity",
           "Data/Heatmap > Sparse",
           "Data/Ladder > Empty",
           "Data/Ladder > Live",
           "Data/Ladder > Static",
-          "Data/Ladder > TwoThemes"
+          "Data/Ladder > TwoThemes",
+          "Data/Table > Basic",
+          "Data/Table > Compact",
+          "Data/Table > Empty",
+          "Data/Table > HiddenCaption",
+          "Data/Table > RowHeaders",
+          "Data/Table > StickyFirstColumn",
+          "Data/Table > StickyHeader",
+          "Data/Table > Trades"
         ]
       },
       "reachedByTheme": {
@@ -4487,6 +5424,16 @@
             "line": 160
           },
           {
+            "component": "Table",
+            "file": "packages/react/src/styles.css",
+            "line": 269
+          },
+          {
+            "component": "Table",
+            "file": "packages/react/src/styles.css",
+            "line": 270
+          },
+          {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
             "line": 250
@@ -4521,6 +5468,14 @@
           "Controls/Playback > Trades",
           "Controls/Playback > TradesEmpty",
           "Controls/Playback > Transport",
+          "Data/Table > Basic",
+          "Data/Table > Compact",
+          "Data/Table > Empty",
+          "Data/Table > HiddenCaption",
+          "Data/Table > RowHeaders",
+          "Data/Table > StickyFirstColumn",
+          "Data/Table > StickyHeader",
+          "Data/Table > Trades",
           "Layout/Panel > Header",
           "Layout/Panel > Sections",
           "Layout/Panel > Titled"
@@ -4548,6 +5503,11 @@
       "readBy": {
         "components": [
           {
+            "component": "EventStrip",
+            "file": "packages/react/src/styles.css",
+            "line": 307
+          },
+          {
             "component": "Heatmap",
             "file": "packages/react/src/Heatmap.tsx",
             "line": 38,
@@ -4558,6 +5518,11 @@
             "file": "packages/react/src/Ladder.tsx",
             "line": 38,
             "via": "readCanvasTokens"
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 307
           },
           {
             "component": "NumberField",
@@ -4575,6 +5540,11 @@
             "line": 214
           },
           {
+            "component": "Table",
+            "file": "packages/react/src/styles.css",
+            "line": 47
+          },
+          {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
             "line": 226
@@ -4583,11 +5553,6 @@
             "component": "TimeSlider",
             "file": "packages/react/src/styles.css",
             "line": 190
-          },
-          {
-            "component": "TradeTable",
-            "file": "packages/react/src/styles.css",
-            "line": 47
           }
         ],
         "stories": [
@@ -4599,6 +5564,15 @@
           "Controls/Playback > Trades",
           "Controls/Playback > TradesEmpty",
           "Controls/Playback > Transport",
+          "Data/Charts > LineDataTable",
+          "Data/Charts > LineEmpty",
+          "Data/Charts > LineFromZero",
+          "Data/Charts > LineScenarios",
+          "Data/Charts > LineTimeFollowsLocale",
+          "Data/Charts > StripCouponsOnly",
+          "Data/Charts > StripEmpty",
+          "Data/Charts > StripPayments",
+          "Data/Charts > StripTimeFollowsLocale",
           "Data/Heatmap > Empty",
           "Data/Heatmap > Liquidity",
           "Data/Heatmap > Sparse",
@@ -4606,6 +5580,14 @@
           "Data/Ladder > Live",
           "Data/Ladder > Static",
           "Data/Ladder > TwoThemes",
+          "Data/Table > Basic",
+          "Data/Table > Compact",
+          "Data/Table > Empty",
+          "Data/Table > HiddenCaption",
+          "Data/Table > RowHeaders",
+          "Data/Table > StickyFirstColumn",
+          "Data/Table > StickyHeader",
+          "Data/Table > Trades",
           "Layout/Panel > Header",
           "Layout/Panel > Sections",
           "Layout/Panel > Titled"
@@ -4643,7 +5625,7 @@
             "line": 149
           },
           {
-            "component": "TradeTable",
+            "component": "Table",
             "file": "packages/react/src/styles.css",
             "line": 55
           }
@@ -4653,7 +5635,15 @@
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
           "Controls/Playback > TradesEmpty",
-          "Controls/Playback > Transport"
+          "Controls/Playback > Transport",
+          "Data/Table > Basic",
+          "Data/Table > Compact",
+          "Data/Table > Empty",
+          "Data/Table > HiddenCaption",
+          "Data/Table > RowHeaders",
+          "Data/Table > StickyFirstColumn",
+          "Data/Table > StickyHeader",
+          "Data/Table > Trades"
         ]
       },
       "reachedByTheme": {
@@ -4747,6 +5737,31 @@
       "readBy": {
         "components": [
           {
+            "component": "EventStrip",
+            "file": "packages/react/src/styles.css",
+            "line": 301
+          },
+          {
+            "component": "EventStrip",
+            "file": "packages/react/src/styles.css",
+            "line": 307
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 301
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 305
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 307
+          },
+          {
             "component": "StatBar",
             "file": "packages/react/src/styles.css",
             "line": 214
@@ -4766,6 +5781,15 @@
           "Controls/Playback > Trades",
           "Controls/Playback > TradesEmpty",
           "Controls/Playback > Transport",
+          "Data/Charts > LineDataTable",
+          "Data/Charts > LineEmpty",
+          "Data/Charts > LineFromZero",
+          "Data/Charts > LineScenarios",
+          "Data/Charts > LineTimeFollowsLocale",
+          "Data/Charts > StripCouponsOnly",
+          "Data/Charts > StripEmpty",
+          "Data/Charts > StripPayments",
+          "Data/Charts > StripTimeFollowsLocale",
           "Layout/Panel > Header",
           "Layout/Panel > Sections",
           "Layout/Panel > Titled"
@@ -4857,6 +5881,11 @@
             "component": "Select",
             "file": "packages/react/src/styles.css",
             "line": 150
+          },
+          {
+            "component": "Table",
+            "file": "packages/react/src/styles.css",
+            "line": 275
           }
         ],
         "stories": [
@@ -4865,6 +5894,14 @@
           "Controls/Playback > Trades",
           "Controls/Playback > TradesEmpty",
           "Controls/Playback > Transport",
+          "Data/Table > Basic",
+          "Data/Table > Compact",
+          "Data/Table > Empty",
+          "Data/Table > HiddenCaption",
+          "Data/Table > RowHeaders",
+          "Data/Table > StickyFirstColumn",
+          "Data/Table > StickyHeader",
+          "Data/Table > Trades",
           "Layout/Panel > Header",
           "Layout/Panel > Sections",
           "Layout/Panel > Titled"
@@ -4923,6 +5960,21 @@
             "component": "Disclosure",
             "file": "packages/react/src/styles.css",
             "line": 170
+          },
+          {
+            "component": "EventStrip",
+            "file": "packages/react/src/styles.css",
+            "line": 328
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 328
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 332
           },
           {
             "component": "NumberField",
@@ -4984,6 +6036,23 @@
           "Controls/Playback > Trades",
           "Controls/Playback > TradesEmpty",
           "Controls/Playback > Transport",
+          "Data/Charts > LineDataTable",
+          "Data/Charts > LineEmpty",
+          "Data/Charts > LineFromZero",
+          "Data/Charts > LineScenarios",
+          "Data/Charts > LineTimeFollowsLocale",
+          "Data/Charts > StripCouponsOnly",
+          "Data/Charts > StripEmpty",
+          "Data/Charts > StripPayments",
+          "Data/Charts > StripTimeFollowsLocale",
+          "Data/Table > Basic",
+          "Data/Table > Compact",
+          "Data/Table > Empty",
+          "Data/Table > HiddenCaption",
+          "Data/Table > RowHeaders",
+          "Data/Table > StickyFirstColumn",
+          "Data/Table > StickyHeader",
+          "Data/Table > Trades",
           "Layout/Panel > Header",
           "Layout/Panel > Sections",
           "Layout/Panel > Titled"
@@ -5029,6 +6098,11 @@
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
             "line": 233
+          },
+          {
+            "component": "Table",
+            "file": "packages/react/src/styles.css",
+            "line": 275
           }
         ],
         "stories": [
@@ -5040,6 +6114,23 @@
           "Controls/Playback > Trades",
           "Controls/Playback > TradesEmpty",
           "Controls/Playback > Transport",
+          "Data/Charts > LineDataTable",
+          "Data/Charts > LineEmpty",
+          "Data/Charts > LineFromZero",
+          "Data/Charts > LineScenarios",
+          "Data/Charts > LineTimeFollowsLocale",
+          "Data/Charts > StripCouponsOnly",
+          "Data/Charts > StripEmpty",
+          "Data/Charts > StripPayments",
+          "Data/Charts > StripTimeFollowsLocale",
+          "Data/Table > Basic",
+          "Data/Table > Compact",
+          "Data/Table > Empty",
+          "Data/Table > HiddenCaption",
+          "Data/Table > RowHeaders",
+          "Data/Table > StickyFirstColumn",
+          "Data/Table > StickyHeader",
+          "Data/Table > Trades",
           "Layout/Panel > Header",
           "Layout/Panel > Sections",
           "Layout/Panel > Titled"
@@ -5067,17 +6158,20 @@
       "readBy": {
         "components": [
           {
-            "component": "TradeTable",
+            "component": "Table",
             "file": "packages/react/src/styles.css",
             "line": 49
           }
         ],
         "stories": [
-          "Controls/Playback > Choices",
-          "Controls/Playback > Counters",
-          "Controls/Playback > Trades",
-          "Controls/Playback > TradesEmpty",
-          "Controls/Playback > Transport"
+          "Data/Table > Basic",
+          "Data/Table > Compact",
+          "Data/Table > Empty",
+          "Data/Table > HiddenCaption",
+          "Data/Table > RowHeaders",
+          "Data/Table > StickyFirstColumn",
+          "Data/Table > StickyHeader",
+          "Data/Table > Trades"
         ]
       },
       "reachedByTheme": {
@@ -5466,6 +6560,23 @@
           "Controls/Playback > Trades",
           "Controls/Playback > TradesEmpty",
           "Controls/Playback > Transport",
+          "Data/Charts > LineDataTable",
+          "Data/Charts > LineEmpty",
+          "Data/Charts > LineFromZero",
+          "Data/Charts > LineScenarios",
+          "Data/Charts > LineTimeFollowsLocale",
+          "Data/Charts > StripCouponsOnly",
+          "Data/Charts > StripEmpty",
+          "Data/Charts > StripPayments",
+          "Data/Charts > StripTimeFollowsLocale",
+          "Data/Table > Basic",
+          "Data/Table > Compact",
+          "Data/Table > Empty",
+          "Data/Table > HiddenCaption",
+          "Data/Table > RowHeaders",
+          "Data/Table > StickyFirstColumn",
+          "Data/Table > StickyHeader",
+          "Data/Table > Trades",
           "Layout/Panel > Header",
           "Layout/Panel > Sections",
           "Layout/Panel > Titled"
@@ -5689,6 +6800,36 @@
             "line": 187
           },
           {
+            "component": "EventStrip",
+            "file": "packages/react/src/styles.css",
+            "line": 326
+          },
+          {
+            "component": "EventStrip",
+            "file": "packages/react/src/styles.css",
+            "line": 330
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 304
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 326
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 330
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 332
+          },
+          {
             "component": "NumberField",
             "file": "packages/react/src/styles.css",
             "line": 204
@@ -5768,6 +6909,15 @@
           "Controls/Playback > Trades",
           "Controls/Playback > TradesEmpty",
           "Controls/Playback > Transport",
+          "Data/Charts > LineDataTable",
+          "Data/Charts > LineEmpty",
+          "Data/Charts > LineFromZero",
+          "Data/Charts > LineScenarios",
+          "Data/Charts > LineTimeFollowsLocale",
+          "Data/Charts > StripCouponsOnly",
+          "Data/Charts > StripEmpty",
+          "Data/Charts > StripPayments",
+          "Data/Charts > StripTimeFollowsLocale",
           "Layout/Panel > Header",
           "Layout/Panel > Sections",
           "Layout/Panel > Titled"
@@ -5833,6 +6983,21 @@
             "line": 168
           },
           {
+            "component": "EventStrip",
+            "file": "packages/react/src/styles.css",
+            "line": 327
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 327
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 333
+          },
+          {
             "component": "NumberField",
             "file": "packages/react/src/styles.css",
             "line": 227
@@ -5851,6 +7016,11 @@
             "component": "Select",
             "file": "packages/react/src/styles.css",
             "line": 137
+          },
+          {
+            "component": "Table",
+            "file": "packages/react/src/styles.css",
+            "line": 274
           },
           {
             "component": "Tabs",
@@ -5877,6 +7047,23 @@
           "Controls/Playback > Trades",
           "Controls/Playback > TradesEmpty",
           "Controls/Playback > Transport",
+          "Data/Charts > LineDataTable",
+          "Data/Charts > LineEmpty",
+          "Data/Charts > LineFromZero",
+          "Data/Charts > LineScenarios",
+          "Data/Charts > LineTimeFollowsLocale",
+          "Data/Charts > StripCouponsOnly",
+          "Data/Charts > StripEmpty",
+          "Data/Charts > StripPayments",
+          "Data/Charts > StripTimeFollowsLocale",
+          "Data/Table > Basic",
+          "Data/Table > Compact",
+          "Data/Table > Empty",
+          "Data/Table > HiddenCaption",
+          "Data/Table > RowHeaders",
+          "Data/Table > StickyFirstColumn",
+          "Data/Table > StickyHeader",
+          "Data/Table > Trades",
           "Layout/Panel > Header",
           "Layout/Panel > Sections",
           "Layout/Panel > Titled"
@@ -5948,6 +7135,23 @@
           "Controls/Playback > Trades",
           "Controls/Playback > TradesEmpty",
           "Controls/Playback > Transport",
+          "Data/Charts > LineDataTable",
+          "Data/Charts > LineEmpty",
+          "Data/Charts > LineFromZero",
+          "Data/Charts > LineScenarios",
+          "Data/Charts > LineTimeFollowsLocale",
+          "Data/Charts > StripCouponsOnly",
+          "Data/Charts > StripEmpty",
+          "Data/Charts > StripPayments",
+          "Data/Charts > StripTimeFollowsLocale",
+          "Data/Table > Basic",
+          "Data/Table > Compact",
+          "Data/Table > Empty",
+          "Data/Table > HiddenCaption",
+          "Data/Table > RowHeaders",
+          "Data/Table > StickyFirstColumn",
+          "Data/Table > StickyHeader",
+          "Data/Table > Trades",
           "Layout/Panel > Header",
           "Layout/Panel > Sections",
           "Layout/Panel > Titled"
@@ -5980,6 +7184,16 @@
             "line": 31
           },
           {
+            "component": "EventStrip",
+            "file": "packages/react/src/styles.css",
+            "line": 326
+          },
+          {
+            "component": "LineChart",
+            "file": "packages/react/src/styles.css",
+            "line": 326
+          },
+          {
             "component": "StatBar",
             "file": "packages/react/src/styles.css",
             "line": 214
@@ -5999,6 +7213,15 @@
           "Controls/Playback > Trades",
           "Controls/Playback > TradesEmpty",
           "Controls/Playback > Transport",
+          "Data/Charts > LineDataTable",
+          "Data/Charts > LineEmpty",
+          "Data/Charts > LineFromZero",
+          "Data/Charts > LineScenarios",
+          "Data/Charts > LineTimeFollowsLocale",
+          "Data/Charts > StripCouponsOnly",
+          "Data/Charts > StripEmpty",
+          "Data/Charts > StripPayments",
+          "Data/Charts > StripTimeFollowsLocale",
           "Layout/Panel > Header",
           "Layout/Panel > Sections",
           "Layout/Panel > Titled"
