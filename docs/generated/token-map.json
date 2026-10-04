@@ -67,6 +67,56 @@
             "line": 88
           },
           {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 80
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 83
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 84
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 87
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 88
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 80
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 83
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 84
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 87
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 88
+          },
+          {
             "component": "Heatmap",
             "file": "packages/react/src/Heatmap.tsx",
             "line": 35,
@@ -87,6 +137,16 @@
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
             "line": 249
+          },
+          {
+            "component": "Tag",
+            "file": "packages/react/src/styles.css",
+            "line": 304
+          },
+          {
+            "component": "Tag",
+            "file": "packages/react/src/styles.css",
+            "line": 308
           },
           {
             "component": "TimeSlider",
@@ -125,6 +185,11 @@
           "Controls/Form > TabList",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -169,12 +234,25 @@
             "file": "packages/react/src/styles.css",
             "line": 237,
             "via": "--stoa-color-warning"
+          },
+          {
+            "component": "Tag",
+            "file": "packages/react/src/styles.css",
+            "line": 306,
+            "via": "--stoa-color-warning"
           }
         ],
         "stories": [
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Controls/Inputs > ButtonVariants",
+          "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
           "Layout/Panel > Header",
           "Layout/Panel > Sections",
           "Layout/Panel > Titled"
@@ -208,12 +286,25 @@
             "file": "packages/react/src/styles.css",
             "line": 237,
             "via": "--stoa-color-warning"
+          },
+          {
+            "component": "Tag",
+            "file": "packages/react/src/styles.css",
+            "line": 306,
+            "via": "--stoa-color-warning"
           }
         ],
         "stories": [
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Controls/Inputs > ButtonVariants",
+          "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
           "Layout/Panel > Header",
           "Layout/Panel > Sections",
           "Layout/Panel > Titled"
@@ -461,6 +552,78 @@
             "via": "--stoa-color-focus"
           },
           {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 80,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 83,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 84,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 87,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 88,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 100,
+            "via": "--stoa-color-focus"
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 80,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 83,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 84,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 87,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 88,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 100,
+            "via": "--stoa-color-focus"
+          },
+          {
             "component": "Heatmap",
             "file": "packages/react/src/Heatmap.tsx",
             "line": 35,
@@ -513,6 +676,18 @@
             "file": "packages/react/src/styles.css",
             "line": 255,
             "via": "--stoa-color-focus"
+          },
+          {
+            "component": "Tag",
+            "file": "packages/react/src/styles.css",
+            "line": 304,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "Tag",
+            "file": "packages/react/src/styles.css",
+            "line": 308,
+            "via": "--stoa-color-accent"
           },
           {
             "component": "TextField",
@@ -575,6 +750,11 @@
           "Controls/Form > TabList",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -636,6 +816,18 @@
             "via": "--stoa-color-focus"
           },
           {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 100,
+            "via": "--stoa-color-focus"
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 100,
+            "via": "--stoa-color-focus"
+          },
+          {
             "component": "NumberField",
             "file": "packages/react/src/styles.css",
             "line": 230,
@@ -690,6 +882,11 @@
           "Controls/Form > TabList",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -785,6 +982,66 @@
             "via": "--stoa-color-accent"
           },
           {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 80,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 83,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 84,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 87,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 88,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 80,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 83,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 84,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 87,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 88,
+            "via": "--stoa-color-accent"
+          },
+          {
             "component": "Heatmap",
             "file": "packages/react/src/Heatmap.tsx",
             "line": 35,
@@ -806,6 +1063,18 @@
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
             "line": 249,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "Tag",
+            "file": "packages/react/src/styles.css",
+            "line": 304,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "Tag",
+            "file": "packages/react/src/styles.css",
+            "line": 308,
             "via": "--stoa-color-accent"
           },
           {
@@ -851,6 +1120,11 @@
           "Controls/Form > TabList",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -920,6 +1194,16 @@
             "line": 95
           },
           {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 95
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 95
+          },
+          {
             "component": "Heatmap",
             "file": "packages/react/src/Heatmap.tsx",
             "line": 30,
@@ -963,6 +1247,11 @@
           "Controls/Form > TabList",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -1019,6 +1308,16 @@
             "line": 63
           },
           {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 63
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 63
+          },
+          {
             "component": "NumberField",
             "file": "packages/react/src/styles.css",
             "line": 227
@@ -1032,6 +1331,11 @@
             "component": "Select",
             "file": "packages/react/src/styles.css",
             "line": 147
+          },
+          {
+            "component": "Tag",
+            "file": "packages/react/src/styles.css",
+            "line": 298
           },
           {
             "component": "TextField",
@@ -1055,6 +1359,11 @@
           "Controls/Form > TabList",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -1124,6 +1433,11 @@
             "line": 235
           },
           {
+            "component": "Tag",
+            "file": "packages/react/src/styles.css",
+            "line": 307
+          },
+          {
             "component": "TradeTable",
             "file": "packages/react/src/styles.css",
             "line": 58
@@ -1135,6 +1449,11 @@
           "Controls/Form > TabList",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -1241,6 +1560,16 @@
             "line": 177
           },
           {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 100
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 100
+          },
+          {
             "component": "NumberField",
             "file": "packages/react/src/styles.css",
             "line": 230
@@ -1287,6 +1616,11 @@
           "Controls/Form > TabList",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -1356,6 +1690,30 @@
             "via": "--stoa-color-surface"
           },
           {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 65,
+            "via": "--stoa-color-surface"
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 80,
+            "via": "--stoa-color-surface"
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 65,
+            "via": "--stoa-color-surface"
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 80,
+            "via": "--stoa-color-surface"
+          },
+          {
             "component": "Heatmap",
             "file": "packages/react/src/Heatmap.tsx",
             "line": 27,
@@ -1392,6 +1750,12 @@
             "via": "--stoa-color-surface"
           },
           {
+            "component": "Tag",
+            "file": "packages/react/src/styles.css",
+            "line": 308,
+            "via": "--stoa-color-surface"
+          },
+          {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
             "line": 228,
@@ -1416,6 +1780,11 @@
           "Controls/Form > TabList",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -1608,6 +1977,90 @@
             "via": "--stoa-color-text"
           },
           {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 66,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 77,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 83,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 84,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 87,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 88,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 94,
+            "via": "--stoa-color-surface-sunken"
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 66,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 77,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 83,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 84,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 87,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 88,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 94,
+            "via": "--stoa-color-surface-sunken"
+          },
+          {
             "component": "Heatmap",
             "file": "packages/react/src/Heatmap.tsx",
             "line": 28,
@@ -1668,6 +2121,12 @@
             "via": "--stoa-color-text"
           },
           {
+            "component": "Tag",
+            "file": "packages/react/src/styles.css",
+            "line": 306,
+            "via": "--stoa-color-text"
+          },
+          {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
             "line": 228,
@@ -1722,6 +2181,11 @@
           "Controls/Form > TabList",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -1834,6 +2298,30 @@
             "via": "--stoa-color-surface-hover"
           },
           {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 75,
+            "via": "--stoa-color-surface-hover"
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 77,
+            "via": "--stoa-color-surface-hover"
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 75,
+            "via": "--stoa-color-surface-hover"
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 77,
+            "via": "--stoa-color-surface-hover"
+          },
+          {
             "component": "Select",
             "file": "packages/react/src/styles.css",
             "line": 75,
@@ -1867,6 +2355,11 @@
         "stories": [
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -1925,6 +2418,18 @@
             "via": "--stoa-color-border"
           },
           {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 95,
+            "via": "--stoa-color-border"
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 95,
+            "via": "--stoa-color-border"
+          },
+          {
             "component": "Heatmap",
             "file": "packages/react/src/Heatmap.tsx",
             "line": 30,
@@ -1973,6 +2478,11 @@
           "Controls/Form > TabList",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -2109,6 +2619,12 @@
             "via": "--stoa-color-text-muted"
           },
           {
+            "component": "Tag",
+            "file": "packages/react/src/styles.css",
+            "line": 301,
+            "via": "--stoa-color-text-muted"
+          },
+          {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
             "line": 220,
@@ -2137,6 +2653,13 @@
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Controls/Inputs > ButtonVariants",
+          "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -2209,6 +2732,30 @@
             "via": "--stoa-color-text-subtle"
           },
           {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 63,
+            "via": "--stoa-color-border-strong"
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 96,
+            "via": "--stoa-color-text-subtle"
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 63,
+            "via": "--stoa-color-border-strong"
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 96,
+            "via": "--stoa-color-text-subtle"
+          },
+          {
             "component": "NumberField",
             "file": "packages/react/src/styles.css",
             "line": 227,
@@ -2230,6 +2777,12 @@
             "component": "Select",
             "file": "packages/react/src/styles.css",
             "line": 147,
+            "via": "--stoa-color-border-strong"
+          },
+          {
+            "component": "Tag",
+            "file": "packages/react/src/styles.css",
+            "line": 298,
             "via": "--stoa-color-border-strong"
           },
           {
@@ -2263,6 +2816,11 @@
           "Controls/Form > TabList",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -2361,6 +2919,30 @@
             "via": "--stoa-color-text-subtle"
           },
           {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 63,
+            "via": "--stoa-color-border-strong"
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 96,
+            "via": "--stoa-color-text-subtle"
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 63,
+            "via": "--stoa-color-border-strong"
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 96,
+            "via": "--stoa-color-text-subtle"
+          },
+          {
             "component": "NumberField",
             "file": "packages/react/src/styles.css",
             "line": 227,
@@ -2382,6 +2964,12 @@
             "component": "Select",
             "file": "packages/react/src/styles.css",
             "line": 147,
+            "via": "--stoa-color-border-strong"
+          },
+          {
+            "component": "Tag",
+            "file": "packages/react/src/styles.css",
+            "line": 298,
             "via": "--stoa-color-border-strong"
           },
           {
@@ -2415,6 +3003,11 @@
           "Controls/Form > TabList",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -2523,6 +3116,12 @@
             "via": "--stoa-color-text-muted"
           },
           {
+            "component": "Tag",
+            "file": "packages/react/src/styles.css",
+            "line": 301,
+            "via": "--stoa-color-text-muted"
+          },
+          {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
             "line": 220,
@@ -2551,6 +3150,13 @@
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Controls/Inputs > ButtonVariants",
+          "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -2663,6 +3269,18 @@
             "via": "--stoa-color-border"
           },
           {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 95,
+            "via": "--stoa-color-border"
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 95,
+            "via": "--stoa-color-border"
+          },
+          {
             "component": "Heatmap",
             "file": "packages/react/src/Heatmap.tsx",
             "line": 30,
@@ -2711,6 +3329,11 @@
           "Controls/Form > TabList",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -2788,6 +3411,30 @@
             "via": "--stoa-color-surface-hover"
           },
           {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 75,
+            "via": "--stoa-color-surface-hover"
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 77,
+            "via": "--stoa-color-surface-hover"
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 75,
+            "via": "--stoa-color-surface-hover"
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 77,
+            "via": "--stoa-color-surface-hover"
+          },
+          {
             "component": "Select",
             "file": "packages/react/src/styles.css",
             "line": 75,
@@ -2821,6 +3468,11 @@
         "stories": [
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -3017,6 +3669,102 @@
             "via": "--stoa-color-text"
           },
           {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 65,
+            "via": "--stoa-color-surface"
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 66,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 77,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 80,
+            "via": "--stoa-color-surface"
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 83,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 84,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 87,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 88,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 65,
+            "via": "--stoa-color-surface"
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 66,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 77,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 80,
+            "via": "--stoa-color-surface"
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 83,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 84,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 87,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 88,
+            "via": "--stoa-color-text"
+          },
+          {
             "component": "Heatmap",
             "file": "packages/react/src/Heatmap.tsx",
             "line": 27,
@@ -3107,6 +3855,18 @@
             "via": "--stoa-color-text"
           },
           {
+            "component": "Tag",
+            "file": "packages/react/src/styles.css",
+            "line": 306,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "Tag",
+            "file": "packages/react/src/styles.css",
+            "line": 308,
+            "via": "--stoa-color-surface"
+          },
+          {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
             "line": 228,
@@ -3173,6 +3933,11 @@
           "Controls/Form > TabList",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -3265,6 +4030,12 @@
             "via": "--stoa-color-down"
           },
           {
+            "component": "Tag",
+            "file": "packages/react/src/styles.css",
+            "line": 307,
+            "via": "--stoa-color-down"
+          },
+          {
             "component": "TradeTable",
             "file": "packages/react/src/styles.css",
             "line": 58,
@@ -3277,6 +4048,11 @@
           "Controls/Form > TabList",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -3368,6 +4144,12 @@
             "via": "--stoa-color-down"
           },
           {
+            "component": "Tag",
+            "file": "packages/react/src/styles.css",
+            "line": 307,
+            "via": "--stoa-color-down"
+          },
+          {
             "component": "TradeTable",
             "file": "packages/react/src/styles.css",
             "line": 58,
@@ -3380,6 +4162,11 @@
           "Controls/Form > TabList",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -3508,6 +4295,26 @@
             "line": 80
           },
           {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 65
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 80
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 65
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 80
+          },
+          {
             "component": "Heatmap",
             "file": "packages/react/src/Heatmap.tsx",
             "line": 27,
@@ -3540,6 +4347,11 @@
             "line": 146
           },
           {
+            "component": "Tag",
+            "file": "packages/react/src/styles.css",
+            "line": 308
+          },
+          {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
             "line": 228
@@ -3561,6 +4373,11 @@
           "Controls/Form > TabList",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -3638,6 +4455,26 @@
             "line": 77
           },
           {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 75
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 77
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 75
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 77
+          },
+          {
             "component": "Select",
             "file": "packages/react/src/styles.css",
             "line": 75
@@ -3666,6 +4503,11 @@
         "stories": [
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -3725,6 +4567,16 @@
             "line": 94
           },
           {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 94
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 94
+          },
+          {
             "component": "Select",
             "file": "packages/react/src/styles.css",
             "line": 94
@@ -3738,6 +4590,11 @@
         "stories": [
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -3788,6 +4645,12 @@
             "via": "--stoa-color-up"
           },
           {
+            "component": "Tag",
+            "file": "packages/react/src/styles.css",
+            "line": 305,
+            "via": "--stoa-color-up"
+          },
+          {
             "component": "TradeTable",
             "file": "packages/react/src/styles.css",
             "line": 57,
@@ -3798,6 +4661,13 @@
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Controls/Inputs > ButtonVariants",
+          "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -3859,6 +4729,12 @@
             "via": "--stoa-color-up"
           },
           {
+            "component": "Tag",
+            "file": "packages/react/src/styles.css",
+            "line": 305,
+            "via": "--stoa-color-up"
+          },
+          {
             "component": "TradeTable",
             "file": "packages/react/src/styles.css",
             "line": 57,
@@ -3869,6 +4745,13 @@
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Controls/Inputs > ButtonVariants",
+          "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -4072,6 +4955,66 @@
             "line": 175
           },
           {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 66
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 77
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 83
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 84
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 87
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 88
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 66
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 77
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 83
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 84
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 87
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 88
+          },
+          {
             "component": "Heatmap",
             "file": "packages/react/src/Heatmap.tsx",
             "line": 28,
@@ -4119,6 +5062,11 @@
             "line": 249
           },
           {
+            "component": "Tag",
+            "file": "packages/react/src/styles.css",
+            "line": 306
+          },
+          {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
             "line": 228
@@ -4160,6 +5108,11 @@
           "Controls/Form > TabList",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -4269,6 +5222,11 @@
             "line": 245
           },
           {
+            "component": "Tag",
+            "file": "packages/react/src/styles.css",
+            "line": 301
+          },
+          {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
             "line": 220
@@ -4293,6 +5251,13 @@
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Controls/Inputs > ButtonVariants",
+          "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -4355,6 +5320,16 @@
             "line": 96
           },
           {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 96
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 96
+          },
+          {
             "component": "Select",
             "file": "packages/react/src/styles.css",
             "line": 96
@@ -4368,6 +5343,11 @@
         "stories": [
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -4412,6 +5392,11 @@
             "line": 234
           },
           {
+            "component": "Tag",
+            "file": "packages/react/src/styles.css",
+            "line": 305
+          },
+          {
             "component": "TradeTable",
             "file": "packages/react/src/styles.css",
             "line": 57
@@ -4421,6 +5406,13 @@
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Controls/Inputs > ButtonVariants",
+          "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -4515,12 +5507,24 @@
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
             "line": 237
+          },
+          {
+            "component": "Tag",
+            "file": "packages/react/src/styles.css",
+            "line": 306
           }
         ],
         "stories": [
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Controls/Inputs > ButtonVariants",
+          "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
           "Layout/Panel > Header",
           "Layout/Panel > Sections",
           "Layout/Panel > Titled"
@@ -4726,6 +5730,21 @@
             "line": 178
           },
           {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 101
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 101
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 320
+          },
+          {
             "component": "Select",
             "file": "packages/react/src/styles.css",
             "line": 101
@@ -4752,6 +5771,11 @@
           "Controls/Form > TabList",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -4797,6 +5821,21 @@
             "component": "Disclosure",
             "file": "packages/react/src/styles.css",
             "line": 177
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 100
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 100
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 320
           },
           {
             "component": "NumberField",
@@ -4845,6 +5884,11 @@
           "Controls/Form > TabList",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -4876,6 +5920,11 @@
       "aliasOf": null,
       "readBy": {
         "components": [
+          {
+            "component": "(css) .stoa-filter-chip__count",
+            "file": "packages/react/src/styles.css",
+            "line": 327
+          },
           {
             "component": "Heatmap",
             "file": "packages/react/src/Heatmap.tsx",
@@ -5005,20 +6054,34 @@
       "resolvedValue": "1.45",
       "aliasOf": null,
       "readBy": {
-        "components": [],
-        "stories": []
+        "components": [
+          {
+            "component": "Tag",
+            "file": "packages/react/src/styles.css",
+            "line": 300
+          }
+        ],
+        "stories": [
+          "Controls/Inputs > ButtonVariants",
+          "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall"
+        ]
       },
       "reachedByTheme": {
         "light": {
-          "direct": false,
+          "direct": true,
           "via": []
         },
         "dark": {
-          "direct": false,
+          "direct": true,
           "via": []
         }
       },
-      "unused": true
+      "unused": false
     },
     {
       "name": "--stoa-font-line-height-tight",
@@ -5081,6 +6144,11 @@
             "line": 214
           },
           {
+            "component": "Tag",
+            "file": "packages/react/src/styles.css",
+            "line": 303
+          },
+          {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
             "line": 231
@@ -5090,6 +6158,13 @@
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Controls/Inputs > ButtonVariants",
+          "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -5254,6 +6329,26 @@
             "line": 170
           },
           {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 130
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 329
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 130
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 329
+          },
+          {
             "component": "NumberField",
             "file": "packages/react/src/styles.css",
             "line": 207
@@ -5294,6 +6389,11 @@
             "line": 233
           },
           {
+            "component": "Tag",
+            "file": "packages/react/src/styles.css",
+            "line": 299
+          },
+          {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
             "line": 220
@@ -5308,6 +6408,13 @@
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Controls/Inputs > ButtonVariants",
+          "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -5358,12 +6465,24 @@
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
             "line": 233
+          },
+          {
+            "component": "Tag",
+            "file": "packages/react/src/styles.css",
+            "line": 299
           }
         ],
         "stories": [
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Controls/Inputs > ButtonVariants",
+          "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -5502,6 +6621,16 @@
             "line": 183
           },
           {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 68
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 68
+          },
+          {
             "component": "Select",
             "file": "packages/react/src/styles.css",
             "line": 68
@@ -5515,6 +6644,11 @@
         "stories": [
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -5677,6 +6811,16 @@
             "line": 183
           },
           {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 68
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 68
+          },
+          {
             "component": "Select",
             "file": "packages/react/src/styles.css",
             "line": 68
@@ -5690,6 +6834,11 @@
         "stories": [
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -5722,6 +6871,16 @@
       "readBy": {
         "components": [
           {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 324
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 324
+          },
+          {
             "component": "TimeSlider",
             "file": "packages/react/src/styles.css",
             "line": 194
@@ -5733,6 +6892,13 @@
           }
         ],
         "stories": [
+          "Controls/Inputs > ButtonVariants",
+          "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -5874,6 +7040,36 @@
             "line": 179
           },
           {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 64
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 118
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 121
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 64
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 118
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 121
+          },
+          {
             "component": "NumberField",
             "file": "packages/react/src/styles.css",
             "line": 228
@@ -5892,6 +7088,11 @@
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
             "line": 257
+          },
+          {
+            "component": "Tag",
+            "file": "packages/react/src/styles.css",
+            "line": 298
           },
           {
             "component": "TextField",
@@ -5920,6 +7121,11 @@
           "Controls/Form > TabList",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -5974,20 +7180,34 @@
       "resolvedValue": "2px",
       "aliasOf": null,
       "readBy": {
-        "components": [],
-        "stories": []
+        "components": [
+          {
+            "component": "Tag",
+            "file": "packages/react/src/styles.css",
+            "line": 303
+          }
+        ],
+        "stories": [
+          "Controls/Inputs > ButtonVariants",
+          "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall"
+        ]
       },
       "reachedByTheme": {
         "light": {
-          "direct": false,
+          "direct": true,
           "via": []
         },
         "dark": {
-          "direct": false,
+          "direct": true,
           "via": []
         }
       },
-      "unused": true
+      "unused": false
     },
     {
       "name": "--stoa-space-1",
@@ -6022,6 +7242,51 @@
             "component": "Disclosure",
             "file": "packages/react/src/styles.css",
             "line": 187
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 62
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 132
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 323
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 331
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 62
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 132
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 315
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 323
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 331
           },
           {
             "component": "NumberField",
@@ -6079,6 +7344,16 @@
             "line": 241
           },
           {
+            "component": "Tag",
+            "file": "packages/react/src/styles.css",
+            "line": 296
+          },
+          {
+            "component": "Tag",
+            "file": "packages/react/src/styles.css",
+            "line": 297
+          },
+          {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
             "line": 219
@@ -6100,6 +7375,11 @@
           "Controls/Form > TabList",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -6170,6 +7450,26 @@
             "line": 168
           },
           {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 62
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 331
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 62
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 331
+          },
+          {
             "component": "NumberField",
             "file": "packages/react/src/styles.css",
             "line": 227
@@ -6211,6 +7511,11 @@
           "Controls/Form > TabList",
           "Controls/Inputs > ButtonVariants",
           "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -6258,6 +7563,16 @@
             "line": 41
           },
           {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 325
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 325
+          },
+          {
             "component": "Panel",
             "file": "packages/react/src/styles.css",
             "line": 13
@@ -6282,6 +7597,13 @@
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Controls/Inputs > ButtonVariants",
+          "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -6370,6 +7692,26 @@
             "line": 131
           },
           {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 131
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 330
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 131
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 330
+          },
+          {
             "component": "NumberField",
             "file": "packages/react/src/styles.css",
             "line": 210
@@ -6389,6 +7731,13 @@
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Controls/Inputs > ButtonVariants",
+          "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -6439,7 +7788,6 @@
     "--stoa-color-neutral-300",
     "--stoa-color-neutral-700",
     "--stoa-color-neutral-800",
-    "--stoa-font-line-height-normal",
     "--stoa-font-line-height-tight",
     "--stoa-font-size-2xl",
     "--stoa-font-size-md",
@@ -6453,7 +7801,6 @@
     "--stoa-radius-lg",
     "--stoa-radius-none",
     "--stoa-space-0",
-    "--stoa-space-0-5",
     "--stoa-space-12",
     "--stoa-space-8"
   ],
@@ -6467,7 +7814,7 @@
   ],
   "summary": {
     "tokenCount": 86,
-    "unusedCount": 20,
+    "unusedCount": 18,
     "hardcodedLiteralCount": 0,
     "undefinedCount": 1
   }

@@ -288,3 +288,45 @@
   border-color: var(--stoa-color-border);
   color: var(--stoa-color-text-subtle);
 }
+
+/* Tag: a static label. The tone colours border and text; warning keeps the
+   body text colour, as the status badge does, with the warning colour on
+   the border; accent fills the tag. */
+.stoa-tag {
+  display: inline-flex; align-items: center; gap: var(--stoa-space-1);
+  padding: 0 var(--stoa-space-1);
+  border: 1px solid var(--stoa-color-border-strong); border-radius: var(--stoa-radius-sm);
+  font-size: var(--stoa-font-size-xs); font-weight: var(--stoa-font-weight-medium);
+  line-height: var(--stoa-font-line-height-normal); white-space: nowrap;
+  color: var(--stoa-color-text-muted);
+}
+.stoa-tag--small { font-size: var(--stoa-font-size-2xs); padding-inline: var(--stoa-space-0-5); }
+.stoa-tag--info { color: var(--stoa-color-accent); border-color: var(--stoa-color-accent); }
+.stoa-tag--positive { color: var(--stoa-color-up); border-color: var(--stoa-color-up); }
+.stoa-tag--warning { color: var(--stoa-color-text); border-color: var(--stoa-color-warning); }
+.stoa-tag--negative { color: var(--stoa-color-down); border-color: var(--stoa-color-down); }
+.stoa-tag--accent { color: var(--stoa-color-surface); background: var(--stoa-color-accent); border-color: var(--stoa-color-accent); }
+
+/* Filter chips: rounded toggle buttons with the choice states (the accent
+   fill while on), a check mark while on and an optional count. A row
+   wraps, or scrolls inside itself; the padding keeps the focus ring of an
+   edge chip inside the scrolling box, which would clip it. */
+.stoa-filter-chips {
+  display: flex; flex-wrap: wrap; gap: var(--stoa-space-1);
+  max-inline-size: 100%; min-inline-size: 0;
+}
+.stoa-filter-chips--scroll {
+  flex-wrap: nowrap; overflow-x: auto; overscroll-behavior-inline: contain;
+  padding: calc(var(--stoa-focus-width) + var(--stoa-focus-offset));
+}
+.stoa-filter-chip {
+  display: inline-flex; align-items: center; gap: var(--stoa-space-1);
+  flex: none; white-space: nowrap; border-radius: var(--stoa-radius-full);
+  padding-inline: var(--stoa-space-3);
+}
+.stoa-filter-chip__count { font-family: var(--stoa-font-family-mono); font-variant-numeric: tabular-nums; }
+.stoa-filter-chip--small {
+  font-size: var(--stoa-font-size-xs);
+  min-block-size: var(--stoa-space-6);
+  padding: calc(var(--stoa-space-1) / 2) var(--stoa-space-2);
+}

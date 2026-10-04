@@ -27,3 +27,17 @@ export { readCanvasTokens, fitCanvas, useTokenSignal, useInvalidateOnTokensVersi
 export { messagesFor, stoaFormat, useStoaFormat, type StoaFormat, type StoaMessages } from "./locale";
 export { I18nProvider } from "react-aria-components";
 export { TextField, StatusBadge, Tabs, type TextFieldProps, type StatusTone, type TabItem } from "./Form";
+
+// Controls: tags and filter chips, switches and checkboxes, the general
+// slider, the toolbar, keyboard shortcuts, and the theme and language
+// switches with the preferences behind them.
+export {
+  FilterChip,
+  FilterChipGroup,
+  Tag,
+  type FilterChipGroupProps,
+  type FilterChipItem,
+  type FilterChipProps,
+  type TagProps,
+  type TagTone,
+} from "./Chips";
