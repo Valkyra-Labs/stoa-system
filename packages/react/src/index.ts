@@ -63,3 +63,22 @@ export {
   type ShortcutHelp,
   type ShortcutModifier,
 } from "./Shortcuts";
+export {
+  LanguageSwitch,
+  ThemeSwitch,
+  applyLanguage,
+  applyTheme,
+  directionOf,
+  readLanguage,
+  readThemeChoice,
+  systemTheme,
+  useLanguagePreference,
+  useThemePreference,
+  type LanguagePreference,
+  type LanguageSwitchProps,
+  type PreferenceStore,
+  type Theme,
+  type ThemeChoice,
+  type ThemePreference,
+  type ThemeSwitchProps,
+} from "./Preferences";

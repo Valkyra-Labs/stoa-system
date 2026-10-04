@@ -53,5 +53,10 @@ describe("the dictionaries", () => {
     expect(DICTIONARIES.ar!.theme).toBe("المظهر");
     expect(DICTIONARIES.ru!.language).toBe("Язык");
     expect(DICTIONARIES.ru!.keySpace).toBe("Пробел");
+    expect(Object.values(DICTIONARIES).map((m) => [m.themeSystem, m.themeLight, m.themeDark])).toEqual([
+      ["System", "Light", "Dark"],
+      ["النظام", "فاتح", "داكن"],
+      ["Системная", "Светлая", "Тёмная"],
+    ]);
   });
 });

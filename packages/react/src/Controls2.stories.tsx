@@ -1,7 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useState } from "react";
 import { FilterChip, FilterChipGroup, Tag } from "./Chips";
+import { AppHeader } from "./AppHeader";
 import { Button } from "./Controls";
+import { LanguageSwitch, ThemeSwitch, useLanguagePreference, useThemePreference, type ThemeChoice } from "./Preferences";
 import { Kbd, useShortcuts } from "./Shortcuts";
 import { Slider } from "./Slider";
 import { ButtonGroup, Toolbar, ToolbarSeparator } from "./Toolbar";
@@ -374,4 +376,65 @@ export const ShortcutList: StoryObj = {
       </div>
     );
   },
+};
+
+/** System is the default: no data-theme, so the tokens follow the
+ * system's setting. Light and Dark are chosen themes. The words follow the
+ * locale (the Language toolbar). */
+export const ThemeSwitchStates: StoryObj = {
+  render: () => {
+    const [first, setFirst] = useState<ThemeChoice>("system");
+    const [second, setSecond] = useState<ThemeChoice>("dark");
+    return (
+      <div style={column}>
+        <ThemeSwitch value={first} onChange={setFirst} />
+        <ThemeSwitch value={second} onChange={setSecond} label="Theme of the chart" />
+      </div>
+    );
+  },
+};
+
+/** The languages by code, the same in every interface. */
+export const LanguageSwitchStates: StoryObj = {
+  render: () => {
+    const [two, setTwo] = useState("en");
+    const [three, setThree] = useState("ru");
+    return (
+      <div style={column}>
+        <LanguageSwitch languages={["en", "ar"]} value={two} onChange={setTwo} />
+        <LanguageSwitch languages={["en", "ru", "ar"]} value={three} onChange={setThree} label="Language of the report" />
+      </div>
+    );
+  },
+};
+
+/** Both switches in an AppHeader, wired to their hooks. A choice goes to
+ * the URL (?theme=, ?lang=) and to localStorage; System clears both. In an
+ * application the hooks set data-theme, lang and dir on the root element;
+ * here Storybook's toolbar owns those, so the hooks run with `apply: false`
+ * and the line under the header says what they would set. */
+export const HeaderWithSwitches: StoryObj = {
+  render: () => {
+    const theme = useThemePreference({ apply: false, storageKey: "stoa-storybook-theme" });
+    const language = useLanguagePreference({ apply: false, languages: ["en", "ru", "ar"], storageKey: "stoa-storybook-lang" });
+    const drawn = theme.choice === "system" ? `none (the system's ${theme.theme})` : theme.choice;
+    return (
+      <>
+        <AppHeader
+          title="Tyche Replay"
+          subtitle="AAPL on IEX"
+          actions={
+            <>
+              <ThemeSwitch value={theme.choice} onChange={theme.setChoice} />
+              <LanguageSwitch languages={["en", "ru", "ar"]} value={language.language} onChange={language.setLanguage} />
+            </>
+          }
+        />
+        <p style={{ paddingInline: "var(--stoa-space-4)" }}>
+          data-theme: {drawn}; lang: {language.language}; dir: {language.dir}
+        </p>
+      </>
+    );
+  },
+  parameters: { layout: "fullscreen" },
 };

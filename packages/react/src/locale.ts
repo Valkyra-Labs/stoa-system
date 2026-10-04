@@ -41,6 +41,9 @@ export type StoaMessages = {
   /** The space bar, in a shortcut's keys; the other keys keep the names
    * printed on them. */
   keySpace: string;
+  /** The theme switch's first option: no theme chosen, follow the
+   * system's light or dark setting. */
+  themeSystem: string;
 };
 
 const EN: StoaMessages = {
@@ -66,6 +69,7 @@ const EN: StoaMessages = {
   themeDark: "Dark",
   language: "Language",
   keySpace: "Space",
+  themeSystem: "System",
 };
 
 const AR: StoaMessages = {
@@ -91,6 +95,7 @@ const AR: StoaMessages = {
   themeDark: "داكن",
   language: "اللغة",
   keySpace: "مسافة",
+  themeSystem: "النظام",
 };
 
 const RU: StoaMessages = {
@@ -117,6 +122,7 @@ const RU: StoaMessages = {
   themeDark: "Тёмная",
   language: "Язык",
   keySpace: "Пробел",
+  themeSystem: "Системная",
 };
 
 /** Stoa's words for a locale: Arabic for any "ar" tag, Russian for any
