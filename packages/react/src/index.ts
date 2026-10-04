@@ -29,3 +29,6 @@ export { I18nProvider } from "react-aria-components";
 export { TextField, StatusBadge, Tabs, type TextFieldProps, type StatusTone, type TabItem } from "./Form";
 // Table and charts.
 export { Table, type TableColumn, type TableProps } from "./Table";
+export { LineChart, type ChartPoint, type ChartTone, type LineChartProps, type LineSeries } from "./LineChart";
+export { EventStrip, type EventKind, type EventStripProps, type StripEvent } from "./EventStrip";
+export { niceTicks, formatDate, type Ticks } from "./chartScale";

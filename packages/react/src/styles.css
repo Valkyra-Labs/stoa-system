@@ -292,3 +292,48 @@
   background: var(--stoa-color-surface);
 }
 .stoa-table--sticky-header.stoa-table--sticky-first thead th:first-child { z-index: 2; }
+
+/* Charts: SVG drawn in CSS pixels at the element's real width. Strokes and
+   fills come from the semantic colour tokens, so the theme switches them
+   without a redraw. The SVG's own direction is left to right because its
+   coordinates are; the time axis direction is a prop (LineChart.tsx). */
+.stoa-chart, .stoa-event-strip { margin: 0; min-inline-size: 0; }
+.stoa-chart__plot, .stoa-event-strip__plot { position: relative; font-size: var(--stoa-font-size-2xs); }
+.stoa-chart__svg { display: block; inline-size: 100%; overflow: visible; direction: ltr; }
+.stoa-chart__axis-label {
+  margin: 0 0 var(--stoa-space-1);
+  font-size: var(--stoa-font-size-2xs); color: var(--stoa-color-text-muted);
+}
+.stoa-chart__tick { fill: var(--stoa-color-text-muted); font-family: var(--stoa-font-family-mono); font-size: var(--stoa-font-size-2xs); }
+.stoa-chart__grid { stroke: var(--stoa-color-border); stroke-width: 1; }
+.stoa-chart__axis { stroke: var(--stoa-color-border-strong); stroke-width: 1; }
+.stoa-chart__line { fill: none; stroke-width: 2; stroke-linejoin: round; stroke-linecap: butt; }
+.stoa-chart__line--accent { stroke: var(--stoa-color-accent); }
+.stoa-chart__line--neutral { stroke: var(--stoa-color-text-muted); }
+.stoa-chart__line--warning { stroke: var(--stoa-color-warning); }
+.stoa-chart__line--up { stroke: var(--stoa-color-up); }
+.stoa-chart__line--down { stroke: var(--stoa-color-down); }
+.stoa-chart__dot--accent { fill: var(--stoa-color-accent); }
+.stoa-chart__dot--neutral { fill: var(--stoa-color-text-muted); }
+.stoa-chart__dot--warning { fill: var(--stoa-color-warning); }
+.stoa-chart__dot--up { fill: var(--stoa-color-up); }
+.stoa-chart__dot--down { fill: var(--stoa-color-down); }
+.stoa-chart__empty {
+  display: grid; place-items: center; block-size: 100%; margin: 0;
+  color: var(--stoa-color-text-muted); font-size: var(--stoa-density-font-size);
+}
+.stoa-chart__legend {
+  display: flex; flex-wrap: wrap; gap: var(--stoa-space-1) var(--stoa-space-4);
+  margin: var(--stoa-space-2) 0 0; padding: 0; list-style: none;
+  font-size: var(--stoa-font-size-xs); color: var(--stoa-color-text);
+}
+.stoa-chart__legend-item { display: inline-flex; align-items: center; gap: var(--stoa-space-1); }
+.stoa-chart__swatch, .stoa-event-strip__swatch { flex: none; }
+.stoa-chart__note { margin: var(--stoa-space-1) 0 0; font-size: var(--stoa-font-size-xs); color: var(--stoa-color-text-muted); }
+.stoa-chart__data { margin-block-start: var(--stoa-space-2); }
+
+/* EventStrip markers: shape tells the kind, the legend names it. */
+.stoa-event-strip__mark--coupon { stroke: var(--stoa-color-text-muted); stroke-width: 1.5; }
+.stoa-event-strip__mark--amortisation { fill: var(--stoa-color-accent); }
+.stoa-event-strip__mark--offer { fill: var(--stoa-color-warning); }
+.stoa-event-strip__mark--maturity { fill: var(--stoa-color-text); }
