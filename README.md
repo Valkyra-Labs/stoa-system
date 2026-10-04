@@ -15,12 +15,29 @@ follow as the products need them.
 - `@valkyra-labs/stoa-tokens`: design tokens in the W3C Design Tokens
   format, built with Style Dictionary into CSS variables (`--stoa-*`),
   an ES module with TypeScript declarations, and flat JSON.
-- `@valkyra-labs/stoa-react`: React components on React Aria. Ladder and
-  Heatmap on canvas and TradeTable, each with an empty state; Button,
-  ChoiceGroup, Select, NumberField, TimeSlider, Toggle, TextField, Tabs,
-  StatusBadge, Panel, StatBar and Disclosure. Words and digits follow the
-  locale set with React Aria's `I18nProvider` (`useStoaFormat`), so an
-  Arabic locale such as `ar-u-nu-arab` gets Arabic words and
+- `@valkyra-labs/stoa-react`: React components on React Aria.
+  - Market data: Ladder and Heatmap on canvas, TradeTable on the
+    generic Table, LineChart and EventStrip, each with an empty state
+    and a text alternative.
+  - DataGrid: a virtualised ARIA grid for large tables, with pinned
+    columns, sorting, selection and inline editing
+    ([decision and measurements](docs/components/data-grid.md)).
+  - Controls: Button (default, primary, secondary, ghost, danger),
+    ChoiceGroup, Select, NumberField, TextField, TimeSlider, Slider,
+    Toggle, Switch, Checkbox and CheckboxGroup, Tag, FilterChip,
+    Toolbar and ButtonGroup, Tabs, Disclosure.
+  - Feedback and layout: Callout, EmptyState, Skeleton, ProgressBar,
+    toasts (ToastQueue, ToastRegion), StatusBadge, LiveRegion,
+    VisuallyHidden, Panel, StatBar and Metric, AppHeader, PageShell.
+  - Overlays, lists and content: Dialog, Sheet, AlertDialog,
+    ReorderableList, StepList, LogView, CodeView.
+  - Keyboard and preferences: Kbd, `useShortcuts`, ShortcutList and
+    ShortcutsDialog; ThemeSwitch (System, Light, Dark) and
+    LanguageSwitch with the preference hooks behind them.
+
+  Words and digits follow the locale set with React Aria's
+  `I18nProvider` (`useStoaFormat`). Stoa's own words exist in English,
+  Russian and Arabic; an Arabic locale such as `ar-u-nu-arab` also gets
   Arabic-Indic digits.
 
 ## Principles
@@ -35,10 +52,11 @@ follow as the products need them.
   the current numbers, and any failure that is accepted for a while is
   recorded in `packages/tokens/known-violations.json`, which is empty:
   every enforced check passes in both themes and every density. Body
-  text meets 7:1 on both surfaces. Eighteen measurements are reported but
-  not enforced, each with its reason in `pairs.mjs`; ten of them are
+  text meets 7:1 on both surfaces. Twenty measurements are reported but
+  not enforced, each with its reason in `pairs.mjs`; twelve of them are
   below their threshold: the decorative `border` rule, the translucent
-  depth bars (their sizes are printed beside them), and the lightness gap
+  depth bars (their sizes are printed beside them), the scrollbar thumb
+  (kept quiet on purpose), and the lightness gap
   between up and down (told apart by sign and shape, and by hue for every
   colour-vision model checked).
 - **Motion explains a change of state** and follows the user's

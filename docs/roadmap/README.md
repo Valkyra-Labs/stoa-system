@@ -27,7 +27,14 @@ as overrides on top of it, once the base passes every rule.
    DTCG 2025.10; light/dark times density in the build; Heatmap height
    from the density tokens (the Tyche demo derives it itself for now).
 3. **Components the demos need**, each with a story, keyboard and
-   screen-reader behaviour, tests, and light and dark in its story:
+   screen-reader behaviour, tests, and light and dark in its story.
+   Done on `components/batch-1`: all twelve below, plus the controls the
+   new demos need (Switch, Checkbox, Slider, Tag, FilterChip, the theme
+   and language switches), Dialog and Sheet, ReorderableList, LineChart,
+   EventStrip and DataGrid. Open: stale states on Ladder, Heatmap and
+   TradeTable; z-index, scrim and dimension tokens (Dialog and Sheet
+   derive widths from the space scale and the scrim from a colour mix
+   until those exist).
    1. Table (generic; TradeTable rebuilt on it; localisable headers)
    2. Callout (tones, role, action slot)
    3. Skeleton and ProgressBar

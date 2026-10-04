@@ -28,9 +28,9 @@ describe("runBrowserChecks against the base tokens", () => {
 
   it("runs every rule in checks.mjs, one result per pair, theme and density mode", () => {
     // The same total scripts/checks.test.mjs asserts against the built CSS
-    // (77): the playground's resolver and the real build agree, so the
+    // (81): the playground's resolver and the real build agree, so the
     // count is one more place that agreement is exercised.
-    expect(result.checks).toHaveLength(77);
+    expect(result.checks).toHaveLength(81);
   });
 
   it("classifies every known-violations.json entry as known, not new", () => {

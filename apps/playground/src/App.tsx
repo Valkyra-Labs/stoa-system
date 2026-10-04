@@ -3,9 +3,20 @@
 // of this working tree; on top of it sits the override layer, and every
 // override is shown as one. The area panels (src/panels.tsx) sit in the
 // same list and contribute variables and content to every preview frame.
-import { Fragment, useCallback, useEffect, useMemo, useState } from "react";
-import { AppHeader, Button, ChoiceGroup, Panel, StatusBadge, Tabs, TextField } from "@valkyra-labs/stoa-react";
+import { Fragment, useCallback, useEffect, useMemo, useState, type CSSProperties } from "react";
+import { AppHeader, Button, ChoiceGroup, PageShell, Panel, Select, StatusBadge, Tabs, TextField } from "@valkyra-labs/stoa-react";
 import { useChromeTheme, type ChromeTheme } from "./chromeTheme";
+import { useRegionBlockSize } from "./region";
+import {
+  DATA_STATES,
+  DEFAULT_SCREEN_SETTINGS,
+  GRID_ROW_COUNTS,
+  SCREENS,
+  type DataState,
+  type GridRowCount,
+  type ScreenId,
+  type ScreenSettings,
+} from "./screens/model";
 import { ControlPanel } from "./ControlPanel";
 import { OverrideList } from "./OverrideList";
 import { PreviewGrid } from "./PreviewGrid";
@@ -51,6 +62,10 @@ export function App() {
   const [history, setHistory] = useState(emptyHistory);
   const [chromeTheme, setChromeTheme] = useChromeTheme();
   const [density, setDensity] = useState<DensityMode>("regular");
+  const [screenSettings, setScreenSettings] = useState<ScreenSettings>(DEFAULT_SCREEN_SETTINGS);
+  // Retry on a screen's error brings its data back; stable, so the
+  // component screens do not re-render with every stream frame.
+  const retry = useCallback(() => setScreenSettings((settings) => ({ ...settings, state: "live" })), []);
   const [running, setRunning] = useState(true);
   const [speed, setSpeed] = useState("1");
   // Empty: the server stamps an unnamed save with the time it was written,
@@ -71,6 +86,13 @@ export function App() {
   const [highlighted, setHighlighted] = useState<string[]>([]);
   /** What each area panel contributes, by panel id. */
   const [contributions, setContributions] = useState<Record<string, Contribution>>({});
+
+  // The side panel is sized against the shell's scrolling region, not the
+  // window: the header takes part of the window's height.
+  const [app, regionBlockSize] = useRegionBlockSize();
+  const regionStyle = (regionBlockSize > 0 ? { "--pg-region": `${regionBlockSize}px` } : undefined) as
+    | CSSProperties
+    | undefined;
 
   const overrides = history.present;
   const stream = useMemo(() => createStream(7), []);
@@ -148,7 +170,10 @@ export function App() {
         name,
         files,
         overrides,
-        panels: panelSnapshots(contributions),
+        // What the frames were showing, beside what each area panel
+        // records, so a snapshot says which screen and state it was tuned
+        // against. Loading a snapshot restores its overrides only.
+        panels: { ...panelSnapshots(contributions), screen: screenSettings },
         overwrite,
       });
       setTaken(false);
@@ -202,6 +227,43 @@ export function App() {
             value={density}
             onChange={setDensity}
           />
+          {/* What both frames show: one screen, in one data state, so a
+              look takes in both themes and directions of it. */}
+          <Select<ScreenId>
+            label="Screen"
+            options={SCREENS}
+            value={screenSettings.screen}
+            onChange={(screen) => setScreenSettings((settings) => ({ ...settings, screen }))}
+          />
+          <div className="pg-setting">
+            <span className="pg-token__label" aria-hidden="true">
+              State
+            </span>
+            <ChoiceGroup<DataState>
+              label="State"
+              size="small"
+              choices={DATA_STATES}
+              value={screenSettings.state}
+              onChange={(state) => setScreenSettings((settings) => ({ ...settings, state }))}
+            />
+          </div>
+          {screenSettings.screen === "market" && (
+            <p className="pg-note">Market follows the stream in every state; State applies to the component screens.</p>
+          )}
+          {screenSettings.screen === "grid" && (
+            <div className="pg-setting">
+              <span className="pg-token__label" aria-hidden="true">
+                Grid rows
+              </span>
+              <ChoiceGroup<GridRowCount>
+                label="Grid rows"
+                size="small"
+                choices={GRID_ROW_COUNTS.map((count) => ({ id: count, label: count.toLocaleString("en-US") }))}
+                value={screenSettings.gridRows}
+                onChange={(gridRows) => setScreenSettings((settings) => ({ ...settings, gridRows }))}
+              />
+            </div>
+          )}
         </div>
       ),
     },
@@ -330,25 +392,30 @@ export function App() {
   ];
 
   return (
-    <div className="pg-page">
-      <AppHeader
-        title="Stoa playground"
-        subtitle="Dense components on stoa-default"
-        actions={
-          <ChoiceGroup<ChromeTheme>
-            label="Playground theme"
-            size="small"
-            value={chromeTheme}
-            onChange={setChromeTheme}
-            choices={[
-              { id: "system", label: "System" },
-              { id: "light", label: "Light" },
-              { id: "dark", label: "Dark" },
-            ]}
-          />
-        }
-      />
-      <div className="pg-app">
+    // The header stays at the top of the window; the page scrolls in the
+    // shell's region under it, whose scrollbar lane is reserved.
+    <PageShell
+      header={
+        <AppHeader
+          title="Stoa playground"
+          subtitle="Dense components on stoa-default"
+          actions={
+            <ChoiceGroup<ChromeTheme>
+              label="Playground theme"
+              size="small"
+              value={chromeTheme}
+              onChange={setChromeTheme}
+              choices={[
+                { id: "system", label: "System" },
+                { id: "light", label: "Light" },
+                { id: "dark", label: "Dark" },
+              ]}
+            />
+          }
+        />
+      }
+    >
+      <div className="pg-app" ref={app} style={regionStyle}>
         <aside className="pg-side">
           {panels
             .filter((panel) => panel.id === "session")
@@ -373,7 +440,7 @@ export function App() {
           />
         </aside>
 
-        <main className="pg-main">
+        <div className="pg-main">
           <PreviewGrid
             stream={stream}
             tokens={tokens}
@@ -381,9 +448,11 @@ export function App() {
             onRenderTime={setRenderMs}
             panelVariables={panelVariables}
             panelContent={panelContent}
+            settings={screenSettings}
+            onRetry={retry}
           />
-        </main>
+        </div>
       </div>
-    </div>
+    </PageShell>
   );
 }

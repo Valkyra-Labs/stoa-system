@@ -1,9 +1,17 @@
-// Two frames of the same dense screen, each showing one of four views
-// (light or dark, left to right or right to left) in English or Arabic.
-// Token values are written as CSS variables on each frame's container,
-// never on the document, so one edit re-themes both screens without a
-// page-wide restyle.
-import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from "react";
+// Two frames of the same screen, each showing one of four views (light or
+// dark, left to right or right to left) in English, Russian or Arabic.
+// Which screen, and in which data state, is the side panel's choice and
+// the same in both frames. Token values are written as CSS variables on
+// each frame's container, never on the document, so one edit re-themes
+// both screens without a page-wide restyle.
+//
+// Overlays (dialogs, sheets, toasts) open inside the frame they were
+// opened from: React Aria portals them to the document's body unless an
+// UNSAFE_PortalProvider names another container, and each frame names its
+// own, inside its body. There they take the frame's theme, direction,
+// density, motion and colour-vision filter like everything else in it.
+import { useCallback, useEffect, useRef, useState, type CSSProperties, type FocusEvent, type ReactNode } from "react";
+import { UNSAFE_PortalProvider } from "react-aria/PortalProvider";
 import {
   Button,
   ChoiceGroup,
@@ -24,6 +32,22 @@ import { CVD_CHOICES, CvdFilterDefs, cvdFilterStyle, type CvdMode } from "./cvdP
 import type { ResolvedTokens, Theme } from "./tokenModel";
 import { HISTORY, timeAt, type Stream, type StreamFrame } from "./stream";
 import { LANGUAGES, SCREEN_TEXT, localeFor, retypeDigits, type Language } from "./screenText";
+import type { ScreenId, ScreenSettings } from "./screens/model";
+import type { ComponentScreenProps } from "./screens/parts";
+import { ControlsScreen } from "./screens/ControlsScreen";
+import { FeedbackScreen } from "./screens/FeedbackScreen";
+import { OverlaysScreen } from "./screens/OverlaysScreen";
+import { ChartsScreen } from "./screens/ChartsScreen";
+import { GridScreen } from "./screens/GridScreen";
+
+/** The component screens, by id; Market is the dense screen below. */
+const COMPONENT_SCREENS: Record<Exclude<ScreenId, "market">, (props: ComponentScreenProps) => ReactNode> = {
+  controls: ControlsScreen,
+  feedback: FeedbackScreen,
+  overlays: OverlaysScreen,
+  charts: ChartsScreen,
+  grid: GridScreen,
+};
 
 export type FrameSpec = { id: string; label: string; theme: Theme; dir: "ltr" | "rtl" };
 
@@ -46,6 +70,11 @@ export type PreviewGridProps = {
   panelVariables?: Record<string, string>;
   /** Content the area panels contribute, inside every frame. */
   panelContent?: ReactNode;
+  /** The screen both frames show, its data state and the grid's rows. */
+  settings: ScreenSettings;
+  /** Retry on a screen's error: back to live data. Stable, so the
+   * component screens do not re-render with every stream frame. */
+  onRetry: () => void;
 };
 
 /** What the two frames show on load: between them, both themes and both
@@ -71,6 +100,8 @@ export function PreviewGrid({
   onRenderTime,
   panelVariables,
   panelContent,
+  settings,
+  onRetry,
 }: PreviewGridProps) {
   const [frame, setFrame] = useState(() => stream.current());
   const published = useRef(0);
@@ -101,6 +132,8 @@ export function PreviewGrid({
           frame={frame}
           panelVariables={panelVariables}
           panelContent={panelContent}
+          settings={settings}
+          onRetry={onRetry}
         />
       ))}
     </div>
@@ -116,6 +149,8 @@ function PreviewFrame({
   frame,
   panelVariables,
   panelContent,
+  settings,
+  onRetry,
 }: {
   slot: number;
   initialView: string;
@@ -125,6 +160,8 @@ function PreviewFrame({
   frame: StreamFrame;
   panelVariables?: Record<string, string>;
   panelContent?: ReactNode;
+  settings: ScreenSettings;
+  onRetry: () => void;
 }) {
   // Local, visual-only, and irrelevant to what the checks measure: a
   // preview is one person looking at one frame, not a value that follows
@@ -137,8 +174,20 @@ function PreviewFrame({
   // The frame's own reduced-motion setting, as an application would offer
   // it; the system setting applies to the whole page through tokens.css.
   const [reducedMotion, setReducedMotion] = useState(false);
+  // Keyboard shortcuts on a screen run only while the focus is inside its
+  // frame, so a key pressed in one frame does not act in both. An overlay
+  // opened from the frame is portalled into it, so it keeps them on.
+  const [focused, setFocused] = useState(false);
+  const onBlur = useCallback((event: FocusEvent<HTMLElement>) => {
+    if (!event.currentTarget.contains(event.relatedTarget as Node | null)) setFocused(false);
+  }, []);
+  // The frame's own container for overlays; React Aria asks for it when an
+  // overlay opens, by which time it is in the document.
+  const overlays = useRef<HTMLDivElement>(null);
+  const overlayContainer = useCallback(() => overlays.current, []);
   const spec = VIEWS.find((candidate) => candidate.id === view) ?? VIEWS[0]!;
   const name = `Preview ${slot}`;
+  const ComponentScreen = settings.screen === "market" ? null : COMPONENT_SCREENS[settings.screen];
   return (
     <section className="pg-frame" aria-label={`${name}: ${spec.label}`} data-slot={slot}>
       <header className="pg-frame__header">
@@ -181,13 +230,36 @@ function PreviewFrame({
             ...cvdFilterStyle(cvd),
           } as CSSProperties
         }
+        data-screen={settings.screen}
+        data-state={settings.screen === "market" ? undefined : settings.state}
+        onFocus={() => setFocused(true)}
+        onBlur={onBlur}
       >
-        {/* The canvases read their colours and direction when they mount,
-            so a change of view re-mounts them like a token edit does. */}
-        <I18nProvider locale={localeFor(language, spec.dir)}>
-          <Screen stream={stream} frame={frame} language={language} revision={`${revision}:${spec.id}`} />
-          {panelContent}
-        </I18nProvider>
+        <UNSAFE_PortalProvider getContainer={overlayContainer}>
+          <I18nProvider locale={localeFor(language, spec.dir)}>
+            {ComponentScreen ? (
+              <ComponentScreen
+                language={language}
+                state={settings.state}
+                onRetry={onRetry}
+                shortcutsEnabled={focused}
+                stream={stream}
+                gridRows={settings.gridRows}
+              />
+            ) : (
+              // The canvases read their colours and direction when they
+              // mount, so a change of view re-mounts them like a token
+              // edit does.
+              <Screen stream={stream} frame={frame} language={language} revision={`${revision}:${spec.id}`} />
+            )}
+            {panelContent}
+          </I18nProvider>
+        </UNSAFE_PortalProvider>
+        {/* Where the frame's overlays go: a layer over the body whose box
+            follows the part of the frame in view (app.css). */}
+        <div className="pg-frame__overlays">
+          <div ref={overlays} className="pg-frame__overlay-box" data-overlays={spec.id} />
+        </div>
       </div>
     </section>
   );
@@ -213,15 +285,17 @@ function Screen({
   const text = SCREEN_TEXT[language];
   const locale = useStoaFormat();
   const [side, setSide] = useState("buy");
-  const [limit, setLimit] = useState("222.60");
-  const [quantity, setQuantity] = useState("500");
+  // The screen mounts in whatever language the frame is in (coming back
+  // from another screen, for example), so its first values are too.
+  const [limit, setLimit] = useState(() => retypeDigits("222.60", "en", language));
+  const [quantity, setQuantity] = useState(() => retypeDigits("500", "en", language));
   // The fields hold what was typed; when the language changes, their
   // digits are rewritten so the values carry over.
   const [typedIn, setTypedIn] = useState(language);
   if (typedIn !== language) {
     setTypedIn(language);
-    setLimit(retypeDigits(limit, language));
-    setQuantity(retypeDigits(quantity, language));
+    setLimit(retypeDigits(limit, typedIn, language));
+    setQuantity(retypeDigits(quantity, typedIn, language));
   }
   // The frame the heatmap is replaying, or null to follow the stream. A
   // replayed frame stays put while the stream moves on, until it falls out

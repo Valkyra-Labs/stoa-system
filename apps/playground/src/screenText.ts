@@ -1,13 +1,14 @@
-// The words of the dense screen in the preview frames, in English and
-// Arabic. Stoa's components bring their own words (table headers, side
+// The words of the dense screen in the preview frames, in English, Russian
+// and Arabic. Stoa's components bring their own words (table headers, side
 // words, the ladder's markers); these are the screen's: panel titles,
 // field labels, buttons and the text alternatives the screen passes in.
 // Numbers are not here: they are formatted by the frame's locale.
 
-export type Language = "en" | "ar";
+export type Language = "en" | "ru" | "ar";
 
 export const LANGUAGES: { id: Language; label: string }[] = [
   { id: "en", label: "EN" },
+  { id: "ru", label: "RU" },
   { id: "ar", label: "AR" },
 ];
 
@@ -15,13 +16,15 @@ export const LANGUAGES: { id: Language; label: string }[] = [
  *
  * React Aria takes the layout direction from the locale, not from `dir`,
  * so a slider or a tab list in a frame whose language and direction
- * disagree (Arabic left to right, English right to left) would run the
- * wrong way. A script subtag states the direction: Latin script is left to
- * right, Arabic script right to left. Arabic also states its numbering
- * system, because "ar" alone formats with Latin digits in current ICU
- * data. Stoa's words follow the language subtag either way. */
+ * disagree (Arabic left to right, English or Russian right to left) would
+ * run the wrong way. A script subtag states the direction: Latin and
+ * Cyrillic script are left to right, Arabic script right to left. Arabic
+ * also states its numbering system, because "ar" alone formats with Latin
+ * digits in current ICU data. Stoa's words follow the language subtag
+ * either way. */
 export function localeFor(language: Language, dir: "ltr" | "rtl"): string {
   if (language === "ar") return dir === "rtl" ? "ar-u-nu-arab" : "ar-Latn-u-nu-arab";
+  if (language === "ru") return dir === "rtl" ? "ru-Arab" : "ru-RU";
   return dir === "rtl" ? "en-Arab" : "en-US";
 }
 
@@ -82,6 +85,33 @@ export const SCREEN_TEXT: Record<Language, ScreenText> = {
     tradeCount: "Trades",
     frame: "Frame",
   },
+  ru: {
+    orderBook: "Стакан",
+    orderBookLabel: "Стакан, 12 уровней с каждой стороны",
+    order: "Заявка",
+    side: "Направление",
+    buy: "Покупка",
+    sell: "Продажа",
+    limitPrice: "Лимитная цена",
+    tick: (size) => `Шаг цены ${size}`,
+    quantity: "Количество",
+    send: "Отправить",
+    clear: "Очистить",
+    marketable: "Исполнима сразу",
+    liquidity: "Видимая ликвидность",
+    liquidityLabel: "Видимая ликвидность за окно повтора",
+    liquidityDescription: "Покупки ниже средней цены, продажи выше; в более тёмных ячейках больше бумаг.",
+    replayTime: "Время повтора",
+    trades: "Сделки",
+    tradesView: "Вид сделок",
+    tape: "Лента",
+    tapeCaption: "Последние сделки, новые сверху",
+    summary: "Сводка",
+    summaryCaption: "Сводка по рынку",
+    mid: "Средняя цена",
+    tradeCount: "Сделки",
+    frame: "Кадр",
+  },
   ar: {
     orderBook: "دفتر الأوامر",
     orderBookLabel: "دفتر الأوامر، ١٢ مستوى لكل جانب",
@@ -114,11 +144,15 @@ export const SCREEN_TEXT: Record<Language, ScreenText> = {
 const LATIN = "0123456789";
 const ARABIC_INDIC = "٠١٢٣٤٥٦٧٨٩";
 
-/** A typed number rewritten in the other language's digits, so a field
- * keeps its value when the frame's language changes. Only the digits and
- * the decimal separator move; anything else typed stays as it was. */
-export function retypeDigits(text: string, to: Language): string {
-  return to === "ar"
-    ? text.replace(/[0-9]/g, (d) => ARABIC_INDIC[LATIN.indexOf(d)]!).replace(/\./g, "٫")
-    : text.replace(/[٠-٩]/g, (d) => LATIN[ARABIC_INDIC.indexOf(d)]!).replace(/٫/g, ".");
+/** Each language's decimal separator, as its locale writes it. */
+const DECIMAL: Record<Language, string> = { en: ".", ru: ",", ar: "٫" };
+
+/** A typed number rewritten from one language's digits and decimal
+ * separator into another's, so a field keeps its value when the frame's
+ * language changes. Only the digits and the decimal separator move;
+ * anything else typed stays as it was. */
+export function retypeDigits(text: string, from: Language, to: Language): string {
+  if (from === to) return text;
+  const latin = text.replace(/[٠-٩]/g, (d) => LATIN[ARABIC_INDIC.indexOf(d)]!).replaceAll(DECIMAL[from], DECIMAL[to]);
+  return to === "ar" ? latin.replace(/[0-9]/g, (d) => ARABIC_INDIC[LATIN.indexOf(d)]!) : latin;
 }

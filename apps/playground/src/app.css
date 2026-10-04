@@ -1,22 +1,8 @@
 /* The playground's own chrome. It uses Stoa's tokens from the document
    root; the preview frames get their own values on their container, so
-   nothing here changes when a token is edited. */
-
-/* Every scrollbar in the tool alike: thin, a light neutral thumb on the
-   page background. The colour is its own, not border-strong: the
-   boundary of a control has to reach 3:1, a scrollbar of the tool's own
-   chrome does not, and it should stay quiet. Set on every box rather
-   than inherited, with an opaque track, so the page's scrollbar and the
-   side panel's are drawn the same. */
-:root {
-  --pg-scrollbar-thumb: var(--stoa-color-neutral-300);
-}
-
-:root,
-:root * {
-  scrollbar-color: var(--pg-scrollbar-thumb) var(--stoa-color-bg);
-  scrollbar-width: thin;
-}
+   nothing here changes when a token is edited. Scrollbars are Stoa's
+   own (styles.css): thin, in the scrollbar tokens of the box's theme, so
+   a dark frame draws a dark one. */
 
 body {
   margin: 0;
@@ -43,16 +29,20 @@ code {
   grid-template-columns: clamp(360px, 25vw, 480px) minmax(0, 1fr);
   align-items: start;
   gap: var(--stoa-space-4);
-  padding: var(--stoa-space-4);
 }
 
+/* The page scrolls in PageShell's region under the header, and the side
+   panel sticks inside that region: its block size is the region's
+   (measured into --pg-region, src/region.ts) less the main region's
+   padding above and below it. Before the first measurement it falls back
+   to the window's height. */
 .pg-side {
   min-inline-size: 0;
   position: sticky;
   inset-block-start: var(--stoa-space-4);
   display: grid;
   gap: var(--stoa-space-3);
-  max-block-size: calc(100vh - var(--stoa-space-8));
+  max-block-size: calc(var(--pg-region, 100dvh) - var(--stoa-space-8));
   overflow-y: auto;
   /* The scrollbar keeps its own lane and a gap from the panels, whether
      or not the content is long enough to scroll. */
@@ -290,11 +280,11 @@ code {
 .pg-frames {
   display: grid;
   /* The two frames side by side where each is wide enough for its header
-     on one row (view, language, reduced motion and colour vision take
-     about 550 px), one above the other where they are not: side by side
-     from about 1570 px, stacked below. Never a page wider than the
-     window. */
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 560px), 1fr));
+     on one row (view, language in three, reduced motion and colour
+     vision take about 580 px), one above the other where they are not:
+     side by side from about 1650 px, stacked below. Never a page wider
+     than the window. */
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 590px), 1fr));
   gap: var(--stoa-space-3);
 }
 
@@ -331,6 +321,115 @@ code {
   color: var(--stoa-color-text);
   font-family: var(--stoa-font-family-sans);
   font-size: var(--stoa-density-font-size);
+  /* The frame's overlay layer is placed against the body, and whatever a
+     screen raises stays inside the frame, under nothing outside it. */
+  position: relative;
+  isolation: isolate;
+}
+
+/* The frame's overlays (dialogs, sheets, toasts) are portalled into the
+   box below, inside the frame body, so they take its theme, direction,
+   density, motion and filter. The layer covers the body and lets the
+   pointer through; the box sticks to the top of the page's scrolling
+   region while the frame scrolls past and is never taller than that
+   region, so a dialog opens centred in the part of the frame in view.
+   Its layout containment makes it the containing block of the overlays'
+   fixed positions, so they cover the box and not the window. The
+   z-index is above anything a screen raises (the grid's sticky head,
+   a choice group's raised option). */
+.pg-frame__overlays {
+  position: absolute;
+  inset: 0;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.pg-frame__overlay-box {
+  position: sticky;
+  inset-block-start: 0;
+  block-size: min(100%, var(--pg-region, 100dvh));
+  contain: layout;
+  overflow: hidden;
+}
+
+.pg-frame__overlay-box > * {
+  pointer-events: auto;
+}
+
+/* A component screen: its error callout, then its panels. */
+.pg-components {
+  display: flex;
+  flex-direction: column;
+  gap: var(--stoa-space-2);
+}
+
+/* Terms and values side by side: the order's details, the preferences
+   chosen, the last announcement. */
+.pg-pairs {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: var(--stoa-space-1) var(--stoa-space-3);
+  margin: 0;
+}
+
+.pg-pairs dt {
+  color: var(--stoa-color-text-muted);
+}
+
+.pg-pairs dd {
+  margin: 0;
+}
+
+.pg-mono {
+  font-family: var(--stoa-font-family-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+/* The last trade's price, drawn large. */
+.pg-figure {
+  margin: 0;
+  font-family: var(--stoa-font-family-mono);
+  font-size: var(--stoa-font-size-lg);
+  font-variant-numeric: tabular-nums;
+}
+
+/* A watchlist row: the symbol, its sector taking the room, the price. */
+.pg-watch {
+  display: flex;
+  align-items: baseline;
+  gap: var(--stoa-space-2);
+}
+
+.pg-watch__sector {
+  flex: 1;
+  color: var(--stoa-color-text-muted);
+}
+
+/* The bond's figures: the stat bar, and the one metric beside it. */
+.pg-figures {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: start;
+  justify-content: space-between;
+  gap: var(--stoa-space-3);
+}
+
+/* The grid's search, with the row count at its end. */
+.pg-grid-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  justify-content: space-between;
+  gap: var(--stoa-space-2);
+}
+
+/* A side panel setting whose control names itself only for assistive
+   technology: its label is drawn before it. */
+.pg-setting {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--stoa-space-2);
 }
 
 /* The screen's two columns sit side by side while both fit and stack when

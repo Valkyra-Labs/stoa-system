@@ -4,14 +4,18 @@ From the roadmap (`docs/roadmap/README.md`) and an inventory of the Tyche
 and Themis demos: what they hand-roll today. Each brief is one pull
 request; the six can run in parallel.
 
+All six landed together on `components/batch-1`, merged from the
+feedback-layout, controls, overlays-lists, table-charts and data-grid
+branches.
+
 | Brief | Branch | Component | Status |
 |---|---|---|---|
-| [C1](c1-table.md) | `components/table` | Table; TradeTable rebuilt on it | Not started; TradeTable already has locale headers and an empty row |
-| [C2](c2-callout.md) | `components/callout` | Callout | Not started |
-| [C3](c3-progress.md) | `components/progress` | Skeleton, ProgressBar | Not started |
-| [C4](c4-empty-states.md) | `components/empty-states` | EmptyState; empty and stale states on Ladder and Heatmap | Partly done: the empty states exist |
-| [C5](c5-toolbar.md) | `components/toolbar` | Toolbar, ButtonGroup | Not started |
-| [C6](c6-app-shell.md) | `components/app-shell` | AppHeader, PageShell, VisuallyHidden, LiveRegion | Not started |
+| [C1](c1-table.md) | `components/table` | Table; TradeTable rebuilt on it | Done |
+| [C2](c2-callout.md) | `components/callout` | Callout | Done |
+| [C3](c3-progress.md) | `components/progress` | Skeleton, ProgressBar | Done |
+| [C4](c4-empty-states.md) | `components/empty-states` | EmptyState; empty and stale states on Ladder and Heatmap | EmptyState done; stale states on Ladder and Heatmap open |
+| [C5](c5-toolbar.md) | `components/toolbar` | Toolbar, ButtonGroup | Done |
+| [C6](c6-app-shell.md) | `components/app-shell` | AppHeader, PageShell, VisuallyHidden, LiveRegion | Done |
 
 ## Rules for every component brief
 
