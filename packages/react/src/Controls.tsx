@@ -21,7 +21,13 @@ import {
   type Key,
 } from "react-aria-components";
 
-export type ButtonProps = AriaButtonProps & { variant?: "default" | "primary" };
+/** `default` is a bordered button; `primary` the one main action of a view,
+ * on the accent fill; `secondary` a quieter action on the sunken surface,
+ * without a border; `ghost` an action with no fill or border until hovered
+ * (in a toolbar, for example); `danger` an action that destroys or cannot
+ * be undone, on the falling colour. Say what the danger is in the label
+ * ("Delete 3 orders"): the colour is not the only sign. */
+export type ButtonProps = AriaButtonProps & { variant?: "default" | "primary" | "secondary" | "ghost" | "danger" };
 
 export function Button({ variant = "default", className, ...rest }: ButtonProps) {
   return <AriaButton {...rest} className={`stoa-button stoa-button--${variant} ${className ?? ""}`.trim()} />;

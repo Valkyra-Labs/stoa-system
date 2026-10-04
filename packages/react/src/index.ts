@@ -35,3 +35,58 @@ export { Callout, type CalloutProps, type FeedbackTone } from "./Callout";
 export { EmptyState, type EmptyStateProps } from "./EmptyState";
 export { DEFAULT_TOAST_TIMEOUT, ToastQueue, ToastRegion, type ToastAction, type ToastOptions, type ToastRegionProps } from "./Toast";
 export { PageShell, type PageShellProps } from "./PageShell";
+
+// Controls: tags and filter chips, switches and checkboxes, the general
+// slider, the toolbar, keyboard shortcuts, and the theme and language
+// switches with the preferences behind them.
+export {
+  FilterChip,
+  FilterChipGroup,
+  Tag,
+  type FilterChipGroupProps,
+  type FilterChipItem,
+  type FilterChipProps,
+  type TagProps,
+  type TagTone,
+} from "./Chips";
+export {
+  Checkbox,
+  CheckboxGroup,
+  Switch,
+  type CheckboxGroupProps,
+  type CheckboxProps,
+  type SwitchProps,
+} from "./Toggles";
+export { Slider, type SliderProps } from "./Slider";
+export { ButtonGroup, Toolbar, ToolbarSeparator, type ButtonGroupProps, type ToolbarProps } from "./Toolbar";
+export {
+  Kbd,
+  isApplePlatform,
+  isTypingTarget,
+  matchesShortcut,
+  shortcutKeys,
+  useShortcuts,
+  type KbdProps,
+  type Shortcut,
+  type ShortcutHelp,
+  type ShortcutModifier,
+} from "./Shortcuts";
+export {
+  LanguageSwitch,
+  ThemeSwitch,
+  applyLanguage,
+  applyTheme,
+  directionOf,
+  readLanguage,
+  readThemeChoice,
+  systemTheme,
+  useLanguagePreference,
+  useThemePreference,
+  type LanguagePreference,
+  type LanguageSwitchProps,
+  type PreferenceStore,
+  type Theme,
+  type ThemeChoice,
+  type ThemePreference,
+  type ThemeSwitchProps,
+} from "./Preferences";

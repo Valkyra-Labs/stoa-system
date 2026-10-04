@@ -430,3 +430,201 @@
   inline-size: 1px; block-size: 1px; margin: -1px; padding: 0; border: 0;
   overflow: hidden; clip-path: inset(50%); white-space: nowrap;
 }
+/* ==== Controls ==== */
+
+/* Button variants. Each sets its own hover, press and disabled rules after
+   the shared ones, for the reason given above the primary rules: a shared
+   state rule of equal specificity would otherwise win over the fill.
+   Secondary sits on the sunken surface with no border; ghost has neither
+   fill nor border until hovered, and borrows the default press; danger is
+   the primary pattern on the falling colour. */
+.stoa-button--secondary { background: var(--stoa-color-surface-sunken); border-color: transparent; }
+.stoa-button--ghost { background: transparent; border-color: transparent; }
+.stoa-button--danger { background: var(--stoa-color-down); border-color: var(--stoa-color-down); color: var(--stoa-color-surface); }
+.stoa-button--secondary[data-hovered], .stoa-button--ghost[data-hovered] { background: var(--stoa-color-surface-hover); }
+.stoa-button--secondary[data-pressed], .stoa-button--ghost[data-pressed] {
+  background: color-mix(in oklch, var(--stoa-color-surface-hover), var(--stoa-color-text) 8%);
+}
+.stoa-button--danger[data-hovered] {
+  background: color-mix(in oklch, var(--stoa-color-down), var(--stoa-color-text) 14%);
+  border-color: color-mix(in oklch, var(--stoa-color-down), var(--stoa-color-text) 14%);
+}
+.stoa-button--danger[data-pressed] {
+  background: color-mix(in oklch, var(--stoa-color-down), var(--stoa-color-text) 26%);
+  border-color: color-mix(in oklch, var(--stoa-color-down), var(--stoa-color-text) 26%);
+}
+.stoa-button--secondary[data-disabled], .stoa-button--ghost[data-disabled], .stoa-button--danger[data-disabled] {
+  background: var(--stoa-color-surface-sunken);
+  border-color: var(--stoa-color-border);
+  color: var(--stoa-color-text-subtle);
+}
+
+/* Tag: a static label. The tone colours border and text; warning keeps the
+   body text colour, as the status badge does, with the warning colour on
+   the border; accent fills the tag. */
+.stoa-tag {
+  display: inline-flex; align-items: center; gap: var(--stoa-space-1);
+  padding: 0 var(--stoa-space-1);
+  border: 1px solid var(--stoa-color-border-strong); border-radius: var(--stoa-radius-sm);
+  font-size: var(--stoa-font-size-xs); font-weight: var(--stoa-font-weight-medium);
+  line-height: var(--stoa-font-line-height-normal); white-space: nowrap;
+  color: var(--stoa-color-text-muted);
+}
+.stoa-tag--small { font-size: var(--stoa-font-size-2xs); padding-inline: var(--stoa-space-0-5); }
+.stoa-tag--info { color: var(--stoa-color-accent); border-color: var(--stoa-color-accent); }
+.stoa-tag--positive { color: var(--stoa-color-up); border-color: var(--stoa-color-up); }
+.stoa-tag--warning { color: var(--stoa-color-text); border-color: var(--stoa-color-warning); }
+.stoa-tag--negative { color: var(--stoa-color-down); border-color: var(--stoa-color-down); }
+.stoa-tag--accent { color: var(--stoa-color-surface); background: var(--stoa-color-accent); border-color: var(--stoa-color-accent); }
+
+/* Filter chips: rounded toggle buttons with the choice states (the accent
+   fill while on), a check mark while on and an optional count. A row
+   wraps, or scrolls inside itself; the padding keeps the focus ring of an
+   edge chip inside the scrolling box, which would clip it. */
+.stoa-filter-chips {
+  display: flex; flex-wrap: wrap; gap: var(--stoa-space-1);
+  max-inline-size: 100%; min-inline-size: 0;
+}
+.stoa-filter-chips--scroll {
+  flex-wrap: nowrap; overflow-x: auto; overscroll-behavior-inline: contain;
+  padding: calc(var(--stoa-focus-width) + var(--stoa-focus-offset));
+}
+.stoa-filter-chip {
+  display: inline-flex; align-items: center; gap: var(--stoa-space-1);
+  flex: none; white-space: nowrap; border-radius: var(--stoa-radius-full);
+  padding-inline: var(--stoa-space-3);
+}
+.stoa-filter-chip__count { font-family: var(--stoa-font-family-mono); font-variant-numeric: tabular-nums; }
+.stoa-filter-chip--small {
+  font-size: var(--stoa-font-size-xs);
+  min-block-size: var(--stoa-space-6);
+  padding: calc(var(--stoa-space-1) / 2) var(--stoa-space-2);
+}
+
+/* Switch: a track with a thumb, the label beside it, and a note (the
+   description, or why it is disabled) under them. The thumb moves to the
+   end of the track when on, along the inline axis, so it moves left in a
+   right-to-left page. The percentage margin resolves against the track. */
+.stoa-switch, .stoa-checkbox { display: inline-grid; gap: var(--stoa-space-1); }
+.stoa-switch__button, .stoa-checkbox__button {
+  display: inline-flex; align-items: center; gap: var(--stoa-space-2);
+  min-block-size: var(--stoa-space-6); cursor: pointer; color: var(--stoa-color-text);
+}
+.stoa-switch__track {
+  display: inline-flex; align-items: center; flex: none;
+  inline-size: calc(var(--stoa-space-8) + var(--stoa-space-1));
+  block-size: calc(var(--stoa-space-4) + var(--stoa-space-1));
+  padding: var(--stoa-space-0-5);
+  border: 1px solid var(--stoa-color-border-strong); border-radius: var(--stoa-radius-full);
+  background: var(--stoa-color-surface);
+  transition: background-color var(--stoa-motion-duration-fast) var(--stoa-motion-easing-standard);
+}
+.stoa-switch__thumb {
+  flex: none;
+  inline-size: calc(var(--stoa-space-3) + var(--stoa-space-0-5));
+  block-size: calc(var(--stoa-space-3) + var(--stoa-space-0-5));
+  border-radius: var(--stoa-radius-full);
+  background: var(--stoa-color-border-strong);
+  transition: margin-inline-start var(--stoa-motion-duration-fast) var(--stoa-motion-easing-standard);
+}
+.stoa-switch__button[data-hovered] .stoa-switch__track { background: var(--stoa-color-surface-hover); }
+.stoa-switch__button[data-selected] .stoa-switch__track { background: var(--stoa-color-accent); border-color: var(--stoa-color-accent); }
+.stoa-switch__button[data-selected][data-hovered] .stoa-switch__track {
+  background: color-mix(in oklch, var(--stoa-color-accent), var(--stoa-color-text) 14%);
+}
+.stoa-switch__button[data-selected] .stoa-switch__thumb {
+  background: var(--stoa-color-surface);
+  margin-inline-start: calc(100% - var(--stoa-space-3) - var(--stoa-space-0-5));
+}
+.stoa-switch__button[data-pressed] .stoa-switch__thumb { transform: scale(0.85); }
+.stoa-switch__button[data-focus-visible] .stoa-switch__track,
+.stoa-checkbox__button[data-focus-visible] .stoa-checkbox__box {
+  outline: var(--stoa-focus-width) solid var(--stoa-color-focus);
+  outline-offset: var(--stoa-focus-offset);
+}
+.stoa-switch__button[data-disabled], .stoa-checkbox__button[data-disabled] { color: var(--stoa-color-text-subtle); cursor: not-allowed; }
+.stoa-switch__button[data-disabled] .stoa-switch__track,
+.stoa-checkbox__button[data-disabled] .stoa-checkbox__box {
+  background: var(--stoa-color-surface-sunken); border-color: var(--stoa-color-border);
+}
+.stoa-switch__button[data-disabled] .stoa-switch__thumb { background: var(--stoa-color-border); }
+.stoa-switch--small .stoa-switch__button { font-size: var(--stoa-font-size-xs); gap: var(--stoa-space-1); }
+.stoa-switch--small .stoa-switch__track {
+  inline-size: calc(var(--stoa-space-6) + var(--stoa-space-1));
+  block-size: var(--stoa-space-4);
+}
+.stoa-switch--small .stoa-switch__thumb { inline-size: calc(var(--stoa-space-2) + var(--stoa-space-0-5)); block-size: calc(var(--stoa-space-2) + var(--stoa-space-0-5)); }
+.stoa-switch--small .stoa-switch__button[data-selected] .stoa-switch__thumb {
+  margin-inline-start: calc(100% - var(--stoa-space-2) - var(--stoa-space-0-5));
+}
+/* The note lines up with the label, past the track or the box. */
+.stoa-switch__note { padding-inline-start: calc(var(--stoa-space-8) + var(--stoa-space-1) + var(--stoa-space-2)); }
+.stoa-switch--small .stoa-switch__note { padding-inline-start: calc(var(--stoa-space-6) + var(--stoa-space-1) + var(--stoa-space-1)); }
+.stoa-checkbox__note { padding-inline-start: calc(var(--stoa-space-4) + var(--stoa-space-2)); }
+
+/* Checkbox: a box with a drawn check mark, or a bar while mixed, in the
+   surface colour on the accent fill. */
+.stoa-checkbox__box {
+  display: inline-grid; place-items: center; flex: none;
+  inline-size: var(--stoa-space-4); block-size: var(--stoa-space-4);
+  border: 1px solid var(--stoa-color-border-strong); border-radius: var(--stoa-radius-sm);
+  background: var(--stoa-color-surface); color: var(--stoa-color-surface);
+}
+.stoa-checkbox__mark { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.stoa-checkbox__button[data-hovered] .stoa-checkbox__box { background: var(--stoa-color-surface-hover); }
+.stoa-checkbox__button[data-selected] .stoa-checkbox__box,
+.stoa-checkbox__button[data-indeterminate] .stoa-checkbox__box { background: var(--stoa-color-accent); border-color: var(--stoa-color-accent); }
+.stoa-checkbox__button[data-disabled] .stoa-checkbox__box { color: var(--stoa-color-text-subtle); }
+.stoa-checkbox-group { display: grid; gap: var(--stoa-space-1); }
+.stoa-checkbox-group__items { display: grid; gap: var(--stoa-space-1); }
+
+/* Slider: the label and the value on one line, the track under them, a
+   hint under the track. It shares TimeSlider's rail and thumb, on a track
+   as tall as the minimum target, and fills the rail up to the thumb from
+   the start of the line. */
+.stoa-range { display: grid; gap: var(--stoa-space-1); min-inline-size: 0; }
+.stoa-range__head { display: flex; justify-content: space-between; align-items: baseline; gap: var(--stoa-space-3); }
+.stoa-range__output { font-family: var(--stoa-font-family-mono); font-size: var(--stoa-font-size-xs); font-variant-numeric: tabular-nums; color: var(--stoa-color-text); }
+.stoa-range__track { block-size: var(--stoa-space-6); }
+.stoa-range__fill {
+  position: absolute; inset-inline-start: 0; inset-block-start: 50%;
+  block-size: var(--stoa-space-1); transform: translateY(-50%);
+  background: var(--stoa-color-accent); border-radius: var(--stoa-radius-full);
+}
+.stoa-range__thumb { border: 2px solid var(--stoa-color-surface); box-sizing: content-box; }
+.stoa-range[data-disabled] .stoa-range__label,
+.stoa-range[data-disabled] .stoa-range__output { color: var(--stoa-color-text-subtle); }
+.stoa-range[data-disabled] .stoa-range__fill,
+.stoa-range[data-disabled] .stoa-range__thumb { background: var(--stoa-color-border-strong); }
+.stoa-range--small .stoa-range__label, .stoa-range--small .stoa-range__output { font-size: var(--stoa-font-size-2xs); }
+
+/* Toolbar: one row of controls that wraps on a narrow screen, with a rule
+   between groups. A button group joins its buttons as the choice group
+   joins its options, with the same overlapping borders. */
+.stoa-toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: var(--stoa-space-2); min-inline-size: 0; }
+.stoa-toolbar__separator {
+  align-self: stretch; inline-size: 1px; margin: 0 var(--stoa-space-1); border: 0;
+  background: var(--stoa-color-border-strong);
+}
+.stoa-button-group { display: inline-flex; padding-inline-start: 1px; }
+.stoa-button-group > .stoa-button { position: relative; border-radius: 0; margin-inline-start: -1px; }
+.stoa-button-group > .stoa-button:first-child {
+  border-start-start-radius: var(--stoa-radius-sm); border-end-start-radius: var(--stoa-radius-sm);
+}
+.stoa-button-group > .stoa-button:last-child {
+  border-start-end-radius: var(--stoa-radius-sm); border-end-end-radius: var(--stoa-radius-sm);
+}
+.stoa-button-group > .stoa-button[data-hovered] { z-index: 1; }
+.stoa-button-group > .stoa-button[data-focus-visible] { z-index: 2; }
+
+/* Kbd: a key cap on the sunken surface, in the numeric face; a
+   combination sets its keys in a row with a muted plus between them. */
+.stoa-kbd {
+  display: inline-block; min-inline-size: 1.6em; padding: 0 var(--stoa-space-1);
+  border: 1px solid var(--stoa-color-border-strong); border-block-end-width: 2px; border-radius: var(--stoa-radius-sm);
+  background: var(--stoa-color-surface-sunken); color: var(--stoa-color-text);
+  font-family: var(--stoa-font-family-mono); font-size: var(--stoa-font-size-2xs); font-weight: var(--stoa-font-weight-medium);
+  line-height: var(--stoa-font-line-height-normal); text-align: center; white-space: nowrap;
+}
+.stoa-kbd-combo { display: inline-flex; align-items: baseline; gap: var(--stoa-space-0-5); font: inherit; }
+.stoa-kbd-combo__plus { color: var(--stoa-color-text-muted); font-size: var(--stoa-font-size-2xs); }

@@ -52,6 +52,11 @@
             "line": 394
           },
           {
+            "component": "Checkbox",
+            "file": "packages/react/src/styles.css",
+            "line": 576
+          },
+          {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
             "line": 80
@@ -73,6 +78,56 @@
           },
           {
             "component": "ChoiceGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 88
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 80
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 83
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 84
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 87
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 88
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 80
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 83
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 84
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 87
+          },
+          {
+            "component": "FilterChipGroup",
             "file": "packages/react/src/styles.css",
             "line": 88
           },
@@ -99,9 +154,39 @@
             "line": 159
           },
           {
+            "component": "Slider",
+            "file": "packages/react/src/styles.css",
+            "line": 198
+          },
+          {
+            "component": "Slider",
+            "file": "packages/react/src/styles.css",
+            "line": 592
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 531
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 533
+          },
+          {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
             "line": 249
+          },
+          {
+            "component": "Tag",
+            "file": "packages/react/src/styles.css",
+            "line": 474
+          },
+          {
+            "component": "Tag",
+            "file": "packages/react/src/styles.css",
+            "line": 478
           },
           {
             "component": "TimeSlider",
@@ -148,6 +233,28 @@
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Controls/Inputs > ButtonGroupAlone",
+          "Controls/Inputs > ButtonVariants",
+          "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > HeaderWithSwitches",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > LanguageSwitchStates",
+          "Controls/Inputs > ShortcutList",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ThemeSwitchStates",
+          "Controls/Inputs > ToolbarTransport",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -224,6 +331,12 @@
             "via": "--stoa-color-warning"
           },
           {
+            "component": "Tag",
+            "file": "packages/react/src/styles.css",
+            "line": 476,
+            "via": "--stoa-color-warning"
+          },
+          {
             "component": "ToastRegion",
             "file": "packages/react/src/styles.css",
             "line": 323,
@@ -240,6 +353,28 @@
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Controls/Inputs > ButtonGroupAlone",
+          "Controls/Inputs > ButtonVariants",
+          "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > HeaderWithSwitches",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > LanguageSwitchStates",
+          "Controls/Inputs > ShortcutList",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ThemeSwitchStates",
+          "Controls/Inputs > ToolbarTransport",
           "Feedback/Feedback and layout > CalloutDismissible",
           "Feedback/Feedback and layout > CalloutInfo",
           "Feedback/Feedback and layout > CalloutNegativeWithRetry",
@@ -305,6 +440,12 @@
             "via": "--stoa-color-warning"
           },
           {
+            "component": "Tag",
+            "file": "packages/react/src/styles.css",
+            "line": 476,
+            "via": "--stoa-color-warning"
+          },
+          {
             "component": "ToastRegion",
             "file": "packages/react/src/styles.css",
             "line": 323,
@@ -321,6 +462,28 @@
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Controls/Inputs > ButtonGroupAlone",
+          "Controls/Inputs > ButtonVariants",
+          "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > HeaderWithSwitches",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > LanguageSwitchStates",
+          "Controls/Inputs > ShortcutList",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ThemeSwitchStates",
+          "Controls/Inputs > ToolbarTransport",
           "Feedback/Feedback and layout > CalloutDismissible",
           "Feedback/Feedback and layout > CalloutInfo",
           "Feedback/Feedback and layout > CalloutNegativeWithRetry",
@@ -580,6 +743,18 @@
             "via": "--stoa-color-accent"
           },
           {
+            "component": "Checkbox",
+            "file": "packages/react/src/styles.css",
+            "line": 542,
+            "via": "--stoa-color-focus"
+          },
+          {
+            "component": "Checkbox",
+            "file": "packages/react/src/styles.css",
+            "line": 576,
+            "via": "--stoa-color-accent"
+          },
+          {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
             "line": 80,
@@ -619,6 +794,78 @@
             "component": "Disclosure",
             "file": "packages/react/src/styles.css",
             "line": 177,
+            "via": "--stoa-color-focus"
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 80,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 83,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 84,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 87,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 88,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 100,
+            "via": "--stoa-color-focus"
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 80,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 83,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 84,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 87,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 88,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 100,
             "via": "--stoa-color-focus"
           },
           {
@@ -676,6 +923,42 @@
             "via": "--stoa-color-focus"
           },
           {
+            "component": "Slider",
+            "file": "packages/react/src/styles.css",
+            "line": 100,
+            "via": "--stoa-color-focus"
+          },
+          {
+            "component": "Slider",
+            "file": "packages/react/src/styles.css",
+            "line": 198,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "Slider",
+            "file": "packages/react/src/styles.css",
+            "line": 592,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 531,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 533,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 542,
+            "via": "--stoa-color-focus"
+          },
+          {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
             "line": 249,
@@ -692,6 +975,18 @@
             "file": "packages/react/src/styles.css",
             "line": 255,
             "via": "--stoa-color-focus"
+          },
+          {
+            "component": "Tag",
+            "file": "packages/react/src/styles.css",
+            "line": 474,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "Tag",
+            "file": "packages/react/src/styles.css",
+            "line": 478,
+            "via": "--stoa-color-accent"
           },
           {
             "component": "TextField",
@@ -776,6 +1071,28 @@
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Controls/Inputs > ButtonGroupAlone",
+          "Controls/Inputs > ButtonVariants",
+          "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > HeaderWithSwitches",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > LanguageSwitchStates",
+          "Controls/Inputs > ShortcutList",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ThemeSwitchStates",
+          "Controls/Inputs > ToolbarTransport",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -843,6 +1160,12 @@
             "via": "--stoa-color-focus"
           },
           {
+            "component": "Checkbox",
+            "file": "packages/react/src/styles.css",
+            "line": 542,
+            "via": "--stoa-color-focus"
+          },
+          {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
             "line": 100,
@@ -852,6 +1175,18 @@
             "component": "Disclosure",
             "file": "packages/react/src/styles.css",
             "line": 177,
+            "via": "--stoa-color-focus"
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 100,
+            "via": "--stoa-color-focus"
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 100,
             "via": "--stoa-color-focus"
           },
           {
@@ -882,6 +1217,18 @@
             "component": "Select",
             "file": "packages/react/src/styles.css",
             "line": 160,
+            "via": "--stoa-color-focus"
+          },
+          {
+            "component": "Slider",
+            "file": "packages/react/src/styles.css",
+            "line": 100,
+            "via": "--stoa-color-focus"
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 542,
             "via": "--stoa-color-focus"
           },
           {
@@ -931,6 +1278,28 @@
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Controls/Inputs > ButtonGroupAlone",
+          "Controls/Inputs > ButtonVariants",
+          "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > HeaderWithSwitches",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > LanguageSwitchStates",
+          "Controls/Inputs > ShortcutList",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ThemeSwitchStates",
+          "Controls/Inputs > ToolbarTransport",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -1026,6 +1395,12 @@
             "via": "--stoa-color-accent"
           },
           {
+            "component": "Checkbox",
+            "file": "packages/react/src/styles.css",
+            "line": 576,
+            "via": "--stoa-color-accent"
+          },
+          {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
             "line": 80,
@@ -1056,6 +1431,66 @@
             "via": "--stoa-color-accent"
           },
           {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 80,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 83,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 84,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 87,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 88,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 80,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 83,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 84,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 87,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 88,
+            "via": "--stoa-color-accent"
+          },
+          {
             "component": "Heatmap",
             "file": "packages/react/src/Heatmap.tsx",
             "line": 35,
@@ -1080,9 +1515,45 @@
             "via": "--stoa-color-accent"
           },
           {
+            "component": "Slider",
+            "file": "packages/react/src/styles.css",
+            "line": 198,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "Slider",
+            "file": "packages/react/src/styles.css",
+            "line": 592,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 531,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 533,
+            "via": "--stoa-color-accent"
+          },
+          {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
             "line": 249,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "Tag",
+            "file": "packages/react/src/styles.css",
+            "line": 474,
+            "via": "--stoa-color-accent"
+          },
+          {
+            "component": "Tag",
+            "file": "packages/react/src/styles.css",
+            "line": 478,
             "via": "--stoa-color-accent"
           },
           {
@@ -1138,6 +1609,28 @@
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Controls/Inputs > ButtonGroupAlone",
+          "Controls/Inputs > ButtonVariants",
+          "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > HeaderWithSwitches",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > LanguageSwitchStates",
+          "Controls/Inputs > ShortcutList",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ThemeSwitchStates",
+          "Controls/Inputs > ToolbarTransport",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -1215,12 +1708,32 @@
             "line": 95
           },
           {
+            "component": "Button",
+            "file": "packages/react/src/styles.css",
+            "line": 458
+          },
+          {
             "component": "Callout",
             "file": "packages/react/src/styles.css",
             "line": 340
           },
           {
+            "component": "Checkbox",
+            "file": "packages/react/src/styles.css",
+            "line": 548
+          },
+          {
             "component": "ChoiceGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 95
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 95
+          },
+          {
+            "component": "FilterChipGroup",
             "file": "packages/react/src/styles.css",
             "line": 95
           },
@@ -1262,6 +1775,16 @@
             "line": 275
           },
           {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 548
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 550
+          },
+          {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
             "line": 242
@@ -1281,6 +1804,28 @@
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Controls/Inputs > ButtonGroupAlone",
+          "Controls/Inputs > ButtonVariants",
+          "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > HeaderWithSwitches",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > LanguageSwitchStates",
+          "Controls/Inputs > ShortcutList",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ThemeSwitchStates",
+          "Controls/Inputs > ToolbarTransport",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -1350,9 +1895,29 @@
             "line": 63
           },
           {
+            "component": "Checkbox",
+            "file": "packages/react/src/styles.css",
+            "line": 570
+          },
+          {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
             "line": 63
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 63
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 63
+          },
+          {
+            "component": "Kbd",
+            "file": "packages/react/src/styles.css",
+            "line": 624
           },
           {
             "component": "NumberField",
@@ -1380,6 +1945,31 @@
             "line": 147
           },
           {
+            "component": "Slider",
+            "file": "packages/react/src/styles.css",
+            "line": 194
+          },
+          {
+            "component": "Slider",
+            "file": "packages/react/src/styles.css",
+            "line": 598
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 518
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 527
+          },
+          {
+            "component": "Tag",
+            "file": "packages/react/src/styles.css",
+            "line": 468
+          },
+          {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
             "line": 227
@@ -1398,12 +1988,39 @@
             "component": "Toggle",
             "file": "packages/react/src/styles.css",
             "line": 63
+          },
+          {
+            "component": "ToolbarSeparator",
+            "file": "packages/react/src/styles.css",
+            "line": 607
           }
         ],
         "stories": [
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Controls/Inputs > ButtonGroupAlone",
+          "Controls/Inputs > ButtonVariants",
+          "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > HeaderWithSwitches",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > LanguageSwitchStates",
+          "Controls/Inputs > ShortcutList",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ThemeSwitchStates",
+          "Controls/Inputs > ToolbarTransport",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -1461,6 +2078,31 @@
       "readBy": {
         "components": [
           {
+            "component": "Button",
+            "file": "packages/react/src/styles.css",
+            "line": 443
+          },
+          {
+            "component": "Button",
+            "file": "packages/react/src/styles.css",
+            "line": 449
+          },
+          {
+            "component": "Button",
+            "file": "packages/react/src/styles.css",
+            "line": 450
+          },
+          {
+            "component": "Button",
+            "file": "packages/react/src/styles.css",
+            "line": 453
+          },
+          {
+            "component": "Button",
+            "file": "packages/react/src/styles.css",
+            "line": 454
+          },
+          {
             "component": "Callout",
             "file": "packages/react/src/styles.css",
             "line": 324
@@ -1474,6 +2116,11 @@
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
             "line": 235
+          },
+          {
+            "component": "Tag",
+            "file": "packages/react/src/styles.css",
+            "line": 477
           },
           {
             "component": "ToastRegion",
@@ -1495,6 +2142,28 @@
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Controls/Inputs > ButtonGroupAlone",
+          "Controls/Inputs > ButtonVariants",
+          "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > HeaderWithSwitches",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > LanguageSwitchStates",
+          "Controls/Inputs > ShortcutList",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ThemeSwitchStates",
+          "Controls/Inputs > ToolbarTransport",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -1609,6 +2278,11 @@
             "line": 100
           },
           {
+            "component": "Checkbox",
+            "file": "packages/react/src/styles.css",
+            "line": 542
+          },
+          {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
             "line": 100
@@ -1617,6 +2291,16 @@
             "component": "Disclosure",
             "file": "packages/react/src/styles.css",
             "line": 177
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 100
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 100
           },
           {
             "component": "NumberField",
@@ -1642,6 +2326,16 @@
             "component": "Select",
             "file": "packages/react/src/styles.css",
             "line": 160
+          },
+          {
+            "component": "Slider",
+            "file": "packages/react/src/styles.css",
+            "line": 100
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 542
           },
           {
             "component": "Tabs",
@@ -1683,6 +2377,28 @@
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Controls/Inputs > ButtonGroupAlone",
+          "Controls/Inputs > ButtonVariants",
+          "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > HeaderWithSwitches",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > LanguageSwitchStates",
+          "Controls/Inputs > ShortcutList",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ThemeSwitchStates",
+          "Controls/Inputs > ToolbarTransport",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -1752,9 +2468,21 @@
             "via": "--stoa-color-surface"
           },
           {
+            "component": "Button",
+            "file": "packages/react/src/styles.css",
+            "line": 443,
+            "via": "--stoa-color-surface"
+          },
+          {
             "component": "Callout",
             "file": "packages/react/src/styles.css",
             "line": 339,
+            "via": "--stoa-color-surface"
+          },
+          {
+            "component": "Checkbox",
+            "file": "packages/react/src/styles.css",
+            "line": 571,
             "via": "--stoa-color-surface"
           },
           {
@@ -1765,6 +2493,30 @@
           },
           {
             "component": "ChoiceGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 80,
+            "via": "--stoa-color-surface"
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 65,
+            "via": "--stoa-color-surface"
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 80,
+            "via": "--stoa-color-surface"
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 65,
+            "via": "--stoa-color-surface"
+          },
+          {
+            "component": "FilterChipGroup",
             "file": "packages/react/src/styles.css",
             "line": 80,
             "via": "--stoa-color-surface"
@@ -1818,6 +2570,30 @@
             "via": "--stoa-color-surface"
           },
           {
+            "component": "Slider",
+            "file": "packages/react/src/styles.css",
+            "line": 594,
+            "via": "--stoa-color-surface"
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 519,
+            "via": "--stoa-color-surface"
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 536,
+            "via": "--stoa-color-surface"
+          },
+          {
+            "component": "Tag",
+            "file": "packages/react/src/styles.css",
+            "line": 478,
+            "via": "--stoa-color-surface"
+          },
+          {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
             "line": 228,
@@ -1846,6 +2622,28 @@
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Controls/Inputs > ButtonGroupAlone",
+          "Controls/Inputs > ButtonVariants",
+          "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > HeaderWithSwitches",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > LanguageSwitchStates",
+          "Controls/Inputs > ShortcutList",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ThemeSwitchStates",
+          "Controls/Inputs > ToolbarTransport",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -1960,10 +2758,64 @@
             "via": "--stoa-color-surface-sunken"
           },
           {
+            "component": "Button",
+            "file": "packages/react/src/styles.css",
+            "line": 441,
+            "via": "--stoa-color-surface-sunken"
+          },
+          {
+            "component": "Button",
+            "file": "packages/react/src/styles.css",
+            "line": 446,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "Button",
+            "file": "packages/react/src/styles.css",
+            "line": 449,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "Button",
+            "file": "packages/react/src/styles.css",
+            "line": 450,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "Button",
+            "file": "packages/react/src/styles.css",
+            "line": 453,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "Button",
+            "file": "packages/react/src/styles.css",
+            "line": 454,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "Button",
+            "file": "packages/react/src/styles.css",
+            "line": 457,
+            "via": "--stoa-color-surface-sunken"
+          },
+          {
             "component": "Callout",
             "file": "packages/react/src/styles.css",
             "line": 339,
             "via": "--stoa-color-text"
+          },
+          {
+            "component": "Checkbox",
+            "file": "packages/react/src/styles.css",
+            "line": 511,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "Checkbox",
+            "file": "packages/react/src/styles.css",
+            "line": 548,
+            "via": "--stoa-color-surface-sunken"
           },
           {
             "component": "ChoiceGroup",
@@ -2026,9 +2878,105 @@
             "via": "--stoa-color-text"
           },
           {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 66,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 77,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 83,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 84,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 87,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 88,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 94,
+            "via": "--stoa-color-surface-sunken"
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 66,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 77,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 83,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 84,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 87,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 88,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 94,
+            "via": "--stoa-color-surface-sunken"
+          },
+          {
             "component": "Heatmap",
             "file": "packages/react/src/Heatmap.tsx",
             "line": 28,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "Kbd",
+            "file": "packages/react/src/styles.css",
+            "line": 625,
+            "via": "--stoa-color-surface-sunken"
+          },
+          {
+            "component": "Kbd",
+            "file": "packages/react/src/styles.css",
+            "line": 625,
             "via": "--stoa-color-text"
           },
           {
@@ -2086,10 +3034,34 @@
             "via": "--stoa-color-text"
           },
           {
+            "component": "Slider",
+            "file": "packages/react/src/styles.css",
+            "line": 587,
+            "via": "--stoa-color-text"
+          },
+          {
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
             "line": 236,
             "via": "--stoa-color-text"
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 511,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 533,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 548,
+            "via": "--stoa-color-surface-sunken"
           },
           {
             "component": "Tabs",
@@ -2101,6 +3073,12 @@
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
             "line": 249,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "Tag",
+            "file": "packages/react/src/styles.css",
+            "line": 476,
             "via": "--stoa-color-text"
           },
           {
@@ -2162,6 +3140,28 @@
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Controls/Inputs > ButtonGroupAlone",
+          "Controls/Inputs > ButtonVariants",
+          "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > HeaderWithSwitches",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > LanguageSwitchStates",
+          "Controls/Inputs > ShortcutList",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ThemeSwitchStates",
+          "Controls/Inputs > ToolbarTransport",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -2293,6 +3293,24 @@
             "via": "--stoa-color-surface-hover"
           },
           {
+            "component": "Button",
+            "file": "packages/react/src/styles.css",
+            "line": 444,
+            "via": "--stoa-color-surface-hover"
+          },
+          {
+            "component": "Button",
+            "file": "packages/react/src/styles.css",
+            "line": 446,
+            "via": "--stoa-color-surface-hover"
+          },
+          {
+            "component": "Checkbox",
+            "file": "packages/react/src/styles.css",
+            "line": 574,
+            "via": "--stoa-color-surface-hover"
+          },
+          {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
             "line": 75,
@@ -2300,6 +3318,30 @@
           },
           {
             "component": "ChoiceGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 77,
+            "via": "--stoa-color-surface-hover"
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 75,
+            "via": "--stoa-color-surface-hover"
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 77,
+            "via": "--stoa-color-surface-hover"
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 75,
+            "via": "--stoa-color-surface-hover"
+          },
+          {
+            "component": "FilterChipGroup",
             "file": "packages/react/src/styles.css",
             "line": 77,
             "via": "--stoa-color-surface-hover"
@@ -2323,6 +3365,12 @@
             "via": "--stoa-color-surface-hover"
           },
           {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 530,
+            "via": "--stoa-color-surface-hover"
+          },
+          {
             "component": "Toggle",
             "file": "packages/react/src/styles.css",
             "line": 75,
@@ -2336,6 +3384,28 @@
           }
         ],
         "stories": [
+          "Controls/Inputs > ButtonGroupAlone",
+          "Controls/Inputs > ButtonVariants",
+          "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > HeaderWithSwitches",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > LanguageSwitchStates",
+          "Controls/Inputs > ShortcutList",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ThemeSwitchStates",
+          "Controls/Inputs > ToolbarTransport",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -2400,13 +3470,37 @@
             "via": "--stoa-color-border"
           },
           {
+            "component": "Button",
+            "file": "packages/react/src/styles.css",
+            "line": 458,
+            "via": "--stoa-color-border"
+          },
+          {
             "component": "Callout",
             "file": "packages/react/src/styles.css",
             "line": 340,
             "via": "--stoa-color-border"
           },
           {
+            "component": "Checkbox",
+            "file": "packages/react/src/styles.css",
+            "line": 548,
+            "via": "--stoa-color-border"
+          },
+          {
             "component": "ChoiceGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 95,
+            "via": "--stoa-color-border"
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 95,
+            "via": "--stoa-color-border"
+          },
+          {
+            "component": "FilterChipGroup",
             "file": "packages/react/src/styles.css",
             "line": 95,
             "via": "--stoa-color-border"
@@ -2454,6 +3548,18 @@
             "via": "--stoa-color-border"
           },
           {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 548,
+            "via": "--stoa-color-border"
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 550,
+            "via": "--stoa-color-border"
+          },
+          {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
             "line": 242,
@@ -2476,6 +3582,28 @@
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Controls/Inputs > ButtonGroupAlone",
+          "Controls/Inputs > ButtonVariants",
+          "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > HeaderWithSwitches",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > LanguageSwitchStates",
+          "Controls/Inputs > ShortcutList",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ThemeSwitchStates",
+          "Controls/Inputs > ToolbarTransport",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -2564,6 +3692,24 @@
             "via": "--stoa-color-text-muted"
           },
           {
+            "component": "Checkbox",
+            "file": "packages/react/src/styles.css",
+            "line": 231,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "CheckboxGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 220,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "CheckboxGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 231,
+            "via": "--stoa-color-text-muted"
+          },
+          {
             "component": "Disclosure",
             "file": "packages/react/src/styles.css",
             "line": 182,
@@ -2579,6 +3725,12 @@
             "component": "Heatmap",
             "file": "packages/react/src/Heatmap.tsx",
             "line": 29,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "Kbd",
+            "file": "packages/react/src/styles.css",
+            "line": 630,
             "via": "--stoa-color-text-muted"
           },
           {
@@ -2630,6 +3782,18 @@
             "via": "--stoa-color-text-muted"
           },
           {
+            "component": "Slider",
+            "file": "packages/react/src/styles.css",
+            "line": 220,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "Slider",
+            "file": "packages/react/src/styles.css",
+            "line": 231,
+            "via": "--stoa-color-text-muted"
+          },
+          {
             "component": "StatBar",
             "file": "packages/react/src/styles.css",
             "line": 216,
@@ -2642,9 +3806,21 @@
             "via": "--stoa-color-text-muted"
           },
           {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 231,
+            "via": "--stoa-color-text-muted"
+          },
+          {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
             "line": 245,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "Tag",
+            "file": "packages/react/src/styles.css",
+            "line": 471,
             "via": "--stoa-color-text-muted"
           },
           {
@@ -2676,6 +3852,28 @@
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Controls/Inputs > ButtonGroupAlone",
+          "Controls/Inputs > ButtonVariants",
+          "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > HeaderWithSwitches",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > LanguageSwitchStates",
+          "Controls/Inputs > ShortcutList",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ThemeSwitchStates",
+          "Controls/Inputs > ToolbarTransport",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -2748,6 +3946,30 @@
             "via": "--stoa-color-text-subtle"
           },
           {
+            "component": "Button",
+            "file": "packages/react/src/styles.css",
+            "line": 459,
+            "via": "--stoa-color-text-subtle"
+          },
+          {
+            "component": "Checkbox",
+            "file": "packages/react/src/styles.css",
+            "line": 545,
+            "via": "--stoa-color-text-subtle"
+          },
+          {
+            "component": "Checkbox",
+            "file": "packages/react/src/styles.css",
+            "line": 570,
+            "via": "--stoa-color-border-strong"
+          },
+          {
+            "component": "Checkbox",
+            "file": "packages/react/src/styles.css",
+            "line": 577,
+            "via": "--stoa-color-text-subtle"
+          },
+          {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
             "line": 63,
@@ -2758,6 +3980,36 @@
             "file": "packages/react/src/styles.css",
             "line": 96,
             "via": "--stoa-color-text-subtle"
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 63,
+            "via": "--stoa-color-border-strong"
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 96,
+            "via": "--stoa-color-text-subtle"
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 63,
+            "via": "--stoa-color-border-strong"
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 96,
+            "via": "--stoa-color-text-subtle"
+          },
+          {
+            "component": "Kbd",
+            "file": "packages/react/src/styles.css",
+            "line": 624,
+            "via": "--stoa-color-border-strong"
           },
           {
             "component": "NumberField",
@@ -2796,6 +4048,48 @@
             "via": "--stoa-color-border-strong"
           },
           {
+            "component": "Slider",
+            "file": "packages/react/src/styles.css",
+            "line": 194,
+            "via": "--stoa-color-border-strong"
+          },
+          {
+            "component": "Slider",
+            "file": "packages/react/src/styles.css",
+            "line": 596,
+            "via": "--stoa-color-text-subtle"
+          },
+          {
+            "component": "Slider",
+            "file": "packages/react/src/styles.css",
+            "line": 598,
+            "via": "--stoa-color-border-strong"
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 518,
+            "via": "--stoa-color-border-strong"
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 527,
+            "via": "--stoa-color-border-strong"
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 545,
+            "via": "--stoa-color-text-subtle"
+          },
+          {
+            "component": "Tag",
+            "file": "packages/react/src/styles.css",
+            "line": 468,
+            "via": "--stoa-color-border-strong"
+          },
+          {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
             "line": 227,
@@ -2824,12 +4118,40 @@
             "file": "packages/react/src/styles.css",
             "line": 96,
             "via": "--stoa-color-text-subtle"
+          },
+          {
+            "component": "ToolbarSeparator",
+            "file": "packages/react/src/styles.css",
+            "line": 607,
+            "via": "--stoa-color-border-strong"
           }
         ],
         "stories": [
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Controls/Inputs > ButtonGroupAlone",
+          "Controls/Inputs > ButtonVariants",
+          "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > HeaderWithSwitches",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > LanguageSwitchStates",
+          "Controls/Inputs > ShortcutList",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ThemeSwitchStates",
+          "Controls/Inputs > ToolbarTransport",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -2953,6 +4275,30 @@
             "via": "--stoa-color-text-subtle"
           },
           {
+            "component": "Button",
+            "file": "packages/react/src/styles.css",
+            "line": 459,
+            "via": "--stoa-color-text-subtle"
+          },
+          {
+            "component": "Checkbox",
+            "file": "packages/react/src/styles.css",
+            "line": 545,
+            "via": "--stoa-color-text-subtle"
+          },
+          {
+            "component": "Checkbox",
+            "file": "packages/react/src/styles.css",
+            "line": 570,
+            "via": "--stoa-color-border-strong"
+          },
+          {
+            "component": "Checkbox",
+            "file": "packages/react/src/styles.css",
+            "line": 577,
+            "via": "--stoa-color-text-subtle"
+          },
+          {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
             "line": 63,
@@ -2963,6 +4309,36 @@
             "file": "packages/react/src/styles.css",
             "line": 96,
             "via": "--stoa-color-text-subtle"
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 63,
+            "via": "--stoa-color-border-strong"
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 96,
+            "via": "--stoa-color-text-subtle"
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 63,
+            "via": "--stoa-color-border-strong"
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 96,
+            "via": "--stoa-color-text-subtle"
+          },
+          {
+            "component": "Kbd",
+            "file": "packages/react/src/styles.css",
+            "line": 624,
+            "via": "--stoa-color-border-strong"
           },
           {
             "component": "NumberField",
@@ -3001,6 +4377,48 @@
             "via": "--stoa-color-border-strong"
           },
           {
+            "component": "Slider",
+            "file": "packages/react/src/styles.css",
+            "line": 194,
+            "via": "--stoa-color-border-strong"
+          },
+          {
+            "component": "Slider",
+            "file": "packages/react/src/styles.css",
+            "line": 596,
+            "via": "--stoa-color-text-subtle"
+          },
+          {
+            "component": "Slider",
+            "file": "packages/react/src/styles.css",
+            "line": 598,
+            "via": "--stoa-color-border-strong"
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 518,
+            "via": "--stoa-color-border-strong"
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 527,
+            "via": "--stoa-color-border-strong"
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 545,
+            "via": "--stoa-color-text-subtle"
+          },
+          {
+            "component": "Tag",
+            "file": "packages/react/src/styles.css",
+            "line": 468,
+            "via": "--stoa-color-border-strong"
+          },
+          {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
             "line": 227,
@@ -3029,12 +4447,40 @@
             "file": "packages/react/src/styles.css",
             "line": 96,
             "via": "--stoa-color-text-subtle"
+          },
+          {
+            "component": "ToolbarSeparator",
+            "file": "packages/react/src/styles.css",
+            "line": 607,
+            "via": "--stoa-color-border-strong"
           }
         ],
         "stories": [
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Controls/Inputs > ButtonGroupAlone",
+          "Controls/Inputs > ButtonVariants",
+          "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > HeaderWithSwitches",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > LanguageSwitchStates",
+          "Controls/Inputs > ShortcutList",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ThemeSwitchStates",
+          "Controls/Inputs > ToolbarTransport",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -3095,6 +4541,24 @@
             "via": "--stoa-color-text-muted"
           },
           {
+            "component": "Checkbox",
+            "file": "packages/react/src/styles.css",
+            "line": 231,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "CheckboxGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 220,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "CheckboxGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 231,
+            "via": "--stoa-color-text-muted"
+          },
+          {
             "component": "Disclosure",
             "file": "packages/react/src/styles.css",
             "line": 182,
@@ -3110,6 +4574,12 @@
             "component": "Heatmap",
             "file": "packages/react/src/Heatmap.tsx",
             "line": 29,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "Kbd",
+            "file": "packages/react/src/styles.css",
+            "line": 630,
             "via": "--stoa-color-text-muted"
           },
           {
@@ -3161,6 +4631,18 @@
             "via": "--stoa-color-text-muted"
           },
           {
+            "component": "Slider",
+            "file": "packages/react/src/styles.css",
+            "line": 220,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "Slider",
+            "file": "packages/react/src/styles.css",
+            "line": 231,
+            "via": "--stoa-color-text-muted"
+          },
+          {
             "component": "StatBar",
             "file": "packages/react/src/styles.css",
             "line": 216,
@@ -3173,9 +4655,21 @@
             "via": "--stoa-color-text-muted"
           },
           {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 231,
+            "via": "--stoa-color-text-muted"
+          },
+          {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
             "line": 245,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "Tag",
+            "file": "packages/react/src/styles.css",
+            "line": 471,
             "via": "--stoa-color-text-muted"
           },
           {
@@ -3207,6 +4701,28 @@
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Controls/Inputs > ButtonGroupAlone",
+          "Controls/Inputs > ButtonVariants",
+          "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > HeaderWithSwitches",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > LanguageSwitchStates",
+          "Controls/Inputs > ShortcutList",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ThemeSwitchStates",
+          "Controls/Inputs > ToolbarTransport",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -3325,13 +4841,37 @@
             "via": "--stoa-color-border"
           },
           {
+            "component": "Button",
+            "file": "packages/react/src/styles.css",
+            "line": 458,
+            "via": "--stoa-color-border"
+          },
+          {
             "component": "Callout",
             "file": "packages/react/src/styles.css",
             "line": 340,
             "via": "--stoa-color-border"
           },
           {
+            "component": "Checkbox",
+            "file": "packages/react/src/styles.css",
+            "line": 548,
+            "via": "--stoa-color-border"
+          },
+          {
             "component": "ChoiceGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 95,
+            "via": "--stoa-color-border"
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 95,
+            "via": "--stoa-color-border"
+          },
+          {
+            "component": "FilterChipGroup",
             "file": "packages/react/src/styles.css",
             "line": 95,
             "via": "--stoa-color-border"
@@ -3379,6 +4919,18 @@
             "via": "--stoa-color-border"
           },
           {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 548,
+            "via": "--stoa-color-border"
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 550,
+            "via": "--stoa-color-border"
+          },
+          {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
             "line": 242,
@@ -3401,6 +4953,28 @@
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Controls/Inputs > ButtonGroupAlone",
+          "Controls/Inputs > ButtonVariants",
+          "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > HeaderWithSwitches",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > LanguageSwitchStates",
+          "Controls/Inputs > ShortcutList",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ThemeSwitchStates",
+          "Controls/Inputs > ToolbarTransport",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -3472,6 +5046,24 @@
             "via": "--stoa-color-surface-hover"
           },
           {
+            "component": "Button",
+            "file": "packages/react/src/styles.css",
+            "line": 444,
+            "via": "--stoa-color-surface-hover"
+          },
+          {
+            "component": "Button",
+            "file": "packages/react/src/styles.css",
+            "line": 446,
+            "via": "--stoa-color-surface-hover"
+          },
+          {
+            "component": "Checkbox",
+            "file": "packages/react/src/styles.css",
+            "line": 574,
+            "via": "--stoa-color-surface-hover"
+          },
+          {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
             "line": 75,
@@ -3479,6 +5071,30 @@
           },
           {
             "component": "ChoiceGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 77,
+            "via": "--stoa-color-surface-hover"
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 75,
+            "via": "--stoa-color-surface-hover"
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 77,
+            "via": "--stoa-color-surface-hover"
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 75,
+            "via": "--stoa-color-surface-hover"
+          },
+          {
+            "component": "FilterChipGroup",
             "file": "packages/react/src/styles.css",
             "line": 77,
             "via": "--stoa-color-surface-hover"
@@ -3502,6 +5118,12 @@
             "via": "--stoa-color-surface-hover"
           },
           {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 530,
+            "via": "--stoa-color-surface-hover"
+          },
+          {
             "component": "Toggle",
             "file": "packages/react/src/styles.css",
             "line": 75,
@@ -3515,6 +5137,28 @@
           }
         ],
         "stories": [
+          "Controls/Inputs > ButtonGroupAlone",
+          "Controls/Inputs > ButtonVariants",
+          "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > HeaderWithSwitches",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > LanguageSwitchStates",
+          "Controls/Inputs > ShortcutList",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ThemeSwitchStates",
+          "Controls/Inputs > ToolbarTransport",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -3633,6 +5277,42 @@
             "via": "--stoa-color-text"
           },
           {
+            "component": "Button",
+            "file": "packages/react/src/styles.css",
+            "line": 443,
+            "via": "--stoa-color-surface"
+          },
+          {
+            "component": "Button",
+            "file": "packages/react/src/styles.css",
+            "line": 446,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "Button",
+            "file": "packages/react/src/styles.css",
+            "line": 449,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "Button",
+            "file": "packages/react/src/styles.css",
+            "line": 450,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "Button",
+            "file": "packages/react/src/styles.css",
+            "line": 453,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "Button",
+            "file": "packages/react/src/styles.css",
+            "line": 454,
+            "via": "--stoa-color-text"
+          },
+          {
             "component": "Callout",
             "file": "packages/react/src/styles.css",
             "line": 339,
@@ -3643,6 +5323,18 @@
             "file": "packages/react/src/styles.css",
             "line": 339,
             "via": "--stoa-color-text"
+          },
+          {
+            "component": "Checkbox",
+            "file": "packages/react/src/styles.css",
+            "line": 511,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "Checkbox",
+            "file": "packages/react/src/styles.css",
+            "line": 571,
+            "via": "--stoa-color-surface"
           },
           {
             "component": "ChoiceGroup",
@@ -3711,6 +5403,102 @@
             "via": "--stoa-color-text"
           },
           {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 65,
+            "via": "--stoa-color-surface"
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 66,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 77,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 80,
+            "via": "--stoa-color-surface"
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 83,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 84,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 87,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 88,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 65,
+            "via": "--stoa-color-surface"
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 66,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 77,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 80,
+            "via": "--stoa-color-surface"
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 83,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 84,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 87,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 88,
+            "via": "--stoa-color-text"
+          },
+          {
             "component": "Heatmap",
             "file": "packages/react/src/Heatmap.tsx",
             "line": 27,
@@ -3720,6 +5508,12 @@
             "component": "Heatmap",
             "file": "packages/react/src/Heatmap.tsx",
             "line": 28,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "Kbd",
+            "file": "packages/react/src/styles.css",
+            "line": 625,
             "via": "--stoa-color-text"
           },
           {
@@ -3813,10 +5607,46 @@
             "via": "--stoa-color-text"
           },
           {
+            "component": "Slider",
+            "file": "packages/react/src/styles.css",
+            "line": 587,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "Slider",
+            "file": "packages/react/src/styles.css",
+            "line": 594,
+            "via": "--stoa-color-surface"
+          },
+          {
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
             "line": 236,
             "via": "--stoa-color-text"
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 511,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 519,
+            "via": "--stoa-color-surface"
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 533,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 536,
+            "via": "--stoa-color-surface"
           },
           {
             "component": "Tabs",
@@ -3829,6 +5659,18 @@
             "file": "packages/react/src/styles.css",
             "line": 249,
             "via": "--stoa-color-text"
+          },
+          {
+            "component": "Tag",
+            "file": "packages/react/src/styles.css",
+            "line": 476,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "Tag",
+            "file": "packages/react/src/styles.css",
+            "line": 478,
+            "via": "--stoa-color-surface"
           },
           {
             "component": "TextField",
@@ -3907,6 +5749,28 @@
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Controls/Inputs > ButtonGroupAlone",
+          "Controls/Inputs > ButtonVariants",
+          "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > HeaderWithSwitches",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > LanguageSwitchStates",
+          "Controls/Inputs > ShortcutList",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ThemeSwitchStates",
+          "Controls/Inputs > ToolbarTransport",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -3969,6 +5833,36 @@
       "readBy": {
         "components": [
           {
+            "component": "Button",
+            "file": "packages/react/src/styles.css",
+            "line": 443,
+            "via": "--stoa-color-down"
+          },
+          {
+            "component": "Button",
+            "file": "packages/react/src/styles.css",
+            "line": 449,
+            "via": "--stoa-color-down"
+          },
+          {
+            "component": "Button",
+            "file": "packages/react/src/styles.css",
+            "line": 450,
+            "via": "--stoa-color-down"
+          },
+          {
+            "component": "Button",
+            "file": "packages/react/src/styles.css",
+            "line": 453,
+            "via": "--stoa-color-down"
+          },
+          {
+            "component": "Button",
+            "file": "packages/react/src/styles.css",
+            "line": 454,
+            "via": "--stoa-color-down"
+          },
+          {
             "component": "Callout",
             "file": "packages/react/src/styles.css",
             "line": 324,
@@ -3999,6 +5893,12 @@
             "via": "--stoa-color-down"
           },
           {
+            "component": "Tag",
+            "file": "packages/react/src/styles.css",
+            "line": 477,
+            "via": "--stoa-color-down"
+          },
+          {
             "component": "ToastRegion",
             "file": "packages/react/src/styles.css",
             "line": 324,
@@ -4021,6 +5921,28 @@
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Controls/Inputs > ButtonGroupAlone",
+          "Controls/Inputs > ButtonVariants",
+          "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > HeaderWithSwitches",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > LanguageSwitchStates",
+          "Controls/Inputs > ShortcutList",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ThemeSwitchStates",
+          "Controls/Inputs > ToolbarTransport",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -4082,6 +6004,36 @@
       "readBy": {
         "components": [
           {
+            "component": "Button",
+            "file": "packages/react/src/styles.css",
+            "line": 443,
+            "via": "--stoa-color-down"
+          },
+          {
+            "component": "Button",
+            "file": "packages/react/src/styles.css",
+            "line": 449,
+            "via": "--stoa-color-down"
+          },
+          {
+            "component": "Button",
+            "file": "packages/react/src/styles.css",
+            "line": 450,
+            "via": "--stoa-color-down"
+          },
+          {
+            "component": "Button",
+            "file": "packages/react/src/styles.css",
+            "line": 453,
+            "via": "--stoa-color-down"
+          },
+          {
+            "component": "Button",
+            "file": "packages/react/src/styles.css",
+            "line": 454,
+            "via": "--stoa-color-down"
+          },
+          {
             "component": "Callout",
             "file": "packages/react/src/styles.css",
             "line": 324,
@@ -4112,6 +6064,12 @@
             "via": "--stoa-color-down"
           },
           {
+            "component": "Tag",
+            "file": "packages/react/src/styles.css",
+            "line": 477,
+            "via": "--stoa-color-down"
+          },
+          {
             "component": "ToastRegion",
             "file": "packages/react/src/styles.css",
             "line": 324,
@@ -4134,6 +6092,28 @@
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Controls/Inputs > ButtonGroupAlone",
+          "Controls/Inputs > ButtonVariants",
+          "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > HeaderWithSwitches",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > LanguageSwitchStates",
+          "Controls/Inputs > ShortcutList",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ThemeSwitchStates",
+          "Controls/Inputs > ToolbarTransport",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -4265,9 +6245,19 @@
             "line": 80
           },
           {
+            "component": "Button",
+            "file": "packages/react/src/styles.css",
+            "line": 443
+          },
+          {
             "component": "Callout",
             "file": "packages/react/src/styles.css",
             "line": 339
+          },
+          {
+            "component": "Checkbox",
+            "file": "packages/react/src/styles.css",
+            "line": 571
           },
           {
             "component": "ChoiceGroup",
@@ -4276,6 +6266,26 @@
           },
           {
             "component": "ChoiceGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 80
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 65
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 80
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 65
+          },
+          {
+            "component": "FilterChipGroup",
             "file": "packages/react/src/styles.css",
             "line": 80
           },
@@ -4322,6 +6332,26 @@
             "line": 146
           },
           {
+            "component": "Slider",
+            "file": "packages/react/src/styles.css",
+            "line": 594
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 519
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 536
+          },
+          {
+            "component": "Tag",
+            "file": "packages/react/src/styles.css",
+            "line": 478
+          },
+          {
             "component": "TextField",
             "file": "packages/react/src/styles.css",
             "line": 228
@@ -4346,6 +6376,28 @@
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Controls/Inputs > ButtonGroupAlone",
+          "Controls/Inputs > ButtonVariants",
+          "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > HeaderWithSwitches",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > LanguageSwitchStates",
+          "Controls/Inputs > ShortcutList",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ThemeSwitchStates",
+          "Controls/Inputs > ToolbarTransport",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -4421,12 +6473,47 @@
             "line": 77
           },
           {
+            "component": "Button",
+            "file": "packages/react/src/styles.css",
+            "line": 444
+          },
+          {
+            "component": "Button",
+            "file": "packages/react/src/styles.css",
+            "line": 446
+          },
+          {
+            "component": "Checkbox",
+            "file": "packages/react/src/styles.css",
+            "line": 574
+          },
+          {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
             "line": 75
           },
           {
             "component": "ChoiceGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 77
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 75
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 77
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 75
+          },
+          {
+            "component": "FilterChipGroup",
             "file": "packages/react/src/styles.css",
             "line": 77
           },
@@ -4446,6 +6533,11 @@
             "line": 158
           },
           {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 530
+          },
+          {
             "component": "Toggle",
             "file": "packages/react/src/styles.css",
             "line": 75
@@ -4457,6 +6549,28 @@
           }
         ],
         "stories": [
+          "Controls/Inputs > ButtonGroupAlone",
+          "Controls/Inputs > ButtonVariants",
+          "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > HeaderWithSwitches",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > LanguageSwitchStates",
+          "Controls/Inputs > ShortcutList",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ThemeSwitchStates",
+          "Controls/Inputs > ToolbarTransport",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -4519,14 +6633,49 @@
             "line": 94
           },
           {
+            "component": "Button",
+            "file": "packages/react/src/styles.css",
+            "line": 441
+          },
+          {
+            "component": "Button",
+            "file": "packages/react/src/styles.css",
+            "line": 457
+          },
+          {
+            "component": "Checkbox",
+            "file": "packages/react/src/styles.css",
+            "line": 548
+          },
+          {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
             "line": 94
           },
           {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 94
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 94
+          },
+          {
+            "component": "Kbd",
+            "file": "packages/react/src/styles.css",
+            "line": 625
+          },
+          {
             "component": "Select",
             "file": "packages/react/src/styles.css",
             "line": 94
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 548
           },
           {
             "component": "Toggle",
@@ -4535,6 +6684,28 @@
           }
         ],
         "stories": [
+          "Controls/Inputs > ButtonGroupAlone",
+          "Controls/Inputs > ButtonVariants",
+          "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > HeaderWithSwitches",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > LanguageSwitchStates",
+          "Controls/Inputs > ShortcutList",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ThemeSwitchStates",
+          "Controls/Inputs > ToolbarTransport",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -4615,6 +6786,12 @@
             "via": "--stoa-color-up"
           },
           {
+            "component": "Tag",
+            "file": "packages/react/src/styles.css",
+            "line": 475,
+            "via": "--stoa-color-up"
+          },
+          {
             "component": "ToastRegion",
             "file": "packages/react/src/styles.css",
             "line": 322,
@@ -4637,6 +6814,28 @@
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Controls/Inputs > ButtonGroupAlone",
+          "Controls/Inputs > ButtonVariants",
+          "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > HeaderWithSwitches",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > LanguageSwitchStates",
+          "Controls/Inputs > ShortcutList",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ThemeSwitchStates",
+          "Controls/Inputs > ToolbarTransport",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -4728,6 +6927,12 @@
             "via": "--stoa-color-up"
           },
           {
+            "component": "Tag",
+            "file": "packages/react/src/styles.css",
+            "line": 475,
+            "via": "--stoa-color-up"
+          },
+          {
             "component": "ToastRegion",
             "file": "packages/react/src/styles.css",
             "line": 322,
@@ -4750,6 +6955,28 @@
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Controls/Inputs > ButtonGroupAlone",
+          "Controls/Inputs > ButtonVariants",
+          "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > HeaderWithSwitches",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > LanguageSwitchStates",
+          "Controls/Inputs > ShortcutList",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ThemeSwitchStates",
+          "Controls/Inputs > ToolbarTransport",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -4906,9 +7133,39 @@
             "line": 88
           },
           {
+            "component": "Button",
+            "file": "packages/react/src/styles.css",
+            "line": 446
+          },
+          {
+            "component": "Button",
+            "file": "packages/react/src/styles.css",
+            "line": 449
+          },
+          {
+            "component": "Button",
+            "file": "packages/react/src/styles.css",
+            "line": 450
+          },
+          {
+            "component": "Button",
+            "file": "packages/react/src/styles.css",
+            "line": 453
+          },
+          {
+            "component": "Button",
+            "file": "packages/react/src/styles.css",
+            "line": 454
+          },
+          {
             "component": "Callout",
             "file": "packages/react/src/styles.css",
             "line": 339
+          },
+          {
+            "component": "Checkbox",
+            "file": "packages/react/src/styles.css",
+            "line": 511
           },
           {
             "component": "ChoiceGroup",
@@ -4956,10 +7213,75 @@
             "line": 356
           },
           {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 66
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 77
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 83
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 84
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 87
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 88
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 66
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 77
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 83
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 84
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 87
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 88
+          },
+          {
             "component": "Heatmap",
             "file": "packages/react/src/Heatmap.tsx",
             "line": 28,
             "via": "readCanvasTokens"
+          },
+          {
+            "component": "Kbd",
+            "file": "packages/react/src/styles.css",
+            "line": 625
           },
           {
             "component": "Ladder",
@@ -5003,9 +7325,24 @@
             "line": 151
           },
           {
+            "component": "Slider",
+            "file": "packages/react/src/styles.css",
+            "line": 587
+          },
+          {
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
             "line": 236
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 511
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 533
           },
           {
             "component": "Tabs",
@@ -5016,6 +7353,11 @@
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
             "line": 249
+          },
+          {
+            "component": "Tag",
+            "file": "packages/react/src/styles.css",
+            "line": 476
           },
           {
             "component": "TextField",
@@ -5062,6 +7404,28 @@
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Controls/Inputs > ButtonGroupAlone",
+          "Controls/Inputs > ButtonVariants",
+          "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > HeaderWithSwitches",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > LanguageSwitchStates",
+          "Controls/Inputs > ShortcutList",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ThemeSwitchStates",
+          "Controls/Inputs > ToolbarTransport",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -5132,6 +7496,21 @@
             "line": 38
           },
           {
+            "component": "Checkbox",
+            "file": "packages/react/src/styles.css",
+            "line": 231
+          },
+          {
+            "component": "CheckboxGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 220
+          },
+          {
+            "component": "CheckboxGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 231
+          },
+          {
             "component": "Disclosure",
             "file": "packages/react/src/styles.css",
             "line": 182
@@ -5146,6 +7525,11 @@
             "file": "packages/react/src/Heatmap.tsx",
             "line": 29,
             "via": "readCanvasTokens"
+          },
+          {
+            "component": "Kbd",
+            "file": "packages/react/src/styles.css",
+            "line": 630
           },
           {
             "component": "Ladder",
@@ -5189,6 +7573,16 @@
             "line": 220
           },
           {
+            "component": "Slider",
+            "file": "packages/react/src/styles.css",
+            "line": 220
+          },
+          {
+            "component": "Slider",
+            "file": "packages/react/src/styles.css",
+            "line": 231
+          },
+          {
             "component": "StatBar",
             "file": "packages/react/src/styles.css",
             "line": 216
@@ -5199,9 +7593,19 @@
             "line": 238
           },
           {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 231
+          },
+          {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
             "line": 245
+          },
+          {
+            "component": "Tag",
+            "file": "packages/react/src/styles.css",
+            "line": 471
           },
           {
             "component": "TextField",
@@ -5228,6 +7632,28 @@
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Controls/Inputs > ButtonGroupAlone",
+          "Controls/Inputs > ButtonVariants",
+          "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > HeaderWithSwitches",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > LanguageSwitchStates",
+          "Controls/Inputs > ShortcutList",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ThemeSwitchStates",
+          "Controls/Inputs > ToolbarTransport",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -5298,7 +7724,32 @@
             "line": 96
           },
           {
+            "component": "Button",
+            "file": "packages/react/src/styles.css",
+            "line": 459
+          },
+          {
+            "component": "Checkbox",
+            "file": "packages/react/src/styles.css",
+            "line": 545
+          },
+          {
+            "component": "Checkbox",
+            "file": "packages/react/src/styles.css",
+            "line": 577
+          },
+          {
             "component": "ChoiceGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 96
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 96
+          },
+          {
+            "component": "FilterChipGroup",
             "file": "packages/react/src/styles.css",
             "line": 96
           },
@@ -5308,12 +7759,44 @@
             "line": 96
           },
           {
+            "component": "Slider",
+            "file": "packages/react/src/styles.css",
+            "line": 596
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 545
+          },
+          {
             "component": "Toggle",
             "file": "packages/react/src/styles.css",
             "line": 96
           }
         ],
         "stories": [
+          "Controls/Inputs > ButtonGroupAlone",
+          "Controls/Inputs > ButtonVariants",
+          "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > HeaderWithSwitches",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > LanguageSwitchStates",
+          "Controls/Inputs > ShortcutList",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ThemeSwitchStates",
+          "Controls/Inputs > ToolbarTransport",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -5386,6 +7869,11 @@
             "line": 234
           },
           {
+            "component": "Tag",
+            "file": "packages/react/src/styles.css",
+            "line": 475
+          },
+          {
             "component": "ToastRegion",
             "file": "packages/react/src/styles.css",
             "line": 322
@@ -5405,6 +7893,28 @@
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Controls/Inputs > ButtonGroupAlone",
+          "Controls/Inputs > ButtonVariants",
+          "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > HeaderWithSwitches",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > LanguageSwitchStates",
+          "Controls/Inputs > ShortcutList",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ThemeSwitchStates",
+          "Controls/Inputs > ToolbarTransport",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -5529,6 +8039,11 @@
             "line": 237
           },
           {
+            "component": "Tag",
+            "file": "packages/react/src/styles.css",
+            "line": 476
+          },
+          {
             "component": "ToastRegion",
             "file": "packages/react/src/styles.css",
             "line": 323
@@ -5543,6 +8058,28 @@
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Controls/Inputs > ButtonGroupAlone",
+          "Controls/Inputs > ButtonVariants",
+          "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > HeaderWithSwitches",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > LanguageSwitchStates",
+          "Controls/Inputs > ShortcutList",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ThemeSwitchStates",
+          "Controls/Inputs > ToolbarTransport",
           "Feedback/Feedback and layout > CalloutDismissible",
           "Feedback/Feedback and layout > CalloutInfo",
           "Feedback/Feedback and layout > CalloutNegativeWithRetry",
@@ -5756,6 +8293,11 @@
             "line": 101
           },
           {
+            "component": "Checkbox",
+            "file": "packages/react/src/styles.css",
+            "line": 543
+          },
+          {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
             "line": 101
@@ -5766,6 +8308,21 @@
             "line": 178
           },
           {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 101
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 101
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 490
+          },
+          {
             "component": "PageShell",
             "file": "packages/react/src/styles.css",
             "line": 427
@@ -5774,6 +8331,16 @@
             "component": "Select",
             "file": "packages/react/src/styles.css",
             "line": 101
+          },
+          {
+            "component": "Slider",
+            "file": "packages/react/src/styles.css",
+            "line": 101
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 543
           },
           {
             "component": "Tabs",
@@ -5805,6 +8372,28 @@
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Controls/Inputs > ButtonGroupAlone",
+          "Controls/Inputs > ButtonVariants",
+          "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > HeaderWithSwitches",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > LanguageSwitchStates",
+          "Controls/Inputs > ShortcutList",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ThemeSwitchStates",
+          "Controls/Inputs > ToolbarTransport",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -5860,6 +8449,11 @@
             "line": 100
           },
           {
+            "component": "Checkbox",
+            "file": "packages/react/src/styles.css",
+            "line": 542
+          },
+          {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
             "line": 100
@@ -5868,6 +8462,21 @@
             "component": "Disclosure",
             "file": "packages/react/src/styles.css",
             "line": 177
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 100
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 100
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 490
           },
           {
             "component": "NumberField",
@@ -5898,6 +8507,16 @@
             "component": "Select",
             "file": "packages/react/src/styles.css",
             "line": 160
+          },
+          {
+            "component": "Slider",
+            "file": "packages/react/src/styles.css",
+            "line": 100
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 542
           },
           {
             "component": "Tabs",
@@ -5939,6 +8558,28 @@
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Controls/Inputs > ButtonGroupAlone",
+          "Controls/Inputs > ButtonVariants",
+          "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > HeaderWithSwitches",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > LanguageSwitchStates",
+          "Controls/Inputs > ShortcutList",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ThemeSwitchStates",
+          "Controls/Inputs > ToolbarTransport",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -5989,10 +8630,20 @@
       "readBy": {
         "components": [
           {
+            "component": "(css) .stoa-filter-chip__count",
+            "file": "packages/react/src/styles.css",
+            "line": 497
+          },
+          {
             "component": "Heatmap",
             "file": "packages/react/src/Heatmap.tsx",
             "line": 38,
             "via": "readCanvasTokens"
+          },
+          {
+            "component": "Kbd",
+            "file": "packages/react/src/styles.css",
+            "line": 626
           },
           {
             "component": "Ladder",
@@ -6014,6 +8665,11 @@
             "component": "ProgressBar",
             "file": "packages/react/src/styles.css",
             "line": 292
+          },
+          {
+            "component": "Slider",
+            "file": "packages/react/src/styles.css",
+            "line": 587
           },
           {
             "component": "StatBar",
@@ -6040,6 +8696,28 @@
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Controls/Inputs > ButtonGroupAlone",
+          "Controls/Inputs > ButtonVariants",
+          "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > HeaderWithSwitches",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > LanguageSwitchStates",
+          "Controls/Inputs > ShortcutList",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ThemeSwitchStates",
+          "Controls/Inputs > ToolbarTransport",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -6170,9 +8848,19 @@
             "line": 342
           },
           {
+            "component": "Kbd",
+            "file": "packages/react/src/styles.css",
+            "line": 627
+          },
+          {
             "component": "SkeletonLines",
             "file": "packages/react/src/styles.css",
             "line": 272
+          },
+          {
+            "component": "Tag",
+            "file": "packages/react/src/styles.css",
+            "line": 470
           },
           {
             "component": "ToastRegion",
@@ -6181,6 +8869,28 @@
           }
         ],
         "stories": [
+          "Controls/Inputs > ButtonGroupAlone",
+          "Controls/Inputs > ButtonVariants",
+          "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > HeaderWithSwitches",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > LanguageSwitchStates",
+          "Controls/Inputs > ShortcutList",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ThemeSwitchStates",
+          "Controls/Inputs > ToolbarTransport",
           "Feedback/Feedback and layout > CalloutDismissible",
           "Feedback/Feedback and layout > CalloutInfo",
           "Feedback/Feedback and layout > CalloutNegativeWithRetry",
@@ -6299,9 +9009,49 @@
       "readBy": {
         "components": [
           {
+            "component": "Checkbox",
+            "file": "packages/react/src/styles.css",
+            "line": 231
+          },
+          {
+            "component": "CheckboxGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 231
+          },
+          {
+            "component": "Kbd",
+            "file": "packages/react/src/styles.css",
+            "line": 626
+          },
+          {
+            "component": "Kbd",
+            "file": "packages/react/src/styles.css",
+            "line": 630
+          },
+          {
+            "component": "Slider",
+            "file": "packages/react/src/styles.css",
+            "line": 231
+          },
+          {
+            "component": "Slider",
+            "file": "packages/react/src/styles.css",
+            "line": 599
+          },
+          {
             "component": "StatBar",
             "file": "packages/react/src/styles.css",
             "line": 214
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 231
+          },
+          {
+            "component": "Tag",
+            "file": "packages/react/src/styles.css",
+            "line": 473
           },
           {
             "component": "TextField",
@@ -6313,6 +9063,28 @@
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Controls/Inputs > ButtonGroupAlone",
+          "Controls/Inputs > ButtonVariants",
+          "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > HeaderWithSwitches",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > LanguageSwitchStates",
+          "Controls/Inputs > ShortcutList",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ThemeSwitchStates",
+          "Controls/Inputs > ToolbarTransport",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -6351,6 +9123,28 @@
           }
         ],
         "stories": [
+          "Controls/Inputs > ButtonGroupAlone",
+          "Controls/Inputs > ButtonVariants",
+          "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > HeaderWithSwitches",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > LanguageSwitchStates",
+          "Controls/Inputs > ShortcutList",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ThemeSwitchStates",
+          "Controls/Inputs > ToolbarTransport",
           "Feedback/Feedback and layout > CalloutDismissible",
           "Feedback/Feedback and layout > CalloutInfo",
           "Feedback/Feedback and layout > CalloutNegativeWithRetry",
@@ -6475,6 +9269,28 @@
           }
         ],
         "stories": [
+          "Controls/Inputs > ButtonGroupAlone",
+          "Controls/Inputs > ButtonVariants",
+          "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > HeaderWithSwitches",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > LanguageSwitchStates",
+          "Controls/Inputs > ShortcutList",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ThemeSwitchStates",
+          "Controls/Inputs > ToolbarTransport",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -6548,6 +9364,11 @@
       "readBy": {
         "components": [
           {
+            "component": "CheckboxGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 220
+          },
+          {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
             "line": 130
@@ -6556,6 +9377,26 @@
             "component": "Disclosure",
             "file": "packages/react/src/styles.css",
             "line": 170
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 130
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 499
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 130
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 499
           },
           {
             "component": "NumberField",
@@ -6608,9 +9449,29 @@
             "line": 220
           },
           {
+            "component": "Slider",
+            "file": "packages/react/src/styles.css",
+            "line": 220
+          },
+          {
+            "component": "Slider",
+            "file": "packages/react/src/styles.css",
+            "line": 587
+          },
+          {
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
             "line": 233
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 551
+          },
+          {
+            "component": "Tag",
+            "file": "packages/react/src/styles.css",
+            "line": 469
           },
           {
             "component": "TextField",
@@ -6627,6 +9488,28 @@
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Controls/Inputs > ButtonGroupAlone",
+          "Controls/Inputs > ButtonVariants",
+          "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > HeaderWithSwitches",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > LanguageSwitchStates",
+          "Controls/Inputs > ShortcutList",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ThemeSwitchStates",
+          "Controls/Inputs > ToolbarTransport",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -6687,6 +9570,11 @@
             "line": 356
           },
           {
+            "component": "Kbd",
+            "file": "packages/react/src/styles.css",
+            "line": 626
+          },
+          {
             "component": "Panel",
             "file": "packages/react/src/styles.css",
             "line": 19
@@ -6700,12 +9588,39 @@
             "component": "StatusBadge",
             "file": "packages/react/src/styles.css",
             "line": 233
+          },
+          {
+            "component": "Tag",
+            "file": "packages/react/src/styles.css",
+            "line": 469
           }
         ],
         "stories": [
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Controls/Inputs > ButtonGroupAlone",
+          "Controls/Inputs > ButtonVariants",
+          "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > HeaderWithSwitches",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > LanguageSwitchStates",
+          "Controls/Inputs > ShortcutList",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ThemeSwitchStates",
+          "Controls/Inputs > ToolbarTransport",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -6812,6 +9727,28 @@
           }
         ],
         "stories": [
+          "Controls/Inputs > ButtonGroupAlone",
+          "Controls/Inputs > ButtonVariants",
+          "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > HeaderWithSwitches",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > LanguageSwitchStates",
+          "Controls/Inputs > ShortcutList",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ThemeSwitchStates",
+          "Controls/Inputs > ToolbarTransport",
           "Feedback/Feedback and layout > CalloutDismissible",
           "Feedback/Feedback and layout > CalloutInfo",
           "Feedback/Feedback and layout > CalloutNegativeWithRetry",
@@ -6925,9 +9862,29 @@
             "line": 183
           },
           {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 68
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 68
+          },
+          {
             "component": "Select",
             "file": "packages/react/src/styles.css",
             "line": 68
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 520
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 528
           },
           {
             "component": "Toggle",
@@ -6936,6 +9893,28 @@
           }
         ],
         "stories": [
+          "Controls/Inputs > ButtonGroupAlone",
+          "Controls/Inputs > ButtonVariants",
+          "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > HeaderWithSwitches",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > LanguageSwitchStates",
+          "Controls/Inputs > ShortcutList",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ThemeSwitchStates",
+          "Controls/Inputs > ToolbarTransport",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -7176,6 +10155,16 @@
             "line": 183
           },
           {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 68
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 68
+          },
+          {
             "component": "ProgressBar",
             "file": "packages/react/src/styles.css",
             "line": 303
@@ -7201,12 +10190,44 @@
             "line": 277
           },
           {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 520
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 528
+          },
+          {
             "component": "Toggle",
             "file": "packages/react/src/styles.css",
             "line": 68
           }
         ],
         "stories": [
+          "Controls/Inputs > ButtonGroupAlone",
+          "Controls/Inputs > ButtonVariants",
+          "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > HeaderWithSwitches",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > LanguageSwitchStates",
+          "Controls/Inputs > ShortcutList",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ThemeSwitchStates",
+          "Controls/Inputs > ToolbarTransport",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -7257,9 +10278,44 @@
       "readBy": {
         "components": [
           {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 494
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 494
+          },
+          {
             "component": "ProgressBar",
             "file": "packages/react/src/styles.css",
             "line": 298
+          },
+          {
+            "component": "Slider",
+            "file": "packages/react/src/styles.css",
+            "line": 194
+          },
+          {
+            "component": "Slider",
+            "file": "packages/react/src/styles.css",
+            "line": 198
+          },
+          {
+            "component": "Slider",
+            "file": "packages/react/src/styles.css",
+            "line": 592
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 518
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 526
           },
           {
             "component": "TimeSlider",
@@ -7273,6 +10329,28 @@
           }
         ],
         "stories": [
+          "Controls/Inputs > ButtonGroupAlone",
+          "Controls/Inputs > ButtonVariants",
+          "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > HeaderWithSwitches",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > LanguageSwitchStates",
+          "Controls/Inputs > ShortcutList",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ThemeSwitchStates",
+          "Controls/Inputs > ToolbarTransport",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -7440,6 +10518,31 @@
             "line": 64
           },
           {
+            "component": "Button",
+            "file": "packages/react/src/styles.css",
+            "line": 612
+          },
+          {
+            "component": "Button",
+            "file": "packages/react/src/styles.css",
+            "line": 615
+          },
+          {
+            "component": "ButtonGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 612
+          },
+          {
+            "component": "ButtonGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 615
+          },
+          {
+            "component": "Checkbox",
+            "file": "packages/react/src/styles.css",
+            "line": 570
+          },
+          {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
             "line": 64
@@ -7455,9 +10558,74 @@
             "line": 121
           },
           {
+            "component": "ChoiceGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 612
+          },
+          {
+            "component": "ChoiceGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 615
+          },
+          {
             "component": "Disclosure",
             "file": "packages/react/src/styles.css",
             "line": 179
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 64
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 118
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 121
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 612
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 615
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 64
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 118
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 121
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 612
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 615
+          },
+          {
+            "component": "Kbd",
+            "file": "packages/react/src/styles.css",
+            "line": 624
           },
           {
             "component": "NumberField",
@@ -7480,6 +10648,16 @@
             "line": 148
           },
           {
+            "component": "Select",
+            "file": "packages/react/src/styles.css",
+            "line": 612
+          },
+          {
+            "component": "Select",
+            "file": "packages/react/src/styles.css",
+            "line": 615
+          },
+          {
             "component": "SkeletonBlock",
             "file": "packages/react/src/styles.css",
             "line": 276
@@ -7493,6 +10671,11 @@
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
             "line": 257
+          },
+          {
+            "component": "Tag",
+            "file": "packages/react/src/styles.css",
+            "line": 468
           },
           {
             "component": "TextField",
@@ -7513,12 +10696,44 @@
             "component": "Toggle",
             "file": "packages/react/src/styles.css",
             "line": 121
+          },
+          {
+            "component": "Toggle",
+            "file": "packages/react/src/styles.css",
+            "line": 612
+          },
+          {
+            "component": "Toggle",
+            "file": "packages/react/src/styles.css",
+            "line": 615
           }
         ],
         "stories": [
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Controls/Inputs > ButtonGroupAlone",
+          "Controls/Inputs > ButtonVariants",
+          "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > HeaderWithSwitches",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > LanguageSwitchStates",
+          "Controls/Inputs > ShortcutList",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ThemeSwitchStates",
+          "Controls/Inputs > ToolbarTransport",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -7591,20 +10806,84 @@
       "resolvedValue": "2px",
       "aliasOf": null,
       "readBy": {
-        "components": [],
-        "stories": []
+        "components": [
+          {
+            "component": "Kbd",
+            "file": "packages/react/src/styles.css",
+            "line": 629
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 517
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 524
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 525
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 537
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 556
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 558
+          },
+          {
+            "component": "Tag",
+            "file": "packages/react/src/styles.css",
+            "line": 473
+          }
+        ],
+        "stories": [
+          "Controls/Inputs > ButtonGroupAlone",
+          "Controls/Inputs > ButtonVariants",
+          "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > HeaderWithSwitches",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > LanguageSwitchStates",
+          "Controls/Inputs > ShortcutList",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ThemeSwitchStates",
+          "Controls/Inputs > ToolbarTransport"
+        ]
       },
       "reachedByTheme": {
         "light": {
-          "direct": false,
+          "direct": true,
           "via": []
         },
         "dark": {
-          "direct": false,
+          "direct": true,
           "via": []
         }
       },
-      "unused": true
+      "unused": false
     },
     {
       "name": "--stoa-space-1",
@@ -7626,6 +10905,21 @@
             "line": 340
           },
           {
+            "component": "Checkbox",
+            "file": "packages/react/src/styles.css",
+            "line": 508
+          },
+          {
+            "component": "CheckboxGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 578
+          },
+          {
+            "component": "CheckboxGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 579
+          },
+          {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
             "line": 62
@@ -7644,6 +10938,56 @@
             "component": "Disclosure",
             "file": "packages/react/src/styles.css",
             "line": 187
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 62
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 132
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 493
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 501
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 62
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 132
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 485
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 493
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 501
+          },
+          {
+            "component": "Kbd",
+            "file": "packages/react/src/styles.css",
+            "line": 623
           },
           {
             "component": "NumberField",
@@ -7696,6 +11040,16 @@
             "line": 155
           },
           {
+            "component": "Slider",
+            "file": "packages/react/src/styles.css",
+            "line": 585
+          },
+          {
+            "component": "Slider",
+            "file": "packages/react/src/styles.css",
+            "line": 591
+          },
+          {
             "component": "StatBar",
             "file": "packages/react/src/styles.css",
             "line": 215
@@ -7706,9 +11060,54 @@
             "line": 233
           },
           {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 508
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 515
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 516
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 551
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 553
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 561
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 562
+          },
+          {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
             "line": 241
+          },
+          {
+            "component": "Tag",
+            "file": "packages/react/src/styles.css",
+            "line": 466
+          },
+          {
+            "component": "Tag",
+            "file": "packages/react/src/styles.css",
+            "line": 467
           },
           {
             "component": "TextField",
@@ -7729,12 +11128,39 @@
             "component": "Toggle",
             "file": "packages/react/src/styles.css",
             "line": 132
+          },
+          {
+            "component": "ToolbarSeparator",
+            "file": "packages/react/src/styles.css",
+            "line": 606
           }
         ],
         "stories": [
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Controls/Inputs > ButtonGroupAlone",
+          "Controls/Inputs > ButtonVariants",
+          "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > HeaderWithSwitches",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > LanguageSwitchStates",
+          "Controls/Inputs > ShortcutList",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ThemeSwitchStates",
+          "Controls/Inputs > ToolbarTransport",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -7853,6 +11279,16 @@
             "line": 348
           },
           {
+            "component": "Checkbox",
+            "file": "packages/react/src/styles.css",
+            "line": 510
+          },
+          {
+            "component": "Checkbox",
+            "file": "packages/react/src/styles.css",
+            "line": 563
+          },
+          {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
             "line": 62
@@ -7871,6 +11307,26 @@
             "component": "EmptyState",
             "file": "packages/react/src/styles.css",
             "line": 358
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 62
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 501
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 62
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 501
           },
           {
             "component": "NumberField",
@@ -7913,6 +11369,26 @@
             "line": 137
           },
           {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 510
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 556
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 558
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 561
+          },
+          {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
             "line": 245
@@ -7941,12 +11417,39 @@
             "component": "Toggle",
             "file": "packages/react/src/styles.css",
             "line": 62
+          },
+          {
+            "component": "Toolbar",
+            "file": "packages/react/src/styles.css",
+            "line": 604
           }
         ],
         "stories": [
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Controls/Inputs > ButtonGroupAlone",
+          "Controls/Inputs > ButtonVariants",
+          "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > HeaderWithSwitches",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > LanguageSwitchStates",
+          "Controls/Inputs > ShortcutList",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ThemeSwitchStates",
+          "Controls/Inputs > ToolbarTransport",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -8017,6 +11520,16 @@
             "line": 338
           },
           {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 495
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 495
+          },
+          {
             "component": "PageShell",
             "file": "packages/react/src/styles.css",
             "line": 413
@@ -8035,6 +11548,26 @@
             "component": "Skeleton",
             "file": "packages/react/src/styles.css",
             "line": 271
+          },
+          {
+            "component": "Slider",
+            "file": "packages/react/src/styles.css",
+            "line": 586
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 524
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 525
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 537
           },
           {
             "component": "Tabs",
@@ -8056,6 +11589,28 @@
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Controls/Inputs > ButtonGroupAlone",
+          "Controls/Inputs > ButtonVariants",
+          "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > HeaderWithSwitches",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > LanguageSwitchStates",
+          "Controls/Inputs > ShortcutList",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ThemeSwitchStates",
+          "Controls/Inputs > ToolbarTransport",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -8116,6 +11671,16 @@
             "line": 318
           },
           {
+            "component": "Checkbox",
+            "file": "packages/react/src/styles.css",
+            "line": 563
+          },
+          {
+            "component": "Checkbox",
+            "file": "packages/react/src/styles.css",
+            "line": 569
+          },
+          {
             "component": "EmptyState",
             "file": "packages/react/src/styles.css",
             "line": 353
@@ -8134,6 +11699,16 @@
             "component": "StatBar",
             "file": "packages/react/src/styles.css",
             "line": 214
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 516
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 554
           },
           {
             "component": "Tabs",
@@ -8160,6 +11735,28 @@
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Controls/Inputs > ButtonGroupAlone",
+          "Controls/Inputs > ButtonVariants",
+          "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > HeaderWithSwitches",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > LanguageSwitchStates",
+          "Controls/Inputs > ShortcutList",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ThemeSwitchStates",
+          "Controls/Inputs > ToolbarTransport",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -8215,9 +11812,34 @@
             "line": 329
           },
           {
+            "component": "Checkbox",
+            "file": "packages/react/src/styles.css",
+            "line": 511
+          },
+          {
             "component": "ChoiceGroup",
             "file": "packages/react/src/styles.css",
             "line": 131
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 131
+          },
+          {
+            "component": "FilterChip",
+            "file": "packages/react/src/styles.css",
+            "line": 500
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 131
+          },
+          {
+            "component": "FilterChipGroup",
+            "file": "packages/react/src/styles.css",
+            "line": 500
           },
           {
             "component": "NumberField",
@@ -8228,6 +11850,26 @@
             "component": "Select",
             "file": "packages/react/src/styles.css",
             "line": 131
+          },
+          {
+            "component": "Slider",
+            "file": "packages/react/src/styles.css",
+            "line": 588
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 511
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 553
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 562
           },
           {
             "component": "ToastRegion",
@@ -8244,6 +11886,28 @@
           "Controls/Form > Badges",
           "Controls/Form > Fields",
           "Controls/Form > TabList",
+          "Controls/Inputs > ButtonGroupAlone",
+          "Controls/Inputs > ButtonVariants",
+          "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > HeaderWithSwitches",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > LanguageSwitchStates",
+          "Controls/Inputs > ShortcutList",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ThemeSwitchStates",
+          "Controls/Inputs > ToolbarTransport",
           "Controls/Playback > Choices",
           "Controls/Playback > Counters",
           "Controls/Playback > Trades",
@@ -8297,9 +11961,41 @@
             "component": "EmptyState",
             "file": "packages/react/src/styles.css",
             "line": 353
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 515
+          },
+          {
+            "component": "Switch",
+            "file": "packages/react/src/styles.css",
+            "line": 561
           }
         ],
         "stories": [
+          "Controls/Inputs > ButtonGroupAlone",
+          "Controls/Inputs > ButtonVariants",
+          "Controls/Inputs > ButtonsDisabled",
+          "Controls/Inputs > CheckboxGroupWithAll",
+          "Controls/Inputs > CheckboxStates",
+          "Controls/Inputs > FilterChipStates",
+          "Controls/Inputs > FilterChipsClearAll",
+          "Controls/Inputs > FilterChipsScroll",
+          "Controls/Inputs > HeaderWithSwitches",
+          "Controls/Inputs > KbdKeys",
+          "Controls/Inputs > LanguageSwitchStates",
+          "Controls/Inputs > ShortcutList",
+          "Controls/Inputs > SliderDisabled",
+          "Controls/Inputs > SliderSmall",
+          "Controls/Inputs > SliderStates",
+          "Controls/Inputs > SwitchDisabled",
+          "Controls/Inputs > SwitchSmall",
+          "Controls/Inputs > SwitchStates",
+          "Controls/Inputs > TagTones",
+          "Controls/Inputs > TagsSmall",
+          "Controls/Inputs > ThemeSwitchStates",
+          "Controls/Inputs > ToolbarTransport",
           "Feedback/Feedback and layout > CalloutDismissible",
           "Feedback/Feedback and layout > CalloutInfo",
           "Feedback/Feedback and layout > CalloutNegativeWithRetry",
@@ -8344,8 +12040,7 @@
     "--stoa-motion-easing-exit",
     "--stoa-radius-lg",
     "--stoa-radius-none",
-    "--stoa-space-0",
-    "--stoa-space-0-5"
+    "--stoa-space-0"
   ],
   "hardcodedLiterals": [],
   "undefinedCustomProperties": [
@@ -8357,7 +12052,7 @@
   ],
   "summary": {
     "tokenCount": 86,
-    "unusedCount": 12,
+    "unusedCount": 11,
     "hardcodedLiteralCount": 0,
     "undefinedCount": 1
   }
