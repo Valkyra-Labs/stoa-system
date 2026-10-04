@@ -122,6 +122,26 @@ export const ShortcutsOpen: StoryObj = {
   render: () => <ShortcutsDialog title="Keyboard shortcuts" groups={SHORTCUTS} defaultOpen trigger={<Button>Shortcuts</Button>} />,
 };
 
+/** A shortcut whose control is disabled stays listed, muted. */
+export const ShortcutsWithDisabled: StoryObj = {
+  render: () => (
+    <ShortcutsDialog
+      title="Keyboard shortcuts"
+      groups={[
+        {
+          title: "Export",
+          shortcuts: [
+            { keys: ["E"], description: "Export the view as CSV", isDisabled: true },
+            { keys: ["?"], description: "Show these shortcuts" },
+          ],
+        },
+      ]}
+      defaultOpen
+      trigger={<Button>Shortcuts</Button>}
+    />
+  ),
+};
+
 /** The same list outside a dialog, for example on a help page. */
 export const ShortcutsInline: StoryObj = {
   render: () => (

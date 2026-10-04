@@ -377,6 +377,7 @@
           "Report > SheetEnd",
           "Report > ShortcutsInline",
           "Report > ShortcutsOpen",
+          "Report > ShortcutsWithDisabled",
           "Report > StatBarWithMetrics",
           "Report > StepsAllStatuses",
           "Report > StepsReorderable"
@@ -1460,6 +1461,7 @@
           "Report > SheetEnd",
           "Report > ShortcutsInline",
           "Report > ShortcutsOpen",
+          "Report > ShortcutsWithDisabled",
           "Report > StatBarWithMetrics",
           "Report > StepsAllStatuses",
           "Report > StepsReorderable"
@@ -1749,6 +1751,7 @@
           "Report > SheetEnd",
           "Report > ShortcutsInline",
           "Report > ShortcutsOpen",
+          "Report > ShortcutsWithDisabled",
           "Report > StatBarWithMetrics",
           "Report > StepsAllStatuses",
           "Report > StepsReorderable"
@@ -2189,6 +2192,7 @@
           "Report > SheetEnd",
           "Report > ShortcutsInline",
           "Report > ShortcutsOpen",
+          "Report > ShortcutsWithDisabled",
           "Report > StatBarWithMetrics",
           "Report > StepsAllStatuses",
           "Report > StepsReorderable"
@@ -2457,6 +2461,7 @@
           "Report > SheetEnd",
           "Report > ShortcutsInline",
           "Report > ShortcutsOpen",
+          "Report > ShortcutsWithDisabled",
           "Report > StatBarWithMetrics",
           "Report > StepsAllStatuses",
           "Report > StepsReorderable"
@@ -2731,6 +2736,7 @@
           "Report > SheetEnd",
           "Report > ShortcutsInline",
           "Report > ShortcutsOpen",
+          "Report > ShortcutsWithDisabled",
           "Report > StatBarWithMetrics",
           "Report > StepsAllStatuses",
           "Report > StepsReorderable"
@@ -2944,6 +2950,7 @@
           "Report > SheetEnd",
           "Report > ShortcutsInline",
           "Report > ShortcutsOpen",
+          "Report > ShortcutsWithDisabled",
           "Report > StatBarWithMetrics",
           "Report > StepsAllStatuses",
           "Report > StepsReorderable"
@@ -3259,6 +3266,7 @@
           "Report > SheetEnd",
           "Report > ShortcutsInline",
           "Report > ShortcutsOpen",
+          "Report > ShortcutsWithDisabled",
           "Report > StatBarWithMetrics",
           "Report > StepsAllStatuses",
           "Report > StepsReorderable"
@@ -3615,6 +3623,7 @@
           "Report > SheetEnd",
           "Report > ShortcutsInline",
           "Report > ShortcutsOpen",
+          "Report > ShortcutsWithDisabled",
           "Report > StatBarWithMetrics",
           "Report > StepsAllStatuses",
           "Report > StepsReorderable"
@@ -4243,6 +4252,7 @@
           "Report > SheetEnd",
           "Report > ShortcutsInline",
           "Report > ShortcutsOpen",
+          "Report > ShortcutsWithDisabled",
           "Report > StatBarWithMetrics",
           "Report > StepsAllStatuses",
           "Report > StepsReorderable"
@@ -4530,6 +4540,7 @@
           "Report > SheetEnd",
           "Report > ShortcutsInline",
           "Report > ShortcutsOpen",
+          "Report > ShortcutsWithDisabled",
           "Report > StatBarWithMetrics",
           "Report > StepsAllStatuses",
           "Report > StepsReorderable"
@@ -4815,6 +4826,7 @@
           "Report > SheetEnd",
           "Report > ShortcutsInline",
           "Report > ShortcutsOpen",
+          "Report > ShortcutsWithDisabled",
           "Report > StatBarWithMetrics",
           "Report > StepsAllStatuses",
           "Report > StepsReorderable"
@@ -5295,6 +5307,7 @@
           "Report > SheetEnd",
           "Report > ShortcutsInline",
           "Report > ShortcutsOpen",
+          "Report > ShortcutsWithDisabled",
           "Report > StatBarWithMetrics",
           "Report > StepsAllStatuses",
           "Report > StepsReorderable"
@@ -5667,6 +5680,7 @@
           "Report > SheetEnd",
           "Report > ShortcutsInline",
           "Report > ShortcutsOpen",
+          "Report > ShortcutsWithDisabled",
           "Report > StatBarWithMetrics",
           "Report > StepsAllStatuses",
           "Report > StepsReorderable"
@@ -6099,6 +6113,7 @@
           "Report > SheetEnd",
           "Report > ShortcutsInline",
           "Report > ShortcutsOpen",
+          "Report > ShortcutsWithDisabled",
           "Report > StatBarWithMetrics",
           "Report > StepsAllStatuses",
           "Report > StepsReorderable"
@@ -6549,6 +6564,7 @@
           "Report > SheetEnd",
           "Report > ShortcutsInline",
           "Report > ShortcutsOpen",
+          "Report > ShortcutsWithDisabled",
           "Report > StatBarWithMetrics",
           "Report > StepsAllStatuses",
           "Report > StepsReorderable"
@@ -6889,6 +6905,7 @@
           "Report > SheetEnd",
           "Report > ShortcutsInline",
           "Report > ShortcutsOpen",
+          "Report > ShortcutsWithDisabled",
           "Report > StatBarWithMetrics",
           "Report > StepsAllStatuses",
           "Report > StepsReorderable"
@@ -7111,6 +7128,7 @@
           "Report > SheetEnd",
           "Report > ShortcutsInline",
           "Report > ShortcutsOpen",
+          "Report > ShortcutsWithDisabled",
           "Report > StatBarWithMetrics",
           "Report > StepsAllStatuses",
           "Report > StepsReorderable"
@@ -7889,6 +7907,7 @@
           "Report > SheetEnd",
           "Report > ShortcutsInline",
           "Report > ShortcutsOpen",
+          "Report > ShortcutsWithDisabled",
           "Report > StatBarWithMetrics",
           "Report > StepsAllStatuses",
           "Report > StepsReorderable"
@@ -8135,6 +8154,7 @@
           "Report > SheetEnd",
           "Report > ShortcutsInline",
           "Report > ShortcutsOpen",
+          "Report > ShortcutsWithDisabled",
           "Report > StatBarWithMetrics",
           "Report > StepsAllStatuses",
           "Report > StepsReorderable"
@@ -8380,6 +8400,7 @@
           "Report > SheetEnd",
           "Report > ShortcutsInline",
           "Report > ShortcutsOpen",
+          "Report > ShortcutsWithDisabled",
           "Report > StatBarWithMetrics",
           "Report > StepsAllStatuses",
           "Report > StepsReorderable"
@@ -8830,6 +8851,7 @@
           "Report > SheetEnd",
           "Report > ShortcutsInline",
           "Report > ShortcutsOpen",
+          "Report > ShortcutsWithDisabled",
           "Report > StatBarWithMetrics",
           "Report > StepsAllStatuses",
           "Report > StepsReorderable"
@@ -9037,6 +9059,7 @@
           "Report > SheetEnd",
           "Report > ShortcutsInline",
           "Report > ShortcutsOpen",
+          "Report > ShortcutsWithDisabled",
           "Report > StatBarWithMetrics",
           "Report > StepsAllStatuses",
           "Report > StepsReorderable"
@@ -9209,6 +9232,7 @@
           "Report > SheetEnd",
           "Report > ShortcutsInline",
           "Report > ShortcutsOpen",
+          "Report > ShortcutsWithDisabled",
           "Report > StatBarWithMetrics",
           "Report > StepsAllStatuses",
           "Report > StepsReorderable"
@@ -10100,6 +10124,7 @@
           "Report > SheetEnd",
           "Report > ShortcutsInline",
           "Report > ShortcutsOpen",
+          "Report > ShortcutsWithDisabled",
           "Report > StatBarWithMetrics",
           "Report > StepsAllStatuses",
           "Report > StepsReorderable"
@@ -10502,6 +10527,7 @@
           "Report > SheetEnd",
           "Report > ShortcutsInline",
           "Report > ShortcutsOpen",
+          "Report > ShortcutsWithDisabled",
           "Report > StatBarWithMetrics",
           "Report > StepsAllStatuses",
           "Report > StepsReorderable"
@@ -10664,6 +10690,7 @@
           "Report > SheetEnd",
           "Report > ShortcutsInline",
           "Report > ShortcutsOpen",
+          "Report > ShortcutsWithDisabled",
           "Report > StatBarWithMetrics",
           "Report > StepsAllStatuses",
           "Report > StepsReorderable"
@@ -11446,6 +11473,7 @@
           "Report > SheetEnd",
           "Report > ShortcutsInline",
           "Report > ShortcutsOpen",
+          "Report > ShortcutsWithDisabled",
           "Report > StatBarWithMetrics",
           "Report > StepsAllStatuses",
           "Report > StepsReorderable"
@@ -11762,6 +11790,7 @@
           "Report > SheetEnd",
           "Report > ShortcutsInline",
           "Report > ShortcutsOpen",
+          "Report > ShortcutsWithDisabled",
           "Report > StatBarWithMetrics",
           "Report > StepsAllStatuses",
           "Report > StepsReorderable"
@@ -11986,6 +12015,7 @@
           "Report > SheetEnd",
           "Report > ShortcutsInline",
           "Report > ShortcutsOpen",
+          "Report > ShortcutsWithDisabled",
           "Report > StatBarWithMetrics",
           "Report > StepsAllStatuses",
           "Report > StepsReorderable"
@@ -12209,6 +12239,7 @@
           "Report > SheetEnd",
           "Report > ShortcutsInline",
           "Report > ShortcutsOpen",
+          "Report > ShortcutsWithDisabled",
           "Report > StatBarWithMetrics",
           "Report > StepsAllStatuses",
           "Report > StepsReorderable"
@@ -12298,6 +12329,7 @@
           "Report > SheetEnd",
           "Report > ShortcutsInline",
           "Report > ShortcutsOpen",
+          "Report > ShortcutsWithDisabled",
           "Report > StatBarWithMetrics",
           "Report > StepsAllStatuses",
           "Report > StepsReorderable"
@@ -12494,6 +12526,7 @@
           "Report > SheetEnd",
           "Report > ShortcutsInline",
           "Report > ShortcutsOpen",
+          "Report > ShortcutsWithDisabled",
           "Report > StatBarWithMetrics",
           "Report > StepsAllStatuses",
           "Report > StepsReorderable"
@@ -12643,6 +12676,7 @@
           "Report > SheetEnd",
           "Report > ShortcutsInline",
           "Report > ShortcutsOpen",
+          "Report > ShortcutsWithDisabled",
           "Report > StatBarWithMetrics",
           "Report > StepsAllStatuses",
           "Report > StepsReorderable"
@@ -13110,6 +13144,7 @@
           "Report > SheetEnd",
           "Report > ShortcutsInline",
           "Report > ShortcutsOpen",
+          "Report > ShortcutsWithDisabled",
           "Report > StatBarWithMetrics",
           "Report > StepsAllStatuses",
           "Report > StepsReorderable"
@@ -13290,6 +13325,7 @@
           "Report > SheetEnd",
           "Report > ShortcutsInline",
           "Report > ShortcutsOpen",
+          "Report > ShortcutsWithDisabled",
           "Report > StatBarWithMetrics",
           "Report > StepsAllStatuses",
           "Report > StepsReorderable"
@@ -13353,6 +13389,7 @@
           "Report > SheetEnd",
           "Report > ShortcutsInline",
           "Report > ShortcutsOpen",
+          "Report > ShortcutsWithDisabled",
           "Report > StatBarWithMetrics",
           "Report > StepsAllStatuses",
           "Report > StepsReorderable"
@@ -13478,6 +13515,7 @@
           "Report > SheetEnd",
           "Report > ShortcutsInline",
           "Report > ShortcutsOpen",
+          "Report > ShortcutsWithDisabled",
           "Report > StatBarWithMetrics",
           "Report > StepsAllStatuses",
           "Report > StepsReorderable"
@@ -13682,6 +13720,7 @@
           "Report > SheetEnd",
           "Report > ShortcutsInline",
           "Report > ShortcutsOpen",
+          "Report > ShortcutsWithDisabled",
           "Report > StatBarWithMetrics",
           "Report > StepsAllStatuses",
           "Report > StepsReorderable"
@@ -14071,6 +14110,7 @@
           "Report > SheetEnd",
           "Report > ShortcutsInline",
           "Report > ShortcutsOpen",
+          "Report > ShortcutsWithDisabled",
           "Report > StatBarWithMetrics",
           "Report > StepsAllStatuses",
           "Report > StepsReorderable"
@@ -14374,6 +14414,7 @@
           "Report > SheetEnd",
           "Report > ShortcutsInline",
           "Report > ShortcutsOpen",
+          "Report > ShortcutsWithDisabled",
           "Report > StatBarWithMetrics",
           "Report > StepsAllStatuses",
           "Report > StepsReorderable"
@@ -14716,6 +14757,7 @@
           "Report > SheetEnd",
           "Report > ShortcutsInline",
           "Report > ShortcutsOpen",
+          "Report > ShortcutsWithDisabled",
           "Report > StatBarWithMetrics",
           "Report > StepsAllStatuses",
           "Report > StepsReorderable"
@@ -15278,6 +15320,7 @@
           "Report > SheetEnd",
           "Report > ShortcutsInline",
           "Report > ShortcutsOpen",
+          "Report > ShortcutsWithDisabled",
           "Report > StatBarWithMetrics",
           "Report > StepsAllStatuses",
           "Report > StepsReorderable"
@@ -15727,6 +15770,7 @@
           "Report > SheetEnd",
           "Report > ShortcutsInline",
           "Report > ShortcutsOpen",
+          "Report > ShortcutsWithDisabled",
           "Report > StatBarWithMetrics",
           "Report > StepsAllStatuses",
           "Report > StepsReorderable"
@@ -15967,6 +16011,7 @@
           "Report > SheetEnd",
           "Report > ShortcutsInline",
           "Report > ShortcutsOpen",
+          "Report > ShortcutsWithDisabled",
           "Report > StatBarWithMetrics",
           "Report > StepsAllStatuses",
           "Report > StepsReorderable"
@@ -16174,6 +16219,7 @@
           "Report > SheetEnd",
           "Report > ShortcutsInline",
           "Report > ShortcutsOpen",
+          "Report > ShortcutsWithDisabled",
           "Report > StatBarWithMetrics",
           "Report > StepsAllStatuses",
           "Report > StepsReorderable"
@@ -16377,6 +16423,7 @@
           "Report > SheetEnd",
           "Report > ShortcutsInline",
           "Report > ShortcutsOpen",
+          "Report > ShortcutsWithDisabled",
           "Report > StatBarWithMetrics",
           "Report > StepsAllStatuses",
           "Report > StepsReorderable"
