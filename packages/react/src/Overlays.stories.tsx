@@ -256,6 +256,22 @@ export const LogMixed: StoryObj = {
   ),
 };
 
+/** A log in Arabic: the time in Arabic-Indic digits and the level in
+ * Arabic are isolated too, so in a right-to-left page they stay in their
+ * places at the left instead of joining the message's run. */
+export const LogArabic: StoryObj = {
+  render: () => (
+    <LogView
+      label="سجل الوكيل"
+      lines={[
+        { time: "١٠:٢٥:٠١", level: "النظام", text: "بدأ التشغيل." },
+        { time: "١٠:٢٥:٠٢", level: "الوكيل", text: "قرأت ٣ ملفات." },
+        { time: "١٠:٢٥:٠٣", level: "الأداة", text: "grep: 12 matches" },
+      ]}
+    />
+  ),
+};
+
 const CODE = `import { tokens } from "@valkyra-labs/stoa-tokens";
 
 export function rowHeight(density: "compact" | "regular") {
