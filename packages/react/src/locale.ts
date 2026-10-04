@@ -32,6 +32,15 @@ export type StoaMessages = {
   spread: (value: string) => string;
   /** One sentence from the bid part, the ask part and the spread, if any. */
   book: (bid: string, ask: string, spread: string | null) => string;
+  /** The theme switch: its label and its two options. */
+  theme: string;
+  themeLight: string;
+  themeDark: string;
+  /** The language switch's label. */
+  language: string;
+  /** The space bar, in a shortcut's keys; the other keys keep the names
+   * printed on them. */
+  keySpace: string;
 };
 
 const EN: StoaMessages = {
@@ -52,6 +61,11 @@ const EN: StoaMessages = {
   noAsks: "no asks",
   spread: (value) => `spread ${value}`,
   book: (bid, ask, spread) => `${bid}, ${ask}${spread ? `, ${spread}` : ""}.`,
+  theme: "Theme",
+  themeLight: "Light",
+  themeDark: "Dark",
+  language: "Language",
+  keySpace: "Space",
 };
 
 const AR: StoaMessages = {
@@ -72,11 +86,44 @@ const AR: StoaMessages = {
   noAsks: "لا أوامر بيع",
   spread: (value) => `الفارق ${value}`,
   book: (bid, ask, spread) => `${bid}، ${ask}${spread ? `، ${spread}` : ""}.`,
+  theme: "المظهر",
+  themeLight: "فاتح",
+  themeDark: "داكن",
+  language: "اللغة",
+  keySpace: "مسافة",
 };
 
-/** Stoa's words for a locale: Arabic for any "ar" tag, English otherwise. */
+const RU: StoaMessages = {
+  time: "Время",
+  side: "Сторона",
+  price: "Цена",
+  size: "Объём",
+  buy: "Покупка",
+  sell: "Продажа",
+  bidMark: "Пок",
+  askMark: "Прод",
+  bookEmpty: "Стакан пуст.",
+  noTrades: "Сделок пока нет.",
+  noLiquidity: "Ликвидности для показа нет.",
+  bestBid: (price, size) => `лучшая цена покупки ${price}, объём ${size}`,
+  bestAsk: (price, size) => `лучшая цена продажи ${price}, объём ${size}`,
+  noBids: "заявок на покупку нет",
+  noAsks: "заявок на продажу нет",
+  spread: (value) => `спред ${value}`,
+  // The bid and ask parts carry their own commas, so semicolons join them.
+  book: (bid, ask, spread) => `${bid}; ${ask}${spread ? `; ${spread}` : ""}.`,
+  theme: "Тема",
+  themeLight: "Светлая",
+  themeDark: "Тёмная",
+  language: "Язык",
+  keySpace: "Пробел",
+};
+
+/** Stoa's words for a locale: Arabic for any "ar" tag, Russian for any
+ * "ru" tag, English otherwise. */
 export function messagesFor(locale: string): StoaMessages {
-  return locale.split("-")[0]?.toLowerCase() === "ar" ? AR : EN;
+  const language = locale.split("-")[0]?.toLowerCase();
+  return language === "ar" ? AR : language === "ru" ? RU : EN;
 }
 
 export type StoaFormat = {
