@@ -34,6 +34,11 @@ export type StoaMessages = {
   book: (bid: string, ask: string, spread: string | null) => string;
   /** What a loading placeholder says to assistive technology. */
   loading: string;
+  /** The direction of these words' script. A sentence built from parts
+   * (a progress bar's "1.2 MB of 4.8 MB") is laid out in it, whatever the
+   * direction of the page around it: English words in a right-to-left
+   * frame would otherwise swap the parts. */
+  direction: "ltr" | "rtl";
   /** A progress bar's value as an amount out of a total ("1.2 MB of 4.8 MB"). */
   progressOf: (value: string, max: string) => string;
   /** The tone of a callout or a toast as a word, read before its text, so
@@ -148,6 +153,7 @@ const EN: StoaMessages = {
   spread: (value) => `spread ${value}`,
   book: (bid, ask, spread) => `${bid}, ${ask}${spread ? `, ${spread}` : ""}.`,
   loading: "Loading…",
+  direction: "ltr",
   progressOf: (value, max) => `${value} of ${max}`,
   toneInfo: "Note",
   tonePositive: "Success",
@@ -228,6 +234,7 @@ const AR: StoaMessages = {
   spread: (value) => `الفارق ${value}`,
   book: (bid, ask, spread) => `${bid}، ${ask}${spread ? `، ${spread}` : ""}.`,
   loading: "جارٍ التحميل…",
+  direction: "rtl",
   progressOf: (value, max) => `${value} من ${max}`,
   toneInfo: "ملاحظة",
   tonePositive: "تم بنجاح",
@@ -309,6 +316,7 @@ const RU: StoaMessages = {
   // The bid and ask parts carry their own commas, so semicolons join them.
   book: (bid, ask, spread) => `${bid}; ${ask}${spread ? `; ${spread}` : ""}.`,
   loading: "Загрузка…",
+  direction: "ltr",
   progressOf: (value, max) => `${value} из ${max}`,
   toneInfo: "Примечание",
   tonePositive: "Готово",

@@ -158,6 +158,25 @@ describe("ProgressBar", () => {
     expect(screen.getByText("⁨1.2 MB⁩ of ⁨4.8 MB⁩")).toBeTruthy();
   });
 
+  it("lays out its value text in the direction of its words, not of the frame around it", () => {
+    const { container } = render(
+      <I18nProvider locale="en-Arab">
+        <div dir="rtl">
+          <ProgressBar label="File" value={3.1} maxValue={4.3} formatValue={(v) => `${v} MB`} />
+        </div>
+      </I18nProvider>,
+    );
+    // A dir attribute also isolates the value text from the frame's run.
+    expect(container.querySelector(".stoa-progress__value")?.getAttribute("dir")).toBe("ltr");
+    cleanup();
+    const arabic = render(
+      <Arabic>
+        <ProgressBar label="ملف" value={3} maxValue={8} formatValue={(n) => `${n}`} />
+      </Arabic>,
+    );
+    expect(arabic.container.querySelector(".stoa-progress__value")?.getAttribute("dir")).toBe("rtl");
+  });
+
   it("has no value while indeterminate, and the bar moves only through the motion tokens", () => {
     const { container } = render(<ProgressBar label="Starting the engine" isIndeterminate />);
     const bar = screen.getByRole("progressbar", { name: "Starting the engine" });
