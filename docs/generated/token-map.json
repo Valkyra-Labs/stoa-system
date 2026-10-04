@@ -79,6 +79,11 @@
             "via": "readCanvasTokens"
           },
           {
+            "component": "ProgressBar",
+            "file": "packages/react/src/styles.css",
+            "line": 302
+          },
+          {
             "component": "Select",
             "file": "packages/react/src/styles.css",
             "line": 159
@@ -477,6 +482,12 @@
             "via": "--stoa-color-focus"
           },
           {
+            "component": "ProgressBar",
+            "file": "packages/react/src/styles.css",
+            "line": 302,
+            "via": "--stoa-color-accent"
+          },
+          {
             "component": "Select",
             "file": "packages/react/src/styles.css",
             "line": 100,
@@ -791,6 +802,12 @@
             "via": "--stoa-color-accent"
           },
           {
+            "component": "ProgressBar",
+            "file": "packages/react/src/styles.css",
+            "line": 302,
+            "via": "--stoa-color-accent"
+          },
+          {
             "component": "Select",
             "file": "packages/react/src/styles.css",
             "line": 159,
@@ -929,6 +946,16 @@
             "line": 95
           },
           {
+            "component": "SkeletonBlock",
+            "file": "packages/react/src/styles.css",
+            "line": 275
+          },
+          {
+            "component": "SkeletonLines",
+            "file": "packages/react/src/styles.css",
+            "line": 275
+          },
+          {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
             "line": 242
@@ -1007,6 +1034,11 @@
             "component": "NumberField",
             "file": "packages/react/src/styles.css",
             "line": 227
+          },
+          {
+            "component": "ProgressBar",
+            "file": "packages/react/src/styles.css",
+            "line": 297
           },
           {
             "component": "Select",
@@ -1328,6 +1360,12 @@
             "via": "--stoa-color-surface"
           },
           {
+            "component": "ProgressBar",
+            "file": "packages/react/src/styles.css",
+            "line": 296,
+            "via": "--stoa-color-surface"
+          },
+          {
             "component": "Select",
             "file": "packages/react/src/styles.css",
             "line": 65,
@@ -1527,6 +1565,12 @@
             "component": "NumberField",
             "file": "packages/react/src/styles.css",
             "line": 228,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "ProgressBar",
+            "file": "packages/react/src/styles.css",
+            "line": 292,
             "via": "--stoa-color-text"
           },
           {
@@ -1831,6 +1875,18 @@
             "via": "--stoa-color-border"
           },
           {
+            "component": "SkeletonBlock",
+            "file": "packages/react/src/styles.css",
+            "line": 275,
+            "via": "--stoa-color-border"
+          },
+          {
+            "component": "SkeletonLines",
+            "file": "packages/react/src/styles.css",
+            "line": 275,
+            "via": "--stoa-color-border"
+          },
+          {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
             "line": 242,
@@ -1956,6 +2012,12 @@
             "component": "Panel",
             "file": "packages/react/src/styles.css",
             "line": 22,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "ProgressBar",
+            "file": "packages/react/src/styles.css",
+            "line": 291,
             "via": "--stoa-color-text-muted"
           },
           {
@@ -2086,6 +2148,12 @@
             "component": "NumberField",
             "file": "packages/react/src/styles.css",
             "line": 227,
+            "via": "--stoa-color-border-strong"
+          },
+          {
+            "component": "ProgressBar",
+            "file": "packages/react/src/styles.css",
+            "line": 297,
             "via": "--stoa-color-border-strong"
           },
           {
@@ -2233,6 +2301,12 @@
             "via": "--stoa-color-border-strong"
           },
           {
+            "component": "ProgressBar",
+            "file": "packages/react/src/styles.css",
+            "line": 297,
+            "via": "--stoa-color-border-strong"
+          },
+          {
             "component": "Select",
             "file": "packages/react/src/styles.css",
             "line": 63,
@@ -2354,6 +2428,12 @@
             "component": "Panel",
             "file": "packages/react/src/styles.css",
             "line": 22,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "ProgressBar",
+            "file": "packages/react/src/styles.css",
+            "line": 291,
             "via": "--stoa-color-text-muted"
           },
           {
@@ -2542,6 +2622,18 @@
             "component": "Select",
             "file": "packages/react/src/styles.css",
             "line": 95,
+            "via": "--stoa-color-border"
+          },
+          {
+            "component": "SkeletonBlock",
+            "file": "packages/react/src/styles.css",
+            "line": 275,
+            "via": "--stoa-color-border"
+          },
+          {
+            "component": "SkeletonLines",
+            "file": "packages/react/src/styles.css",
+            "line": 275,
             "via": "--stoa-color-border"
           },
           {
@@ -2862,6 +2954,18 @@
             "component": "Panel",
             "file": "packages/react/src/styles.css",
             "line": 10,
+            "via": "--stoa-color-surface"
+          },
+          {
+            "component": "ProgressBar",
+            "file": "packages/react/src/styles.css",
+            "line": 292,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "ProgressBar",
+            "file": "packages/react/src/styles.css",
+            "line": 296,
             "via": "--stoa-color-surface"
           },
           {
@@ -3263,6 +3367,11 @@
             "component": "Panel",
             "file": "packages/react/src/styles.css",
             "line": 10
+          },
+          {
+            "component": "ProgressBar",
+            "file": "packages/react/src/styles.css",
+            "line": 296
           },
           {
             "component": "Select",
@@ -3773,6 +3882,11 @@
             "line": 228
           },
           {
+            "component": "ProgressBar",
+            "file": "packages/react/src/styles.css",
+            "line": 292
+          },
+          {
             "component": "Select",
             "file": "packages/react/src/styles.css",
             "line": 66
@@ -3924,6 +4038,11 @@
             "component": "Panel",
             "file": "packages/react/src/styles.css",
             "line": 22
+          },
+          {
+            "component": "ProgressBar",
+            "file": "packages/react/src/styles.css",
+            "line": 291
           },
           {
             "component": "Select",
@@ -4570,6 +4689,11 @@
             "line": 226
           },
           {
+            "component": "ProgressBar",
+            "file": "packages/react/src/styles.css",
+            "line": 292
+          },
+          {
             "component": "StatBar",
             "file": "packages/react/src/styles.css",
             "line": 214
@@ -4676,20 +4800,26 @@
       "resolvedValue": "1.45",
       "aliasOf": null,
       "readBy": {
-        "components": [],
+        "components": [
+          {
+            "component": "SkeletonLines",
+            "file": "packages/react/src/styles.css",
+            "line": 272
+          }
+        ],
         "stories": []
       },
       "reachedByTheme": {
         "light": {
-          "direct": false,
+          "direct": true,
           "via": []
         },
         "dark": {
-          "direct": false,
+          "direct": true,
           "via": []
         }
       },
-      "unused": true
+      "unused": false
     },
     {
       "name": "--stoa-font-line-height-tight",
@@ -4945,6 +5075,16 @@
             "line": 18
           },
           {
+            "component": "ProgressBar",
+            "file": "packages/react/src/styles.css",
+            "line": 291
+          },
+          {
+            "component": "ProgressBar",
+            "file": "packages/react/src/styles.css",
+            "line": 292
+          },
+          {
             "component": "Select",
             "file": "packages/react/src/styles.css",
             "line": 130
@@ -5133,20 +5273,26 @@
       "resolvedValue": "160ms",
       "aliasOf": null,
       "readBy": {
-        "components": [],
+        "components": [
+          {
+            "component": "ProgressBar",
+            "file": "packages/react/src/styles.css",
+            "line": 303
+          }
+        ],
         "stories": []
       },
       "reachedByTheme": {
         "light": {
-          "direct": false,
+          "direct": true,
           "via": []
         },
         "dark": {
-          "direct": false,
+          "direct": true,
           "via": []
         }
       },
-      "unused": true
+      "unused": false
     },
     {
       "name": "--stoa-motion-duration-fast",
@@ -5214,20 +5360,36 @@
       "resolvedValue": "600ms",
       "aliasOf": null,
       "readBy": {
-        "components": [],
+        "components": [
+          {
+            "component": "ProgressBar",
+            "file": "packages/react/src/styles.css",
+            "line": 307
+          },
+          {
+            "component": "SkeletonBlock",
+            "file": "packages/react/src/styles.css",
+            "line": 277
+          },
+          {
+            "component": "SkeletonLines",
+            "file": "packages/react/src/styles.css",
+            "line": 277
+          }
+        ],
         "stories": []
       },
       "reachedByTheme": {
         "light": {
-          "direct": false,
+          "direct": true,
           "via": []
         },
         "dark": {
-          "direct": false,
+          "direct": true,
           "via": []
         }
       },
-      "unused": true
+      "unused": false
     },
     {
       "name": "--stoa-motion-duration-instant",
@@ -5346,9 +5508,29 @@
             "line": 183
           },
           {
+            "component": "ProgressBar",
+            "file": "packages/react/src/styles.css",
+            "line": 303
+          },
+          {
+            "component": "ProgressBar",
+            "file": "packages/react/src/styles.css",
+            "line": 307
+          },
+          {
             "component": "Select",
             "file": "packages/react/src/styles.css",
             "line": 68
+          },
+          {
+            "component": "SkeletonBlock",
+            "file": "packages/react/src/styles.css",
+            "line": 277
+          },
+          {
+            "component": "SkeletonLines",
+            "file": "packages/react/src/styles.css",
+            "line": 277
           },
           {
             "component": "Toggle",
@@ -5388,6 +5570,11 @@
       "aliasOf": null,
       "readBy": {
         "components": [
+          {
+            "component": "ProgressBar",
+            "file": "packages/react/src/styles.css",
+            "line": 298
+          },
           {
             "component": "TimeSlider",
             "file": "packages/react/src/styles.css",
@@ -5556,6 +5743,16 @@
             "line": 148
           },
           {
+            "component": "SkeletonBlock",
+            "file": "packages/react/src/styles.css",
+            "line": 276
+          },
+          {
+            "component": "SkeletonLines",
+            "file": "packages/react/src/styles.css",
+            "line": 276
+          },
+          {
             "component": "Tabs",
             "file": "packages/react/src/styles.css",
             "line": 257
@@ -5704,6 +5901,11 @@
             "line": 211
           },
           {
+            "component": "ProgressBar",
+            "file": "packages/react/src/styles.css",
+            "line": 289
+          },
+          {
             "component": "Select",
             "file": "packages/react/src/styles.css",
             "line": 62
@@ -5843,6 +6045,16 @@
             "line": 17
           },
           {
+            "component": "ProgressBar",
+            "file": "packages/react/src/styles.css",
+            "line": 289
+          },
+          {
+            "component": "ProgressBar",
+            "file": "packages/react/src/styles.css",
+            "line": 295
+          },
+          {
             "component": "Select",
             "file": "packages/react/src/styles.css",
             "line": 62
@@ -5927,6 +6139,11 @@
             "component": "Select",
             "file": "packages/react/src/styles.css",
             "line": 155
+          },
+          {
+            "component": "Skeleton",
+            "file": "packages/react/src/styles.css",
+            "line": 271
           },
           {
             "component": "Tabs",
@@ -6100,13 +6317,10 @@
     "--stoa-color-neutral-300",
     "--stoa-color-neutral-700",
     "--stoa-color-neutral-800",
-    "--stoa-font-line-height-normal",
     "--stoa-font-line-height-tight",
     "--stoa-font-size-2xl",
     "--stoa-font-size-md",
     "--stoa-font-size-xl",
-    "--stoa-motion-duration-base",
-    "--stoa-motion-duration-flash",
     "--stoa-motion-duration-instant",
     "--stoa-motion-duration-slow",
     "--stoa-motion-easing-enter",
@@ -6128,7 +6342,7 @@
   ],
   "summary": {
     "tokenCount": 86,
-    "unusedCount": 20,
+    "unusedCount": 17,
     "hardcodedLiteralCount": 0,
     "undefinedCount": 1
   }

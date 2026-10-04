@@ -32,6 +32,10 @@ export type StoaMessages = {
   spread: (value: string) => string;
   /** One sentence from the bid part, the ask part and the spread, if any. */
   book: (bid: string, ask: string, spread: string | null) => string;
+  /** What a loading placeholder says to assistive technology. */
+  loading: string;
+  /** A progress bar's value as an amount out of a total ("1.2 MB of 4.8 MB"). */
+  progressOf: (value: string, max: string) => string;
 };
 
 const EN: StoaMessages = {
@@ -52,6 +56,8 @@ const EN: StoaMessages = {
   noAsks: "no asks",
   spread: (value) => `spread ${value}`,
   book: (bid, ask, spread) => `${bid}, ${ask}${spread ? `, ${spread}` : ""}.`,
+  loading: "Loading…",
+  progressOf: (value, max) => `${value} of ${max}`,
 };
 
 const AR: StoaMessages = {
@@ -72,6 +78,8 @@ const AR: StoaMessages = {
   noAsks: "لا أوامر بيع",
   spread: (value) => `الفارق ${value}`,
   book: (bid, ask, spread) => `${bid}، ${ask}${spread ? `، ${spread}` : ""}.`,
+  loading: "جارٍ التحميل…",
+  progressOf: (value, max) => `${value} من ${max}`,
 };
 
 /** Stoa's words for a locale: Arabic for any "ar" tag, English otherwise. */

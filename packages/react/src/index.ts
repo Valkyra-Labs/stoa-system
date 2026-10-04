@@ -30,3 +30,4 @@ export { TextField, StatusBadge, Tabs, type TextFieldProps, type StatusTone, typ
 // Feedback and layout: callouts, empty states, loading, toasts, live
 // regions and the page shell.
 export { LiveRegion, VisuallyHidden, type LiveRegionProps, type VisuallyHiddenProps } from "./LiveRegion";
+export { ProgressBar, Skeleton, SkeletonBlock, SkeletonLines, type ProgressBarProps, type SkeletonProps } from "./Progress";

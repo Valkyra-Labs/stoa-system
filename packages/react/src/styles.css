@@ -264,3 +264,49 @@
 
 /* A live region drawn on the page, for a value that also reads out. */
 .stoa-live-region { font-variant-numeric: tabular-nums; }
+
+/* Skeleton: lines one text line apart at the current size, and blocks.
+   The pulse runs on the flash duration; under reduced motion every
+   duration token is zero and the shapes stand still. */
+.stoa-skeleton__shapes { display: grid; gap: var(--stoa-space-3); }
+.stoa-skeleton__lines { display: grid; row-gap: calc(1em * (var(--stoa-font-line-height-normal) - 1)); }
+.stoa-skeleton__line, .stoa-skeleton__block {
+  display: block;
+  background: var(--stoa-color-border);
+  border-radius: var(--stoa-radius-sm);
+  animation: stoa-skeleton-pulse calc(var(--stoa-motion-duration-flash) * 2) var(--stoa-motion-easing-standard) infinite alternate;
+}
+.stoa-skeleton__line { block-size: 1em; }
+.stoa-skeleton__line:last-child:not(:first-child) { inline-size: 60%; }
+@keyframes stoa-skeleton-pulse { to { opacity: 0.4; } }
+
+/* ProgressBar: label and value text above a track. The track is outlined
+   in border-strong and filled in the accent, both checked against the
+   surface. Indeterminate, a segment slides from start to end; under
+   reduced motion it stands in the middle. */
+.stoa-progress {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: baseline;
+  gap: var(--stoa-space-1) var(--stoa-space-2);
+}
+.stoa-progress__label { font-size: var(--stoa-font-size-xs); color: var(--stoa-color-text-muted); }
+.stoa-progress__value { font-family: var(--stoa-font-family-mono); font-size: var(--stoa-font-size-xs); font-variant-numeric: tabular-nums; color: var(--stoa-color-text); }
+.stoa-progress__track {
+  grid-column: 1 / -1; position: relative; display: block; overflow: hidden;
+  block-size: var(--stoa-space-2);
+  background: var(--stoa-color-surface);
+  border: 1px solid var(--stoa-color-border-strong);
+  border-radius: var(--stoa-radius-full);
+}
+.stoa-progress__fill {
+  position: absolute; inset-block: 0; inset-inline-start: 0;
+  background: var(--stoa-color-accent);
+  transition: inline-size var(--stoa-motion-duration-base) var(--stoa-motion-easing-standard);
+}
+.stoa-progress--indeterminate .stoa-progress__fill {
+  inline-size: 40%; inset-inline-start: 30%;
+  animation: stoa-progress-slide calc(var(--stoa-motion-duration-flash) * 2) var(--stoa-motion-easing-standard) infinite;
+}
+@keyframes stoa-progress-slide {
+  from { inset-inline-start: -40%; }
+  to { inset-inline-start: 100%; }
+}
