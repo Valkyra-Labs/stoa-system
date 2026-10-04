@@ -376,6 +376,11 @@
             "component": "(css) body",
             "file": ".storybook/preview.css",
             "line": 2
+          },
+          {
+            "component": "PageShell",
+            "file": "packages/react/src/styles.css",
+            "line": 403
           }
         ],
         "stories": []
@@ -559,6 +564,18 @@
             "component": "NumberField",
             "file": "packages/react/src/styles.css",
             "line": 230,
+            "via": "--stoa-color-focus"
+          },
+          {
+            "component": "PageShell",
+            "file": "packages/react/src/styles.css",
+            "line": 409,
+            "via": "--stoa-color-focus"
+          },
+          {
+            "component": "PageShell",
+            "file": "packages/react/src/styles.css",
+            "line": 426,
             "via": "--stoa-color-focus"
           },
           {
@@ -750,6 +767,18 @@
             "component": "NumberField",
             "file": "packages/react/src/styles.css",
             "line": 230,
+            "via": "--stoa-color-focus"
+          },
+          {
+            "component": "PageShell",
+            "file": "packages/react/src/styles.css",
+            "line": 409,
+            "via": "--stoa-color-focus"
+          },
+          {
+            "component": "PageShell",
+            "file": "packages/react/src/styles.css",
+            "line": 426,
             "via": "--stoa-color-focus"
           },
           {
@@ -1081,6 +1110,11 @@
             "via": "readCanvasTokens"
           },
           {
+            "component": "PageShell",
+            "file": "packages/react/src/styles.css",
+            "line": 414
+          },
+          {
             "component": "Panel",
             "file": "packages/react/src/styles.css",
             "line": 11
@@ -1179,6 +1213,11 @@
             "component": "NumberField",
             "file": "packages/react/src/styles.css",
             "line": 227
+          },
+          {
+            "component": "PageShell",
+            "file": "packages/react/src/styles.css",
+            "line": 422
           },
           {
             "component": "ProgressBar",
@@ -1404,6 +1443,16 @@
             "line": 230
           },
           {
+            "component": "PageShell",
+            "file": "packages/react/src/styles.css",
+            "line": 409
+          },
+          {
+            "component": "PageShell",
+            "file": "packages/react/src/styles.css",
+            "line": 426
+          },
+          {
             "component": "Select",
             "file": "packages/react/src/styles.css",
             "line": 100
@@ -1537,6 +1586,12 @@
             "component": "NumberField",
             "file": "packages/react/src/styles.css",
             "line": 228,
+            "via": "--stoa-color-surface"
+          },
+          {
+            "component": "PageShell",
+            "file": "packages/react/src/styles.css",
+            "line": 421,
             "via": "--stoa-color-surface"
           },
           {
@@ -1772,6 +1827,18 @@
             "via": "--stoa-color-text"
           },
           {
+            "component": "PageShell",
+            "file": "packages/react/src/styles.css",
+            "line": 403,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "PageShell",
+            "file": "packages/react/src/styles.css",
+            "line": 421,
+            "via": "--stoa-color-text"
+          },
+          {
             "component": "ProgressBar",
             "file": "packages/react/src/styles.css",
             "line": 292,
@@ -1926,6 +1993,12 @@
             "file": ".storybook/preview.css",
             "line": 2,
             "via": "--stoa-color-bg"
+          },
+          {
+            "component": "PageShell",
+            "file": "packages/react/src/styles.css",
+            "line": 403,
+            "via": "--stoa-color-bg"
           }
         ],
         "stories": []
@@ -2076,6 +2149,12 @@
             "component": "Ladder",
             "file": "packages/react/src/Ladder.tsx",
             "line": 30,
+            "via": "--stoa-color-border"
+          },
+          {
+            "component": "PageShell",
+            "file": "packages/react/src/styles.css",
+            "line": 414,
             "via": "--stoa-color-border"
           },
           {
@@ -2231,6 +2310,12 @@
             "via": "--stoa-color-text-muted"
           },
           {
+            "component": "PageShell",
+            "file": "packages/react/src/styles.css",
+            "line": 415,
+            "via": "--stoa-color-text-muted"
+          },
+          {
             "component": "Panel",
             "file": "packages/react/src/styles.css",
             "line": 22,
@@ -2373,6 +2458,12 @@
             "via": "--stoa-color-border-strong"
           },
           {
+            "component": "PageShell",
+            "file": "packages/react/src/styles.css",
+            "line": 422,
+            "via": "--stoa-color-border-strong"
+          },
+          {
             "component": "ProgressBar",
             "file": "packages/react/src/styles.css",
             "line": 297,
@@ -2471,6 +2562,12 @@
             "file": ".storybook/preview.css",
             "line": 2,
             "via": "--stoa-color-bg"
+          },
+          {
+            "component": "PageShell",
+            "file": "packages/react/src/styles.css",
+            "line": 403,
+            "via": "--stoa-color-bg"
           }
         ],
         "stories": []
@@ -2526,6 +2623,12 @@
             "component": "NumberField",
             "file": "packages/react/src/styles.css",
             "line": 227,
+            "via": "--stoa-color-border-strong"
+          },
+          {
+            "component": "PageShell",
+            "file": "packages/react/src/styles.css",
+            "line": 422,
             "via": "--stoa-color-border-strong"
           },
           {
@@ -2662,6 +2765,12 @@
             "component": "NumberField",
             "file": "packages/react/src/styles.css",
             "line": 220,
+            "via": "--stoa-color-text-muted"
+          },
+          {
+            "component": "PageShell",
+            "file": "packages/react/src/styles.css",
+            "line": 415,
             "via": "--stoa-color-text-muted"
           },
           {
@@ -2856,6 +2965,12 @@
             "component": "Ladder",
             "file": "packages/react/src/Ladder.tsx",
             "line": 30,
+            "via": "--stoa-color-border"
+          },
+          {
+            "component": "PageShell",
+            "file": "packages/react/src/styles.css",
+            "line": 414,
             "via": "--stoa-color-border"
           },
           {
@@ -3212,6 +3327,24 @@
             "component": "NumberField",
             "file": "packages/react/src/styles.css",
             "line": 228,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "PageShell",
+            "file": "packages/react/src/styles.css",
+            "line": 403,
+            "via": "--stoa-color-text"
+          },
+          {
+            "component": "PageShell",
+            "file": "packages/react/src/styles.css",
+            "line": 421,
+            "via": "--stoa-color-surface"
+          },
+          {
+            "component": "PageShell",
+            "file": "packages/react/src/styles.css",
+            "line": 421,
             "via": "--stoa-color-text"
           },
           {
@@ -3691,6 +3824,11 @@
             "component": "NumberField",
             "file": "packages/react/src/styles.css",
             "line": 228
+          },
+          {
+            "component": "PageShell",
+            "file": "packages/react/src/styles.css",
+            "line": 421
           },
           {
             "component": "Panel",
@@ -4274,6 +4412,16 @@
             "line": 228
           },
           {
+            "component": "PageShell",
+            "file": "packages/react/src/styles.css",
+            "line": 403
+          },
+          {
+            "component": "PageShell",
+            "file": "packages/react/src/styles.css",
+            "line": 421
+          },
+          {
             "component": "ProgressBar",
             "file": "packages/react/src/styles.css",
             "line": 292
@@ -4435,6 +4583,11 @@
             "component": "NumberField",
             "file": "packages/react/src/styles.css",
             "line": 220
+          },
+          {
+            "component": "PageShell",
+            "file": "packages/react/src/styles.css",
+            "line": 415
           },
           {
             "component": "Panel",
@@ -4962,6 +5115,11 @@
             "line": 178
           },
           {
+            "component": "PageShell",
+            "file": "packages/react/src/styles.css",
+            "line": 427
+          },
+          {
             "component": "Select",
             "file": "packages/react/src/styles.css",
             "line": 101
@@ -5046,6 +5204,21 @@
             "component": "NumberField",
             "file": "packages/react/src/styles.css",
             "line": 230
+          },
+          {
+            "component": "PageShell",
+            "file": "packages/react/src/styles.css",
+            "line": 409
+          },
+          {
+            "component": "PageShell",
+            "file": "packages/react/src/styles.css",
+            "line": 410
+          },
+          {
+            "component": "PageShell",
+            "file": "packages/react/src/styles.css",
+            "line": 426
           },
           {
             "component": "Select",
@@ -5488,6 +5661,11 @@
             "line": 357
           },
           {
+            "component": "PageShell",
+            "file": "packages/react/src/styles.css",
+            "line": 423
+          },
+          {
             "component": "Select",
             "file": "packages/react/src/styles.css",
             "line": 150
@@ -5577,6 +5755,11 @@
             "component": "NumberField",
             "file": "packages/react/src/styles.css",
             "line": 220
+          },
+          {
+            "component": "PageShell",
+            "file": "packages/react/src/styles.css",
+            "line": 415
           },
           {
             "component": "Panel",
@@ -6283,6 +6466,11 @@
             "line": 228
           },
           {
+            "component": "PageShell",
+            "file": "packages/react/src/styles.css",
+            "line": 422
+          },
+          {
             "component": "Select",
             "file": "packages/react/src/styles.css",
             "line": 64
@@ -6454,6 +6642,11 @@
             "component": "NumberField",
             "file": "packages/react/src/styles.css",
             "line": 211
+          },
+          {
+            "component": "PageShell",
+            "file": "packages/react/src/styles.css",
+            "line": 420
           },
           {
             "component": "ProgressBar",
@@ -6631,6 +6824,16 @@
             "line": 227
           },
           {
+            "component": "PageShell",
+            "file": "packages/react/src/styles.css",
+            "line": 419
+          },
+          {
+            "component": "PageShell",
+            "file": "packages/react/src/styles.css",
+            "line": 420
+          },
+          {
             "component": "Panel",
             "file": "packages/react/src/styles.css",
             "line": 17
@@ -6742,6 +6945,11 @@
             "line": 338
           },
           {
+            "component": "PageShell",
+            "file": "packages/react/src/styles.css",
+            "line": 413
+          },
+          {
             "component": "Panel",
             "file": "packages/react/src/styles.css",
             "line": 13
@@ -6821,6 +7029,16 @@
             "component": "EmptyState",
             "file": "packages/react/src/styles.css",
             "line": 353
+          },
+          {
+            "component": "PageShell",
+            "file": "packages/react/src/styles.css",
+            "line": 405
+          },
+          {
+            "component": "PageShell",
+            "file": "packages/react/src/styles.css",
+            "line": 413
           },
           {
             "component": "StatBar",

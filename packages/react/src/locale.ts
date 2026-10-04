@@ -46,6 +46,8 @@ export type StoaMessages = {
   dismiss: string;
   /** The name of the region that holds the toasts. */
   notifications: string;
+  /** The link that moves focus past the header to the main content. */
+  skipToMain: string;
 };
 
 const EN: StoaMessages = {
@@ -74,6 +76,7 @@ const EN: StoaMessages = {
   toneNegative: "Error",
   dismiss: "Dismiss",
   notifications: "Notifications",
+  skipToMain: "Skip to main content",
 };
 
 const AR: StoaMessages = {
@@ -102,6 +105,7 @@ const AR: StoaMessages = {
   toneNegative: "خطأ",
   dismiss: "إغلاق",
   notifications: "الإشعارات",
+  skipToMain: "انتقل إلى المحتوى الرئيسي",
 };
 
 /** Stoa's words for a locale: Arabic for any "ar" tag, English otherwise. */

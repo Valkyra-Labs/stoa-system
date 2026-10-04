@@ -34,3 +34,4 @@ export { ProgressBar, Skeleton, SkeletonBlock, SkeletonLines, type ProgressBarPr
 export { Callout, type CalloutProps, type FeedbackTone } from "./Callout";
 export { EmptyState, type EmptyStateProps } from "./EmptyState";
 export { DEFAULT_TOAST_TIMEOUT, ToastQueue, ToastRegion, type ToastAction, type ToastOptions, type ToastRegionProps } from "./Toast";
+export { PageShell, type PageShellProps } from "./PageShell";

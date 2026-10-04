@@ -4,11 +4,13 @@ import type { ReactNode } from "react";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { act, cleanup, fireEvent, render, screen } from "@testing-library/react";
 import {
+  AppHeader,
   Button,
   Callout,
   EmptyState,
   I18nProvider,
   LiveRegion,
+  PageShell,
   ProgressBar,
   Skeleton,
   SkeletonBlock,
@@ -302,5 +304,50 @@ describe("EmptyState", () => {
       </Arabic>,
     );
     expect(screen.getByText("لا أوامر بعد").closest("[dir='rtl']")).toBeTruthy();
+  });
+});
+
+describe("PageShell", () => {
+  it("has a banner, one main and a footer, with a skip link first that moves focus to main", () => {
+    render(
+      <PageShell header={<AppHeader title="Tyche Replay" actions={<button type="button">Dark</button>} />} footer="Data provided by IEX.">
+        <p>Content</p>
+      </PageShell>,
+    );
+    expect(screen.getByRole("banner")).toBeTruthy();
+    const main = screen.getByRole("main");
+    expect(main.textContent).toBe("Content");
+    expect(main.getAttribute("tabindex")).toBe("-1");
+    expect(screen.getByRole("contentinfo").textContent).toBe("Data provided by IEX.");
+
+    const skip = screen.getByRole("link", { name: "Skip to main content" });
+    const focusable = document.querySelectorAll("a[href], button");
+    expect(focusable[0]).toBe(skip);
+    expect(skip.getAttribute("href")).toBe(`#${main.id}`);
+    act(() => skip.focus());
+    fireEvent.click(skip);
+    expect(document.activeElement).toBe(main);
+  });
+
+  it("has no footer landmark without a footer", () => {
+    render(
+      <PageShell header={<AppHeader title="Themis Steps" />}>
+        <p>Content</p>
+      </PageShell>,
+    );
+    expect(screen.queryByRole("contentinfo")).toBeNull();
+  });
+
+  it("names the skip link in the locale's language, in a right-to-left page", () => {
+    render(
+      <Arabic>
+        <PageShell header={<AppHeader title="تايكي" />}>
+          <p>المحتوى</p>
+        </PageShell>
+      </Arabic>,
+    );
+    const skip = screen.getByRole("link", { name: "انتقل إلى المحتوى الرئيسي" });
+    fireEvent.click(skip);
+    expect(document.activeElement).toBe(screen.getByRole("main"));
   });
 });
