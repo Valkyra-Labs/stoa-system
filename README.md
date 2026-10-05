@@ -93,7 +93,9 @@ follow as the products need them.
 
 - Colour: a cool neutral scale, one blue accent, teal for up and bid,
   red for down and ask, amber for warnings; OKLCH; light and dark themes
-  (`data-theme`, or the system setting when unset).
+  (`data-theme`, or the system setting when unset). `color-scheme` is
+  set with the theme, so native controls, scrollbars and autofill are
+  drawn in it too.
 - Type: IBM Plex Sans, Plex Sans Arabic and Plex Mono, with Noto Sans
   Arabic after Plex Mono in the numeric stack for tabular Arabic-Indic
   digits, and Plex Sans Arabic after it (all SIL OFL 1.1). See

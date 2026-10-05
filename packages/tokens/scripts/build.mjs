@@ -84,6 +84,25 @@ const reducedMotionAttribute = `[data-motion="reduce"] {
   --stoa-motion-duration-flash: 0ms;
 }`;
 
+// The browser's own drawing (form controls, scrollbars, autofill) follows
+// the theme: light by default and under data-theme="light" (a light part
+// of a dark page), dark under data-theme="dark", and the system's setting
+// when no theme is chosen. After the variable blocks, whose selectors the
+// playground reads back.
+const colorScheme = `:root, [data-theme="light"] {
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+  }
+}`;
+
 const light = await readFile(`${out}light.css`, "utf8");
 const darkCss = await readFile(`${out}dark.css`, "utf8");
 const darkAuto = await readFile(`${out}dark-auto.css`, "utf8");
@@ -92,6 +111,7 @@ const css = [
   light,
   darkCss,
   `@media (prefers-color-scheme: dark) {\n${darkAuto}\n}`,
+  colorScheme,
   densityCss,
   reducedMotion,
   reducedMotionAttribute,

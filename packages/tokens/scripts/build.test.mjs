@@ -36,3 +36,10 @@ test("a density mode set on the root element wins over the default", () => {
     assert.ok(regular !== -1 && block > regular, `${mode} comes after the default block`);
   }
 });
+
+test("color-scheme follows the theme, so native controls and scrollbars match it", () => {
+  assert.match(css, /:root, \[data-theme="light"\] \{\s*color-scheme: light;\s*\}/);
+  assert.match(css, /\[data-theme="dark"\] \{\s*color-scheme: dark;\s*\}/);
+  // With no theme chosen, the system's setting.
+  assert.match(css, /@media \(prefers-color-scheme: dark\) \{\s*:root:not\(\[data-theme="light"\]\) \{\s*color-scheme: dark;\s*\}\s*\}/);
+});
