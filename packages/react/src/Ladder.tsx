@@ -55,8 +55,10 @@ function draw(
   const { bidMark, askMark } = locale.messages;
   // The price column ends at 45% of the width, or further right when the
   // side marker and the widest price need more: a marker is a word in
-  // some languages ("شراء"), not a letter.
+  // some languages ("شراء"), not a letter, so it is set in the sans face.
+  ctx.font = t.wordFont;
   const markerWidth = Math.max(ctx.measureText(bidMark).width, ctx.measureText(askMark).width);
+  ctx.font = t.font;
   const priceWidth = rows.reduce((widest, r) => Math.max(widest, ctx.measureText(fmt(r.price)).width), 0);
   const priceEnd = Math.max(width * 0.45, PAD + markerWidth + PAD + priceWidth);
   for (const r of rows) {
@@ -66,7 +68,9 @@ function draw(
     ctx.fillStyle = bid ? t.bid : t.ask;
     ctx.textAlign = "left";
     // The side is also a word or a letter, not only a colour.
+    ctx.font = t.wordFont;
     ctx.fillText(bid ? bidMark : askMark, PAD, r.y + mid);
+    ctx.font = t.font;
     ctx.textAlign = "right";
     ctx.fillText(fmt(r.price), priceEnd, r.y + mid);
     ctx.fillStyle = t.text;

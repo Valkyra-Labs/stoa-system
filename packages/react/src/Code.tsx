@@ -88,9 +88,11 @@ export type LogViewProps = {
   maxLines?: number;
 };
 
-/** Log lines in the monospace face, left to right even in a right-to-left
- * page. A plain line is laid out left to right as a whole; give a line its
- * parts (LogLine) to isolate a message that may be in another script. */
+/** Log lines, left to right even in a right-to-left page. A plain line is
+ * laid out left to right as a whole, in the monospace face; give a line
+ * its parts (LogLine) to isolate a message that may be in another script:
+ * the time and level stay in the monospace face, the message, which is
+ * words, is in the sans face. */
 export function LogView({ label, lines, copyable = true, maxLines = 12 }: LogViewProps) {
   return (
     <Frame label={label} text={lines.map(lineText).join("\n")} copyable={copyable} maxLines={maxLines} className="stoa-code--log">
@@ -112,7 +114,7 @@ export function LogView({ label, lines, copyable = true, maxLines = 12 }: LogVie
                   <bdi className="stoa-code__level">{line.level}</bdi>{" "}
                 </>
               )}
-              <bdi>{line.text}</bdi>
+              <bdi className="stoa-code__message">{line.text}</bdi>
             </>
           )}
           {i < lines.length - 1 && "\n"}

@@ -14,7 +14,12 @@ export type CanvasTokens = {
   askWash: string;
   accent: string;
   rowHeight: number;
+  /** Numbers: the density's type size in the numeric face. */
   font: string;
+  /** Words (an empty state, a side marker that is a word): the same size
+   * in the sans face, so running Arabic text is never set in the numeric
+   * face. */
+  wordFont: string;
 };
 
 export function readCanvasTokens(el: Element): CanvasTokens {
@@ -36,6 +41,7 @@ export function readCanvasTokens(el: Element): CanvasTokens {
     // Without the token, the regular density's row height.
     rowHeight: parseFloat(v("--stoa-density-row-height")) || 28,
     font: `${v("--stoa-density-font-size") || "12px"} ${v("--stoa-font-family-mono") || "monospace"}`,
+    wordFont: `${v("--stoa-density-font-size") || "12px"} ${v("--stoa-font-family-sans") || "sans-serif"}`,
   };
 }
 
@@ -166,7 +172,7 @@ export function fitCanvas(canvas: HTMLCanvasElement, cssHeight: number): CanvasR
 
 /** The empty state, centred on the canvas in text-muted on surface. */
 export function drawEmpty(ctx: CanvasRenderingContext2D, t: CanvasTokens, text: string, width: number, height: number) {
-  ctx.font = t.font;
+  ctx.font = t.wordFont;
   ctx.fillStyle = t.muted;
   ctx.textAlign = "center";
   ctx.textBaseline = "middle";

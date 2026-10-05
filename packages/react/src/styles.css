@@ -276,7 +276,9 @@
 
 .stoa-statbar { display: flex; flex-wrap: wrap; gap: var(--stoa-space-4); margin: 0; font-family: var(--stoa-font-family-mono); font-size: var(--stoa-font-size-2xs); }
 .stoa-statbar__item { display: flex; gap: var(--stoa-space-1); }
-.stoa-statbar dt { color: var(--stoa-color-text-muted); }
+/* The labels are words, in the sans face; the values stay in the numeric
+   face. */
+.stoa-statbar dt { color: var(--stoa-color-text-muted); font-family: var(--stoa-font-family-sans); }
 .stoa-statbar dd { margin: 0; font-variant-numeric: tabular-nums; }
 
 .stoa-field { display: grid; gap: var(--stoa-space-1); }
@@ -357,7 +359,9 @@
   gap: var(--stoa-space-1) var(--stoa-space-2);
 }
 .stoa-progress__label { font-size: var(--stoa-font-size-xs); color: var(--stoa-color-text-muted); }
-.stoa-progress__value { font-family: var(--stoa-font-family-mono); font-size: var(--stoa-font-size-xs); font-variant-numeric: tabular-nums; color: var(--stoa-color-text); }
+/* The value text is words ("1.8 MB of 4.8 MB"), so it is in the sans face;
+   its figures stay tabular. */
+.stoa-progress__value { font-family: var(--stoa-font-family-sans); font-size: var(--stoa-font-size-xs); font-variant-numeric: tabular-nums; color: var(--stoa-color-text); }
 .stoa-progress__track {
   grid-column: 1 / -1; position: relative; display: block; overflow: hidden;
   block-size: var(--stoa-space-2);
@@ -942,6 +946,9 @@
   user-select: none;
 }
 .stoa-code__time, .stoa-code__level { color: var(--stoa-color-text-muted); }
+/* A message given as a line's part is words, in the sans face: running
+   Arabic text is never set in the monospace face. */
+.stoa-code__message { font-family: var(--stoa-font-family-sans); }
 
 /* Metric: label, value with its unit, threshold and basis. Numbers are in
    the numeric face, whose Arabic-Indic digits are tabular too. Inside a
@@ -1127,7 +1134,8 @@
 .stoa-data-grid__cell--center { position: absolute; inset-block-start: 0; }
 .stoa-data-grid__cell--pin-edge { border-inline-end: 1px solid var(--stoa-color-border-strong); }
 .stoa-data-grid__cell--end { justify-content: flex-end; }
-.stoa-data-grid__cell--num { justify-content: flex-end; font-family: var(--stoa-font-family-mono); font-variant-numeric: tabular-nums; }
+.stoa-data-grid__cell--num { justify-content: flex-end; font-variant-numeric: tabular-nums; }
+.stoa-data-grid__cell--mono { font-family: var(--stoa-font-family-mono); }
 .stoa-data-grid__cell--select { justify-content: center; padding-inline: 0; }
 .stoa-data-grid__cell[data-editing] { overflow: visible; z-index: 2; padding-inline: 0; }
 .stoa-data-grid__cell:focus-visible {

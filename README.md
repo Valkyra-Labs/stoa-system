@@ -96,9 +96,42 @@ follow as the products need them.
   (`data-theme`, or the system setting when unset).
 - Type: IBM Plex Sans, Plex Sans Arabic and Plex Mono, with Noto Sans
   Arabic after Plex Mono in the numeric stack for tabular Arabic-Indic
-  digits (all SIL OFL 1.1).
+  digits, and Plex Sans Arabic after it (all SIL OFL 1.1). See
+  [Fonts](#fonts) for what an application loads.
 - Space on a 4 px grid; radii from 0 to 8 px.
 - Motion: fast 80 ms, base 160 ms, slow 240 ms, value flash 600 ms.
+
+## Fonts
+
+Stoa names its faces in two stacks, `--stoa-font-family-sans` for words
+and `--stoa-font-family-mono` for numbers, code and fixed-width columns,
+and loads no font file itself: the application does, for example from
+Fontsource. What to load depends on the scripts the application shows:
+
+| Script | Load | Used for |
+|---|---|---|
+| Latin, Cyrillic | IBM Plex Sans 400 and 500, IBM Plex Mono 400 | All text; numbers, code and log times in the numeric face |
+| Arabic | IBM Plex Sans Arabic 400 and 500 | All Arabic text, including Arabic words inside the numeric face |
+| Arabic-Indic digits in columns | Noto Sans Arabic 400 (optional) | Tabular Arabic-Indic digits in the numeric face |
+
+```ts
+import "@fontsource/ibm-plex-sans/400.css";
+import "@fontsource/ibm-plex-sans/500.css";
+import "@fontsource/ibm-plex-mono/400.css";
+import "@fontsource/ibm-plex-sans-arabic/400.css";
+import "@fontsource/ibm-plex-sans-arabic/500.css";
+import "@fontsource/noto-sans-arabic/400.css"; // optional
+```
+
+IBM Plex Mono has no Arabic letters. Stoa sets words in the sans face
+(a log line's message, a progress bar's value text, StatBar labels, a
+DataGrid column with `mono: false`), and the numeric stack names Noto
+Sans Arabic, then IBM Plex Sans Arabic: Arabic text that still reaches
+the numeric face is drawn in one of them, joined, and never in a system
+monospace face that draws it as separate letters. Without Noto Sans
+Arabic, Arabic-Indic digits come from IBM Plex Sans Arabic, whose digits
+are proportional, so numbers in a column no longer line up digit for
+digit.
 
 ## Development
 

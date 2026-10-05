@@ -48,6 +48,11 @@ export type DataGridColumn<Row> = {
    * digits (a whole number with grouping, otherwise two decimals), an
    * enum editor's value as its option's label, and a string as it is. */
   format?: (value: DataGridValue, row: Row, locale: StoaFormat) => string;
+  /** The cells in the numeric face (Plex Mono). On by default for a column
+   * whose values are numbers, which are also aligned to the end with
+   * tabular figures; turn it off for a number shown as words, such as a
+   * date with its month's name, so the words are set in the sans face. */
+  mono?: boolean;
   /** Makes the cell editable with Enter, F2 or a double click. */
   editor?: DataGridEditor<Row>;
 };
@@ -822,7 +827,7 @@ export function DataGrid<Row>({
               role={c === rowHeaderCol ? "rowheader" : "gridcell"}
               aria-readonly={data.editor || !editable ? undefined : true}
               data-editing={isEditing || undefined}
-              className={cellClass(col, c, numeric ? "stoa-data-grid__cell--num" : "")}
+              className={cellClass(col, c, numeric ? `stoa-data-grid__cell--num${data.mono === false ? "" : " stoa-data-grid__cell--mono"}` : data.mono ? "stoa-data-grid__cell--mono" : "")}
               onClick={() => {
                 if (!isEditing) move({ row: r, column: c });
               }}
