@@ -1,5 +1,5 @@
 import { useState, type ReactNode } from "react";
-import { Button as AriaButton, Tooltip as AriaTooltip, TooltipTrigger } from "react-aria-components";
+import { Button as AriaButton, OverlayArrow, Tooltip as AriaTooltip, TooltipTrigger } from "react-aria-components";
 
 export type TooltipProps = {
   /** The term the tooltip explains, drawn as text with a dotted underline
@@ -19,7 +19,9 @@ export type TooltipProps = {
 /** A short explanation of a term, on React Aria's Tooltip. It opens on
  * keyboard focus at once, on hover after a short delay, and on a press, so
  * a touch screen reaches it too; Escape, or leaving the term, closes it.
- * While open it is the term's description for assistive technology.
+ * While open it is the term's description for assistive technology. An
+ * arrow (React Aria's OverlayArrow) points from the tooltip to the term,
+ * on whichever side it opened.
  *
  * A tooltip is never the only place information lives: what a person
  * needs to act is on the page, and the tooltip only explains a word of it
@@ -31,7 +33,14 @@ export function Tooltip({ children, content, placement = "top", defaultOpen = fa
       <AriaButton className="stoa-tooltip-term" onPress={() => setOpen((open) => !open)}>
         {children}
       </AriaButton>
-      <AriaTooltip className="stoa-tooltip" placement={placement} offset={6}>
+      <AriaTooltip className="stoa-tooltip" placement={placement} offset={10}>
+        <OverlayArrow className="stoa-tooltip__arrow">
+          {/* A triangle in the top half of a square, pointing down; the
+              stylesheet turns it to face the term. */}
+          <svg viewBox="0 0 12 12" aria-hidden="true">
+            <path d="M0 0 L6 6 L12 0" />
+          </svg>
+        </OverlayArrow>
         {content}
       </AriaTooltip>
     </TooltipTrigger>

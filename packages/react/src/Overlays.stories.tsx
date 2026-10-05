@@ -388,6 +388,36 @@ export const TooltipOpen: StoryObj = {
   ),
 };
 
+/** A tooltip on each side of its term, all open: above, below, at the
+ * start and at the end of the line (the left and the right in a
+ * left-to-right page, the other way round in a right-to-left one). Each
+ * arrow points at its term. */
+export const TooltipPlacements: StoryObj = {
+  render: () => (
+    <div
+      style={{
+        display: "grid",
+        justifyItems: "center",
+        gap: "calc(var(--stoa-space-12) * 2)",
+        paddingBlock: "var(--stoa-space-12)",
+      }}
+    >
+      <Tooltip content="Opens above" placement="top" defaultOpen>
+        top
+      </Tooltip>
+      <Tooltip content="Opens below" placement="bottom" defaultOpen>
+        bottom
+      </Tooltip>
+      <Tooltip content="Opens at the start" placement="start" defaultOpen>
+        start
+      </Tooltip>
+      <Tooltip content="Opens at the end" placement="end" defaultOpen>
+        end
+      </Tooltip>
+    </div>
+  ),
+};
+
 const BOND: DescriptionItem[] = [
   { term: "ISIN", description: "RU000A1001" },
   { term: "Issuer", description: "Gazprom Capital" },

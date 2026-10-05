@@ -89,4 +89,16 @@ describe("Tooltip", () => {
     expect(tip.textContent).toBe("العائد حتى الاستحقاق.");
     expect(screen.getByRole("button", { name: "العائد" }).getAttribute("aria-describedby")).toBe(tip.id);
   });
+
+  it("draws an arrow on the side it opened on, hidden from assistive technology", () => {
+    render(
+      <Tooltip content={YTM} placement="bottom" defaultOpen>
+        YTM
+      </Tooltip>,
+    );
+    const arrow = screen.getByRole("tooltip").querySelector(".stoa-tooltip__arrow")!;
+    expect(arrow.getAttribute("data-placement")).toBe("bottom");
+    expect(arrow.querySelector("svg")!.getAttribute("aria-hidden")).toBe("true");
+    expect(screen.getByRole("tooltip").textContent).toBe(YTM);
+  });
 });

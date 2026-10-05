@@ -39,6 +39,52 @@ test("an open tooltip sits below its term, inside the window, in both directions
   }
 });
 
+test("a tooltip's arrow sits between the tooltip and its term and points at the term, on every side, in both directions", async ({ page }) => {
+  for (const [globals, rtl] of [["", false], ["dir:rtl;lang:ar", true]] as const) {
+    await page.goto(story("tooltip-placements", globals));
+    for (const side of ["top", "bottom", "start", "end"] as const) {
+      const term = (await page.getByRole("button", { name: side, exact: true }).boundingBox())!;
+      const tooltip = page.getByRole("tooltip").filter({ hasText: side === "top" ? "above" : side === "bottom" ? "below" : `the ${side}` });
+      const tip = (await tooltip.boundingBox())!;
+      // The drawn triangle, after its turn, and its point: the vertex
+      // furthest from the tooltip.
+      const arrow = await tooltip.locator(".stoa-tooltip__arrow path").evaluate((path) => {
+        const box = path.getBoundingClientRect();
+        return { left: box.left, right: box.right, top: box.top, bottom: box.bottom, cx: box.left + box.width / 2, cy: box.top + box.height / 2 };
+      });
+      const where = `${side} ${globals}`;
+      // Start and end are the left and the right, swapped in right to left.
+      const physical = side === "start" ? (rtl ? "right" : "left") : side === "end" ? (rtl ? "left" : "right") : side;
+      if (physical === "top" || physical === "bottom") {
+        // Centred on the term, across the gap between the two.
+        expect(Math.abs(arrow.cx - (term.x + term.width / 2)), where).toBeLessThan(2);
+        // The base of the triangle on the tooltip's edge, its point
+        // towards the term.
+        if (physical === "top") {
+          expect(Math.abs(arrow.top - (tip.y + tip.height)), where).toBeLessThan(2);
+          expect(arrow.bottom, where).toBeLessThanOrEqual(term.y);
+        } else {
+          expect(Math.abs(arrow.bottom - tip.y), where).toBeLessThan(2);
+          expect(arrow.top, where).toBeGreaterThanOrEqual(term.y + term.height);
+        }
+        expect(arrow.right - arrow.left, where).toBeGreaterThan(arrow.bottom - arrow.top);
+      } else {
+        expect(Math.abs(arrow.cy - (term.y + term.height / 2)), where).toBeLessThan(2);
+        if (physical === "left") {
+          expect(tip.x + tip.width, where).toBeLessThanOrEqual(term.x);
+          expect(Math.abs(arrow.left - (tip.x + tip.width)), where).toBeLessThan(2);
+          expect(arrow.right, where).toBeLessThanOrEqual(term.x);
+        } else {
+          expect(tip.x, where).toBeGreaterThanOrEqual(term.x + term.width);
+          expect(Math.abs(arrow.right - tip.x), where).toBeLessThan(2);
+          expect(arrow.left, where).toBeGreaterThanOrEqual(term.x + term.width);
+        }
+        expect(arrow.bottom - arrow.top, where).toBeGreaterThan(arrow.right - arrow.left);
+      }
+    }
+  }
+});
+
 test("a description list puts its terms at the start edge: left, and right in a right-to-left page", async ({ page }) => {
   for (const [globals, termFirst] of [["", true], ["dir:rtl;lang:ar", false]] as const) {
     await page.goto(story("description-columns", globals));

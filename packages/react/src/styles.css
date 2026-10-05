@@ -179,6 +179,19 @@
   font-family: var(--stoa-font-family-sans); font-size: var(--stoa-font-size-xs);
   line-height: var(--stoa-font-line-height-normal);
 }
+/* The arrow: React Aria places its square at the edge of the tooltip
+   nearest the term, against the tooltip's padding box, so the triangle
+   covers the border where they meet. data-placement is the side the
+   tooltip opened on, resolved to a physical side ("start" is the right
+   in a right-to-left page), so the turns that face the term are physical
+   too. */
+.stoa-tooltip__arrow svg {
+  display: block; inline-size: var(--stoa-space-3); block-size: var(--stoa-space-3); overflow: visible;
+  fill: var(--stoa-color-surface); stroke: var(--stoa-color-border-strong); stroke-width: 1px;
+}
+.stoa-tooltip__arrow[data-placement="bottom"] svg { transform: rotate(180deg); }
+.stoa-tooltip__arrow[data-placement="left"] svg { transform: rotate(-90deg); }
+.stoa-tooltip__arrow[data-placement="right"] svg { transform: rotate(90deg); }
 .stoa-tooltip[data-entering] { animation: stoa-fade-in var(--stoa-motion-duration-fast) var(--stoa-motion-easing-enter); }
 
 .stoa-select { display: inline-grid; gap: var(--stoa-space-1); }
