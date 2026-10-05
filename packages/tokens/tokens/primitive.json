@@ -100,6 +100,8 @@
         "$value": [
           "IBM Plex Sans",
           "IBM Plex Sans Arabic",
+          "IBM Plex Sans Arabic Tahoma Fallback",
+          "IBM Plex Sans Arabic Geeza Fallback",
           "system-ui",
           "sans-serif"
         ]
@@ -108,6 +110,9 @@
         "$value": [
           "IBM Plex Mono",
           "Noto Sans Arabic",
+          "IBM Plex Sans Arabic",
+          "IBM Plex Sans Arabic Tahoma Fallback",
+          "IBM Plex Sans Arabic Geeza Fallback",
           "ui-monospace",
           "monospace"
         ]

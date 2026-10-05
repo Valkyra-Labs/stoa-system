@@ -332,7 +332,9 @@ code {
    density, motion and filter. The layer covers the body and lets the
    pointer through; the box sticks to the top of the page's scrolling
    region while the frame scrolls past and is never taller than that
-   region, so a dialog opens centred in the part of the frame in view.
+   region and as tall as the part of the frame in view (measured into
+   --pg-frame-visible, PreviewGrid.tsx), so a dialog opens centred in that
+   part, wholly in the window, even when the frame starts half way down.
    Its layout containment makes it the containing block of the overlays'
    fixed positions, so they cover the box and not the window. The
    z-index is above anything a screen raises (the grid's sticky head,
@@ -347,7 +349,7 @@ code {
 .pg-frame__overlay-box {
   position: sticky;
   inset-block-start: 0;
-  block-size: min(100%, var(--pg-region, 100dvh));
+  block-size: min(100%, var(--pg-frame-visible, var(--pg-region, 100dvh)));
   contain: layout;
   overflow: hidden;
 }

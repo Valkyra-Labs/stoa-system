@@ -1,7 +1,7 @@
 import { useEffect, useImperativeHandle, useRef, useState, type Ref } from "react";
 import { describeBook, ladderRows, parseBook, type Book } from "./book";
 import { useStoaFormat, type StoaFormat } from "./locale";
-import { drawEmpty, fitCanvas, readCanvasTokens, useInvalidateOnTokensVersion, useTokenSignal, type CanvasTokens } from "./tokens";
+import { drawEmpty, fitCanvas, readCanvasTokens, useCanvasRefit, useInvalidateOnTokensVersion, useTokenSignal, type CanvasTokens } from "./tokens";
 
 export type LadderHandle = {
   /** Draw a book in the flat engine form, without a React render. */
@@ -55,8 +55,10 @@ function draw(
   const { bidMark, askMark } = locale.messages;
   // The price column ends at 45% of the width, or further right when the
   // side marker and the widest price need more: a marker is a word in
-  // some languages ("شراء"), not a letter.
+  // some languages ("شراء"), not a letter, so it is set in the sans face.
+  ctx.font = t.wordFont;
   const markerWidth = Math.max(ctx.measureText(bidMark).width, ctx.measureText(askMark).width);
+  ctx.font = t.font;
   const priceWidth = rows.reduce((widest, r) => Math.max(widest, ctx.measureText(fmt(r.price)).width), 0);
   const priceEnd = Math.max(width * 0.45, PAD + markerWidth + PAD + priceWidth);
   for (const r of rows) {
@@ -66,7 +68,9 @@ function draw(
     ctx.fillStyle = bid ? t.bid : t.ask;
     ctx.textAlign = "left";
     // The side is also a word or a letter, not only a colour.
+    ctx.font = t.wordFont;
     ctx.fillText(bid ? bidMark : askMark, PAD, r.y + mid);
+    ctx.font = t.font;
     ctx.textAlign = "right";
     ctx.fillText(fmt(r.price), priceEnd, r.y + mid);
     ctx.fillStyle = t.text;
@@ -80,7 +84,7 @@ function draw(
 }
 
 /** An order-book ladder on a canvas: asks above, bids below, a size bar
- * per level. Screen readers get the top of the book as text, updated at
+ * per level, redrawn when its box changes size. Screen readers get the top of the book as text, updated at
  * most every `announceEvery` milliseconds (five seconds by default). Side markers, digits and the text follow the
  * locale (see `locale.ts`); `formatPrice` overrides the price format. */
 export function Ladder({
@@ -108,10 +112,14 @@ export function Ladder({
   const lastFlat = useRef<ArrayLike<number> | null>(null);
   const trailing = useRef<ReturnType<typeof setTimeout> | null>(null);
 
+  // Nothing is drawn before the first book, so a refit before then draws
+  // nothing either.
+  const drawn = useRef(false);
   const render = (flat: ArrayLike<number> | null) => {
     const c = canvas.current;
     if (!c) return;
     lastFlat.current = flat;
+    drawn.current = true;
     tokens.current ??= readCanvasTokens(c);
     const book = parseBook(flat);
     draw(c, tokens.current, book, depth, formatPrice, locale);
@@ -134,6 +142,15 @@ export function Ladder({
   }, []);
 
   useImperativeHandle(ref, () => ({ draw: render }));
+
+  // A box that changed size gets the last book again, without a new
+  // announcement.
+  useCanvasRefit(canvas, () => {
+    const c = canvas.current;
+    if (!c || !drawn.current) return;
+    tokens.current ??= readCanvasTokens(c);
+    draw(c, tokens.current, parseBook(lastFlat.current), depth, formatPrice, locale);
+  });
 
   // Drop the cached tokens when `tokensVersion` changes, from an effect
   // that runs before the one below (which draws on every render whenever

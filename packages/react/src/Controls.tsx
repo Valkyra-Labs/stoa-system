@@ -1,5 +1,8 @@
-import { useContext, useEffect, useId, useLayoutEffect, useMemo, useRef, type ChangeEvent, type ReactElement, type ReactNode } from "react";
+import { useContext, useEffect, useId, useLayoutEffect, useMemo, useRef, type ChangeEvent, type KeyboardEvent, type ReactElement, type ReactNode, type Ref } from "react";
+import { mergeProps, useFocusRing, useHover, usePress } from "react-aria";
 import { Chevron } from "./Chevron";
+import { ariaKeyShortcuts, isApplePlatform, Kbd, shortcutKeys, type Shortcut } from "./Shortcuts";
+import { useStoaFormat } from "./locale";
 import {
   Button as AriaButton,
   Group,
@@ -17,7 +20,6 @@ import {
   SliderThumb,
   SliderTrack,
   ToggleButton,
-  ToggleButtonGroup,
   type ButtonProps as AriaButtonProps,
   type Key,
   useLocale,
@@ -34,11 +36,71 @@ export type ButtonProps = AriaButtonProps & {
   /** "small" matches the small ChoiceGroup, Select and FilterChip, for a
    * toolbar or a header; still at least 24 px tall (WCAG 2.5.8). */
   size?: ControlSize;
+  /** The keyboard shortcut that does what the button does (registered
+   * with `useShortcuts`, for example): drawn after the label with Kbd,
+   * hidden from assistive technology, and given to it as
+   * `aria-keyshortcuts`, so the button's name stays its label. */
+  shortcut?: Pick<Shortcut, "key" | "modifiers">;
+  /** The shortcut in ARIA's own words ("Control+K"), for a shortcut the
+   * button does not draw; `shortcut` sets it otherwise. */
+  "aria-keyshortcuts"?: string;
 };
 
-export function Button({ variant = "default", size = "regular", className, ...rest }: ButtonProps) {
+/** An action. Its label says what it does; `shortcut` adds the key that
+ * does the same, shown and announced. */
+export function Button({
+  variant = "default",
+  size = "regular",
+  className,
+  shortcut,
+  "aria-keyshortcuts": keyShortcuts,
+  render,
+  children,
+  ...rest
+}: ButtonProps) {
+  const { messages } = useStoaFormat();
   const sized = size === "small" ? " stoa-button--small" : "";
-  return <AriaButton {...rest} className={`stoa-button stoa-button--${variant}${sized} ${className ?? ""}`.trim()} />;
+  const apple = isApplePlatform();
+  const aria = keyShortcuts ?? (shortcut ? ariaKeyShortcuts(shortcut, apple) : undefined);
+  const hint = shortcut && (
+    <span className="stoa-button__shortcut" aria-hidden="true">
+      <Kbd keys={shortcutKeys(shortcut, apple, messages)} />
+    </span>
+  );
+  const content: AriaButtonProps["children"] =
+    hint === undefined
+      ? children
+      : typeof children === "function"
+        ? (values) => (
+            <>
+              <span className="stoa-button__label">{children(values)}</span>
+              {hint}
+            </>
+          )
+        : (
+            <>
+              <span className="stoa-button__label">{children}</span>
+              {hint}
+            </>
+          );
+  return (
+    <AriaButton
+      {...rest}
+      className={`stoa-button stoa-button--${variant}${sized} ${className ?? ""}`.trim()}
+      // React Aria's Button passes on only the attributes it knows, and
+      // aria-keyshortcuts is not one of them: it is set on the element here.
+      render={
+        aria === undefined
+          ? render
+          : (props, values) => {
+              const own = { ...props, "aria-keyshortcuts": aria };
+              return render ? render(own, values) : <button {...own} />;
+            }
+      }
+    >
+      {content}
+    </AriaButton>
+  );
 }
 
 export type Choice<T extends Key> = { id: T; label: ReactNode };
@@ -100,38 +162,107 @@ export type ChoiceGroupProps<T extends Key> = {
   size?: ControlSize;
 };
 
-/** One of a few options (for example a playback speed): a toggle group
- * with single selection, arrow keys moving between options. */
+/** One option of a ChoiceGroup: a button with the radio role, drawn as a
+ * segment of the group. React Aria's hooks give it the same press, hover
+ * and focus-ring states as Stoa's other buttons. */
+function ChoiceOption({
+  checked,
+  isDisabled,
+  tabStop,
+  onSelect,
+  onKeyDown,
+  buttonRef,
+  children,
+}: {
+  checked: boolean;
+  isDisabled: boolean;
+  tabStop: boolean;
+  onSelect: () => void;
+  onKeyDown: (e: KeyboardEvent<HTMLButtonElement>) => void;
+  buttonRef: Ref<HTMLButtonElement>;
+  children: ReactNode;
+}) {
+  const { pressProps, isPressed } = usePress({ isDisabled, onPress: onSelect });
+  const { hoverProps, isHovered } = useHover({ isDisabled });
+  const { focusProps, isFocusVisible } = useFocusRing();
+  return (
+    <button
+      {...mergeProps(pressProps, hoverProps, focusProps, { onKeyDown })}
+      ref={buttonRef}
+      type="button"
+      role="radio"
+      aria-checked={checked}
+      disabled={isDisabled}
+      tabIndex={tabStop ? 0 : -1}
+      className="stoa-button stoa-choice"
+      data-selected={checked || undefined}
+      data-pressed={isPressed || undefined}
+      data-hovered={isHovered || undefined}
+      data-focus-visible={isFocusVisible || undefined}
+      data-disabled={isDisabled || undefined}
+    >
+      {children}
+    </button>
+  );
+}
+
+/** One of a few options (for example a playback speed), as a radio group
+ * drawn as one segmented control. It is one tab stop, on the chosen
+ * option; the arrow keys move to the next or previous option and choose
+ * it, wrapping at the ends, mirrored in a right-to-left locale; Space or
+ * Enter, or a press, chooses the focused option. */
 export function ChoiceGroup<T extends Key>({
   label,
   hideLabel = false,
   description,
-  isDisabled,
+  isDisabled = false,
   choices,
   value,
   onChange,
   size = "regular",
 }: ChoiceGroupProps<T>) {
   const { groupProps, frame } = useGroupLabel(label, hideLabel, description);
+  const { direction } = useLocale();
+  const buttons = useRef<(HTMLButtonElement | null)[]>([]);
+  const chosen = choices.findIndex((c) => c.id === value);
+  // The tab stop: the chosen option, or the first when none is.
+  const stop = chosen < 0 ? 0 : chosen;
+
+  const choose = (index: number) => {
+    const choice = choices[index];
+    if (!choice) return;
+    if (choice.id !== value) onChange(choice.id);
+    buttons.current[index]?.focus();
+  };
+  const onKeyDown = (e: KeyboardEvent<HTMLButtonElement>, index: number) => {
+    if (isDisabled || e.altKey || e.ctrlKey || e.metaKey) return;
+    const next = direction === "rtl" ? "ArrowLeft" : "ArrowRight";
+    const previous = direction === "rtl" ? "ArrowRight" : "ArrowLeft";
+    const count = choices.length;
+    if (e.key === next || e.key === "ArrowDown") choose((index + 1) % count);
+    else if (e.key === previous || e.key === "ArrowUp") choose((index - 1 + count) % count);
+    else return;
+    e.preventDefault();
+  };
+
   return frame(
-    <ToggleButtonGroup
-      {...groupProps}
-      isDisabled={isDisabled}
-      selectionMode="single"
-      disallowEmptySelection
-      selectedKeys={[value]}
-      onSelectionChange={(keys) => {
-        const [first] = keys;
-        if (first !== undefined) onChange(first as T);
-      }}
-      className={`stoa-choice-group stoa-choice-group--${size}`}
-    >
-      {choices.map((c) => (
-        <ToggleButton key={String(c.id)} id={c.id} className="stoa-button stoa-choice">
+    <div {...groupProps} role="radiogroup" aria-disabled={isDisabled || undefined} className={`stoa-choice-group stoa-choice-group--${size}`}>
+      {choices.map((c, index) => (
+        <ChoiceOption
+          key={String(c.id)}
+          checked={c.id === value}
+          isDisabled={isDisabled}
+          tabStop={index === stop}
+          onSelect={() => choose(index)}
+          onKeyDown={(e) => onKeyDown(e, index)}
+          buttonRef={(el) => {
+            buttons.current[index] = el;
+          }}
+        >
           {c.label}
-        </ToggleButton>
+        </ChoiceOption>
       ))}
-    </ToggleButtonGroup>
+    </div>,
   );
 }
 

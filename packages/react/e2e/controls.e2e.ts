@@ -58,3 +58,59 @@ for (const [mode, globals] of [["left to right", ""], ["right to left", "dir:rtl
     expect(sizes[0]).toBe(sizes[1]);
   });
 }
+
+for (const [globals, forward, back] of [
+  ["lang:en", "ArrowRight", "ArrowLeft"],
+  ["dir:rtl;lang:ar", "ArrowLeft", "ArrowRight"],
+] as const) {
+  test(`a ChoiceGroup is one tab stop on its chosen option, and the arrows move and choose (${globals})`, async ({ page }) => {
+    await page.goto(`/iframe.html?id=controls-playback--choices&viewMode=story&globals=${globals}`);
+    const group = page.getByRole("radiogroup", { name: "Density" });
+    const radio = (name: string) => group.getByRole("radio", { name });
+    await expect(radio("regular")).toHaveAttribute("aria-checked", "true");
+    // Tab lands on the chosen option, not the first.
+    await page.keyboard.press("Tab");
+    await expect(radio("regular")).toBeFocused();
+    // An arrow moves and chooses, in the reading direction.
+    await page.keyboard.press(forward);
+    await expect(radio("comfortable")).toBeFocused();
+    await expect(radio("comfortable")).toHaveAttribute("aria-checked", "true");
+    await expect(radio("regular")).toHaveAttribute("aria-checked", "false");
+    // Past the last option it wraps to the first, as a radio group does.
+    await page.keyboard.press(forward);
+    await expect(radio("compact")).toBeFocused();
+    await expect(radio("compact")).toHaveAttribute("aria-checked", "true");
+    await page.keyboard.press(back);
+    await expect(radio("comfortable")).toHaveAttribute("aria-checked", "true");
+    // One tab stop: Tab leaves the group, Shift+Tab comes back to the chosen option.
+    await page.keyboard.press("Tab");
+    await expect(page.locator(".stoa-select__button")).toBeFocused();
+    await page.keyboard.press("Shift+Tab");
+    await expect(radio("comfortable")).toBeFocused();
+    // Space on the chosen option keeps it chosen.
+    await page.keyboard.press("Space");
+    await expect(radio("comfortable")).toHaveAttribute("aria-checked", "true");
+  });
+}
+
+for (const [globals, stop] of [
+  ["lang:en", "Stop"],
+  ["dir:rtl;lang:ar", "إيقاف"],
+] as const) {
+  test(`a Button's shortcut is drawn at the label's inline end, named by the label alone, and announced as aria-keyshortcuts (${globals})`, async ({ page }) => {
+    await page.goto(story("controls-inputs--button-shortcuts", globals));
+    const button = page.getByRole("button", { name: stop, exact: true });
+    await expect(button).toHaveAttribute("aria-keyshortcuts", "S");
+    await expect(button).toHaveAccessibleName(stop);
+    const label = (await button.locator(".stoa-button__label").boundingBox())!;
+    const hint = (await button.locator(".stoa-button__shortcut").boundingBox())!;
+    if (globals.includes("rtl")) expect(hint.x + hint.width).toBeLessThanOrEqual(label.x);
+    else expect(hint.x).toBeGreaterThanOrEqual(label.x + label.width);
+    // Inside the button, which is still at least 24 px tall.
+    const box = (await button.boundingBox())!;
+    expect(hint.y).toBeGreaterThanOrEqual(box.y);
+    expect(hint.y + hint.height).toBeLessThanOrEqual(box.y + box.height);
+    expect(box.height).toBeGreaterThanOrEqual(24);
+    await expect(page.getByRole("button", { name: /Search|بحث/ })).toHaveAttribute("aria-keyshortcuts", /^(Control|Meta)\+K$/);
+  });
+}

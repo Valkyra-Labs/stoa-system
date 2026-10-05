@@ -14,7 +14,12 @@ export type CanvasTokens = {
   askWash: string;
   accent: string;
   rowHeight: number;
+  /** Numbers: the density's type size in the numeric face. */
   font: string;
+  /** Words (an empty state, a side marker that is a word): the same size
+   * in the sans face, so running Arabic text is never set in the numeric
+   * face. */
+  wordFont: string;
 };
 
 export function readCanvasTokens(el: Element): CanvasTokens {
@@ -36,6 +41,7 @@ export function readCanvasTokens(el: Element): CanvasTokens {
     // Without the token, the regular density's row height.
     rowHeight: parseFloat(v("--stoa-density-row-height")) || 28,
     font: `${v("--stoa-density-font-size") || "12px"} ${v("--stoa-font-family-mono") || "monospace"}`,
+    wordFont: `${v("--stoa-density-font-size") || "12px"} ${v("--stoa-font-family-sans") || "sans-serif"}`,
   };
 }
 
@@ -148,6 +154,47 @@ export function useInvalidateOnTokensVersion(tokensVersion: number | undefined, 
   });
 }
 
+/**
+ * Calls `redraw` when a canvas's box no longer matches its bitmap: the box
+ * changed size (a window resized, a panel opened beside it) or the device
+ * pixel ratio changed (a window moved to another screen, the page zoomed).
+ * A canvas is only drawn when its data changes, so without this a paused
+ * view keeps its old bitmap, stretched or squeezed to the new box.
+ * `redraw` is read through a ref; it is the component's to skip while it
+ * has drawn nothing yet. jsdom has neither observer; nothing runs there.
+ */
+export function useCanvasRefit(canvas: RefObject<HTMLCanvasElement | null>, redraw: () => void): void {
+  const redrawRef = useRef(redraw);
+  redrawRef.current = redraw;
+  useEffect(() => {
+    const el = canvas.current;
+    const View = el?.ownerDocument.defaultView;
+    if (!el || !View || typeof View.ResizeObserver !== "function") return;
+    const stale = () => el.width !== Math.round(el.clientWidth * (View.devicePixelRatio || 1));
+    const observer = new View.ResizeObserver(() => {
+      if (stale()) redrawRef.current();
+    });
+    observer.observe(el);
+    // A media query that matches the current ratio, renewed each time it
+    // stops matching.
+    let ratio: MediaQueryList | null = null;
+    const onRatio = () => {
+      watchRatio();
+      redrawRef.current();
+    };
+    const watchRatio = () => {
+      ratio?.removeEventListener("change", onRatio);
+      ratio = typeof View.matchMedia === "function" ? View.matchMedia(`(resolution: ${View.devicePixelRatio || 1}dppx)`) : null;
+      ratio?.addEventListener("change", onRatio);
+    };
+    watchRatio();
+    return () => {
+      observer.disconnect();
+      ratio?.removeEventListener("change", onRatio);
+    };
+  }, [canvas]);
+}
+
 /** Size a canvas for its CSS box and the device pixel ratio; returns the
  * 2D context with the transform set to CSS pixels. */
 export function fitCanvas(canvas: HTMLCanvasElement, cssHeight: number): CanvasRenderingContext2D {
@@ -166,7 +213,7 @@ export function fitCanvas(canvas: HTMLCanvasElement, cssHeight: number): CanvasR
 
 /** The empty state, centred on the canvas in text-muted on surface. */
 export function drawEmpty(ctx: CanvasRenderingContext2D, t: CanvasTokens, text: string, width: number, height: number) {
-  ctx.font = t.font;
+  ctx.font = t.wordFont;
   ctx.fillStyle = t.muted;
   ctx.textAlign = "center";
   ctx.textBaseline = "middle";

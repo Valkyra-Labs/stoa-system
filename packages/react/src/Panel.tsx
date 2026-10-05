@@ -29,7 +29,10 @@ export function Panel({ title, children, className, level = 2 }: PanelProps) {
  * (`kind: "metric"`) with its unit, basis and threshold. */
 export type StatBarItem = { label: string; value: string } | (MetricProps & { kind: "metric" });
 
-/** A row of small labelled values (for example performance counters). */
+/** A row of small labelled values (for example performance counters).
+ * Each value is isolated in the direction of its own first letter
+ * (`bdi`), so "16.9 ms" keeps its number before its unit in a
+ * right-to-left page. */
 export function StatBar({ items, label }: { items: StatBarItem[]; label: string }) {
   return (
     <dl className="stoa-statbar" aria-label={label}>
@@ -41,7 +44,9 @@ export function StatBar({ items, label }: { items: StatBarItem[]; label: string 
         ) : (
           <div key={i.label} className="stoa-statbar__item">
             <dt>{i.label}</dt>
-            <dd>{i.value}</dd>
+            <dd>
+              <bdi>{i.value}</bdi>
+            </dd>
           </div>
         ),
       )}

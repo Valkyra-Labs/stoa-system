@@ -93,3 +93,45 @@ describe("Button, small", () => {
     expect(rule.slice(0, rule.indexOf("{"))).toContain(".stoa-button--small");
   });
 });
+
+describe("Button with a keyboard shortcut", () => {
+  it("passes aria-keyshortcuts through to the button", () => {
+    render(<Button aria-keyshortcuts="S">Stop</Button>);
+    expect(screen.getByRole("button", { name: "Stop" }).getAttribute("aria-keyshortcuts")).toBe("S");
+  });
+
+  it("shows a shortcut's keys after its label, hidden from assistive technology, which reads aria-keyshortcuts", () => {
+    render(<Button shortcut={{ key: "s" }}>Stop</Button>);
+    const button = screen.getByRole("button", { name: "Stop" });
+    expect(button.getAttribute("aria-keyshortcuts")).toBe("S");
+    const hint = button.querySelector(".stoa-button__shortcut")!;
+    expect(hint.getAttribute("aria-hidden")).toBe("true");
+    expect(hint.textContent).toBe("S");
+    // The label alone names the button.
+    expect(button.querySelector(".stoa-button__label")?.textContent).toBe("Stop");
+  });
+
+  it("writes modifiers for aria-keyshortcuts in ARIA's names, and draws them as the platform prints them", () => {
+    render(<Button shortcut={{ key: "k", modifiers: ["mod", "shift"] }}>Search</Button>);
+    const button = screen.getByRole("button", { name: "Search" });
+    // jsdom is not an Apple platform: "mod" is Control.
+    expect(button.getAttribute("aria-keyshortcuts")).toBe("Control+Shift+K");
+    expect([...button.querySelectorAll(".stoa-button__shortcut .stoa-kbd")].map((k) => k.textContent)).toEqual(["Ctrl", "Shift", "K"]);
+  });
+
+  it("names the space bar Space for assistive technology, and in the locale's word on the key", () => {
+    render(
+      <I18nProvider locale="ru-RU">
+        <Button shortcut={{ key: " " }}>Пауза</Button>
+      </I18nProvider>,
+    );
+    const button = screen.getByRole("button", { name: "Пауза" });
+    expect(button.getAttribute("aria-keyshortcuts")).toBe("Space");
+    expect(button.querySelector(".stoa-button__shortcut")?.textContent).toBe("Пробел");
+  });
+
+  it("keeps a symbol as it is", () => {
+    render(<Button shortcut={{ key: "?" }}>Keyboard shortcuts</Button>);
+    expect(screen.getByRole("button", { name: "Keyboard shortcuts" }).getAttribute("aria-keyshortcuts")).toBe("?");
+  });
+});

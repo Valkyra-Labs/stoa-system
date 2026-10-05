@@ -1,7 +1,9 @@
-import { useRef, type ReactElement, type ReactNode } from "react";
+import { useContext, useEffect, useLayoutEffect, useRef, useState, type ReactElement, type ReactNode, type RefObject } from "react";
 import { Dialog as AriaDialog, DialogTrigger, Heading, Modal, ModalOverlay } from "react-aria-components";
 import { Button } from "./Controls";
+import { focusLost, placeOf, tabStopAt, type FocusPlace } from "./focus";
 import { useStoaFormat } from "./locale";
+import { PageScrollLock } from "./PageShell";
 
 /** How an overlay opens: from a trigger it wraps, or from the caller's own
  * state. */
@@ -38,9 +40,19 @@ export type SheetProps = DialogProps & {
   placement?: "end" | "bottom" | "auto";
 };
 
+/** Holds the scroll of the page shell around it for as long as it is
+ * mounted: from an overlay's opening to the end of its exit. */
+function LockPageScroll() {
+  const lock = useContext(PageScrollLock);
+  useEffect(() => lock?.(), [lock]);
+  return null;
+}
+
 /** The modal frame every overlay here shares. React Aria's ModalOverlay
- * traps focus inside, locks the page's scroll, closes on Escape and hides
- * the rest of the page from assistive technology while it is open. */
+ * traps focus inside, locks the document's scroll, closes on Escape and
+ * hides the rest of the page from assistive technology while it is open;
+ * inside a PageShell, whose region scrolls instead of the document, the
+ * region is locked too. */
 function Overlay({
   trigger,
   isOpen,
@@ -60,7 +72,10 @@ function Overlay({
         defaultOpen={defaultOpen}
         onOpenChange={onOpenChange}
       >
-        <Modal className={modalClassName}>{children}</Modal>
+        <Modal className={modalClassName}>
+          <LockPageScroll />
+          {children}
+        </Modal>
       </ModalOverlay>
     );
   }
@@ -68,21 +83,68 @@ function Overlay({
     <DialogTrigger isOpen={isOpen} defaultOpen={defaultOpen} onOpenChange={onOpenChange}>
       {trigger}
       <ModalOverlay className={overlayClassName} isDismissable={isDismissable}>
-        <Modal className={modalClassName}>{children}</Modal>
+        <Modal className={modalClassName}>
+          <LockPageScroll />
+          {children}
+        </Modal>
       </ModalOverlay>
     </DialogTrigger>
   );
+}
+
+/** Where focus goes when the dialog closes, when React Aria leaves it on
+ * the page's body: React Aria returns it to whatever had it when the
+ * dialog opened, and gives up when that is gone or was the body itself.
+ * Then the trigger takes it, if the dialog has one (a dialog open from
+ * the start had no opener), else the tab stop that stands where the
+ * opener was (a confirmation opened from a control that its own press
+ * removed). `inside` is any element of the dialog. */
+function useReturnFocus(inside: RefObject<HTMLElement | null>) {
+  // Read during the first render, before React removes anything: the
+  // opener may leave the document in the same commit that opens the
+  // dialog.
+  const [opener] = useState<FocusPlace | null>(() => {
+    if (typeof document === "undefined") return null;
+    const active = document.activeElement;
+    return active && active !== document.body ? placeOf(active) : null;
+  });
+  useLayoutEffect(() => {
+    const el = inside.current;
+    if (!el) return;
+    const doc = el.ownerDocument;
+    const view = doc.defaultView ?? window;
+    const dialog = el.closest('[role="dialog"], [role="alertdialog"]');
+    const trigger = dialog?.id ? doc.querySelector<HTMLElement>(`[aria-controls="${view.CSS.escape(dialog.id)}"]`) : null;
+    return () => {
+      // React Aria restores focus a frame after the dialog goes; look one
+      // frame later, and only when the focus is still lost.
+      view.requestAnimationFrame(() =>
+        view.requestAnimationFrame(() => {
+          if (!focusLost(doc)) return;
+          if (trigger?.isConnected) trigger.focus();
+          else if (opener) tabStopAt(opener)?.focus();
+        }),
+      );
+    };
+  }, [inside, opener]);
+}
+
+function ReturnFocus({ inside }: { inside: RefObject<HTMLElement | null> }) {
+  useReturnFocus(inside);
+  return null;
 }
 
 /** Title, close button, body and actions, inside React Aria's Dialog,
  * which labels the dialog with its heading. */
 function DialogContent({ title, children, actions }: ContentProps) {
   const { messages } = useStoaFormat();
+  const header = useRef<HTMLDivElement>(null);
+  useReturnFocus(header);
   return (
     <AriaDialog className="stoa-dialog">
       {({ close }) => (
         <>
-          <div className="stoa-dialog__header">
+          <div ref={header} className="stoa-dialog__header">
             <Heading slot="title" level={2} className="stoa-dialog__title">
               {title}
             </Heading>
@@ -169,6 +231,7 @@ export function AlertDialog({
   // Set by the primary action just before it closes the dialog, so the
   // close that follows is not taken for a cancel.
   const confirmed = useRef(false);
+  const header = useRef<HTMLDivElement>(null);
   const onOpenChange = (isOpen: boolean) => {
     if (!isOpen) {
       if (!confirmed.current) onCancel?.();
@@ -181,7 +244,7 @@ export function AlertDialog({
       <AriaDialog className="stoa-dialog" role="alertdialog">
         {({ close }) => (
           <>
-            <div className="stoa-dialog__header">
+            <div ref={header} className="stoa-dialog__header">
               <Heading slot="title" level={2} className="stoa-dialog__title">
                 {title}
               </Heading>
@@ -203,6 +266,8 @@ export function AlertDialog({
                 {confirmLabel}
               </Button>
             </div>
+            {/* After the header, so its ref is set when this mounts. */}
+            <ReturnFocus inside={header} />
           </>
         )}
       </AriaDialog>

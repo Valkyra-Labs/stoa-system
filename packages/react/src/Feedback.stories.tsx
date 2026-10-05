@@ -3,7 +3,9 @@ import { useEffect, useState, type ReactNode } from "react";
 import { AppHeader } from "./AppHeader";
 import { Callout } from "./Callout";
 import { Button } from "./Controls";
+import { Dialog, Sheet } from "./Dialog";
 import { EmptyState } from "./EmptyState";
+import { keepFocusInPlace } from "./focus";
 import { LiveRegion, VisuallyHidden } from "./LiveRegion";
 import { PageShell } from "./PageShell";
 import { Panel } from "./Panel";
@@ -79,6 +81,41 @@ export const CalloutDismissible: StoryObj = {
         ) : (
           <Button style={{ justifySelf: "start" }} onPress={() => setShown(true)}>Show the callout again</Button>
         )}
+      </Column>
+    );
+  },
+};
+
+/** An application's own action that removes the focused control: Apply
+ * closes the selection bar it sits in. keepFocusInPlace, called before
+ * the bar goes, moves focus to the next tab stop where the bar was
+ * ("Export") instead of letting it fall to the page's body. */
+export const FocusAfterRemoval: StoryObj = {
+  render: () => {
+    const [selected, setSelected] = useState(3);
+    const [status, setStatus] = useState("Three rows selected.");
+    return (
+      <Column>
+        {selected > 0 && (
+          <div role="group" aria-label="Selection" style={{ display: "flex", gap: "var(--stoa-space-2)", alignItems: "center" }}>
+            <span>{selected} selected</span>
+            <Button
+              variant="primary"
+              onPress={(e) => {
+                keepFocusInPlace(e.target);
+                setSelected(0);
+                setStatus("Status set to Approved on three rows.");
+              }}
+            >
+              Approve
+            </Button>
+          </div>
+        )}
+        <p>{status}</p>
+        <Button style={{ justifySelf: "start" }}>Export</Button>
+        <Button style={{ justifySelf: "start" }} onPress={() => setSelected(3)}>
+          Select three rows again
+        </Button>
       </Column>
     );
   },
@@ -301,5 +338,45 @@ export const PageShellLongPage: StoryObj = {
       </Column>
     </PageShell>
   ),
+  parameters: { layout: "fullscreen" },
+};
+
+function LongPageWithOverlays() {
+  return (
+    <PageShell
+      header={
+        <AppHeader
+          title="Tyche Replay"
+          subtitle="AAPL on IEX"
+          actions={
+            <>
+              <Dialog title="Session details" trigger={<Button>Details</Button>}>
+                <p>AAPL on IEX, 24 September 2026, replayed from the recorded messages.</p>
+              </Dialog>
+              <Sheet title="Filters" trigger={<Button>Filters</Button>}>
+                <p>Venues, sides and sizes to show.</p>
+              </Sheet>
+            </>
+          }
+        />
+      }
+      footer="Data provided for free by IEX."
+    >
+      <Column>
+        {Array.from({ length: 24 }, (_, i) => (
+          <Panel key={i} title={`Session ${i + 1}`}>
+            AAPL on IEX, one trading day replayed from the recorded messages.
+          </Panel>
+        ))}
+      </Column>
+    </PageShell>
+  );
+}
+
+/** A long page with a dialog and a sheet: while one is open, the page
+ * under the header does not scroll behind it, by wheel or keys, and the
+ * overlay stays in view. */
+export const PageShellWithOverlays: StoryObj = {
+  render: () => <LongPageWithOverlays />,
   parameters: { layout: "fullscreen" },
 };

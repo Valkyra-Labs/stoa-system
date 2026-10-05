@@ -54,3 +54,67 @@ test("ProgressBar keeps an Arabic value text right to left", async ({ page }) =>
   const [first, , last] = await lefts(value, [amount!.replace(/[\u2068\u2069]/g, ""), "من", total!.replace(/[\u2068\u2069]/g, "")]);
   expect(first).toBeGreaterThan(last!);
 });
+
+/** The left edges of the first occurrence of each substring in an
+ * element's text, wherever the text node that holds it is nested. */
+function leftsDeep(element: Locator, parts: string[]) {
+  return element.evaluate((el, wanted) => {
+    const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+    const nodes: Text[] = [];
+    for (let n = walker.nextNode(); n; n = walker.nextNode()) nodes.push(n as Text);
+    return wanted.map((part) => {
+      for (const node of nodes) {
+        const at = node.data.indexOf(part);
+        if (at < 0) continue;
+        const range = document.createRange();
+        range.setStart(node, at);
+        range.setEnd(node, at + part.length);
+        return range.getBoundingClientRect().left;
+      }
+      throw new Error(`"${part}" not found in "${el.textContent}"`);
+    });
+  }, parts);
+}
+
+test("StatBar keeps a value's number before its unit in a right-to-left page", async ({ page }) => {
+  await page.goto(story("controls-playback--counters", "dir:rtl;lang:ar"));
+  const value = page.locator(".stoa-statbar dd").filter({ hasText: "16.9" });
+  const [number, unit] = await leftsDeep(value, ["16.9", "ms"]);
+  expect(number).toBeLessThan(unit!);
+});
+
+test("Metric keeps an Arabic-Indic number before a Latin unit in a right-to-left page", async ({ page }) => {
+  await page.goto(story("overlays-lists-and-content--metrics", "dir:rtl;lang:ar"));
+  const value = page.locator(".stoa-metric__value").first();
+  await expect(value).toHaveText("١٦٫٩ ms");
+  const [number, unit] = await leftsDeep(value, ["١٦٫٩", "ms"]);
+  expect(number).toBeLessThan(unit!);
+});
+
+test("Table keeps a sign before its number and a unit after it in a right-to-left page", async ({ page }) => {
+  await page.goto(story("data-table--signed-values", "dir:rtl;lang:en"));
+  const falling = page.getByRole("cell", { name: "-0.42%" });
+  const [sign, digits] = await leftsDeep(falling, ["-", "0.42"]);
+  expect(sign).toBeLessThan(digits!);
+  const latency = page.getByRole("cell", { name: "16.9 ms" });
+  const [number, unit] = await leftsDeep(latency, ["16.9", "ms"]);
+  expect(number).toBeLessThan(unit!);
+});
+
+test("DataGrid keeps a sign before its number and a unit after it in a right-to-left page", async ({ page }) => {
+  await page.goto(story("data-datagrid--signed-values", "dir:rtl;lang:en"));
+  const falling = page.getByRole("gridcell", { name: "-0.42%" });
+  const [sign, digits] = await leftsDeep(falling, ["-", "0.42"]);
+  expect(sign).toBeLessThan(digits!);
+  const latency = page.getByRole("gridcell", { name: "16.9 ms" });
+  const [number, unit] = await leftsDeep(latency, ["16.9", "ms"]);
+  expect(number).toBeLessThan(unit!);
+});
+
+test("Ltr keeps a formula in order inside an Arabic sentence", async ({ page }) => {
+  await page.goto(story("overlays-lists-and-content--inline-isolates", "dir:rtl;lang:ar"));
+  const formula = page.locator(".stoa-ltr").first();
+  await expect(formula).toHaveText("2 + 2 = 4");
+  const [two, four] = await leftsDeep(formula, ["2", "4"]);
+  expect(two).toBeLessThan(four!);
+});

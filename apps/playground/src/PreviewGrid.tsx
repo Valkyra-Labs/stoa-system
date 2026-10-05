@@ -185,6 +185,39 @@ function PreviewFrame({
   // overlay opens, by which time it is in the document.
   const overlays = useRef<HTMLDivElement>(null);
   const overlayContainer = useCallback(() => overlays.current, []);
+  // The overlay box covers the part of the frame in view: it sticks to the
+  // top of the page's region, and its height is what is left of the frame
+  // between there and the region's bottom (app.css), so a dialog opened
+  // in a frame that starts half way down the window is centred in what
+  // shows of it, not partly below the window.
+  useEffect(() => {
+    const box = overlays.current;
+    const layer = box?.parentElement;
+    const body = layer?.parentElement;
+    const region = box?.closest<HTMLElement>(".stoa-page-shell__scroll");
+    if (!box || !layer || !body || !region) return;
+    let frame = 0;
+    const measure = () => {
+      frame = 0;
+      const a = body.getBoundingClientRect();
+      const r = region.getBoundingClientRect();
+      const visible = Math.max(0, Math.min(a.bottom, r.bottom) - Math.max(a.top, r.top));
+      layer.style.setProperty("--pg-frame-visible", `${visible}px`);
+    };
+    const schedule = () => {
+      frame ||= requestAnimationFrame(measure);
+    };
+    measure();
+    region.addEventListener("scroll", schedule, { passive: true });
+    const sizes = new ResizeObserver(schedule);
+    sizes.observe(region);
+    sizes.observe(body);
+    return () => {
+      cancelAnimationFrame(frame);
+      region.removeEventListener("scroll", schedule);
+      sizes.disconnect();
+    };
+  }, []);
   const spec = VIEWS.find((candidate) => candidate.id === view) ?? VIEWS[0]!;
   const name = `Preview ${slot}`;
   const ComponentScreen = settings.screen === "market" ? null : COMPONENT_SCREENS[settings.screen];

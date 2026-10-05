@@ -48,6 +48,11 @@ export type DataGridColumn<Row> = {
    * digits (a whole number with grouping, otherwise two decimals), an
    * enum editor's value as its option's label, and a string as it is. */
   format?: (value: DataGridValue, row: Row, locale: StoaFormat) => string;
+  /** The cells in the numeric face (Plex Mono). On by default for a column
+   * whose values are numbers, which are also aligned to the end with
+   * tabular figures; turn it off for a number shown as words, such as a
+   * date with its month's name, so the words are set in the sans face. */
+  mono?: boolean;
   /** Makes the cell editable with Enter, F2 or a double click. */
   editor?: DataGridEditor<Row>;
 };
@@ -495,10 +500,17 @@ export function DataGrid<Row>({
   };
 
   const move = (cell: DataGridCell, focus = true) => {
-    pendingFocus.current = focus;
     reveal(cell);
-    if (cell.row !== activeRaw.row || cell.column !== activeRaw.column) setActiveRaw(cell);
-    else if (focus) scroller.current?.querySelector<HTMLElement>(`[data-cell="${cell.row}:${cell.column}"]`)?.focus({ preventScroll: true });
+    if (cell.row !== activeRaw.row || cell.column !== activeRaw.column) {
+      // Focused once the new active cell is rendered.
+      pendingFocus.current = focus;
+      setActiveRaw(cell);
+    } else if (focus) {
+      // Already rendered: focused now. Nothing is left pending, or the
+      // render that a double click's editor causes would take the focus
+      // back to the cell and close the editor.
+      scroller.current?.querySelector<HTMLElement>(`[data-cell="${cell.row}:${cell.column}"]`)?.focus({ preventScroll: true });
+    }
   };
 
   const toggleRow = (r: number) => {
@@ -779,7 +791,14 @@ export function DataGrid<Row>({
           const text = defaultText(data, value, row, locale);
           const isEditing = isEditingRow && editing?.col === c;
           const numeric = typeof value === "number";
-          let content: ReactNode = <span className="stoa-data-grid__text">{marked(text, highlight)}</span>;
+          // A number's text takes the direction of its first letter, so
+          // "-0.42%" and "16.9 ms" keep their order in a right-to-left grid;
+          // the cell still aligns it to the end.
+          let content: ReactNode = (
+            <span className="stoa-data-grid__text" dir={numeric ? "auto" : undefined}>
+              {marked(text, highlight)}
+            </span>
+          );
           if (isEditing && editing && data.editor) {
             content =
               data.editor.kind === "enum" ? (
@@ -815,7 +834,7 @@ export function DataGrid<Row>({
               role={c === rowHeaderCol ? "rowheader" : "gridcell"}
               aria-readonly={data.editor || !editable ? undefined : true}
               data-editing={isEditing || undefined}
-              className={cellClass(col, c, numeric ? "stoa-data-grid__cell--num" : "")}
+              className={cellClass(col, c, numeric ? `stoa-data-grid__cell--num${data.mono === false ? "" : " stoa-data-grid__cell--mono"}` : data.mono ? "stoa-data-grid__cell--mono" : "")}
               onClick={() => {
                 if (!isEditing) move({ row: r, column: c });
               }}

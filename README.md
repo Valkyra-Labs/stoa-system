@@ -45,9 +45,15 @@ follow as the products need them.
     VisuallyHidden, Panel, StatBar and Metric, AppHeader, PageShell.
   - Overlays, lists and content: Dialog, Sheet, AlertDialog, Tooltip,
     ReorderableList, RecordList (the list of a master-detail view),
-    StepList, DescriptionList, LogView, CodeView.
+    StepList, DescriptionList, LogView, CodeView, and Ltr, an inline
+    left-to-right isolate for code, tickers and formulas in a sentence.
+    The values Stoa draws (StatBar and Metric values, number cells in
+    Table and DataGrid, values in its own sentences) are isolated in the
+    direction of their own first letter, so "-0.42%" and "16.9 ms" keep
+    their order in a right-to-left page.
   - Keyboard and preferences: Kbd, `useShortcuts`, ShortcutList and
-    ShortcutsDialog; ThemeSwitch (System, Light, Dark) and
+    ShortcutsDialog, and Button's `shortcut`, which draws the keys in
+    the button and sets `aria-keyshortcuts`; ThemeSwitch (System, Light, Dark) and
     LanguageSwitch with the preference hooks behind them.
 
   Words and digits follow the locale set with React Aria's
@@ -88,12 +94,117 @@ follow as the products need them.
 
 - Colour: a cool neutral scale, one blue accent, teal for up and bid,
   red for down and ask, amber for warnings; OKLCH; light and dark themes
-  (`data-theme`, or the system setting when unset).
+  (`data-theme`, or the system setting when unset). `color-scheme` is
+  set with the theme, so native controls, scrollbars and autofill are
+  drawn in it too.
 - Type: IBM Plex Sans, Plex Sans Arabic and Plex Mono, with Noto Sans
   Arabic after Plex Mono in the numeric stack for tabular Arabic-Indic
-  digits (all SIL OFL 1.1).
+  digits, and Plex Sans Arabic after it (all SIL OFL 1.1). See
+  [Fonts](#fonts) for what an application loads.
 - Space on a 4 px grid; radii from 0 to 8 px.
 - Motion: fast 80 ms, base 160 ms, slow 240 ms, value flash 600 ms.
+
+## Focus after an action
+
+An action that removes the control that has the focus must say where the
+focus goes; otherwise it falls to the page's body, and the next Tab starts
+again at the top of the page. Stoa's components do it themselves:
+
+- Dialog, Sheet and AlertDialog return the focus to their trigger. One
+  opened without a trigger returns it to whatever had it when it opened,
+  or, when that control is gone, to the tab stop that stands where it
+  was.
+- A dismissed Callout leaves the focus on the tab stop that stands where
+  it was.
+- ReorderableList (React Aria's GridList) moves the focus to the
+  neighbouring item when one is removed, and to the list when it empties.
+- Closing the last toast returns the focus to where it was before the
+  toasts.
+
+For an application's own action that removes the focused control (a
+selection bar that closes after Apply, a row deleted from its own
+button), call `keepFocusInPlace` with the control before the state change
+that removes it:
+
+```tsx
+<Button
+  onPress={(e) => {
+    keepFocusInPlace(e.target);
+    applyToSelection();
+  }}
+>
+  Apply
+</Button>
+```
+
+Once the control has left the document, and only if the focus went with
+it, the focus moves to the next tab stop where it was, or the one before.
+Where the action has an obvious next place (the grid's active cell after
+a bulk change, the step that follows a skipped one), focus that place
+directly instead.
+
+## Fonts
+
+Stoa names its faces in two stacks, `--stoa-font-family-sans` for words
+and `--stoa-font-family-mono` for numbers, code and fixed-width columns,
+and loads no font file itself: the application does, for example from
+Fontsource. What to load depends on the scripts the application shows:
+
+| Script | Load | Used for |
+|---|---|---|
+| Latin, Cyrillic | IBM Plex Sans 400 and 500, IBM Plex Mono 400 | All text; numbers, code and log times in the numeric face |
+| Arabic | IBM Plex Sans Arabic 400 and 500 | All Arabic text, including Arabic words inside the numeric face |
+| Arabic-Indic digits in columns | Noto Sans Arabic 400 (optional) | Tabular Arabic-Indic digits in the numeric face |
+
+```ts
+import "@fontsource/ibm-plex-sans/400.css";
+import "@fontsource/ibm-plex-sans/500.css";
+import "@fontsource/ibm-plex-mono/400.css";
+import "@fontsource/ibm-plex-sans-arabic/400.css";
+import "@fontsource/ibm-plex-sans-arabic/500.css";
+import "@fontsource/noto-sans-arabic/400.css"; // optional
+```
+
+IBM Plex Mono has no Arabic letters. Stoa sets words in the sans face
+(a log line's message, a progress bar's value text, StatBar labels, a
+DataGrid column with `mono: false`), and the numeric stack names Noto
+Sans Arabic, then IBM Plex Sans Arabic: Arabic text that still reaches
+the numeric face is drawn in one of them, joined, and never in a system
+monospace face that draws it as separate letters. Without Noto Sans
+Arabic, Arabic-Indic digits come from IBM Plex Sans Arabic, whose digits
+are proportional, so numbers in a column no longer line up digit for
+digit.
+
+### Arabic without a layout shift
+
+Fontsource's faces swap in when they arrive, so text is first drawn in
+whatever the stack falls back to. For Arabic, `tokens.css` defines two
+fallback faces after IBM Plex Sans Arabic in both stacks: Tahoma (Windows,
+macOS) and Geeza Pro (Apple systems), each scaled with `size-adjust` and
+given Plex Sans Arabic's ascent and descent, so a line drawn before the
+font arrives takes about the room it takes after. A system with neither
+font falls back to its own face, unscaled. On the "Layout/Panel > Arabic
+page" story with the Arabic fonts held back
+(`packages/react/e2e/arabic-cls.measure.mjs`), the layout shift fell from
+0.0136 to 0.0004 (median of 7 runs, Chromium 153, macOS 26, Apple M4 Pro).
+
+An application with an Arabic interface should also preload the Arabic
+face it shows first, so it usually arrives before the first paint; only
+when the page is in Arabic, since a preload that is not used costs the
+download:
+
+```ts
+import plexArabic from "@fontsource/ibm-plex-sans-arabic/files/ibm-plex-sans-arabic-arabic-400-normal.woff2?url";
+
+if (document.documentElement.lang === "ar") {
+  const link = Object.assign(document.createElement("link"), { rel: "preload", as: "font", type: "font/woff2", href: plexArabic, crossOrigin: "anonymous" });
+  document.head.append(link);
+}
+```
+
+Set `lang` and `dir` on the root element before the first paint (an inline
+script that reads the stored language), so the first layout is already
+the Arabic one.
 
 ## Development
 

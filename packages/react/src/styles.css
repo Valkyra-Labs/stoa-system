@@ -116,6 +116,8 @@
   color: var(--stoa-color-text-subtle);
   cursor: not-allowed;
 }
+/* A button's shortcut: its keys after the label, at the inline end. */
+.stoa-button__shortcut { margin-inline-start: var(--stoa-space-2); }
 .stoa-button[data-focus-visible], .stoa-slider__thumb[data-focus-visible] {
   outline: var(--stoa-focus-width) solid var(--stoa-color-focus);
   outline-offset: var(--stoa-focus-offset);
@@ -276,7 +278,9 @@
 
 .stoa-statbar { display: flex; flex-wrap: wrap; gap: var(--stoa-space-4); margin: 0; font-family: var(--stoa-font-family-mono); font-size: var(--stoa-font-size-2xs); }
 .stoa-statbar__item { display: flex; gap: var(--stoa-space-1); }
-.stoa-statbar dt { color: var(--stoa-color-text-muted); }
+/* The labels are words, in the sans face; the values stay in the numeric
+   face. */
+.stoa-statbar dt { color: var(--stoa-color-text-muted); font-family: var(--stoa-font-family-sans); }
 .stoa-statbar dd { margin: 0; font-variant-numeric: tabular-nums; }
 
 .stoa-field { display: grid; gap: var(--stoa-space-1); }
@@ -357,7 +361,9 @@
   gap: var(--stoa-space-1) var(--stoa-space-2);
 }
 .stoa-progress__label { font-size: var(--stoa-font-size-xs); color: var(--stoa-color-text-muted); }
-.stoa-progress__value { font-family: var(--stoa-font-family-mono); font-size: var(--stoa-font-size-xs); font-variant-numeric: tabular-nums; color: var(--stoa-color-text); }
+/* The value text is words ("1.8 MB of 4.8 MB"), so it is in the sans face;
+   its figures stay tabular. */
+.stoa-progress__value { font-family: var(--stoa-font-family-sans); font-size: var(--stoa-font-size-xs); font-variant-numeric: tabular-nums; color: var(--stoa-color-text); }
 .stoa-progress__track {
   grid-column: 1 / -1; position: relative; display: block; overflow: hidden;
   block-size: var(--stoa-space-2);
@@ -481,6 +487,9 @@
 .stoa-page-shell__scroll { position: relative; flex: 1; display: flex; flex-direction: column; min-block-size: 0; }
 .stoa-page-shell--fixed-header { block-size: 100dvh; min-block-size: 0; }
 .stoa-page-shell--fixed-header > .stoa-page-shell__scroll { overflow-y: auto; scrollbar-gutter: stable; }
+/* A modal overlay is open: the region holds still behind it, keeping its
+   scrollbar lane, so nothing under the overlay moves. */
+.stoa-page-shell--fixed-header > .stoa-page-shell__scroll[data-scroll-locked] { overflow-y: hidden; }
 /* A Tab stop only on a page with nothing else to focus; the ring sits
    inside the region, under the header's edge. */
 .stoa-page-shell__scroll:focus { outline: none; }
@@ -915,7 +924,7 @@
 .stoa-code__bar { display: flex; align-items: center; gap: var(--stoa-space-2); }
 .stoa-code__label { font-size: var(--stoa-font-size-xs); color: var(--stoa-color-text-muted); }
 .stoa-code__status { flex: 1; text-align: end; font-size: var(--stoa-font-size-xs); color: var(--stoa-color-text-muted); }
-.stoa-code__copy {
+.stoa-code__copy, .stoa-code__jump {
   font-size: var(--stoa-font-size-xs);
   min-block-size: var(--stoa-space-6);
   padding: calc(var(--stoa-space-1) / 2) calc(var(--stoa-space-1) * 1.5);
@@ -931,6 +940,10 @@
   background: var(--stoa-color-surface-sunken); color: var(--stoa-color-text);
   border: 1px solid var(--stoa-color-border); border-radius: var(--stoa-radius-md);
 }
+/* A log's long line wraps inside the log, so nothing runs off its side: a
+   right-to-left message would otherwise lose its start beyond the edge.
+   Code keeps its lines whole and scrolls sideways. */
+.stoa-code--log .stoa-code__scroll { white-space: pre-wrap; overflow-wrap: anywhere; }
 .stoa-code__scroll:focus-visible {
   outline: var(--stoa-focus-width) solid var(--stoa-color-focus);
   outline-offset: var(--stoa-focus-offset);
@@ -942,6 +955,9 @@
   user-select: none;
 }
 .stoa-code__time, .stoa-code__level { color: var(--stoa-color-text-muted); }
+/* A message given as a line's part is words, in the sans face: running
+   Arabic text is never set in the monospace face. */
+.stoa-code__message { font-family: var(--stoa-font-family-sans); }
 
 /* Metric: label, value with its unit, threshold and basis. Numbers are in
    the numeric face, whose Arabic-Indic digits are tabular too. Inside a
@@ -995,6 +1011,9 @@
   text-align: match-parent; text-align: -webkit-match-parent;
 }
 .stoa-description-list__value--numeric { font-family: var(--stoa-font-family-mono); font-variant-numeric: tabular-nums; }
+
+/* Ltr: a left-to-right run inside a sentence; the bdi isolates it. */
+.stoa-ltr--mono { font-family: var(--stoa-font-family-mono); font-variant-numeric: tabular-nums; }
 
 .stoa-metric { display: grid; gap: var(--stoa-space-1); margin: 0; }
 .stoa-metric dd { margin: 0; }
@@ -1124,7 +1143,8 @@
 .stoa-data-grid__cell--center { position: absolute; inset-block-start: 0; }
 .stoa-data-grid__cell--pin-edge { border-inline-end: 1px solid var(--stoa-color-border-strong); }
 .stoa-data-grid__cell--end { justify-content: flex-end; }
-.stoa-data-grid__cell--num { justify-content: flex-end; font-family: var(--stoa-font-family-mono); font-variant-numeric: tabular-nums; }
+.stoa-data-grid__cell--num { justify-content: flex-end; font-variant-numeric: tabular-nums; }
+.stoa-data-grid__cell--mono { font-family: var(--stoa-font-family-mono); }
 .stoa-data-grid__cell--select { justify-content: center; padding-inline: 0; }
 .stoa-data-grid__cell[data-editing] { overflow: visible; z-index: 2; padding-inline: 0; }
 .stoa-data-grid__cell:focus-visible {

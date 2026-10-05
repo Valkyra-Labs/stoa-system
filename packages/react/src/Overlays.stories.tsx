@@ -4,6 +4,7 @@ import { CodeView, LogView } from "./Code";
 import { Button } from "./Controls";
 import { AlertDialog, Dialog, Sheet } from "./Dialog";
 import { DescriptionList, type DescriptionItem } from "./DescriptionList";
+import { Ltr } from "./Ltr";
 import { Metric } from "./Metric";
 import { Panel, StatBar } from "./Panel";
 import { ReorderableList, type ReorderableItem } from "./ReorderableList";
@@ -11,6 +12,7 @@ import { ShortcutList, ShortcutsDialog, type ShortcutGroup } from "./Shortcuts";
 import { RecordList, type RecordListItem } from "./RecordList";
 import { StepList, type Step } from "./StepList";
 import { Tooltip } from "./Tooltip";
+import { useStoaFormat } from "./locale";
 
 const meta: Meta = { title: "Overlays, lists and content" };
 export default meta;
@@ -119,6 +121,48 @@ export const AlertAnswer: StoryObj = {
           <p>The agent asks to write to three files in the workspace.</p>
         </AlertDialog>
         <p>{answer}</p>
+      </div>
+    );
+  },
+};
+
+/** A confirmation an application opens from its own state, with no
+ * trigger: the control that started it is gone when it closes, so focus
+ * goes to the tab stop that took its place ("Start over") rather than to
+ * the page's body. */
+export const AlertWithoutTrigger: StoryObj = {
+  render: () => {
+    const [state, setState] = useState<"idle" | "asking" | "answered">("idle");
+    const [answer, setAnswer] = useState("");
+    return (
+      <div style={{ display: "grid", gap: "var(--stoa-space-3)", justifyItems: "start" }}>
+        {state === "idle" ? (
+          <Button onPress={() => setState("asking")}>Run step 3</Button>
+        ) : (
+          <p>{state === "asking" ? "Step 3 waits for an answer." : `Step 3: ${answer}`}</p>
+        )}
+        {state === "answered" && (
+          <Button
+            onPress={() => {
+              setAnswer("");
+              setState("idle");
+            }}
+          >
+            Start over
+          </Button>
+        )}
+        <AlertDialog
+          title="Send the reply?"
+          confirmLabel="Send"
+          isOpen={state === "asking"}
+          onOpenChange={(open) => {
+            if (!open) setState("answered");
+          }}
+          onConfirm={() => setAnswer("sent.")}
+          onCancel={() => setAnswer("skipped.")}
+        >
+          <p>The agent drafted a reply to the supplier and asks before sending it.</p>
+        </AlertDialog>
       </div>
     );
   },
@@ -325,6 +369,53 @@ export const LogArabic: StoryObj = {
   ),
 };
 
+/** A log that grows. It opens at its newest line and keeps the newest in
+ * view while the reader is at its end; scrolled up, it stays where the
+ * reader is and offers "Jump to latest", which goes back to the end and
+ * gives focus to the log. */
+export const LogFollow: StoryObj = {
+  render: () => {
+    const { locale, digits, integer } = useStoaFormat();
+    const arabic = locale.startsWith("ar");
+    const line = (i: number) => {
+      const time = digits(`10:25:${String(i % 60).padStart(2, "0")}`);
+      return arabic
+        ? { time, level: "الوكيل", text: `اكتملت الخطوة ${integer(i + 1)}.` }
+        : { time, level: "INFO", text: `Step ${integer(i + 1)} finished.` };
+    };
+    const [count, setCount] = useState(30);
+    const lines = Array.from({ length: count }, (_, i) => line(i));
+    return (
+      <div style={{ display: "grid", gap: "var(--stoa-space-2)", maxInlineSize: 480 }}>
+        <div>
+          <Button onPress={() => setCount((n) => n + 1)}>{arabic ? "أضف سطرًا" : "Add a line"}</Button>
+        </div>
+        <LogView label={arabic ? "سجل الوكيل" : "Agent log"} lines={lines} />
+      </div>
+    );
+  },
+};
+
+/** Long lines wrap inside the log instead of running off its side, so a
+ * long Arabic message shows its first word. */
+export const LogLongLines: StoryObj = {
+  render: () => {
+    const arabic = useStoaFormat().locale.startsWith("ar");
+    return (
+      <div style={{ maxInlineSize: 360 }}>
+        <LogView
+          label={arabic ? "سجل الوكيل" : "Agent log"}
+          lines={[
+            { time: "10:25:01", level: "INFO", text: "The plan was approved: fetch the inbox, draft three replies, ask before sending each one." },
+            { time: "10:25:02", level: "INFO", text: "اعتُمدت الخطة: جلب البريد الوارد، ثم كتابة ثلاثة ردود، والسؤال قبل إرسال كل رد." },
+            { time: "10:25:03", level: "WARN", text: "The second reply is longer than the limit the recipient set for their inbox." },
+          ]}
+        />
+      </div>
+    );
+  },
+};
+
 const CODE = `import { tokens } from "@valkyra-labs/stoa-tokens";
 
 export function rowHeight(density: "compact" | "regular") {
@@ -337,6 +428,41 @@ export const Code: StoryObj = { render: () => <CodeView label="rowHeight.ts" cod
 
 /** With line numbers, which a copy leaves out. */
 export const CodeNumbered: StoryObj = { render: () => <CodeView label="rowHeight.ts" code={CODE} lineNumbers /> };
+
+/** Runs inside a sentence. Ltr keeps a formula, a ticker or an
+ * identifier left to right and in one piece in a right-to-left sentence;
+ * `bdi` gives a value of unknown direction its own. The sentence follows
+ * the language: Arabic in an Arabic frame, English otherwise. */
+export const InlineIsolates: StoryObj = {
+  render: () => {
+    const arabic = useStoaFormat().locale.startsWith("ar");
+    return arabic ? (
+      <div style={{ display: "grid", gap: "var(--stoa-space-2)" }}>
+        <p>
+          الجواب هو <Ltr>2 + 2 = 4</Ltr> دائمًا.
+        </p>
+        <p>
+          ارتفع سهم <Ltr mono lang="en">AAPL</Ltr> بنسبة <bdi>-0.42%</bdi> اليوم.
+        </p>
+        <p>
+          المعرف <Ltr mono>ORD-000042</Ltr> محفوظ.
+        </p>
+      </div>
+    ) : (
+      <div style={{ display: "grid", gap: "var(--stoa-space-2)" }}>
+        <p>
+          The answer is <Ltr>2 + 2 = 4</Ltr>, always.
+        </p>
+        <p>
+          <Ltr mono>AAPL</Ltr> moved <bdi>-0.42%</bdi> today.
+        </p>
+        <p>
+          Order <Ltr mono>ORD-000042</Ltr> is saved.
+        </p>
+      </div>
+    );
+  },
+};
 
 /** Metrics with a basis and each threshold tone. */
 export const Metrics: StoryObj = {

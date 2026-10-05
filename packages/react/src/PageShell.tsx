@@ -1,4 +1,4 @@
-import { useEffect, useId, useLayoutEffect, useRef, useState, type ReactNode } from "react";
+import { createContext, useCallback, useEffect, useId, useLayoutEffect, useRef, useState, type ReactNode } from "react";
 import { useStoaFormat } from "./locale";
 import { isTypingTarget } from "./Shortcuts";
 
@@ -30,6 +30,14 @@ const FOCUSABLE =
 const PAGE_FRACTION = 0.875;
 const LINE = 40;
 
+/** Locks the scrolling of the page shell around it, while a modal overlay
+ * is open, and returns the function that unlocks it. React Aria locks the
+ * document's scrolling, but the page scrolls in the shell's region, which
+ * would go on scrolling behind the overlay (and, for an overlay portalled
+ * into the region, scroll the overlay out of view). Null outside a page
+ * shell. */
+export const PageScrollLock = createContext<(() => () => void) | null>(null);
+
 /** The frame of an application page: a skip link, the header, the main
  * region and an optional footer, as landmarks. The skip link is the first
  * Tab stop, hidden until focused; it moves focus to the main region, past
@@ -43,6 +51,18 @@ export function PageShell({ header, children, footer, headerPosition = "fixed" }
   const shell = useRef<HTMLDivElement>(null);
   const scroll = useRef<HTMLDivElement>(null);
   const fixed = headerPosition === "fixed";
+  // Modal overlays open now; the region does not scroll while any is.
+  const [locks, setLocks] = useState(0);
+  const locked = useRef(false);
+  locked.current = locks > 0;
+  const lock = useCallback(() => {
+    setLocks((n) => n + 1);
+    let held = true;
+    return () => {
+      if (held) setLocks((n) => n - 1);
+      held = false;
+    };
+  }, []);
   // A region that scrolls must be reachable from the keyboard. When the
   // page holds a control, Tab reaches it and the keys scroll from there;
   // when it holds only text, the region itself becomes a Tab stop, as
@@ -92,7 +112,7 @@ export function PageShell({ header, children, footer, headerPosition = "fixed" }
       }
       setTimeout(() => {
         const region = scroll.current;
-        if (event.defaultPrevented || !region) return;
+        if (event.defaultPrevented || !region || locked.current) return;
         const page = region.clientHeight * PAGE_FRACTION;
         const back = event.key === "PageUp" || event.key === "ArrowUp" || (event.key === " " && event.shiftKey);
         const by =
@@ -109,26 +129,33 @@ export function PageShell({ header, children, footer, headerPosition = "fixed" }
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [fixed]);
   return (
-    <div ref={shell} className={`stoa-page-shell${fixed ? " stoa-page-shell--fixed-header" : ""}`}>
-      <a
-        className="stoa-skip-link"
-        href={`#${id}`}
-        onClick={(e) => {
-          // Focus the target directly: a fragment link moves focus only in
-          // some browsers, and would change the URL of a routed page.
-          e.preventDefault();
-          main.current?.focus();
-        }}
-      >
-        {messages.skipToMain}
-      </a>
-      {header}
-      <div ref={scroll} className="stoa-page-shell__scroll" tabIndex={fixed && ownStop ? 0 : undefined}>
-        <main ref={main} id={id} tabIndex={-1} className="stoa-page-shell__main">
-          {children}
-        </main>
-        {footer && <footer className="stoa-page-shell__footer">{footer}</footer>}
+    <PageScrollLock.Provider value={lock}>
+      <div ref={shell} className={`stoa-page-shell${fixed ? " stoa-page-shell--fixed-header" : ""}`}>
+        <a
+          className="stoa-skip-link"
+          href={`#${id}`}
+          onClick={(e) => {
+            // Focus the target directly: a fragment link moves focus only in
+            // some browsers, and would change the URL of a routed page.
+            e.preventDefault();
+            main.current?.focus();
+          }}
+        >
+          {messages.skipToMain}
+        </a>
+        {header}
+        <div
+          ref={scroll}
+          className="stoa-page-shell__scroll"
+          tabIndex={fixed && ownStop ? 0 : undefined}
+          data-scroll-locked={locks > 0 || undefined}
+        >
+          <main ref={main} id={id} tabIndex={-1} className="stoa-page-shell__main">
+            {children}
+          </main>
+          {footer && <footer className="stoa-page-shell__footer">{footer}</footer>}
+        </div>
       </div>
-    </div>
+    </PageScrollLock.Provider>
   );
 }

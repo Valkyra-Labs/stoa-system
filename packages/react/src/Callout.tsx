@@ -1,5 +1,6 @@
-import type { ReactNode } from "react";
+import { useRef, type ReactNode } from "react";
 import { Button } from "./Controls";
+import { keepFocusInPlace } from "./focus";
 import { VisuallyHidden } from "./LiveRegion";
 import { useStoaFormat, type StoaMessages } from "./locale";
 
@@ -35,7 +36,9 @@ export type CalloutProps = {
    * reliably only with "alert". */
   role?: "status" | "alert" | "none";
   /** Shows a close button (named with the locale's "Dismiss") that calls
-   * this; the caller removes the callout. */
+   * this; the caller removes the callout. Once it is gone, the focus moves
+   * to the tab stop that stands where it was (keepFocusInPlace), not to
+   * the page's body. */
   onDismiss?: () => void;
 };
 
@@ -45,8 +48,9 @@ export type CalloutProps = {
  * assistive technology before the text. */
 export function Callout({ tone = "info", title, children, action, role = "status", onDismiss }: CalloutProps) {
   const { messages } = useStoaFormat();
+  const root = useRef<HTMLDivElement>(null);
   return (
-    <div className={`stoa-callout stoa-callout--${tone}`} role={role === "none" ? undefined : role}>
+    <div ref={root} className={`stoa-callout stoa-callout--${tone}`} role={role === "none" ? undefined : role}>
       <span className={`stoa-tone-symbol stoa-tone-symbol--${tone}`} aria-hidden="true">
         {TONE_SYMBOL[tone]}
       </span>
@@ -57,7 +61,14 @@ export function Callout({ tone = "info", title, children, action, role = "status
         {action && <div className="stoa-callout__action">{action}</div>}
       </div>
       {onDismiss && (
-        <Button className="stoa-dismiss" aria-label={messages.dismiss} onPress={onDismiss}>
+        <Button
+          className="stoa-dismiss"
+          aria-label={messages.dismiss}
+          onPress={() => {
+            if (root.current) keepFocusInPlace(root.current);
+            onDismiss();
+          }}
+        >
           <span aria-hidden="true">×</span>
         </Button>
       )}

@@ -36,3 +36,27 @@ test("a density mode set on the root element wins over the default", () => {
     assert.ok(regular !== -1 && block > regular, `${mode} comes after the default block`);
   }
 });
+
+test("color-scheme follows the theme, so native controls and scrollbars match it", () => {
+  assert.match(css, /:root, \[data-theme="light"\] \{\s*color-scheme: light;\s*\}/);
+  assert.match(css, /\[data-theme="dark"\] \{\s*color-scheme: dark;\s*\}/);
+  // With no theme chosen, the system's setting.
+  assert.match(css, /@media \(prefers-color-scheme: dark\) \{\s*:root:not\(\[data-theme="light"\]\) \{\s*color-scheme: dark;\s*\}\s*\}/);
+});
+
+test("Arabic fallback faces are scaled to IBM Plex Sans Arabic and named in both stacks after it", () => {
+  for (const family of ["IBM Plex Sans Arabic Tahoma Fallback", "IBM Plex Sans Arabic Geeza Fallback"]) {
+    const at = css.indexOf(`font-family: "${family}"`);
+    assert.ok(at > 0, `${family} is defined`);
+    const face = css.slice(at, css.indexOf("}", at));
+    assert.match(face, /src: local\(/);
+    assert.match(face, /unicode-range: U\+0600-06FF/);
+    assert.match(face, /size-adjust: \d+(\.\d)?%/);
+    assert.match(face, /ascent-override: \d+(\.\d)?%;\s*descent-override: \d+(\.\d)?%;\s*line-gap-override: 0%/);
+  }
+  for (const stack of ["sans", "mono"]) {
+    const value = css.match(new RegExp(`--stoa-font-family-${stack}: ([^;]+);`))[1];
+    const plex = value.indexOf("'IBM Plex Sans Arabic'");
+    assert.ok(plex >= 0 && value.indexOf("'IBM Plex Sans Arabic Tahoma Fallback'") > plex, `${stack}: the fallbacks come after Plex Sans Arabic`);
+  }
+});

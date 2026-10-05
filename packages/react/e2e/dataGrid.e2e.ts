@@ -122,3 +122,33 @@ test("the focus stays in the grid, at the same position, when the focused row is
   await page.keyboard.press("ArrowDown");
   await expect(focused).toHaveAttribute("data-cell", "3:2");
 });
+
+for (const [name, column, editor] of [
+  ["a list editor", "Status", "listbox"],
+  ["a text editor", "Note", "textbox"],
+] as const) {
+  test(`a double click on an editable cell opens ${name}, on a cell that was active and on one that was not`, async ({ page }) => {
+    const grid = await openGrid(page, "editable", "Orders, editable");
+    const columnIndex = await grid.getByRole("columnheader").evaluateAll((heads, wanted) => heads.findIndex((h) => h.textContent?.trim() === wanted), column);
+    const cell = (row: number) => grid.locator(`[data-cell="${row}:${columnIndex}"]`);
+    // A cell that was not active.
+    await cell(2).dblclick();
+    await expect(grid.getByRole(editor)).toBeVisible();
+    await expect(grid.getByRole(editor)).toBeFocused();
+    await page.keyboard.press("Escape");
+    await expect(grid.getByRole(editor)).toHaveCount(0);
+    await expect(cell(2)).toBeFocused();
+    // The cell that is active now, clicked once before.
+    await cell(2).click();
+    await cell(2).dblclick();
+    await expect(grid.getByRole(editor)).toBeVisible();
+    await expect(grid.getByRole(editor)).toBeFocused();
+    await page.keyboard.press("Escape");
+    // The keyboard still opens it as before.
+    await cell(3).click();
+    await page.keyboard.press("Enter");
+    await expect(grid.getByRole(editor)).toBeFocused();
+    await page.keyboard.press("Escape");
+    await expect(cell(3)).toBeFocused();
+  });
+}

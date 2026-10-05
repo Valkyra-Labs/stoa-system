@@ -137,3 +137,41 @@ export const Trades: StoryObj = {
     </Panel>
   ),
 };
+
+type Move = { id: string; name: string; change: number; latency: number };
+
+const MOVES: Move[] = [
+  { id: "1", name: "OFZ 26238", change: 1.25, latency: 4.2 },
+  { id: "2", name: "OFZ 26240", change: -0.42, latency: 16.9 },
+  { id: "3", name: "OFZ 26243", change: 0, latency: 0.5 },
+];
+
+const MOVE_HEADERS = {
+  en: { name: "Issue", change: "Change", latency: "Quote latency" },
+  ar: { name: "الإصدار", change: "التغير", latency: "زمن التسعير" },
+};
+
+/** Values with a sign or a unit in number columns: each value is isolated
+ * in the direction of its own first letter, so "-0.42%" keeps its sign
+ * before the number and "16.9 ms" its unit after it in a right-to-left
+ * page, while the column stays aligned to the end. */
+export const SignedValues: StoryObj = {
+  render: () => {
+    const locale = useStoaFormat();
+    const h = MOVE_HEADERS[locale.locale.startsWith("ar") ? "ar" : "en"];
+    return (
+      <Table<Move>
+        caption="Moves since the open"
+        rowKey={(m) => m.id}
+        emptyText="No moves."
+        rowHeader="name"
+        rows={MOVES}
+        columns={[
+          { id: "name", header: h.name },
+          { id: "change", header: h.change, numeric: true, cell: (m) => `${locale.decimal(m.change, 2)}%` },
+          { id: "latency", header: h.latency, numeric: true, cell: (m) => `${locale.decimal(m.latency, 1)} ms` },
+        ]}
+      />
+    );
+  },
+};

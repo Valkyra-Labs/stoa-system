@@ -8,6 +8,7 @@ import { Kbd, useShortcuts } from "./Shortcuts";
 import { Slider } from "./Slider";
 import { ButtonGroup, Toolbar, ToolbarSeparator } from "./Toolbar";
 import { Checkbox, CheckboxGroup, Switch } from "./Toggles";
+import { useStoaFormat } from "./locale";
 
 const meta: Meta = { title: "Controls/Inputs" };
 export default meta;
@@ -387,6 +388,33 @@ export const ButtonGroupAlone: StoryObj = {
       <Button>Zoom out</Button>
     </ButtonGroup>
   ),
+};
+
+/** Buttons with their keyboard shortcut: the keys after the label,
+ * hidden from assistive technology, which reads the label as the name and
+ * the shortcut from aria-keyshortcuts. The keys stay left to right; in a
+ * right-to-left page they sit at the label's left, its inline end. */
+export const ButtonShortcuts: StoryObj = {
+  render: () => {
+    const arabic = useStoaFormat().locale.startsWith("ar");
+    const w = arabic
+      ? { stop: "إيقاف", pause: "إيقاف مؤقت", search: "بحث", help: "اختصارات لوحة المفاتيح" }
+      : { stop: "Stop", pause: "Pause", search: "Search", help: "Keyboard shortcuts" };
+    return (
+      <div style={row}>
+        <Button variant="danger" shortcut={{ key: "s" }}>
+          {w.stop}
+        </Button>
+        <Button shortcut={{ key: " " }}>{w.pause}</Button>
+        <Button variant="primary" shortcut={{ key: "k", modifiers: ["mod"] }}>
+          {w.search}
+        </Button>
+        <Button variant="ghost" size="small" shortcut={{ key: "?" }}>
+          {w.help}
+        </Button>
+      </div>
+    );
+  },
 };
 
 /** One key, and combinations. A combination stays left to right in a
