@@ -110,3 +110,64 @@ test("a toast raised in the dark right-to-left frame appears in that frame's end
   await region.getByRole("button", { name: "Dismiss" }).click();
   await expect(region.locator(".stoa-toast")).toHaveCount(0);
 });
+
+/** The window's box, to check that an overlay is wholly in view. */
+async function expectInView(page: Page, inner: Locator) {
+  const a = (await inner.boundingBox())!;
+  const view = page.viewportSize()!;
+  expect(a.y).toBeGreaterThanOrEqual(-0.5);
+  expect(a.y + a.height).toBeLessThanOrEqual(view.height + 0.5);
+}
+
+/** Waits for the overlay's entrance; endless animations (a spinner, a
+ * pulse) are not waited for. */
+const settled = (page: Page) =>
+  page.evaluate(async () => {
+    const finite = document.getAnimations().filter((a) => a.effect?.getComputedTiming().iterations !== Infinity);
+    await Promise.all(finite.map((a) => a.finished.catch(() => undefined)));
+  });
+
+test.describe("at 1440 by 900, where the frames are one under the other", () => {
+  test.use({ viewport: { width: 1440, height: 900 } });
+
+  test("the page does not scroll behind a dialog open in a frame, and the dialog stays in view", async ({ page }) => {
+    await page.goto("/");
+    await showScreen(page, "overlays");
+    const region = page.locator(".stoa-page-shell__scroll");
+    const frame = page.locator('[data-slot="1"] [data-frame]');
+    await frame.getByRole("button", { name: "Order details" }).click();
+    const dialog = frame.getByRole("dialog");
+    await expect(dialog).toBeVisible();
+    await settled(page);
+    const before = (await dialog.boundingBox())!;
+    const top = await region.evaluate((el) => el.scrollTop);
+    await page.mouse.move(before.x + before.width / 2, before.y + before.height / 2);
+    await page.mouse.wheel(0, 800);
+    await page.mouse.move(before.x - 40, before.y + 10);
+    await page.mouse.wheel(0, 800);
+    await page.waitForTimeout(300);
+    expect(await region.evaluate((el) => el.scrollTop)).toBe(top);
+    expect(await dialog.boundingBox()).toEqual(before);
+    await expectInView(page, dialog);
+    await page.keyboard.press("Escape");
+    await expect(dialog).toHaveCount(0);
+  });
+
+  test("a dialog opened in a frame that is partly scrolled out of view opens wholly in view", async ({ page }) => {
+    await page.goto("/");
+    await showScreen(page, "overlays");
+    const region = page.locator(".stoa-page-shell__scroll");
+    const second = page.locator('[data-slot="2"] [data-frame]');
+    // Scroll until the second frame's top is in the lower half of the window.
+    const at = (await second.boundingBox())!.y;
+    await region.evaluate((el, by) => el.scrollBy({ top: by }), at - 450);
+    await expect.poll(async () => Math.round((await second.boundingBox())!.y)).toBeLessThan(500);
+    await second.getByRole("button", { name: "Order details" }).click();
+    const dialog = second.getByRole("dialog");
+    await expect(dialog).toBeVisible();
+    await settled(page);
+    await expectInView(page, dialog);
+    await expectInView(page, dialog.getByRole("button", { name: "Close" }));
+    await page.keyboard.press("Escape");
+  });
+});
