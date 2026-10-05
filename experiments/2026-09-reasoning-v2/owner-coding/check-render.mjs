@@ -13,11 +13,15 @@ const reportPath = process.argv[3] ?? `${here}render-report.json`;
 const d = JSON.parse(readFileSync(dataPath, "utf8"));
 // Each screen renders in its own process with a time and memory limit: a
 // generation that renders itself recursively must not take the check down.
+// The process also runs under Node's permission model, reading only the
+// renderer bundle and the data file: a generation is model output, and
+// without this it could reach `process` and write files or run commands.
+const checkJs = `${here}render-dist/check/check.js`;
 const all = [...d.items, ...d.examples];
 const res = all.map((item, i) => {
   try {
-    const out = execFileSync("node", ["--max-old-space-size=256", "--stack-size=2000", "--input-type=module", "-e",
-      `const { check } = await import(${JSON.stringify(`${here}render-dist/check/check.js`)});
+    const out = execFileSync("node", ["--max-old-space-size=256", "--stack-size=2000", "--permission", `--allow-fs-read=${checkJs}`, `--allow-fs-read=${dataPath}`, "--input-type=module", "-e",
+      `const { check } = await import(${JSON.stringify(checkJs)});
        const d = JSON.parse((await import("node:fs")).readFileSync(${JSON.stringify(dataPath)}, "utf8"));
        const it = [...d.items, ...d.examples][${i}];
        process.stdout.write(JSON.stringify(check([it])[0]));`], { encoding: "utf8", timeout: 15000, stdio: ["ignore", "pipe", "ignore"] });
