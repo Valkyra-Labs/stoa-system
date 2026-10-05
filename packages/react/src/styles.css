@@ -273,10 +273,13 @@
    open. */
 .stoa-field__input {
   min-inline-size: 0;
-  font: inherit; font-family: var(--stoa-font-family-mono);
+  font: inherit; font-family: var(--stoa-font-family-sans);
   padding: var(--stoa-space-2); border: 1px solid var(--stoa-color-border-strong);
   border-radius: var(--stoa-radius-sm); background: var(--stoa-color-surface); color: var(--stoa-color-text);
 }
+/* Numbers, code and maths: the monospace face, with tabular figures so
+   digits line up from one value to the next. */
+.stoa-field__input--mono { font-family: var(--stoa-font-family-mono); font-variant-numeric: tabular-nums; }
 .stoa-field__input[data-focused] { outline: var(--stoa-focus-width) solid var(--stoa-color-focus); outline-offset: 0; }
 .stoa-field__description { font-size: var(--stoa-font-size-2xs); color: var(--stoa-color-text-muted); }
 .stoa-field__input[data-invalid] { border-color: var(--stoa-color-down); }

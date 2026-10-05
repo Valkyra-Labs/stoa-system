@@ -86,6 +86,7 @@ export function FontInspector({
           value={catalogueId}
           onChange={setCatalogueId}
           dir="ltr"
+          mono
           description="For example ibm-plex-sans or noto-sans-arabic. Fetched from api.fontsource.org, with the licence it records."
         />
         <Button onPress={() => onFontsourceId(catalogueId.trim())} isDisabled={busy || catalogueId.trim() === ""}>

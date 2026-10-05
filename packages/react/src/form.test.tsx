@@ -48,6 +48,15 @@ describe("TextField: its label", () => {
   });
 });
 
+describe("TextField: its face", () => {
+  it("is in the sans face by default, and in the monospace face with mono", () => {
+    const { rerender } = render(<TextField label="Issuer" value="" onChange={() => {}} />);
+    expect(screen.getByRole("textbox", { name: "Issuer" }).className).toBe("stoa-field__input");
+    rerender(<TextField label="Issuer" mono value="" onChange={() => {}} />);
+    expect(screen.getByRole("textbox", { name: "Issuer" }).className).toBe("stoa-field__input stoa-field__input--mono");
+  });
+});
+
 describe("TextField: ref, invalid state and search", () => {
   it("hands its input to a ref, so a caller can focus it", () => {
     const ref = createRef<HTMLInputElement>();

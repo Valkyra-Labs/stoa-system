@@ -210,6 +210,11 @@ describe("NumberField", () => {
     expect(screen.getByText("px").getAttribute("aria-hidden")).toBe("true");
   });
 
+  it("is in the monospace face, as a mono TextField is", () => {
+    render(<NumberField label="Quantity" value={500} onChange={() => {}} />);
+    expect(screen.getByRole("textbox", { name: "Quantity" }).className).toContain("stoa-field__input--mono");
+  });
+
   it("takes digits typed in Latin under a locale that writes Arabic-Indic digits, and shows them in the locale's", () => {
     const onChange = vi.fn();
     render(

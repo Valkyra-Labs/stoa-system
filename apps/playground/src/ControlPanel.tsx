@@ -192,6 +192,7 @@ function TokenControl({
             value={text}
             onChange={(value) => onEdit(id, value)}
             dir="ltr"
+            mono
             aria-describedby={describedBy}
             description={
               control.kind === "color" && !isColor(effective)

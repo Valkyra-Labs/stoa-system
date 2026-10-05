@@ -8,7 +8,8 @@ const meta: Meta = { title: "Controls/Form" };
 export default meta;
 
 /** A labelled field with a description. Maths and prices stay left to
- * right inside a right-to-left page (`dir="ltr"` on the input). */
+ * right inside a right-to-left page (`dir="ltr"` on the input), and take
+ * the monospace face with tabular figures (`mono`), as NumberField does. */
 export const Fields: StoryObj = {
   render: () => {
     const [limit, setLimit] = useState("222.60");
@@ -16,11 +17,27 @@ export const Fields: StoryObj = {
     return (
       <Panel title="Order">
         <div style={{ display: "grid", gap: "var(--stoa-space-3)", maxInlineSize: 320 }}>
-          <TextField label="Limit price" value={limit} onChange={setLimit} dir="ltr" description="Tick 0.01" />
+          <TextField label="Limit price" value={limit} onChange={setLimit} dir="ltr" mono description="Tick 0.01" />
           <NumberField label="Quantity" value={quantity} onChange={setQuantity} minValue={1} step={100} />
           <NumberField label="Row height in px" unit="px" size="small" value={28} onChange={() => {}} minValue={0} />
         </div>
       </Panel>
+    );
+  },
+};
+
+/** The two faces: a name in the sans face, the default, which joins the
+ * letters of an Arabic name; and an amount in the monospace face with
+ * tabular figures (`mono`). */
+export const TextFieldFaces: StoryObj = {
+  render: () => {
+    const [issuer, setIssuer] = useState("شركة غازبروم كابيتال");
+    const [amount, setAmount] = useState("1,250,000.00");
+    return (
+      <div style={{ display: "grid", gap: "var(--stoa-space-3)", maxInlineSize: 320 }}>
+        <TextField label="Issuer" value={issuer} onChange={setIssuer} dir="auto" />
+        <TextField label="Amount" value={amount} onChange={setAmount} dir="ltr" mono />
+      </div>
     );
   },
 };

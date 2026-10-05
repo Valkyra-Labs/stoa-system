@@ -369,7 +369,7 @@ function NumberInput({ unit }: { unit?: string }) {
 
   return (
     <Group ref={group} className="stoa-number__group">
-      <Input className="stoa-field__input stoa-number__input" onChange={onChange} />
+      <Input className="stoa-field__input stoa-field__input--mono stoa-number__input" onChange={onChange} />
       {unit && (
         <span className="stoa-number__unit" aria-hidden="true">
           {unit}

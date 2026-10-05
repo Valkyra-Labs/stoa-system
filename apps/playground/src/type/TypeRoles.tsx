@@ -230,6 +230,7 @@ function RoleFields({
               set({ tracking: { ...role.tracking, value: Number.isFinite(value) ? value : 0 } });
             }}
             dir="ltr"
+            mono
             description={`letter-spacing, in ${role.tracking.unit}`}
           />
           <ChoiceGroup
@@ -264,6 +265,7 @@ function RoleFields({
             set({ features });
           }}
           dir="ltr"
+          mono
           description={
             featureTags.length === 0
               ? "Tags and values, for example: tnum, zero. No font loaded for this family, so the tags are not checked."

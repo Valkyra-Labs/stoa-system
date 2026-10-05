@@ -335,9 +335,10 @@ function Screen({
               value={limit}
               onChange={setLimit}
               dir="ltr"
+              mono
               description={text.tick(locale.decimal(0.01, 2))}
             />
-            <TextField label={text.quantity} value={quantity} onChange={setQuantity} dir="ltr" />
+            <TextField label={text.quantity} value={quantity} onChange={setQuantity} dir="ltr" mono />
             <div className="pg-row">
               <Button variant="primary">{text.send}</Button>
               <Button>{text.clear}</Button>

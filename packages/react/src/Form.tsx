@@ -29,6 +29,13 @@ export type TextFieldProps = {
   placeholder?: string;
   /** Direction of the typed text; maths stays left to right in an RTL page. */
   dir?: "ltr" | "rtl" | "auto";
+  /** The monospace face with tabular figures, for a value whose
+   * characters must line up: a number or an amount, code, a line of
+   * maths. Off by default: names, searches and prose take the sans face.
+   * The monospace stack draws Arabic with Noto Sans Arabic, so a mono
+   * field that may hold Arabic text needs that font loaded (without it
+   * the browser falls back to a face that may not join the letters). */
+  mono?: boolean;
   autoFocus?: boolean;
   /** Ids of further elements that describe the input, announced after
    * `description`. */
@@ -47,9 +54,10 @@ export type TextFieldProps = {
   errorMessage?: string;
 };
 
-/** A labelled text input. Enter can submit without a surrounding form.
- * Validation is the caller's: it decides when the value is invalid and
- * says why in `errorMessage` (React Aria's FieldError). */
+/** A labelled text input, in the sans face (`mono` for numbers, code and
+ * maths). Enter can submit without a surrounding form. Validation is the
+ * caller's: it decides when the value is invalid and says why in
+ * `errorMessage` (React Aria's FieldError). */
 export function TextField({
   ref,
   label,
@@ -60,6 +68,7 @@ export function TextField({
   description,
   placeholder,
   dir,
+  mono = false,
   autoFocus,
   "aria-describedby": describedBy,
   type = "text",
@@ -80,7 +89,7 @@ export function TextField({
       <Label className={hideLabel ? "stoa-visually-hidden" : "stoa-field__label"}>{label}</Label>
       <Input
         ref={ref}
-        className="stoa-field__input"
+        className={mono ? "stoa-field__input stoa-field__input--mono" : "stoa-field__input"}
         placeholder={placeholder}
         dir={dir}
         spellCheck={false}
