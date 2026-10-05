@@ -63,3 +63,26 @@ test("words are set in the sans face: LogView's message, ProgressBar's value tex
   expect(await family(".stoa-statbar dt")).toMatch(/^"IBM Plex Sans"/);
   expect(await family(".stoa-statbar dd")).toMatch(/^"IBM Plex Mono"/);
 });
+
+test("Arabic text drawn before IBM Plex Sans Arabic arrives takes the same lines as after it, where a scaled fallback face is installed", async ({ page }) => {
+  let release = () => {};
+  const held = new Promise<void>((resolve) => (release = resolve));
+  await page.route(/(ibm-plex-sans-arabic|noto-sans-arabic).*\.woff2?$/, async (route) => {
+    await held;
+    await route.continue();
+  });
+  await page.goto(story("layout-panel--arabic-page"));
+  const paragraphs = page.locator(".stoa-panel p");
+  await paragraphs.first().waitFor();
+  const before = await platformFonts(page, ".stoa-panel p");
+  const boxes = () => paragraphs.evaluateAll((ps) => ps.map((p) => Math.round(p.getBoundingClientRect().height)));
+  const heights = await boxes();
+  release();
+  await page.evaluate(() => document.fonts.ready);
+  await expect.poll(async () => (await platformFonts(page, ".stoa-panel p"))[0]!.fonts.some((f) => f.familyName === "IBM Plex Sans Arabic")).toBe(true);
+  // Only where the system has a face Stoa's fallbacks scale (Tahoma on
+  // Windows and macOS, Geeza Pro on Apple systems); elsewhere the text
+  // falls to the system's own face, which nothing scales.
+  const scaled = before[0]!.fonts.some((f) => f.familyName === "Tahoma" || f.familyName === "Geeza Pro");
+  if (scaled) expect(await boxes()).toEqual(heights);
+});

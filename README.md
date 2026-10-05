@@ -175,6 +175,37 @@ Arabic, Arabic-Indic digits come from IBM Plex Sans Arabic, whose digits
 are proportional, so numbers in a column no longer line up digit for
 digit.
 
+### Arabic without a layout shift
+
+Fontsource's faces swap in when they arrive, so text is first drawn in
+whatever the stack falls back to. For Arabic, `tokens.css` defines two
+fallback faces after IBM Plex Sans Arabic in both stacks: Tahoma (Windows,
+macOS) and Geeza Pro (Apple systems), each scaled with `size-adjust` and
+given Plex Sans Arabic's ascent and descent, so a line drawn before the
+font arrives takes about the room it takes after. A system with neither
+font falls back to its own face, unscaled. On the "Layout/Panel > Arabic
+page" story with the Arabic fonts held back
+(`packages/react/e2e/arabic-cls.measure.mjs`), the layout shift fell from
+0.0136 to 0.0004 (median of 7 runs, Chromium 153, macOS 26, Apple M4 Pro).
+
+An application with an Arabic interface should also preload the Arabic
+face it shows first, so it usually arrives before the first paint; only
+when the page is in Arabic, since a preload that is not used costs the
+download:
+
+```ts
+import plexArabic from "@fontsource/ibm-plex-sans-arabic/files/ibm-plex-sans-arabic-arabic-400-normal.woff2?url";
+
+if (document.documentElement.lang === "ar") {
+  const link = Object.assign(document.createElement("link"), { rel: "preload", as: "font", type: "font/woff2", href: plexArabic, crossOrigin: "anonymous" });
+  document.head.append(link);
+}
+```
+
+Set `lang` and `dir` on the root element before the first paint (an inline
+script that reads the stored language), so the first layout is already
+the Arabic one.
+
 ## Development
 
 ```bash

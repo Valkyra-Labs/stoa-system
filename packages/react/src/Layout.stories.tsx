@@ -1,7 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useState } from "react";
+import { I18nProvider } from "react-aria-components";
 import { AppHeader } from "./AppHeader";
+import { Callout } from "./Callout";
 import { ChoiceGroup } from "./Controls";
+import { DescriptionList } from "./DescriptionList";
 import { Disclosure } from "./Disclosure";
 import { StatusBadge } from "./Form";
 import { Panel, StatBar } from "./Panel";
@@ -115,5 +118,52 @@ export const Scrolling: StoryObj = {
       </ScrollArea>
       <style>{".story-scroll { max-block-size: calc(var(--stoa-space-12) * 3); }"}</style>
     </Panel>
+  ),
+};
+
+/** A page of Arabic text, right to left whatever the toolbar says: the
+ * text e2e/arabic-cls.measure.mjs loads with the Arabic font held back,
+ * to measure how far the page moves when the font arrives. */
+export const ArabicPage: StoryObj = {
+  render: () => (
+    <div dir="rtl" lang="ar" style={{ display: "grid", gap: "var(--stoa-space-4)", maxInlineSize: "calc(var(--stoa-space-12) * 14)" }}>
+      <I18nProvider locale="ar-u-nu-arab">
+        <Panel title="سندات الحكومة الفيدرالية">
+          <p>
+            تدفع السندات الحكومية قسيمة ثابتة مرتين في السنة حتى تاريخ الاستحقاق، ثم تعيد القيمة الاسمية كاملة. يتغير سعرها في السوق
+            مع أسعار الفائدة، فينخفض حين ترتفع ويرتفع حين تنخفض.
+          </p>
+          <p>
+            العائد حتى الاستحقاق هو المعدل الذي يجعل القيمة الحالية لكل التدفقات النقدية مساوية لسعر الشراء، بما فيه الفائدة المتراكمة
+            المدفوعة للبائع.
+          </p>
+        </Panel>
+        <Panel title="تفاصيل الإصدار">
+          <DescriptionList
+            items={[
+              { term: "المصدر", description: "وزارة المالية" },
+              { term: "القسيمة", description: "٧٫٥٪ مرتين في السنة", numeric: true },
+              { term: "الاستحقاق", description: "٤ سبتمبر ٢٠٣٠" },
+              { term: "الحد الأدنى للشراء", description: "١٬٠٠٠ روبل", numeric: true },
+            ]}
+          />
+        </Panel>
+        <Callout tone="warning" title="قبل الشراء">
+          الضريبة على القسائم تُخصم عند الدفع، ولا تُحسب في العائد المعروض هنا.
+        </Callout>
+        <Panel title="الخطوات التالية">
+          <p>اختر الإصدار، ثم حدد المبلغ والمدة، وسيعرض الحاسب العائد بعد الضريبة.</p>
+          <p>
+            إذا بعت السند قبل الاستحقاق، فسيكون سعر البيع هو سعر السوق في ذلك اليوم، وقد يكون أعلى أو أقل من سعر الشراء. يعرض الحاسب
+            ثلاثة سيناريوهات لأسعار الفائدة حتى ترى أثر كل منها على العائد.
+          </p>
+        </Panel>
+        <Panel title="أسئلة شائعة">
+          <p>متى تُدفع القسيمة؟ في التواريخ المحددة في نشرة الإصدار، وتصل إلى حسابك في يوم العمل التالي.</p>
+          <p>هل يمكن شراء جزء من سند؟ لا، يُشترى السند بقيمته الاسمية كاملة أو بمضاعفاتها.</p>
+          <p>ما الفرق بين العائد البسيط والعائد حتى الاستحقاق؟ الأول لا يأخذ إعادة استثمار القسائم في الحسبان، والثاني يأخذها.</p>
+        </Panel>
+      </I18nProvider>
+    </div>
   ),
 };
