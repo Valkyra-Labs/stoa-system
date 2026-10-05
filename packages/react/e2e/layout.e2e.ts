@@ -29,8 +29,23 @@ test("the scrollbar starts below the header and has its own lane", async ({ page
   const header = (await page.getByRole("banner").boundingBox())!;
   const region = (await scroll.boundingBox())!;
   expect(region.y).toBeGreaterThanOrEqual(header.y + header.height - 1);
-  const lane = await scroll.evaluate((el) => (el as HTMLElement).offsetWidth - el.clientWidth);
-  expect(lane).toBeGreaterThan(0);
+  // The lane is reserved by the style; it has a width only where the system
+  // draws scrollbars that take space (Linux, Windows, a Mac set to always
+  // show them). With macOS's default overlay scrollbars there is no lane to
+  // measure, and the reserved gutter is the whole guarantee.
+  expect(await scroll.evaluate((el) => getComputedStyle(el).scrollbarGutter)).toBe("stable");
+  const scrollbarsTakeSpace = await page.evaluate(() => {
+    const probe = document.createElement("div");
+    probe.style.cssText = "position:absolute;inline-size:100px;block-size:100px;overflow:scroll";
+    document.body.append(probe);
+    const width = probe.offsetWidth - probe.clientWidth;
+    probe.remove();
+    return width > 0;
+  });
+  if (scrollbarsTakeSpace) {
+    const lane = await scroll.evaluate((el) => (el as HTMLElement).offsetWidth - el.clientWidth);
+    expect(lane).toBeGreaterThan(0);
+  }
 });
 
 test("the keyboard scrolls the page from the skip link", async ({ page }) => {
