@@ -101,6 +101,45 @@ follow as the products need them.
 - Space on a 4 px grid; radii from 0 to 8 px.
 - Motion: fast 80 ms, base 160 ms, slow 240 ms, value flash 600 ms.
 
+## Focus after an action
+
+An action that removes the control that has the focus must say where the
+focus goes; otherwise it falls to the page's body, and the next Tab starts
+again at the top of the page. Stoa's components do it themselves:
+
+- Dialog, Sheet and AlertDialog return the focus to their trigger. One
+  opened without a trigger returns it to whatever had it when it opened,
+  or, when that control is gone, to the tab stop that stands where it
+  was.
+- A dismissed Callout leaves the focus on the tab stop that stands where
+  it was.
+- ReorderableList (React Aria's GridList) moves the focus to the
+  neighbouring item when one is removed, and to the list when it empties.
+- Closing the last toast returns the focus to where it was before the
+  toasts.
+
+For an application's own action that removes the focused control (a
+selection bar that closes after Apply, a row deleted from its own
+button), call `keepFocusInPlace` with the control before the state change
+that removes it:
+
+```tsx
+<Button
+  onPress={(e) => {
+    keepFocusInPlace(e.target);
+    applyToSelection();
+  }}
+>
+  Apply
+</Button>
+```
+
+Once the control has left the document, and only if the focus went with
+it, the focus moves to the next tab stop where it was, or the one before.
+Where the action has an obvious next place (the grid's active cell after
+a bulk change, the step that follows a skipped one), focus that place
+directly instead.
+
 ## Fonts
 
 Stoa names its faces in two stacks, `--stoa-font-family-sans` for words

@@ -111,6 +111,7 @@ export { StepList, type Step, type StepStatus, type StepListProps } from "./Step
 export { LogView, CodeView, type LogLine, type LogViewProps, type CodeViewProps } from "./Code";
 export { Metric, type MetricProps, type MetricThreshold } from "./Metric";
 export { Ltr, type LtrProps } from "./Ltr";
+export { keepFocusInPlace } from "./focus";
 export { Tooltip, type TooltipProps } from "./Tooltip";
 export { DescriptionList, type DescriptionItem, type DescriptionListProps } from "./DescriptionList";
 export { RecordList, type RecordListItem, type RecordListProps } from "./RecordList";

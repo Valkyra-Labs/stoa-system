@@ -4,6 +4,7 @@ import { AppHeader } from "./AppHeader";
 import { Callout } from "./Callout";
 import { Button } from "./Controls";
 import { EmptyState } from "./EmptyState";
+import { keepFocusInPlace } from "./focus";
 import { LiveRegion, VisuallyHidden } from "./LiveRegion";
 import { PageShell } from "./PageShell";
 import { Panel } from "./Panel";
@@ -79,6 +80,41 @@ export const CalloutDismissible: StoryObj = {
         ) : (
           <Button style={{ justifySelf: "start" }} onPress={() => setShown(true)}>Show the callout again</Button>
         )}
+      </Column>
+    );
+  },
+};
+
+/** An application's own action that removes the focused control: Apply
+ * closes the selection bar it sits in. keepFocusInPlace, called before
+ * the bar goes, moves focus to the next tab stop where the bar was
+ * ("Export") instead of letting it fall to the page's body. */
+export const FocusAfterRemoval: StoryObj = {
+  render: () => {
+    const [selected, setSelected] = useState(3);
+    const [status, setStatus] = useState("Three rows selected.");
+    return (
+      <Column>
+        {selected > 0 && (
+          <div role="group" aria-label="Selection" style={{ display: "flex", gap: "var(--stoa-space-2)", alignItems: "center" }}>
+            <span>{selected} selected</span>
+            <Button
+              variant="primary"
+              onPress={(e) => {
+                keepFocusInPlace(e.target);
+                setSelected(0);
+                setStatus("Status set to Approved on three rows.");
+              }}
+            >
+              Approve
+            </Button>
+          </div>
+        )}
+        <p>{status}</p>
+        <Button style={{ justifySelf: "start" }}>Export</Button>
+        <Button style={{ justifySelf: "start" }} onPress={() => setSelected(3)}>
+          Select three rows again
+        </Button>
       </Column>
     );
   },

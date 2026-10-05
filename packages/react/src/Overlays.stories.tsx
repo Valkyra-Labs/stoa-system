@@ -126,6 +126,48 @@ export const AlertAnswer: StoryObj = {
   },
 };
 
+/** A confirmation an application opens from its own state, with no
+ * trigger: the control that started it is gone when it closes, so focus
+ * goes to the tab stop that took its place ("Start over") rather than to
+ * the page's body. */
+export const AlertWithoutTrigger: StoryObj = {
+  render: () => {
+    const [state, setState] = useState<"idle" | "asking" | "answered">("idle");
+    const [answer, setAnswer] = useState("");
+    return (
+      <div style={{ display: "grid", gap: "var(--stoa-space-3)", justifyItems: "start" }}>
+        {state === "idle" ? (
+          <Button onPress={() => setState("asking")}>Run step 3</Button>
+        ) : (
+          <p>{state === "asking" ? "Step 3 waits for an answer." : `Step 3: ${answer}`}</p>
+        )}
+        {state === "answered" && (
+          <Button
+            onPress={() => {
+              setAnswer("");
+              setState("idle");
+            }}
+          >
+            Start over
+          </Button>
+        )}
+        <AlertDialog
+          title="Send the reply?"
+          confirmLabel="Send"
+          isOpen={state === "asking"}
+          onOpenChange={(open) => {
+            if (!open) setState("answered");
+          }}
+          onConfirm={() => setAnswer("sent.")}
+          onCancel={() => setAnswer("skipped.")}
+        >
+          <p>The agent drafted a reply to the supplier and asks before sending it.</p>
+        </AlertDialog>
+      </div>
+    );
+  },
+};
+
 const SHORTCUTS: ShortcutGroup[] = [
   {
     title: "Playback",
