@@ -327,6 +327,53 @@ export const LogArabic: StoryObj = {
   ),
 };
 
+/** A log that grows. It opens at its newest line and keeps the newest in
+ * view while the reader is at its end; scrolled up, it stays where the
+ * reader is and offers "Jump to latest", which goes back to the end and
+ * gives focus to the log. */
+export const LogFollow: StoryObj = {
+  render: () => {
+    const { locale, digits, integer } = useStoaFormat();
+    const arabic = locale.startsWith("ar");
+    const line = (i: number) => {
+      const time = digits(`10:25:${String(i % 60).padStart(2, "0")}`);
+      return arabic
+        ? { time, level: "الوكيل", text: `اكتملت الخطوة ${integer(i + 1)}.` }
+        : { time, level: "INFO", text: `Step ${integer(i + 1)} finished.` };
+    };
+    const [count, setCount] = useState(30);
+    const lines = Array.from({ length: count }, (_, i) => line(i));
+    return (
+      <div style={{ display: "grid", gap: "var(--stoa-space-2)", maxInlineSize: 480 }}>
+        <div>
+          <Button onPress={() => setCount((n) => n + 1)}>{arabic ? "أضف سطرًا" : "Add a line"}</Button>
+        </div>
+        <LogView label={arabic ? "سجل الوكيل" : "Agent log"} lines={lines} />
+      </div>
+    );
+  },
+};
+
+/** Long lines wrap inside the log instead of running off its side, so a
+ * long Arabic message shows its first word. */
+export const LogLongLines: StoryObj = {
+  render: () => {
+    const arabic = useStoaFormat().locale.startsWith("ar");
+    return (
+      <div style={{ maxInlineSize: 360 }}>
+        <LogView
+          label={arabic ? "سجل الوكيل" : "Agent log"}
+          lines={[
+            { time: "10:25:01", level: "INFO", text: "The plan was approved: fetch the inbox, draft three replies, ask before sending each one." },
+            { time: "10:25:02", level: "INFO", text: "اعتُمدت الخطة: جلب البريد الوارد، ثم كتابة ثلاثة ردود، والسؤال قبل إرسال كل رد." },
+            { time: "10:25:03", level: "WARN", text: "The second reply is longer than the limit the recipient set for their inbox." },
+          ]}
+        />
+      </div>
+    );
+  },
+};
+
 const CODE = `import { tokens } from "@valkyra-labs/stoa-tokens";
 
 export function rowHeight(density: "compact" | "regular") {

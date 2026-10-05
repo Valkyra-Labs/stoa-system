@@ -74,6 +74,9 @@ export type StoaMessages = {
   /** Announced, politely, after the text was copied. */
   copied: string;
   copyFailed: string;
+  /** A log's control that scrolls back to its newest line, shown while
+   * the reader has scrolled away from it. */
+  jumpToLatest: string;
   /** Names of an item's own buttons in a reorderable list. */
   moveUp: (item: string) => string;
   moveDown: (item: string) => string;
@@ -173,6 +176,7 @@ const EN: StoaMessages = {
   copy: "Copy",
   copied: "Copied",
   copyFailed: "Copy failed",
+  jumpToLatest: "Jump to latest",
   moveUp: (item) => `Move up: ${item}`,
   moveDown: (item) => `Move down: ${item}`,
   remove: (item) => `Remove: ${item}`,
@@ -254,6 +258,7 @@ const AR: StoaMessages = {
   copy: "نسخ",
   copied: "تم النسخ",
   copyFailed: "تعذر النسخ",
+  jumpToLatest: "الانتقال إلى الأحدث",
   moveUp: (item) => `تحريك للأعلى: ${item}`,
   moveDown: (item) => `تحريك للأسفل: ${item}`,
   remove: (item) => `إزالة: ${item}`,
@@ -336,6 +341,7 @@ const RU: StoaMessages = {
   copy: "Копировать",
   copied: "Скопировано",
   copyFailed: "Не удалось скопировать",
+  jumpToLatest: "К последним строкам",
   moveUp: (item) => `Переместить выше: ${item}`,
   moveDown: (item) => `Переместить ниже: ${item}`,
   remove: (item) => `Удалить: ${item}`,

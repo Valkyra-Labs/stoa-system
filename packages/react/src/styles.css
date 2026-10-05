@@ -919,7 +919,7 @@
 .stoa-code__bar { display: flex; align-items: center; gap: var(--stoa-space-2); }
 .stoa-code__label { font-size: var(--stoa-font-size-xs); color: var(--stoa-color-text-muted); }
 .stoa-code__status { flex: 1; text-align: end; font-size: var(--stoa-font-size-xs); color: var(--stoa-color-text-muted); }
-.stoa-code__copy {
+.stoa-code__copy, .stoa-code__jump {
   font-size: var(--stoa-font-size-xs);
   min-block-size: var(--stoa-space-6);
   padding: calc(var(--stoa-space-1) / 2) calc(var(--stoa-space-1) * 1.5);
@@ -935,6 +935,10 @@
   background: var(--stoa-color-surface-sunken); color: var(--stoa-color-text);
   border: 1px solid var(--stoa-color-border); border-radius: var(--stoa-radius-md);
 }
+/* A log's long line wraps inside the log, so nothing runs off its side: a
+   right-to-left message would otherwise lose its start beyond the edge.
+   Code keeps its lines whole and scrolls sideways. */
+.stoa-code--log .stoa-code__scroll { white-space: pre-wrap; overflow-wrap: anywhere; }
 .stoa-code__scroll:focus-visible {
   outline: var(--stoa-focus-width) solid var(--stoa-color-focus);
   outline-offset: var(--stoa-focus-offset);
