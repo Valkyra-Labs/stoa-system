@@ -113,6 +113,6 @@ describe("LineChart", () => {
     expect(note).not.toBeNull();
     // Each value is a first-strong isolate (FSI ... PDI), so "-0.5%" or
     // "12.0%" keeps its sign and its unit in place in an Arabic sentence.
-    expect(note!.textContent).toMatch(/⁨[^⁩]+⁩.*⁨[^⁩]+⁩/);
+    expect(note!.textContent).toMatch(/\u2068[^\u2069]+\u2069.*\u2068[^\u2069]+\u2069/);
   });
 });
