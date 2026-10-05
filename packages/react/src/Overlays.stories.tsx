@@ -4,6 +4,7 @@ import { CodeView, LogView } from "./Code";
 import { Button } from "./Controls";
 import { AlertDialog, Dialog, Sheet } from "./Dialog";
 import { DescriptionList, type DescriptionItem } from "./DescriptionList";
+import { Ltr } from "./Ltr";
 import { Metric } from "./Metric";
 import { Panel, StatBar } from "./Panel";
 import { ReorderableList, type ReorderableItem } from "./ReorderableList";
@@ -11,6 +12,7 @@ import { ShortcutList, ShortcutsDialog, type ShortcutGroup } from "./Shortcuts";
 import { RecordList, type RecordListItem } from "./RecordList";
 import { StepList, type Step } from "./StepList";
 import { Tooltip } from "./Tooltip";
+import { useStoaFormat } from "./locale";
 
 const meta: Meta = { title: "Overlays, lists and content" };
 export default meta;
@@ -337,6 +339,41 @@ export const Code: StoryObj = { render: () => <CodeView label="rowHeight.ts" cod
 
 /** With line numbers, which a copy leaves out. */
 export const CodeNumbered: StoryObj = { render: () => <CodeView label="rowHeight.ts" code={CODE} lineNumbers /> };
+
+/** Runs inside a sentence. Ltr keeps a formula, a ticker or an
+ * identifier left to right and in one piece in a right-to-left sentence;
+ * `bdi` gives a value of unknown direction its own. The sentence follows
+ * the language: Arabic in an Arabic frame, English otherwise. */
+export const InlineIsolates: StoryObj = {
+  render: () => {
+    const arabic = useStoaFormat().locale.startsWith("ar");
+    return arabic ? (
+      <div style={{ display: "grid", gap: "var(--stoa-space-2)" }}>
+        <p>
+          الجواب هو <Ltr>2 + 2 = 4</Ltr> دائمًا.
+        </p>
+        <p>
+          ارتفع سهم <Ltr mono lang="en">AAPL</Ltr> بنسبة <bdi>-0.42%</bdi> اليوم.
+        </p>
+        <p>
+          المعرف <Ltr mono>ORD-000042</Ltr> محفوظ.
+        </p>
+      </div>
+    ) : (
+      <div style={{ display: "grid", gap: "var(--stoa-space-2)" }}>
+        <p>
+          The answer is <Ltr>2 + 2 = 4</Ltr>, always.
+        </p>
+        <p>
+          <Ltr mono>AAPL</Ltr> moved <bdi>-0.42%</bdi> today.
+        </p>
+        <p>
+          Order <Ltr mono>ORD-000042</Ltr> is saved.
+        </p>
+      </div>
+    );
+  },
+};
 
 /** Metrics with a basis and each threshold tone. */
 export const Metrics: StoryObj = {

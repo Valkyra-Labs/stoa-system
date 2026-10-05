@@ -95,7 +95,7 @@ describe("LineChart", () => {
 
   it("says when the value axis does not start at zero, unless asked not to or zero is included", () => {
     render(chart());
-    expect(screen.getByText("The value axis does not start at zero: it shows 35 to 50.")).toBeTruthy();
+    expect(screen.getByText("The value axis does not start at zero: it shows \u206835\u2069 to \u206850\u2069.")).toBeTruthy();
     cleanup();
     const { container } = render(chart({ includeZero: true }));
     expect(container.querySelector(".stoa-chart__note")).toBeNull();
@@ -131,7 +131,7 @@ describe("LineChart", () => {
     const caption = container.querySelector("figcaption")!.textContent!;
     expect(caption).toContain("من ٤١٫١ في");
     expect(caption).toContain("يسير الزمن من اليسار إلى اليمين.");
-    expect(screen.getByText("محور القيم لا يبدأ من الصفر: يعرض من ٣٥ إلى ٥٠.")).toBeTruthy();
+    expect(screen.getByText("محور القيم لا يبدأ من الصفر: يعرض من \u2068٣٥\u2069 إلى \u2068٥٠\u2069.")).toBeTruthy();
   });
 
   it("keeps time left to right under a right-to-left locale unless told to follow the locale", () => {

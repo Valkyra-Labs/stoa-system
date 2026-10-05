@@ -779,7 +779,14 @@ export function DataGrid<Row>({
           const text = defaultText(data, value, row, locale);
           const isEditing = isEditingRow && editing?.col === c;
           const numeric = typeof value === "number";
-          let content: ReactNode = <span className="stoa-data-grid__text">{marked(text, highlight)}</span>;
+          // A number's text takes the direction of its first letter, so
+          // "-0.42%" and "16.9 ms" keep their order in a right-to-left grid;
+          // the cell still aligns it to the end.
+          let content: ReactNode = (
+            <span className="stoa-data-grid__text" dir={numeric ? "auto" : undefined}>
+              {marked(text, highlight)}
+            </span>
+          );
           if (isEditing && editing && data.editor) {
             content =
               data.editor.kind === "enum" ? (

@@ -45,7 +45,12 @@ follow as the products need them.
     VisuallyHidden, Panel, StatBar and Metric, AppHeader, PageShell.
   - Overlays, lists and content: Dialog, Sheet, AlertDialog, Tooltip,
     ReorderableList, RecordList (the list of a master-detail view),
-    StepList, DescriptionList, LogView, CodeView.
+    StepList, DescriptionList, LogView, CodeView, and Ltr, an inline
+    left-to-right isolate for code, tickers and formulas in a sentence.
+    The values Stoa draws (StatBar and Metric values, number cells in
+    Table and DataGrid, values in its own sentences) are isolated in the
+    direction of their own first letter, so "-0.42%" and "16.9 ms" keep
+    their order in a right-to-left page.
   - Keyboard and preferences: Kbd, `useShortcuts`, ShortcutList and
     ShortcutsDialog; ThemeSwitch (System, Light, Dark) and
     LanguageSwitch with the preference hooks behind them.

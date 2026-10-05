@@ -32,8 +32,13 @@ export function MetricParts({ label, value, fractionDigits = 0, unit, basis, thr
     <>
       <dt className="stoa-metric__label">{label}</dt>
       <dd className="stoa-metric__value">
-        <span className="stoa-metric__number">{typeof value === "number" ? decimal(value, fractionDigits) : digits(value)}</span>
-        {unit && <span className="stoa-metric__unit"> {unit}</span>}
+        {/* The number and its unit are one isolate, in the direction of its
+            first letter: "١٦٫٩ ms" stays in that order in a right-to-left
+            page, a unit in Arabic letters reads right to left. */}
+        <bdi>
+          <span className="stoa-metric__number">{typeof value === "number" ? decimal(value, fractionDigits) : digits(value)}</span>
+          {unit && <span className="stoa-metric__unit"> {unit}</span>}
+        </bdi>
       </dd>
       {threshold && (
         <dd className="stoa-metric__threshold">

@@ -996,6 +996,9 @@
 }
 .stoa-description-list__value--numeric { font-family: var(--stoa-font-family-mono); font-variant-numeric: tabular-nums; }
 
+/* Ltr: a left-to-right run inside a sentence; the bdi isolates it. */
+.stoa-ltr--mono { font-family: var(--stoa-font-family-mono); font-variant-numeric: tabular-nums; }
+
 .stoa-metric { display: grid; gap: var(--stoa-space-1); margin: 0; }
 .stoa-metric dd { margin: 0; }
 .stoa-metric__label { font-size: var(--stoa-font-size-xs); color: var(--stoa-color-text-muted); }

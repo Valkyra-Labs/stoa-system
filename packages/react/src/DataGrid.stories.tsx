@@ -1,10 +1,11 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useMemo, useState } from "react";
 import { I18nProvider } from "react-aria-components";
-import { DataGrid, type DataGridSort } from "./DataGrid";
+import { DataGrid, type DataGridColumn, type DataGridSort } from "./DataGrid";
 import { TextField } from "./Form";
 import { Panel } from "./Panel";
 import { useShortcuts } from "./Shortcuts";
+import { useStoaFormat } from "./locale";
 import { sampleOrderColumns, sampleOrders, type SampleOrder } from "./gridFixtures";
 
 const meta: Meta = { title: "Data/DataGrid" };
@@ -155,6 +156,38 @@ export const RightToLeft: StoryObj = {
           </Panel>
         </I18nProvider>
       </div>
+    );
+  },
+};
+
+type Move = { id: string; change: number; latency: number };
+
+const MOVES: Move[] = [
+  { id: "OFZ 26238", change: 1.25, latency: 4.2 },
+  { id: "OFZ 26240", change: -0.42, latency: 16.9 },
+  { id: "OFZ 26243", change: 0, latency: 0.5 },
+];
+
+/** Values with a sign or a unit in number columns: each cell's text is
+ * isolated in the direction of its own first letter, so "-0.42%" keeps
+ * its sign before the number and "16.9 ms" its unit after it in a
+ * right-to-left page, while the column stays aligned to the end. */
+export const SignedValues: StoryObj = {
+  render: () => {
+    const arabic = useStoaFormat().locale.startsWith("ar");
+    const h = arabic ? { id: "الإصدار", change: "التغير", latency: "زمن التسعير" } : { id: "Issue", change: "Change", latency: "Quote latency" };
+    const columns = useMemo<DataGridColumn<Move>[]>(
+      () => [
+        { id: "id", header: h.id, accessor: (m) => m.id, width: 120, pinned: true },
+        { id: "change", header: h.change, accessor: (m) => m.change, width: 112, format: (v, _, locale) => `${locale.decimal(Number(v), 2)}%` },
+        { id: "latency", header: h.latency, accessor: (m) => m.latency, width: 128, format: (v, _, locale) => `${locale.decimal(Number(v), 1)} ms` },
+      ],
+      [arabic],
+    );
+    return (
+      <Panel title={arabic ? "التحركات" : "Moves"}>
+        <DataGrid label={arabic ? "التحركات منذ الافتتاح" : "Moves since the open"} rows={MOVES} columns={columns} rowKey={(m) => m.id} />
+      </Panel>
     );
   },
 };

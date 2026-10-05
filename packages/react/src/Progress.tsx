@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import { Label, ProgressBar as AriaProgressBar } from "react-aria-components";
 import { LiveRegion } from "./LiveRegion";
-import { useStoaFormat } from "./locale";
+import { isolate, useStoaFormat } from "./locale";
 
 export type SkeletonProps = {
   /** What is loading, announced once ("Loading trades"); the locale's
@@ -66,10 +66,9 @@ export type ProgressBarProps = {
  * that is shown and announced, and a bar. */
 export function ProgressBar({ label, value = 0, maxValue = 100, isIndeterminate = false, formatValue }: ProgressBarProps) {
   const { messages } = useStoaFormat();
-  // Each amount is a directional isolate (FSI ... PDI): "1.8 MB" inside an
-  // Arabic sentence would otherwise be split and reordered by the bidi
-  // algorithm, its unit drawn on the wrong side of its number.
-  const isolate = (text: string) => `⁨${text}⁩`;
+  // Each amount is a directional isolate: "1.8 MB" inside an Arabic
+  // sentence would otherwise be split and reordered by the bidi algorithm,
+  // its unit drawn on the wrong side of its number.
   const valueLabel =
     formatValue && !isIndeterminate ? messages.progressOf(isolate(formatValue(value)), isolate(formatValue(maxValue))) : undefined;
   return (

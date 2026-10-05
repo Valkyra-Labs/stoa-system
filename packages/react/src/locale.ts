@@ -378,6 +378,15 @@ const RU: StoaMessages = {
   gridLoading: "Загрузка строк",
 };
 
+/** A value set into a sentence, as a first-strong isolate (FSI ... PDI):
+ * it takes the direction of its own first letter, and the sentence's
+ * direction does not split it. "1.8 MB" or "-0.5%" inside an Arabic
+ * sentence would otherwise be reordered by the bidi algorithm, its sign
+ * or unit drawn on the wrong side of its number. */
+export function isolate(text: string): string {
+  return `\u2068${text}\u2069`;
+}
+
 /** Stoa's words for a locale: Arabic for any "ar" tag, Russian for any
  * "ru" tag, English otherwise. */
 export function messagesFor(locale: string): StoaMessages {

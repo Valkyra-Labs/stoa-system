@@ -9,7 +9,9 @@ export type TableColumn<Row> = {
   /** Horizontal alignment, in logical terms: "end" is right in a
    * left-to-right page and left in a right-to-left one. */
   align?: "start" | "center" | "end";
-  /** A number column: tabular figures, aligned to the end. */
+  /** A number column: tabular figures, aligned to the end, and each value
+   * isolated in the direction of its own first letter (`bdi`), so "-0.42%"
+   * keeps its sign before the number in a right-to-left page. */
   numeric?: boolean;
   /** What a cell shows. Without it, the row's field named by `id`: a
    * string as it is, a number with the locale's digits. */
@@ -105,6 +107,10 @@ export function Table<Row>({
   };
 
   const value = (row: Row, column: TableColumn<Row>, index: number): ReactNode => {
+    const content = own(row, column, index);
+    return column.numeric ? <bdi>{content}</bdi> : content;
+  };
+  const own = (row: Row, column: TableColumn<Row>, index: number): ReactNode => {
     if (column.cell) return column.cell(row, index);
     const field = (row as Record<string, unknown>)[column.id];
     if (typeof field === "number") return locale.digits(String(field));

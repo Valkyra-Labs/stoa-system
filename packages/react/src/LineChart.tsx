@@ -3,7 +3,7 @@ import { useLocale } from "react-aria-components";
 import { useChartBox } from "./chartBox";
 import { decimalsOf, formatDate, niceTicks, spreadIndices, textWidth } from "./chartScale";
 import { Disclosure } from "./Disclosure";
-import { useStoaFormat } from "./locale";
+import { isolate, useStoaFormat } from "./locale";
 import { Table, type TableColumn } from "./Table";
 
 /** The semantic colour a series is drawn in. Up and down mean rising and
@@ -271,7 +271,7 @@ export function LineChart({
           ))}
         </ul>
       )}
-      {axisNote && leavesZeroOut && <p className="stoa-chart__note">{words.axisNotZero(tickText(lo), tickText(hi))}</p>}
+      {axisNote && leavesZeroOut && <p className="stoa-chart__note">{words.axisNotZero(isolate(tickText(lo)), isolate(tickText(hi)))}</p>}
       {!empty &&
         (dataTable === "toggle" ? (
           <Disclosure summary={words.dataTable} className="stoa-chart__data">
