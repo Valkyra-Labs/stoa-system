@@ -123,7 +123,7 @@ export const ChartsScreen = memo(function ChartsScreen({ language, state, onRetr
             rows={hasData ? POSITIONS : []}
             rowKey={(row) => row.index}
             caption={text.tableCaption}
-            captionHidden
+            hideCaption
             rowHeader="bond"
             emptyText={notLoaded ?? text.tableEmptyText}
             stickyHeader

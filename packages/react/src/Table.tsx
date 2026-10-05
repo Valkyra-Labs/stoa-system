@@ -22,9 +22,9 @@ export type TableProps<Row> = {
   /** A stable key for each row. */
   rowKey: (row: Row, index: number) => Key;
   /** The table's name, shown above it or read only by assistive technology
-   * (`captionHidden`). It also names the scroll region. */
+   * (`hideCaption`). It also names the scroll region. */
   caption: ReactNode;
-  captionHidden?: boolean;
+  hideCaption?: boolean;
   /** The id of the column whose cells are row headers (`th scope="row"`). */
   rowHeader?: string;
   /** What the table says while it has no rows: one muted row spanning every
@@ -64,7 +64,7 @@ export function Table<Row>({
   rows,
   rowKey,
   caption,
-  captionHidden = false,
+  hideCaption = false,
   rowHeader,
   emptyText,
   stickyHeader = false,
@@ -122,7 +122,7 @@ export function Table<Row>({
       }
       data-density={scrollable ? undefined : density}
     >
-      <caption id={captionId} className={captionHidden ? "stoa-visually-hidden" : "stoa-table__caption"}>
+      <caption id={captionId} className={hideCaption ? "stoa-visually-hidden" : "stoa-table__caption"}>
         {caption}
       </caption>
       <thead>

@@ -73,7 +73,7 @@ export const Basic: StoryObj = { render: () => <Payments /> };
 export const HiddenCaption: StoryObj = {
   render: () => (
     <Panel title="Payments">
-      <Payments captionHidden />
+      <Payments hideCaption />
     </Panel>
   ),
 };
@@ -111,7 +111,7 @@ export const StickyFirstColumn: StoryObj = {
     return (
       <div style={{ maxInlineSize: 480 }}>
         <Panel title="Schedule">
-          <Payments columns={columns} rows={payments(16)} maxHeight={220} stickyHeader stickyFirstColumn rowHeader="date" captionHidden />
+          <Payments columns={columns} rows={payments(16)} maxHeight={220} stickyHeader stickyFirstColumn rowHeader="date" hideCaption />
         </Panel>
       </div>
     );

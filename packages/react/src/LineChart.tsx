@@ -204,7 +204,7 @@ export function LineChart({
       rowKey={(r) => r.x}
       rowHeader="x"
       caption={yLabel ? `${label} (${yLabel})` : label}
-      captionHidden
+      hideCaption
       emptyText={summary}
       scrollable={scrollable}
     />

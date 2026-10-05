@@ -36,7 +36,7 @@ describe("Table", () => {
   });
 
   it("can hide its caption visually and keep it as the name", () => {
-    renderTable({ captionHidden: true });
+    renderTable({ hideCaption: true });
     expect(screen.getByRole("table", { name: "Payments" }).querySelector("caption")!.className).toBe("stoa-visually-hidden");
   });
 

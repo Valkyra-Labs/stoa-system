@@ -44,7 +44,7 @@ export function TradeTable({ trades, caption, formatPrice, emptyText }: TradeTab
       rows={trades}
       rowKey={(t) => t.id}
       caption={caption}
-      captionHidden
+      hideCaption
       emptyText={emptyText ?? words.noTrades}
       mono
     />
