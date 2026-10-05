@@ -500,10 +500,17 @@ export function DataGrid<Row>({
   };
 
   const move = (cell: DataGridCell, focus = true) => {
-    pendingFocus.current = focus;
     reveal(cell);
-    if (cell.row !== activeRaw.row || cell.column !== activeRaw.column) setActiveRaw(cell);
-    else if (focus) scroller.current?.querySelector<HTMLElement>(`[data-cell="${cell.row}:${cell.column}"]`)?.focus({ preventScroll: true });
+    if (cell.row !== activeRaw.row || cell.column !== activeRaw.column) {
+      // Focused once the new active cell is rendered.
+      pendingFocus.current = focus;
+      setActiveRaw(cell);
+    } else if (focus) {
+      // Already rendered: focused now. Nothing is left pending, or the
+      // render that a double click's editor causes would take the focus
+      // back to the cell and close the editor.
+      scroller.current?.querySelector<HTMLElement>(`[data-cell="${cell.row}:${cell.column}"]`)?.focus({ preventScroll: true });
+    }
   };
 
   const toggleRow = (r: number) => {

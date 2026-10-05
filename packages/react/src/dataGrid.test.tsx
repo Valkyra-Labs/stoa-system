@@ -317,6 +317,16 @@ describe("DataGrid editing", () => {
     expect(position()).toBe("1:3");
   });
 
+  it("opens the editor on a double click as a mouse makes it: two clicks, then the double click", () => {
+    const { grid } = setup({}, 10);
+    const target = cell(grid, 2, 3);
+    fireEvent.click(target);
+    fireEvent.click(target);
+    fireEvent.doubleClick(target);
+    const input = screen.getByRole("textbox", { name: "Note" });
+    expect(focused()).toBe(input);
+  });
+
   it("refuses an invalid text, says why in an alert tied to the input, and saves once it is fixed", () => {
     const onEdit = vi.fn();
     const { grid } = setup({ onEdit }, 10);
