@@ -58,3 +58,37 @@ for (const [mode, globals] of [["left to right", ""], ["right to left", "dir:rtl
     expect(sizes[0]).toBe(sizes[1]);
   });
 }
+
+for (const [globals, forward, back] of [
+  ["lang:en", "ArrowRight", "ArrowLeft"],
+  ["dir:rtl;lang:ar", "ArrowLeft", "ArrowRight"],
+] as const) {
+  test(`a ChoiceGroup is one tab stop on its chosen option, and the arrows move and choose (${globals})`, async ({ page }) => {
+    await page.goto(`/iframe.html?id=controls-playback--choices&viewMode=story&globals=${globals}`);
+    const group = page.getByRole("radiogroup", { name: "Density" });
+    const radio = (name: string) => group.getByRole("radio", { name });
+    await expect(radio("regular")).toHaveAttribute("aria-checked", "true");
+    // Tab lands on the chosen option, not the first.
+    await page.keyboard.press("Tab");
+    await expect(radio("regular")).toBeFocused();
+    // An arrow moves and chooses, in the reading direction.
+    await page.keyboard.press(forward);
+    await expect(radio("comfortable")).toBeFocused();
+    await expect(radio("comfortable")).toHaveAttribute("aria-checked", "true");
+    await expect(radio("regular")).toHaveAttribute("aria-checked", "false");
+    // Past the last option it wraps to the first, as a radio group does.
+    await page.keyboard.press(forward);
+    await expect(radio("compact")).toBeFocused();
+    await expect(radio("compact")).toHaveAttribute("aria-checked", "true");
+    await page.keyboard.press(back);
+    await expect(radio("comfortable")).toHaveAttribute("aria-checked", "true");
+    // One tab stop: Tab leaves the group, Shift+Tab comes back to the chosen option.
+    await page.keyboard.press("Tab");
+    await expect(page.locator(".stoa-select__button")).toBeFocused();
+    await page.keyboard.press("Shift+Tab");
+    await expect(radio("comfortable")).toBeFocused();
+    // Space on the chosen option keeps it chosen.
+    await page.keyboard.press("Space");
+    await expect(radio("comfortable")).toHaveAttribute("aria-checked", "true");
+  });
+}

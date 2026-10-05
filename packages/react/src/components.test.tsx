@@ -37,6 +37,33 @@ describe("ChoiceGroup", () => {
   });
 });
 
+describe("ChoiceGroup as a radio group", () => {
+  const SPEEDS = [
+    { id: 1, label: "1x" },
+    { id: 10, label: "10x" },
+    { id: 60, label: "60x" },
+  ];
+
+  it("is one tab stop, on the chosen option", () => {
+    render(<ChoiceGroup label="Speed" choices={SPEEDS} value={10} onChange={() => {}} />);
+    expect(SPEEDS.map((s) => screen.getByRole("radio", { name: s.label }).tabIndex)).toEqual([-1, 0, -1]);
+  });
+
+  it("chooses with the arrow keys, wrapping at the ends", () => {
+    const onChange = vi.fn();
+    render(<ChoiceGroup label="Speed" choices={SPEEDS} value={60} onChange={onChange} />);
+    const last = screen.getByRole("radio", { name: "60x" });
+    act(() => last.focus());
+    fireEvent.keyDown(last, { key: "ArrowRight" });
+    expect(onChange).toHaveBeenLastCalledWith(1);
+    expect(document.activeElement).toBe(screen.getByRole("radio", { name: "1x" }));
+    // Back past the first: to the last, which is still the value here.
+    fireEvent.keyDown(document.activeElement!, { key: "ArrowUp" });
+    expect(document.activeElement).toBe(last);
+    expect(onChange).toHaveBeenCalledTimes(1);
+  });
+});
+
 describe("ChoiceGroup with its label, a description, or disabled", () => {
   const ENGINES = [
     { id: "wasm", label: "WebAssembly" },
