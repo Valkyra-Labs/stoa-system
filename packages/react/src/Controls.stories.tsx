@@ -62,6 +62,28 @@ export const Choices: StoryObj = {
   },
 };
 
+/** Options in both directions: each keeps the order of its own text, in
+ * the list and in the button, so "1 day" stays "1 day" in a right-to-left
+ * page and "3 أشهر" keeps its number at the right in a left-to-right one.
+ * Open the list to see them all. */
+export const SelectMixedDirections: StoryObj = {
+  render: () => {
+    const [range, setRange] = useState("1d");
+    return (
+      <Select
+        label="Range"
+        value={range}
+        onChange={setRange}
+        options={[
+          { id: "1d", label: "1 day" },
+          { id: "1w", label: "1 week" },
+          { id: "3m", label: "3 أشهر" },
+        ]}
+      />
+    );
+  },
+};
+
 /** A ChoiceGroup with its label above it (the default) and a description
  * under it; and one disabled as a whole, its description saying why. */
 export const ChoiceGroupLabelled: StoryObj = {

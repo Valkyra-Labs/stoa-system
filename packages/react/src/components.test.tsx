@@ -132,6 +132,29 @@ describe("Select", () => {
     expect(screen.getByText("Frame view").className).toBe("stoa-visually-hidden");
   });
 
+  it("isolates each option's text in its own direction, in the list and in the button", () => {
+    render(
+      <div dir="rtl">
+        <Select
+          label="المدى"
+          options={[
+            { id: "1d", label: "1 day" },
+            { id: "1w", label: "1 week" },
+          ]}
+          value="1d"
+          onChange={() => {}}
+        />
+      </div>,
+    );
+    const button = screen.getByRole("button");
+    const shown = button.querySelector(".stoa-select__value [dir]");
+    expect(shown?.getAttribute("dir")).toBe("auto");
+    expect(shown?.textContent).toBe("1 day");
+    act(() => button.focus());
+    fireEvent.keyDown(button, { key: "ArrowDown" });
+    for (const option of screen.getAllByRole("option")) expect(option.querySelector("[dir]")?.getAttribute("dir")).toBe("auto");
+  });
+
   it("reports the option picked from the list", () => {
     const onChange = vi.fn();
     render(<Select label="Frame view" options={VIEWS} value="light-ltr" onChange={onChange} />);

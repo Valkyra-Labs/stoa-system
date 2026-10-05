@@ -148,7 +148,12 @@ export type SelectProps<T extends Key> = {
 
 /** One of several options in a drop-down list: for a choice with more
  * options, or less room, than a ChoiceGroup can show. Enter, Space or an
- * arrow key opens the list; typing a name selects the option it starts. */
+ * arrow key opens the list; typing a name selects the option it starts.
+ *
+ * Each option's text is isolated in the direction of its own first letter
+ * (`dir="auto"`), in the list and in the button that shows the chosen one,
+ * so "1 day" does not turn into "day 1" in a right-to-left page; it is
+ * still aligned by the page's direction. */
 export function Select<T extends Key>({ label, hideLabel = false, options, value, onChange, size = "regular" }: SelectProps<T>) {
   return (
     <AriaSelect
@@ -172,7 +177,8 @@ export function Select<T extends Key>({ label, hideLabel = false, options, value
               className="stoa-select__option"
               textValue={typeof option.label === "string" ? option.label : String(option.id)}
             >
-              {option.label}
+              {/* The button shows this same content for the chosen option. */}
+              <span dir="auto">{option.label}</span>
             </ListBoxItem>
           ))}
         </ListBox>
