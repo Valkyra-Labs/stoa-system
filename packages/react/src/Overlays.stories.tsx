@@ -405,6 +405,23 @@ export const DescriptionColumns: StoryObj = {
   ),
 };
 
+/** Values in both directions: each keeps its own, so the date reads left
+ * to right in a right-to-left page and the Arabic issuer right to left in
+ * a left-to-right one, and both stay beside their terms. */
+export const DescriptionMixedDirections: StoryObj = {
+  render: () => (
+    <Panel title="RU000A1001">
+      <DescriptionList
+        items={[
+          { term: "Maturity", description: "4 Sep 2027" },
+          { term: "Issuer", description: "شركة Gazprom Capital" },
+          { term: "Coupon", description: "7.50%", numeric: true },
+        ]}
+      />
+    </Panel>
+  ),
+};
+
 /** The same record stacked, for a narrow pane. */
 export const DescriptionStacked: StoryObj = {
   render: () => (

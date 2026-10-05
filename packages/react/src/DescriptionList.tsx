@@ -24,8 +24,11 @@ export type DescriptionListProps = {
  * term (dt) with its value (dd), in the density's type size and spacing.
  * Not interactive, and never a tab stop. The columns are laid out with
  * logical properties, so the terms are at the right in a right-to-left
- * page; each value is a paragraph of its own, so a value in another
- * script keeps its own direction. An empty list draws nothing. */
+ * page. Each value takes the direction of its own text (`dir="auto"`,
+ * from its first letter), so "4 Sep 2027" reads left to right in a
+ * right-to-left list and an Arabic value right to left in a left-to-right
+ * one; it still lines up at the list's start edge, beside its term. An
+ * empty list draws nothing. */
 export function DescriptionList({ items, layout = "columns" }: DescriptionListProps) {
   if (items.length === 0) return null;
   return (
@@ -33,7 +36,10 @@ export function DescriptionList({ items, layout = "columns" }: DescriptionListPr
       {items.map((item, index) => (
         <div key={item.id ?? (typeof item.term === "string" ? item.term : index)} className="stoa-description-list__item">
           <dt className="stoa-description-list__term">{item.term}</dt>
-          <dd className={item.numeric ? "stoa-description-list__value stoa-description-list__value--numeric" : "stoa-description-list__value"}>
+          <dd
+            dir="auto"
+            className={item.numeric ? "stoa-description-list__value stoa-description-list__value--numeric" : "stoa-description-list__value"}
+          >
             {item.description}
           </dd>
         </div>

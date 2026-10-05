@@ -1,6 +1,6 @@
 // Tooltip, DescriptionList and RecordList in a real browser, against the
 // built stories: the keyboard, a touch screen, and right to left.
-import { expect, test } from "@playwright/test";
+import { expect, test, type Locator } from "@playwright/test";
 
 const story = (id: string, globals = "") => `/iframe.html?id=overlays-lists-and-content--${id}&viewMode=story${globals ? `&globals=${globals}` : ""}`;
 
@@ -46,6 +46,44 @@ test("a description list puts its terms at the start edge: left, and right in a 
     const value = (await page.getByRole("definition").first().boundingBox())!;
     expect(term.x < value.x, globals).toBe(termFirst);
     expect(Math.abs(term.y - value.y), globals).toBeLessThan(2);
+  }
+});
+
+/** The left edge of where `part` is drawn in an element's text. */
+function leftOf(element: Locator, part: string) {
+  return element.evaluate((el, wanted) => {
+    const node = el.firstChild!;
+    const at = (node.textContent ?? "").indexOf(wanted);
+    const range = document.createRange();
+    range.setStart(node, at);
+    range.setEnd(node, at + wanted.length);
+    return range.getBoundingClientRect().left;
+  }, part);
+}
+
+test("a description list value keeps its own direction and stays beside its term, in both directions of the page", async ({ page }) => {
+  for (const [globals, rtl] of [["", false], ["dir:rtl;lang:ar", true]] as const) {
+    await page.goto(story("description-mixed-directions", globals));
+    const date = page.getByRole("definition").filter({ hasText: "4 Sep 2027" });
+    const issuer = page.getByRole("definition").filter({ hasText: "Gazprom" });
+    // The date reads left to right in either page: "4" first, "2027" last.
+    expect(await leftOf(date, "4 "), globals).toBeLessThan(await leftOf(date, "Sep"));
+    expect(await leftOf(date, "Sep"), globals).toBeLessThan(await leftOf(date, "2027"));
+    // The Arabic issuer reads right to left in either page: its first
+    // word at the right of the Latin name.
+    expect(await leftOf(issuer, "شركة"), globals).toBeGreaterThan(await leftOf(issuer, "Gazprom"));
+    // Both are aligned at the list's start edge, next to the terms.
+    for (const value of [date, issuer]) {
+      const box = (await value.boundingBox())!;
+      const text = await value.evaluate((el) => {
+        const range = document.createRange();
+        range.selectNodeContents(el);
+        const rect = range.getBoundingClientRect();
+        return { left: rect.left, right: rect.right };
+      });
+      if (rtl) expect(Math.abs(box.x + box.width - text.right), globals).toBeLessThan(1);
+      else expect(Math.abs(text.left - box.x), globals).toBeLessThan(1);
+    }
   }
 });
 

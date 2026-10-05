@@ -970,7 +970,14 @@
 .stoa-description-list--stacked { gap: var(--stoa-space-2); }
 .stoa-description-list--stacked .stoa-description-list__item { display: grid; gap: calc(var(--stoa-space-1) / 2); }
 .stoa-description-list__term { color: var(--stoa-color-text-muted); }
-.stoa-description-list__value { margin: 0; min-inline-size: 0; overflow-wrap: anywhere; }
+/* A value takes its own direction (dir="auto") but is aligned by the
+   list's: match-parent reads start and end in the parent's direction.
+   Chromium and WebKit apply only the prefixed keyword (Chromium computes
+   the plain one to start); Firefox takes the plain one. */
+.stoa-description-list__value {
+  margin: 0; min-inline-size: 0; overflow-wrap: anywhere;
+  text-align: match-parent; text-align: -webkit-match-parent;
+}
 .stoa-description-list__value--numeric { font-family: var(--stoa-font-family-mono); font-variant-numeric: tabular-nums; }
 
 .stoa-metric { display: grid; gap: var(--stoa-space-1); margin: 0; }

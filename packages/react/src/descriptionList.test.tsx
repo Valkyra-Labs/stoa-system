@@ -61,4 +61,21 @@ describe("DescriptionList", () => {
     expect(screen.getAllByRole("term").map((t) => t.textContent)).toEqual(["الرمز", "القسيمة"]);
     expect(screen.getAllByRole("definition").map((d) => d.textContent)).toEqual(["RU000A1234", "٧٫٥٪"]);
   });
+
+  it("gives each value the direction of its own text, in either direction of the page", () => {
+    for (const dir of ["ltr", "rtl"] as const) {
+      render(
+        <div dir={dir}>
+          <DescriptionList
+            items={[
+              { term: "Maturity", description: "4 Sep 2027" },
+              { term: "المُصدر", description: "شركة Gazprom Capital" },
+            ]}
+          />
+        </div>,
+      );
+      for (const value of screen.getAllByRole("definition")) expect(value.getAttribute("dir"), dir).toBe("auto");
+      cleanup();
+    }
+  });
 });
