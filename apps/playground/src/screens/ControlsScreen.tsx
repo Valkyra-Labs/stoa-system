@@ -91,6 +91,7 @@ export const ControlsScreen = memo(function ControlsScreen({ language, state, on
               </Toolbar>
               <FilterChipGroup<OrderStatus>
                 label={text.statusFilterLabel}
+                hideLabel
                 value={statuses}
                 onChange={setStatuses}
                 size="small"

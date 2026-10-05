@@ -195,6 +195,7 @@ function PreviewFrame({
           <Select label={`${name} view`} hideLabel size="small" options={VIEW_OPTIONS} value={view} onChange={setView} />
           <ChoiceGroup
             label={`${name}: language`}
+            hideLabel
             size="small"
             choices={LANGUAGES}
             value={language}
@@ -207,6 +208,7 @@ function PreviewFrame({
           </Toggle>
           <ChoiceGroup
             label={`${name}: colour-vision preview`}
+            hideLabel
             size="small"
             choices={CVD_CHOICES}
             value={cvd}
@@ -320,6 +322,7 @@ function Screen({
           <div className="pg-form">
             <ChoiceGroup
               label={text.side}
+              hideLabel
               choices={[
                 { id: "buy", label: text.buy },
                 { id: "sell", label: text.sell },
@@ -332,9 +335,10 @@ function Screen({
               value={limit}
               onChange={setLimit}
               dir="ltr"
+              mono
               description={text.tick(locale.decimal(0.01, 2))}
             />
-            <TextField label={text.quantity} value={quantity} onChange={setQuantity} dir="ltr" />
+            <TextField label={text.quantity} value={quantity} onChange={setQuantity} dir="ltr" mono />
             <div className="pg-row">
               <Button variant="primary">{text.send}</Button>
               <Button>{text.clear}</Button>
@@ -355,6 +359,7 @@ function Screen({
           {/* The end of the track is live; anywhere before it replays. */}
           <TimeSlider
             label={text.replayTime}
+            hideLabel
             min={earliest}
             max={live}
             step={1}

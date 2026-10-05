@@ -70,6 +70,7 @@ export function TypeRoles({
       <div className="pg-stack">
         <TimeSlider
           label="Reading scale ratio"
+          hideLabel
           min={RATIO_MIN}
           max={RATIO_MAX}
           step={0.001}
@@ -79,6 +80,7 @@ export function TypeRoles({
         />
         <TimeSlider
           label="Reading scale base"
+          hideLabel
           min={10}
           max={24}
           step={1}
@@ -168,6 +170,7 @@ function RoleFields({
 
         <ChoiceGroup
           label={named("family")}
+          hideLabel
           choices={families.map((family) => ({ id: family.value, label: family.label }))}
           value={role.family}
           onChange={(family) => set({ family, axes: {} })}
@@ -176,6 +179,7 @@ function RoleFields({
         {role.hierarchy === "reading" ? (
           <TimeSlider
             label={named("step on the scale")}
+            hideLabel
             min={0}
             max={5}
             step={1}
@@ -186,6 +190,7 @@ function RoleFields({
         ) : (
           <TimeSlider
             label={named("pixels from the density font size")}
+            hideLabel
             min={-4}
             max={8}
             step={1}
@@ -197,6 +202,7 @@ function RoleFields({
 
         <TimeSlider
           label={named("weight")}
+          hideLabel
           min={WEIGHT_MIN}
           max={WEIGHT_MAX}
           step={1}
@@ -206,6 +212,7 @@ function RoleFields({
         />
         <TimeSlider
           label={named("line height")}
+          hideLabel
           min={1}
           max={2}
           step={0.01}
@@ -223,10 +230,12 @@ function RoleFields({
               set({ tracking: { ...role.tracking, value: Number.isFinite(value) ? value : 0 } });
             }}
             dir="ltr"
+            mono
             description={`letter-spacing, in ${role.tracking.unit}`}
           />
           <ChoiceGroup
             label={named("tracking unit")}
+            hideLabel
             choices={TRACKING_UNITS.map((unit) => ({ id: unit.value, label: unit.label }))}
             value={role.tracking.unit}
             onChange={(unit) => set({ tracking: { ...role.tracking, unit: unit as Tracking["unit"] } })}
@@ -238,6 +247,7 @@ function RoleFields({
             <TimeSlider
               key={axis.tag}
               label={named(`${axis.name} (${axis.tag})`)}
+              hideLabel
               min={axis.min}
               max={axis.max}
               step={1}
@@ -255,6 +265,7 @@ function RoleFields({
             set({ features });
           }}
           dir="ltr"
+          mono
           description={
             featureTags.length === 0
               ? "Tags and values, for example: tnum, zero. No font loaded for this family, so the tags are not checked."
@@ -267,6 +278,7 @@ function RoleFields({
 
         <ChoiceGroup
           label={named("Arabic pairing")}
+          hideLabel
           choices={[{ id: "", label: "none" }, ...arabicFamilies.map((family) => ({ id: family.value, label: family.label }))]}
           value={role.arabic.family}
           onChange={(family) =>

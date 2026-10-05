@@ -112,6 +112,9 @@ export function Checkbox({ children, isSelected, onChange, value, isIndeterminat
 export type CheckboxGroupProps = {
   /** The question the boxes answer, shown above them ("Show columns"). */
   label: string;
+  /** Keep the label for assistive technology only, where the boxes sit
+   * under a visible heading that asks the same question. */
+  hideLabel?: boolean;
   /** The values of the checked boxes. */
   value: string[];
   onChange: (value: string[]) => void;
@@ -123,10 +126,10 @@ export type CheckboxGroupProps = {
 
 /** Several boxes answering one question, any number checked: a labelled
  * group. Each box is its own Tab stop, as native checkboxes are. */
-export function CheckboxGroup({ label, value, onChange, description, isDisabled, children }: CheckboxGroupProps) {
+export function CheckboxGroup({ label, hideLabel = false, value, onChange, description, isDisabled, children }: CheckboxGroupProps) {
   return (
     <AriaCheckboxGroup className="stoa-checkbox-group" value={value} onChange={onChange} isDisabled={isDisabled}>
-      <Label className="stoa-field__label">{label}</Label>
+      <Label className={hideLabel ? "stoa-visually-hidden" : "stoa-field__label"}>{label}</Label>
       <div className="stoa-checkbox-group__items">{children}</div>
       {description && (
         <Text slot="description" className="stoa-field__description">

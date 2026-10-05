@@ -211,4 +211,14 @@ describe("CheckboxGroup", () => {
       expect(screen.getByRole("checkbox", { name }).hasAttribute("disabled")).toBe(true);
     }
   });
+
+  it("keeps its label for assistive technology only with hideLabel", () => {
+    render(
+      <CheckboxGroup label="Show columns" hideLabel value={[]} onChange={() => {}}>
+        <Checkbox value="price">Price</Checkbox>
+      </CheckboxGroup>,
+    );
+    expect(screen.getByRole("group", { name: "Show columns" })).toBeTruthy();
+    expect(screen.getByText("Show columns").className).toBe("stoa-visually-hidden");
+  });
 });

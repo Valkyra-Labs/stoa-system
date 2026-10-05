@@ -5,6 +5,9 @@ import type { ControlSize } from "./Controls";
 export type SliderProps = {
   /** Shown above the track, with the value at the other end of the line. */
   label: string;
+  /** Keep the label for assistive technology only, where the slider sits
+   * under a visible name; the value stays shown. */
+  hideLabel?: boolean;
   value: number;
   onChange: (value: number) => void;
   /** The value stopped moving: the drag was released or the key let go. */
@@ -32,6 +35,7 @@ export type SliderProps = {
  * render, as TimeSlider does it. */
 export function Slider({
   label,
+  hideLabel = false,
   value,
   onChange,
   onChangeEnd,
@@ -62,7 +66,7 @@ export function Slider({
       aria-describedby={hint ? hintId : undefined}
     >
       <div className="stoa-range__head">
-        <Label className="stoa-field__label stoa-range__label">{label}</Label>
+        <Label className={hideLabel ? "stoa-visually-hidden" : "stoa-field__label stoa-range__label"}>{label}</Label>
         <SliderOutput className="stoa-range__output">
           {({ state }) => (format ? format(state.getThumbValue(0)) : state.getThumbValueLabel(0))}
         </SliderOutput>

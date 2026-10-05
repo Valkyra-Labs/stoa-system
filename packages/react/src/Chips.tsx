@@ -77,10 +77,11 @@ export function FilterChip({ children, isSelected, onChange, count, isDisabled, 
 export type FilterChipItem<T extends Key> = { id: T; label: ReactNode; count?: number; isDisabled?: boolean };
 
 export type FilterChipGroupProps<T extends Key> = {
-  /** The name of the group ("Order status"): for assistive technology
-   * only, or shown above the chips with `showLabel`. */
+  /** The name of the group ("Order status"), shown above the chips. */
   label: string;
-  showLabel?: boolean;
+  /** Keep the label for assistive technology only, where the chips name
+   * themselves or sit under a visible heading. */
+  hideLabel?: boolean;
   chips: FilterChipItem<T>[];
   /** The ids of the chips that are on. */
   value: T[];
@@ -98,14 +99,14 @@ export type FilterChipGroupProps<T extends Key> = {
  * A "clear all" button, when there is one, sits after the group. */
 export function FilterChipGroup<T extends Key>({
   label,
-  showLabel = false,
+  hideLabel = false,
   chips,
   value,
   onChange,
   overflow = "wrap",
   size = "regular",
 }: FilterChipGroupProps<T>) {
-  const { groupProps, frame } = useGroupLabel(label, showLabel, undefined);
+  const { groupProps, frame } = useGroupLabel(label, hideLabel, undefined);
   return frame(
     <ToggleButtonGroup
       {...groupProps}

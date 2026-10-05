@@ -72,6 +72,7 @@ export const Header: StoryObj = {
           <>
             <ChoiceGroup
               label="Theme"
+              hideLabel
               size="small"
               value={theme}
               onChange={setTheme}
@@ -82,6 +83,7 @@ export const Header: StoryObj = {
             />
             <ChoiceGroup
               label="Language"
+              hideLabel
               size="small"
               value={lang}
               onChange={setLang}

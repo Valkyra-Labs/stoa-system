@@ -388,6 +388,36 @@ export const TooltipOpen: StoryObj = {
   ),
 };
 
+/** A tooltip on each side of its term, all open: above, below, at the
+ * start and at the end of the line (the left and the right in a
+ * left-to-right page, the other way round in a right-to-left one). Each
+ * arrow points at its term. */
+export const TooltipPlacements: StoryObj = {
+  render: () => (
+    <div
+      style={{
+        display: "grid",
+        justifyItems: "center",
+        gap: "calc(var(--stoa-space-12) * 2)",
+        paddingBlock: "var(--stoa-space-12)",
+      }}
+    >
+      <Tooltip content="Opens above" placement="top" defaultOpen>
+        top
+      </Tooltip>
+      <Tooltip content="Opens below" placement="bottom" defaultOpen>
+        bottom
+      </Tooltip>
+      <Tooltip content="Opens at the start" placement="start" defaultOpen>
+        start
+      </Tooltip>
+      <Tooltip content="Opens at the end" placement="end" defaultOpen>
+        end
+      </Tooltip>
+    </div>
+  ),
+};
+
 const BOND: DescriptionItem[] = [
   { term: "ISIN", description: "RU000A1001" },
   { term: "Issuer", description: "Gazprom Capital" },
@@ -401,6 +431,23 @@ export const DescriptionColumns: StoryObj = {
   render: () => (
     <Panel title="RU000A1001">
       <DescriptionList items={BOND} />
+    </Panel>
+  ),
+};
+
+/** Values in both directions: each keeps its own, so the date reads left
+ * to right in a right-to-left page and the Arabic issuer right to left in
+ * a left-to-right one, and both stay beside their terms. */
+export const DescriptionMixedDirections: StoryObj = {
+  render: () => (
+    <Panel title="RU000A1001">
+      <DescriptionList
+        items={[
+          { term: "Maturity", description: "4 Sep 2027" },
+          { term: "Issuer", description: "شركة Gazprom Capital" },
+          { term: "Coupon", description: "7.50%", numeric: true },
+        ]}
+      />
     </Panel>
   ),
 };

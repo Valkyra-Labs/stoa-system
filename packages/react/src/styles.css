@@ -179,6 +179,19 @@
   font-family: var(--stoa-font-family-sans); font-size: var(--stoa-font-size-xs);
   line-height: var(--stoa-font-line-height-normal);
 }
+/* The arrow: React Aria places its square at the edge of the tooltip
+   nearest the term, against the tooltip's padding box, so the triangle
+   covers the border where they meet. data-placement is the side the
+   tooltip opened on, resolved to a physical side ("start" is the right
+   in a right-to-left page), so the turns that face the term are physical
+   too. */
+.stoa-tooltip__arrow svg {
+  display: block; inline-size: var(--stoa-space-3); block-size: var(--stoa-space-3); overflow: visible;
+  fill: var(--stoa-color-surface); stroke: var(--stoa-color-border-strong); stroke-width: 1px;
+}
+.stoa-tooltip__arrow[data-placement="bottom"] svg { transform: rotate(180deg); }
+.stoa-tooltip__arrow[data-placement="left"] svg { transform: rotate(-90deg); }
+.stoa-tooltip__arrow[data-placement="right"] svg { transform: rotate(90deg); }
 .stoa-tooltip[data-entering] { animation: stoa-fade-in var(--stoa-motion-duration-fast) var(--stoa-motion-easing-enter); }
 
 .stoa-select { display: inline-grid; gap: var(--stoa-space-1); }
@@ -248,6 +261,8 @@
 
 /* Without its output, the track takes the whole row. */
 .stoa-slider--bare { grid-template-columns: minmax(0, 1fr); }
+/* A shown label takes a line of its own above the output and the track. */
+.stoa-slider__label { grid-column: 1 / -1; }
 
 .stoa-number { display: inline-grid; gap: var(--stoa-space-1); }
 .stoa-number__group { display: inline-flex; align-items: center; gap: var(--stoa-space-1); }
@@ -271,10 +286,13 @@
    open. */
 .stoa-field__input {
   min-inline-size: 0;
-  font: inherit; font-family: var(--stoa-font-family-mono);
+  font: inherit; font-family: var(--stoa-font-family-sans);
   padding: var(--stoa-space-2); border: 1px solid var(--stoa-color-border-strong);
   border-radius: var(--stoa-radius-sm); background: var(--stoa-color-surface); color: var(--stoa-color-text);
 }
+/* Numbers, code and maths: the monospace face, with tabular figures so
+   digits line up from one value to the next. */
+.stoa-field__input--mono { font-family: var(--stoa-font-family-mono); font-variant-numeric: tabular-nums; }
 .stoa-field__input[data-focused] { outline: var(--stoa-focus-width) solid var(--stoa-color-focus); outline-offset: 0; }
 .stoa-field__description { font-size: var(--stoa-font-size-2xs); color: var(--stoa-color-text-muted); }
 .stoa-field__input[data-invalid] { border-color: var(--stoa-color-down); }
@@ -653,7 +671,8 @@
    the start of the line. */
 .stoa-range { display: grid; gap: var(--stoa-space-1); min-inline-size: 0; }
 .stoa-range__head { display: flex; justify-content: space-between; align-items: baseline; gap: var(--stoa-space-3); }
-.stoa-range__output { font-family: var(--stoa-font-family-mono); font-size: var(--stoa-font-size-xs); font-variant-numeric: tabular-nums; color: var(--stoa-color-text); }
+/* With the label hidden, the value still sits at the end of the line. */
+.stoa-range__output { margin-inline-start: auto; font-family: var(--stoa-font-family-mono); font-size: var(--stoa-font-size-xs); font-variant-numeric: tabular-nums; color: var(--stoa-color-text); }
 .stoa-range__track { block-size: var(--stoa-space-6); }
 .stoa-range__fill {
   position: absolute; inset-inline-start: 0; inset-block-start: 50%;
@@ -967,7 +986,14 @@
 .stoa-description-list--stacked { gap: var(--stoa-space-2); }
 .stoa-description-list--stacked .stoa-description-list__item { display: grid; gap: calc(var(--stoa-space-1) / 2); }
 .stoa-description-list__term { color: var(--stoa-color-text-muted); }
-.stoa-description-list__value { margin: 0; min-inline-size: 0; overflow-wrap: anywhere; }
+/* A value takes its own direction (dir="auto") but is aligned by the
+   list's: match-parent reads start and end in the parent's direction.
+   Chromium and WebKit apply only the prefixed keyword (Chromium computes
+   the plain one to start); Firefox takes the plain one. */
+.stoa-description-list__value {
+  margin: 0; min-inline-size: 0; overflow-wrap: anywhere;
+  text-align: match-parent; text-align: -webkit-match-parent;
+}
 .stoa-description-list__value--numeric { font-family: var(--stoa-font-family-mono); font-variant-numeric: tabular-nums; }
 
 .stoa-metric { display: grid; gap: var(--stoa-space-1); margin: 0; }

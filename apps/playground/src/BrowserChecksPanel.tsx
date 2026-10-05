@@ -60,7 +60,7 @@ export function BrowserChecksPanel({ checks, unproduced, onSelect }: BrowserChec
         <StatusBadge tone={newCount === 0 ? "positive" : "negative"}>
           {newCount === 0 ? `${checks.length} checks, no new failures` : `${newCount} new failure${newCount === 1 ? "" : "s"}`}
         </StatusBadge>
-        <ChoiceGroup label="Show" choices={FILTERS} value={filter} onChange={(v) => setFilter(v as "all" | "new")} />
+        <ChoiceGroup label="Show" hideLabel choices={FILTERS} value={filter} onChange={(v) => setFilter(v as "all" | "new")} />
       </div>
       {unproduced.length > 0 && (
         <table className="stoa-table" data-testid="unproduced-entries">

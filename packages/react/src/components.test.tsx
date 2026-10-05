@@ -37,20 +37,22 @@ describe("ChoiceGroup", () => {
   });
 });
 
-describe("ChoiceGroup with a visible label, a description, or disabled", () => {
+describe("ChoiceGroup with its label, a description, or disabled", () => {
   const ENGINES = [
     { id: "wasm", label: "WebAssembly" },
     { id: "js", label: "JavaScript" },
   ];
 
-  it("keeps its label for assistive technology only by default", () => {
-    const { container } = render(<ChoiceGroup label="Engine" choices={ENGINES} value="js" onChange={() => {}} />);
-    expect(screen.getByRole("radiogroup", { name: "Engine" })).toBeTruthy();
+  it("keeps its label for assistive technology only with hideLabel", () => {
+    const { container } = render(<ChoiceGroup label="Engine" hideLabel choices={ENGINES} value="js" onChange={() => {}} />);
+    const group = screen.getByRole("radiogroup", { name: "Engine" });
+    expect(group.getAttribute("aria-label")).toBe("Engine");
     expect(container.querySelector(".stoa-field__label")).toBeNull();
+    expect(container.querySelector(".stoa-group-field")).toBeNull();
   });
 
-  it("shows its label, which names the group, and a description read with it", () => {
-    render(<ChoiceGroup label="Engine" showLabel description="Both give the same yields." choices={ENGINES} value="js" onChange={() => {}} />);
+  it("shows its label by default, which names the group, and a description read with it", () => {
+    render(<ChoiceGroup label="Engine" description="Both give the same yields." choices={ENGINES} value="js" onChange={() => {}} />);
     const group = screen.getByRole("radiogroup", { name: "Engine" });
     const label = screen.getByText("Engine");
     expect(label.className).toBe("stoa-field__label");
@@ -76,7 +78,7 @@ describe("ChoiceGroup with a visible label, a description, or disabled", () => {
     render(
       <I18nProvider locale="ar-u-nu-arab">
         <div dir="rtl">
-          <ChoiceGroup label="المحرك" showLabel choices={ENGINES} value="wasm" onChange={onChange} />
+          <ChoiceGroup label="المحرك" choices={ENGINES} value="wasm" onChange={onChange} />
         </div>
       </I18nProvider>,
     );
@@ -89,6 +91,14 @@ describe("ChoiceGroup with a visible label, a description, or disabled", () => {
 });
 
 describe("TimeSlider", () => {
+  it("shows its label by default, and keeps it for assistive technology only with hideLabel", () => {
+    const { rerender } = render(<TimeSlider label="Time" min={0} max={100} step={1} value={42} onChange={() => {}} format={(v) => `t=${v}`} />);
+    expect(screen.getByText("Time").className).toBe("stoa-field__label stoa-slider__label");
+    rerender(<TimeSlider label="Time" hideLabel min={0} max={100} step={1} value={42} onChange={() => {}} format={(v) => `t=${v}`} />);
+    expect(screen.getByText("Time").className).toBe("stoa-visually-hidden");
+    expect(screen.getByRole("slider", { name: "Time" })).toBeTruthy();
+  });
+
   it("announces the formatted time, not the raw number", () => {
     render(<TimeSlider label="Time" min={0} max={100} step={1} value={42} onChange={() => {}} format={(v) => `t=${v}`} />);
     const input = screen.getByRole("slider");
@@ -120,6 +130,29 @@ describe("Select", () => {
     expect(names).toContain("Frame view");
     expect(names).toContain("Dark, right to left");
     expect(screen.getByText("Frame view").className).toBe("stoa-visually-hidden");
+  });
+
+  it("isolates each option's text in its own direction, in the list and in the button", () => {
+    render(
+      <div dir="rtl">
+        <Select
+          label="المدى"
+          options={[
+            { id: "1d", label: "1 day" },
+            { id: "1w", label: "1 week" },
+          ]}
+          value="1d"
+          onChange={() => {}}
+        />
+      </div>,
+    );
+    const button = screen.getByRole("button");
+    const shown = button.querySelector(".stoa-select__value [dir]");
+    expect(shown?.getAttribute("dir")).toBe("auto");
+    expect(shown?.textContent).toBe("1 day");
+    act(() => button.focus());
+    fireEvent.keyDown(button, { key: "ArrowDown" });
+    for (const option of screen.getAllByRole("option")) expect(option.querySelector("[dir]")?.getAttribute("dir")).toBe("auto");
   });
 
   it("reports the option picked from the list", () => {
@@ -175,6 +208,11 @@ describe("NumberField", () => {
     fireEvent.keyDown(input, { key: "ArrowUp" });
     expect(onChange).toHaveBeenCalledTimes(2);
     expect(screen.getByText("px").getAttribute("aria-hidden")).toBe("true");
+  });
+
+  it("is in the monospace face, as a mono TextField is", () => {
+    render(<NumberField label="Quantity" value={500} onChange={() => {}} />);
+    expect(screen.getByRole("textbox", { name: "Quantity" }).className).toContain("stoa-field__input--mono");
   });
 
   it("takes digits typed in Latin under a locale that writes Arabic-Indic digits, and shows them in the locale's", () => {

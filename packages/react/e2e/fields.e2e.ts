@@ -32,3 +32,34 @@ test("NumberField rounds a typed value to the step, unless it keeps typed values
   await kept.press("ArrowUp");
   await expect(kept).toHaveValue("10,000");
 });
+
+test("TextField is in the sans face, which joins Arabic letters, and in the monospace face with tabular figures with mono", async ({ page }) => {
+  await page.goto(story("controls-form--text-field-faces", "dir:rtl;lang:ar"));
+  const issuer = page.getByRole("textbox", { name: "Issuer" });
+  const amount = page.getByRole("textbox", { name: "Amount" });
+  await expect(issuer).toHaveValue("شركة غازبروم كابيتال");
+  await page.evaluate(() => document.fonts.ready);
+  const faces = await Promise.all(
+    [issuer, amount].map((field) =>
+      field.evaluate((el) => {
+        const style = getComputedStyle(el);
+        return { family: style.fontFamily, numbers: style.fontVariantNumeric };
+      }),
+    ),
+  );
+  expect(faces[0]!.family).toMatch(/^"IBM Plex Sans", "IBM Plex Sans Arabic"/);
+  expect(faces[1]!.family).toMatch(/^"IBM Plex Mono"/);
+  expect(faces[1]!.numbers).toBe("tabular-nums");
+  // Joined, a word is drawn narrower than the same letters kept apart by
+  // zero-width non-joiners, which draw nothing themselves.
+  const widths = await issuer.evaluate((el) => {
+    const style = getComputedStyle(el);
+    const loaded = document.fonts.check(`${style.fontSize} "IBM Plex Sans Arabic"`, "شركة");
+    const context = document.createElement("canvas").getContext("2d")!;
+    context.font = `${style.fontWeight} ${style.fontSize} ${style.fontFamily}`;
+    const word = "كابيتال";
+    return { loaded, joined: context.measureText(word).width, apart: context.measureText([...word].join("‌")).width };
+  });
+  expect(widths.loaded).toBe(true);
+  expect(widths.joined).toBeLessThan(widths.apart);
+});

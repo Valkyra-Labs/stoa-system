@@ -98,6 +98,9 @@ describe("ThemeSwitch with useThemePreference", () => {
     render(<ThemeHeader />);
     const group = screen.getByRole("radiogroup", { name: "Theme" });
     expect(group.className).toContain("stoa-choice-group--small");
+    // The options name themselves: the label is for assistive technology only.
+    expect(group.getAttribute("aria-label")).toBe("Theme");
+    expect(document.querySelector(".stoa-field__label")).toBeNull();
     expect(["System", "Light", "Dark"].map(checked)).toEqual([true, false, false]);
     expect(html.hasAttribute("data-theme")).toBe(false);
   });
@@ -215,6 +218,8 @@ describe("the language", () => {
     render(<LanguageHeader />);
     const group = screen.getByRole("radiogroup", { name: "Language" });
     expect(group.className).toContain("stoa-choice-group--small");
+    expect(group.getAttribute("aria-label")).toBe("Language");
+    expect(document.querySelector(".stoa-field__label")).toBeNull();
     expect(["EN", "RU", "AR"].map(checked)).toEqual([true, false, false]);
     expect(radio("RU").querySelector("span")?.getAttribute("lang")).toBe("en");
     expect([html.lang, html.dir]).toEqual(["en", "ltr"]);

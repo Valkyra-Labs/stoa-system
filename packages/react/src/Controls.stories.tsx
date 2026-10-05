@@ -21,8 +21,8 @@ export const Transport: StoryObj = {
       <Panel title="Playback">
         <div style={{ display: "flex", gap: "var(--stoa-space-3)", alignItems: "center", flexWrap: "wrap" }}>
           <Button variant="primary" onPress={() => setPlaying((p) => !p)}>{playing ? "Pause" : "Play"}</Button>
-          <ChoiceGroup label="Speed" value={speed} onChange={setSpeed} choices={[1, 10, 60, 600].map((s) => ({ id: s, label: `${s}x` }))} />
-          <TimeSlider label="Time" min={4 * 3600} max={20 * 3600} step={1} value={t} onChange={setT} format={fmt} />
+          <ChoiceGroup label="Speed" hideLabel value={speed} onChange={setSpeed} choices={[1, 10, 60, 600].map((s) => ({ id: s, label: `${s}x` }))} />
+          <TimeSlider label="Time" hideLabel min={4 * 3600} max={20 * 3600} step={1} value={t} onChange={setT} format={fmt} />
         </div>
       </Panel>
     );
@@ -30,7 +30,8 @@ export const Transport: StoryObj = {
 };
 
 /** A ChoiceGroup is one segmented control; a Select holds a choice with
- * more options, or less room, than a segmented control can show. */
+ * more options, or less room, than a segmented control can show. Both
+ * show their label above them by default. */
 export const Choices: StoryObj = {
   render: () => {
     const [density, setDensity] = useState("regular");
@@ -61,8 +62,30 @@ export const Choices: StoryObj = {
   },
 };
 
-/** A ChoiceGroup with its label shown above it and a description under
- * it; and one disabled as a whole, its description saying why. */
+/** Options in both directions: each keeps the order of its own text, in
+ * the list and in the button, so "1 day" stays "1 day" in a right-to-left
+ * page and "3 أشهر" keeps its number at the right in a left-to-right one.
+ * Open the list to see them all. */
+export const SelectMixedDirections: StoryObj = {
+  render: () => {
+    const [range, setRange] = useState("1d");
+    return (
+      <Select
+        label="Range"
+        value={range}
+        onChange={setRange}
+        options={[
+          { id: "1d", label: "1 day" },
+          { id: "1w", label: "1 week" },
+          { id: "3m", label: "3 أشهر" },
+        ]}
+      />
+    );
+  },
+};
+
+/** A ChoiceGroup with its label above it (the default) and a description
+ * under it; and one disabled as a whole, its description saying why. */
 export const ChoiceGroupLabelled: StoryObj = {
   render: () => {
     const [basis, setBasis] = useState("act365");
@@ -70,7 +93,6 @@ export const ChoiceGroupLabelled: StoryObj = {
       <div style={{ display: "grid", gap: "var(--stoa-space-4)" }}>
         <ChoiceGroup
           label="Day count"
-          showLabel
           description="How accrued interest counts the days."
           value={basis}
           onChange={setBasis}
@@ -81,7 +103,6 @@ export const ChoiceGroupLabelled: StoryObj = {
         />
         <ChoiceGroup
           label="Engine"
-          showLabel
           description="WebAssembly is not available in this browser."
           isDisabled
           value="js"

@@ -34,6 +34,13 @@ describe("Slider", () => {
     expect(document.querySelector(".stoa-range__output")?.textContent).toBe("20");
   });
 
+  it("keeps its label for assistive technology only with hideLabel, the value still shown", () => {
+    render(<Controlled hideLabel />);
+    expect(screen.getByRole("slider", { name: "Depth" })).toBeTruthy();
+    expect(screen.getByText("Depth").className).toBe("stoa-visually-hidden");
+    expect(document.querySelector(".stoa-range__output")?.textContent).toBe("20");
+  });
+
   it("shows and announces the formatted value", () => {
     render(<Controlled format={percent} />);
     const input = screen.getByRole("slider", { name: "Depth" });

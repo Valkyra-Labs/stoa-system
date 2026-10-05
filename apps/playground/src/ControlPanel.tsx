@@ -164,6 +164,7 @@ function TokenControl({
           </div>
           <TimeSlider
             label={`${item.label} (${item.entry.variable})`}
+            hideLabel
             min={control.min}
             max={control.max}
             step={control.step}
@@ -191,6 +192,7 @@ function TokenControl({
             value={text}
             onChange={(value) => onEdit(id, value)}
             dir="ltr"
+            mono
             aria-describedby={describedBy}
             description={
               control.kind === "color" && !isColor(effective)
