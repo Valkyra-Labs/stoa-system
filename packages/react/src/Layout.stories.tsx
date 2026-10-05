@@ -40,6 +40,23 @@ export const Sections: StoryObj = {
   ),
 };
 
+/** Panels inside a panel take the next heading level, so the page's
+ * outline stays in order; every level is drawn the same. */
+export const NestedLevels: StoryObj = {
+  render: () => (
+    <Panel title="RU000A1234 (level 2)">
+      <div style={{ display: "grid", gap: "var(--stoa-space-3)", gridTemplateColumns: "repeat(auto-fit, minmax(12rem, 1fr))" }}>
+        <Panel title="Coupons (level 3)" level={3}>
+          <p>Twice a year, 7.5%.</p>
+        </Panel>
+        <Panel title="Offers (level 3)" level={3}>
+          <p>One put offer before maturity.</p>
+        </Panel>
+      </div>
+    </Panel>
+  ),
+};
+
 /** The bar at the top of an application: name, subtitle, a note and the
  * theme and language switches. */
 export const Header: StoryObj = {

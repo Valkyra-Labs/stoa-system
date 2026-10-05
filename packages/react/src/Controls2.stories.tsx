@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react-vite";
 import { useState } from "react";
 import { FilterChip, FilterChipGroup, Tag } from "./Chips";
 import { AppHeader } from "./AppHeader";
-import { Button } from "./Controls";
+import { Button, ChoiceGroup, Select } from "./Controls";
 import { LanguageSwitch, ThemeSwitch, useLanguagePreference, useThemePreference, type ThemeChoice } from "./Preferences";
 import { Kbd, useShortcuts } from "./Shortcuts";
 import { Slider } from "./Slider";
@@ -48,6 +48,51 @@ export const ButtonsDisabled: StoryObj = {
       </Button>
     </div>
   ),
+};
+
+/** The small size beside the other small controls of a header: the same
+ * height and type size. */
+export const ButtonSmall: StoryObj = {
+  render: () => {
+    const [view, setView] = useState("table");
+    const [range, setRange] = useState("1d");
+    const [mine, setMine] = useState(false);
+    return (
+      <div style={row}>
+        <Button size="small">Export</Button>
+        <Button size="small" variant="primary">
+          New order
+        </Button>
+        <Button size="small" variant="ghost">
+          Refresh
+        </Button>
+        <ChoiceGroup
+          label="View"
+          size="small"
+          value={view}
+          onChange={setView}
+          choices={[
+            { id: "table", label: "Table" },
+            { id: "chart", label: "Chart" },
+          ]}
+        />
+        <Select
+          label="Range"
+          hideLabel
+          size="small"
+          value={range}
+          onChange={setRange}
+          options={[
+            { id: "1d", label: "1 day" },
+            { id: "1w", label: "1 week" },
+          ]}
+        />
+        <FilterChip size="small" isSelected={mine} onChange={setMine}>
+          Mine
+        </FilterChip>
+      </div>
+    );
+  },
 };
 
 /** Every tone, each saying in words what its colour says. Accent fills the
@@ -146,6 +191,26 @@ const column = { display: "grid", gap: "var(--stoa-space-3)", justifyItems: "sta
 
 /** Off and on, with and without a description. Space toggles a focused
  * switch. */
+/** The group's label shown above the chips. */
+export const FilterChipsLabelled: StoryObj = {
+  render: () => {
+    const [value, setValue] = useState<string[]>(["working"]);
+    return (
+      <FilterChipGroup
+        label="Order status"
+        showLabel
+        value={value}
+        onChange={setValue}
+        chips={[
+          { id: "working", label: "Working", count: 12 },
+          { id: "filled", label: "Filled", count: 31 },
+          { id: "rejected", label: "Rejected", count: 2 },
+        ]}
+      />
+    );
+  },
+};
+
 export const SwitchStates: StoryObj = {
   render: () => {
     const [live, setLive] = useState(true);
@@ -437,4 +502,23 @@ export const HeaderWithSwitches: StoryObj = {
     );
   },
   parameters: { layout: "fullscreen" },
+};
+
+/** The switches of a preview frame, wired to hooks that neither apply nor
+ * persist (`apply: false, persist: false`): the choice lives in the
+ * frame's own state, and the page's URL and storage stay as they are. */
+export const SwitchesWithoutPersistence: StoryObj = {
+  render: () => {
+    const theme = useThemePreference({ apply: false, persist: false, defaultChoice: "dark" });
+    const language = useLanguagePreference({ apply: false, persist: false, languages: ["en", "ru", "ar"], defaultLanguage: "ar" });
+    return (
+      <div style={column}>
+        <ThemeSwitch value={theme.choice} onChange={theme.setChoice} label="Theme of the preview" />
+        <LanguageSwitch languages={["en", "ru", "ar"]} value={language.language} onChange={language.setLanguage} label="Language of the preview" />
+        <p>
+          Preview: {theme.theme}, {language.language}, {language.dir}
+        </p>
+      </div>
+    );
+  },
 };

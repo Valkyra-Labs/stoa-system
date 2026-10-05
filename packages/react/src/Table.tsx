@@ -35,9 +35,10 @@ export type TableProps<Row> = {
   stickyHeader?: boolean;
   /** The first column stays in view while the table scrolls sideways. */
   stickyFirstColumn?: boolean;
-  /** Highest the table may grow, in CSS pixels, before it scrolls inside
-   * its own region. */
-  maxHeight?: number;
+  /** Highest the table may grow before it scrolls inside its own region:
+   * a number of CSS pixels, or a CSS length, which can be written in
+   * tokens ("calc(var(--stoa-space-12) * 6)"). */
+  maxHeight?: number | string;
   /** Row height, cell padding and type size for this table; without it,
    * the density set on an ancestor (`data-density`) applies. */
   density?: "compact" | "regular" | "comfortable";

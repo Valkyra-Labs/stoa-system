@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef, type ReactNode } from "react";
+import { useContext, useEffect, useId, useLayoutEffect, useMemo, useRef, type ChangeEvent, type ReactElement, type ReactNode } from "react";
 import { Chevron } from "./Chevron";
 import {
   Button as AriaButton,
@@ -8,6 +8,7 @@ import {
   ListBox,
   ListBoxItem,
   NumberField as AriaNumberField,
+  NumberFieldStateContext,
   Popover,
   Select as AriaSelect,
   SelectValue,
@@ -19,6 +20,7 @@ import {
   ToggleButtonGroup,
   type ButtonProps as AriaButtonProps,
   type Key,
+  useLocale,
 } from "react-aria-components";
 
 /** `default` is a bordered button; `primary` the one main action of a view,
@@ -27,10 +29,16 @@ import {
  * (in a toolbar, for example); `danger` an action that destroys or cannot
  * be undone, on the falling colour. Say what the danger is in the label
  * ("Delete 3 orders"): the colour is not the only sign. */
-export type ButtonProps = AriaButtonProps & { variant?: "default" | "primary" | "secondary" | "ghost" | "danger" };
+export type ButtonProps = AriaButtonProps & {
+  variant?: "default" | "primary" | "secondary" | "ghost" | "danger";
+  /** "small" matches the small ChoiceGroup, Select and FilterChip, for a
+   * toolbar or a header; still at least 24 px tall (WCAG 2.5.8). */
+  size?: ControlSize;
+};
 
-export function Button({ variant = "default", className, ...rest }: ButtonProps) {
-  return <AriaButton {...rest} className={`stoa-button stoa-button--${variant} ${className ?? ""}`.trim()} />;
+export function Button({ variant = "default", size = "regular", className, ...rest }: ButtonProps) {
+  const sized = size === "small" ? " stoa-button--small" : "";
+  return <AriaButton {...rest} className={`stoa-button stoa-button--${variant}${sized} ${className ?? ""}`.trim()} />;
 }
 
 export type Choice<T extends Key> = { id: T; label: ReactNode };
@@ -39,8 +47,52 @@ export type Choice<T extends Key> = { id: T; label: ReactNode };
  * at least 24 px tall (WCAG 2.5.8). */
 export type ControlSize = "regular" | "small";
 
+/** The visible label and description of a group of buttons, and the
+ * attributes that tie them to it. Without either, the label names the
+ * group for assistive technology only. */
+export function useGroupLabel(label: string, showLabel: boolean, description: ReactNode | undefined) {
+  const labelId = useId();
+  const descriptionId = useId();
+  const hasDescription = description !== undefined && description !== null && description !== "";
+  return {
+    groupProps: {
+      "aria-label": showLabel ? undefined : label,
+      "aria-labelledby": showLabel ? labelId : undefined,
+      "aria-describedby": hasDescription ? descriptionId : undefined,
+    },
+    /** The group, inside its label and description when it has them. */
+    frame: (group: ReactElement) =>
+      !showLabel && !hasDescription ? (
+        group
+      ) : (
+        <div className="stoa-group-field">
+          {showLabel && (
+            <span id={labelId} className="stoa-field__label">
+              {label}
+            </span>
+          )}
+          {group}
+          {hasDescription && (
+            <span id={descriptionId} className="stoa-field__description">
+              {description}
+            </span>
+          )}
+        </div>
+      ),
+  };
+}
+
 export type ChoiceGroupProps<T extends Key> = {
+  /** Names the group; shown above it with `showLabel`, otherwise read by
+   * assistive technology only (where the options name themselves, as in
+   * a header). */
   label: string;
+  showLabel?: boolean;
+  /** A line under the group, read as its description: what the choice
+   * changes, or why it is disabled. */
+  description?: ReactNode;
+  /** No option can be chosen; the chosen one stays shown. */
+  isDisabled?: boolean;
   choices: Choice<T>[];
   value: T;
   onChange: (value: T) => void;
@@ -49,10 +101,21 @@ export type ChoiceGroupProps<T extends Key> = {
 
 /** One of a few options (for example a playback speed): a toggle group
  * with single selection, arrow keys moving between options. */
-export function ChoiceGroup<T extends Key>({ label, choices, value, onChange, size = "regular" }: ChoiceGroupProps<T>) {
-  return (
+export function ChoiceGroup<T extends Key>({
+  label,
+  showLabel = false,
+  description,
+  isDisabled,
+  choices,
+  value,
+  onChange,
+  size = "regular",
+}: ChoiceGroupProps<T>) {
+  const { groupProps, frame } = useGroupLabel(label, showLabel, description);
+  return frame(
     <ToggleButtonGroup
-      aria-label={label}
+      {...groupProps}
+      isDisabled={isDisabled}
       selectionMode="single"
       disallowEmptySelection
       selectedKeys={[value]}
@@ -213,7 +276,16 @@ export type NumberFieldProps = {
   onChange: (value: number) => void;
   minValue?: number;
   maxValue?: number;
+  /** The arrow keys' stride. A typed value is also rounded to the nearest
+   * step (counted from `minValue`, or from 0) when it is committed, as
+   * React Aria's NumberField does: with a step of 10000, a typed 500
+   * becomes 0. Set `keepTypedValue` to keep what was typed. */
   step?: number;
+  /** Keep a typed value as typed instead of rounding it to the step; it is
+   * still clamped to `minValue` and `maxValue`, and the arrow keys still
+   * move by `step`. For an amount that is usually changed in round steps
+   * but may be any number. Off by default. */
+  keepTypedValue?: boolean;
   /** A unit drawn after the number ("px"). Include it in `label` too: the
    * drawn unit is hidden from assistive technology. */
   unit?: string;
@@ -221,8 +293,84 @@ export type NumberFieldProps = {
   "aria-describedby"?: string;
 };
 
+const LATIN_DIGIT = /[0-9.]/;
+
+/** For a locale tag that fixes its numbering system ("ar-u-nu-arab"), a
+ * function that rewrites typed Latin digits, and "." as the decimal
+ * separator, in the locale's own; null when the locale writes Latin
+ * digits. React Aria's number parser tries other numbering systems only
+ * when the tag does not fix one, so without this a person on a Latin
+ * keyboard layout could not type a number at all. */
+function typedDigits(locale: string): ((text: string) => string) | null {
+  if (!locale.includes("-nu-")) return null;
+  const plain = new Intl.NumberFormat(locale, { useGrouping: false });
+  const map = new Map<string, string>(Array.from({ length: 10 }, (_, d) => [String(d), plain.format(d)]));
+  if (map.get("0") === "0") return null;
+  const point = new Intl.NumberFormat(locale, { minimumFractionDigits: 1 }).formatToParts(1.5).find((part) => part.type === "decimal")?.value;
+  if (point) map.set(".", point);
+  return (text) => (LATIN_DIGIT.test(text) ? text.replace(/[0-9.]/g, (character) => map.get(character) ?? character) : text);
+}
+
+/** The field's input. Under a locale with its own digits, digits typed in
+ * Latin are written in the locale's as they are typed: in the browser
+ * before the input changes (React Aria refuses the Latin text in its own
+ * beforeinput listener, which this one runs ahead of), and on a change
+ * that arrives without a beforeinput event (a test, an autofill). */
+function NumberInput({ unit }: { unit?: string }) {
+  const { locale } = useLocale();
+  const state = useContext(NumberFieldStateContext);
+  const toLocal = useMemo(() => typedDigits(locale), [locale]);
+  const group = useRef<HTMLDivElement>(null);
+  const latest = useRef({ state, toLocal });
+  useLayoutEffect(() => {
+    latest.current = { state, toLocal };
+  });
+
+  useEffect(() => {
+    const box = group.current;
+    if (!box || !toLocal) return;
+    // Capture, on the group: it runs before React Aria's listener on the
+    // input itself.
+    const onBeforeInput = (event: Event) => {
+      const e = event as InputEvent;
+      const input = e.target;
+      if (!(input instanceof HTMLInputElement) || e.data == null || !e.inputType.startsWith("insert")) return;
+      const local = latest.current.toLocal?.(e.data) ?? e.data;
+      if (local === e.data) return;
+      e.preventDefault();
+      // insertText keeps the browser's undo history and caret; it fires a
+      // beforeinput of its own, with the locale's digits, which passes.
+      if (input.ownerDocument.execCommand("insertText", false, local)) return;
+      const { selectionStart: from, selectionEnd: to, value } = input;
+      const next = value.slice(0, from ?? value.length) + local + value.slice(to ?? value.length);
+      if (latest.current.state?.validate(next)) latest.current.state.setInputValue(next);
+    };
+    box.addEventListener("beforeinput", onBeforeInput, true);
+    return () => box.removeEventListener("beforeinput", onBeforeInput, true);
+  }, [toLocal]);
+
+  const onChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const raw = e.target.value;
+    const local = toLocal?.(raw) ?? raw;
+    if (local !== raw && state && !state.validate(raw) && state.validate(local)) state.setInputValue(local);
+  };
+
+  return (
+    <Group ref={group} className="stoa-number__group">
+      <Input className="stoa-field__input stoa-number__input" onChange={onChange} />
+      {unit && (
+        <span className="stoa-number__unit" aria-hidden="true">
+          {unit}
+        </span>
+      )}
+    </Group>
+  );
+}
+
 /** A number typed by hand, on React Aria: the arrow keys step it, and it
- * is formatted in the locale. */
+ * is formatted in the locale. Under a locale with its own digits
+ * (Arabic-Indic in "ar-u-nu-arab"), digits typed on a Latin keyboard
+ * layout are taken and shown in the locale's digits. */
 export function NumberField({
   label,
   hideLabel = false,
@@ -231,31 +379,30 @@ export function NumberField({
   minValue,
   maxValue,
   step,
+  keepTypedValue = false,
   unit,
   size = "regular",
   "aria-describedby": describedBy,
 }: NumberFieldProps) {
+  const clamp = (next: number) => Math.min(maxValue ?? Infinity, Math.max(minValue ?? -Infinity, next));
   return (
     <AriaNumberField
       className={`stoa-number stoa-number--${size}`}
       value={value}
       onChange={(next) => {
-        if (Number.isFinite(next)) onChange(next);
+        if (Number.isFinite(next)) onChange(keepTypedValue ? clamp(next) : next);
       }}
       minValue={minValue}
       maxValue={maxValue}
       step={step}
       aria-describedby={describedBy}
+      // React Aria's "validate" keeps the typed value and would report a
+      // value off the step as invalid; here the step is only the arrow
+      // keys' stride, and the range is applied by clamping above.
+      {...(keepTypedValue ? { commitBehavior: "validate", validationBehavior: "aria", isInvalid: false } : {})}
     >
       <Label className={hideLabel ? "stoa-visually-hidden" : "stoa-field__label"}>{label}</Label>
-      <Group className="stoa-number__group">
-        <Input className="stoa-field__input stoa-number__input" />
-        {unit && (
-          <span className="stoa-number__unit" aria-hidden="true">
-            {unit}
-          </span>
-        )}
-      </Group>
+      <NumberInput unit={unit} />
     </AriaNumberField>
   );
 }

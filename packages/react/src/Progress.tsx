@@ -83,7 +83,13 @@ export function ProgressBar({ label, value = 0, maxValue = 100, isIndeterminate 
       {({ percentage, valueText }) => (
         <>
           <Label className="stoa-progress__label">{label}</Label>
-          {!isIndeterminate && <span className="stoa-progress__value">{valueText}</span>}
+          {/* In the direction of the words: "3.1 MB of 4.3 MB" in English
+              stays in that order in a right-to-left frame. */}
+          {!isIndeterminate && (
+            <span className="stoa-progress__value" dir={messages.direction}>
+              {valueText}
+            </span>
+          )}
           <span className="stoa-progress__track">
             <span className="stoa-progress__fill" style={isIndeterminate ? undefined : { inlineSize: `${percentage ?? 0}%` }} />
           </span>

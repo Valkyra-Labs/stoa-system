@@ -143,7 +143,12 @@
 .stoa-choice-group > .stoa-choice[data-hovered], .stoa-choice-group > .stoa-choice[data-selected] { z-index: 1; }
 .stoa-choice-group > .stoa-choice[data-focus-visible] { z-index: 2; }
 
+/* A group of buttons with a visible label above it and a description
+   under it. */
+.stoa-group-field { display: grid; gap: var(--stoa-space-1); justify-items: start; min-inline-size: 0; }
+
 /* The small size, for toolbars and headers. */
+.stoa-button--small,
 .stoa-choice-group--small > .stoa-choice,
 .stoa-toggle--small,
 .stoa-select--small .stoa-select__button {
@@ -152,6 +157,29 @@
   padding: calc(var(--stoa-space-1) / 2) calc(var(--stoa-space-1) * 1.5);
 }
 .stoa-select__popover.stoa-select__popover--small { font-size: var(--stoa-font-size-xs); }
+
+/* Tooltip: the term it explains is a button drawn as text with a dotted
+   underline; the tooltip is a small raised note above it. */
+.stoa-tooltip-term {
+  display: inline; padding: 0; margin: 0;
+  font: inherit; color: inherit; background: none; border: 0;
+  text-decoration: underline dotted; text-underline-offset: 0.2em;
+  cursor: help;
+}
+.stoa-tooltip-term[data-focus-visible] {
+  outline: var(--stoa-focus-width) solid var(--stoa-color-focus);
+  outline-offset: var(--stoa-focus-offset);
+  border-radius: var(--stoa-radius-sm);
+}
+.stoa-tooltip {
+  max-inline-size: calc(var(--stoa-space-12) * 6);
+  padding: var(--stoa-space-1) var(--stoa-space-2);
+  background: var(--stoa-color-surface); color: var(--stoa-color-text);
+  border: 1px solid var(--stoa-color-border-strong); border-radius: var(--stoa-radius-sm);
+  font-family: var(--stoa-font-family-sans); font-size: var(--stoa-font-size-xs);
+  line-height: var(--stoa-font-line-height-normal);
+}
+.stoa-tooltip[data-entering] { animation: stoa-fade-in var(--stoa-motion-duration-fast) var(--stoa-motion-easing-enter); }
 
 .stoa-select { display: inline-grid; gap: var(--stoa-space-1); }
 .stoa-select__button { display: inline-flex; align-items: center; justify-content: space-between; gap: var(--stoa-space-2); text-align: start; }
@@ -249,6 +277,8 @@
 }
 .stoa-field__input[data-focused] { outline: var(--stoa-focus-width) solid var(--stoa-color-focus); outline-offset: 0; }
 .stoa-field__description { font-size: var(--stoa-font-size-2xs); color: var(--stoa-color-text-muted); }
+.stoa-field__input[data-invalid] { border-color: var(--stoa-color-down); }
+.stoa-field__error { font-size: var(--stoa-font-size-xs); color: var(--stoa-color-down); }
 
 .stoa-badge { display: inline-flex; gap: var(--stoa-space-1); align-items: baseline; font-size: var(--stoa-font-size-xs); font-weight: var(--stoa-font-weight-medium); }
 .stoa-badge--positive { color: var(--stoa-color-up); }
@@ -405,7 +435,8 @@
   outline: var(--stoa-focus-width) solid var(--stoa-color-focus);
   outline-offset: var(--stoa-focus-offset);
 }
-.stoa-toast__text { flex: 1; min-inline-size: 0; }
+.stoa-toast__body { flex: 1; min-inline-size: 0; display: grid; gap: var(--stoa-space-1); }
+.stoa-toast__description { color: var(--stoa-color-text-muted); font-size: var(--stoa-font-size-xs); }
 .stoa-toast__action { flex: none; }
 @keyframes stoa-toast-in { from { opacity: 0; } }
 
@@ -896,6 +927,49 @@
 /* Metric: label, value with its unit, threshold and basis. Numbers are in
    the numeric face, whose Arabic-Indic digits are tabular too. Inside a
    StatBar it takes the bar's size. */
+/* RecordList: the rows of a master-detail list. The picked row has a bar
+   at its start edge and a heavier name; a hovered or focused row the
+   sunken fill. */
+.stoa-record-list {
+  display: grid; margin: 0; padding: 0; outline: none;
+  font-size: var(--stoa-density-font-size);
+}
+.stoa-record-list[data-focus-visible] { outline: var(--stoa-focus-width) solid var(--stoa-color-focus); outline-offset: var(--stoa-focus-offset); }
+.stoa-record-list__row {
+  display: flex; align-items: center; gap: var(--stoa-space-3);
+  min-block-size: var(--stoa-density-row-height);
+  padding: var(--stoa-space-1) var(--stoa-space-3);
+  border-inline-start: var(--stoa-space-1) solid transparent;
+  border-block-end: 1px solid var(--stoa-color-border);
+  cursor: pointer; outline: none;
+}
+.stoa-record-list__row[data-hovered], .stoa-record-list__row[data-focused] { background: var(--stoa-color-surface-sunken); }
+.stoa-record-list__row[data-selected] { border-inline-start-color: var(--stoa-color-accent); }
+.stoa-record-list__row[data-selected] .stoa-record-list__label { font-weight: var(--stoa-font-weight-semibold); }
+.stoa-record-list__row[data-focus-visible] { outline: var(--stoa-focus-width) solid var(--stoa-color-focus); outline-offset: calc(-1 * var(--stoa-focus-width)); }
+.stoa-record-list__row[data-disabled] { color: var(--stoa-color-text-subtle); cursor: not-allowed; }
+.stoa-record-list__text { display: grid; flex: 1; min-inline-size: 0; }
+.stoa-record-list__label { overflow-wrap: anywhere; }
+.stoa-record-list__description { font-size: var(--stoa-font-size-xs); color: var(--stoa-color-text-muted); }
+.stoa-record-list__row[data-disabled] .stoa-record-list__description { color: inherit; }
+.stoa-record-list__meta { flex: none; font-family: var(--stoa-font-family-mono); font-variant-numeric: tabular-nums; }
+.stoa-record-list__empty { padding: var(--stoa-space-3); color: var(--stoa-color-text-muted); }
+
+/* DescriptionList: terms and values of a read-only record, in the
+   density's type size. In columns, every pair shares one grid, so the
+   values line up after the longest term. */
+.stoa-description-list {
+  display: grid; margin: 0;
+  font-size: var(--stoa-density-font-size); line-height: var(--stoa-font-line-height-normal);
+}
+.stoa-description-list--columns { grid-template-columns: max-content minmax(0, 1fr); gap: var(--stoa-space-1) var(--stoa-space-4); }
+.stoa-description-list--columns .stoa-description-list__item { display: contents; }
+.stoa-description-list--stacked { gap: var(--stoa-space-2); }
+.stoa-description-list--stacked .stoa-description-list__item { display: grid; gap: calc(var(--stoa-space-1) / 2); }
+.stoa-description-list__term { color: var(--stoa-color-text-muted); }
+.stoa-description-list__value { margin: 0; min-inline-size: 0; overflow-wrap: anywhere; }
+.stoa-description-list__value--numeric { font-family: var(--stoa-font-family-mono); font-variant-numeric: tabular-nums; }
+
 .stoa-metric { display: grid; gap: var(--stoa-space-1); margin: 0; }
 .stoa-metric dd { margin: 0; }
 .stoa-metric__label { font-size: var(--stoa-font-size-xs); color: var(--stoa-color-text-muted); }

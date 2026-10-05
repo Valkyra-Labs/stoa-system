@@ -17,7 +17,7 @@ export {
   type TimeSliderProps,
   type ToggleProps,
 } from "./Controls";
-export { Panel, StatBar } from "./Panel";
+export { Panel, StatBar, type PanelProps } from "./Panel";
 export { AppHeader, type AppHeaderProps } from "./AppHeader";
 export { Chevron } from "./Chevron";
 export { Disclosure, type DisclosureProps } from "./Disclosure";
@@ -26,6 +26,12 @@ export { cellAlpha, maxAbs } from "./heatmapScale";
 export { readCanvasTokens, fitCanvas, useTokenSignal, useInvalidateOnTokensVersion, signalTokensChanged, TOKENS_EVENT, type CanvasTokens } from "./tokens";
 export { messagesFor, stoaFormat, useStoaFormat, type StoaFormat, type StoaMessages } from "./locale";
 export { I18nProvider } from "react-aria-components";
+// The provider that sets where overlays (dialogs, popovers, toasts) are
+// portalled, for an application that renders into a frame of its own. It
+// comes from the react-aria that react-aria-components uses (the same
+// exact version), so its context is the one Stoa's overlays read and an
+// application needs no React Aria of its own.
+export { UNSAFE_PortalProvider, type PortalProviderProps } from "react-aria/PortalProvider";
 export { TextField, StatusBadge, Tabs, type TextFieldProps, type StatusTone, type TabItem } from "./Form";
 // Feedback and layout: callouts, empty states, loading, toasts, live
 // regions and the page shell.
@@ -91,6 +97,7 @@ export {
   useThemePreference,
   type LanguagePreference,
   type LanguageSwitchProps,
+  type PreferenceOptions,
   type PreferenceStore,
   type Theme,
   type ThemeChoice,
@@ -103,6 +110,9 @@ export { ReorderableList, type ReorderableItem, type ReorderableListProps } from
 export { StepList, type Step, type StepStatus, type StepListProps } from "./StepList";
 export { LogView, CodeView, type LogLine, type LogViewProps, type CodeViewProps } from "./Code";
 export { Metric, type MetricProps, type MetricThreshold } from "./Metric";
+export { Tooltip, type TooltipProps } from "./Tooltip";
+export { DescriptionList, type DescriptionItem, type DescriptionListProps } from "./DescriptionList";
+export { RecordList, type RecordListItem, type RecordListProps } from "./RecordList";
 export { type StatBarItem } from "./Panel";
 // Table and charts.
 export { Table, type TableColumn, type TableProps } from "./Table";
@@ -115,6 +125,7 @@ export {
   type DataGridCell,
   type DataGridColumn,
   type DataGridEdit,
+  type DataGridEditTarget,
   type DataGridEditor,
   type DataGridOption,
   type DataGridProps,

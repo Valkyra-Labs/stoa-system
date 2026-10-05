@@ -49,7 +49,7 @@ export const TEXT_PAIRS = [
   { fg: "text-muted", bg: "surface", min: TEXT_AA, reason: "Panel title, field label, table header, statbar term, and the heatmap price labels on their surface plates; also chart axis labels and notes, the neutral series line of a line chart and the coupon marker of an event strip." },
   { fg: "text-muted", bg: "bg", min: TEXT_AA, reason: "The same muted labels, chart lines and markers when a table, chart or statbar sits straight on the page background." },
   { fg: "text-muted", bg: "surface-sunken", min: TEXT_AA, reason: "Muted labels in a sunken well." },
-  { fg: "text-subtle", bg: "surface", min: TEXT_AA, reason: "The third text role. No component uses it yet; checked so the name keeps its promise." },
+  { fg: "text-subtle", bg: "surface", min: TEXT_AA, reason: "The third text role: the description of a disabled shortcut in ShortcutList and ShortcutsDialog." },
   { fg: "text-subtle", bg: "bg", min: TEXT_AA, reason: "The same, on the page background." },
   { fg: "accent", bg: "surface", min: TEXT_AA, reason: "Accent used as text or an icon inside a panel; also the accent series line of a line chart and the amortisation marker of an event strip." },
   { fg: "accent", bg: "bg", min: TEXT_AA, reason: "The same, on the page background." },
@@ -97,6 +97,7 @@ export const NON_TEXT_PAIRS = [
   { fg: "focus", bg: "bg", min: NON_TEXT, reason: "Focus ring around a control on the page background." },
   { fg: "accent", bg: "surface", min: NON_TEXT, reason: "Underline of the selected tab, the fill of a checked checkbox and of a switch that is on, and the filled part of a slider track: how the selected state or the value is shown." },
   { fg: "accent", bg: "bg", min: NON_TEXT, reason: "The same tab indicator when the tab list sits straight on the page background." },
+  { fg: "accent", bg: "surface-sunken", min: NON_TEXT, reason: "The bar at the start edge of the picked row of a RecordList while that row is hovered or focused, on the row's sunken fill: it shows which record the detail shows." },
   {
     fg: "up-wash",
     bg: "surface",

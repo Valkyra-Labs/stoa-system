@@ -61,6 +61,41 @@ export const Choices: StoryObj = {
   },
 };
 
+/** A ChoiceGroup with its label shown above it and a description under
+ * it; and one disabled as a whole, its description saying why. */
+export const ChoiceGroupLabelled: StoryObj = {
+  render: () => {
+    const [basis, setBasis] = useState("act365");
+    return (
+      <div style={{ display: "grid", gap: "var(--stoa-space-4)" }}>
+        <ChoiceGroup
+          label="Day count"
+          showLabel
+          description="How accrued interest counts the days."
+          value={basis}
+          onChange={setBasis}
+          choices={[
+            { id: "act365", label: "Actual/365" },
+            { id: "30360", label: "30/360" },
+          ]}
+        />
+        <ChoiceGroup
+          label="Engine"
+          showLabel
+          description="WebAssembly is not available in this browser."
+          isDisabled
+          value="js"
+          onChange={() => {}}
+          choices={[
+            { id: "wasm", label: "WebAssembly" },
+            { id: "js", label: "JavaScript" },
+          ]}
+        />
+      </div>
+    );
+  },
+};
+
 export const Trades: StoryObj = {
   render: () => (
     <Panel title="Trades">

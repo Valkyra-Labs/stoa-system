@@ -1,5 +1,6 @@
-import type { ReactNode } from "react";
+import type { ReactNode, Ref } from "react";
 import {
+  FieldError,
   Input,
   Label,
   Tab as AriaTab,
@@ -12,6 +13,9 @@ import {
 } from "react-aria-components";
 
 export type TextFieldProps = {
+  /** The input element, for a caller that moves focus to it ("/" to
+   * search, back to the field after an error). */
+  ref?: Ref<HTMLInputElement>;
   label: string;
   value: string;
   onChange: (v: string) => void;
@@ -24,10 +28,25 @@ export type TextFieldProps = {
   /** Ids of further elements that describe the input, announced after
    * `description`. */
   "aria-describedby"?: string;
+  /** "search" makes it a search box (role searchbox), for a field that
+   * filters or finds. */
+  type?: "text" | "search";
+  /** The value cannot be used as it is: the input is marked invalid
+   * (aria-invalid) and drawn in the falling colour, and `errorMessage` is
+   * shown under it. */
+  isInvalid?: boolean;
+  /** What is wrong and how to put it right ("A view needs a name."),
+   * shown while `isInvalid` and read as part of the input's description,
+   * after `description`. The words carry the meaning; the colour repeats
+   * it. */
+  errorMessage?: string;
 };
 
-/** A labelled text input. Enter can submit without a surrounding form. */
+/** A labelled text input. Enter can submit without a surrounding form.
+ * Validation is the caller's: it decides when the value is invalid and
+ * says why in `errorMessage` (React Aria's FieldError). */
 export function TextField({
+  ref,
   label,
   value,
   onChange,
@@ -37,6 +56,9 @@ export function TextField({
   dir,
   autoFocus,
   "aria-describedby": describedBy,
+  type = "text",
+  isInvalid = false,
+  errorMessage,
 }: TextFieldProps) {
   return (
     <AriaTextField
@@ -45,9 +67,13 @@ export function TextField({
       onChange={onChange}
       autoFocus={autoFocus}
       aria-describedby={describedBy}
+      type={type}
+      isInvalid={isInvalid}
+      validationBehavior="aria"
     >
       <Label className="stoa-field__label">{label}</Label>
       <Input
+        ref={ref}
         className="stoa-field__input"
         placeholder={placeholder}
         dir={dir}
@@ -65,6 +91,7 @@ export function TextField({
           {description}
         </Text>
       )}
+      <FieldError className="stoa-field__error">{errorMessage}</FieldError>
     </AriaTextField>
   );
 }

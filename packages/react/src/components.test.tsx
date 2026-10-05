@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { act, cleanup, fireEvent, render, screen } from "@testing-library/react";
-import { ChoiceGroup, Disclosure, NumberField, Select, TimeSlider, Toggle, TradeTable } from "./index";
+import { ChoiceGroup, Disclosure, I18nProvider, NumberField, Select, TimeSlider, Toggle, TradeTable } from "./index";
 
 afterEach(cleanup);
 
@@ -34,6 +34,57 @@ describe("ChoiceGroup", () => {
     );
     expect(screen.getByRole("radio", { name: "10x" }).getAttribute("aria-checked")).toBe("true");
     expect(screen.getByRole("radio", { name: "1x" }).getAttribute("aria-checked")).toBe("false");
+  });
+});
+
+describe("ChoiceGroup with a visible label, a description, or disabled", () => {
+  const ENGINES = [
+    { id: "wasm", label: "WebAssembly" },
+    { id: "js", label: "JavaScript" },
+  ];
+
+  it("keeps its label for assistive technology only by default", () => {
+    const { container } = render(<ChoiceGroup label="Engine" choices={ENGINES} value="js" onChange={() => {}} />);
+    expect(screen.getByRole("radiogroup", { name: "Engine" })).toBeTruthy();
+    expect(container.querySelector(".stoa-field__label")).toBeNull();
+  });
+
+  it("shows its label, which names the group, and a description read with it", () => {
+    render(<ChoiceGroup label="Engine" showLabel description="Both give the same yields." choices={ENGINES} value="js" onChange={() => {}} />);
+    const group = screen.getByRole("radiogroup", { name: "Engine" });
+    const label = screen.getByText("Engine");
+    expect(label.className).toBe("stoa-field__label");
+    expect(group.getAttribute("aria-labelledby")).toBe(label.id);
+    expect(group.hasAttribute("aria-label")).toBe(false);
+    expect(document.getElementById(group.getAttribute("aria-describedby")!)?.textContent).toBe("Both give the same yields.");
+  });
+
+  it("is disabled as a whole: no option can be chosen, and the description can say why", () => {
+    const onChange = vi.fn();
+    render(
+      <ChoiceGroup label="Engine" description="WebAssembly is not available here." isDisabled choices={ENGINES} value="js" onChange={onChange} />,
+    );
+    const wasm = screen.getByRole("radio", { name: "WebAssembly" });
+    expect(wasm.hasAttribute("disabled")).toBe(true);
+    fireEvent.click(wasm);
+    expect(onChange).not.toHaveBeenCalled();
+    expect(screen.getByRole("radio", { name: "JavaScript" }).getAttribute("aria-checked")).toBe("true");
+  });
+
+  it("moves with the arrow keys, mirrored in a right-to-left locale", () => {
+    const onChange = vi.fn();
+    render(
+      <I18nProvider locale="ar-u-nu-arab">
+        <div dir="rtl">
+          <ChoiceGroup label="المحرك" showLabel choices={ENGINES} value="wasm" onChange={onChange} />
+        </div>
+      </I18nProvider>,
+    );
+    expect(screen.getByRole("radiogroup", { name: "المحرك" })).toBeTruthy();
+    const wasm = screen.getByRole("radio", { name: "WebAssembly" });
+    act(() => wasm.focus());
+    fireEvent.keyDown(wasm, { key: "ArrowLeft" });
+    expect(document.activeElement).toBe(screen.getByRole("radio", { name: "JavaScript" }));
   });
 });
 
@@ -124,6 +175,60 @@ describe("NumberField", () => {
     fireEvent.keyDown(input, { key: "ArrowUp" });
     expect(onChange).toHaveBeenCalledTimes(2);
     expect(screen.getByText("px").getAttribute("aria-hidden")).toBe("true");
+  });
+
+  it("takes digits typed in Latin under a locale that writes Arabic-Indic digits, and shows them in the locale's", () => {
+    const onChange = vi.fn();
+    render(
+      <I18nProvider locale="ar-u-nu-arab">
+        <NumberField label="x" value={1} onChange={onChange} />
+      </I18nProvider>,
+    );
+    const input = screen.getByRole("textbox", { name: "x" }) as HTMLInputElement;
+    expect(input.value).toBe("١");
+    fireEvent.change(input, { target: { value: "500" } });
+    expect(input.value).toBe("٥٠٠");
+    fireEvent.keyDown(input, { key: "Enter" });
+    expect(onChange).toHaveBeenLastCalledWith(500);
+    // A decimal point typed as "." is the locale's decimal separator.
+    fireEvent.change(input, { target: { value: "2.5" } });
+    expect(input.value).toBe("٢٫٥");
+    fireEvent.keyDown(input, { key: "Enter" });
+    expect(onChange).toHaveBeenLastCalledWith(2.5);
+    // Arabic-Indic digits are taken as they are, and letters still are not.
+    fireEvent.change(input, { target: { value: "٧" } });
+    expect(input.value).toBe("٧");
+    fireEvent.change(input, { target: { value: "7a" } });
+    expect(input.value).toBe("٧");
+  });
+
+  it("rounds a typed value to the step by default, as React Aria does", () => {
+    const onChange = vi.fn();
+    render(<NumberField label="amount" value={20000} minValue={0} step={10000} onChange={onChange} />);
+    const input = screen.getByRole("textbox", { name: "amount" });
+    fireEvent.change(input, { target: { value: "500" } });
+    fireEvent.keyDown(input, { key: "Enter" });
+    expect(onChange).toHaveBeenLastCalledWith(0);
+  });
+
+  it("keeps a typed value with keepTypedValue, clamped to the range, while the arrow keys still step", () => {
+    const onChange = vi.fn();
+    const { rerender } = render(
+      <NumberField label="amount" value={0} minValue={0} maxValue={50000} step={10000} keepTypedValue onChange={onChange} />,
+    );
+    const input = screen.getByRole("textbox", { name: "amount" }) as HTMLInputElement;
+    fireEvent.change(input, { target: { value: "500" } });
+    fireEvent.keyDown(input, { key: "Enter" });
+    expect(onChange).toHaveBeenLastCalledWith(500);
+    rerender(<NumberField label="amount" value={500} minValue={0} maxValue={50000} step={10000} keepTypedValue onChange={onChange} />);
+    expect(input.value).toBe("500");
+    // Off the step is not an error: the step is the arrow keys' stride.
+    expect(input.getAttribute("aria-invalid")).toBeNull();
+    fireEvent.keyDown(input, { key: "ArrowUp" });
+    expect(onChange).toHaveBeenLastCalledWith(10000);
+    fireEvent.change(input, { target: { value: "90000" } });
+    fireEvent.keyDown(input, { key: "Enter" });
+    expect(onChange).toHaveBeenLastCalledWith(50000);
   });
 
   it("reports nothing for an emptied field", () => {

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import {
   Text,
   UNSTABLE_Toast as AriaToast,
@@ -22,7 +22,15 @@ export type ToastAction = {
 
 export type ToastOptions = {
   tone?: FeedbackTone;
+  /** What happened, in one sentence: the toast's name, and what is
+   * announced when it appears. */
   text: string;
+  /** More about it, drawn under the text in the muted colour and given to
+   * assistive technology as the toast's description, not announced. Any
+   * content: a component here can update itself while the toast is shown,
+   * a countdown to the end of an undo window, for example. The text cannot
+   * change once shown; for news, close the toast and add another. */
+  description?: ReactNode;
   /** One action on what the toast reports, for example Undo. */
   action?: ToastAction;
   /** Milliseconds before the toast closes by itself, 8000 by default; null
@@ -80,7 +88,15 @@ export type ToastRegionProps = {
  * interrupt the screen reader. A toast closes after `timeout` (8 seconds
  * by default); the timers stop while the pointer is over the region or
  * focus is inside it, and go on from where they stopped when both leave
- * (WCAG 2.2.1). Its action and close button are reached with Tab. */
+ * (WCAG 2.2.1). Its action and close button are reached with Tab.
+ *
+ * A toast has role alertdialog with aria-modal="false", as React Aria
+ * makes it (its region finds its toasts by that role), so it shares the
+ * role of an AlertDialog. Tell them apart by where they are and by
+ * aria-modal: a toast is inside this region, named "Notifications" in the
+ * locale's words, and is not modal; an AlertDialog is outside it, and the
+ * page behind it is hidden while it is open. In a test, look for a toast
+ * inside the region (`within(region).getByRole("alertdialog")`). */
 export function ToastRegion({ queue, label }: ToastRegionProps) {
   const { messages } = useStoaFormat();
   const [announcement, setAnnouncement] = useState({ count: 0, text: "" });
@@ -111,9 +127,16 @@ export function ToastRegion({ queue, label }: ToastRegionProps) {
             </span>
             {/* The toast's name. React Aria's content element, a role alert,
                 is left out: the live region above announces politely. */}
-            <Text slot="title" className="stoa-toast__text">
-              <VisuallyHidden>{`${toneWord(messages, toast.content.tone)}:`}</VisuallyHidden> {toast.content.text}
-            </Text>
+            <div className="stoa-toast__body">
+              <Text slot="title" className="stoa-toast__text">
+                <VisuallyHidden>{`${toneWord(messages, toast.content.tone)}:`}</VisuallyHidden> {toast.content.text}
+              </Text>
+              {toast.content.description !== undefined && (
+                <Text slot="description" className="stoa-toast__description">
+                  {toast.content.description}
+                </Text>
+              )}
+            </div>
             {toast.content.action && (
               <Button
                 className="stoa-toast__action"

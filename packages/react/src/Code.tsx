@@ -67,8 +67,10 @@ function Frame({ label, text, copyable, maxLines, className, style, children }: 
   );
 }
 
-/** A log line: plain text, or its parts. A message given as `text` is
- * isolated (`bdi`) and takes the direction of its own first letter, so an
+/** A log line: plain text, or its parts. Each part is isolated, so the
+ * parts keep their order from left to right whatever their script: the
+ * time left to right (its digits may be Arabic-Indic), the level and the
+ * message (`bdi`) each in the direction of its own first letter, so an
  * Arabic message reads right to left, its punctuation in place, while the
  * time and level before it stay at the left. */
 export type LogLine = string | { time?: string; level?: string; text: string };
@@ -98,8 +100,18 @@ export function LogView({ label, lines, copyable = true, maxLines = 12 }: LogVie
             line
           ) : (
             <>
-              {line.time && <span className="stoa-code__time">{line.time} </span>}
-              {line.level && <span className="stoa-code__level">{line.level} </span>}
+              {line.time && (
+                <>
+                  <span className="stoa-code__time" dir="ltr">
+                    {line.time}
+                  </span>{" "}
+                </>
+              )}
+              {line.level && (
+                <>
+                  <bdi className="stoa-code__level">{line.level}</bdi>{" "}
+                </>
+              )}
               <bdi>{line.text}</bdi>
             </>
           )}

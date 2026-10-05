@@ -158,6 +158,25 @@ describe("ProgressBar", () => {
     expect(screen.getByText("⁨1.2 MB⁩ of ⁨4.8 MB⁩")).toBeTruthy();
   });
 
+  it("lays out its value text in the direction of its words, not of the frame around it", () => {
+    const { container } = render(
+      <I18nProvider locale="en-Arab">
+        <div dir="rtl">
+          <ProgressBar label="File" value={3.1} maxValue={4.3} formatValue={(v) => `${v} MB`} />
+        </div>
+      </I18nProvider>,
+    );
+    // A dir attribute also isolates the value text from the frame's run.
+    expect(container.querySelector(".stoa-progress__value")?.getAttribute("dir")).toBe("ltr");
+    cleanup();
+    const arabic = render(
+      <Arabic>
+        <ProgressBar label="ملف" value={3} maxValue={8} formatValue={(n) => `${n}`} />
+      </Arabic>,
+    );
+    expect(arabic.container.querySelector(".stoa-progress__value")?.getAttribute("dir")).toBe("rtl");
+  });
+
   it("has no value while indeterminate, and the bar moves only through the motion tokens", () => {
     const { container } = render(<ProgressBar label="Starting the engine" isIndeterminate />);
     const bar = screen.getByRole("progressbar", { name: "Starting the engine" });
@@ -187,7 +206,7 @@ describe("ProgressBar", () => {
 
 describe("Callout", () => {
   const TONES: [FeedbackTone, string, string][] = [
-    ["info", "i", "Note"],
+    ["info", "◆", "Note"],
     ["positive", "✓", "Success"],
     ["warning", "!", "Warning"],
     ["negative", "✗", "Error"],
@@ -208,6 +227,14 @@ describe("Callout", () => {
     expect(hidden.textContent).toBe(`${word}:`);
     // Read in order: the tone word, then the title, then the body.
     expect(callout.textContent).toBe(`${symbol}${word}:FeedThe feed is fifteen minutes behind.`);
+  });
+
+  it("draws no tone as a letter of any script, so an Arabic interface shows no Latin letter", () => {
+    for (const [tone] of TONES) {
+      const { container } = render(<Callout tone={tone}>Text</Callout>);
+      expect(container.querySelector(".stoa-tone-symbol")!.textContent, tone).not.toMatch(/\p{L}/u);
+      cleanup();
+    }
   });
 
   it("is a polite status by default, an alert only when asked, and no live region for a static note", () => {

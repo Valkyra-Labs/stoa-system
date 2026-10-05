@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { ToggleButton, ToggleButtonGroup, type Key } from "react-aria-components";
-import type { ControlSize } from "./Controls";
+import { useGroupLabel, type ControlSize } from "./Controls";
 import { useStoaFormat } from "./locale";
 
 export type TagTone = "neutral" | "info" | "positive" | "warning" | "negative" | "accent";
@@ -77,8 +77,10 @@ export function FilterChip({ children, isSelected, onChange, count, isDisabled, 
 export type FilterChipItem<T extends Key> = { id: T; label: ReactNode; count?: number; isDisabled?: boolean };
 
 export type FilterChipGroupProps<T extends Key> = {
-  /** The name of the group, for assistive technology ("Order status"). */
+  /** The name of the group ("Order status"): for assistive technology
+   * only, or shown above the chips with `showLabel`. */
   label: string;
+  showLabel?: boolean;
   chips: FilterChipItem<T>[];
   /** The ids of the chips that are on. */
   value: T[];
@@ -96,15 +98,17 @@ export type FilterChipGroupProps<T extends Key> = {
  * A "clear all" button, when there is one, sits after the group. */
 export function FilterChipGroup<T extends Key>({
   label,
+  showLabel = false,
   chips,
   value,
   onChange,
   overflow = "wrap",
   size = "regular",
 }: FilterChipGroupProps<T>) {
-  return (
+  const { groupProps, frame } = useGroupLabel(label, showLabel, undefined);
+  return frame(
     <ToggleButtonGroup
-      aria-label={label}
+      {...groupProps}
       selectionMode="multiple"
       selectedKeys={value}
       onSelectionChange={(keys) => onChange(chips.map((chip) => chip.id).filter((id) => keys.has(id)))}

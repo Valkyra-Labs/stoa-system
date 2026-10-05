@@ -34,6 +34,11 @@ export type StoaMessages = {
   book: (bid: string, ask: string, spread: string | null) => string;
   /** What a loading placeholder says to assistive technology. */
   loading: string;
+  /** The direction of these words' script. A sentence built from parts
+   * (a progress bar's "1.2 MB of 4.8 MB") is laid out in it, whatever the
+   * direction of the page around it: English words in a right-to-left
+   * frame would otherwise swap the parts. */
+  direction: "ltr" | "rtl";
   /** A progress bar's value as an amount out of a total ("1.2 MB of 4.8 MB"). */
   progressOf: (value: string, max: string) => string;
   /** The tone of a callout or a toast as a word, read before its text, so
@@ -148,6 +153,7 @@ const EN: StoaMessages = {
   spread: (value) => `spread ${value}`,
   book: (bid, ask, spread) => `${bid}, ${ask}${spread ? `, ${spread}` : ""}.`,
   loading: "Loading…",
+  direction: "ltr",
   progressOf: (value, max) => `${value} of ${max}`,
   toneInfo: "Note",
   tonePositive: "Success",
@@ -228,6 +234,7 @@ const AR: StoaMessages = {
   spread: (value) => `الفارق ${value}`,
   book: (bid, ask, spread) => `${bid}، ${ask}${spread ? `، ${spread}` : ""}.`,
   loading: "جارٍ التحميل…",
+  direction: "rtl",
   progressOf: (value, max) => `${value} من ${max}`,
   toneInfo: "ملاحظة",
   tonePositive: "تم بنجاح",
@@ -309,6 +316,7 @@ const RU: StoaMessages = {
   // The bid and ask parts carry their own commas, so semicolons join them.
   book: (bid, ask, spread) => `${bid}; ${ask}${spread ? `; ${spread}` : ""}.`,
   loading: "Загрузка…",
+  direction: "ltr",
   progressOf: (value, max) => `${value} из ${max}`,
   toneInfo: "Примечание",
   tonePositive: "Готово",
@@ -385,11 +393,18 @@ export type StoaFormat = {
   /** A whole number with the locale's grouping and digits. */
   integer(value: number): string;
   /** A preformatted string (a time of day, for example) with its Latin
-   * digits and decimal point rewritten in the locale's. */
+   * digits rewritten in the locale's, and the decimal point of each
+   * decimal number ("17.200", "2.5") in the locale's decimal separator.
+   * Any other full stop stays: one after a word ("сент."), and those of a
+   * dotted sequence of numbers ("04.09.2026", "1.2.3"). */
   digits(text: string): string;
 };
 
 const formats = new Map<string, StoaFormat>();
+
+/** A decimal number in Latin digits: digits, one full stop, digits, and
+ * not part of a longer dotted sequence. */
+const DECIMAL_NUMBER = /(?<![\d.])\d+\.\d+(?!\.?\d)/g;
 
 /** The formats for a locale, built once per locale. */
 export function stoaFormat(locale: string): StoaFormat {
@@ -408,13 +423,13 @@ export function stoaFormat(locale: string): StoaFormat {
   const plain = new Intl.NumberFormat(locale, { useGrouping: false });
   const digitMap = new Map<string, string>(Array.from({ length: 10 }, (_, d) => [String(d), plain.format(d)]));
   const point = decimalFormat(1).formatToParts(1.5).find((part) => part.type === "decimal")?.value ?? ".";
-  digitMap.set(".", point);
   const format: StoaFormat = {
     locale,
     messages: messagesFor(locale),
     decimal: (value, fractionDigits) => decimalFormat(fractionDigits).format(value),
     integer: (value) => integer.format(value),
-    digits: (text) => text.replace(/[0-9.]/g, (character) => digitMap.get(character) ?? character),
+    digits: (text) =>
+      text.replace(DECIMAL_NUMBER, (number) => number.replace(".", point)).replace(/[0-9]/g, (digit) => digitMap.get(digit) ?? digit),
   };
   formats.set(locale, format);
   return format;

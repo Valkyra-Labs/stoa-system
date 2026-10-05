@@ -9,11 +9,13 @@ import {
   Checkbox,
   CheckboxGroup,
   CodeView,
+  DescriptionList,
   Dialog,
   EmptyState,
   Kbd,
   LogView,
   Panel,
+  RecordList,
   ReorderableList,
   Sheet,
   ShortcutsDialog,
@@ -22,12 +24,13 @@ import {
   StatusBadge,
   StepList,
   Toolbar,
+  Tooltip,
   groupShortcuts,
   useShortcuts,
   useStoaFormat,
   type Step,
 } from "@valkyra-labs/stoa-react";
-import { LOG_STAMPS, ORDER, ORDER_PAYLOAD, VENUES, WATCHLIST, type WatchItem } from "./data";
+import { LOG_STAMPS, ORDER, ORDER_PAYLOAD, VENUES, WATCHLIST, gridOrders, type WatchItem } from "./data";
 import { ErrorCallout, type ComponentScreenProps } from "./parts";
 import { COMPONENT_WORDS, type ComponentWords } from "./words";
 
@@ -188,6 +191,9 @@ export const OverlaysScreen = memo(function OverlaysScreen({ language, state, on
           <Panel title={text.stepsTitle}>
             <Settlement state={state} text={text} words={words} onRetry={onRetry} />
           </Panel>
+          <Panel title={text.ordersTitle}>
+            <TodaysOrders state={state} text={text} words={words} />
+          </Panel>
         </div>
       </div>
       {/* The log and the payload are left to right and never wrap, so they
@@ -217,6 +223,51 @@ export const OverlaysScreen = memo(function OverlaysScreen({ language, state, on
     </div>
   );
 });
+
+/** Today's orders: a master-detail view, the list of orders and the
+ * picked one's details, with its time in force explained in a tooltip. */
+const TODAYS_ORDERS = gridOrders(5, 23);
+
+function TodaysOrders({ state, text, words }: { state: ComponentScreenProps["state"]; text: ComponentWords["overlays"]; words: ComponentWords }) {
+  const locale = useStoaFormat();
+  const [picked, setPicked] = useState<string | null>(TODAYS_ORDERS[0]!.id);
+  if (state === "loading") {
+    return (
+      <Skeleton label={text.loadingLabel}>
+        <SkeletonLines count={5} />
+      </Skeleton>
+    );
+  }
+  const orders = state === "empty" ? [] : TODAYS_ORDERS;
+  const order = orders.find((candidate) => candidate.id === picked);
+  return (
+    <div className="pg-master-detail">
+      <RecordList
+        label={text.ordersLabel}
+        items={orders.map((o) => ({
+          id: o.id,
+          label: o.id,
+          description: `${o.side === "buy" ? words.buy : words.sell} ${o.symbol}`,
+          meta: locale.integer(o.quantity),
+        }))}
+        value={order ? order.id : null}
+        onChange={setPicked}
+        emptyText={text.ordersEmptyText}
+      />
+      {order && (
+        <DescriptionList
+          items={[
+            { term: text.symbol, description: <span className="pg-mono">{order.symbol}</span> },
+            { term: text.side, description: order.side === "buy" ? words.buy : words.sell },
+            { term: text.quantity, description: locale.integer(order.quantity), numeric: true },
+            { term: text.limitPrice, description: locale.decimal(order.price, 2), numeric: true },
+            { id: "tif", term: <Tooltip content={text.tifText}>{text.tifTerm}</Tooltip>, description: text.tifDay },
+          ]}
+        />
+      )}
+    </div>
+  );
+}
 
 function Settlement({
   state,

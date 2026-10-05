@@ -39,13 +39,31 @@ describe("LogView", () => {
     render(<LogView label="Engine log" lines={[{ time: "10:00:02", level: "INFO", text: "تم تحميل السجل." }, "10:00:03 close"]} />);
     const region = screen.getByRole("region", { name: "Engine log" });
     const line = region.querySelector(".stoa-code__line")!;
-    expect(line.querySelector(".stoa-code__time")?.textContent).toBe("10:00:02 ");
-    expect(line.querySelector(".stoa-code__level")?.textContent).toBe("INFO ");
-    expect(line.querySelector("bdi")?.textContent).toBe("تم تحميل السجل.");
-    expect(line.querySelector("bdi")?.hasAttribute("dir")).toBe(false);
+    expect(line.querySelector(".stoa-code__time")?.textContent).toBe("10:00:02");
+    expect(line.querySelector(".stoa-code__level")?.textContent).toBe("INFO");
+    expect(line.querySelector("bdi:last-of-type")?.textContent).toBe("تم تحميل السجل.");
+    expect(line.querySelector("bdi:last-of-type")?.hasAttribute("dir")).toBe(false);
     fireEvent.click(screen.getByRole("button", { name: "Copy" }));
     expect(writeText).toHaveBeenCalledWith("10:00:02 INFO تم تحميل السجل.\n10:00:03 close");
     await waitFor(() => expect(screen.getByRole("status").textContent).toBe("Copied"));
+  });
+
+  it("isolates the time (left to right) and the level (its own direction), so Arabic ones do not join the message's run", () => {
+    document.documentElement.dir = "rtl";
+    render(
+      <I18nProvider locale={ARABIC}>
+        <LogView label="سجل الوكيل" lines={[{ time: "١٠:٢٥:٠٢", level: "الوكيل", text: "تم تحميل السجل." }]} />
+      </I18nProvider>,
+    );
+    const line = screen.getByRole("region").querySelector(".stoa-code__line")!;
+    const time = line.querySelector(".stoa-code__time")!;
+    const level = line.querySelector(".stoa-code__level")!;
+    // A dir attribute isolates an element (unicode-bidi: isolate in the
+    // browser's own stylesheet); bdi isolates with the direction of its text.
+    expect(time.getAttribute("dir")).toBe("ltr");
+    expect(level.tagName).toBe("BDI");
+    expect(level.hasAttribute("dir")).toBe(false);
+    expect(line.textContent).toBe("١٠:٢٥:٠٢ الوكيل تم تحميل السجل.");
   });
 
   it("stays left to right in a right-to-left page", () => {

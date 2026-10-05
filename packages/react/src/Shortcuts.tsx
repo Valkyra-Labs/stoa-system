@@ -233,7 +233,13 @@ export type ShortcutsDialogProps = OverlayOpenProps & {
   groups: ShortcutGroup[];
 };
 
-/** A Dialog that lists keyboard shortcuts (ShortcutList). */
+/** A Dialog that lists keyboard shortcuts (ShortcutList). A disabled
+ * line's description is in the subtle text colour, checked against the
+ * dialog's surface in both themes (packages/tokens/src/pairs.mjs). The
+ * dialog fades in: an accessibility check run during the fade measures
+ * the text while it is still translucent and can report too little
+ * contrast for it. Run such checks once the entrance animations have
+ * finished (`document.getAnimations()`), as Stoa's own sweep does. */
 export function ShortcutsDialog({ title, groups, ...open }: ShortcutsDialogProps) {
   return (
     <Dialog {...open} title={title}>

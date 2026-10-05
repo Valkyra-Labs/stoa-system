@@ -8,8 +8,10 @@ import { useStoaFormat, type StoaMessages } from "./locale";
 export type FeedbackTone = "info" | "positive" | "warning" | "negative";
 
 /** The symbol drawn for each tone, so the tone is told by shape as well as
- * colour. Hidden from assistive technology, which reads the tone word. */
-export const TONE_SYMBOL: Record<FeedbackTone, string> = { info: "i", positive: "✓", warning: "!", negative: "✗" };
+ * colour. Hidden from assistive technology, which reads the tone word.
+ * None is a letter of any script: a Latin "i" for info would be the one
+ * Latin letter in an Arabic interface. */
+export const TONE_SYMBOL: Record<FeedbackTone, string> = { info: "◆", positive: "✓", warning: "!", negative: "✗" };
 
 /** The tone as a word, in the locale's language. */
 export function toneWord(messages: StoaMessages, tone: FeedbackTone): string {

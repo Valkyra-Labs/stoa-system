@@ -4,6 +4,7 @@ import { I18nProvider } from "react-aria-components";
 import { DataGrid, type DataGridSort } from "./DataGrid";
 import { TextField } from "./Form";
 import { Panel } from "./Panel";
+import { useShortcuts } from "./Shortcuts";
 import { sampleOrderColumns, sampleOrders, type SampleOrder } from "./gridFixtures";
 
 const meta: Meta = { title: "Data/DataGrid" };
@@ -68,6 +69,53 @@ export const Editable: StoryObj = {
             setRows((previous) => previous.map((o) => (o.id === rowKey ? { ...o, [column]: value } : o)))
           }
         />
+      </Panel>
+    );
+  },
+};
+
+/** Rows that change while the grid is in use, as a live blotter's do:
+ * press I to insert an order at the top, R to reverse the order, D to
+ * delete the first five. The active cell and an open editor stay with
+ * their row, and the focus stays on the active cell, at the same position
+ * when its row was deleted. The line under the grid says when an edit starts
+ * and when one ends without a change. */
+export const LiveRows: StoryObj = {
+  render: () => {
+    const [rows, setRows] = useState(() => sampleOrders(100, 7));
+    const [count, setCount] = useState(0);
+    const [edit, setEdit] = useState("No edit yet.");
+    const columns = useMemo(() => sampleOrderColumns(), []);
+    useShortcuts([
+      {
+        key: "i",
+        description: "Insert an order at the top",
+        onTrigger: () => {
+          const [fresh] = sampleOrders(1, 100 + count);
+          setRows((previous) => [{ ...fresh!, id: `NEW-${String(count + 1).padStart(3, "0")}` }, ...previous]);
+          setCount((n) => n + 1);
+        },
+      },
+      { key: "r", description: "Reverse the order", onTrigger: () => setRows((previous) => [...previous].reverse()) },
+      { key: "d", description: "Delete the first five orders", onTrigger: () => setRows((previous) => previous.slice(5)) },
+    ]);
+    return (
+      <Panel title="Orders">
+        <div style={{ display: "grid", gap: "var(--stoa-space-3)" }}>
+          <DataGrid
+            label="Live orders"
+            rows={rows}
+            columns={columns}
+            rowKey={orderKey}
+            onEditStart={({ rowKey }) => setEdit(`Editing ${rowKey}.`)}
+            onEditCancel={({ rowKey }) => setEdit(`Edit of ${rowKey} cancelled.`)}
+            onEdit={({ rowKey, column, value }) => {
+              setEdit(`${rowKey} saved.`);
+              setRows((previous) => previous.map((o) => (o.id === rowKey ? { ...o, [column]: value } : o)));
+            }}
+          />
+          <p>{edit}</p>
+        </div>
       </Panel>
     );
   },

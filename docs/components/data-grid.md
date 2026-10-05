@@ -110,6 +110,20 @@ A move costs more than in the spike because each row also draws a
 checkbox with its label and formats its numbers in the locale. It is
 still well inside a 16.7 ms frame.
 
+Each new `rows` array rebuilds the set of row keys (`new Set(rows.map(rowKey))`,
+which counts the selection against the rows) and the display order. On
+2a9155a, in Chromium 153 (Playwright's headless build), with 50,000 order
+rows and one row inserted at the top for each of 200 new arrays, the key
+set took 1.3 ms at the median (p95 1.4 ms, max 4.0 ms) and the order 0.6 ms
+(p95 0.8 ms); this times those two expressions alone, not a render. That is
+under a tenth of a 16.7 ms frame, so both are left as they are.
+
+When `rows` change, the active cell and an open editor follow their row by
+its key: a row inserted above does not move them to another row, and the
+focus stays on the active cell (at the same position when its row is
+gone). Finding a row that moved is a scan of the display order, done only
+when the key at the old position has changed.
+
 ## API
 
 ```tsx

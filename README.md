@@ -40,14 +40,18 @@ follow as the products need them.
   - Feedback and layout: Callout, EmptyState, Skeleton, ProgressBar,
     toasts (ToastQueue, ToastRegion), StatusBadge, LiveRegion,
     VisuallyHidden, Panel, StatBar and Metric, AppHeader, PageShell.
-  - Overlays, lists and content: Dialog, Sheet, AlertDialog,
-    ReorderableList, StepList, LogView, CodeView.
+  - Overlays, lists and content: Dialog, Sheet, AlertDialog, Tooltip,
+    ReorderableList, RecordList (the list of a master-detail view),
+    StepList, DescriptionList, LogView, CodeView.
   - Keyboard and preferences: Kbd, `useShortcuts`, ShortcutList and
     ShortcutsDialog; ThemeSwitch (System, Light, Dark) and
     LanguageSwitch with the preference hooks behind them.
 
   Words and digits follow the locale set with React Aria's
-  `I18nProvider` (`useStoaFormat`). Stoa's own words exist in English,
+  `I18nProvider` (`useStoaFormat`); it and React Aria's
+  `UNSAFE_PortalProvider`, which sets where overlays are portalled, are
+  exported from `@valkyra-labs/stoa-react`, so an application needs no
+  React Aria of its own. Stoa's own words exist in English,
   Russian and Arabic; an Arabic locale such as `ar-u-nu-arab` also gets
   Arabic-Indic digits.
 
