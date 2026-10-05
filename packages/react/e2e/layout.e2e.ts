@@ -149,3 +149,31 @@ test("a short page gets no extra Tab stop", async ({ page }) => {
   await expect(page.getByRole("banner")).toBeVisible();
   await expect(page.locator(".stoa-page-shell__scroll")).not.toHaveAttribute("tabindex");
 });
+
+for (const name of ["Details", "Filters"]) {
+  test(`the page under the header does not scroll behind an open modal (${name}), and the modal stays in view`, async ({ page }) => {
+    await page.goto(story("feedback-feedback-and-layout--page-shell-with-overlays"));
+    const scroll = page.locator(".stoa-page-shell__scroll");
+    await page.getByRole("button", { name }).click();
+    const dialog = page.getByRole("dialog");
+    await expect(dialog).toBeVisible();
+    await page.evaluate(() => Promise.all(document.getAnimations().map((a) => a.finished)));
+    const before = (await dialog.boundingBox())!;
+    // The wheel over the backdrop and over the dialog, then the keys.
+    await page.mouse.move(20, 400);
+    await page.mouse.wheel(0, 600);
+    await page.mouse.move(before.x + before.width / 2, before.y + before.height / 2);
+    await page.mouse.wheel(0, 600);
+    await page.keyboard.press("PageDown");
+    await page.keyboard.press("End");
+    await page.waitForTimeout(300);
+    expect(await scroll.evaluate((el) => el.scrollTop)).toBe(0);
+    expect(await dialog.boundingBox()).toEqual(before);
+    await page.keyboard.press("Escape");
+    await expect(dialog).toHaveCount(0);
+    // Closed, the page scrolls again.
+    await page.mouse.move(20, 400);
+    await page.mouse.wheel(0, 600);
+    await expect.poll(() => scroll.evaluate((el) => el.scrollTop)).toBeGreaterThan(0);
+  });
+}

@@ -2,8 +2,8 @@
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { afterEach, describe, expect, it } from "vitest";
-import { cleanup, render, screen } from "@testing-library/react";
-import { AppHeader, PageShell, ScrollArea } from "./index";
+import { cleanup, fireEvent, render, screen, waitFor } from "@testing-library/react";
+import { AppHeader, Button, Dialog, PageShell, ScrollArea } from "./index";
 
 afterEach(cleanup);
 
@@ -78,5 +78,23 @@ describe("PageShell header position", () => {
     expect(css).toContain(
       ".stoa-page-shell--fixed-header > .stoa-page-shell__scroll { overflow-y: auto; scrollbar-gutter: stable; }",
     );
+  });
+});
+
+describe("PageShell under a modal overlay", () => {
+  it("holds its region still while a dialog is open, and lets it scroll again once it closes", async () => {
+    render(
+      <PageShell header={<AppHeader title="Desk" actions={<Dialog title="Details" trigger={<Button>Details</Button>}>Text</Dialog>} />}>
+        <p>Content</p>
+      </PageShell>,
+    );
+    const region = document.querySelector(".stoa-page-shell__scroll")!;
+    expect(region.hasAttribute("data-scroll-locked")).toBe(false);
+    fireEvent.click(screen.getByRole("button", { name: "Details" }));
+    await waitFor(() => expect(screen.getByRole("dialog")).toBeTruthy());
+    expect(region.getAttribute("data-scroll-locked")).toBe("true");
+    fireEvent.keyDown(screen.getByRole("dialog"), { key: "Escape" });
+    await waitFor(() => expect(screen.queryByRole("dialog")).toBeNull());
+    await waitFor(() => expect(region.hasAttribute("data-scroll-locked")).toBe(false));
   });
 });

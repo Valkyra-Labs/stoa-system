@@ -3,6 +3,7 @@ import { useEffect, useState, type ReactNode } from "react";
 import { AppHeader } from "./AppHeader";
 import { Callout } from "./Callout";
 import { Button } from "./Controls";
+import { Dialog, Sheet } from "./Dialog";
 import { EmptyState } from "./EmptyState";
 import { keepFocusInPlace } from "./focus";
 import { LiveRegion, VisuallyHidden } from "./LiveRegion";
@@ -337,5 +338,45 @@ export const PageShellLongPage: StoryObj = {
       </Column>
     </PageShell>
   ),
+  parameters: { layout: "fullscreen" },
+};
+
+function LongPageWithOverlays() {
+  return (
+    <PageShell
+      header={
+        <AppHeader
+          title="Tyche Replay"
+          subtitle="AAPL on IEX"
+          actions={
+            <>
+              <Dialog title="Session details" trigger={<Button>Details</Button>}>
+                <p>AAPL on IEX, 24 September 2026, replayed from the recorded messages.</p>
+              </Dialog>
+              <Sheet title="Filters" trigger={<Button>Filters</Button>}>
+                <p>Venues, sides and sizes to show.</p>
+              </Sheet>
+            </>
+          }
+        />
+      }
+      footer="Data provided for free by IEX."
+    >
+      <Column>
+        {Array.from({ length: 24 }, (_, i) => (
+          <Panel key={i} title={`Session ${i + 1}`}>
+            AAPL on IEX, one trading day replayed from the recorded messages.
+          </Panel>
+        ))}
+      </Column>
+    </PageShell>
+  );
+}
+
+/** A long page with a dialog and a sheet: while one is open, the page
+ * under the header does not scroll behind it, by wheel or keys, and the
+ * overlay stays in view. */
+export const PageShellWithOverlays: StoryObj = {
+  render: () => <LongPageWithOverlays />,
   parameters: { layout: "fullscreen" },
 };

@@ -1,8 +1,9 @@
-import { useLayoutEffect, useRef, useState, type ReactElement, type ReactNode, type RefObject } from "react";
+import { useContext, useEffect, useLayoutEffect, useRef, useState, type ReactElement, type ReactNode, type RefObject } from "react";
 import { Dialog as AriaDialog, DialogTrigger, Heading, Modal, ModalOverlay } from "react-aria-components";
 import { Button } from "./Controls";
 import { focusLost, placeOf, tabStopAt, type FocusPlace } from "./focus";
 import { useStoaFormat } from "./locale";
+import { PageScrollLock } from "./PageShell";
 
 /** How an overlay opens: from a trigger it wraps, or from the caller's own
  * state. */
@@ -39,9 +40,19 @@ export type SheetProps = DialogProps & {
   placement?: "end" | "bottom" | "auto";
 };
 
+/** Holds the scroll of the page shell around it for as long as it is
+ * mounted: from an overlay's opening to the end of its exit. */
+function LockPageScroll() {
+  const lock = useContext(PageScrollLock);
+  useEffect(() => lock?.(), [lock]);
+  return null;
+}
+
 /** The modal frame every overlay here shares. React Aria's ModalOverlay
- * traps focus inside, locks the page's scroll, closes on Escape and hides
- * the rest of the page from assistive technology while it is open. */
+ * traps focus inside, locks the document's scroll, closes on Escape and
+ * hides the rest of the page from assistive technology while it is open;
+ * inside a PageShell, whose region scrolls instead of the document, the
+ * region is locked too. */
 function Overlay({
   trigger,
   isOpen,
@@ -61,7 +72,10 @@ function Overlay({
         defaultOpen={defaultOpen}
         onOpenChange={onOpenChange}
       >
-        <Modal className={modalClassName}>{children}</Modal>
+        <Modal className={modalClassName}>
+          <LockPageScroll />
+          {children}
+        </Modal>
       </ModalOverlay>
     );
   }
@@ -69,7 +83,10 @@ function Overlay({
     <DialogTrigger isOpen={isOpen} defaultOpen={defaultOpen} onOpenChange={onOpenChange}>
       {trigger}
       <ModalOverlay className={overlayClassName} isDismissable={isDismissable}>
-        <Modal className={modalClassName}>{children}</Modal>
+        <Modal className={modalClassName}>
+          <LockPageScroll />
+          {children}
+        </Modal>
       </ModalOverlay>
     </DialogTrigger>
   );
