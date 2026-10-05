@@ -164,6 +164,7 @@ function TokenControl({
           </div>
           <TimeSlider
             label={`${item.label} (${item.entry.variable})`}
+            hideLabel
             min={control.min}
             max={control.max}
             step={control.step}

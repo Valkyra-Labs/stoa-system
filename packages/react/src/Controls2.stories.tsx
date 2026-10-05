@@ -68,6 +68,7 @@ export const ButtonSmall: StoryObj = {
         </Button>
         <ChoiceGroup
           label="View"
+          hideLabel
           size="small"
           value={view}
           onChange={setView}
@@ -165,7 +166,7 @@ export const FilterChipsClearAll: StoryObj = {
     const [value, setValue] = useState(["open", "filled"]);
     return (
       <div style={row}>
-        <FilterChipGroup label="Order status" chips={STATUS} value={value} onChange={setValue} />
+        <FilterChipGroup label="Order status" hideLabel chips={STATUS} value={value} onChange={setValue} />
         <Button variant="ghost" onPress={() => setValue([])}>
           Clear all
         </Button>
@@ -181,7 +182,7 @@ export const FilterChipsScroll: StoryObj = {
     const [value, setValue] = useState(["filled"]);
     return (
       <div style={{ maxInlineSize: 280, border: "1px solid var(--stoa-color-border)" }}>
-        <FilterChipGroup label="Order status" chips={STATUS} value={value} onChange={setValue} overflow="scroll" size="small" />
+        <FilterChipGroup label="Order status" hideLabel chips={STATUS} value={value} onChange={setValue} overflow="scroll" size="small" />
       </div>
     );
   },
@@ -189,16 +190,13 @@ export const FilterChipsScroll: StoryObj = {
 
 const column = { display: "grid", gap: "var(--stoa-space-3)", justifyItems: "start" } as const;
 
-/** Off and on, with and without a description. Space toggles a focused
- * switch. */
-/** The group's label shown above the chips. */
+/** The group's label shown above the chips, as it is by default. */
 export const FilterChipsLabelled: StoryObj = {
   render: () => {
     const [value, setValue] = useState<string[]>(["working"]);
     return (
       <FilterChipGroup
         label="Order status"
-        showLabel
         value={value}
         onChange={setValue}
         chips={[
@@ -211,6 +209,8 @@ export const FilterChipsLabelled: StoryObj = {
   },
 };
 
+/** Off and on, with and without a description. Space toggles a focused
+ * switch. */
 export const SwitchStates: StoryObj = {
   render: () => {
     const [live, setLive] = useState(true);

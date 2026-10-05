@@ -223,17 +223,20 @@ export function useLanguagePreference({
 export type ThemeSwitchProps = {
   value: ThemeChoice;
   onChange: (choice: ThemeChoice) => void;
-  /** Defaults to Stoa's word for "Theme" in the locale. */
+  /** Defaults to Stoa's word for "Theme" in the locale. Read by
+   * assistive technology only: the options name themselves. */
   label?: string;
 };
 
 /** System, Light or Dark, in Stoa's words for the locale: a small
- * ChoiceGroup for a header. Wire it to useThemePreference. */
+ * ChoiceGroup for a header, its label hidden. Wire it to
+ * useThemePreference. */
 export function ThemeSwitch({ value, onChange, label }: ThemeSwitchProps) {
   const { messages } = useStoaFormat();
   return (
     <ChoiceGroup<ThemeChoice>
       label={label ?? messages.theme}
+      hideLabel
       size="small"
       value={value}
       onChange={onChange}
@@ -251,19 +254,21 @@ export type LanguageSwitchProps = {
   languages: string[];
   value: string;
   onChange: (language: string) => void;
-  /** Defaults to Stoa's word for "Language" in the locale. */
+  /** Defaults to Stoa's word for "Language" in the locale. Read by
+   * assistive technology only: the options name themselves. */
   label?: string;
 };
 
 /** The application's languages by code (EN, RU, AR), the same in every
- * interface: a small ChoiceGroup for a header. The codes are Latin
- * letters, marked as English so a screen reader set to Arabic or Russian
- * spells them out. Wire it to useLanguagePreference. */
+ * interface: a small ChoiceGroup for a header, its label hidden. The
+ * codes are Latin letters, marked as English so a screen reader set to
+ * Arabic or Russian spells them out. Wire it to useLanguagePreference. */
 export function LanguageSwitch({ languages, value, onChange, label }: LanguageSwitchProps) {
   const { messages } = useStoaFormat();
   return (
     <ChoiceGroup<string>
       label={label ?? messages.language}
+      hideLabel
       size="small"
       value={value}
       onChange={onChange}

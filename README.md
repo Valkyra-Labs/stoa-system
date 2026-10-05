@@ -36,7 +36,10 @@ follow as the products need them.
   - Controls: Button (default, primary, secondary, ghost, danger),
     ChoiceGroup, Select, NumberField, TextField, TimeSlider, Slider,
     Toggle, Switch, Checkbox and CheckboxGroup, Tag, FilterChip,
-    Toolbar and ButtonGroup, Tabs, Disclosure.
+    Toolbar and ButtonGroup, Tabs, Disclosure. A labelled control shows
+    its label by default; `hideLabel` keeps it for assistive technology
+    only, where the options name themselves or a heading names the
+    control (ThemeSwitch and LanguageSwitch always hide theirs).
   - Feedback and layout: Callout, EmptyState, Skeleton, ProgressBar,
     toasts (ToastQueue, ToastRegion), StatusBadge, LiveRegion,
     VisuallyHidden, Panel, StatBar and Metric, AppHeader, PageShell.

@@ -217,12 +217,14 @@ export function App() {
           </div>
           <ChoiceGroup
             label="Stream speed"
+            hideLabel
             choices={SPEEDS.map(({ id, label }) => ({ id, label }))}
             value={speed}
             onChange={setSpeed}
           />
           <ChoiceGroup
             label="Density"
+            hideLabel
             choices={DENSITY_MODES.map((mode) => ({ id: mode, label: mode }))}
             value={density}
             onChange={setDensity}
@@ -241,6 +243,7 @@ export function App() {
             </span>
             <ChoiceGroup<DataState>
               label="State"
+              hideLabel
               size="small"
               choices={DATA_STATES}
               value={screenSettings.state}
@@ -257,6 +260,7 @@ export function App() {
               </span>
               <ChoiceGroup<GridRowCount>
                 label="Grid rows"
+                hideLabel
                 size="small"
                 choices={GRID_ROW_COUNTS.map((count) => ({ id: count, label: count.toLocaleString("en-US") }))}
                 value={screenSettings.gridRows}
@@ -402,6 +406,7 @@ export function App() {
           actions={
             <ChoiceGroup<ChromeTheme>
               label="Playground theme"
+              hideLabel
               size="small"
               value={chromeTheme}
               onChange={setChromeTheme}

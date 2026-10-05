@@ -48,25 +48,25 @@ export type Choice<T extends Key> = { id: T; label: ReactNode };
 export type ControlSize = "regular" | "small";
 
 /** The visible label and description of a group of buttons, and the
- * attributes that tie them to it. Without either, the label names the
+ * attributes that tie them to it. With `hideLabel` the label names the
  * group for assistive technology only. */
-export function useGroupLabel(label: string, showLabel: boolean, description: ReactNode | undefined) {
+export function useGroupLabel(label: string, hideLabel: boolean, description: ReactNode | undefined) {
   const labelId = useId();
   const descriptionId = useId();
   const hasDescription = description !== undefined && description !== null && description !== "";
   return {
     groupProps: {
-      "aria-label": showLabel ? undefined : label,
-      "aria-labelledby": showLabel ? labelId : undefined,
+      "aria-label": hideLabel ? label : undefined,
+      "aria-labelledby": hideLabel ? undefined : labelId,
       "aria-describedby": hasDescription ? descriptionId : undefined,
     },
     /** The group, inside its label and description when it has them. */
     frame: (group: ReactElement) =>
-      !showLabel && !hasDescription ? (
+      hideLabel && !hasDescription ? (
         group
       ) : (
         <div className="stoa-group-field">
-          {showLabel && (
+          {!hideLabel && (
             <span id={labelId} className="stoa-field__label">
               {label}
             </span>
@@ -83,11 +83,12 @@ export function useGroupLabel(label: string, showLabel: boolean, description: Re
 }
 
 export type ChoiceGroupProps<T extends Key> = {
-  /** Names the group; shown above it with `showLabel`, otherwise read by
-   * assistive technology only (where the options name themselves, as in
-   * a header). */
+  /** Names the group, shown above it. */
   label: string;
-  showLabel?: boolean;
+  /** Keep the label for assistive technology only, where the options
+   * name themselves (a theme or language switch in a header, for
+   * example). */
+  hideLabel?: boolean;
   /** A line under the group, read as its description: what the choice
    * changes, or why it is disabled. */
   description?: ReactNode;
@@ -103,7 +104,7 @@ export type ChoiceGroupProps<T extends Key> = {
  * with single selection, arrow keys moving between options. */
 export function ChoiceGroup<T extends Key>({
   label,
-  showLabel = false,
+  hideLabel = false,
   description,
   isDisabled,
   choices,
@@ -111,7 +112,7 @@ export function ChoiceGroup<T extends Key>({
   onChange,
   size = "regular",
 }: ChoiceGroupProps<T>) {
-  const { groupProps, frame } = useGroupLabel(label, showLabel, description);
+  const { groupProps, frame } = useGroupLabel(label, hideLabel, description);
   return frame(
     <ToggleButtonGroup
       {...groupProps}
@@ -203,7 +204,11 @@ export function Toggle({ children, isSelected, onChange, size = "regular" }: Tog
 }
 
 export type TimeSliderProps = {
+  /** Shown above the track. */
   label: string;
+  /** Keep the label for assistive technology only, where the slider sits
+   * under a visible name (a panel's title, for example). */
+  hideLabel?: boolean;
   min: number;
   max: number;
   step: number;
@@ -229,6 +234,7 @@ export type TimeSliderProps = {
  * after each render. */
 export function TimeSlider({
   label,
+  hideLabel = false,
   min,
   max,
   step,
@@ -254,7 +260,7 @@ export function TimeSlider({
       onChangeEnd={onChangeEnd && ((v) => onChangeEnd(v as number))}
       aria-describedby={describedBy}
     >
-      <Label className="stoa-visually-hidden">{label}</Label>
+      <Label className={hideLabel ? "stoa-visually-hidden" : "stoa-field__label stoa-slider__label"}>{label}</Label>
       {showOutput && (
         <SliderOutput className="stoa-slider__output">{({ state }) => format(state.getThumbValue(0))}</SliderOutput>
       )}

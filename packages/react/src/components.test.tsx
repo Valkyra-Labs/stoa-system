@@ -37,20 +37,22 @@ describe("ChoiceGroup", () => {
   });
 });
 
-describe("ChoiceGroup with a visible label, a description, or disabled", () => {
+describe("ChoiceGroup with its label, a description, or disabled", () => {
   const ENGINES = [
     { id: "wasm", label: "WebAssembly" },
     { id: "js", label: "JavaScript" },
   ];
 
-  it("keeps its label for assistive technology only by default", () => {
-    const { container } = render(<ChoiceGroup label="Engine" choices={ENGINES} value="js" onChange={() => {}} />);
-    expect(screen.getByRole("radiogroup", { name: "Engine" })).toBeTruthy();
+  it("keeps its label for assistive technology only with hideLabel", () => {
+    const { container } = render(<ChoiceGroup label="Engine" hideLabel choices={ENGINES} value="js" onChange={() => {}} />);
+    const group = screen.getByRole("radiogroup", { name: "Engine" });
+    expect(group.getAttribute("aria-label")).toBe("Engine");
     expect(container.querySelector(".stoa-field__label")).toBeNull();
+    expect(container.querySelector(".stoa-group-field")).toBeNull();
   });
 
-  it("shows its label, which names the group, and a description read with it", () => {
-    render(<ChoiceGroup label="Engine" showLabel description="Both give the same yields." choices={ENGINES} value="js" onChange={() => {}} />);
+  it("shows its label by default, which names the group, and a description read with it", () => {
+    render(<ChoiceGroup label="Engine" description="Both give the same yields." choices={ENGINES} value="js" onChange={() => {}} />);
     const group = screen.getByRole("radiogroup", { name: "Engine" });
     const label = screen.getByText("Engine");
     expect(label.className).toBe("stoa-field__label");
@@ -76,7 +78,7 @@ describe("ChoiceGroup with a visible label, a description, or disabled", () => {
     render(
       <I18nProvider locale="ar-u-nu-arab">
         <div dir="rtl">
-          <ChoiceGroup label="المحرك" showLabel choices={ENGINES} value="wasm" onChange={onChange} />
+          <ChoiceGroup label="المحرك" choices={ENGINES} value="wasm" onChange={onChange} />
         </div>
       </I18nProvider>,
     );
@@ -89,6 +91,14 @@ describe("ChoiceGroup with a visible label, a description, or disabled", () => {
 });
 
 describe("TimeSlider", () => {
+  it("shows its label by default, and keeps it for assistive technology only with hideLabel", () => {
+    const { rerender } = render(<TimeSlider label="Time" min={0} max={100} step={1} value={42} onChange={() => {}} format={(v) => `t=${v}`} />);
+    expect(screen.getByText("Time").className).toBe("stoa-field__label stoa-slider__label");
+    rerender(<TimeSlider label="Time" hideLabel min={0} max={100} step={1} value={42} onChange={() => {}} format={(v) => `t=${v}`} />);
+    expect(screen.getByText("Time").className).toBe("stoa-visually-hidden");
+    expect(screen.getByRole("slider", { name: "Time" })).toBeTruthy();
+  });
+
   it("announces the formatted time, not the raw number", () => {
     render(<TimeSlider label="Time" min={0} max={100} step={1} value={42} onChange={() => {}} format={(v) => `t=${v}`} />);
     const input = screen.getByRole("slider");

@@ -16,7 +16,12 @@ export type TextFieldProps = {
   /** The input element, for a caller that moves focus to it ("/" to
    * search, back to the field after an error). */
   ref?: Ref<HTMLInputElement>;
+  /** Shown above the input. */
   label: string;
+  /** Keep the label for assistive technology only, where the field sits
+   * under a visible name (a search box in a panel's header, for
+   * example). */
+  hideLabel?: boolean;
   value: string;
   onChange: (v: string) => void;
   onEnter?: () => void;
@@ -48,6 +53,7 @@ export type TextFieldProps = {
 export function TextField({
   ref,
   label,
+  hideLabel = false,
   value,
   onChange,
   onEnter,
@@ -71,7 +77,7 @@ export function TextField({
       isInvalid={isInvalid}
       validationBehavior="aria"
     >
-      <Label className="stoa-field__label">{label}</Label>
+      <Label className={hideLabel ? "stoa-visually-hidden" : "stoa-field__label"}>{label}</Label>
       <Input
         ref={ref}
         className="stoa-field__input"

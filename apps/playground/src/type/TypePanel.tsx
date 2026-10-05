@@ -335,6 +335,7 @@ export function TypePanel({ density, tokens, onContribute }: PanelProps) {
       <div className="pg-stack">
         <ChoiceGroup
           label="Mono variable in the frames"
+          hideLabel
           choices={[
             { id: "tokens", label: "As the tokens say" },
             { id: "numeric", label: "The numeric role's face" },

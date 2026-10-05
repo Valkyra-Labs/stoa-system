@@ -248,6 +248,8 @@
 
 /* Without its output, the track takes the whole row. */
 .stoa-slider--bare { grid-template-columns: minmax(0, 1fr); }
+/* A shown label takes a line of its own above the output and the track. */
+.stoa-slider__label { grid-column: 1 / -1; }
 
 .stoa-number { display: inline-grid; gap: var(--stoa-space-1); }
 .stoa-number__group { display: inline-flex; align-items: center; gap: var(--stoa-space-1); }
@@ -653,7 +655,8 @@
    the start of the line. */
 .stoa-range { display: grid; gap: var(--stoa-space-1); min-inline-size: 0; }
 .stoa-range__head { display: flex; justify-content: space-between; align-items: baseline; gap: var(--stoa-space-3); }
-.stoa-range__output { font-family: var(--stoa-font-family-mono); font-size: var(--stoa-font-size-xs); font-variant-numeric: tabular-nums; color: var(--stoa-color-text); }
+/* With the label hidden, the value still sits at the end of the line. */
+.stoa-range__output { margin-inline-start: auto; font-family: var(--stoa-font-family-mono); font-size: var(--stoa-font-size-xs); font-variant-numeric: tabular-nums; color: var(--stoa-color-text); }
 .stoa-range__track { block-size: var(--stoa-space-6); }
 .stoa-range__fill {
   position: absolute; inset-inline-start: 0; inset-block-start: 50%;

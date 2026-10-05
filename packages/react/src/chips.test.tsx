@@ -170,11 +170,17 @@ describe("FilterChipGroup", () => {
     expect(screen.getByRole("toolbar", { name: "Order status" }).className).toContain("stoa-filter-chips--scroll");
   });
 
-  it("can show its label, which then names the toolbar", () => {
-    render(<FilterChipGroup label="Order status" showLabel chips={STATUS} value={[]} onChange={() => {}} />);
+  it("shows its label by default, which then names the toolbar", () => {
+    render(<FilterChipGroup label="Order status" chips={STATUS} value={[]} onChange={() => {}} />);
     const toolbar = screen.getByRole("toolbar", { name: "Order status" });
     const label = screen.getByText("Order status");
     expect(label.className).toBe("stoa-field__label");
     expect(toolbar.getAttribute("aria-labelledby")).toBe(label.id);
+  });
+
+  it("keeps its label for assistive technology only with hideLabel", () => {
+    const { container } = render(<FilterChipGroup label="Order status" hideLabel chips={STATUS} value={[]} onChange={() => {}} />);
+    expect(screen.getByRole("toolbar", { name: "Order status" }).getAttribute("aria-label")).toBe("Order status");
+    expect(container.querySelector(".stoa-field__label")).toBeNull();
   });
 });
