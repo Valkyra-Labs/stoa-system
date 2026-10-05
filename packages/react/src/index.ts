@@ -69,6 +69,7 @@ export { ButtonGroup, Toolbar, ToolbarSeparator, type ButtonGroupProps, type Too
 export {
   Kbd,
   ShortcutList,
+  ariaKeyShortcuts,
   ShortcutsDialog,
   groupShortcuts,
   isApplePlatform,

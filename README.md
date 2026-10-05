@@ -52,7 +52,8 @@ follow as the products need them.
     direction of their own first letter, so "-0.42%" and "16.9 ms" keep
     their order in a right-to-left page.
   - Keyboard and preferences: Kbd, `useShortcuts`, ShortcutList and
-    ShortcutsDialog; ThemeSwitch (System, Light, Dark) and
+    ShortcutsDialog, and Button's `shortcut`, which draws the keys in
+    the button and sets `aria-keyshortcuts`; ThemeSwitch (System, Light, Dark) and
     LanguageSwitch with the preference hooks behind them.
 
   Words and digits follow the locale set with React Aria's

@@ -92,3 +92,25 @@ for (const [globals, forward, back] of [
     await expect(radio("comfortable")).toHaveAttribute("aria-checked", "true");
   });
 }
+
+for (const [globals, stop] of [
+  ["lang:en", "Stop"],
+  ["dir:rtl;lang:ar", "إيقاف"],
+] as const) {
+  test(`a Button's shortcut is drawn at the label's inline end, named by the label alone, and announced as aria-keyshortcuts (${globals})`, async ({ page }) => {
+    await page.goto(story("controls-inputs--button-shortcuts", globals));
+    const button = page.getByRole("button", { name: stop, exact: true });
+    await expect(button).toHaveAttribute("aria-keyshortcuts", "S");
+    await expect(button).toHaveAccessibleName(stop);
+    const label = (await button.locator(".stoa-button__label").boundingBox())!;
+    const hint = (await button.locator(".stoa-button__shortcut").boundingBox())!;
+    if (globals.includes("rtl")) expect(hint.x + hint.width).toBeLessThanOrEqual(label.x);
+    else expect(hint.x).toBeGreaterThanOrEqual(label.x + label.width);
+    // Inside the button, which is still at least 24 px tall.
+    const box = (await button.boundingBox())!;
+    expect(hint.y).toBeGreaterThanOrEqual(box.y);
+    expect(hint.y + hint.height).toBeLessThanOrEqual(box.y + box.height);
+    expect(box.height).toBeGreaterThanOrEqual(24);
+    await expect(page.getByRole("button", { name: /Search|بحث/ })).toHaveAttribute("aria-keyshortcuts", /^(Control|Meta)\+K$/);
+  });
+}

@@ -116,6 +116,8 @@
   color: var(--stoa-color-text-subtle);
   cursor: not-allowed;
 }
+/* A button's shortcut: its keys after the label, at the inline end. */
+.stoa-button__shortcut { margin-inline-start: var(--stoa-space-2); }
 .stoa-button[data-focus-visible], .stoa-slider__thumb[data-focus-visible] {
   outline: var(--stoa-focus-width) solid var(--stoa-color-focus);
   outline-offset: var(--stoa-focus-offset);

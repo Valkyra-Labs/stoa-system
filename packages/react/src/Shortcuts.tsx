@@ -94,6 +94,25 @@ export function shortcutKeys(shortcut: Pick<Shortcut, "key" | "modifiers">, appl
   return [...labels.filter((label): label is string => Boolean(label)), key];
 }
 
+/** ARIA's names for the modifiers, in the order `aria-keyshortcuts`
+ * writes them. */
+const ARIA_MODIFIERS = ["Control", "Alt", "Shift", "Meta"] as const;
+
+/** A shortcut as `aria-keyshortcuts` writes it ("Control+Shift+K", "S",
+ * "?", "Space"): ARIA's modifier names, "mod" resolved for the platform,
+ * a letter in capitals and the space bar as "Space". */
+export function ariaKeyShortcuts(shortcut: Pick<Shortcut, "key" | "modifiers">, apple: boolean): string {
+  const held = new Set(shortcut.modifiers ?? []);
+  const on = {
+    Control: held.has("ctrl") || (held.has("mod") && !apple),
+    Alt: held.has("alt"),
+    Shift: held.has("shift"),
+    Meta: held.has("meta") || (held.has("mod") && apple),
+  };
+  const key = shortcut.key === " " ? "Space" : shortcut.key.length === 1 ? shortcut.key.toUpperCase() : shortcut.key;
+  return [...ARIA_MODIFIERS.filter((name) => on[name]), key].join("+");
+}
+
 /** Whether a key event is this shortcut. */
 export function matchesShortcut(event: KeyboardEvent, shortcut: Pick<Shortcut, "key" | "modifiers">, apple: boolean): boolean {
   const held = new Set(shortcut.modifiers ?? []);

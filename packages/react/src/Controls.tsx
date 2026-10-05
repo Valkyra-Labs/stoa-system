@@ -1,6 +1,8 @@
 import { useContext, useEffect, useId, useLayoutEffect, useMemo, useRef, type ChangeEvent, type KeyboardEvent, type ReactElement, type ReactNode, type Ref } from "react";
 import { mergeProps, useFocusRing, useHover, usePress } from "react-aria";
 import { Chevron } from "./Chevron";
+import { ariaKeyShortcuts, isApplePlatform, Kbd, shortcutKeys, type Shortcut } from "./Shortcuts";
+import { useStoaFormat } from "./locale";
 import {
   Button as AriaButton,
   Group,
@@ -34,11 +36,71 @@ export type ButtonProps = AriaButtonProps & {
   /** "small" matches the small ChoiceGroup, Select and FilterChip, for a
    * toolbar or a header; still at least 24 px tall (WCAG 2.5.8). */
   size?: ControlSize;
+  /** The keyboard shortcut that does what the button does (registered
+   * with `useShortcuts`, for example): drawn after the label with Kbd,
+   * hidden from assistive technology, and given to it as
+   * `aria-keyshortcuts`, so the button's name stays its label. */
+  shortcut?: Pick<Shortcut, "key" | "modifiers">;
+  /** The shortcut in ARIA's own words ("Control+K"), for a shortcut the
+   * button does not draw; `shortcut` sets it otherwise. */
+  "aria-keyshortcuts"?: string;
 };
 
-export function Button({ variant = "default", size = "regular", className, ...rest }: ButtonProps) {
+/** An action. Its label says what it does; `shortcut` adds the key that
+ * does the same, shown and announced. */
+export function Button({
+  variant = "default",
+  size = "regular",
+  className,
+  shortcut,
+  "aria-keyshortcuts": keyShortcuts,
+  render,
+  children,
+  ...rest
+}: ButtonProps) {
+  const { messages } = useStoaFormat();
   const sized = size === "small" ? " stoa-button--small" : "";
-  return <AriaButton {...rest} className={`stoa-button stoa-button--${variant}${sized} ${className ?? ""}`.trim()} />;
+  const apple = isApplePlatform();
+  const aria = keyShortcuts ?? (shortcut ? ariaKeyShortcuts(shortcut, apple) : undefined);
+  const hint = shortcut && (
+    <span className="stoa-button__shortcut" aria-hidden="true">
+      <Kbd keys={shortcutKeys(shortcut, apple, messages)} />
+    </span>
+  );
+  const content: AriaButtonProps["children"] =
+    hint === undefined
+      ? children
+      : typeof children === "function"
+        ? (values) => (
+            <>
+              <span className="stoa-button__label">{children(values)}</span>
+              {hint}
+            </>
+          )
+        : (
+            <>
+              <span className="stoa-button__label">{children}</span>
+              {hint}
+            </>
+          );
+  return (
+    <AriaButton
+      {...rest}
+      className={`stoa-button stoa-button--${variant}${sized} ${className ?? ""}`.trim()}
+      // React Aria's Button passes on only the attributes it knows, and
+      // aria-keyshortcuts is not one of them: it is set on the element here.
+      render={
+        aria === undefined
+          ? render
+          : (props, values) => {
+              const own = { ...props, "aria-keyshortcuts": aria };
+              return render ? render(own, values) : <button {...own} />;
+            }
+      }
+    >
+      {content}
+    </AriaButton>
+  );
 }
 
 export type Choice<T extends Key> = { id: T; label: ReactNode };
